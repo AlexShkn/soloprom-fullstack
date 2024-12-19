@@ -1,0 +1,33 @@
+@import '@/styles/variables.scss';
+
+.breadCrumbs.fixed-block {
+  position: absolute;
+  top: 30px;
+  margin-top: 0;
+}
+
+.breadCrumbsLink {
+  @media (any-hover: hover) {
+    &:hover {
+      svg {
+        fill: $mainColor;
+      }
+    }
+  }
+}
+
+.breadCrumbsLink:not(:first-child)::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: -25px;
+  transform: translateY(-50%);
+  display: inline-block;
+  background-image: url('/img/icons/arrow.svg');
+  background-size: 16px 16px;
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 16px;
+  height: 16px;
+  margin: 0 8px;
+}

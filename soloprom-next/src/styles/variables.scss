@@ -1,0 +1,34 @@
+$fontFamily: 'Roboto';
+$fontSize: 16px;
+$minWidth: 320px;
+$maxWidth: 1920;
+$maxWidthContainer: 1390;
+$containerPadding: 20;
+$headerHeight: 75;
+
+$mainColor: #142f49;
+$whiteColor: #fff;
+$accentColor: #005bb9;
+$hoverAccentColor: #007dfb;
+$grayColor: #e5e5e5;
+$lightGrayColor: #e1e5f8;
+
+$hoverColor: #ffcf33;
+$linkColor: #c40a0d;
+
+$sectionColor: #242424;
+$warnColor: #ff005c;
+$successColor: #23cc71;
+
+$transition: 0.3s linear;
+$radius: 4px;
+$shadow: 0 0 20px 0 rgba(0, 0, 0, 0.15);
+$border: 1px solid #333;
+$gradient-accent: linear-gradient(
+		270.02deg,
+		#2e63c9 -53.41%,
+		#b2227f -6.34%,
+		#e64f28 60.57%,
+		#f59d0e 99.99%
+	),
+	#cb2452;

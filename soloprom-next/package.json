@@ -1,0 +1,38 @@
+{
+  "name": "soloprom-next",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev --turbopack",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@pbe/react-yandex-maps": "^1.2.5",
+    "@reduxjs/toolkit": "^2.5.0",
+    "@types/react-redux": "^7.1.34",
+    "axios": "^1.7.9",
+    "mongodb": "^6.12.0",
+    "mongoose": "^8.9.1",
+    "next": "15.0.3",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-loading-skeleton": "^3.5.0",
+    "react-redux": "^9.2.0",
+    "sass": "^1.82.0",
+    "sass-loader": "^16.0.4",
+    "swiper": "^11.1.15"
+  },
+  "devDependencies": {
+    "@types/mongoose": "^5.11.96",
+    "@types/node": "^20",
+    "@types/react": "^18",
+    "@types/react-dom": "^18",
+    "postcss": "^8",
+    "prettier": "^3.4.2",
+    "prettier-plugin-tailwindcss": "^0.6.9",
+    "tailwindcss": "^3.4.1",
+    "typescript": "^5"
+  }
+}

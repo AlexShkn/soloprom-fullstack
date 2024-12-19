@@ -1,0 +1,61 @@
+@import '@/styles/variables.scss';
+@import '@/styles/mixins.scss';
+
+.callback-panel {
+  display: none;
+
+  @media (min-width: 479.98px) {
+    position: fixed;
+    bottom: 10px;
+    // right: 65px;
+    right: 20px;
+    display: inline-flex;
+    align-items: center;
+    gap: 15px;
+    z-index: 11;
+    transition: transform 0.3s ease 0s;
+
+    &.translate {
+      transform: translateX(-65px);
+    }
+
+    &.fixed-panel {
+      // padding-right: 17px;
+    }
+  }
+
+  // .callback-panel__link
+
+  &__link {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    padding: 5px;
+    border-radius: $radius;
+    color: #fff;
+    font-weight: 500;
+    font-size: 14px;
+    svg {
+      width: 30px;
+      height: 30px;
+      fill: #fff;
+    }
+
+    &:nth-child(1) {
+      background-color: #2f7fff;
+    }
+    &:nth-child(2) {
+      background-color: #25d366;
+    }
+    &:nth-child(3) {
+      padding: 5px 10px;
+      background-color: $accentColor;
+      transition: background-color 0.3s ease 0s;
+      @media (any-hover: hover) {
+        &:hover {
+          background-color: $hoverAccentColor;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,40 @@
+@import '@/styles/variables.scss';
+
+.requisites {
+  // .requisites__table
+
+  &__table {
+    tr {
+      td {
+        &:first-child {
+          border-right: 1px solid $grayColor;
+        }
+      }
+      &:nth-child(2n) {
+        background-color: $grayColor;
+      }
+      &:nth-child(9),
+      &:nth-child(10),
+      &:nth-child(11),
+      &:nth-child(12) {
+        background-color: $successColor;
+        border-bottom: 1px solid $grayColor;
+      }
+      &:nth-child(13),
+      &:nth-child(14),
+      &:nth-child(15),
+      &:nth-child(16) {
+        background-color: $hoverAccentColor;
+        color: #fff;
+        border-bottom: 1px solid $grayColor;
+      }
+    }
+    td {
+      padding: 10px;
+    }
+    @media (max-width: 650px) {
+      font-size: 14px;
+      line-height: 110%;
+    }
+  }
+}

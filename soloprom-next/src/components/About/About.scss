@@ -1,0 +1,98 @@
+@import '@/styles/variables.scss';
+@import '@/styles/mixins.scss';
+
+.page .about {
+  @media (max-width: 479.98px) {
+    padding: 70px 0;
+  }
+}
+
+.about {
+  // .about__body
+
+  &__body {
+    @include adaptiveValue('font-size', 18, 16, 1);
+
+    p {
+      line-height: 120%;
+      &:not(:last-child) {
+        margin-bottom: 30px;
+      }
+    }
+  }
+
+  @keyframes move {
+    0% {
+      transform: translateX(-10px);
+    }
+    50% {
+      transform: translateX(10px);
+    }
+    100% {
+      transform: translateX(-10px);
+    }
+  }
+
+  .squares {
+    background-image: radial-gradient($hoverAccentColor 1px, transparent 1px),
+      radial-gradient($hoverAccentColor 1px, #171941 1px);
+    background-size: 56px 56px;
+    background-position:
+      0 0,
+      28px 28px;
+  }
+  .square {
+    opacity: 0.15;
+    @include adaptiveValue('width', 300, 200, 1);
+    @include adaptiveValue('height', 300, 200, 1);
+    position: absolute;
+    top: 10%;
+    right: 10%;
+    background: linear-gradient(0deg, $hoverAccentColor, $hoverAccentColor);
+    display: block;
+    border-radius: 45px;
+    animation: move 6s ease infinite;
+  }
+
+  .square.square2 {
+    opacity: 0.4;
+    @include adaptiveValue('width', 100, 50, 1);
+    @include adaptiveValue('height', 100, 50, 1);
+    top: 30%;
+    right: 47%;
+    border-radius: 15px;
+    animation: move 6s -4s ease infinite;
+  }
+
+  .square.square3 {
+    opacity: 0.3;
+    @include adaptiveValue('width', 200, 100, 1);
+    @include adaptiveValue('height', 200, 100, 1);
+    top: 50%;
+    right: 20%;
+    border-radius: 30px;
+    animation: move 6s -2s ease infinite;
+  }
+  .square.square4 {
+    opacity: 0.3;
+    @include adaptiveValue('width', 200, 100, 1);
+    @include adaptiveValue('height', 200, 100, 1);
+    top: 15%;
+    left: 30%;
+    border-radius: 30px;
+    animation: move 6s -2s ease infinite;
+
+    @media (max-width: 991.98px) {
+      left: 5%;
+    }
+  }
+  .square.square5 {
+    opacity: 0.3;
+    @include adaptiveValue('width', 150, 70, 1);
+    @include adaptiveValue('height', 150, 70, 1);
+    top: 60%;
+    left: 20%;
+    border-radius: 30px;
+    animation: move 6s -2s ease infinite;
+  }
+}

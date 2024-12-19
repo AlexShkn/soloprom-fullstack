@@ -1,0 +1,19 @@
+.payment-delivery {
+  // .payment-delivery__body
+
+  .payment-delivery__body {
+    @media (max-width: 767.98px) {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .payment-delivery__column {
+    @media (max-width: 991.98px) {
+      padding: 40px 30px;
+    }
+
+    @media (max-width: 374.98px) {
+      padding: 30px 20px;
+    }
+  }
+}

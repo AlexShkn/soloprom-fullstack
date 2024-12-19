@@ -1,0 +1,49 @@
+@import '@/styles/variables.scss';
+@import '@/styles/mixins.scss';
+
+.benefits {
+  // .benefits__list
+
+  .benefits__list {
+    @media (max-width: 991.98px) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @media (max-width: 767.98px) {
+      grid-template-columns: repeat(1, 1fr);
+    }
+  }
+
+  // .benefits__item
+
+  .benefits__item {
+    &::before {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      inset: 0;
+      background: linear-gradient(
+        90deg,
+        rgba(1, 71, 141, 0.2) 40%,
+        rgba(0, 0, 0, 0) 65%
+      );
+    }
+  }
+
+  // .benefits__item-title
+
+  .benefits__item-title {
+    @media (max-width: 374.98px) {
+      font-size: 18px;
+    }
+  }
+
+  // .benefits__item-text
+
+  .benefits__item-text {
+    @media (max-width: 374.98px) {
+      font-size: 14px;
+    }
+  }
+}

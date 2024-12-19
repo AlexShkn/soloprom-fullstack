@@ -1,0 +1,15 @@
+{
+	"name": "my-shop",
+	"version": "1.0.0",
+	"private": true,
+	"scripts": {
+		"dev": "concurrently \"npm run dev:next\" \"npm run start:dev:nest\"",
+		"dev:next": "cd next-app && npm run dev",
+		"dev:nest": "cd nest-api && npm run start:dev",
+		"build": "cd next-app && npm run build",
+		"start": "cd next-app && npm start"
+	},
+	"dependencies": {
+		"concurrently": "^8.0.0"
+	}
+}

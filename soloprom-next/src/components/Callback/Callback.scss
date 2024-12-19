@@ -1,0 +1,103 @@
+@import '@/styles/variables.scss';
+@import '@/styles/mixins.scss';
+
+.callback {
+  // .callback__container
+
+  &__container {
+  }
+
+  // .callback__body
+
+  .callback__body {
+    @media (max-width: 991.98px) {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  // .callback__slogan
+
+  .callback__slogan {
+    @media (max-width: 479.98px) {
+      padding: 0 10px;
+      margin-bottom: 20px;
+    }
+  }
+
+  // .callback__right
+
+  .callback__right {
+    @media (max-width: 991.98px) {
+      padding: 50px 30px;
+    }
+
+    @media (max-width: 575.92px) {
+      &::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.3);
+        z-index: 1;
+      }
+    }
+
+    @media (max-width: 374.98px) {
+      padding: 35px 20px;
+    }
+  }
+
+  // .callback__right-body
+
+  .callback__right-body {
+    @media (max-width: 991.98px) {
+      max-width: 70%;
+    }
+
+    @media (max-width: 575.92px) {
+      max-width: 100%;
+    }
+  }
+
+  // .callback__subtitle
+
+  .callback__subtitle {
+    @media (max-width: 991.98px) {
+      max-width: 400px;
+      margin: 0px auto 20px;
+    }
+  }
+
+  // .callback__button
+
+  .callback__button {
+    background-color: #25d366;
+
+    @media (max-width: 991.98px) {
+      max-width: 550px;
+    }
+  }
+
+  // .callback__right-image
+
+  .callback__right-image {
+    @media (max-width: 1199.98px) {
+      width: 80%;
+    }
+
+    @media (max-width: 991.98px) {
+      right: -32%;
+      top: -33%;
+      width: 100%;
+      height: 170%;
+    }
+
+    @media (max-width: 767.98px) {
+      right: -50px;
+      top: -50px;
+      width: 400px;
+      height: 400px;
+    }
+  }
+}

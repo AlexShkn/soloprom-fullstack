@@ -1,0 +1,192 @@
+.link-hover {
+  transition: color $transition;
+  @media (any-hover: hover) {
+    &:hover {
+      color: $hoverAccentColor;
+    }
+  }
+}
+
+.hidden-item {
+  visibility: hidden;
+  opacity: 0;
+  transition:
+    visibility 0.3s ease 0s,
+    opacity 0.3s ease 0s;
+}
+
+.window-close-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  padding: 10px;
+  margin: -10px;
+  background: transparent;
+  z-index: 8;
+  svg {
+    width: 20px;
+    height: 20px;
+    fill: $mainColor;
+    transition: fill 0.3s ease 0s;
+  }
+
+  @media (any-hover: hover) {
+    &:hover {
+      fill: $hoverAccentColor;
+    }
+  }
+}
+
+.section-offset {
+  padding: 50px 0;
+
+  @media (max-width: 767.98px) {
+    padding: 30px 0;
+  }
+}
+
+.section-title {
+  color: $mainColor;
+  @include adaptiveValue('font-size', 32, 24, 1);
+  font-weight: 700;
+  line-height: 120%;
+  margin-bottom: 30px;
+
+  &--white {
+    color: #fff;
+  }
+}
+
+.scroll-bar {
+  &::-webkit-scrollbar {
+    width: 7px;
+  }
+  &::-webkit-scrollbar-track {
+    background: #e0e0e0;
+  }
+  &::-webkit-scrollbar-thumb {
+    background: $accentColor;
+    // border-radius: 5px;
+  }
+
+  &--mini {
+    &::-webkit-scrollbar {
+      width: 3px;
+    }
+  }
+}
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  background-color: $accentColor;
+  transition: all 0.3s ease 0s;
+  border-radius: $radius;
+
+  @media (any-hover: hover) {
+    &:hover {
+      background-color: $hoverAccentColor;
+    }
+  }
+}
+
+.ttall {
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.show-visible {
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+
+.load {
+  position: relative;
+
+  &::after {
+    content: '';
+    position: absolute;
+    top: -25%;
+    left: -25%;
+    width: 150%;
+    height: 200%;
+    backdrop-filter: blur(1px);
+    z-index: 9998;
+  }
+
+  &::before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 9999;
+    background: url('/img/icons/spinner.svg') center / 50px no-repeat;
+    width: 50px;
+    height: 50px;
+    filter: blur(0);
+  }
+
+  &--mini {
+    &::before {
+      content: '';
+      width: 35px;
+      height: 35px;
+      background: url('/img/icons/spinner.svg') center / 35px no-repeat;
+    }
+  }
+}
+
+.header.header_hidden {
+  transform: translateY(-100%);
+  .header-body {
+    padding: 15px 0;
+  }
+}
+
+.header-bottom.header_fixed {
+  @media (min-width: 479.98px) {
+    position: fixed;
+    top: 5px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+
+    animation: fadeIn 0.1s ease-in;
+
+    .header-bottom__wrapper {
+      padding: 10px;
+      max-width: $maxWidthContainer + px;
+      background-color: #fff;
+      box-shadow: $shadow;
+      border-radius: $radius;
+      width: 100%;
+      margin: 0px auto;
+    }
+
+    .catalog-menu {
+      width: 100%;
+      left: 50%;
+      transform: translateX(-50%);
+      top: 82px;
+
+      @media (max-width: 991.98px) {
+        position: fixed;
+        min-width: 100vw;
+        height: 100vh;
+        overflow: auto;
+        top: 0;
+        left: 0;
+        width: 100%;
+        transform: translate(0, 0);
+      }
+    }
+  }
+}
+
+.flex-0-auto {
+  flex: 0 0 auto;
+}

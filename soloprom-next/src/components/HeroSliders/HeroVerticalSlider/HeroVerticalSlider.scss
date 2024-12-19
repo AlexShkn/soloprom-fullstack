@@ -1,0 +1,54 @@
+@import '@/styles/variables.scss';
+@import '@/styles/mixins.scss';
+
+.hero .hero-vertical-slider {
+  .swiper-wrapper {
+    display: flex;
+    flex-direction: column;
+
+    @media (max-width: 991.98px) {
+      display: inline-flex;
+      flex-direction: row;
+
+      .hero__card {
+        padding: 50px 30px 75px;
+      }
+    }
+  }
+
+  @media (max-width: 991.98px) {
+    height: auto;
+    width: 100%;
+  }
+}
+
+// .hero-vertical-slider
+
+.hero-vertical-slider {
+  // .hero__pagination
+
+  .hero-vertical-slider__pagination {
+    .swiper-pagination-bullet {
+      position: relative;
+      width: 15px;
+      height: 15px;
+      border-radius: 50%;
+      outline: 2px solid #fff;
+      background-color: $accentColor;
+
+      transition: background-color 0.3s ease 0s;
+    }
+
+    .swiper-pagination-bullet-active {
+      background-color: #fff;
+    }
+
+    @media (max-width: 649.98px) {
+      right: 10px;
+      bottom: 10px;
+      transform: translateY(0);
+      flex-direction: row;
+      align-items: center;
+    }
+  }
+}
