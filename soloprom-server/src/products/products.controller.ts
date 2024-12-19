@@ -1,4 +1,4 @@
-import { Controller, Get, Query, Param } from '@nestjs/common';
+import { Controller, Get, Param } from '@nestjs/common';
 import { ProductsService } from './products.service';
 
 @Controller('products')
@@ -6,32 +6,22 @@ export class ProductsController {
   constructor(private readonly productsService: ProductsService) {}
 
   @Get()
-  findAll(
-    @Query('category') category: string,
-    @Query('subcategory') subcategory: string,
-    @Query('limit') limit: number = 10,
-    @Query('page') page: number = 1,
-    @Query('search') search: string,
-  ): Promise<any[]> {
-    return this.productsService.findAll(
-      category,
-      subcategory,
-      limit,
-      page,
-      search,
-    );
+  findAll() {
+    return this.productsService.findAll();
   }
 
-  @Get(':id')
-  findOne(
-    @Param('id') id: string,
-    @Query('category') category: string,
-  ): Promise<any> {
-    return this.productsService.findOne(id, category);
+  @Get('/category/:categoryName')
+  findByCategory(@Param('categoryName') categoryName: string) {
+    return this.productsService.findByCategory(categoryName);
   }
 
-  @Get('popular')
-  async getPopularProducts() {
-    return this.productsService.getPopularProducts();
+  @Get('/subcategory/:subCategoryName')
+  findBySubcategory(@Param('subCategoryName') subCategoryName: string) {
+    return this.productsService.findBySubcategory(subCategoryName);
+  }
+
+  @Get('/popular')
+  findPopularProducts() {
+    return this.productsService.findPopularProducts();
   }
 }

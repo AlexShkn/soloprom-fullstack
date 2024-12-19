@@ -69,9 +69,7 @@ export const ProductList: React.FC = () => {
     const fetchPopularProducts = async () => {
       try {
         setLoading(true)
-        const response = await axios.get(
-          'http://localhost:3000/products/popular',
-        )
+        const response = await axios.get('http://localhost:3000/products')
         const data: cardDataProps[] = response.data
 
         console.log(data)

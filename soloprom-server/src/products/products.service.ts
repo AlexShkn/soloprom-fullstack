@@ -1,61 +1,60 @@
 import { Injectable } from '@nestjs/common';
-import { InjectModel } from '@nestjs/mongoose';
-import { Model } from 'mongoose';
-import { Product, ProductDocument } from '../schemas/product.schema';
+import { InjectRepository } from '@nestjs/typeorm';
+import { Repository, FindManyOptions } from 'typeorm';
+import { Product } from './entities/product.entity';
+import { Category } from './entities/category.entity';
+import { Subcategory } from './entities/subcategory.entity';
 
 @Injectable()
 export class ProductsService {
-  private collectionNames = {
-    battery: 'battery',
-    tires: 'tires',
-    oils: 'oils',
-  };
-
   constructor(
-    @InjectModel(Product.name) private productModel: Model<ProductDocument>,
+    @InjectRepository(Product)
+    private readonly productsRepository: Repository<Product>,
+    @InjectRepository(Category)
+    private readonly categoriesRepository: Repository<Category>,
+    @InjectRepository(Subcategory)
+    private readonly subcategoriesRepository: Repository<Subcategory>,
   ) {}
 
-  async findAll(
-    category: string,
-    subcategory: string,
-    limit: number = 10,
-    page: number = 1,
-    search: string,
-  ): Promise<Product[]> {
-    const query: any = {};
-
-    if (category) {
-      query.category = category;
-    }
-    if (subcategory) {
-      query.subcategory = subcategory;
-    }
-    if (search) {
-      query.$or = [
-        { name: { $regex: search, $options: 'i' } }, // Поиск по названию (без учёта регистра)
-        { description: { $regex: search, $options: 'i' } }, // Поиск по описанию (без учёта регистра)
-      ];
-    }
-
-    const skip = (page - 1) * limit;
-    return this.productModel.find(query).skip(skip).limit(limit).exec();
+  async findAll(): Promise<Product[]> {
+    return this.productsRepository.find({
+      relations: ['categoryEntity', 'subcategoryEntity'],
+    });
   }
 
-  async findOne(id: string, category: string): Promise<Product | null> {
-    return this.productModel.findOne({ id, category }).exec();
+  async findByCategory(categoryName: string): Promise<Product[]> {
+    const category = await this.categoriesRepository.findOneBy({
+      name: categoryName,
+    });
+    if (!category) return [];
+
+    const options: FindManyOptions<Product> = {
+      relations: ['categoryEntity', 'subcategoryEntity'],
+      where: { categoryEntity: category },
+    };
+
+    return this.productsRepository.find(options);
   }
 
-  async createMany(
-    category: string,
-    products: Partial<Product>[],
-  ): Promise<void> {
-    const collectionName = this.collectionNames[category];
-    if (collectionName) {
-      await this.productModel.insertMany(products);
-    }
+  async findBySubcategory(subCategoryName: string): Promise<Product[]> {
+    const subcategory = await this.subcategoriesRepository.findOneBy({
+      name: subCategoryName,
+    });
+    if (!subcategory) return [];
+
+    const options: FindManyOptions<Product> = {
+      relations: ['categoryEntity', 'subcategoryEntity'],
+      where: { subcategoryEntity: subcategory },
+    };
+
+    return this.productsRepository.find(options);
   }
 
-  async getPopularProducts(): Promise<Product[]> {
-    return this.productModel.find({ isPopular: true }).exec();
+  async findPopularProducts(): Promise<Product[]> {
+    const options: FindManyOptions<Product> = {
+      relations: ['categoryEntity', 'subcategoryEntity'],
+      where: { isPopular: true },
+    };
+    return this.productsRepository.find(options);
   }
 }
