@@ -1,11 +1,4 @@
-import {
-  Entity,
-  PrimaryColumn,
-  Column,
-  ManyToOne,
-  JoinColumn,
-  OneToMany,
-} from 'typeorm';
+import { Entity, PrimaryColumn, Column, ManyToOne } from 'typeorm';
 import { Category } from './category.entity';
 import { Subcategory } from './subcategory.entity';
 
@@ -14,14 +7,29 @@ export class Product {
   @PrimaryColumn()
   id: string;
 
+  @ManyToOne(() => Category, (category) => category.products)
+  category: Category;
+
+  @ManyToOne(() => Subcategory, (subcategory) => subcategory.products)
+  subcategory: Subcategory;
+
   @Column()
   name: string;
 
-  @Column({ type: 'text', nullable: true })
+  @Column({ type: 'text' })
   description: string;
 
-  @Column({ type: 'text', nullable: true })
-  img: string;
+  @Column()
+  url: string;
+
+  @Column()
+  image: string;
+
+  @Column({ type: 'decimal' })
+  defaultPrice: number;
+
+  @Column({ type: 'boolean' })
+  isPopular: boolean;
 
   @Column({ type: 'jsonb', nullable: true })
   sizes: object;
@@ -29,41 +37,21 @@ export class Product {
   @Column({ type: 'jsonb', nullable: true })
   volumes: object;
 
-  @Column({ type: 'decimal', precision: 15, scale: 2 })
-  defaultPrice: number;
-
-  @Column({ type: 'text', nullable: true, array: true })
+  @Column({ type: 'simple-array', nullable: true })
   group: string[];
 
-  @Column({ type: 'text', nullable: true })
+  @Column({ nullable: true })
   delivery: string;
 
-  @Column({ type: 'text', nullable: true })
+  @Column({ nullable: true })
   type: string;
 
-  @Column({ type: 'text', nullable: true })
+  @Column({ nullable: true })
   brand: string;
 
-  @Column({ type: 'text', nullable: true })
+  @Column({ nullable: true })
   country: string;
 
-  @Column({ type: 'boolean', default: false })
-  isPopular: boolean;
-
-  @Column({ type: 'text', nullable: true })
-  url: string;
-
-  @Column({ type: 'text', nullable: true })
-  category: string;
-
-  @Column({ type: 'text', nullable: true })
-  subcategory: string;
-
-  @ManyToOne(() => Category, (category) => category.products) // Изменено: теперь Category
-  @JoinColumn({ name: 'categoryId' })
-  categoryEntity: Category;
-
-  @ManyToOne(() => Subcategory, (subcategory) => subcategory.products)
-  @JoinColumn({ name: 'subcategoryId' })
-  subcategoryEntity: Subcategory;
+  @Column({ type: 'simple-array', nullable: true })
+  regalia: string[];
 }

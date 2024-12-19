@@ -1,60 +1,49 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { Repository, FindManyOptions } from 'typeorm';
+import { Repository } from 'typeorm';
 import { Product } from './entities/product.entity';
 import { Category } from './entities/category.entity';
 import { Subcategory } from './entities/subcategory.entity';
 
 @Injectable()
-export class ProductsService {
+export class ProductService {
   constructor(
     @InjectRepository(Product)
-    private readonly productsRepository: Repository<Product>,
+    private productRepository: Repository<Product>,
     @InjectRepository(Category)
-    private readonly categoriesRepository: Repository<Category>,
+    private categoryRepository: Repository<Category>,
     @InjectRepository(Subcategory)
-    private readonly subcategoriesRepository: Repository<Subcategory>,
+    private subcategoryRepository: Repository<Subcategory>,
   ) {}
 
   async findAll(): Promise<Product[]> {
-    return this.productsRepository.find({
-      relations: ['categoryEntity', 'subcategoryEntity'],
-    });
-  }
-
-  async findByCategory(categoryName: string): Promise<Product[]> {
-    const category = await this.categoriesRepository.findOneBy({
-      name: categoryName,
-    });
-    if (!category) return [];
-
-    const options: FindManyOptions<Product> = {
-      relations: ['categoryEntity', 'subcategoryEntity'],
-      where: { categoryEntity: category },
-    };
-
-    return this.productsRepository.find(options);
-  }
-
-  async findBySubcategory(subCategoryName: string): Promise<Product[]> {
-    const subcategory = await this.subcategoriesRepository.findOneBy({
-      name: subCategoryName,
-    });
-    if (!subcategory) return [];
-
-    const options: FindManyOptions<Product> = {
-      relations: ['categoryEntity', 'subcategoryEntity'],
-      where: { subcategoryEntity: subcategory },
-    };
-
-    return this.productsRepository.find(options);
+    return this.productRepository.find();
   }
 
   async findPopularProducts(): Promise<Product[]> {
-    const options: FindManyOptions<Product> = {
-      relations: ['categoryEntity', 'subcategoryEntity'],
-      where: { isPopular: true },
-    };
-    return this.productsRepository.find(options);
+    return this.productRepository.find({ where: { isPopular: true } });
+  }
+
+  async findByCategory(categorySlug: string): Promise<Product[]> {
+    const category = await this.categoryRepository.findOneBy({
+      slug: categorySlug,
+    });
+    if (!category) return []; // Обработка отсутствия категории
+    return this.productRepository.findBy({ category });
+  }
+
+  async findBySubcategory(
+    categorySlug: string,
+    subcategorySlug: string,
+  ): Promise<Product[]> {
+    const category = await this.categoryRepository.findOneBy({
+      slug: categorySlug,
+    });
+    const subcategory = await this.subcategoryRepository.findOneBy({
+      slug: subcategorySlug,
+      category,
+    });
+    if (!category || !subcategory) return []; // Обработка отсутствия категории/подкатегории
+    return this.productRepository.findBy({ subcategory });
   }
 }

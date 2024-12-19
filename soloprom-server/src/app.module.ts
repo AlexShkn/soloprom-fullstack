@@ -1,32 +1,24 @@
 import { Module, NestModule, MiddlewareConsumer } from '@nestjs/common';
+import { ConfigModule, ConfigService } from '@nestjs/config';
+import { CORS } from './cors.middleware'; // Импорт нового middleware
+import { TypeOrmModule } from '@nestjs/typeorm';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { ProductsModule } from './products/products.module';
-import { TypeOrmModule } from '@nestjs/typeorm';
-import { ConfigModule, ConfigService } from '@nestjs/config';
-import { CORS } from './cors.middleware'; // Импорт нового middleware
 
 @Module({
   imports: [
-    ConfigModule.forRoot({
-      isGlobal: true,
-      envFilePath: '.env',
+    TypeOrmModule.forRoot({
+      type: 'postgres',
+      host: 'localhost',
+      port: 5432,
+      username: 'postgres',
+      password: '17283946',
+      database: 'solo_db',
+      synchronize: true, // В продакшене установите false и используйте миграции
+      entities: [__dirname + '/**/*.entity{.js, .ts}'],
     }),
-    TypeOrmModule.forRootAsync({
-      imports: [ConfigModule],
-      useFactory: (configService: ConfigService) => ({
-        type: 'postgres',
-        host: configService.get('DATABASE_HOST'),
-        port: configService.get('DATABASE_PORT'),
-        username: configService.get('DATABASE_USER'),
-        password: configService.get('DATABASE_PASSWORD'),
-        database: configService.get('DATABASE_NAME'),
-        entities: [__dirname + '/**/*.entity{.js, .ts}'],
-        synchronize: true, // В продакшене установите false!
-      }),
-      inject: [ConfigService],
-    }),
-    ProductsModule,
+    ProductsModule, // Добавление ProductsModule
   ],
   controllers: [AppController],
   providers: [AppService],
