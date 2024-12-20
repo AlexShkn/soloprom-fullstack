@@ -145,32 +145,18 @@
   // .product-list__slider-button--prev
 
   &__slider-button--prev {
-    left: 15px;
+    left: 5px;
     svg {
       transform: rotate(90deg);
-    }
-
-    @media (max-width: 1399.98px) {
-      left: 5px;
-    }
-
-    @media (max-width: 479.98px) {
-      left: 5px;
     }
   }
 
   // .product-list__slider-button--next
 
   &__slider-button--next {
-    right: 15px;
+    right: 5px;
     svg {
       transform: rotate(-90deg);
-    }
-    @media (max-width: 1399.98px) {
-      right: 5px;
-    }
-    @media (max-width: 479.98px) {
-      right: 5px;
     }
   }
 

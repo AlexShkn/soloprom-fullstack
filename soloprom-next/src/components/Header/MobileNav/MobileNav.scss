@@ -132,6 +132,13 @@
       transition: all 0.3s ease 0s;
     }
 
+    &.added {
+      &::before {
+        background-color: #25d366;
+        color: #fff;
+      }
+    }
+
     @media (max-width: 991.98px) {
       margin-right: 0;
     }

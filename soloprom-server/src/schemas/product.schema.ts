@@ -60,6 +60,8 @@ export class Product {
   viscosity?: string;
 
   @Prop()
+  load_index?: string;
+  @Prop()
   voltage?: string;
   @Prop()
   radius?: string;

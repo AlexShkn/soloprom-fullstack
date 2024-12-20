@@ -1,10 +1,17 @@
 import React from 'react'
+import { useSelector } from 'react-redux'
+import { RootState } from '@/redux/store'
 
 import './MobileNav.scss'
 
 type Props = {}
 
 const MobileNav = (props: Props) => {
+  const cartState = useSelector((state: RootState) => state.cart.cartState)
+  const favoriteState = useSelector(
+    (state: RootState) => state.favorite.favoriteState,
+  )
+
   return (
     <div className="mobile-nav flex items-center justify-end gap-1 rounded text-sm font-medium">
       <div
@@ -45,8 +52,8 @@ const MobileNav = (props: Props) => {
           className="mobile-nav__item-link relative flex items-center rounded p-2.5 text-center font-medium"
         >
           <div
-            data-favorite-count="0"
-            className="mobile-nav__item-icon relative px-[5px]"
+            data-favorite-count={favoriteState.length}
+            className={`mobile-nav__item-icon relative px-[5px] ${favoriteState.length && 'added'}`}
           >
             <svg className="icon h-7 w-7 fill-white transition-colors">
               <use xlinkHref="/img/sprite.svg#heart"></use>
@@ -61,8 +68,8 @@ const MobileNav = (props: Props) => {
           className="mobile-nav__item-link relative flex items-center rounded p-2.5 text-center font-medium"
         >
           <div
-            data-cart-count="0"
-            className="mobile-nav__item-icon relative px-[5px]"
+            data-cart-count={cartState.length}
+            className={`mobile-nav__item-icon relative px-[5px] ${cartState.length && 'added'}`}
           >
             <svg className="icon h-7 w-7 fill-white transition-colors">
               <use xlinkHref="/img/sprite.svg#cart"></use>
@@ -90,7 +97,7 @@ const MobileNav = (props: Props) => {
             <button
               data-btn-callback
               type="button"
-              className="text-ss flex flex-col items-center gap-[5px] text-darkBlue"
+              className="flex flex-col items-center gap-[5px] text-ss text-darkBlue"
             >
               <img src="/img/icons/callback1.svg" className="h-7 w-7" alt="" />
               Заказать звонок
@@ -99,7 +106,7 @@ const MobileNav = (props: Props) => {
           <li className="rounded p-[5px] shadow-custom">
             <a
               href="tel:+79036569393"
-              className="text-ss flex flex-col items-center gap-[5px] text-darkBlue"
+              className="flex flex-col items-center gap-[5px] text-ss text-darkBlue"
             >
               <img src="/img/icons/tel.svg" className="h-7 w-7" alt="" />
               Телефон
@@ -108,7 +115,7 @@ const MobileNav = (props: Props) => {
           <li className="rounded p-[5px] shadow-custom">
             <a
               href="https://wa.me/79036569393"
-              className="text-ss flex flex-col items-center gap-[5px] text-darkBlue"
+              className="flex flex-col items-center gap-[5px] text-ss text-darkBlue"
             >
               <img
                 src="/img/icons/social/whatsapp.svg"
@@ -121,7 +128,7 @@ const MobileNav = (props: Props) => {
           <li className="rounded p-[5px] shadow-custom">
             <a
               href="https://t.me/+79036569393"
-              className="text-ss flex flex-col items-center gap-[5px] text-darkBlue"
+              className="flex flex-col items-center gap-[5px] text-ss text-darkBlue"
             >
               <img
                 src="/img/icons/social/telegram.svg"

@@ -2265,3 +2265,47 @@ const favoriteList: FavoriteList = {
     },
   ],
 }
+
+// const [activeNav, setActiveNav] = useState(true)
+// const [popularProducts, setPopularProducts] = useState<FavoriteList>({
+// 	tires: [],
+// 	battery: [],
+// 	oils: [],
+// })
+// const [loading, setLoading] = useState(true)
+// const [error, setError] = useState<string | null>(null)
+
+
+  // useEffect(() => {
+  //   const fetchPopularProducts = async () => {
+  //     try {
+  //       setLoading(true)
+  //       const response = await getProducts()
+  //       const data: cardDataProps[] = response.data
+
+  //       console.log(data)
+
+  //       const popularProductsData: FavoriteList = {
+  //         tires: data.filter((item) => item.category === 'tires'),
+  //         battery: data.filter((item) => item.category === 'battery'),
+  //         oils: data.filter((item) => item.category === 'oils'),
+  //       }
+
+  //       setPopularProducts(popularProductsData)
+  //     } catch (error: any) {
+  //       setError(error.message)
+  //     } finally {
+  //       setLoading(false)
+  //     }
+  //   }
+
+  //   fetchPopularProducts()
+  // }, [])
+
+  // if (loading) {
+  //   return <div>Loading...</div>
+  // }
+
+  // if (error) {
+  //   return <div>Error: {error}</div>
+  // }

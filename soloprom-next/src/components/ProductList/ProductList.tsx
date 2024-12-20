@@ -2,8 +2,6 @@
 import React, { useEffect, useState } from 'react'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { Navigation } from 'swiper/modules'
-import axios from 'axios'
-import { getPopularProducts, getProducts } from '@/app/api/products/products'
 
 import './ProductList.scss'
 import { ProductsCard } from '../ProductsCard/ProductsCard'
@@ -20,16 +18,18 @@ export interface cardDataProps {
   img: string
   product_group: string[]
   delivery: string
-  sizes?: { [size: string]: number }
+  sizes?: { [size: string]: number | undefined }
   defaultPrice: number
-  volumes?: { [size: string]: number }
+  volumes?: { [size: string]: number | undefined }
   models?: string[]
   type: string
   brand: string
   country: string
   size?: string
+  load_index?: string
   weight?: string
   voltage?: string
+  viscosity?: string
   container?: string
   plates?: string
   discount?: number
@@ -58,47 +58,6 @@ export const ProductList: React.FC = () => {
     'tires',
   )
   const [activeNav, setActiveNav] = useState(true)
-  const [popularProducts, setPopularProducts] = useState<FavoriteList>({
-    tires: [],
-    battery: [],
-    oils: [],
-  })
-  const [loading, setLoading] = useState(true)
-  const [error, setError] = useState<string | null>(null)
-
-  // useEffect(() => {
-  //   const fetchPopularProducts = async () => {
-  //     try {
-  //       setLoading(true)
-  //       const response = await getProducts()
-  //       const data: cardDataProps[] = response.data
-
-  //       console.log(data)
-
-  //       const popularProductsData: FavoriteList = {
-  //         tires: data.filter((item) => item.category === 'tires'),
-  //         battery: data.filter((item) => item.category === 'battery'),
-  //         oils: data.filter((item) => item.category === 'oils'),
-  //       }
-
-  //       setPopularProducts(popularProductsData)
-  //     } catch (error: any) {
-  //       setError(error.message)
-  //     } finally {
-  //       setLoading(false)
-  //     }
-  //   }
-
-  //   fetchPopularProducts()
-  // }, [])
-
-  // if (loading) {
-  //   return <div>Loading...</div>
-  // }
-
-  // if (error) {
-  //   return <div>Error: {error}</div>
-  // }
 
   return (
     <section className="product-list section-offset">
@@ -112,7 +71,7 @@ export const ProductList: React.FC = () => {
                   setCurrantTab(caption.type as 'tires' | 'battery' | 'oils')
                 }
                 key={caption.type}
-                className={`product-list__caption ${caption.type === currantTab && 'active'}`} // Correct template literal syntax
+                className={`product-list__caption ${caption.type === currantTab && 'active'}`}
               >
                 {caption.name}
               </div>

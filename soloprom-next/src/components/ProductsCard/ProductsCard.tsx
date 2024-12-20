@@ -1,38 +1,36 @@
 'use client'
-import React from 'react'
-import { getDigFormat } from '../../supports/index.js'
+import React, { useEffect, useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { RootState } from '@/redux/store'
+import { addProductToCart, removeCartProduct } from '@/redux/slices/cartSlice'
+
 import './ProductsCard.scss'
 import { ProductsCardProps } from '../ProductList/ProductList'
-import { DescriptionTemplate } from './DescriptionTemplate.jsx'
-
-interface SettingSet {
-  new: string
-  recommend: string
-  selected: string
-  discount?: string | undefined
-}
-
-const settings: { [key: string]: SettingSet } = {
-  regalia: {
-    new: 'Новинка',
-    recommend: 'Рекомендуем',
-    selected: 'Выбор покупателей',
-    discount: '',
-  },
-}
+import { DescriptionTemplate } from './DescriptionTemplate'
+import { PriceBlock } from './PriceBlock'
+import { RegaliaList } from './RegaliaList'
+import {
+  addProductToFavorite,
+  removeFavoriteProduct,
+} from '@/redux/slices/favoriteSlice'
 
 export const ProductsCard: React.FC<ProductsCardProps> = ({ cardData }) => {
+  const [variantValue, setVariantValue] = useState('')
+  const [cartIsAdded, setCartIsAdded] = useState(false)
+  const [favoriteIsAdded, setFavoriteIsAdded] = useState(false)
+  const [cartIsLoad, setCartIsLoad] = useState(false)
+  const [favoriteIsLoad, setFavoriteIsLoad] = useState(false)
+  const dispatch = useDispatch()
+  const cartState = useSelector((state: RootState) => state.cart.cartState)
+  const favoriteState = useSelector(
+    (state: RootState) => state.favorite.favoriteState,
+  )
+
   const {
     id,
     url,
     name,
-    descr,
     img,
-    product_group,
-    delivery,
-    type,
-    brand,
-    country,
     regalia = [],
     sizes,
     defaultPrice,
@@ -40,76 +38,126 @@ export const ProductsCard: React.FC<ProductsCardProps> = ({ cardData }) => {
     discount,
   } = cardData
 
-  // console.log(cardData)
+  const sizesData = sizes || volumes
 
-  const formattedDiscountPrice = cardData.discount
-    ? `${getDigFormat(Math.floor(defaultPrice * (1 - cardData.discount / 100)))} ₽`
-    : ''
+  useEffect(() => {
+    let defaultSize
+    if (sizesData) {
+      defaultSize = Object.keys(sizesData)?.[0]
+
+      setVariantValue(defaultSize)
+    }
+    const cartId = `${id}-${defaultSize}`
+
+    setCartIsAdded(cartState.some((item) => item.cartId === cartId))
+    setFavoriteIsAdded(favoriteState.some((item) => item.favoriteId === cartId))
+  }, [])
+
+  const handleAddToCart = () => {
+    setCartIsLoad(true)
+    const product = {
+      id,
+      name,
+      variant: variantValue,
+      price: sizesData?.[variantValue] ?? defaultPrice,
+      url,
+    }
+    dispatch(addProductToCart(product))
+    setTimeout(() => {
+      setCartIsAdded(true)
+      setCartIsLoad(false)
+    }, 1000)
+  }
+
+  const handleRemoveFromCart = () => {
+    setCartIsLoad(true)
+    dispatch(removeCartProduct({ id, variant: variantValue }))
+    setTimeout(() => {
+      setCartIsAdded(false)
+      setCartIsLoad(false)
+    }, 1000)
+  }
+
+  const handleAddToFavorites = () => {
+    setFavoriteIsLoad(true)
+    const product = {
+      id,
+      name,
+      variant: variantValue,
+      price: sizesData?.[variantValue] ?? defaultPrice,
+      url,
+    }
+    dispatch(addProductToFavorite(product))
+    setTimeout(() => {
+      setFavoriteIsAdded(true)
+      setFavoriteIsLoad(false)
+    }, 1000)
+  }
+
+  const handleRemoveFromFavorites = () => {
+    setFavoriteIsLoad(true)
+    dispatch(removeFavoriteProduct({ id, variant: variantValue }))
+    setTimeout(() => {
+      setFavoriteIsAdded(false)
+      setFavoriteIsLoad(false)
+    }, 1000)
+  }
 
   return (
     <div data-product-card className="product-list__card product-card">
       {regalia.length > 0 && (
-        <ul className="product-card__feature-list">
-          {regalia.map((item) => (
-            <li key={item} className="product-card__feature-item">
-              <img src={`/img/icons/${item}.svg`} alt={`${item} icon`} />
-
-              {item === 'discount' && discount ? (
-                <span>-{discount}%</span>
-              ) : (
-                <b>{settings.regalia[item]}</b>
-              )}
-            </li>
-          ))}
-        </ul>
+        <RegaliaList regalia={regalia} discount={discount} />
       )}
 
       <a href={url || '/'} className="product-card__link">
         <img
-          className="product-card__image lazy-image"
+          className="product-card__image"
           src={
             (img && `/img/catalog/${img}.webp`) || '/img/catalog/not-found.jpg'
           }
-          alt={name || 'Product Image'}
+          alt={name}
         />
         <span className="product-card__more">Подробнее</span>
       </a>
-      <div data-product-title className="product-card__title">
-        {name || 'Product Name'}
-      </div>
+      <div className="product-card__title">{name}</div>
 
-      <DescriptionTemplate cardData={cardData} />
+      <DescriptionTemplate
+        variantValue={variantValue}
+        setVariantValue={setVariantValue}
+        cardData={cardData}
+      />
       <div className="product-card__bottom">
-        <div className="product-card__options">
-          <div data-price className="product-card__price">
-            {formattedDiscountPrice && (
-              <>
-                <span>{getDigFormat(defaultPrice)} </span>
-                <b className="product-card__price-discount">
-                  {getDigFormat(formattedDiscountPrice)}
-                </b>
-              </>
-            )}
-            {!formattedDiscountPrice && (
-              <span>{getDigFormat(defaultPrice)} </span>
-            )}
-            ₽
-          </div>
-        </div>
+        <PriceBlock
+          price={sizesData?.[variantValue] ?? defaultPrice}
+          discount={discount}
+        />
         <div className="product-card__added">
-          <button
-            type="button"
-            data-btn-fast-order
-            className="product-card__click"
-          >
+          <button type="button" className="product-card__click">
             Купить в 1 клик
           </button>
         </div>
+        {volumes && (
+          <div className="product-card__volumes">
+            <ul className="product-card__volumes-list">
+              {Object.keys(volumes).map((volume) => (
+                <li
+                  key={volume}
+                  className={`product-card__volumes-item ${volume === variantValue && 'current'}`}
+                  onClick={() => setVariantValue(volume)}
+                >
+                  <span className="product-card__volumes-value">{volume}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
         <div data-add-buttons className="product-card__buttons">
           <button
             type="button"
-            data-favorite-btn
-            className="product-card__favorite"
+            onClick={
+              favoriteIsAdded ? handleRemoveFromFavorites : handleAddToFavorites
+            }
+            className={`product-card__favorite ${favoriteIsLoad && 'load load--mini'} ${favoriteIsAdded && 'added'}`}
           >
             <svg className="icon">
               <use xlinkHref="/img/sprite.svg#heart" />
@@ -117,8 +165,9 @@ export const ProductsCard: React.FC<ProductsCardProps> = ({ cardData }) => {
           </button>
           <button
             type="button"
-            data-cart-btn
-            className="button product-card__button"
+            onClick={cartIsAdded ? handleRemoveFromCart : handleAddToCart}
+            disabled={cartIsLoad}
+            className={`button product-card__button ${cartIsLoad && 'load'} ${cartIsAdded && 'added'}`}
           >
             <span>
               <img src="/img/icons/availability.svg" alt="Availability" />
