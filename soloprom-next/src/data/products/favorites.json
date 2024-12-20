@@ -1,0 +1,519 @@
+{
+  "tires": [
+    {
+      "id": "GalaxyPORTMAXIND416002532PR",
+      "category": "tires",
+      "subcategory": "shini-pnevmatichesckie",
+      "url": "https://soloprom.ru/catalog/tires/shini-pnevmatichesckie/GalaxyPORTMAXIND416002532PR",
+      "name": "Galaxy PORT MAX IND-4 16.00-25 32PR",
+      "descr": "Galaxy PORT MAX IND-4 16.00-25 32PR",
+      "img": "tires/GalaxyPORTMAXIND416002532PR",
+      "sizes": {
+        "16.00-25": 213551
+      },
+      "defaultPrice": 213551,
+      "product_group": ["sdpt"],
+      "delivery": "2-3 дня",
+      "type": "Пневматическая",
+      "brand": "Galaxy",
+      "country": "Индия",
+      "models": [],
+      "discount": 10,
+      "regalia": ["new", "discount"],
+      "isPopular": false,
+      "size": "25"
+    },
+    {
+      "id": "APOLLOHarborProE418002540PR",
+      "category": "tires",
+      "subcategory": "shini-pnevmatichesckie",
+      "url": "https://soloprom.ru/catalog/tires/shini-pnevmatichesckie/APOLLOHarborProE418002540PR",
+      "name": "APOLLO Harbor Pro E-4 Премиум 18.00-25 40PR",
+      "descr": "APOLLO Harbor Pro E-4 Премиум 18.00-25 40PR",
+      "img": "tires/APOLLOHarborProE418002540PR",
+      "sizes": {
+        "18.00-25": 283126
+      },
+      "defaultPrice": 283126,
+      "product_group": ["sdpt"],
+      "delivery": "2-3 дня",
+      "type": "Пневматическая",
+      "brand": "APOLLO",
+      "country": "Индия",
+      "models": [],
+      "regalia": ["new"],
+      "isPopular": false,
+      "size": "25"
+    },
+    {
+      "id": "APOLLOAIT426125801812PR",
+      "category": "tires",
+      "subcategory": "shini-pnevmatichesckie",
+      "url": "https://soloprom.ru/catalog/tires/shini-pnevmatichesckie/APOLLOAIT426125801812PR",
+      "name": "APOLLO AIT 426 Премиум 12.5/80-18 12PR",
+      "descr": "APOLLO AIT 426 Премиум 12.5/80-18 12PR",
+      "img": "tires/APOLLOAIT426125801812PR",
+      "sizes": {
+        "12.5/80-18": 29527
+      },
+      "defaultPrice": 29527,
+      "product_group": ["sdep"],
+      "delivery": "2-3 дня",
+      "type": "Пневматическая",
+      "brand": "APOLLO",
+      "country": "Индия",
+      "models": [],
+      "regalia": ["discount", "recommend", "new"],
+      "isPopular": false,
+      "size": "18",
+      "discount": 10
+    },
+    {
+      "id": "EmraldGRECKSTER500810PRIND04",
+      "category": "tires",
+      "subcategory": "shini-pnevmatichesckie",
+      "url": "https://soloprom.ru/catalog/tires/shini-pnevmatichesckie/EmraldGRECKSTER500810PRIND04",
+      "name": "Emrald GRECKSTER 5.00-8 10PR IND04",
+      "descr": "Emrald GRECKSTER 5.00-8 10PR IND04",
+      "img": "tires/EmraldGRECKSTER500810PRIND04",
+      "sizes": {
+        "5.00-8": 4287
+      },
+      "defaultPrice": 4287,
+      "product_group": ["sdvp"],
+      "delivery": "2-3 дня",
+      "type": "Пневматическая",
+      "brand": "Emrald",
+      "country": "Индия",
+      "models": [],
+      "regalia": ["new"],
+      "isPopular": false,
+      "size": "8"
+    },
+    {
+      "id": "GalaxyHM300E14002428PR",
+      "category": "tires",
+      "subcategory": "shini-pnevmatichesckie",
+      "url": "https://soloprom.ru/catalog/tires/shini-pnevmatichesckie/GalaxyHM300E14002428PR",
+      "name": "Galaxy HM300E 14.00-24 28PR",
+      "descr": "Galaxy HM300E 14.00-24 28PR",
+      "img": "tires/GalaxyHM300E14002428PR",
+      "sizes": {
+        "14.00-24": 126375
+      },
+      "defaultPrice": 126375,
+      "product_group": ["sdpt"],
+      "delivery": "2-3 дня",
+      "type": "Пневматическая",
+      "brand": "Galaxy",
+      "country": "Индия",
+      "models": [],
+      "regalia": ["new"],
+      "isPopular": true,
+      "size": "24"
+    },
+    {
+      "id": "GalaxySUPINDLUG1842612PR",
+      "category": "tires",
+      "subcategory": "shini-pnevmatichesckie",
+      "url": "https://soloprom.ru/catalog/tires/shini-pnevmatichesckie/GalaxySUPINDLUG1842612PR",
+      "name": "Galaxy SUP IND LUG 18.4-26 12PR",
+      "descr": "Galaxy SUP IND LUG 18.4-26 12PR",
+      "img": "tires/GalaxySUPINDLUG1842612PR",
+      "sizes": {
+        "18.4-26": 71293
+      },
+      "defaultPrice": 71293,
+      "product_group": ["sdep"],
+      "delivery": "2-3 дня",
+      "type": "Пневматическая",
+      "brand": "Galaxy",
+      "country": "Индия",
+      "models": [],
+      "regalia": ["selected"],
+      "isPopular": false,
+      "size": "26"
+    },
+    {
+      "id": "APOLLOAIT4261692814PR",
+      "category": "tires",
+      "subcategory": "shini-pnevmatichesckie",
+      "url": "https://soloprom.ru/catalog/tires/shini-pnevmatichesckie/APOLLOAIT4261692814PR",
+      "name": "APOLLO AIT 426 Премиум 16.9-28 14PR",
+      "descr": "APOLLO AIT 426 Премиум 16.9-28 14PR",
+      "img": "tires/APOLLOAIT4261692814PR",
+      "sizes": {
+        "16.9-28": 65782
+      },
+      "defaultPrice": 65782,
+      "product_group": ["sdep"],
+      "delivery": "2-3 дня",
+      "type": "Пневматическая",
+      "brand": "APOLLO",
+      "country": "Индия",
+      "models": [],
+      "regalia": [],
+      "isPopular": false,
+      "size": "28"
+    }
+  ],
+  "battery": [
+    {
+      "id": "elhim48v4pzsн500ah",
+      "category": "battery",
+      "subcategory": "accumulyatori-tyagovie",
+      "url": "https://soloprom.ru/catalog/battery/accumulyatori-tyagovie/elhim48v4pzsн500ah",
+      "name": "Тяговый аккумулятор 48V 4PzSН 500Ah",
+      "descr": "48V 4PzSН 500Ah",
+      "img": "battery/tyagovie/48V4PzSН500Ah",
+      "sizes": {
+        "827х519х627": 144218
+      },
+      "defaultPrice": 144218,
+      "product_group": ["ep"],
+      "delivery": "30-45 дней",
+      "type": "Тяговый",
+      "brand": "elhim",
+      "country": "РОССИЯ",
+      "plates": "4PzSН",
+      "container": "500",
+      "voltage": "48",
+      "models": ["jun", "toy", "dx", "ld"],
+      "discount": 15,
+      "regalia": ["discount"],
+      "isPopular": false
+    },
+    {
+      "id": "elhim24v4pzb300ah",
+      "category": "battery",
+      "subcategory": "accumulyatori-tyagovie",
+      "url": "https://soloprom.ru/catalog/battery/accumulyatori-tyagovie/elhim24v4pzb300ah",
+      "name": "Тяговый аккумулятор 4PzB 300Ah",
+      "descr": "24V 4PzB 300Ah",
+      "img": "battery/tyagovie/48V4PzB400Ah",
+      "sizes": {
+        "645х245х565": 123113
+      },
+      "defaultPrice": 123113,
+      "product_group": ["esh", "et"],
+      "delivery": "30-45 дней",
+      "type": "Тяговый",
+      "brand": "elhim",
+      "country": "РОССИЯ",
+      "plates": "4PzB",
+      "container": "300",
+      "voltage": "24",
+      "models": ["heli"],
+      "regalia": [],
+      "isPopular": false
+    },
+    {
+      "id": "EnPOWER48v4pzs500ah",
+      "category": "battery",
+      "subcategory": "accumulyatori-tyagovie",
+      "url": "https://soloprom.ru/catalog/battery/accumulyatori-tyagovie/EnPOWER48v4pzs500ah",
+      "name": "Кислотная АКБ EnPOWER 48V 4 PzS 500Ah",
+      "descr": "48V 4 PzS 500Ah",
+      "img": "battery/tyagovie/pzs400",
+      "sizes": {
+        "1025х435х625": 732494,
+        "1025х535х680": 732494,
+        "1030х450х627": 732494,
+        "1030х500х802": 732494,
+        "1030х515х802": 732494,
+        "1220х352х782": 732494,
+        "820х520х620": 732494,
+        "827х519х625": 732494,
+        "960х520х620": 732494,
+        "970х430х760": 732494,
+        "970х470х730": 732494,
+        "970х500х640": 732494,
+        "970х519х645": 732494,
+        "975х490х800": 732494,
+        "975х540х630": 732494,
+        "980х460х730": 732494,
+        "980х465х770": 732494,
+        "980х465х782": 732494,
+        "980х470х800": 732494,
+        "980х515х650": 732494,
+        "980х530х670": 732494,
+        "980х625х650": 732494,
+        "990х445х635": 732494,
+        "990х545х635": 732494
+      },
+      "defaultPrice": 732494,
+      "product_group": ["ert", "ep"],
+      "delivery": "30-45 дней",
+      "type": "Тяговый",
+      "brand": "enpower",
+      "country": "Германия",
+      "plates": "4PzS",
+      "container": "500",
+      "voltage": "48",
+      "models": [
+        "dw",
+        "nic",
+        "heli",
+        "max",
+        "hy",
+        "hng",
+        "jun",
+        "ksu",
+        "ld",
+        "toy",
+        "vp",
+        "doo",
+        "om"
+      ],
+      "regalia": ["new", "recommend", "selected"],
+      "isPopular": false
+    },
+    {
+      "id": "elhim40v400ah",
+      "category": "battery",
+      "subcategory": "accumulyatori-tyagovie",
+      "url": "https://soloprom.ru/catalog/battery/accumulyatori-tyagovie/elhim40v400ah",
+      "name": "Тяговый аккумулятор 40V 5PzSL",
+      "descr": "40V 400Ah",
+      "img": "battery/tyagovie/40V400Ah5PzSL",
+      "sizes": {
+        "815х520х462": 182910
+      },
+      "defaultPrice": 182910,
+      "product_group": ["ep"],
+      "delivery": "30-45 дней",
+      "type": "Тяговый",
+      "brand": "elhim",
+      "country": "РОССИЯ",
+      "plates": "5PzSL",
+      "container": "400",
+      "voltage": "40",
+      "models": [],
+      "regalia": [],
+      "isPopular": false
+    },
+    {
+      "_id": {
+        "$oid": "67648fc21d2ce3bcc1031e1c"
+      },
+      "id": "enpower24v3pzs375ah",
+      "category": "battery",
+      "subcategory": "accumulyatori-tyagovie",
+      "url": "https://soloprom.ru/catalog/battery/accumulyatori-tyagovie/enpower24v3pzs375ah",
+      "name": "Кислотная АКБ EnPOWER 24V 3 PzS 375Ah",
+      "descr": "24V 3 PzS 375Ah",
+      "img": "battery/tyagovie/pzs375",
+      "sizes": {
+        "610х265х625": 325075,
+        "621х281х625": 325075,
+        "790х210х740": 325075,
+        "790х215х625": 325075,
+        "800х210х615": 325075,
+        "830х218х615": 325075
+      },
+      "defaultPrice": 325075,
+      "product_group": ["et", "ep", "esh"],
+      "delivery": "30-45 дней",
+      "type": "Тяговый",
+      "brand": "enpower",
+      "country": "Германия",
+      "plates": "3PzS",
+      "container": "375",
+      "voltage": "24",
+      "models": ["jun", "ksu", "om", "dw", "sl"],
+      "regalia": [],
+      "isPopular": false
+    },
+    {
+      "_id": {
+        "$oid": "67648fc21d2ce3bcc1031e33"
+      },
+      "id": "elhim8v550ah",
+      "category": "battery",
+      "subcategory": "accumulyatori-tyagovie",
+      "url": "https://soloprom.ru/catalog/battery/accumulyatori-tyagovie/elhim48v550ah",
+      "name": "Тяговый аккумулятор 5PzSL 550Ah",
+      "descr": "48V 550Ah",
+      "img": "battery/tyagovie/5PzSL550Ah",
+      "sizes": {
+        "830х627х627": 224952
+      },
+      "defaultPrice": 224952,
+      "product_group": ["ep"],
+      "delivery": "30-45 дней",
+      "type": "Тяговый",
+      "brand": "elhim",
+      "country": "РОССИЯ",
+      "plates": "5PzSL",
+      "container": "550",
+      "voltage": "48",
+      "models": ["bc", "dx", "jun", "hng", "tcm", "ksu"],
+      "regalia": [],
+      "isPopular": false,
+      "__v": 0
+    }
+  ],
+  "oils": [
+    {
+      "_id": {
+        "$oid": "67648f342227a188015217b4"
+      },
+      "id": "G-BoxATFDXII",
+      "category": "oils",
+      "subcategory": "masla-transmissionnie",
+      "url": "https://soloprom.ru/catalog/oils/masla-transmissionnie/G-BoxATFDXII",
+      "name": "G-Box ATF DX II",
+      "descr": "Масло для автоматических трансмиссий",
+      "img": "oils/g-box-atf-dx-ii",
+      "volumes": {
+        "1Л": 465,
+        "4Л": 1575,
+        "20Л": 7462,
+        "205Л": 71194
+      },
+      "defaultPrice": 465,
+      "product_group": ["mt"],
+      "delivery": "2-3 дня",
+      "type": "Трансмиссионное",
+      "brand": "G-Energy",
+      "country": "Россия",
+      "models": [],
+      "discount": 10,
+      "regalia": ["discount", "recommend", "new"],
+      "isPopular": false,
+      "__v": 0
+    },
+    {
+      "_id": {
+        "$oid": "67648f342227a188015217de"
+      },
+      "id": "G-Energy-Antifreeze-NF",
+      "category": "oils",
+      "subcategory": "antifreezi",
+      "url": "https://soloprom.ru/catalog/oils/antifreezi/G-Energy-Antifreeze-NF",
+      "name": "G-Energy Antifreeze NF",
+      "descr": "Охлаждающая жидкость",
+      "img": "oils/G-Energy-Antifreeze-NF",
+      "volumes": {
+        "1КГ": 635,
+        "5КГ": 2838,
+        "220КГ": 106361
+      },
+      "defaultPrice": 635,
+      "product_group": ["ma"],
+      "delivery": "2-3 дня",
+      "type": "Охлаждающая жидкость",
+      "brand": "G-Energy",
+      "country": "Россия",
+      "models": [],
+      "regalia": ["new"],
+      "isPopular": false,
+      "__v": 0
+    },
+    {
+      "_id": {
+        "$oid": "67648f342227a188015217c6"
+      },
+      "id": "G-Profi-MSK-5W-30",
+      "category": "oils",
+      "subcategory": "masla-motornie",
+      "url": "https://soloprom.ru/catalog/oils/masla-motornie/G-Profi-MSK-5W-30",
+      "name": "G-Profi MSK 5W-30",
+      "descr": "для дизельных двигателей всесезонное",
+      "img": "oils/G-Profi-MSK-5W-30",
+      "volumes": {
+        "20Л": 14619,
+        "205Л": 124600
+      },
+      "defaultPrice": 14619,
+      "product_group": ["mm"],
+      "delivery": "2-3 дня",
+      "type": "Моторное",
+      "brand": "G-Energy",
+      "country": "Россия",
+      "viscosity": "5W-30",
+      "models": [],
+      "regalia": ["new"],
+      "isPopular": false,
+      "__v": 0
+    },
+    {
+      "_id": {
+        "$oid": "67648f342227a188015217da"
+      },
+      "id": "G-Special-Hydraulic-Nord-32",
+      "category": "oils",
+      "subcategory": "masla-gidravlicheskie",
+      "url": "https://soloprom.ru/catalog/oils/masla-gidravlicheskie/G-Special-Hydraulic-Nord-32",
+      "name": "G-Special Hydraulic Nord-32",
+      "descr": "Масло гидравлическое",
+      "img": "oils/G-Special-Hydraulic-Nord-32",
+      "volumes": {
+        "20Л": 16021,
+        "205Л": 136086
+      },
+      "defaultPrice": 16021,
+      "product_group": ["mg"],
+      "delivery": "2-3 дня",
+      "type": "Гидравлическое",
+      "brand": "G-Energy",
+      "country": "Россия",
+      "models": [],
+      "regalia": ["new"],
+      "isPopular": false,
+      "__v": 0
+    },
+    {
+      "_id": {
+        "$oid": "67648f342227a188015217d8"
+      },
+      "id": "G-Special-Hydraulic-HVLP-32",
+      "category": "oils",
+      "subcategory": "masla-industrialnie",
+      "url": "https://soloprom.ru/catalog/oils/masla-industrialnie/G-Special-Hydraulic-HVLP-32",
+      "name": "G-Special Hydraulic HVLP-32",
+      "descr": "Масло индустриальное",
+      "img": "oils/G-Special-Hydraulic-HVLP-32",
+      "volumes": {
+        "20Л": 5733,
+        "205Л": 50105
+      },
+      "defaultPrice": 5733,
+      "product_group": ["mi"],
+      "delivery": "2-3 дня",
+      "type": "Индустриальное",
+      "brand": "G-Energy",
+      "country": "Россия",
+      "models": [],
+      "regalia": ["new"],
+      "isPopular": false,
+      "__v": 0
+    },
+    {
+      "_id": {
+        "$oid": "67648f342227a188015217c4"
+      },
+      "id": "G-Profi-FLI-15W-40",
+      "category": "oils",
+      "subcategory": "masla-motornie",
+      "url": "https://soloprom.ru/catalog/oils/masla-motornie/G-Profi-FLI-15W-40",
+      "name": "G-Profi FLI 15W-40",
+      "descr": "для дизельных двигателей всесезонное",
+      "img": "oils/oil-default",
+      "volumes": {
+        "205Л": 73318
+      },
+      "defaultPrice": 73318,
+      "product_group": ["mm"],
+      "delivery": "2-3 дня",
+      "type": "Моторное",
+      "brand": "G-Energy",
+      "country": "Россия",
+      "viscosity": "15W-40",
+      "models": [],
+      "regalia": ["new"],
+      "isPopular": false,
+      "__v": 0
+    }
+  ]
+}

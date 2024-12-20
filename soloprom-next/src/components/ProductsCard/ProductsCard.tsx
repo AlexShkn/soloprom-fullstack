@@ -3,6 +3,7 @@ import React from 'react'
 import { getDigFormat } from '../../supports/index.js'
 import './ProductsCard.scss'
 import { ProductsCardProps } from '../ProductList/ProductList'
+import { DescriptionTemplate } from './DescriptionTemplate.jsx'
 
 interface SettingSet {
   new: string
@@ -27,7 +28,7 @@ export const ProductsCard: React.FC<ProductsCardProps> = ({ cardData }) => {
     name,
     descr,
     img,
-    group,
+    product_group,
     delivery,
     type,
     brand,
@@ -39,7 +40,7 @@ export const ProductsCard: React.FC<ProductsCardProps> = ({ cardData }) => {
     discount,
   } = cardData
 
-  console.log(cardData)
+  // console.log(cardData)
 
   const formattedDiscountPrice = cardData.discount
     ? `${getDigFormat(Math.floor(defaultPrice * (1 - cardData.discount / 100)))} ₽`
@@ -54,7 +55,7 @@ export const ProductsCard: React.FC<ProductsCardProps> = ({ cardData }) => {
               <img src={`/img/icons/${item}.svg`} alt={`${item} icon`} />
 
               {item === 'discount' && discount ? (
-                <span>-${discount}%</span>
+                <span>-{discount}%</span>
               ) : (
                 <b>{settings.regalia[item]}</b>
               )}
@@ -76,28 +77,8 @@ export const ProductsCard: React.FC<ProductsCardProps> = ({ cardData }) => {
       <div data-product-title className="product-card__title">
         {name || 'Product Name'}
       </div>
-      <div className="product-card__descr-list">
-        <div className="product-card__descr-item">
-          <div className="product-card__descr-item-name">Бренд</div>
-          <div className="product-card__descr-item-value">{brand || 'N/A'}</div>
-        </div>
-        <div className="product-card__descr-item">
-          <div className="product-card__descr-item-name">Производитель</div>
-          <div className="product-card__descr-item-value">
-            {country || 'N/A'}
-          </div>
-        </div>
-        <div className="product-card__descr-item">
-          <div className="product-card__descr-item-name">Размерность</div>
-          <div data-sizes className="product-card__descr-item-value">
-            {/* {sizes || 'N/A'} */}
-          </div>
-        </div>
-        <div className="product-card__descr-item">
-          <div className="product-card__descr-item-name">Тип шины</div>
-          <div className="product-card__descr-item-value">{type || 'N/A'}</div>
-        </div>
-      </div>
+
+      <DescriptionTemplate cardData={cardData} />
       <div className="product-card__bottom">
         <div className="product-card__options">
           <div data-price className="product-card__price">

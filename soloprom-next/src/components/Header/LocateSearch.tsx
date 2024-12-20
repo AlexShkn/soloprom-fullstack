@@ -120,7 +120,7 @@ const LocateSearch: React.FC<LocateSearchTypes> = ({
             name="city-search"
             placeholder="Ваш город"
             autoComplete="off"
-            className="-pl-10 h-full w-full rounded bg-[#f4f5fa] py-4 pr-8 placeholder:text-sm placeholder:text-[#c2c5da]"
+            className="h-full w-full rounded bg-[#f4f5fa] py-4 pl-10 pr-8 text-black placeholder:text-sm placeholder:text-[#c2c5da] focus:outline focus:outline-1 focus:outline-darkBlue"
           />
         </div>
         <ul

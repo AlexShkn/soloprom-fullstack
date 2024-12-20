@@ -5,67 +5,78 @@ export type ProductDocument = Product & Document;
 
 @Schema()
 export class Product {
+  @Prop({ required: true, unique: true })
+  id: string;
+
   @Prop({ required: true })
   category: string;
 
   @Prop({ required: true })
   subcategory: string;
 
-  @Prop({ required: true })
-  id: string;
-
-  @Prop({ required: true })
+  @Prop()
   url: string;
 
   @Prop({ required: true })
   name: string;
 
   @Prop()
-  descr?: string;
+  descr: string;
 
   @Prop()
-  img?: string;
-  @Prop()
-  defaultPrice: number;
+  img: string;
 
   @Prop({ type: Object })
-  sizes?: { [key: string]: number };
+  sizes?: { [size: string]: number };
+
+  @Prop({ type: Object })
+  volumes?: { [volume: string]: number };
+
+  @Prop({ required: true })
+  defaultPrice: number;
 
   @Prop({ type: [String] })
-  group?: string[];
+  product_group: string[];
 
-  @Prop({ required: true })
+  @Prop()
   delivery: string;
 
-  @Prop({ required: true })
-  type: string;
+  @Prop()
+  type?: string; // Добавлен опциональный тип
 
-  @Prop({ required: true })
-  brand: string;
+  @Prop()
+  brand?: string;
 
-  @Prop({ required: true })
-  country: string;
+  @Prop()
+  country?: string;
 
   @Prop()
   plates?: string;
+
   @Prop()
   container?: string;
+
+  @Prop()
+  viscosity?: string;
+
   @Prop()
   voltage?: string;
+  @Prop()
+  radius?: string;
+
   @Prop({ type: [String] })
   models?: string[];
+
   @Prop({ type: [String] })
   regalia?: string[];
-  @Prop()
-  weight?: string;
-  @Prop()
-  size?: string;
-  @Prop({ type: Object })
-  volumes?: { [key: string]: number };
-  @Prop()
-  discount?: number;
-  @Prop({ type: Boolean, default: false, index: true })
+
+  @Prop({ default: false })
   isPopular: boolean;
+
+  @Prop()
+  size?: string; // Добавлен опциональный размер для шин
+  @Prop()
+  discount?: number; // Добавлен опциональный размер для шин
 }
 
 export const ProductSchema = SchemaFactory.createForClass(Product);

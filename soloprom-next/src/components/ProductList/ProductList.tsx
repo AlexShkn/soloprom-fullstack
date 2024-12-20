@@ -3,11 +3,12 @@ import React, { useEffect, useState } from 'react'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { Navigation } from 'swiper/modules'
 import axios from 'axios'
+import { getPopularProducts, getProducts } from '@/app/api/products/products'
 
 import './ProductList.scss'
 import { ProductsCard } from '../ProductsCard/ProductsCard'
 
-// Интерфейсы остаются без изменений
+import favoriteData from '@/data/products/favorites.json'
 
 export interface cardDataProps {
   id: string
@@ -17,7 +18,7 @@ export interface cardDataProps {
   name: string
   descr: string
   img: string
-  group: string[]
+  product_group: string[]
   delivery: string
   sizes?: { [size: string]: number }
   defaultPrice: number
@@ -65,41 +66,39 @@ export const ProductList: React.FC = () => {
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
 
-  useEffect(() => {
-    const fetchPopularProducts = async () => {
-      try {
-        setLoading(true)
-        const response = await axios.get(
-          'http://localhost:3000/products/popular',
-        )
-        const data: cardDataProps[] = response.data
+  // useEffect(() => {
+  //   const fetchPopularProducts = async () => {
+  //     try {
+  //       setLoading(true)
+  //       const response = await getProducts()
+  //       const data: cardDataProps[] = response.data
 
-        console.log(data)
+  //       console.log(data)
 
-        const popularProductsData: FavoriteList = {
-          tires: data.filter((item) => item.category === 'tires'),
-          battery: data.filter((item) => item.category === 'battery'),
-          oils: data.filter((item) => item.category === 'oils'),
-        }
+  //       const popularProductsData: FavoriteList = {
+  //         tires: data.filter((item) => item.category === 'tires'),
+  //         battery: data.filter((item) => item.category === 'battery'),
+  //         oils: data.filter((item) => item.category === 'oils'),
+  //       }
 
-        setPopularProducts(popularProductsData)
-      } catch (error: any) {
-        setError(error.message)
-      } finally {
-        setLoading(false)
-      }
-    }
+  //       setPopularProducts(popularProductsData)
+  //     } catch (error: any) {
+  //       setError(error.message)
+  //     } finally {
+  //       setLoading(false)
+  //     }
+  //   }
 
-    fetchPopularProducts()
-  }, [])
+  //   fetchPopularProducts()
+  // }, [])
 
-  if (loading) {
-    return <div>Loading...</div>
-  }
+  // if (loading) {
+  //   return <div>Loading...</div>
+  // }
 
-  if (error) {
-    return <div>Error: {error}</div>
-  }
+  // if (error) {
+  //   return <div>Error: {error}</div>
+  // }
 
   return (
     <section className="product-list section-offset">
@@ -170,7 +169,7 @@ export const ProductList: React.FC = () => {
                     prevEl: '.product-list__slider-button--prev',
                   }}
                 >
-                  {popularProducts[currantTab].map((item) => (
+                  {favoriteData[currantTab].map((item) => (
                     <SwiperSlide key={item.id} className="product-list__item">
                       <ProductsCard cardData={item} />
                     </SwiperSlide>
