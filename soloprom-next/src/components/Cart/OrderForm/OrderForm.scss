@@ -1,0 +1,304 @@
+@import '@/styles/variables.scss';
+@import '@/styles/mixins.scss';
+
+.cart-result-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-top: 20px;
+  padding: 20px;
+  width: 100%;
+  box-shadow: $shadow;
+  border-radius: $radius;
+
+  // .cart-result-form__wrapper
+
+  &__wrapper {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+    width: 100%;
+    margin-bottom: 30px;
+
+    @media (max-width: 767.98px) {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  // .cart-result-form__fields
+
+  &__fields {
+    margin-bottom: 0;
+  }
+
+  // .cart-result-form__options
+
+  &__options {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  // .cart-result-form__person
+
+  &__person {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+
+    @media (max-width: 374.98px) {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  // .cart-result-form__radio
+
+  &__radio {
+    position: relative;
+    display: block;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+
+    @media (any-hover: hover) {
+      &:hover {
+        input ~ .radio__checkmark {
+        }
+
+        input:checked ~ .radio__checkmark {
+          background-color: $hoverAccentColor;
+        }
+
+        .radio__body {
+          box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
+        }
+      }
+    }
+
+    input {
+      position: absolute;
+      opacity: 0;
+      cursor: pointer;
+      height: 0;
+      width: 0;
+
+      &:checked ~ .radio__checkmark {
+        // background-color: $hoverAccentColor;
+      }
+
+      &:checked ~ .radio__checkmark:after {
+        opacity: 1;
+        top: -3px;
+      }
+
+      &:checked ~ .radio__body {
+        background-position: 0 0;
+        color: #fff;
+        background-color: $accentColor;
+      }
+    }
+
+    .radio__checkmark {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      left: 15px;
+      height: 22px;
+      width: 22px;
+      transition: background-color 0.25s ease;
+      border-radius: 4px;
+      box-shadow:
+        inset 2px 2px 4px rgba(0, 0, 0, 0.1),
+        inset -2px -2px 4px rgba(255, 255, 255, 0.4);
+
+      &:after {
+        content: '';
+        position: absolute;
+        left: 10px;
+        top: -15px;
+        width: 10px;
+        height: 20px;
+        border: solid #fff;
+        border-width: 0 4px 4px 0;
+        transform: rotate(45deg);
+        opacity: 0;
+        transition:
+          opacity 0.25s ease,
+          top 0.25s ease;
+      }
+    }
+    .radio__body {
+      line-height: 1.4;
+      transition: font-weight 0.25s ease;
+      font-weight: bold;
+      color: #333;
+      background: #fff;
+      background-size: 200% 100%;
+      background-position: 100% 0;
+      padding: 15px;
+      padding-left: 52px;
+      border-radius: 10px;
+      box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+      transition:
+        box-shadow 0.25s ease,
+        background 1s ease,
+        color 0.25s ease;
+    }
+  }
+
+  // .cart-result-form__delivery
+
+  &__delivery {
+  }
+
+  // .cart-result-form__subtitle
+
+  &__subtitle {
+    font-weight: 500;
+    font-size: 20px;
+    margin-bottom: 20px;
+  }
+
+  // .cart-result-form__delivery-list
+
+  &__delivery-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+
+  // .cart-result-form__delivery-item
+
+  &__delivery-item {
+  }
+
+  // .cart-result-form__checkbox
+
+  &__checkbox {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    width: 130px;
+    height: 105px;
+
+    @media (any-hover: hover) {
+      &:hover {
+        input ~ .cart-result-form__checkbox-checkmark {
+        }
+
+        input:checked ~ .cart-result-form__checkbox-checkmark {
+          // background-color: $hoverAccentColor;
+        }
+
+        .cart-result-form__checkbox-body {
+          box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
+        }
+      }
+    }
+
+    input {
+      position: absolute;
+      opacity: 0;
+      cursor: pointer;
+      height: 0;
+      width: 0;
+
+      &:checked ~ .cart-result-form__checkbox-checkmark {
+        // background-color: $hoverAccentColor;
+      }
+
+      &:checked ~ .cart-result-form__checkbox-checkmark:after {
+        opacity: 1;
+        top: -3px;
+      }
+
+      &:checked ~ .cart-result-form__checkbox-body {
+        background-position: 0 0;
+        box-shadow: 5px 5px 10px rgba(0, 125, 251, 0.4);
+      }
+    }
+
+    @media (max-width: 479.98px) {
+      width: 105px;
+      height: 75px;
+    }
+  }
+
+  // .cart-result-form__checkbox-checkmark
+
+  &__checkbox-checkmark {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    height: 22px;
+    width: 22px;
+    transition: background-color 0.25s ease;
+    border-radius: 4px;
+    box-shadow:
+      inset 2px 2px 4px rgba(0, 0, 0, 0.1),
+      inset -2px -2px 4px rgba(255, 255, 255, 0.4);
+    background-color: #fff;
+
+    &:after {
+      content: '';
+      position: absolute;
+      left: 10px;
+      top: -15px;
+      width: 10px;
+      height: 20px;
+      border: solid $accentColor;
+      border-width: 0 4px 4px 0;
+      transform: rotate(45deg);
+      opacity: 0;
+      transition:
+        opacity 0.25s ease,
+        top 0.25s ease;
+    }
+  }
+
+  // .cart-result-form__checkbox-body
+
+  &__checkbox-body {
+    font-weight: bold;
+    background: #fff;
+    background-size: 200% 100%;
+    background-position: 100% 0;
+    padding-left: 30px;
+    border-radius: 10px;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+    transition:
+      box-shadow 0.25s ease,
+      background 1s ease,
+      color 0.25s ease;
+    overflow: hidden;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  // .cart-result-form__button
+
+  &__button {
+    padding: 15px 30px;
+    gap: 10px;
+    font-size: 18px;
+    max-width: 400px;
+    width: 100%;
+    margin: 0px auto;
+    font-weight: 700;
+
+    img {
+      width: 30px;
+      height: 30px;
+    }
+  }
+}

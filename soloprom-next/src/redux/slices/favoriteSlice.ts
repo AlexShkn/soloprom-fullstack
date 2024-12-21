@@ -7,6 +7,9 @@ export interface FavoriteProduct {
   price: number
   url: string
   variant: string
+  img: string
+  type: string
+  category: string
 }
 
 interface FavoriteStateTypes {
@@ -27,7 +30,8 @@ export const favoriteSlice = createSlice({
   initialState,
   reducers: {
     addProductToFavorite: (state, action) => {
-      const { id, name, variant, price, url } = action.payload
+      const { id, name, variant, price, url, img, type, category } =
+        action.payload
       const favoriteId = `${id}-${variant}`
 
       const productIndex = state.favoriteState.findIndex(
@@ -42,6 +46,9 @@ export const favoriteSlice = createSlice({
           variant,
           price,
           url,
+          img,
+          type,
+          category,
         })
       }
       localStorage.setItem('favorite', JSON.stringify(state.favoriteState))

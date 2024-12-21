@@ -5,9 +5,9 @@ export const renderDescriptionItem = (
 ) => {
   if (value === undefined || value === null) return null
   return (
-    <div className="product-card__descr-item">
+    <div className="product-card__descr-item flex items-center justify-between pb-1 text-sm">
       <div className="product-card__descr-item-name">{name}</div>
-      <div className="product-card__descr-item-value">
+      <div className="font-bold">
         {value}
         {unit || ''}
       </div>

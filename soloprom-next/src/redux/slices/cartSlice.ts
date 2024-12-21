@@ -2,13 +2,16 @@ import { createSlice } from '@reduxjs/toolkit'
 import { calculateCartTotalAmount } from '@/utils/calculateCartTotalAmount'
 
 export interface CartProduct {
+  category: string
   id: string
+  img: string
   cartId: string
   name: string
   price: number
   url: string
   variant: string
   count: number
+  type: string
 }
 
 interface CartStateTypes {
@@ -31,7 +34,8 @@ export const cartSlice = createSlice({
   initialState,
   reducers: {
     addProductToCart: (state, action) => {
-      const { id, name, variant, price, url } = action.payload
+      const { id, name, variant, price, url, img, type, category } =
+        action.payload
       const cartId = `${id}-${variant}`
 
       const productIndex = state.cartState.findIndex(
@@ -40,12 +44,15 @@ export const cartSlice = createSlice({
 
       if (productIndex === -1) {
         state.cartState.push({
+          category,
           cartId,
           id,
           name,
           variant,
           price,
           url,
+          img,
+          type,
           count: 1,
         })
 
@@ -57,33 +64,39 @@ export const cartSlice = createSlice({
       localStorage.setItem('cart', JSON.stringify(state.cartState))
       state.totalAmount = calculateCartTotalAmount(state.cartState)
     },
-    // increaseProductCount: (state, action) => {
-    //   const { cartId } = action.payload;
-    //   const existingProductIndex = state.cartState.findIndex((item) => item.cartId === cartId);
+    increaseProductCount: (state, action) => {
+      const { id, variant } = action.payload
+      const cartId = `${id}-${variant}`
 
-    //   if (existingProductIndex !== -1) {
-    //     state.cartState[existingProductIndex].count += 1;
-    //   }
-    //   localStorage.setItem('cart', JSON.stringify(state.cartState));
-    //   state.totalAmount = calculateCartTotalAmount(state.cartState);
-    // },
-    // decreaseProductCount: (state, action) => {
-    //   const { cartId } = action.payload;
-    //   const existingProductIndex = state.cartState.findIndex((item) => item.cartId === cartId);
+      const existingProductIndex = state.cartState.findIndex(
+        (item) => item.cartId === cartId,
+      )
 
-    //   if (existingProductIndex !== -1) {
-    //     if (state.cartState[existingProductIndex].count > 1) {
-    //       state.cartState[existingProductIndex].count -= 1;
-    //     } else {
-    //       state.cartState.splice(existingProductIndex, 1);
-    //     }
-    //   }
-    //   localStorage.setItem('cart', JSON.stringify(state.cartState));
-    //   state.totalAmount = calculateCartTotalAmount(state.cartState);
-    // },
+      if (existingProductIndex !== -1) {
+        state.cartState[existingProductIndex].count += 1
+      }
+      localStorage.setItem('cart', JSON.stringify(state.cartState))
+      state.totalAmount = calculateCartTotalAmount(state.cartState)
+    },
+    decreaseProductCount: (state, action) => {
+      const { id, variant } = action.payload
+      const cartId = `${id}-${variant}`
+      const existingProductIndex = state.cartState.findIndex(
+        (item) => item.cartId === cartId,
+      )
+
+      if (existingProductIndex !== -1) {
+        if (state.cartState[existingProductIndex].count > 1) {
+          state.cartState[existingProductIndex].count -= 1
+        } else {
+          state.cartState.splice(existingProductIndex, 1)
+        }
+      }
+      localStorage.setItem('cart', JSON.stringify(state.cartState))
+      state.totalAmount = calculateCartTotalAmount(state.cartState)
+    },
     removeCartProduct: (state, action) => {
       const { id, variant } = action.payload
-
       const cartId = `${id}-${variant}`
 
       state.cartState = state.cartState.filter((obj) => obj.cartId !== cartId)
@@ -99,6 +112,11 @@ export const cartSlice = createSlice({
   },
 })
 
-export const { addProductToCart, removeCartProduct, clearCart } =
-  cartSlice.actions
+export const {
+  addProductToCart,
+  removeCartProduct,
+  clearCart,
+  increaseProductCount,
+  decreaseProductCount,
+} = cartSlice.actions
 export default cartSlice.reducer

@@ -18,6 +18,10 @@ const dictionary: Dictionary = {
   'payment-delivery': 'Оплата и доставка',
   requisites: 'Реквизиты',
   catalog: 'Каталог',
+  cart: 'Корзина',
+  favorite: 'Избранное',
+  tires: 'Шины для спецтехники',
+  'shini-celnolitie': 'Шины цельнолитые',
 }
 
 const BreadCrumbs = () => {

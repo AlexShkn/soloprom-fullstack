@@ -31,11 +31,13 @@ export const ProductsCard: React.FC<ProductsCardProps> = ({ cardData }) => {
     url,
     name,
     img,
+    category,
     regalia = [],
     sizes,
     defaultPrice,
     volumes,
     discount,
+    type,
   } = cardData
 
   const sizesData = sizes || volumes
@@ -53,6 +55,13 @@ export const ProductsCard: React.FC<ProductsCardProps> = ({ cardData }) => {
     setFavoriteIsAdded(favoriteState.some((item) => item.favoriteId === cartId))
   }, [])
 
+  useEffect(() => {
+    const cartId = `${id}-${variantValue}`
+
+    setCartIsAdded(cartState.some((item) => item.cartId === cartId))
+    setFavoriteIsAdded(favoriteState.some((item) => item.favoriteId === cartId))
+  }, [variantValue])
+
   const handleAddToCart = () => {
     setCartIsLoad(true)
     const product = {
@@ -61,6 +70,9 @@ export const ProductsCard: React.FC<ProductsCardProps> = ({ cardData }) => {
       variant: variantValue,
       price: sizesData?.[variantValue] ?? defaultPrice,
       url,
+      img,
+      type,
+      category,
     }
     dispatch(addProductToCart(product))
     setTimeout(() => {
@@ -86,6 +98,9 @@ export const ProductsCard: React.FC<ProductsCardProps> = ({ cardData }) => {
       variant: variantValue,
       price: sizesData?.[variantValue] ?? defaultPrice,
       url,
+      img,
+      type,
+      category,
     }
     dispatch(addProductToFavorite(product))
     setTimeout(() => {
@@ -104,35 +119,45 @@ export const ProductsCard: React.FC<ProductsCardProps> = ({ cardData }) => {
   }
 
   return (
-    <div data-product-card className="product-list__card product-card">
+    <div
+      data-product-card
+      className="product-card relative flex h-full flex-col rounded bg-white p-4 shadow-custom"
+    >
       {regalia.length > 0 && (
         <RegaliaList regalia={regalia} discount={discount} />
       )}
 
-      <a href={url || '/'} className="product-card__link">
+      <a href={url || '/'} className="relative text-center">
         <img
-          className="product-card__image"
+          className="mb-2.5 inline-block h-[120px] object-contain"
           src={
             (img && `/img/catalog/${img}.webp`) || '/img/catalog/not-found.jpg'
           }
           alt={name}
         />
-        <span className="product-card__more">Подробнее</span>
+        <span className="product-card__more invisible absolute right-1 top-2 z-10 rounded bg-white px-2.5 py-1 font-bold opacity-0 transition-all">
+          Подробнее
+        </span>
       </a>
-      <div className="product-card__title">{name}</div>
+      <div className="mb-2.5 text-center font-bold uppercase leading-5 text-[#272b2c]">
+        {name}
+      </div>
 
       <DescriptionTemplate
         variantValue={variantValue}
         setVariantValue={setVariantValue}
         cardData={cardData}
       />
-      <div className="product-card__bottom">
+      <div className="mt-auto flex flex-col gap-2.5">
         <PriceBlock
           price={sizesData?.[variantValue] ?? defaultPrice}
           discount={discount}
         />
-        <div className="product-card__added">
-          <button type="button" className="product-card__click">
+        <div className="mb-1 flex items-end justify-between gap-2.5">
+          <button
+            type="button"
+            className="ml-auto font-medium text-[#dd3824] underline"
+          >
             Купить в 1 клик
           </button>
         </div>
@@ -151,7 +176,7 @@ export const ProductsCard: React.FC<ProductsCardProps> = ({ cardData }) => {
             </ul>
           </div>
         )}
-        <div data-add-buttons className="product-card__buttons">
+        <div data-add-buttons className="flex items-center gap-5">
           <button
             type="button"
             onClick={
@@ -159,7 +184,7 @@ export const ProductsCard: React.FC<ProductsCardProps> = ({ cardData }) => {
             }
             className={`product-card__favorite ${favoriteIsLoad && 'load load--mini'} ${favoriteIsAdded && 'added'}`}
           >
-            <svg className="icon">
+            <svg className="icon h-7 w-7 fill-accentBlue transition-colors">
               <use xlinkHref="/img/sprite.svg#heart" />
             </svg>
           </button>
@@ -169,8 +194,12 @@ export const ProductsCard: React.FC<ProductsCardProps> = ({ cardData }) => {
             disabled={cartIsLoad}
             className={`button product-card__button ${cartIsLoad && 'load'} ${cartIsAdded && 'added'}`}
           >
-            <span>
-              <img src="/img/icons/availability.svg" alt="Availability" />
+            <span className="ttall invisible absolute inline-flex h-full w-full items-center justify-center rounded bg-hoverBlue opacity-0 transition-colors">
+              <img
+                className="h7 w-7"
+                src="/img/icons/availability.svg"
+                alt="Availability"
+              />
             </span>
             <svg className="icon">
               <use xlinkHref="/img/sprite.svg#cart" />

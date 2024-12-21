@@ -29,7 +29,7 @@ export default {
         background: 'var(--background)',
         foreground: 'var(--foreground)',
         accentBlue: '#005bb9',
-        hoverBlue: '#005bb9',
+        hoverBlue: '#007dfb',
         darkBlue: '#142f49',
         sectionWhite: '#f8fafc',
         grayColor: '#e5e5e5',

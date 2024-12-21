@@ -3,6 +3,7 @@ import { useSelector } from 'react-redux'
 import { RootState } from '@/redux/store'
 
 import './MobileNav.scss'
+import Link from 'next/link'
 
 type Props = {}
 
@@ -47,7 +48,7 @@ const MobileNav = (props: Props) => {
         </a>
       </div>
       <div className="mobile-nav__item border-1 relative inline-flex h-[60px] cursor-pointer justify-center rounded border border-accentBlue bg-accentBlue transition-colors">
-        <a
+        <Link
           href=" /favorite"
           className="mobile-nav__item-link relative flex items-center rounded p-2.5 text-center font-medium"
         >
@@ -60,10 +61,10 @@ const MobileNav = (props: Props) => {
             </svg>
           </div>
           <span>Избранное</span>
-        </a>
+        </Link>
       </div>
       <div className="mobile-nav__item border-1 relative inline-flex h-[60px] cursor-pointer justify-center rounded border border-accentBlue bg-accentBlue transition-colors">
-        <a
+        <Link
           href="/cart"
           className="mobile-nav__item-link relative flex items-center rounded p-2.5 text-center font-medium"
         >
@@ -76,7 +77,7 @@ const MobileNav = (props: Props) => {
             </svg>
           </div>
           <span>Корзина</span>
-        </a>
+        </Link>
       </div>
 
       <div className="mobile-nav__item border-1 relative inline-flex h-[60px] cursor-pointer justify-center rounded border border-accentBlue bg-accentBlue transition-colors">
