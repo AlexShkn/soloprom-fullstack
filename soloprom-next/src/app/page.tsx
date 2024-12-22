@@ -8,6 +8,7 @@ import { Callback } from '@/components/Callback/Callback'
 import { PaymentDelivery } from '@/components/PaymentDelivery/PaymentDelivery'
 import { ContactsMap } from '@/components/ContactsMap/ContactsMap'
 import { ProductList } from '@/components/ProductList/ProductList'
+import Register from '@/components/Auth/Register'
 
 export const metadata: Metadata = {
   title: 'Главная',
@@ -18,6 +19,7 @@ export default function Home() {
   return (
     <>
       <Hero />
+      <Register />
       <CategoryProductsSlider />
       <SubHero />
       <ProductList />

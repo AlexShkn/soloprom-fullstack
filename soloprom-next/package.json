@@ -20,6 +20,7 @@
     "react-dom": "^18.3.1",
     "react-loading-skeleton": "^3.5.0",
     "react-redux": "^9.2.0",
+    "react-toastify": "^11.0.2",
     "sass": "^1.82.0",
     "sass-loader": "^16.0.4",
     "swiper": "^11.1.15"
