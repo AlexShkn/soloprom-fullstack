@@ -1,12 +1,12 @@
-@use 'sass:math';
+@use './mixins';
+@use './fonts';
+@use './variables';
+@use './null';
+@use './settings';
+@use './global';
+@use './animation';
+@use './form';
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-@import './mixins';
-@import './fonts';
-@import './variables';
-@import './null';
-@import './settings';
-@import './global';
-@import './animation';
-@import './form';

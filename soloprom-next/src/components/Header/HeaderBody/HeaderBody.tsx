@@ -21,13 +21,13 @@ const HeaderBody = () => {
           alt=""
         />
         <div className="header__logo-text flex flex-col">
-          <span className="text-[28px] font-bold text-darkBlue">
+          <span className="text-[28px] font-bold leading-9 text-darkBlue">
             СОЛО
-            <b className="mt-[-5px] inline-block rounded bg-accentBlue px-1 text-white">
+            <b className="mt-[-5px] inline-block rounded bg-accentBlue px-1 leading-8 text-white">
               PROM
             </b>
           </span>
-          <span className="max-w-[170px] pl-[5px] text-[11px] text-[#3b3b3b]">
+          <span className="max-w-[170px] pl-[5px] text-[11px] leading-3 text-[#3b3b3b]">
             Интернет-магазин запчастей для спецтехники
           </span>
         </div>
@@ -59,7 +59,7 @@ const HeaderBody = () => {
           <div className="header-body__social">
             <a
               href="https://wa.me/79036569393"
-              className="header-body__social-link bg-greenColor flex min-w-[140px] items-center gap-1 rounded p-2.5 text-center text-ss font-medium text-white"
+              className="header-body__social-link flex min-w-[140px] items-center gap-1 rounded bg-greenColor p-2.5 text-center text-ss font-medium text-white"
             >
               <svg className="icon h-7 w-7 fill-white">
                 <use xlinkHref="/img/sprite.svg#footer-wp"></use>

@@ -14,17 +14,17 @@ interface Subcategory {
 export class Category {
   @Prop({ required: true, unique: true })
   name: string;
-  @Prop({ required: true, unique: true })
+  @Prop({ required: true })
   category_title: string;
-  @Prop({ required: true, unique: true })
+  @Prop({ required: true })
   category_img: string;
-  @Prop({ required: true, unique: true })
+  @Prop({ required: true })
   category_alt: string;
-  @Prop([{ type: Object }]) // Changed to type: Object
+  @Prop([{ type: Object }])
   subcategories: Subcategory[];
-  @Prop([{ type: Object }]) // Changed to type: Object
+  @Prop([{ type: Object }])
   group?: Subcategory[];
-  @Prop([{ type: Object }]) // Changed to type: Object
+  @Prop([{ type: Object }])
   brands?: Subcategory[];
 }
 

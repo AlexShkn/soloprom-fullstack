@@ -16,19 +16,17 @@ interface FavoriteStateTypes {
   favoriteState: FavoriteProduct[]
 }
 
-const getFavoriteFromLocalStorage = (): FavoriteProduct[] => {
-  const favoriteJson = localStorage.getItem('favorite')
-  return favoriteJson ? JSON.parse(favoriteJson) : []
-}
-
 const initialState: FavoriteStateTypes = {
-  favoriteState: getFavoriteFromLocalStorage(),
+  favoriteState: [],
 }
 
 export const favoriteSlice = createSlice({
   name: 'favorite',
   initialState,
   reducers: {
+    setFavorite: (state, action) => {
+      state.favoriteState = action.payload
+    },
     addProductToFavorite: (state, action) => {
       const { id, name, variant, price, url, img, type, category } =
         action.payload
@@ -71,6 +69,10 @@ export const favoriteSlice = createSlice({
   },
 })
 
-export const { addProductToFavorite, removeFavoriteProduct, clearFavorite } =
-  favoriteSlice.actions
+export const {
+  addProductToFavorite,
+  removeFavoriteProduct,
+  clearFavorite,
+  setFavorite,
+} = favoriteSlice.actions
 export default favoriteSlice.reducer

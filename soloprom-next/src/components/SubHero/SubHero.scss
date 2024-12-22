@@ -1,5 +1,4 @@
-@import '@/styles/variables.scss';
-@import '@/styles/mixins.scss';
+@use '@/styles/variables.scss';
 
 .page .subhero {
   @media (max-width: 991.98px) {
@@ -27,7 +26,7 @@
   // .subhero__item-head
 
   .subhero__item-head {
-    border-bottom: 1px solid $accentColor;
+    border-bottom: 1px solid variables.$accentColor;
 
     @media (max-width: 991.98px) {
       font-size: 14px;

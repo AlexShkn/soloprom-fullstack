@@ -50,10 +50,10 @@ const HeroMainSlider: React.FC<HeroTypes> = ({ isReady }) => {
           loop={true}
           speed={800}
           effect={'fade'}
-          autoplay={{
-            delay: 5000,
-            disableOnInteraction: false,
-          }}
+          // autoplay={{
+          //   delay: 5000,
+          //   disableOnInteraction: false,
+          // }}
           pagination={{
             el: '.hero-main-slider__pagination',
             clickable: true,
@@ -69,7 +69,7 @@ const HeroMainSlider: React.FC<HeroTypes> = ({ isReady }) => {
         >
           {mainSliderData.map((slide, index) => (
             <SwiperSlide key={index} className="hero-main-slider__slide">
-              <div className="hero__card duration-600 relative flex h-full items-center justify-center overflow-hidden rounded px-7 pb-[75px] pt-[50px] transition-colors ease-in-out">
+              <div className="hero__card duration-600 relative flex h-full items-center justify-center overflow-hidden rounded px-7 pb-[75px] pt-[50px] transition-colors ease-in-out before:absolute before:inset-0 before:z-[1] before:h-full before:w-full before:bg-black before:bg-opacity-60">
                 <Image
                   className="duration-600 absolute inset-0 block h-full w-full transform object-cover transition ease-in-out"
                   src={slide.img}

@@ -1,5 +1,4 @@
-@import '@/styles/variables.scss';
-@import '@/styles/mixins.scss';
+@use '@/styles/variables.scss';
 
 .header .catalog-menu {
   box-shadow: 0 4px 30px 0 rgba(0, 0, 0, 0.1);
@@ -26,7 +25,7 @@
     svg.icon-close {
       width: 30px;
       height: 30px;
-      fill: $mainColor;
+      fill: variables.$mainColor;
       cursor: pointer;
     }
 
@@ -145,11 +144,11 @@
 
     &.active {
       background-color: #fff;
-      box-shadow: $shadow;
-      border-bottom: 1px solid $hoverAccentColor;
+      box-shadow: variables.$shadow;
+      border-bottom: 1px solid variables.$hoverAccentColor;
 
       .catalog-menu__category-item-button {
-        background-color: $hoverAccentColor;
+        background-color: variables.$hoverAccentColor;
       }
 
       @media (max-width: 649.98px) {
@@ -184,7 +183,7 @@
     justify-content: space-between;
     gap: 20px;
     padding-left: 10px;
-    border-radius: $radius;
+    border-radius: variables.$radius;
     cursor: pointer;
     background-color: #f8f8f8;
     transition: background-color 0.3s ease 0s;
@@ -263,7 +262,7 @@
       grid-template-columns: 1fr;
       overflow-y: auto;
       max-height: calc(100vh - 70px);
-      border-bottom: 1px solid $grayColor;
+      border-bottom: 1px solid variables.$grayColor;
       padding-bottom: 10px;
     }
 
@@ -325,8 +324,8 @@
     margin-bottom: 5px;
     gap: 20px;
     background-color: #fff;
-    box-shadow: $shadow;
-    border-radius: $radius;
+    box-shadow: variables.$shadow;
+    border-radius: variables.$radius;
     padding-left: 10px;
     cursor: pointer;
     font-weight: 500;
@@ -336,7 +335,7 @@
       align-items: center;
       justify-content: center;
       padding: 10px;
-      background-color: $hoverAccentColor;
+      background-color: variables.$hoverAccentColor;
     }
 
     svg {
@@ -355,8 +354,8 @@
     width: 100%;
     background-color: #fff;
     padding: 10px;
-    box-shadow: $shadow;
-    border-radius: $radius;
+    box-shadow: variables.$shadow;
+    border-radius: variables.$radius;
     z-index: 1;
 
     &.show {

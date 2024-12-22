@@ -1,8 +1,10 @@
+@use './variables.scss';
+
 .link-hover {
-  transition: color $transition;
+  transition: color variables.$transition;
   @media (any-hover: hover) {
     &:hover {
-      color: $hoverAccentColor;
+      color: variables.$hoverAccentColor;
     }
   }
 }
@@ -26,13 +28,13 @@
   svg {
     width: 20px;
     height: 20px;
-    fill: $mainColor;
+    fill: variables.$mainColor;
     transition: fill 0.3s ease 0s;
   }
 
   @media (any-hover: hover) {
     &:hover {
-      fill: $hoverAccentColor;
+      fill: variables.$hoverAccentColor;
     }
   }
 }
@@ -46,8 +48,8 @@
 }
 
 .section-title {
-  color: $mainColor;
-  @include adaptiveValue('font-size', 32, 24, 1);
+  color: variables.$mainColor;
+  font-size: clamp(1.5rem, 1.2363rem + 0.8791vw, 2rem);
   font-weight: 700;
   line-height: 120%;
   margin-bottom: 30px;
@@ -65,7 +67,7 @@
     background: #e0e0e0;
   }
   &::-webkit-scrollbar-thumb {
-    background: $accentColor;
+    background: variables.$accentColor;
     // border-radius: 5px;
   }
 
@@ -81,13 +83,13 @@
   align-items: center;
   justify-content: center;
   color: #fff;
-  background-color: $accentColor;
+  background-color: variables.$accentColor;
   transition: all 0.3s ease 0s;
-  border-radius: $radius;
+  border-radius: variables.$radius;
 
   @media (any-hover: hover) {
     &:hover {
-      background-color: $hoverAccentColor;
+      background-color: variables.$hoverAccentColor;
     }
   }
 }
@@ -140,6 +142,30 @@
   }
 }
 
+._show {
+  display: block;
+}
+
+.show {
+  visibility: visible;
+  opacity: 1;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  border: 0;
+  clip: rect(0 0 0 0);
+}
+
+.header_hidden {
+  transform: translateY(-100%);
+}
+
 .header.header_hidden {
   transform: translateY(-100%);
   .header-body {
@@ -159,10 +185,10 @@
 
     .header-bottom__wrapper {
       padding: 10px;
-      max-width: $maxWidthContainer + px;
+      max-width: variables.$maxWidthContainer + px;
       background-color: #fff;
-      box-shadow: $shadow;
-      border-radius: $radius;
+      box-shadow: variables.$shadow;
+      border-radius: variables.$radius;
       width: 100%;
       margin: 0px auto;
     }

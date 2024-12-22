@@ -1,5 +1,4 @@
-@import '@/styles/variables.scss';
-@import '@/styles/mixins.scss';
+@use '@/styles/variables.scss';
 
 .page .catalog-products {
   @media (max-width: 479.98px) {
@@ -19,8 +18,8 @@
   // .catalog-products__category-title
 
   &__category-title {
-    @include adaptiveValue('margin-bottom', 30, 15, 1);
-    @include adaptiveValue('font-size', 26, 20, 1);
+    margin-bottom: clamp(0.9375rem, 0.443rem + 1.6484vw, 1.875rem);
+    font-size: clamp(1.25rem, 1.0522rem + 0.6593vw, 1.625rem);
   }
 
   // .catalog-products__category-slider
@@ -28,7 +27,7 @@
   .catalog-products__category-slider {
     .swiper-scrollbar-drag {
       height: 5px;
-      background-color: $accentColor;
+      background-color: variables.$accentColor;
     }
 
     .swiper-scrollbar {
@@ -58,7 +57,7 @@
   .catalog-products__category-link {
     @media (any-hover: hover) {
       &:hover {
-        background-color: $accentColor;
+        background-color: variables.$accentColor;
         .catalog-products__category-link-title {
           color: #fff;
         }
@@ -69,7 +68,7 @@
 
         .catalog-products__category-link-button {
           background-color: #fff;
-          color: $accentColor;
+          color: variables.$accentColor;
         }
       }
     }

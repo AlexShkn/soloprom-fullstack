@@ -53,10 +53,10 @@ const HeroVerticalSlider: React.FC<HeroTypes> = ({ isReady }) => {
           loop={true}
           speed={800}
           effect={'fade'}
-          autoplay={{
-            delay: 3000,
-            disableOnInteraction: false,
-          }}
+          // autoplay={{
+          //   delay: 3000,
+          //   disableOnInteraction: false,
+          // }}
           breakpoints={{
             320: {
               direction: 'horizontal',
@@ -79,7 +79,7 @@ const HeroVerticalSlider: React.FC<HeroTypes> = ({ isReady }) => {
             <SwiperSlide key={index} className="hero-vertical-slider__slide">
               <a
                 href={slide.link}
-                className="hero__card hero__card--link btn-glare relative flex h-full items-center justify-center overflow-hidden rounded px-7 pb-[75px] pt-[50px]"
+                className="hero__card hero__card--link btn-glare relative flex h-full items-center justify-center overflow-hidden rounded px-7 pb-[75px] pt-[50px] transition-transform before:absolute before:inset-0 before:z-[1] before:h-full before:w-full before:bg-black before:bg-opacity-60"
               >
                 <div className="border">
                   <span></span>
@@ -88,7 +88,7 @@ const HeroVerticalSlider: React.FC<HeroTypes> = ({ isReady }) => {
                   <span></span>
                 </div>
                 <Image
-                  className="duration-600 absolute inset-0 block h-full w-full transform object-cover transition ease-in-out"
+                  className="duration-600 absolute inset-0 block h-full w-full object-cover transition-transform"
                   src={slide.img}
                   priority
                   width={546}
@@ -102,8 +102,8 @@ const HeroVerticalSlider: React.FC<HeroTypes> = ({ isReady }) => {
                   </div>
                   <div className="leading-5 text-white">{slide.subtitle}</div>
                 </div>
-                <div className="hero__card-link">
-                  <svg className="icon">
+                <div className="absolute bottom-0 left-0 z-10 inline-flex h-14 w-14 items-center justify-center bg-accentBlue transition-colors hover:bg-hoverBlue">
+                  <svg className="icon h-5 w-5 rotate-[-90deg] fill-white">
                     <use xlinkHref="/img/sprite-default.svg#arrow-drop"></use>
                   </svg>
                 </div>

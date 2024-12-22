@@ -19,20 +19,19 @@ interface CartStateTypes {
   totalAmount: number
 }
 
-const getCartFromLocalStorage = (): CartProduct[] => {
-  const cartJson = localStorage.getItem('cart')
-  return cartJson ? JSON.parse(cartJson) : []
-}
-
 const initialState: CartStateTypes = {
-  cartState: getCartFromLocalStorage(),
-  totalAmount: calculateCartTotalAmount(getCartFromLocalStorage()),
+  cartState: [],
+  totalAmount: 0,
 }
 
 export const cartSlice = createSlice({
   name: 'cart',
   initialState,
   reducers: {
+    setCart: (state, action) => {
+      state.cartState = action.payload
+      state.totalAmount = calculateCartTotalAmount(state.cartState)
+    },
     addProductToCart: (state, action) => {
       const { id, name, variant, price, url, img, type, category } =
         action.payload
@@ -118,5 +117,6 @@ export const {
   clearCart,
   increaseProductCount,
   decreaseProductCount,
+  setCart,
 } = cartSlice.actions
 export default cartSlice.reducer

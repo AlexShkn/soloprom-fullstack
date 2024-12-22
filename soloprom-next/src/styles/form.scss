@@ -1,41 +1,43 @@
+@use './variables.scss';
+
 :root {
-	--success-color: #23cc71;
-	--error-color: #e74c3c;
+  --success-color: #23cc71;
+  --error-color: #e74c3c;
 }
 
 .form-field-control small {
-	color: #e74c3c;
-	position: static;
-	font-size: 12px;
-	visibility: hidden;
-	min-width: 120px;
+  color: #e74c3c;
+  position: static;
+  font-size: 12px;
+  visibility: hidden;
+  min-width: 120px;
 
-	@media (max-width: 767.98px) {
-		font-size: 10px;
-	}
+  @media (max-width: 767.98px) {
+    font-size: 10px;
+  }
 }
 
 .form-field-control__star {
-	position: absolute;
-	right: 10px;
-	top: 10px;
-	width: 12px;
-	height: 12px;
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  width: 12px;
+  height: 12px;
 }
 
 .form-field-control.error small {
-	visibility: visible;
+  visibility: visible;
 }
 .form-field-control.error input,
 .form-field-control.error textarea {
-	background-color: rgb(255, 221, 221);
-	border: 1px solid $warnColor;
+  background-color: rgb(255, 221, 221);
+  border: 1px solid variables.$warnColor;
 
-	&::placeholder {
-		color: #e74c3c;
-	}
+  &::placeholder {
+    color: #e74c3c;
+  }
 }
 .form-field-control.success input,
 .form-field-control.success textarea {
-	border: 1px solid rgb(114, 231, 98);
+  border: 1px solid rgb(114, 231, 98);
 }

@@ -1,11 +1,10 @@
-@import '@/styles/variables.scss';
-@import '@/styles/mixins.scss';
+@use '@/styles/variables.scss';
 
 .page .contacts-map {
   @media (max-width: 991.98px) {
     display: flex;
     flex-direction: column;
-    background-color: $accentColor;
+    background-color: variables.$accentColor;
   }
 }
 
@@ -42,7 +41,7 @@
 
   .contacts-map__body {
     @media (min-width: 991.98px) {
-      background-color: $accentColor;
+      background-color: variables.$accentColor;
     }
 
     @media (max-width: 991.98px) {

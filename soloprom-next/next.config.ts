@@ -1,7 +1,6 @@
-import type { NextConfig } from 'next'
-
-const nextConfig: NextConfig = {
-  /* config options here */
+// next.config.js
+module.exports = {
+  sassOptions: {
+    silenceDeprecations: ['legacy-js-api'],
+  },
 }
-
-export default nextConfig

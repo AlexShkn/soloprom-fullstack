@@ -1,5 +1,4 @@
-@import '@/styles/variables.scss';
-@import '@/styles/mixins.scss';
+@use '@/styles/variables.scss';
 
 .header-bottom {
   // .header-bottom__panel
@@ -130,7 +129,7 @@
     position: relative;
     font-size: 14px;
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
-    border-radius: $radius;
+    border-radius: variables.$radius;
     cursor: pointer;
     transition: all 0.3s ease 0s;
     overflow: hidden;
@@ -151,19 +150,19 @@
     input:not(checked) + label {
       @media (any-hover: hover) {
         &:hover {
-          background-color: $accentColor;
+          background-color: variables.$accentColor;
           color: #fff;
         }
       }
     }
 
     input:checked + label {
-      background-color: $accentColor;
+      background-color: variables.$accentColor;
       color: #fff;
     }
 
     &.active {
-      background-color: $accentColor;
+      background-color: variables.$accentColor;
       color: #fff;
     }
   }
@@ -176,7 +175,7 @@
     }
 
     svg {
-      fill: $mainColor !important;
+      fill: variables.$mainColor !important;
     }
 
     &.show {
@@ -223,7 +222,7 @@
 
     @media (any-hover: hover) {
       &:hover {
-        background-color: $hoverAccentColor;
+        background-color: variables.$hoverAccentColor;
         color: #fff;
       }
     }

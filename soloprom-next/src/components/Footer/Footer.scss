@@ -1,5 +1,4 @@
-@import '@/styles/variables.scss';
-@import '@/styles/mixins.scss';
+@use '@/styles/variables.scss';
 
 footer.footer {
   @media (max-width: 479.98px) {
@@ -11,7 +10,7 @@ footer.footer {
   // .footer__body
 
   .footer__body {
-    border-bottom: 1px solid $lightGrayColor;
+    border-bottom: 1px solid variables.$lightGrayColor;
 
     @media (max-width: 991.98px) {
       flex-direction: column;

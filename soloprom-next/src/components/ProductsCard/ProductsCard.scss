@@ -1,5 +1,4 @@
-@import '@/styles/variables.scss';
-@import '@/styles/mixins.scss';
+@use '@/styles/variables.scss';
 
 .product-card {
   &:hover {
@@ -54,14 +53,14 @@
       font-weight: 700;
       background-color: #fff;
       padding: 5px;
-      border-radius: $radius;
+      border-radius: variables.$radius;
     }
     span {
-      color: $warnColor;
+      color: variables.$warnColor;
     }
 
     b {
-      color: $accentColor;
+      color: variables.$accentColor;
       font-size: 14px;
       visibility: hidden;
       opacity: 0;
@@ -79,7 +78,7 @@
   &__more {
     @media (any-hover: hover) {
       &:hover {
-        color: $hoverAccentColor;
+        color: variables.$hoverAccentColor;
       }
     }
   }
@@ -87,7 +86,7 @@
   // .product-card__descr-item
 
   &__descr-item {
-    border-bottom: 1px solid $grayColor;
+    border-bottom: 1px solid variables.$grayColor;
     &:not(:last-child) {
       margin-bottom: 5px;
     }
@@ -120,13 +119,13 @@
     justify-content: center;
     align-items: center;
     cursor: pointer;
-    background-color: $accentColor;
+    background-color: variables.$accentColor;
     padding: 5px 15px;
-    border-radius: $radius;
-    transition: background-color $transition;
+    border-radius: variables.$radius;
+    transition: background-color variables.$transition;
 
     &.current {
-      background-color: $successColor;
+      background-color: variables.$successColor;
     }
   }
 
@@ -139,7 +138,7 @@
 
   &__volumes-value {
     font-weight: 500;
-    transition: color $transition;
+    transition: color variables.$transition;
     color: #fff;
   }
 
@@ -147,7 +146,7 @@
 
   &__price {
     &--discount {
-      color: $accentColor;
+      color: variables.$accentColor;
     }
 
     &::before {
@@ -200,13 +199,13 @@
     svg {
       width: 12px;
       height: 12px;
-      fill: $accentColor;
+      fill: variables.$accentColor;
       transition: fill 0.3s ease 0s;
     }
 
     @media (any-hover: hover) {
       &:hover {
-        fill: $hoverAccentColor;
+        fill: variables.$hoverAccentColor;
       }
     }
   }
@@ -224,13 +223,13 @@
   &__compare {
     &.added {
       svg {
-        fill: $successColor;
+        fill: variables.$successColor;
       }
 
       @media (any-hover: hover) {
         &:hover {
           svg {
-            fill: $successColor;
+            fill: variables.$successColor;
           }
         }
       }
@@ -238,20 +237,20 @@
     svg {
       width: 30px;
       height: 30px;
-      fill: $accentColor;
+      fill: variables.$accentColor;
       transition: fill 0.3s ease 0s;
     }
 
     @media (any-hover: hover) {
       &:hover {
         svg {
-          fill: $hoverAccentColor;
+          fill: variables.$hoverAccentColor;
         }
       }
     }
 
     &.selected {
-      fill: $warnColor;
+      fill: variables.$warnColor;
     }
   }
 
@@ -260,13 +259,13 @@
   &__favorite {
     &.added {
       svg {
-        fill: $warnColor;
+        fill: variables.$warnColor;
       }
 
       @media (any-hover: hover) {
         &:hover {
           svg {
-            fill: $warnColor;
+            fill: variables.$warnColor;
           }
         }
       }
@@ -275,13 +274,13 @@
     @media (any-hover: hover) {
       &:hover {
         svg {
-          fill: $hoverAccentColor;
+          fill: variables.$hoverAccentColor;
         }
       }
     }
 
     &.selected {
-      fill: $warnColor;
+      fill: variables.$warnColor;
     }
   }
 
@@ -333,7 +332,7 @@
       cursor: pointer;
 
       &.selected {
-        background-color: $hoverAccentColor;
+        background-color: variables.$hoverAccentColor;
         color: #fff;
         &::before {
           content: '';
@@ -359,7 +358,7 @@
       &:checked ~ label {
         background-position: 0 0;
         color: #fff;
-        background-color: $accentColor;
+        background-color: variables.$accentColor;
       }
     }
   }

@@ -1,5 +1,4 @@
-@import '@/styles/variables.scss';
-@import '@/styles/mixins.scss';
+@use '@/styles/variables.scss';
 
 .hero .hero-vertical-slider {
   .swiper-wrapper {
@@ -34,7 +33,7 @@
       height: 15px;
       border-radius: 50%;
       outline: 2px solid #fff;
-      background-color: $accentColor;
+      background-color: variables.$accentColor;
 
       transition: background-color 0.3s ease 0s;
     }

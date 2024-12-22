@@ -1,5 +1,4 @@
-@import '@/styles/variables.scss';
-@import '@/styles/mixins.scss';
+@use '@/styles/variables.scss';
 
 .catalog-main {
   // .catalog-main__category
@@ -35,7 +34,7 @@
   .catalog-main__category-link {
     @media (any-hover: hover) {
       &:hover {
-        background-color: $accentColor;
+        background-color: variables.$accentColor;
         color: #fff;
       }
     }

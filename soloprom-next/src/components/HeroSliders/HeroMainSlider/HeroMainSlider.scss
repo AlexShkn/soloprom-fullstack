@@ -1,12 +1,11 @@
-@import '@/styles/variables.scss';
-@import '@/styles/mixins.scss';
+@use '@/styles/variables.scss';
 
 .hero-main-slider {
   position: relative;
   overflow: hidden;
 
   @media (max-width: 1399.98px) {
-    border-radius: 0 $radius $radius 0;
+    border-radius: 0 variables.$radius variables.$radius 0;
   }
 
   @media (max-width: 991.98px) {
@@ -39,7 +38,7 @@
     .swiper-pagination-bullet {
       // width: 15px;
       // height: 15px;
-      // background-color: $grayColor;
+      // background-color: variables.$grayColor;
       border-radius: 50%;
 
       svg {

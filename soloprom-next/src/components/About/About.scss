@@ -1,5 +1,4 @@
-@import '@/styles/variables.scss';
-@import '@/styles/mixins.scss';
+@use '@/styles/variables.scss';
 
 .page .about {
   @media (max-width: 479.98px) {
@@ -11,8 +10,7 @@
   // .about__body
 
   &__body {
-    @include adaptiveValue('font-size', 18, 16, 1);
-
+    font-size: clamp(1rem, 0.9341rem + 0.2198vw, 1.125rem);
     p {
       line-height: 120%;
       &:not(:last-child) {
@@ -34,8 +32,11 @@
   }
 
   .squares {
-    background-image: radial-gradient($hoverAccentColor 1px, transparent 1px),
-      radial-gradient($hoverAccentColor 1px, #171941 1px);
+    background-image: radial-gradient(
+        variables.$hoverAccentColor 1px,
+        transparent 1px
+      ),
+      radial-gradient(variables.$hoverAccentColor 1px, #171941 1px);
     background-size: 56px 56px;
     background-position:
       0 0,
@@ -43,12 +44,16 @@
   }
   .square {
     opacity: 0.15;
-    @include adaptiveValue('width', 300, 200, 1);
-    @include adaptiveValue('height', 300, 200, 1);
+    width: clamp(12.5rem, 9.2033rem + 10.989vw, 18.75rem);
+    height: clamp(12.5rem, 9.2033rem + 10.989vw, 18.75rem);
     position: absolute;
     top: 10%;
     right: 10%;
-    background: linear-gradient(0deg, $hoverAccentColor, $hoverAccentColor);
+    background: linear-gradient(
+      0deg,
+      variables.$hoverAccentColor,
+      variables.$hoverAccentColor
+    );
     display: block;
     border-radius: 45px;
     animation: move 6s ease infinite;
@@ -56,8 +61,8 @@
 
   .square.square2 {
     opacity: 0.4;
-    @include adaptiveValue('width', 100, 50, 1);
-    @include adaptiveValue('height', 100, 50, 1);
+    width: clamp(3.125rem, 1.4766rem + 5.4945vw, 6.25rem);
+    height: clamp(3.125rem, 1.4766rem + 5.4945vw, 6.25rem);
     top: 30%;
     right: 47%;
     border-radius: 15px;
@@ -66,8 +71,8 @@
 
   .square.square3 {
     opacity: 0.3;
-    @include adaptiveValue('width', 200, 100, 1);
-    @include adaptiveValue('height', 200, 100, 1);
+    width: clamp(6.25rem, 2.9533rem + 10.989vw, 12.5rem);
+    height: clamp(6.25rem, 2.9533rem + 10.989vw, 12.5rem);
     top: 50%;
     right: 20%;
     border-radius: 30px;
@@ -75,8 +80,8 @@
   }
   .square.square4 {
     opacity: 0.3;
-    @include adaptiveValue('width', 200, 100, 1);
-    @include adaptiveValue('height', 200, 100, 1);
+    width: clamp(6.25rem, 2.9533rem + 10.989vw, 12.5rem);
+    height: clamp(6.25rem, 2.9533rem + 10.989vw, 12.5rem);
     top: 15%;
     left: 30%;
     border-radius: 30px;
@@ -88,8 +93,8 @@
   }
   .square.square5 {
     opacity: 0.3;
-    @include adaptiveValue('width', 150, 70, 1);
-    @include adaptiveValue('height', 150, 70, 1);
+    width: clamp(4.375rem, 1.7376rem + 8.7912vw, 9.375rem);
+    height: clamp(4.375rem, 1.7376rem + 8.7912vw, 9.375rem);
     top: 60%;
     left: 20%;
     border-radius: 30px;
