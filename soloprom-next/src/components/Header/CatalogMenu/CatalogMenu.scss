@@ -130,6 +130,13 @@
       }
     }
 
+    @media (max-width: 479.98px) {
+      img {
+        width: 25px;
+        height: 25px;
+      }
+    }
+
     &.hidden-block {
       @media (max-width: 650px) {
         display: none;

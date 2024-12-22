@@ -4,6 +4,8 @@ import { Document } from 'mongoose';
 export type CategoryDocument = Category & Document;
 
 interface Subcategory {
+  img: string;
+  alt: string;
   url: string;
   crumb: string;
 }
@@ -12,11 +14,18 @@ interface Subcategory {
 export class Category {
   @Prop({ required: true, unique: true })
   name: string;
-
-  @Prop([{ type: String }])
+  @Prop({ required: true, unique: true })
+  category_title: string;
+  @Prop({ required: true, unique: true })
+  category_img: string;
+  @Prop({ required: true, unique: true })
+  category_alt: string;
+  @Prop([{ type: Object }]) // Changed to type: Object
   subcategories: Subcategory[];
-  @Prop([{ type: String }])
-  group: Subcategory[];
+  @Prop([{ type: Object }]) // Changed to type: Object
+  group?: Subcategory[];
+  @Prop([{ type: Object }]) // Changed to type: Object
+  brands?: Subcategory[];
 }
 
 export const CategorySchema = SchemaFactory.createForClass(Category);

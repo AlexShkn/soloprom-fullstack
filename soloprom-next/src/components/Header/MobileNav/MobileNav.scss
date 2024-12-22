@@ -56,16 +56,10 @@
 
     @media (any-hover: hover) {
       &:hover {
-        background-color: #fff;
+        background-color: $hoverAccentColor;
         color: $accentColor;
         svg {
-          fill: $accentColor;
-        }
-        .mobile-nav__item-icon {
-          &::before {
-            background-color: $accentColor;
-            color: #fff;
-          }
+          fill: #fff;
         }
       }
     }
@@ -152,11 +146,6 @@
         background-color: $accentColor;
         color: #fff;
       }
-    }
-
-    @media (max-width: 374.98px) {
-      width: 25px;
-      height: 25px;
     }
   }
 

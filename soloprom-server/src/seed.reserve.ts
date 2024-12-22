@@ -151,7 +151,7 @@ async function bootstrap() {
         name: 'battery',
         category_title: 'Аккумуляторы для спецтехники',
         category_img: '/img/category/battery',
-        category_alt: 'Аккумуляторы для спецтехники',
+        category_alt: '',
         subcategories: [
           {
             img: '/img/category/battery',
@@ -389,10 +389,7 @@ async function bootstrap() {
     ];
 
     await categoryService.createMany(categoriesData);
-    const createdCategories = await categoryService.createMany(categoriesData);
-    const numCategoriesAdded = createdCategories.length;
 
-    console.log(`${numCategoriesAdded} категорий добавлено`);
     const productsData: Product[] = [];
 
     let insertedCount = 0;
@@ -402,6 +399,7 @@ async function bootstrap() {
         insertedCount++;
       } catch (error) {
         console.error(`Продукт с id: ${product.id} уже есть в базе: `, error);
+        // Optionally log more details about the error, like the product itself.
       }
     }
 
