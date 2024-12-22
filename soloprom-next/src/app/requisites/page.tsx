@@ -4,6 +4,7 @@ import { PaymentDelivery } from '@/components/PaymentDelivery/PaymentDelivery'
 import { ContactsMap } from '@/components/ContactsMap/ContactsMap'
 import BreadCrumbs from '@/components/ui/BreadCrumbs/BreadCrumbs'
 import { Requisites } from '@/components/Requisites/Requisites'
+import PageWrapper from '../PageWrapper'
 
 export const metadata: Metadata = {
   title: 'Контакты',
@@ -12,11 +13,11 @@ export const metadata: Metadata = {
 
 export default function RequisitesPage() {
   return (
-    <>
+    <PageWrapper>
       <BreadCrumbs />
       <Requisites />
       <Callback />
       <ContactsMap />
-    </>
+    </PageWrapper>
   )
 }

@@ -12,6 +12,7 @@ import { setSelectedCity } from '@/redux/slices/locateSlice'
 import { getCityFromIP } from '@/utils/getCityFromIP'
 
 import './HeaderTop.scss'
+import Link from 'next/link'
 
 export interface LocateSearchTypes {
   setLocateCity: (city: string) => void
@@ -100,11 +101,14 @@ export const HeaderTop: React.FC = () => {
 
         <div className="flex items-center gap-7">
           <HeaderMenu />
-          <button className="header-top__auth-button -margin-2.5 relative inline-flex h-7 w-7 items-center justify-center rounded-[50%] bg-accentBlue p-2.5 outline outline-1 outline-accentBlue transition-colors">
+          <Link
+            href={'/login'}
+            className="header-top__auth-button -margin-2.5 relative inline-flex h-7 w-7 items-center justify-center rounded-[50%] bg-accentBlue p-2.5 outline outline-1 outline-accentBlue transition-colors"
+          >
             <svg className="icon ttall absolute h-5 w-5 fill-white transition-colors">
               <use xlinkHref="/img/sprite.svg#lc"></use>
             </svg>
-          </button>
+          </Link>
         </div>
       </div>
     </div>

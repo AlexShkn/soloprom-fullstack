@@ -2,6 +2,7 @@ import { Callback } from '@/components/Callback/Callback'
 import { CatalogMain } from '@/components/CatalogMain/CatalogMain'
 import BreadCrumbs from '@/components/ui/BreadCrumbs/BreadCrumbs'
 import type { Metadata } from 'next'
+import PageWrapper from '../PageWrapper'
 
 export const metadata: Metadata = {
   title: 'Каталог',
@@ -10,10 +11,10 @@ export const metadata: Metadata = {
 
 export default function CatalogPage() {
   return (
-    <>
+    <PageWrapper>
       <BreadCrumbs />
       <CatalogMain />
       <Callback />
-    </>
+    </PageWrapper>
   )
 }

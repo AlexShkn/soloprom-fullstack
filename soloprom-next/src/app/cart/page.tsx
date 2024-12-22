@@ -1,6 +1,7 @@
 import { Callback } from '@/components/Callback/Callback'
 import { Cart } from '@/components/Cart/Cart'
 import type { Metadata } from 'next'
+import PageWrapper from '../PageWrapper'
 
 export const metadata: Metadata = {
   title: 'Корзина',
@@ -9,9 +10,9 @@ export const metadata: Metadata = {
 
 export default function CartPage() {
   return (
-    <>
+    <PageWrapper>
       <Cart />
       <Callback />
-    </>
+    </PageWrapper>
   )
 }

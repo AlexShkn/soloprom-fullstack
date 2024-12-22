@@ -1,6 +1,7 @@
 import { Callback } from '@/components/Callback/Callback'
 import { Favorite } from '@/components/Favorite/Favorite'
 import type { Metadata } from 'next'
+import PageWrapper from '../PageWrapper'
 
 export const metadata: Metadata = {
   title: 'Избранное',
@@ -9,9 +10,9 @@ export const metadata: Metadata = {
 
 export default function FavoritePage() {
   return (
-    <>
+    <PageWrapper>
       <Favorite />
       <Callback />
-    </>
+    </PageWrapper>
   )
 }

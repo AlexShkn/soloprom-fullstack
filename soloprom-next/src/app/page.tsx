@@ -8,6 +8,7 @@ import { Callback } from '@/components/Callback/Callback'
 import { PaymentDelivery } from '@/components/PaymentDelivery/PaymentDelivery'
 import { ContactsMap } from '@/components/ContactsMap/ContactsMap'
 import { ProductList } from '@/components/ProductList/ProductList'
+import PageWrapper from './PageWrapper'
 
 export const metadata: Metadata = {
   title: 'Главная',
@@ -16,7 +17,7 @@ export const metadata: Metadata = {
 
 export default function Home() {
   return (
-    <>
+    <PageWrapper>
       <Hero />
       <CategoryProductsSlider />
       <SubHero />
@@ -26,6 +27,6 @@ export default function Home() {
       <Callback />
       <PaymentDelivery level={'h2'} />
       <ContactsMap />
-    </>
+    </PageWrapper>
   )
 }

@@ -2,6 +2,7 @@ import { Callback } from '@/components/Callback/Callback'
 import BreadCrumbs from '@/components/ui/BreadCrumbs/BreadCrumbs'
 
 import { categoriesList } from '../page'
+import PageWrapper from '@/app/PageWrapper'
 
 export async function generateMetadata({
   params,
@@ -69,11 +70,11 @@ export default async function SubcategoryPage({
   }
 
   return (
-    <div>
+    <PageWrapper>
       <BreadCrumbs />
       <h1>{subcategoryData.title}</h1>
       <p>{subcategoryData.description}</p>
       <Callback />
-    </div>
+    </PageWrapper>
   )
 }

@@ -3,6 +3,7 @@ import { Callback } from '@/components/Callback/Callback'
 import { PaymentDelivery } from '@/components/PaymentDelivery/PaymentDelivery'
 import { ContactsMap } from '@/components/ContactsMap/ContactsMap'
 import BreadCrumbs from '@/components/ui/BreadCrumbs/BreadCrumbs'
+import PageWrapper from '../PageWrapper'
 
 export const metadata: Metadata = {
   title: 'Контакты',
@@ -11,11 +12,11 @@ export const metadata: Metadata = {
 
 export default function PaymentDeliveryPage() {
   return (
-    <>
+    <PageWrapper>
       <BreadCrumbs />
       <PaymentDelivery level={'h1'} />
       <Callback />
       <ContactsMap />
-    </>
+    </PageWrapper>
   )
 }

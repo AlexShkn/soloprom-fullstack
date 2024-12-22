@@ -1,6 +1,7 @@
 import { Metadata } from 'next'
 import { Callback } from '@/components/Callback/Callback'
 import BreadCrumbs from '@/components/ui/BreadCrumbs/BreadCrumbs'
+import PageWrapper from '@/app/PageWrapper'
 
 export interface Subcategory {
   slug: string
@@ -90,10 +91,10 @@ export default async function CategoryPage({
   }
 
   return (
-    <div>
+    <PageWrapper>
       <BreadCrumbs />
       <h1>{categoryName.title}</h1>
       <Callback />
-    </div>
+    </PageWrapper>
   )
 }
