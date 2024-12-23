@@ -25,6 +25,11 @@ export class ProductController {
     return this.productService.findBySubcategory(subcategory);
   }
 
+  @Get('group/:group')
+  findByGroup(@Param('group') group: string) {
+    return this.productService.findByGroup(group);
+  }
+
   @Get('popular')
   findPopular() {
     return this.productService.findPopular();

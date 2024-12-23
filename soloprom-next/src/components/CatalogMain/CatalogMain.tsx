@@ -1,17 +1,70 @@
 'use client'
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 
-import { categoriesData } from '../CategoryProductsSlider/CategoryProductsSlider'
+import initialCategoriesData from '../../data/products/categoriesData.json'
 
 import './CatalogMain.scss'
+import {
+  getProductsBySubcategory,
+  getProductsByGroup,
+} from '@/app/api/products/products'
+
+interface CategoryItem {
+  id: string
+  href: string
+  img: string
+  title: string
+  // count: number; Убираем count из интерфейса
+}
+interface CategoryData {
+  icon: string
+  title: string
+  items: CategoryItem[]
+}
+interface CategoriesData {
+  [key: string]: CategoryData
+}
 
 interface Props {
   className?: string
 }
 
+interface SubcategoryCount {
+  [subcategory: string]: number
+}
+
 export const CatalogMain: React.FC<Props> = ({ className }) => {
+  const [subcategoryCounts, setSubcategoryCounts] = useState<SubcategoryCount>(
+    {},
+  )
+  const categoriesData = initialCategoriesData as CategoriesData
+
+  useEffect(() => {
+    const fetchCounts = async () => {
+      const counts: SubcategoryCount = {}
+      for (const categoryKey in categoriesData) {
+        const category = categoriesData[categoryKey]
+        for (const item of category.items) {
+          let result = await getProductsBySubcategory(item.id)
+
+          if (!result?.count) {
+            result = await getProductsByGroup(item.id)
+            if (!result) {
+              console.error('Failed to get products for', item)
+              continue
+            }
+          }
+          counts[item.id] = result.count
+        }
+      }
+      setSubcategoryCounts(counts)
+    }
+
+    fetchCounts()
+  }, [])
+
   return (
     <div className="catalog-main">
       <div className="catalog-main__container">
@@ -41,7 +94,15 @@ export const CatalogMain: React.FC<Props> = ({ className }) => {
                   <div className="mb-4 font-medium leading-5 transition-colors">
                     {item.title}
                   </div>
-                  <div className="text-[#b7b7b7]">{item.count} товаров</div>
+                  <div className="text-[#b7b7b7]">
+                    {subcategoryCounts[item.id]} товар
+                    {subcategoryCounts[item.id] === 1
+                      ? ''
+                      : subcategoryCounts[item.id] >= 2 &&
+                          subcategoryCounts[item.id] <= 4
+                        ? 'а'
+                        : 'ов'}
+                  </div>
                 </Link>
               ))}
             </div>

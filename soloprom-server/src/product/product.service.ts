@@ -25,6 +25,10 @@ export class ProductService {
     return this.productModel.find({ subcategory }).exec();
   }
 
+  async findByGroup(group: string): Promise<Product[]> {
+    return this.productModel.find({ product_group: group }).exec();
+  }
+
   async findPopular(): Promise<Product[]> {
     return this.productModel.find({ isPopular: true }).exec();
   }
@@ -45,6 +49,4 @@ export class ProductService {
     const newProduct = new this.productModel(product);
     return newProduct.save();
   }
-
-  // Добавить методы для поиска по другим параметрам при необходимости
 }

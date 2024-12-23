@@ -361,7 +361,7 @@ async function bootstrap() {
           {
             img: '/img/category/oils/hydravlic-oils',
             alt: 'гидравлическое масло',
-            url: 'masla-gidravlichecskie',
+            url: 'masla-gidravlicheskie',
             crumb: 'Масло гидравлическое',
           },
           {

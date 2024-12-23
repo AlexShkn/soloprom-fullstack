@@ -10,207 +10,67 @@ import 'react-loading-skeleton/dist/skeleton.css'
 
 import './CategoryProductsSlider.scss'
 
+import initialCategoriesData from '../../data/products/categoriesData.json'
+
+import {
+  getProductsByGroup,
+  getProductsBySubcategory,
+} from '@/app/api/products/products'
+
+interface CategoryItem {
+  id: string
+  href: string
+  img: string
+  title: string
+  // count: number; Убираем count из интерфейса
+}
+interface CategoryData {
+  icon: string
+  title: string
+  items: CategoryItem[]
+}
+interface CategoriesData {
+  [key: string]: CategoryData
+}
+
 interface Props {
   className?: string
 }
 
-export const categoriesData = {
-  tires: {
-    icon: 'catalog-tires',
-    title: 'Шины для специальной техники',
-    items: [
-      {
-        href: '/catalog/tires/shini-celnolitie',
-        img: '/img/catalog/category/tires/teleskopicheskii-pogruzchik.webp',
-        title: 'Для телескопических погрузчиков',
-        count: 7,
-      },
-      {
-        href: '/catalog/tires/shini-bandazhnie',
-        img: '/img/catalog/category/tires/bandazhnie-shini.webp',
-        title: 'Бандажные',
-        count: 4,
-      },
-      {
-        href: '/catalog/tires/shini-pnevmatichesckie',
-        img: '/img/catalog/category/tires/pnevmatichesckie-shini.webp',
-        title: 'Пневматические',
-        count: 281,
-      },
-      {
-        href: '/catalog/tires/shini-dlya-teleskopicheskih-pogruzchikov',
-        img: '/img/catalog/category/tires/shini-celnolitite.webp',
-        title: 'Цельнолитые',
-        count: 67,
-      },
-      {
-        href: '/catalog/tires/shini-dlya-minipogruzchikov',
-        img: '/img/catalog/category/tires/shini-dlya-mini-pogruzchikov.webp',
-        title: 'Для минипогрузчиков',
-        count: 27,
-      },
-      {
-        href: '/catalog/tires/shini-dlya-ekskavator-pogruzchikov',
-        img: '/img/catalog/category/tires/dlya-ekskavator-pogruzchikov.webp',
-        title: 'Для экскаватор - погрузчиков',
-        count: 37,
-      },
-      {
-        href: '/catalog/tires/shini-dlya-selhoztehniki',
-        img: '/img/catalog/category/tires/selhoztechnika.webp',
-        title: 'Для сельскохозяйственной техники',
-        count: 52,
-      },
-      {
-        href: '/catalog/tires/shini-dlya-sochlenennih-samosvalov',
-        img: '/img/catalog/category/tires/sochlenenni-samosval.webp',
-        title: 'Для сочлененных самосвалов',
-        count: 4,
-      },
-      {
-        href: '/catalog/tires/shini-dlya-portov-i-terminalov',
-        img: '/img/catalog/category/tires/richstaker.webp',
-        title: 'Для портов и терминалов',
-        count: 7,
-      },
-      {
-        href: '/catalog/tires/shini-dlya-zhestkoramnih-samosvalov',
-        img: '/img/catalog/category/tires/zhestkoramnii-samosval.webp',
-        title: 'Для жесткорамных самосвалов',
-        count: 1,
-      },
-      {
-        href: '/catalog/tires/shini-dlya-vilochnih-pogruzchikov',
-        img: '/img/catalog/category/tires/vilochnii-pogruzchik.webp',
-        title: 'Для вилочных погрузчиков',
-        count: 126,
-      },
-      {
-        href: '/catalog/tires/shini-dlya-greiderov',
-        img: '/img/catalog/category/tires/greider.webp',
-        title: 'Для грейдеров',
-        count: 4,
-      },
-      {
-        href: '/catalog/tires/shini-dlya-frontalnih-pogruzchikov',
-        img: '/img/catalog/category/tires/frontalnii-pogruzchik.webp',
-        title: 'Для фронтальных погрузчиков',
-        count: 32,
-      },
-      {
-        href: '/catalog/tires/shini-dlya-kolesnih-ekskavatorov',
-        img: '/img/catalog/category/tires/kolesnii-ekskavator.webp',
-        title: 'Долесных экскаваторов',
-        count: 5,
-      },
-      {
-        href: '/catalog/tires/shini-dlya-asfaltoukladchikov-i-katkov',
-        img: '/img/catalog/category/tires/asphaltoukladchik.webp',
-        title: 'Для асфальтоукладчиков и катков',
-        count: 7,
-      },
-      {
-        href: '/catalog/tires/shini-legkovie',
-        img: '/img/catalog/category/tires/legkovie.webp',
-        title: 'Легковые',
-        count: 43,
-      },
-    ],
-  },
-  acb: {
-    icon: 'catalog-battery',
-    title: 'Аккумуляторные батареи',
-    items: [
-      {
-        href: '/catalog/battery/accumulyatori-tyagovie',
-        img: '/img/catalog/category/battery/tyagovie.webp',
-        title: 'Тяговые аккумуляторы',
-        count: 104,
-      },
-      {
-        href: '/catalog/battery/accumulyatori-dlya-pogruzchikov',
-        img: '/img/catalog/category/battery/akb-dlya-pogruzchijov.webp',
-        title: 'Аккумуляторы для погрузчиков',
-        count: 77,
-      },
-      {
-        href: '/catalog/battery/accumulyatori-dlya-polomoechnih-mashin',
-        img: '/img/catalog/category/battery/akb-dlya-polomoechnih-mashin.webp',
-        title: 'Аккумуляторы для поломоечных машин',
-        count: 1,
-      },
-      {
-        href: '/catalog/battery/accumulyatori-dlya-richtrakov',
-        img: '/img/catalog/category/battery/akumulyator-dlya-richtrakov.webp',
-        title: 'Аккумуляторы для ричтраков',
-        count: 10,
-      },
-      {
-        href: '/catalog/battery/accumulyatori-polutyagovie',
-        img: '/img/catalog/category/battery/polutyagovie-akkumulyatori.webp',
-        title: 'Полутяговые аккумуляторы',
-        count: 19,
-      },
-      {
-        href: '/catalog/battery/accumulyatori-dlya-electrotelezhek',
-        img: '/img/catalog/category/battery/akkumulyatori-dlya-elektrotelezhek.webp',
-        title: 'Аккумуляторы для электротележек',
-        count: 5,
-      },
-      {
-        href: '/catalog/battery/accumulyatori-dlya-shtabelerov',
-        img: '/img/catalog/category/battery/akkumulyatori-dlya-shtabelerov.webp',
-        title: 'Аккумуляторы для штабелеров',
-        count: 14,
-      },
-      {
-        href: '/catalog/battery/accumulyatori-dlya-polletoperevozchikov',
-        img: '/img/catalog/category/battery/akkumelyator-dlya-palletoperevozchikov.webp',
-        title: 'Аккумуляторы для паллетоперевозчиков',
-        count: 5,
-      },
-    ],
-  },
-  oils: {
-    icon: 'oils',
-    title: 'Масла и охлаждающие жидкости',
-    items: [
-      {
-        href: '/catalog/oils/masla-motornie',
-        img: '/img/catalog/category/oils/motornoe-maslo.webp',
-        title: 'Моторные масла',
-        count: 23,
-      },
-      {
-        href: '/catalog/oils/masla-transmissionnie',
-        img: '/img/catalog/category/oils/maslo-transmissionnoe.webp',
-        title: 'Трансмиссионные масла',
-        count: 21,
-      },
-      {
-        href: '/catalog/oils/masla-gidravlichecskie',
-        img: '/img/catalog/category/oils/gidravlicheskoe-maslo.webp',
-        title: 'Гидравлические масла',
-        count: 2,
-      },
-      {
-        href: '/catalog/oils/masla-industrialnie',
-        img: '/img/catalog/category/oils/industrialnoe-maslo.webp',
-        title: 'Индустриальные масла',
-        count: 5,
-      },
-      {
-        href: '/catalog/oils/antifreezi',
-        img: '/img/catalog/category/oils/antifreeez.webp',
-        title: 'Охлаждающие жидкости',
-        count: 15,
-      },
-    ],
-  },
+interface SubcategoryCount {
+  [subcategory: string]: number
 }
 
 export const CategoryProductsSlider: React.FC<Props> = ({ className }) => {
   const [isReady, setIsReady] = useState(false)
+  const [subcategoryCounts, setSubcategoryCounts] = useState<SubcategoryCount>(
+    {},
+  )
+  const categoriesData = initialCategoriesData as CategoriesData
+
+  useEffect(() => {
+    const fetchCounts = async () => {
+      const counts: SubcategoryCount = {}
+      for (const categoryKey in categoriesData) {
+        const category = categoriesData[categoryKey]
+        for (const item of category.items) {
+          let result = await getProductsBySubcategory(item.id)
+
+          if (!result?.count) {
+            result = await getProductsByGroup(item.id)
+            if (!result) {
+              console.error('Failed to get products for', item)
+              continue
+            }
+          }
+          counts[item.id] = result.count
+        }
+      }
+      setSubcategoryCounts(counts)
+    }
+
+    fetchCounts()
+  }, [])
 
   useEffect(() => {
     const initSlider = () => {
@@ -294,7 +154,13 @@ export const CategoryProductsSlider: React.FC<Props> = ({ className }) => {
                               {item.title}
                             </div>
                             <div className="text-sm text-[#b7b7b7]">
-                              {item.count} товар{item.count === 1 ? '' : 'а'}
+                              {subcategoryCounts[item.id]} товар
+                              {subcategoryCounts[item.id] === 1
+                                ? ''
+                                : subcategoryCounts[item.id] >= 2 &&
+                                    subcategoryCounts[item.id] <= 4
+                                  ? 'а'
+                                  : 'ов'}
                             </div>
                           </div>
                         </div>
