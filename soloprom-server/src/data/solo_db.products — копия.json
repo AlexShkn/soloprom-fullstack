@@ -48,5 +48,34 @@
       "groups": []
     }
   ],
-  "products": []
+  "products": [
+    {
+      "productId": "elhim2х40v3pzs210ah",
+      "categoryName": "battery",
+      "subcategoryName": "accumulyatori-tyagovie",
+      "url": "/catalog/battery/accumulyatori-tyagovie/elhim2х40v3pzs210ah",
+      "name": "Тяговый аккумулятор 3PzS 210Ah с ушами",
+      "descr": "2х40V 3PzS 210Ah",
+      "img": "battery/tyagovie/2х40V4PzS280Ah",
+      "sizes": {
+        "816х696х462": 204015,
+        "874x678x462": 204015
+      },
+      "defaultPrice": 204015,
+      "groups": [
+        { "name": "accumulyatori-dlya-polomoechnih-mashin" },
+        { "name": "accumulyatori-dlya-pogruzchikov" }
+      ],
+      "delivery": "30-45 дней",
+      "type": "Тяговый",
+      "brand": "elhim",
+      "country": "РОССИЯ",
+      "plates": "4PzS",
+      "container": "210",
+      "voltage": "2x40",
+      "models": ["bc"],
+      "regalia": [],
+      "isPopular": false
+    }
+  ]
 }

@@ -15,13 +15,39 @@ export class ProductsService {
     });
   }
 
-  async getProductsByCategory(categoryId: string) {
+  async getCategoryIdByName(categoryName: string): Promise<string | null> {
+    const category = await prisma.category.findUnique({
+      where: { name: categoryName },
+    });
+    return category ? category.id : null;
+  }
+
+  async getProductsByCategory(categoryName: string) {
+    const categoryId = await this.getCategoryIdByName(categoryName);
+    if (!categoryId) {
+      throw new Error(`Category with name "${categoryName}" not found`);
+    }
+
     return prisma.product.findMany({
       where: { categoryId },
     });
   }
 
-  async getProductsBySubCategory(subcategoryId: string) {
+  async getSubCategoryIdByName(
+    subcategoryName: string,
+  ): Promise<string | null> {
+    const subcategory = await prisma.subCategory.findUnique({
+      where: { name: subcategoryName },
+    });
+    return subcategory ? subcategory.id : null;
+  }
+
+  async getProductsBySubCategory(subcategoryName: string) {
+    const subcategoryId = await this.getSubCategoryIdByName(subcategoryName);
+    if (!subcategoryId) {
+      throw new Error(`Category with name "${subcategoryName}" not found`);
+    }
+
     return prisma.product.findMany({
       where: { subcategoryId },
     });
@@ -83,18 +109,20 @@ export class ProductsService {
     for (const product of data.products) {
       // Получаем категорию
       const category = await prisma.category.findUnique({
-        where: { name: product.category },
+        where: { name: product.categoryName },
       });
       if (!category) {
-        throw new Error(`Категория "${product.category}" не найдена.`);
+        throw new Error(`Категория "${product.categoryName}" не найдена.`);
       }
 
       // Получаем подкатегорию
       const subcategory = await prisma.subCategory.findUnique({
-        where: { name: product.subcategory },
+        where: { name: product.subcategoryName },
       });
       if (!subcategory) {
-        throw new Error(`Подкатегория "${product.subcategory}" не найдена.`);
+        throw new Error(
+          `Подкатегория "${product.subcategoryName}" не найдена.`,
+        );
       }
 
       // Добавляем продукт
@@ -104,6 +132,8 @@ export class ProductsService {
           name: product.name,
           categoryId: category.id,
           subcategoryId: subcategory.id,
+          categoryName: category.name,
+          subcategoryName: subcategory.name,
           defaultPrice: product.defaultPrice,
           url: product.url || null,
           descr: product.descr || null,
@@ -141,5 +171,19 @@ export class ProductsService {
     return {
       message: 'Категории, подкатегории, группы и продукты успешно загружены!',
     };
+  }
+
+  //====================================================================
+
+  async getProductsByGroup(groupName: string) {
+    return prisma.product.findMany({
+      where: {
+        groups: {
+          some: {
+            name: groupName,
+          },
+        },
+      },
+    });
   }
 }

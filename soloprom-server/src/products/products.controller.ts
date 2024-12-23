@@ -20,18 +20,23 @@ export class ProductsController {
     return this.productService.getProductById(id);
   }
 
-  @Get('category/:id')
-  async getProductsByCategory(@Param('id') id: string) {
-    return this.productService.getProductsByCategory(id);
+  @Get('category/:name')
+  async getProductsByCategory(@Param('name') name: string) {
+    return this.productService.getProductsByCategory(name);
   }
-
-  @Get('subcategory/:id')
-  async getProductsBySubCategory(@Param('id') id: string) {
-    return this.productService.getProductsBySubCategory(id);
+  @Get('subcategory/:name')
+  async getProductsBySubCategory(@Param('name') name: string) {
+    return this.productService.getProductsBySubCategory(name);
   }
 
   @Get('popular')
   async getPopularProducts() {
     return this.productService.getPopularProducts();
+  }
+
+  //====================================================================
+  @Get('group/:name')
+  async getProductsByGroup(@Param('name') name: string) {
+    return this.productService.getProductsByGroup(name);
   }
 }

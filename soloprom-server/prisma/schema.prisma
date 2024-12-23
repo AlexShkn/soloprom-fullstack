@@ -8,26 +8,28 @@ datasource db {
 }
 
 model Product {
-  id            String  @id @default(uuid())
-  productId     String  @unique
-  categoryId    String
-  subcategoryId String
-  name          String
-  descr         String?
-  url           String?
-  img           String?
-  defaultPrice  Float
-  delivery      String?
-  sizes         Json?
-  volumes       Json?
-  models        Json?
-  regalia       Json?
-  isPopular     Boolean @default(false)
-  size          String?
-  discount      Float?
+  id              String  @id @default(uuid())
+  productId       String  @unique
+  categoryId      String
+  subcategoryId   String
+  categoryName    String
+  subcategoryName String
+  name            String
+  descr           String?
+  url             String?
+  img             String?
+  defaultPrice    Float
+  delivery        String?
+  sizes           Json?
+  volumes         Json?
+  models          Json?
+  regalia         Json?
+  isPopular       Boolean @default(false)
+  size            String?
+  discount        Float?
 
-  Category    Category    @relation(fields: [categoryId], references: [id])
-  SubCategory SubCategory @relation(fields: [subcategoryId], references: [id])
+  Category    Category    @relation(fields: [categoryName], references: [name])
+  SubCategory SubCategory @relation(fields: [subcategoryName], references: [name])
   groups      Group[]     @relation("ProductGroups")
   createdAt   DateTime    @default(now())
   updatedAt   DateTime    @updatedAt
