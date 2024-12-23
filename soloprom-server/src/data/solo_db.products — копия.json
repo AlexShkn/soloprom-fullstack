@@ -1,0 +1,52 @@
+{
+  "categories": [
+    {
+      "name": "tires",
+      "subcategories": [
+        "shini-bandazhnie",
+        "shini-pnevmatichesckie",
+        "shini-legkovie",
+        "shini-celnolitie"
+      ],
+      "groups": [
+        "shini-dlya-vilochnih-pogruzchikov",
+        "shini-dlya-minipogruzchikov",
+        "shini-dlya-ekskavator-pogruzchikov",
+        "shini-dlya-selhoztehniki",
+        "shini-dlya-teleskopicheskih-pogruzchikov",
+        "shini-dlya-sochlenennih-samosvalov",
+        "shini-dlya-portov-i-terminalov",
+        "shini-dlya-zhestkoramnih-samosvalov",
+        "shini-dlya-greiderov",
+        "shini-dlya-frontalnih-pogruzchikov",
+        "shini-dlya-kolesnih-ekskavatorov",
+        "shini-dlya-asfaltoukladchikov-i-katkov"
+      ]
+    },
+    {
+      "name": "battery",
+      "subcategories": ["accumulyatori-tyagovie", "accumulyatori-polutyagovie"],
+      "groups": [
+        "accumulyatori-dlya-pogruzchikov",
+        "accumulyatori-dlya-polomoechnih-mashin",
+        "accumulyatori-dlya-richtrakov",
+        "accumulyatori-polutyagovie",
+        "accumulyatori-dlya-electrotelezhek",
+        "accumulyatori-dlya-shtabelerov",
+        "accumulyatori-dlya-polletoperevozchikov"
+      ]
+    },
+    {
+      "name": "oils",
+      "subcategories": [
+        "masla-transmissionnie",
+        "masla-motornie",
+        "masla-industrialnie",
+        "masla-gidravlicheskie",
+        "antifreezi"
+      ],
+      "groups": []
+    }
+  ],
+  "products": []
+}

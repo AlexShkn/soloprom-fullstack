@@ -1,0 +1,64 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Product {
+  id            String  @id @default(uuid())
+  productId     String  @unique
+  categoryId    String
+  subcategoryId String
+  name          String
+  descr         String?
+  url           String?
+  img           String?
+  defaultPrice  Float
+  delivery      String?
+  sizes         Json?
+  volumes       Json?
+  models        Json?
+  regalia       Json?
+  isPopular     Boolean @default(false)
+  size          String?
+  discount      Float?
+
+  Category    Category    @relation(fields: [categoryId], references: [id])
+  SubCategory SubCategory @relation(fields: [subcategoryId], references: [id])
+  groups      Group[]     @relation("ProductGroups")
+  createdAt   DateTime    @default(now())
+  updatedAt   DateTime    @updatedAt
+}
+
+model Category {
+  id          String        @id @default(uuid())
+  name        String        @unique
+  products    Product[]
+  SubCategory SubCategory[]
+  createdAt   DateTime      @default(now())
+  updatedAt   DateTime      @updatedAt
+  Group       Group[]
+}
+
+model SubCategory {
+  id         String    @id @default(uuid())
+  name       String    @unique
+  categoryId String
+  products   Product[]
+  Category   Category  @relation(fields: [categoryId], references: [id])
+  createdAt  DateTime  @default(now())
+  updatedAt  DateTime  @updatedAt
+}
+
+model Group {
+  id         String    @id @default(uuid())
+  name       String    @unique
+  categoryId String // Связь с категорией
+  Category   Category  @relation(fields: [categoryId], references: [id]) // Реляционная связь с Category
+  products   Product[] @relation("ProductGroups")
+  createdAt  DateTime  @default(now())
+  updatedAt  DateTime  @updatedAt
+}
