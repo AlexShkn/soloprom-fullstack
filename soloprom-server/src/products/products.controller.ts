@@ -34,7 +34,11 @@ export class ProductsController {
     return this.productService.getPopularProducts();
   }
 
-  //====================================================================
+  // @Get('group/:id')
+  // async getProductsByGroup(@Param('id') id: string) {
+  //   return this.productService.getProductsByGroup(id);
+  // }
+
   @Get('group/:name')
   async getProductsByGroup(@Param('name') name: string) {
     return this.productService.getProductsByGroup(name);

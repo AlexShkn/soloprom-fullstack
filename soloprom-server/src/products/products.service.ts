@@ -60,20 +60,24 @@ export class ProductsService {
   }
 
   async loadCategoriesProductsAndGroups(data: any) {
-    // Сначала загружаем категории и подкатегории
+    // Карты для кэширования идентификаторов категорий, подкатегорий и групп
+    const categoriesMap = new Map();
+    const subcategoriesMap = new Map();
+    const groupsMap = new Map();
+
+    // 1. Загрузка категорий и подкатегорий
     for (const category of data.categories) {
       // Добавление или обновление категории
       const createdCategory = await prisma.category.upsert({
         where: { name: category.name },
         update: {},
-        create: {
-          name: category.name,
-        },
+        create: { name: category.name },
       });
+      categoriesMap.set(category.name, createdCategory.id);
 
       // Добавление связанных подкатегорий
       for (const subcategory of category.subcategories) {
-        await prisma.subCategory.upsert({
+        const createdSubCategory = await prisma.subCategory.upsert({
           where: { name: subcategory },
           update: {},
           create: {
@@ -81,88 +85,93 @@ export class ProductsService {
             categoryId: createdCategory.id, // Привязка к категории
           },
         });
+        subcategoriesMap.set(subcategory, createdSubCategory.id);
       }
 
       // Добавление связанных групп
       if (category.groups && Array.isArray(category.groups)) {
         for (const group of category.groups) {
-          await prisma.group.upsert({
+          const createdGroup = await prisma.group.upsert({
             where: { name: group },
-            update: {
-              categoryId: createdCategory.id,
-            },
+            update: { categoryId: createdCategory.id },
             create: {
               name: group,
-              categoryId: createdCategory.id,
+              categoryId: createdCategory.id, // Привязка к категории
             },
           });
+          groupsMap.set(group, createdGroup.id);
         }
       }
     }
 
-    // Сохраняем карту всех групп для использования позже
-    const groupsMap = new Map();
-    const allGroups = await prisma.group.findMany();
-    allGroups.forEach((group) => groupsMap.set(group.name, group.id));
-
-    // Привязка продуктов к категориям, подкатегориям и группам
+    // 2. Загрузка продуктов и их связей
     for (const product of data.products) {
-      // Получаем категорию
-      const category = await prisma.category.findUnique({
-        where: { name: product.categoryName },
-      });
-      if (!category) {
+      // Проверяем существование категории и подкатегории
+      const categoryId = categoriesMap.get(product.categoryName);
+      if (!categoryId) {
         throw new Error(`Категория "${product.categoryName}" не найдена.`);
       }
 
-      // Получаем подкатегорию
-      const subcategory = await prisma.subCategory.findUnique({
-        where: { name: product.subcategoryName },
-      });
-      if (!subcategory) {
+      const subcategoryId = subcategoriesMap.get(product.subcategoryName);
+      if (!subcategoryId) {
         throw new Error(
           `Подкатегория "${product.subcategoryName}" не найдена.`,
         );
       }
 
-      // Добавляем продукт
-      const createdProduct = await prisma.product.create({
-        data: {
-          productId: product.productId,
-          name: product.name,
-          categoryId: category.id,
-          subcategoryId: subcategory.id,
-          categoryName: category.name,
-          subcategoryName: subcategory.name,
-          defaultPrice: product.defaultPrice,
-          url: product.url || null,
-          descr: product.descr || null,
-          img: product.img || null,
-          delivery: product.delivery || null,
-          sizes: product.sizes || null,
-          volumes: product.volumes || null,
-          models: product.models || [],
-          regalia: product.regalia || [],
-          isPopular: product.isPopular || false,
-          size: product.size || null,
-          discount: product.discount || null,
-        },
+      // Формируем данные продукта
+      const productData = {
+        productId: product.productId,
+        name: product.name,
+        categoryId: categoryId,
+        subcategoryId: subcategoryId,
+        categoryName: product.categoryName,
+        subcategoryName: product.subcategoryName,
+        defaultPrice: product.defaultPrice || 0,
+        url: product.url || null,
+        descr: product.descr || null,
+        img: product.img || null,
+        delivery: product.delivery || null,
+        sizes: product.sizes || null,
+        volumes: product.volumes || null,
+        models: product.models || [],
+        regalia: product.regalia || [],
+        isPopular: product.isPopular || false,
+        size: product.size || null,
+        discount: product.discount || null,
+      };
+
+      // Создаём или обновляем продукт
+      const createdProduct = await prisma.product.upsert({
+        where: { productId: product.productId },
+        update: { ...productData },
+        create: { ...productData },
       });
 
-      // Привязка продукта к группам
-      if (product.product_group && Array.isArray(product.product_group)) {
-        const groupConnections = product.product_group.map((groupName) => {
-          const groupId = groupsMap.get(groupName);
-          if (!groupId) {
-            throw new Error(`Группа "${groupName}" не найдена.`);
-          }
-          return { id: groupId };
-        });
+      // Привязываем продукт к группам
+      if (product.groups && Array.isArray(product.groups)) {
+        const groupConnections = [];
 
+        for (const groupName of product.groups.map((group) => group.name)) {
+          let groupId = groupsMap.get(groupName);
+
+          // Если группа не найдена, создаём её "на лету"
+          if (!groupId) {
+            const newGroup = await prisma.group.create({
+              data: { name: groupName, categoryId: categoryId },
+            });
+            groupId = newGroup.id;
+            groupsMap.set(groupName, groupId); // Сохраняем в карту
+          }
+
+          groupConnections.push({ id: groupId });
+        }
+
+        // Обновляем связь продуктов с группами
         await prisma.product.update({
           where: { id: createdProduct.id },
           data: {
-            groups: { connect: groupConnections },
+            groupsList: { set: groupConnections }, // Заменяем существующие связи
           },
         });
       }
@@ -175,15 +184,29 @@ export class ProductsService {
 
   //====================================================================
 
+  // async getProductsByGroup(id: string) {
+  // const group = await prisma.group.findUnique({
+  //   where: { id: id },
+  //   include: { products: true },
+  // });
+
+  // if (!group) {
+  //   throw new Error(`Group with name "${id}" not found`);
+  // }
+
+  // return group.products;
+  // }
+
   async getProductsByGroup(groupName: string) {
-    return prisma.product.findMany({
-      where: {
-        groups: {
-          some: {
-            name: groupName,
-          },
-        },
-      },
+    const group = await prisma.group.findUnique({
+      where: { name: groupName },
+      include: { products: true },
     });
+
+    if (!group) {
+      throw new Error(`Group with name "${groupName}" not found`);
+    }
+
+    return group.products;
   }
 }
