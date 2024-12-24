@@ -1,4 +1,4 @@
-import { Controller, Get, Param, Body, Post } from '@nestjs/common';
+import { Controller, Get, Param, Body, Post, Query } from '@nestjs/common';
 import { ProductsService } from './products.service';
 
 @Controller('products')
@@ -29,17 +29,10 @@ export class ProductsController {
     return this.productService.getProductsBySubCategory(name);
   }
 
-  // @Get('group/:id')
-  // async getProductsByGroup(@Param('id') id: string) {
-  //   return this.productService.getProductsByGroup(id);
-  // }
-
   @Get('group/:name')
   async getProductsByGroup(@Param('name') name: string) {
     return this.productService.getProductsByGroup(name);
   }
-
-  //====================================================================
 
   // Синхронизация популярных товаров
   @Post('popular/sync')
@@ -61,5 +54,12 @@ export class ProductsController {
     @Body() updateData: { isPopular?: boolean },
   ) {
     return this.productService.updateProduct(productId, updateData);
+  }
+
+  //====================================================================
+
+  @Get('search/product')
+  async search(@Query('name') name: string) {
+    return this.productService.searchProducts(name);
   }
 }

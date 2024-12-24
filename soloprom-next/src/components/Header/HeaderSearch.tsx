@@ -1,8 +1,37 @@
-import React from 'react'
-
+import React, { useEffect, useState } from 'react'
+import { searchProducts } from '@/app/api/products/products'
 import CloseButton from '@/components/shared/CloseButton'
+import { DebouncedFunction } from '@/supports/debounce'
+import { debounce } from '@/supports/debounce'
+
+import { cardDataProps } from '../ProductList/ProductList'
 
 const HeaderSearch = () => {
+  const [searchValue, setSearchValue] = useState<string>('')
+  const [products, setProducts] = useState<cardDataProps[]>([])
+
+  const searchProductsForValue = async (name: string): Promise<void> => {
+    if (name.trim() === '') {
+      setProducts([])
+      return
+    }
+
+    const response = await searchProducts('name', name)
+    const data: cardDataProps[] = await response.data
+    setProducts(data)
+  }
+
+  const debouncedSearch: DebouncedFunction<(value: string) => Promise<void>> =
+    debounce((value) => searchProductsForValue(value), 300)
+
+  // Используем useEffect для запуска дебаунс-поиска
+  useEffect(() => {
+    debouncedSearch(searchValue) // Изменяем на searchValue вместо name
+    return () => {
+      debouncedSearch.cancel && debouncedSearch.cancel()
+    }
+  }, [searchValue])
+
   return (
     <div className="header-bottom__catalog-field relative flex max-w-[600px] flex-auto items-center">
       <div className="relative h-full w-full">
@@ -10,6 +39,7 @@ const HeaderSearch = () => {
           type="text"
           name="search-product"
           id="search-product-input"
+          onChange={(e) => setSearchValue(e.target.value)}
           placeholder="Поиск по наименованию и размеру"
           className="rounded-tl-4 rounded-bl-4 h-full w-full bg-[#f4f5fa] px-8 py-4 placeholder:text-sm placeholder:text-[#c2c5da]"
         />

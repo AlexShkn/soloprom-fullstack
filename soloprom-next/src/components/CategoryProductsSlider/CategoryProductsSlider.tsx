@@ -22,7 +22,7 @@ interface CategoryItem {
   href: string
   img: string
   title: string
-  // count: number; Убираем count из интерфейса
+  type: string
 }
 interface CategoryData {
   icon: string
@@ -41,32 +41,49 @@ interface SubcategoryCount {
   [subcategory: string]: number
 }
 
+const categoriesData = initialCategoriesData as CategoriesData
+
 export const CategoryProductsSlider: React.FC<Props> = ({ className }) => {
   const [isReady, setIsReady] = useState(false)
   const [subcategoryCounts, setSubcategoryCounts] = useState<SubcategoryCount>(
     {},
   )
-  const categoriesData = initialCategoriesData as CategoriesData
+  const [groupCounts, setGroupCounts] = useState<SubcategoryCount>({})
 
   useEffect(() => {
     const fetchCounts = async () => {
-      const counts: SubcategoryCount = {}
+      const subCounts: SubcategoryCount = {}
+      const groupCount: SubcategoryCount = {}
+
       for (const categoryKey in categoriesData) {
         const category = categoriesData[categoryKey]
         for (const item of category.items) {
-          let result = await getProductsBySubcategory(item.id)
+          const type = item.type
 
-          if (!result?.count) {
-            result = await getProductsByGroup(item.id)
-            if (!result) {
-              console.error('Failed to get products for', item)
-              continue
-            }
+          let result
+
+          if (type === 'subcategory') {
+            result = await getProductsBySubcategory(item.id)
           }
-          counts[item.id] = result.count
+          if (type === 'group') {
+            result = await getProductsByGroup(item.id)
+          }
+
+          if (!result) {
+            console.error('Failed to get products for', item)
+            continue
+          }
+
+          if (type === 'subcategory') {
+            subCounts[item.id] = result.count
+          }
+          if (type === 'group') {
+            groupCount[item.id] = result.count
+          }
         }
       }
-      setSubcategoryCounts(counts)
+      setSubcategoryCounts(subCounts)
+      setGroupCounts(groupCount)
     }
 
     fetchCounts()
@@ -154,13 +171,23 @@ export const CategoryProductsSlider: React.FC<Props> = ({ className }) => {
                               {item.title}
                             </div>
                             <div className="text-sm text-[#b7b7b7]">
-                              {subcategoryCounts[item.id]} товар
-                              {subcategoryCounts[item.id] === 1
-                                ? ''
-                                : subcategoryCounts[item.id] >= 2 &&
-                                    subcategoryCounts[item.id] <= 4
-                                  ? 'а'
-                                  : 'ов'}
+                              {item.type === 'subcategory'
+                                ? ` ${subcategoryCounts[item.id]} товар${
+                                    subcategoryCounts[item.id] === 1
+                                      ? ''
+                                      : subcategoryCounts[item.id] >= 2 &&
+                                          subcategoryCounts[item.id] <= 4
+                                        ? 'а'
+                                        : 'ов'
+                                  } `
+                                : ` ${groupCounts[item.id]} товар${
+                                    groupCounts[item.id] === 1
+                                      ? ''
+                                      : groupCounts[item.id] >= 2 &&
+                                          groupCounts[item.id] <= 4
+                                        ? 'а'
+                                        : 'ов'
+                                  } `}
                             </div>
                           </div>
                         </div>

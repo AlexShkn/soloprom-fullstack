@@ -36,6 +36,7 @@ export async function getProductsBySubcategory(
     return null
   }
 }
+
 export async function getProductsByGroup(
   group: string,
 ): Promise<{ data: cardDataProps[]; count: number } | null> {
@@ -56,6 +57,13 @@ export async function getProductsByGroup(
 }
 
 export async function getPopularProducts() {
-  const response = await axios.get('http://localhost:3001/products/popular')
+  const response = await axios.get('http://localhost:3001/products/popular/get')
+  return response
+}
+
+export async function searchProducts(field: string, value: string) {
+  const response = await axios.get(
+    `http://localhost:3001/products/search/product?${field}=${value}`,
+  )
   return response
 }

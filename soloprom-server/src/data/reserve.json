@@ -1,0 +1,75 @@
+{
+  "categories": [
+    {
+      "name": "tires",
+      "subcategories": [
+        "shini-bandazhnie",
+        "shini-pnevmatichesckie",
+        "shini-legkovie",
+        "shini-celnolitie"
+      ],
+      "groups": [
+        "shini-dlya-vilochnih-pogruzchikov",
+        "shini-dlya-minipogruzchikov",
+        "shini-dlya-ekskavator-pogruzchikov",
+        "shini-dlya-selhoztehniki",
+        "shini-dlya-teleskopicheskih-pogruzchikov",
+        "shini-dlya-sochlenennih-samosvalov",
+        "shini-dlya-portov-i-terminalov",
+        "shini-dlya-zhestkoramnih-samosvalov",
+        "shini-dlya-greiderov",
+        "shini-dlya-frontalnih-pogruzchikov",
+        "shini-dlya-kolesnih-ekskavatorov",
+        "shini-dlya-asfaltoukladchikov-i-katkov"
+      ]
+    },
+    {
+      "name": "battery",
+      "subcategories": ["accumulyatori-tyagovie", "accumulyatori-polutyagovie"],
+      "groups": [
+        "accumulyatori-dlya-pogruzchikov",
+        "accumulyatori-dlya-polomoechnih-mashin",
+        "accumulyatori-dlya-richtrakov",
+        "accumulyatori-dlya-electrotelezhek",
+        "accumulyatori-dlya-shtabelerov",
+        "accumulyatori-dlya-polletoperevozchikov"
+      ]
+    },
+    {
+      "name": "oils",
+      "subcategories": [
+        "masla-transmissionnie",
+        "masla-motornie",
+        "masla-industrialnie",
+        "masla-gidravlicheskie",
+        "antifreezi"
+      ],
+      "groups": []
+    }
+  ],
+  "products": [
+    {
+      "productId": "MRLMAW2001258015314PR",
+      "categoryName": "tires",
+      "subcategoryName": "shini-pnevmatichesckie",
+      "url": "/catalog/tires/shini-pnevmatichesckie/MRLMAW2001258015314PR",
+      "name": "MRL MAW 200 12.5/80-15.3 14PR",
+      "descr": "MRL MAW 200 12.5/80-15.3 14PR",
+      "img": "tires/MRLMAW2001258015314PR",
+      "sizes": {
+        "12.5/80-15.3": 12850
+      },
+      "defaultPrice": 12850,
+      "groups": [{ "name": "shini-dlya-selhoztehniki" }],
+
+      "delivery": "2-3 дня",
+      "type": "Пневматическая",
+      "brand": "MRL",
+      "country": "Индия",
+      "models": [],
+      "regalia": ["recommend"],
+      "isPopular": false,
+      "size": "15.3"
+    }
+  ]
+}

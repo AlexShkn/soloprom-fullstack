@@ -1,13 +1,3 @@
-export function debounce(func, delay) {
-  let timeout
-  return (...args) => {
-    clearTimeout(timeout)
-    timeout = setTimeout(() => {
-      func(...args)
-    }, delay)
-  }
-}
-
 export const throttle = (func, delay) => {
   let timeoutId
   return (...args) => {

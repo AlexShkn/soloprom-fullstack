@@ -15,42 +15,51 @@ export class ProductsService {
     });
   }
 
-  async getCategoryIdByName(categoryName: string): Promise<string | null> {
-    const category = await prisma.category.findUnique({
-      where: { name: categoryName },
-    });
-    return category ? category.id : null;
-  }
+  // async getCategoryIdByName(categoryName: string): Promise<string | null> {
+  //   const category = await prisma.category.findUnique({
+  //     where: { name: categoryName },
+  //   });
+  //   return category ? category.id : null;
+  // }
 
   async getProductsByCategory(categoryName: string) {
-    const categoryId = await this.getCategoryIdByName(categoryName);
-    if (!categoryId) {
+    const category = await prisma.subCategory.findUnique({
+      where: { name: categoryName },
+      include: {
+        products: true,
+      },
+    });
+
+    if (!category) {
       throw new Error(`Category with name "${categoryName}" not found`);
     }
 
-    return prisma.product.findMany({
-      where: { categoryId },
-    });
+    return category.products;
   }
 
-  async getSubCategoryIdByName(
-    subcategoryName: string,
-  ): Promise<string | null> {
-    const subcategory = await prisma.subCategory.findUnique({
-      where: { name: subcategoryName },
-    });
-    return subcategory ? subcategory.id : null;
-  }
+  // async getSubCategoryIdByName(
+  //   subcategoryName: string,
+  // ): Promise<string | null> {
+  //   const subcategory = await prisma.subCategory.findUnique({
+  //     where: { name: subcategoryName },
+  //   });
+
+  //   return subcategory ? subcategory.id : null;
+  // }
 
   async getProductsBySubCategory(subcategoryName: string) {
-    const subcategoryId = await this.getSubCategoryIdByName(subcategoryName);
-    if (!subcategoryId) {
-      throw new Error(`Category with name "${subcategoryName}" not found`);
+    const subcategory = await prisma.subCategory.findUnique({
+      where: { name: subcategoryName },
+      include: {
+        products: true,
+      },
+    });
+
+    if (!subcategory) {
+      throw new Error(`SubCategory with name "${subcategoryName}" not found`);
     }
 
-    return prisma.product.findMany({
-      where: { subcategoryId },
-    });
+    return subcategory.products;
   }
 
   async loadCategoriesProductsAndGroups(data: any) {
@@ -128,8 +137,8 @@ export class ProductsService {
         delivery: product.delivery || null,
         sizes: product.sizes || null,
         volumes: product.volumes || null,
-        models: product.models || [],
-        regalia: product.regalia || [],
+        models: product.models || [], // JSON
+        regalia: product.regalia || [], // JSON
         isPopular: product.isPopular || false,
         size: product.size || null,
         discount: product.discount || null,
@@ -158,14 +167,17 @@ export class ProductsService {
             groupsMap.set(groupName, groupId); // Сохраняем в карту
           }
 
-          groupConnections.push({ id: groupId });
+          // Формируем соединение
+          groupConnections.push(groupId);
         }
 
-        // Обновляем связь продуктов с группами
+        // Обновляем связь продуктов с группами (через реляцию)
         await prisma.product.update({
           where: { id: createdProduct.id },
           data: {
-            groupsList: { set: groupConnections }, // Заменяем существующие связи
+            groups: {
+              set: groupConnections.map((id) => ({ id })), // Связь с существующими группами
+            },
           },
         });
       }
@@ -176,23 +188,12 @@ export class ProductsService {
     };
   }
 
-  // async getProductsByGroup(id: string) {
-  // const group = await prisma.group.findUnique({
-  //   where: { id: id },
-  //   include: { products: true },
-  // });
-
-  // if (!group) {
-  //   throw new Error(`Group with name "${id}" not found`);
-  // }
-
-  // return group.products;
-  // }
-
   async getProductsByGroup(groupName: string) {
     const group = await prisma.group.findUnique({
-      where: { name: groupName },
-      include: { products: true },
+      where: { name: groupName }, // Используется уникальное поле name
+      include: {
+        products: true,
+      },
     });
 
     if (!group) {
@@ -202,7 +203,6 @@ export class ProductsService {
     return group.products;
   }
 
-  //====================================================================
   async syncPopularProducts() {
     // Получаем товары с `isPopular: true`
     const popularProducts = await prisma.product.findMany({
@@ -237,7 +237,7 @@ export class ProductsService {
 
   async updateProduct(
     productId: string,
-    updateData: Partial<{ isPopular: boolean }>, // Поддержка только некоторых полей, например `isPopular`
+    updateData: Partial<{ isPopular: boolean }>,
   ) {
     const updatedProduct = await prisma.product.update({
       where: { productId: productId },
@@ -267,14 +267,25 @@ export class ProductsService {
   }
 
   async getPopularProducts() {
-    console.log('Fetch popular products from database'); // Лог
     const popularProductsRecords = await prisma.popularProduct.findMany({
       include: {
-        product: true, // Полная информация о связанных продуктах
+        product: true,
       },
     });
 
-    // Возвращаем только данные о товарах
     return popularProductsRecords.map((record) => record.product);
+  }
+
+  //====================================================================
+
+  async searchProducts(name: string) {
+    return prisma.product.findMany({
+      where: {
+        name: {
+          contains: name,
+          mode: 'insensitive', // Поиск без учета регистра
+        },
+      },
+    });
   }
 }
