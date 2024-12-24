@@ -29,14 +29,23 @@ const typeNameAdaptive: { [key: string]: string } = {
 }
 
 export const FavoriteCard: React.FC<FavoriteCardProps> = ({ product }) => {
-  const { id, name, variant, price, url, img, type, category } = product
+  const {
+    productId,
+    name,
+    variant,
+    price,
+    url,
+    img,
+    productType,
+    categoryName,
+  } = product
   const [cartIsLoad, setCartIsLoad] = useState(false)
   const [cartIsAdded, setCartIsAdded] = useState(false)
 
   const dispatch = useDispatch()
   const cartState = useSelector((state: RootState) => state.cart.cartState)
 
-  const cartId = `${id}-${variant}`
+  const cartId = `${productId}-${variant}`
 
   useEffect(() => {
     setCartIsAdded(cartState.some((item) => item.cartId === cartId))
@@ -46,14 +55,14 @@ export const FavoriteCard: React.FC<FavoriteCardProps> = ({ product }) => {
     if (!cartIsAdded) {
       setCartIsLoad(true)
       const product = {
-        id,
+        productId,
         name,
         variant,
         price,
         url,
         img,
-        type,
-        category,
+        productType,
+        categoryName,
       }
       dispatch(addProductToCart(product))
       setTimeout(() => {
@@ -62,7 +71,7 @@ export const FavoriteCard: React.FC<FavoriteCardProps> = ({ product }) => {
       }, 1000)
     } else {
       setCartIsLoad(true)
-      dispatch(removeCartProduct({ id, variant }))
+      dispatch(removeCartProduct({ productId, variant }))
       setTimeout(() => {
         setCartIsAdded(false)
         setCartIsLoad(false)
@@ -92,10 +101,10 @@ export const FavoriteCard: React.FC<FavoriteCardProps> = ({ product }) => {
             <b>{name}</b>
           </div>
           <div className="cart__item-sizes">
-            {sizeNameAdaptive[category]}: <b>{variant}</b>
+            {sizeNameAdaptive[categoryName]}: <b>{variant}</b>
           </div>
           <div className="cart__item-type">
-            {typeNameAdaptive[category]}: <b>{type}</b>
+            {typeNameAdaptive[categoryName]}: <b>{productType}</b>
           </div>
         </div>
       </div>
@@ -111,7 +120,7 @@ export const FavoriteCard: React.FC<FavoriteCardProps> = ({ product }) => {
               onClick={() =>
                 dispatch(
                   removeFavoriteProduct({
-                    id: id,
+                    productId: productId,
                     variant: variant,
                   }),
                 )

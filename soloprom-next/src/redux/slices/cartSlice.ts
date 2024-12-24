@@ -2,8 +2,8 @@ import { createSlice } from '@reduxjs/toolkit'
 import { calculateCartTotalAmount } from '@/utils/calculateCartTotalAmount'
 
 export interface CartProduct {
-  category: string
-  id: string
+  categoryName: string
+  productId: string
   img: string
   cartId: string
   name: string
@@ -11,7 +11,7 @@ export interface CartProduct {
   url: string
   variant: string
   count: number
-  type: string
+  productType: string
 }
 
 interface CartStateTypes {
@@ -33,9 +33,17 @@ export const cartSlice = createSlice({
       state.totalAmount = calculateCartTotalAmount(state.cartState)
     },
     addProductToCart: (state, action) => {
-      const { id, name, variant, price, url, img, type, category } =
-        action.payload
-      const cartId = `${id}-${variant}`
+      const {
+        productId,
+        name,
+        variant,
+        price,
+        url,
+        img,
+        productType,
+        categoryName,
+      } = action.payload
+      const cartId = `${productId}-${variant}`
 
       const productIndex = state.cartState.findIndex(
         (item) => item.cartId === cartId,
@@ -43,15 +51,15 @@ export const cartSlice = createSlice({
 
       if (productIndex === -1) {
         state.cartState.push({
-          category,
+          categoryName,
           cartId,
-          id,
+          productId,
           name,
           variant,
           price,
           url,
           img,
-          type,
+          productType,
           count: 1,
         })
 
@@ -64,8 +72,8 @@ export const cartSlice = createSlice({
       state.totalAmount = calculateCartTotalAmount(state.cartState)
     },
     increaseProductCount: (state, action) => {
-      const { id, variant } = action.payload
-      const cartId = `${id}-${variant}`
+      const { productId, variant } = action.payload
+      const cartId = `${productId}-${variant}`
 
       const existingProductIndex = state.cartState.findIndex(
         (item) => item.cartId === cartId,
@@ -78,8 +86,8 @@ export const cartSlice = createSlice({
       state.totalAmount = calculateCartTotalAmount(state.cartState)
     },
     decreaseProductCount: (state, action) => {
-      const { id, variant } = action.payload
-      const cartId = `${id}-${variant}`
+      const { productId, variant } = action.payload
+      const cartId = `${productId}-${variant}`
       const existingProductIndex = state.cartState.findIndex(
         (item) => item.cartId === cartId,
       )
@@ -95,8 +103,8 @@ export const cartSlice = createSlice({
       state.totalAmount = calculateCartTotalAmount(state.cartState)
     },
     removeCartProduct: (state, action) => {
-      const { id, variant } = action.payload
-      const cartId = `${id}-${variant}`
+      const { productId, variant } = action.payload
+      const cartId = `${productId}-${variant}`
 
       state.cartState = state.cartState.filter((obj) => obj.cartId !== cartId)
       state.totalAmount = calculateCartTotalAmount(state.cartState)

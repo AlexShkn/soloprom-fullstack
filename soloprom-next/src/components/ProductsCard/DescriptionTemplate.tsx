@@ -37,8 +37,8 @@ export const DescriptionTemplate: React.FC<DescriptionTypes> = ({
 }) => {
   const {
     id,
-    category,
-    type,
+    categoryName,
+    productType,
     brand,
     country,
     sizes,
@@ -65,8 +65,8 @@ export const DescriptionTemplate: React.FC<DescriptionTypes> = ({
   return (
     <div className="product-card__descr-list">
       {renderDescriptionItem(
-        getAdaptiveValue(wordAdaptive, 'types', category) || 'Тип',
-        type,
+        getAdaptiveValue(wordAdaptive, 'types', categoryName) || 'Тип',
+        productType,
       )}
 
       {load_index && renderDescriptionItem('Индекс нагрузки', load_index)}
@@ -78,7 +78,7 @@ export const DescriptionTemplate: React.FC<DescriptionTypes> = ({
       {sizes && (
         <div className="product-card__descr-item flex items-center justify-between pb-1 text-sm">
           <div className="product-card__descr-item-name">
-            {getAdaptiveValue(wordAdaptive, 'sizes', category)}
+            {getAdaptiveValue(wordAdaptive, 'sizes', categoryName)}
           </div>
           <div className="font-bold">
             {Object.keys(sizes).length === 1 ? (

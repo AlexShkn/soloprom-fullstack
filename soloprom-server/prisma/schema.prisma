@@ -8,32 +8,41 @@ datasource db {
 }
 
 model Product {
-  id              String          @id @default(uuid())
   productId       String          @unique
-  categoryId      String
-  subcategoryId   String
+  isPopular       Boolean         @default(false)
+  discount        Float?
   categoryName    String
   subcategoryName String
   name            String
   descr           String?
   url             String?
   img             String?
+  brand           String?
+  country         String?
+  plates          String?
+  container       String?
+  voltage         String?
+  load_index      String?
   defaultPrice    Float
   delivery        String?
   sizes           Json?
   volumes         Json?
   models          Json?
   regalia         Json?
-  isPopular       Boolean         @default(false)
   popularRecord   PopularProduct? @relation("PopularRelation")
   size            String?
-  discount        Float?
+  productType     String
 
   Category    Category    @relation(fields: [categoryName], references: [name])
   SubCategory SubCategory @relation(fields: [subcategoryName], references: [name])
   groups      Group[]     @relation("ProductGroups")
-  createdAt   DateTime    @default(now())
-  updatedAt   DateTime    @updatedAt
+
+  id            String @id @default(uuid())
+  categoryId    String
+  subcategoryId String
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }
 
 model PopularProduct {

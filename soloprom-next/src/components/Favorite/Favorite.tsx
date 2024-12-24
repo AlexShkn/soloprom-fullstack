@@ -11,15 +11,15 @@ import '../Cart/Cart.scss'
 import { FavoriteCard } from './FavoriteCard'
 
 export interface FavoriteProduct {
-  id: string
+  productId: string
   favoriteId: string
   name: string
   price: number
   url: string
   variant: string
   img: string
-  category: string
-  type: string
+  categoryName: string
+  productType: string
 }
 
 export const Favorite: React.FC = () => {
@@ -42,7 +42,7 @@ export const Favorite: React.FC = () => {
           {favoriteState.length ? (
             favoriteState.map((product) => (
               <FavoriteCard
-                key={product.id + product.variant}
+                key={product.productId + product.variant}
                 product={product}
               />
             ))

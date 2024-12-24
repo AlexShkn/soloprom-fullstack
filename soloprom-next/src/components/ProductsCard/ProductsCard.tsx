@@ -27,17 +27,17 @@ export const ProductsCard: React.FC<ProductsCardProps> = ({ cardData }) => {
   )
 
   const {
-    id,
+    productId,
     url,
     name,
     img,
-    category,
+    categoryName,
     regalia = [],
     sizes,
     defaultPrice,
     volumes,
     discount,
-    type,
+    productType,
   } = cardData
 
   const sizesData = sizes || volumes
@@ -49,14 +49,14 @@ export const ProductsCard: React.FC<ProductsCardProps> = ({ cardData }) => {
 
       setVariantValue(defaultSize)
     }
-    const cartId = `${id}-${defaultSize}`
+    const cartId = `${productId}-${defaultSize}`
 
     setCartIsAdded(cartState.some((item) => item.cartId === cartId))
     setFavoriteIsAdded(favoriteState.some((item) => item.favoriteId === cartId))
   }, [])
 
   useEffect(() => {
-    const cartId = `${id}-${variantValue}`
+    const cartId = `${productId}-${variantValue}`
 
     setCartIsAdded(cartState.some((item) => item.cartId === cartId))
     setFavoriteIsAdded(favoriteState.some((item) => item.favoriteId === cartId))
@@ -65,14 +65,14 @@ export const ProductsCard: React.FC<ProductsCardProps> = ({ cardData }) => {
   const handleAddToCart = () => {
     setCartIsLoad(true)
     const product = {
-      id,
+      productId,
       name,
       variant: variantValue,
       price: sizesData?.[variantValue] ?? defaultPrice,
       url,
       img,
-      type,
-      category,
+      productType,
+      categoryName,
     }
     dispatch(addProductToCart(product))
     setTimeout(() => {
@@ -83,7 +83,7 @@ export const ProductsCard: React.FC<ProductsCardProps> = ({ cardData }) => {
 
   const handleRemoveFromCart = () => {
     setCartIsLoad(true)
-    dispatch(removeCartProduct({ id, variant: variantValue }))
+    dispatch(removeCartProduct({ productId, variant: variantValue }))
     setTimeout(() => {
       setCartIsAdded(false)
       setCartIsLoad(false)
@@ -93,14 +93,14 @@ export const ProductsCard: React.FC<ProductsCardProps> = ({ cardData }) => {
   const handleAddToFavorites = () => {
     setFavoriteIsLoad(true)
     const product = {
-      id,
+      productId,
       name,
       variant: variantValue,
       price: sizesData?.[variantValue] ?? defaultPrice,
       url,
       img,
-      type,
-      category,
+      productType,
+      categoryName,
     }
     dispatch(addProductToFavorite(product))
     setTimeout(() => {
@@ -111,7 +111,7 @@ export const ProductsCard: React.FC<ProductsCardProps> = ({ cardData }) => {
 
   const handleRemoveFromFavorites = () => {
     setFavoriteIsLoad(true)
-    dispatch(removeFavoriteProduct({ id, variant: variantValue }))
+    dispatch(removeFavoriteProduct({ productId, variant: variantValue }))
     setTimeout(() => {
       setFavoriteIsAdded(false)
       setFavoriteIsLoad(false)

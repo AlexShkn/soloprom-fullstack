@@ -1,15 +1,15 @@
 import { createSlice } from '@reduxjs/toolkit'
 
 export interface FavoriteProduct {
-  id: string
+  productId: string
   favoriteId: string
   name: string
   price: number
   url: string
   variant: string
   img: string
-  type: string
-  category: string
+  productType: string
+  categoryName: string
 }
 
 interface FavoriteStateTypes {
@@ -28,9 +28,17 @@ export const favoriteSlice = createSlice({
       state.favoriteState = action.payload
     },
     addProductToFavorite: (state, action) => {
-      const { id, name, variant, price, url, img, type, category } =
-        action.payload
-      const favoriteId = `${id}-${variant}`
+      const {
+        productId,
+        name,
+        variant,
+        price,
+        url,
+        img,
+        productType,
+        categoryName,
+      } = action.payload
+      const favoriteId = `${productId}-${variant}`
 
       const productIndex = state.favoriteState.findIndex(
         (item) => item.favoriteId === favoriteId,
@@ -39,23 +47,23 @@ export const favoriteSlice = createSlice({
       if (productIndex === -1) {
         state.favoriteState.push({
           favoriteId,
-          id,
+          productId,
           name,
           variant,
           price,
           url,
           img,
-          type,
-          category,
+          productType,
+          categoryName,
         })
       }
       localStorage.setItem('favorite', JSON.stringify(state.favoriteState))
     },
 
     removeFavoriteProduct: (state, action) => {
-      const { id, variant } = action.payload
+      const { productId, variant } = action.payload
 
-      const favoriteId = `${id}-${variant}`
+      const favoriteId = `${productId}-${variant}`
 
       state.favoriteState = state.favoriteState.filter(
         (obj) => obj.favoriteId !== favoriteId,

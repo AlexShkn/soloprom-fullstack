@@ -142,6 +142,13 @@ export class ProductsService {
         isPopular: product.isPopular || false,
         size: product.size || null,
         discount: product.discount || null,
+        load_index: product.load_index || null,
+        voltage: product.voltage || null,
+        container: product.container || null,
+        plates: product.plates || null,
+        country: product.country || null,
+        brand: product.brand || null,
+        productType: product.productType || null,
       };
 
       // Создаём или обновляем продукт

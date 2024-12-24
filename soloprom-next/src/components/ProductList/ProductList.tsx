@@ -5,14 +5,17 @@ import { Navigation } from 'swiper/modules'
 
 import './ProductList.scss'
 import { ProductsCard } from '../ProductsCard/ProductsCard'
+import { getPopularProducts } from '@/app/api/products/products'
 
-import favoriteData from '@/data/products/favorites.json'
+// import favoriteData from '@/data/products/favorites.json'
 
 export interface cardDataProps {
   id: string
+  productId: string
   url: string
   category: string
   subcategory: string
+  categoryName: string
   name: string
   descr: string
   img: string
@@ -22,7 +25,7 @@ export interface cardDataProps {
   defaultPrice: number
   volumes?: { [size: string]: number | undefined }
   models?: string[]
-  type: string
+  productType: string
   brand: string
   country: string
   size?: string
@@ -57,7 +60,41 @@ export const ProductList: React.FC = () => {
   const [currantTab, setCurrantTab] = useState<'tires' | 'battery' | 'oils'>(
     'tires',
   )
-  const [activeNav, setActiveNav] = useState(true)
+  const [favoriteData, setFavoriteData] = useState<FavoriteList>({
+    tires: [],
+    battery: [],
+    oils: [],
+  })
+  const [loading, setLoading] = useState(true)
+
+  useEffect(() => {
+    const fetchPopularProducts = async () => {
+      try {
+        setLoading(true)
+        const response = await getPopularProducts()
+
+        const formattedProducts: FavoriteList = {
+          tires: response.data.filter(
+            (product: cardDataProps) => product.categoryName === 'tires',
+          ),
+          battery: response.data.filter(
+            (product: cardDataProps) => product.categoryName === 'battery',
+          ),
+          oils: response.data.filter(
+            (product: cardDataProps) => product.categoryName === 'oils',
+          ),
+        }
+
+        setFavoriteData(formattedProducts)
+      } catch (err) {
+        console.error('Не удалось получить данные')
+      } finally {
+        setLoading(false)
+      }
+    }
+
+    fetchPopularProducts()
+  }, [])
 
   return (
     <section className="product-list section-offset">
@@ -119,17 +156,20 @@ export const ProductList: React.FC = () => {
                     const numSlidesPerView =
                       typeof slidesPerView === 'number' ? slidesPerView : 1
 
-                    if (swiper.slides.length >= numSlidesPerView) {
-                      setActiveNav(false)
-                    }
+                    // if (swiper.slides.length >= numSlidesPerView) {
+                    //   setActiveNav(false)
+                    // }
                   }}
                   navigation={{
                     nextEl: '.product-list__slider-button--next',
                     prevEl: '.product-list__slider-button--prev',
                   }}
                 >
-                  {favoriteData[currantTab].map((item) => (
-                    <SwiperSlide key={item.id} className="product-list__item">
+                  {favoriteData[currantTab]?.map((item) => (
+                    <SwiperSlide
+                      key={item.productId}
+                      className="product-list__item"
+                    >
                       <ProductsCard cardData={item} />
                     </SwiperSlide>
                   ))}

@@ -50,7 +50,10 @@ export const Cart: React.FC = () => {
         <div className="cart__list">
           {cartState.length ? (
             cartState.map((product) => (
-              <div key={product.id + product.variant} className="cart__item">
+              <div
+                key={product.productId + product.variant}
+                className="cart__item"
+              >
                 <div className="cart__item-left">
                   <Link href={product.url} className="cart__item-link"></Link>
                   <div className="cart__item-image">
@@ -73,12 +76,12 @@ export const Cart: React.FC = () => {
                       <b>{product.name}</b>
                     </div>
                     <div className="cart__item-sizes">
-                      {sizeNameAdaptive[product.category]}:
+                      {sizeNameAdaptive[product.categoryName]}:
                       <b>{product.variant}</b>
                     </div>
                     <div className="cart__item-type">
-                      {typeNameAdaptive[product.category]}:{' '}
-                      <b>{product.type}</b>
+                      {typeNameAdaptive[product.categoryName]}:{' '}
+                      <b>{product.productType}</b>
                     </div>
                   </div>
                 </div>
@@ -88,7 +91,7 @@ export const Cart: React.FC = () => {
                       onClick={() =>
                         dispatch(
                           decreaseProductCount({
-                            id: product.id,
+                            productId: product.productId,
                             variant: product.variant,
                           }),
                         )
@@ -108,7 +111,7 @@ export const Cart: React.FC = () => {
                       onClick={() =>
                         dispatch(
                           increaseProductCount({
-                            id: product.id,
+                            productId: product.productId,
                             variant: product.variant,
                           }),
                         )
@@ -133,7 +136,7 @@ export const Cart: React.FC = () => {
                         onClick={() =>
                           dispatch(
                             removeCartProduct({
-                              id: product.id,
+                              productId: product.productId,
                               variant: product.variant,
                             }),
                           )
