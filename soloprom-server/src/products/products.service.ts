@@ -9,9 +9,9 @@ export class ProductsService {
     return prisma.product.findMany();
   }
 
-  async getProductById(id: string) {
+  async getProductById(productId: string) {
     return prisma.product.findUnique({
-      where: { id },
+      where: { productId },
     });
   }
 
@@ -50,12 +50,6 @@ export class ProductsService {
 
     return prisma.product.findMany({
       where: { subcategoryId },
-    });
-  }
-
-  async getPopularProducts() {
-    return prisma.product.findMany({
-      where: { isPopular: true },
     });
   }
 
@@ -182,8 +176,6 @@ export class ProductsService {
     };
   }
 
-  //====================================================================
-
   // async getProductsByGroup(id: string) {
   // const group = await prisma.group.findUnique({
   //   where: { id: id },
@@ -208,5 +200,81 @@ export class ProductsService {
     }
 
     return group.products;
+  }
+
+  //====================================================================
+  async syncPopularProducts() {
+    // Получаем товары с `isPopular: true`
+    const popularProducts = await prisma.product.findMany({
+      where: { isPopular: true },
+    });
+
+    // Идентификаторы текущих популярных товаров
+    const popularProductIds = popularProducts.map(
+      (product) => product.productId,
+    );
+
+    // Удаляем из PopularProduct товары, которых больше нет в `isPopular: true`
+    await prisma.popularProduct.deleteMany({
+      where: {
+        productId: {
+          notIn: popularProductIds, // Удаляем только несоответствующие
+        },
+      },
+    });
+
+    // Добавляем новые популярные товары в PopularProduct
+    for (const product of popularProducts) {
+      await prisma.popularProduct.upsert({
+        where: { productId: product.productId },
+        update: {}, // Если уже существует, пропускаем
+        create: { productId: product.productId }, // Если не существует, добавляем
+      });
+    }
+
+    return { message: 'Синхронизация популярных товаров завершена!' };
+  }
+
+  async updateProduct(
+    productId: string,
+    updateData: Partial<{ isPopular: boolean }>, // Поддержка только некоторых полей, например `isPopular`
+  ) {
+    const updatedProduct = await prisma.product.update({
+      where: { productId: productId },
+      data: updateData,
+    });
+
+    // Проверяем, изменён ли isPopular
+    if (updateData.isPopular === true) {
+      // Если продукт стал популярным, добавляем в коллекцию PopularProduct
+      await prisma.popularProduct.upsert({
+        where: { productId: productId },
+        update: {},
+        create: { productId: productId },
+      });
+    } else if (updateData.isPopular === false) {
+      // Если продукт больше не популярный, удаляем из PopularProduct
+      await prisma.popularProduct
+        .delete({
+          where: { productId: productId },
+        })
+        .catch(() => {
+          // Игнорируем, если запись не была найдена
+        });
+    }
+
+    return updatedProduct;
+  }
+
+  async getPopularProducts() {
+    console.log('Fetch popular products from database'); // Лог
+    const popularProductsRecords = await prisma.popularProduct.findMany({
+      include: {
+        product: true, // Полная информация о связанных продуктах
+      },
+    });
+
+    // Возвращаем только данные о товарах
+    return popularProductsRecords.map((record) => record.product);
   }
 }

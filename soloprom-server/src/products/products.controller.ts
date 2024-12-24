@@ -15,9 +15,9 @@ export class ProductsController {
     return this.productService.getAllProducts();
   }
 
-  @Get(':id')
-  async getProductById(@Param('id') id: string) {
-    return this.productService.getProductById(id);
+  @Get(':productId')
+  async getProductById(@Param('productId') productId: string) {
+    return this.productService.getProductById(productId);
   }
 
   @Get('category/:name')
@@ -29,11 +29,6 @@ export class ProductsController {
     return this.productService.getProductsBySubCategory(name);
   }
 
-  @Get('popular')
-  async getPopularProducts() {
-    return this.productService.getPopularProducts();
-  }
-
   // @Get('group/:id')
   // async getProductsByGroup(@Param('id') id: string) {
   //   return this.productService.getProductsByGroup(id);
@@ -42,5 +37,29 @@ export class ProductsController {
   @Get('group/:name')
   async getProductsByGroup(@Param('name') name: string) {
     return this.productService.getProductsByGroup(name);
+  }
+
+  //====================================================================
+
+  // Синхронизация популярных товаров
+  @Post('popular/sync')
+  async syncPopularProducts() {
+    return this.productService.syncPopularProducts();
+  }
+
+  // Получение популярных товаров
+  @Get('popular/get')
+  async getPopularProducts() {
+    console.log('get');
+    return this.productService.getPopularProducts();
+  }
+
+  // Обновление товара (пример для `isPopular`)
+  @Post(':id')
+  async updateProduct(
+    @Param('id') productId: string,
+    @Body() updateData: { isPopular?: boolean },
+  ) {
+    return this.productService.updateProduct(productId, updateData);
   }
 }

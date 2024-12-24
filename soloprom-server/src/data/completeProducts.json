@@ -280,7 +280,7 @@
       "models": [],
       "discount": 10,
       "regalia": ["discount", "recommend", "new"],
-      "isPopular": false
+      "isPopular": true
     },
     {
       "productId": "G-Special-UTTO-Premium-10W-30",
@@ -648,7 +648,7 @@
       "viscosity": "15W-40",
       "models": [],
       "regalia": ["new"],
-      "isPopular": false
+      "isPopular": true
     },
     {
       "productId": "G-Profi-MSI-Plus-15W-40",
@@ -699,7 +699,7 @@
       "viscosity": "5W-30",
       "models": [],
       "regalia": ["new"],
-      "isPopular": false
+      "isPopular": true
     },
     {
       "productId": "G-Profi-MSK-5W-40",
@@ -1115,7 +1115,7 @@
       "country": "Россия",
       "models": [],
       "regalia": ["new"],
-      "isPopular": false
+      "isPopular": true
     },
     {
       "productId": "G-Special-Hydraulic-HVLP-46",
@@ -1159,7 +1159,7 @@
       "country": "Россия",
       "models": [],
       "regalia": ["new"],
-      "isPopular": false
+      "isPopular": true
     },
     {
       "productId": "G-Special-Hydraulic-HVLPD-46",
@@ -1251,7 +1251,7 @@
       "country": "Россия",
       "models": [],
       "regalia": ["new"],
-      "isPopular": false
+      "isPopular": true
     },
     {
       "productId": "G-Energy-Antifreeze-NF-40",
@@ -1571,7 +1571,7 @@
       "voltage": "24",
       "models": ["jun", "ksu", "om", "dw", "sl"],
       "regalia": [],
-      "isPopular": false
+      "isPopular": true
     },
     {
       "productId": "enpower48v3pzs375ah",
@@ -1732,7 +1732,7 @@
         "om"
       ],
       "regalia": ["new", "recommend", "selected"],
-      "isPopular": false
+      "isPopular": true
     },
     {
       "productId": "EnPOWER48v7pzs560ah",
@@ -1988,6 +1988,7 @@
       "regalia": [],
       "isPopular": false
     },
+
     {
       "productId": "elf12v120ah",
       "categoryName": "battery",
@@ -2204,7 +2205,7 @@
       "voltage": "48",
       "models": ["bc", "dx", "jun", "hng", "tcm", "ksu"],
       "regalia": [],
-      "isPopular": false
+      "isPopular": true
     },
     {
       "productId": "elhim48v450ah",
@@ -2314,9 +2315,7 @@
         "816x696x402": 189945
       },
       "defaultPrice": 189945,
-      "groups": [
-        { "name": { "name": "accumulyatori-dlya-polomoechnih-mashin" } }
-      ],
+      "groups": [{ "name": "accumulyatori-dlya-polomoechnih-mashin" }],
       "delivery": "30-45 дней",
       "type": "Тяговый",
       "brand": "elhim",
@@ -2834,7 +2833,7 @@
       "voltage": "24",
       "models": ["heli"],
       "regalia": [],
-      "isPopular": false
+      "isPopular": true
     },
     {
       "productId": "elhim48v4pzsн500ah",
@@ -2858,7 +2857,7 @@
       "voltage": "48",
       "models": ["jun", "toy", "dx", "ld"],
       "regalia": [],
-      "isPopular": false
+      "isPopular": true
     },
     {
       "productId": "elhim6v4pzs200ah",
@@ -2933,7 +2932,7 @@
       "isPopular": false
     },
     {
-      "productId": "elhim40v400ah",
+      "productId": "true",
       "categoryName": "battery",
       "subcategoryName": "accumulyatori-tyagovie",
       "url": "/catalog/battery/accumulyatori-tyagovie/elhim40v400ah",
@@ -3111,7 +3110,7 @@
       "country": "Индия",
       "models": [],
       "regalia": ["recommend"],
-      "isPopular": true,
+      "isPopular": false,
       "size": "24"
     },
     {
@@ -3155,7 +3154,7 @@
       "country": "Индия",
       "models": [],
       "regalia": [],
-      "isPopular": true,
+      "isPopular": false,
       "size": "24"
     },
     {
@@ -3178,7 +3177,7 @@
       "models": [],
       "regalia": ["new", "discount"],
       "discount": 10,
-      "isPopular": false,
+      "isPopular": true,
       "size": "25"
     },
     {
@@ -3200,7 +3199,7 @@
       "country": "Индия",
       "models": [],
       "regalia": ["new"],
-      "isPopular": false,
+      "isPopular": true,
       "size": "25"
     },
     {
@@ -3793,7 +3792,7 @@
       "country": "Индия",
       "models": [],
       "regalia": ["discount", "recommend", "new"],
-      "isPopular": false,
+      "isPopular": true,
       "size": "18",
       "discount": 10
     },
@@ -4188,6 +4187,7 @@
       "isPopular": false,
       "size": "15"
     },
+
     {
       "productId": "MRLMIM10411L1512PR",
       "categoryName": "tires",
@@ -4668,7 +4668,7 @@
       "country": "Индия",
       "models": [],
       "regalia": ["selected"],
-      "isPopular": false,
+      "isPopular": true,
       "size": "26"
     },
     {
@@ -4806,7 +4806,7 @@
       "country": "Индия",
       "models": [],
       "regalia": [],
-      "isPopular": false,
+      "isPopular": true,
       "size": "28"
     },
     {
@@ -6214,6 +6214,7 @@
       "isPopular": false,
       "size": "38"
     },
+
     {
       "productId": "MRLRRT77071070R38175A8172D",
       "categoryName": "tires",
@@ -6579,7 +6580,7 @@
       "country": "Индия",
       "models": [],
       "regalia": ["new"],
-      "isPopular": false,
+      "isPopular": true,
       "size": "8"
     },
     {
@@ -8314,6 +8315,7 @@
       "isPopular": false,
       "size": "15"
     },
+
     {
       "productId": "EmraldGRECKSTERGOLD8151514PR",
       "categoryName": "tires",

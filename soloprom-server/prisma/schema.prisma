@@ -8,8 +8,8 @@ datasource db {
 }
 
 model Product {
-  id              String  @id @default(uuid())
-  productId       String  @unique
+  id              String          @id @default(uuid())
+  productId       String          @unique
   categoryId      String
   subcategoryId   String
   categoryName    String
@@ -24,7 +24,8 @@ model Product {
   volumes         Json?
   models          Json?
   regalia         Json?
-  isPopular       Boolean @default(false)
+  isPopular       Boolean         @default(false)
+  popularRecord   PopularProduct? @relation("PopularRelation")
   size            String?
   discount        Float?
 
@@ -34,6 +35,14 @@ model Product {
   groupsList  Json?
   createdAt   DateTime    @default(now())
   updatedAt   DateTime    @updatedAt
+}
+
+model PopularProduct {
+  id        String   @id @default(uuid())
+  productId String   @unique
+  product   Product  @relation(fields: [productId], references: [productId], name: "PopularRelation") // Название связи
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }
 
 model Category {
