@@ -472,47 +472,10 @@
       "HELI-CPD20CJ",
       "HELI-CPD20FJ",
       "HELI-CPD25CJ",
-      "HELI-CPD25FJ",
-      "CROWN-SC3240",
-      "DIMEX-E14",
-      "DIMEX-E16",
-      "HANGCHA  (HC)-CPDS18J-D1",
-      "JUNGHEINRICH-EFG 216K",
-      "JUNGHEINRICH-EFG 218K",
-      "JUNGHEINRICH-EFG 316K",
-      "KOMATSU-FB18M-2R",
-      "KOMATSU-FB20M-2",
-      "LINDE-E16C",
-      "LINDE-E16P",
-      "LINDE-E20P",
-      "STILL-R20-15",
-      "TCM-FTB 16-7",
-      "TOYOTA-8FBEKT16",
-      "TOYOTA-8FBEKT18",
-      "YALE-ERP16VF",
-      "HYSTER-E1.5",
-      "YALE-ERP16AAF",
-      "YALE-ERP18AAF",
-      "YALE-ERP20AAF",
-      "DOOSAN - DAEWOO-B15T-5",
-      "DOOSAN - DAEWOO-B16X-3",
-      "DOOSAN - DAEWOO-B16X-5",
-      "DOOSAN - DAEWOO-B18T-2",
-      "DOOSAN - DAEWOO-B18X-5",
-      "DOOSAN - DAEWOO-B20T-3",
-      "DOOSAN - DAEWOO-B20X-5",
-      "HYSTER-J2.00XT",
-      "YALE-ERP18ATF",
-      "YALE-ERP20ATF",
-      "HYUNDAI-18BT-7",
-      "CATERPILLAR-EP16NT",
-      "HYUNDAI-20BT-7",
-      "HYUNDAI-25B",
-      "HYUNDAI-18B-7",
-      "HYUNDAI-20B-7"
+      "HELI-CPD25FJ"
     ],
     "sizes": {
-      "995х625х637": 680437
+      "1030х515х802": 680437
     }
   },
   {
@@ -525,23 +488,10 @@
       "NICHIYU-FBRF 14",
       "NICHIYU-FBRF 16",
       "YALE-MR 14",
-      "HYUNDAI-14BRJ-7",
-      "HAKO-S5",
-      "CROWN-SC4210",
-      "HELI-CPD10S-FQ",
-      "KOMATSU-FB12M-2R",
-      "KOMATSU-FB10M-3",
-      "KOMATSU-FB13M-2",
-      "KOMATSU-FB13M-3",
-      "NICHIYU-FB 10 P",
-      "NICHIYU-FB 13",
-      "NICHIYU-FBT 13P-75C-300",
-      "MITSUBISHI-FB13TCA",
-      "TOYOTA-7FBE10",
-      "TOYOTA-7FBE15"
+      "HYUNDAI-14BRJ-7"
     ],
     "sizes": {
-      "990х445х635": 507490
+      "1220х280х787": 507490
     }
   },
   {
@@ -560,55 +510,10 @@
       "HYUNDAI-16BRJ-7",
       "NICHIYU-FBRF 14",
       "NICHIYU-FBRF 16",
-      "NICHIYU-FBRF 20",
-      "NICHIYU-FBT 15 P-80",
-      "BT-C3E 150",
-      "BT-C4E 150",
-      "BT-CBE 1.2T",
-      "BT-CBE 1.5T",
-      "BT-CBE 150",
-      "CROWN-E10",
-      "CROWN-E12",
-      "CROWN-SC3220",
-      "CROWN-SC4220",
-      "HANGCHA  (HC)-CPDS15J",
-      "HELI-CPD15D",
-      "HELI-CPD15S-FQ",
-      "JUNGHEINRICH-EFG 213",
-      "JUNGHEINRICH-EFG 215",
-      "KOMATSU-FB15M-2R",
-      "LINDE-E14",
-      "TOYOTA-8FBET15",
-      "TOYOTA-8FBMT15",
-      "YALE-ERP 15 VT",
-      "TOYOTA-5FBE15",
-      "VP-FB15",
-      "VP-FB18",
-      "HANGCHA  (HC)-CPD15J",
-      "DOOSAN - DAEWOO-B15T-S5",
-      "KOMATSU-FB15-12",
-      "KOMATSU-FB18-12",
-      "KOMATSU-FB20AG-12",
-      "VP-FB20",
-      "VP-FB25",
-      "KOMATSU-FB15M-3",
-      "TFN-CPD15J",
-      "HANGCHA  (HC)-CPD10J-D1",
-      "HELI-CPD18",
-      "HANGCHA  (HC)-CPD18J-D1",
-      "DOOSAN - DAEWOO-B13T-2",
-      "DOOSAN - DAEWOO-B15T-2",
-      "DOOSAN - DAEWOO-B15T5",
-      "YALE-ERP 16 ATF",
-      "DOOSAN - DAEWOO-B16X-5",
-      "TOYOTA-7FBE10",
-      "TOYOTA-7FBE13",
-      "TOYOTA-7FBE15",
-      "TOYOTA-7FBE18",
-      "HYUNDAI-15BT-7"
+      "NICHIYU-FBRF 20"
     ],
     "sizes": {
-      "990х545х635": 585051
+      "1220х352х782": 585051
     }
   },
   {
@@ -630,22 +535,10 @@
       "JUNGHEINRICH-ETV 216",
       "JUNGHEINRICH-ETV 320",
       "JUNGHEINRICH-ETV114/ETV116",
-      "KOMATSU-FB14 RJY",
-      "LINDE-R20",
-      "NICHIYU-FBRF 20",
-      "ROCLA-HX16S",
-      "STILL-FM 17i",
-      "STILL-FM-X 14",
-      "STILL-FM-X 16",
-      "STILL-FM-X 20",
-      "YALE-MR 18",
-      "TOYOTA-6FBRE20",
-      "LINDE-E16",
-      "LINDE-E16P",
-      "LINDE-E20P"
+      "KOMATSU-FB14 RJY"
     ],
     "sizes": {
-      "832х631х782": 826329
+      "1220х424х782": 826329
     }
   },
   {
@@ -676,15 +569,10 @@
       "STILL-FM-X 14",
       "TOYOTA-6FBRE14",
       "TOYOTA-6FBRE16",
-      "YALE-MR 16",
-      "VP-FB15",
-      "VP-FB18",
-      "VP-FB20",
-      "VP-FB25",
-      "HANGCHA  (HC)-CPD18J-D1"
+      "YALE-MR 16"
     ],
     "sizes": {
-      "980х470х800": 708448
+      "1220х352х782": 708448
     }
   },
   {
@@ -695,279 +583,10 @@
       "TCM-FB20-7",
       "TCM-FB20-8",
       "TCM-FB25-7",
-      "TCM-FB25-8",
-      "TOYOTA-7FB20",
-      "TOYOTA-7FB25",
-      "DALIAN-CPD20"
+      "TCM-FB25-8"
     ],
     "sizes": {
-      "986х860х457": 613062
-    }
-  },
-  {
-    "id": "EnPOWER24V3PzS375Ah",
-    "name": "АКБ EnPOWER 24V 3 PzS 375Ah",
-    "price": 261756,
-    "models": [
-      "JUNGHEINRICH-EJE 225",
-      "BT-SL 2.0",
-      "HYSTER-S1.6-32",
-      "HYSTER-S16AC",
-      "JUNGHEINRICH----",
-      "JUNGHEINRICH-ECE 120",
-      "JUNGHEINRICH-ERC212/ERC214/ERC216",
-      "JUNGHEINRICH-ERE120/ERE125/ERE225",
-      "JUNGHEINRICH-ESD 120",
-      "JUNGHEINRICH-ESE 120",
-      "KOMATSU-MWP 20F-1R",
-      "OM-TSX20",
-      "YALE-MS 14",
-      "YALE-MS 16",
-      "JUNGHEINRICH-ERC212/ERC214/ERC216",
-      "CATERPILLAR-N010SF",
-      "YALE-MP 20 T",
-      "CROWN-WE2300",
-      "DOOSAN - DAEWOO-HLS12",
-      "KOMATSU-FWS 14-1R",
-      "KOMATSU-MWS 14-1R",
-      "LOC-I16 T54",
-      "MITSUBISHI-SBP16N",
-      "OM-CN14",
-      "PRAMAC-FX12-38",
-      "PRAMAC-LX14-45",
-      "ROCLA-SW16ac",
-      "ROCLA-TTS12TR",
-      "STILL-EGV16",
-      "JUNGHEINRICH-ERC 12",
-      "STILL-EGV14-lang"
-    ],
-    "sizes": {
-      "830х218х615": 261756
-    }
-  },
-  {
-    "id": "EnPOWER48V5PzS400Ah",
-    "name": "АКБ EnPOWER 48V 5 PzS 400Ah",
-    "price": 441388,
-    "models": [
-      "TOYOTA-7FB10",
-      "TOYOTA-7FB14",
-      "TOYOTA-7FB15",
-      "TOYOTA-7FB18",
-      "HELI-CPD10FJ",
-      "HELI-CPD10L-FG",
-      "HELI-CPD15FJ",
-      "HELI-CPD15L-FJ",
-      "JAC-CPD15",
-      "MITSUBISHI-FB15SA",
-      "NICHIYU-FB 10 P",
-      "NICHIYU-FB 14 P",
-      "NICHIYU-FB 15 P",
-      "NICHIYU-FB 15 P-75",
-      "NICHIYU-FB 15-75",
-      "NICHIYU-FB 18 P",
-      "NICHIYU-FB 20 PN",
-      "NISSAN-K1B1L15U",
-      "TCM-FB15-7",
-      "TCM-FB15-8",
-      "KOMATSU-FB15EX",
-      "KOMATSU-FB15EX-11",
-      "KOMATSU-FB15EX-7",
-      "KOMATSU-FB15EX-8",
-      "KOMATSU-FB15EXL-11",
-      "KOMATSU-FB18EX-8",
-      "NISSAN-NK1B1L10",
-      "NISSAN-FP01L15"
-    ],
-    "sizes": {
-      "990х670х450": 441388
-    }
-  },
-  {
-    "id": "EnPOWER48V6PzS480Ah",
-    "name": "АКБ EnPOWER 48V 6 PzS 480Ah",
-    "price": 571151,
-    "models": [
-      "HELI-CPD10FJ",
-      "HELI-CPD10L-FG",
-      "HELI-CPD15FJ",
-      "HELI-CPD15FJ2",
-      "HELI-CPD15L-FJ",
-      "JAC-CPD15",
-      "MITSUBISHI-FB15SA",
-      "NICHIYU-FB 10 P",
-      "NICHIYU-FB 14 P",
-      "NICHIYU-FB 15 P",
-      "NICHIYU-FB 15 P-75",
-      "NICHIYU-FB 15-75",
-      "NICHIYU-FB 18 P",
-      "NICHIYU-FB 20 PN",
-      "NISSAN-K1B1L15U",
-      "HANGCHA  (HC)-CPD15H-Z2L",
-      "NISSAN-FP01L5",
-      "NISSAN-K1B1L15U",
-      "TFN-CPD15H",
-      "TCM-FB15-7",
-      "TCM-FB15-8",
-      "KOMATSU-FB15EX",
-      "KOMATSU-FB15EX-11",
-      "KOMATSU-FB15EX-7",
-      "KOMATSU-FB15EX-8",
-      "KOMATSU-FB15EXF",
-      "KOMATSU-FB15EXL-11",
-      "KOMATSU-FB18EX-8",
-      "KOMATSU-FBEXL-8",
-      "NISSAN-NK1B1L10",
-      "TFN-CPD15Hz",
-      "DALIAN-CPD15",
-      "NISSAN-FP01L15",
-      "DOOSAN - DAEWOO-B15S"
-    ],
-    "sizes": {
-      "995х715х470": 571151
-    }
-  },
-  {
-    "id": "Sunlight24V3PzS375Ah",
-    "name": "АКБ Sunlight 24V 3 PzS 375Ah",
-    "price": 202656,
-    "models": [
-      "YALE-MP 20 T",
-      "CROWN-WE2300",
-      "DOOSAN - DAEWOO-HLS12",
-      "KOMATSU-FWS 14-1R",
-      "KOMATSU-MWS 14-1R",
-      "LOC-I16 T54",
-      "MITSUBISHI-SBP16N",
-      "OM-CN14",
-      "PRAMAC-FX12-38",
-      "PRAMAC-LX14-45",
-      "ROCLA-TTS12TR",
-      "STILL-EGV16",
-      "BT-SL 2.0",
-      "HYSTER-S1.6-32",
-      "HYSTER-S16AC",
-      "JUNGHEINRICH----",
-      "JUNGHEINRICH-ECE 120",
-      "JUNGHEINRICH-ERE120/ERE125/ERE225",
-      "JUNGHEINRICH-ESD 120",
-      "JUNGHEINRICH-ESE 120",
-      "KOMATSU-MWP 20F-1R",
-      "OM-TSX20",
-      "YALE-MS 14",
-      "YALE-MS 16",
-      "JUNGHEINRICH-ERC 12",
-      "STILL-EGV14-lang",
-      "JUNGHEINRICH-EJE 225",
-      "CATERPILLAR-N010SF"
-    ],
-    "sizes": {
-      "0х0х0": 202656
-    }
-  },
-  {
-    "id": "Sunlight48V5PzS775Ah",
-    "name": "АКБ Sunlight 48V 5 PzS 775Ah",
-    "price": 673541,
-    "models": [
-      "TFN-CPD25J",
-      "HYSTER-R1.6H",
-      "HYSTER-R2.0H",
-      "JUNGHEINRICH-ETV 214",
-      "JUNGHEINRICH-ETV 216",
-      "JUNGHEINRICH-ETV 320",
-      "JUNGHEINRICH-ETV114/ETV116",
-      "KOMATSU-FB14 RJY",
-      "LINDE-R16",
-      "LINDE-R20",
-      "NICHIYU-FBRF 20",
-      "ROCLA-HX16S",
-      "STILL-FM 17i",
-      "STILL-FM-X 14",
-      "STILL-FM-X 16",
-      "STILL-FM-X 20",
-      "YALE-MR 18",
-      "TOYOTA-6FBRE20",
-      "MAXIMAL-FB20-MQJS",
-      "LINDE-E16",
-      "LINDE-E16P",
-      "LINDE-E20P",
-      "HELI-CPD20CJ",
-      "HELI-CPD20FJ",
-      "HELI-CPD25CJ",
-      "HELI-CPD25FJ",
-      "BT-RRE160",
-      "BT----"
-    ],
-    "sizes": {
-      "0х0х0": 673541
-    }
-  },
-  {
-    "id": "Sunlight48V4PzS620Ah",
-    "name": "АКБ Sunlight 48V 4 PzS 620Ah",
-    "price": 568711,
-    "models": [
-      "BT-RRE140",
-      "CROWN-ESR4500",
-      "HYSTER-R1.6H",
-      "HYUNDAI-16BRJ-7",
-      "JUNGHEINRICH-ETV 214",
-      "JUNGHEINRICH-ETV 216",
-      "JUNGHEINRICH-ETV114/ETV116",
-      "KOMATSU-FB14 RJY",
-      "LINDE-R14",
-      "LINDE-R16S",
-      "NICHIYU-FBRF 14",
-      "NICHIYU-FBRF 16",
-      "NICHIYU-FBRF 20",
-      "OM-XR14",
-      "ROCLA-HS14F7000",
-      "ROCLA-HX16S",
-      "STILL-FM-X 14",
-      "TOYOTA-6FBRE14",
-      "TOYOTA-6FBRE16",
-      "YALE-MR 16",
-      "STILL-FM-X10N",
-      "HELI-FB25",
-      "MAXIMAL-FB25",
-      "HANGCHA  (HC)-CPD18J-D1",
-      "BT-RRM16",
-      "VP-FB20",
-      "VP-FB25",
-      "VP-FB15",
-      "VP-FB18"
-    ],
-    "sizes": {
-      "0х0х0": 568711
-    }
-  },
-  {
-    "id": "Sunlight48V3PzS375Ah",
-    "name": "АКБ Sunlight 48V 3 PzS 375Ah",
-    "price": 507490,
-    "models": [
-      "NICHIYU-FB 10 P",
-      "NICHIYU-FB 13",
-      "NICHIYU-FBT 13P-75C-300",
-      "NICHIYU-FBRF 14",
-      "NICHIYU-FBRF 16",
-      "YALE-MR 14",
-      "TOYOTA-7FBE10",
-      "TOYOTA-7FBE15",
-      "MITSUBISHI-FB13TCA",
-      "KOMATSU-FB10M-3",
-      "KOMATSU-FB13M-3",
-      "HELI-CPD10S-FQ",
-      "KOMATSU-FB12M-2R",
-      "HYUNDAI-14BRJ-7",
-      "HAKO-S5",
-      "DOOSAN - DAEWOO-BR14JW",
-      "DOOSAN - DAEWOO-BR16JW",
-      "CROWN-SC4210"
-    ],
-    "sizes": {
-      "0х0х0": 390883
+      "1030х780х495": 613062
     }
   }
 ]

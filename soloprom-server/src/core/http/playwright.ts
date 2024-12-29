@@ -28,7 +28,7 @@ export class PlaywrightService {
     }
   }
 
-  async scrollToBottom(page: Page, timeout = 5000): Promise<void> {
+  async scrollToBottom(page: Page, timeout = 2000): Promise<void> {
     let previousHeight = 0;
     let currentHeight = await page.evaluate(() => document.body.scrollHeight);
 

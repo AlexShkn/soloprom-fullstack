@@ -1,9 +1,6 @@
 import { config } from 'dotenv';
 config();
 
-const username = process.env.USERLOGIN;
-console.log('Loaded Username:', username);
-
 const configuration = {
   databaseUrl: process.env.DATABASE_URL,
   targetUrl: process.env.TARGET_URL,
@@ -15,6 +12,5 @@ const configuration = {
   usernamePlaceholder: process.env.USERNAME_PLACEHOLDER,
   authCheckSelector: process.env.AUTH_CHECK_SELECTOR,
 };
-console.log('Loaded Config:', configuration);
 
 export default () => configuration;

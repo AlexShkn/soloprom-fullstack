@@ -246,18 +246,18 @@ export class ProductsService {
   async updatePricesFromData(data: ProductDto[]): Promise<void> {
     for (const productData of data) {
       const { id, sizes, price } = productData;
-      const adaptId = id.toLocaleLowerCase();
+      console.log('Ищем ID:', id);
       const product = await prisma.product.findUnique({
         where: {
-          productId: adaptId,
+          productId: id,
         },
       });
 
       if (product) {
-        console.log(product);
+        console.log('Обновлен:', id);
         await prisma.product.update({
           where: {
-            productId: adaptId,
+            productId: id,
           },
           data: {
             sizes: sizes,

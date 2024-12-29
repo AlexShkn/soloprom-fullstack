@@ -1,11 +1,10 @@
 import { Module } from '@nestjs/common';
 import { ProductsModule } from './products/products.module';
 import { ScheduleModule } from '@nestjs/schedule';
-import { ProductsService } from './products/products.service';
 import configuration from './config/configuration';
 import { CrawlerModule } from './crawler/crawler.module';
-import { ScraperJob } from './jobs/scraper.job';
 import { ConfigModule } from '@nestjs/config';
+import { ScraperJob } from './jobs/scraper.job';
 
 @Module({
   imports: [
@@ -17,6 +16,6 @@ import { ConfigModule } from '@nestjs/config';
     CrawlerModule,
   ],
   controllers: [],
-  providers: [ScraperJob, ProductsService],
+  providers: [ScraperJob],
 })
 export class AppModule {}

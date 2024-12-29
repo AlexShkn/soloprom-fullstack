@@ -24,3 +24,10 @@ export function processString(str: string): string {
   const withoutSpaces = afterFirstSpace.replace(/\s/g, '');
   return withoutSpaces;
 }
+
+export const getWords = (word) => {
+  if (word === 'с замком') return 'szamkom';
+  if (word === 'стандарт') return 'standart';
+
+  return word;
+};
