@@ -8,7 +8,7 @@ import { getAdaptiveValue } from '@/utils/getAdaptiveValue'
 import { AdaptiveValues } from '@/utils/getAdaptiveValue'
 import { renderDescriptionItem } from '@/utils/renderDescriptionItem'
 
-import { ProductsCardProps } from '../ProductList/ProductList'
+import { ProductsCardProps } from '../FavoriteTabs/FavoriteTabs'
 
 interface DescriptionTypes extends ProductsCardProps {
   variantValue: string

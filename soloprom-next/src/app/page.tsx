@@ -7,8 +7,8 @@ import { Benefits } from '@/components/Benefits/Benefits'
 import { Callback } from '@/components/Callback/Callback'
 import { PaymentDelivery } from '@/components/PaymentDelivery/PaymentDelivery'
 import { ContactsMap } from '@/components/ContactsMap/ContactsMap'
-import { ProductList } from '@/components/ProductList/ProductList'
 import PageWrapper from './PageWrapper'
+import { FavoriteTabs } from '@/components/FavoriteTabs/FavoriteTabs'
 
 export const metadata: Metadata = {
   title: 'Главная',
@@ -21,7 +21,7 @@ export default function Home() {
       <Hero />
       <CategoryProductsSlider />
       <SubHero />
-      <ProductList />
+      <FavoriteTabs />
       <About />
       <Benefits />
       <Callback />

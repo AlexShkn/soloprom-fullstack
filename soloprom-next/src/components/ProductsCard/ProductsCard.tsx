@@ -5,7 +5,7 @@ import { RootState } from '@/redux/store'
 import { addProductToCart, removeCartProduct } from '@/redux/slices/cartSlice'
 
 import './ProductsCard.scss'
-import { ProductsCardProps } from '../ProductList/ProductList'
+import { ProductsCardProps } from '../FavoriteTabs/FavoriteTabs'
 import { DescriptionTemplate } from './DescriptionTemplate'
 import { PriceBlock } from './PriceBlock'
 import { RegaliaList } from './RegaliaList'

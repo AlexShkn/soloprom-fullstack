@@ -1,0 +1,487 @@
+{
+  "tires": {
+    "name": "tires",
+    "title": "Шины для специальной техники",
+    "description": "",
+    "img": "/img/category/tyres",
+    "alt": "специальные шины",
+
+    "subcategories": [
+      {
+        "title": "Бандажные шины",
+        "description": "",
+        "img": "/img/category/bandazhnie",
+        "alt": "бандажные шины",
+        "url": "shini-bandazhnie",
+        "crumb": "Шины бандажные"
+      },
+      {
+        "title": "Пневматические шины",
+        "description": "",
+        "img": "/img/category/tyres",
+        "alt": "пневматические шины",
+        "url": "shini-pnevmatichesckie",
+        "crumb": "Шины пневматические"
+      },
+      {
+        "title": "Шины для легковых автомобилей",
+        "description": "",
+        "img": "/img/category/shini-legkovie",
+        "alt": "авто шины",
+        "url": "shini-legkovie",
+        "crumb": "Шины легковые"
+      },
+      {
+        "title": "Шины цельнолитые",
+        "description": "",
+        "img": "/img/category/pnevmoticheskie",
+        "alt": "цельнолитые шины для погрузчиков и асфальтоукладчиков",
+        "url": "shini-celnolitie",
+        "crumb": "Шины цельнолитые"
+      }
+    ],
+    "group": [
+      {
+        "title": "Шины для мини-погрузчиков",
+        "description": "",
+        "img": "/img/category/mini-loader",
+        "alt": "Шины для мини-погрузчиков",
+        "url": "shini-dlya-minipogruzchikov",
+        "crumb": "Шины для мини-погрузчиков"
+      },
+      {
+        "title": "Шины для экскаватор погрузчиков",
+        "description": "",
+        "img": "/img/category/ekskavator-pogruzchik",
+        "alt": "Шины для экскаватор погрузчиков",
+        "url": "shini-dlya-ekskavator-pogruzchikov",
+        "crumb": "Шины для экскаватор погрузчиков"
+      },
+      {
+        "title": "Шины для сельхозтехники",
+        "description": "",
+        "img": "/img/category/selhoz",
+        "alt": "шины для комбайна",
+        "url": "shini-dlya-selhoztehniki",
+        "crumb": "Шины для сельхозтехники"
+      },
+      {
+        "title": "Шины для сочлененных самосвалов",
+        "description": "",
+        "img": "/img/category/sochlenennii-samosval",
+        "alt": "Шины для сочлененных самосвалов",
+        "url": "shini-dlya-sochlenennih-samosvalov",
+        "crumb": "Шины для сочлененных самосвалов"
+      },
+      {
+        "title": "Шины для портов и терминалов",
+        "description": "",
+        "img": "/img/category/portovaya-technika",
+        "alt": "портовые шины",
+        "url": "shini-dlya-portov-i-terminalov",
+        "crumb": "Шины для портов и терминалов"
+      },
+      {
+        "title": "Шины для жесткорамных самовалов",
+        "description": "",
+        "img": "/img/category/samosval",
+        "alt": "карьерные шины",
+        "url": "shini-dlya-zhestkoramnih-samosvalov",
+        "crumb": "Шины для жесткорамных самовалов"
+      },
+      {
+        "title": "Шины для вилочных погрузчиков",
+        "description": "",
+        "img": "/img/category/accumulyatori-dlya-pogruzchikov",
+        "alt": "Шины для вилочных погрузчиков",
+        "url": "shini-dlya-vilochnih-pogruzchikov",
+        "crumb": "Шины для вилочных погрузчиков"
+      },
+      {
+        "title": "Шины для грейдеров",
+        "description": "",
+        "img": "/img/category/grader",
+        "alt": "Шины для грейдеров",
+        "url": "shini-dlya-greiderov",
+        "crumb": "Шины для грейдеров"
+      },
+      {
+        "title": "Шины для фронтальных погрузчиков",
+        "description": "",
+        "img": "/img/category/front-loader",
+        "alt": "Шины для фронтальных погрузчиков",
+        "url": "shini-dlya-frontalnih-pogruzchikov",
+        "crumb": "Шины для фронтальных погрузчиков"
+      },
+      {
+        "title": "Шины для колесных экскаваторов",
+        "description": "",
+        "img": "/img/category/kolesnii-ekskavator",
+        "alt": "Шины для колесных экскаваторов",
+        "url": "shini-dlya-kolesnih-ekskavatorov",
+        "crumb": "Шины для колесных экскаваторов"
+      },
+      {
+        "title": "Шины для телескопических погрузчиков",
+        "description": "",
+        "img": "/img/category/tele-pogruzchik",
+        "alt": "Шины для телескопических погрузчиков",
+        "url": "shini-dlya-teleskopicheskih-pogruzchikov",
+        "crumb": "Шины для телескопических погрузчиков"
+      },
+      {
+        "title": "Шины для асфальтоукладчиков и катков",
+        "description": "",
+        "img": "/img/category/katok",
+        "alt": "Шины для асфальтоукладчиков и катков",
+        "url": "shini-dlya-asfaltoukladchikov-i-katkov",
+        "crumb": "Шины для асфальтоукладчиков и катков"
+      }
+    ]
+  },
+  "battery": {
+    "name": "battery",
+    "title": "Аккумуляторы для специальной техники",
+    "description": "",
+    "img": "/img/category/battery",
+    "alt": "тяговые акб",
+    "subcategories": [
+      {
+        "title": "Тяговые аккумуляторы",
+        "description": "",
+
+        "img": "/img/category/battery",
+        "alt": "",
+        "url": "accumulyatori-tyagovie",
+        "crumb": "Тяговые аккумуляторы"
+      },
+      {
+        "title": "Полутяговые аккумуляторы",
+        "description": "",
+
+        "img": "/img/category/battery",
+        "alt": "",
+        "url": "accumulyatori-polutyagovie",
+        "crumb": "Полутяговые аккумуляторы"
+      }
+    ],
+    "group": [
+      {
+        "headGroupTitle": "Аккумуляторы для погрузчиков",
+        "title": "Аккумуляторы для погрузчиков",
+        "description": "",
+        "img": "/img/category/accumulyatori-dlya-pogruzchikov",
+        "alt": "",
+        "url": "accumulyatori-dlya-pogruzchikov",
+        "crumb": "Аккумуляторы для погрузчиков"
+      },
+      {
+        "title": "Аккумуляторы 48v",
+        "description": "",
+
+        "img": "/img/category/accumulyatori-dlya-pogruzchikov",
+        "alt": "",
+        "url": "48v",
+        "crumb": "Аккумуляторы 48v"
+      },
+      {
+        "title": "Аккумуляторы для вилочных погрузчиков",
+        "description": "",
+        "img": "/img/category/accumulyatori-dlya-pogruzchikov",
+        "alt": "",
+        "url": "accumulyatori-dlya-vilochnih-pogruzchikov",
+        "crumb": "Аккумуляторы для вилочных погрузчиков"
+      },
+      {
+        "title": "Аккумуляторы для электропогрузчиков",
+        "description": "",
+
+        "img": "/img/category/accumulyatori-dlya-pogruzchikov",
+        "alt": "",
+        "url": "dlya-electropogruzchikov",
+        "crumb": "Аккумуляторы для электропогрузчиков"
+      },
+      {
+        "title": "Аккумуляторы для поломоечных машин",
+        "description": "",
+
+        "img": "/img/category/wash-machine",
+        "alt": "",
+        "url": "accumulyatori-dlya-polomoechnih-mashin",
+        "crumb": "Аккумуляторы для поломоечных машин"
+      },
+      {
+        "title": "Аккумуляторы для ричтраков",
+        "description": "",
+
+        "img": "/img/category/richtrack",
+        "alt": "",
+        "url": "accumulyatori-dlya-richtrakov",
+        "crumb": "Аккумуляторы для ричтраков"
+      },
+      {
+        "title": "Аккумуляторы для электротележек",
+        "description": "",
+
+        "img": "/img/category/perezochik-pallet",
+        "alt": "",
+        "url": "accumulyatori-dlya-electrotelezhek",
+        "crumb": "Аккумуляторы для электротележек"
+      },
+      {
+        "title": "Аккумуляторы для штабелеров",
+        "description": "",
+
+        "img": "/img/category/accumulyatori-dlya-shtabelerov",
+        "alt": "",
+        "url": "accumulyatori-dlya-shtabelerov",
+        "crumb": "Аккумуляторы для штабелеров"
+      },
+      {
+        "title": "Аккумуляторы для транспортировщика паллет",
+        "description": "",
+
+        "img": "/img/category/perezochik-pallet",
+        "alt": "",
+        "url": "accumulyatori-dlya-palletoperevozchikov",
+        "crumb": "Аккумуляторы для транспортировщика паллет"
+      }
+    ],
+    "brands": [
+      {
+        "title": "Аккумуляторы для погрузчиков Still",
+        "description": "",
+
+        "img": "/img/category/accumulyatori-dlya-pogruzchikov",
+        "alt": "",
+        "url": "accumulyatori-dlya-pogruzchikov-still",
+        "crumb": "Аккумуляторы для погрузчиков Still"
+      },
+      {
+        "title": "Аккумуляторы для погрузчиков Linde",
+        "description": "",
+
+        "img": "/img/category/accumulyatori-dlya-pogruzchikov",
+        "alt": "",
+        "url": "accumulyatori-dlya-pogruzchikov-linde",
+        "crumb": "Аккумуляторы для погрузчиков Linde"
+      },
+      {
+        "title": "Аккумуляторы для погрузчиков Komatsu",
+        "description": "",
+
+        "img": "/img/category/accumulyatori-dlya-pogruzchikov",
+        "alt": "",
+        "url": "accumulyatori-dlya-pogruzchikov-komatsu",
+        "crumb": "Аккумуляторы для погрузчиков Komatsu"
+      },
+      {
+        "title": "Аккумуляторы для погрузчиков Jungheinrich",
+        "description": "",
+
+        "img": "/img/category/accumulyatori-dlya-pogruzchikov",
+        "alt": "",
+        "url": "accumulyatori-dlya-pogruzchikov-jungheinrich",
+        "crumb": "Аккумуляторы для погрузчиков Jungheinrich"
+      },
+      {
+        "title": "Аккумуляторы для погрузчиков Maximal",
+        "description": "",
+
+        "img": "/img/category/accumulyatori-dlya-pogruzchikov",
+        "alt": "",
+        "url": "accumulyatori-dlya-pogruzchikov-maximal",
+        "crumb": "Аккумуляторы для погрузчиков Maximal"
+      },
+      {
+        "title": "Аккумуляторы для погрузчиков Heli",
+        "description": "",
+
+        "img": "/img/category/accumulyatori-dlya-pogruzchikov",
+        "alt": "",
+        "url": "accumulyatori-dlya-pogruzchikov-heli",
+        "crumb": "Аккумуляторы для погрузчиков Heli"
+      },
+      {
+        "title": "Аккумуляторы для погрузчиков Toyota",
+        "description": "",
+
+        "img": "/img/category/accumulyatori-dlya-pogruzchikov",
+        "alt": "",
+        "url": "accumulyatori-dlya-pogruzchikov-toyota",
+        "crumb": "Аккумуляторы для погрузчиков Toyota"
+      },
+      {
+        "title": "Аккумуляторы для погрузчиков Om",
+        "description": "",
+
+        "img": "/img/category/accumulyatori-dlya-pogruzchikov",
+        "alt": "",
+        "url": "accumulyatori-dlya-pogruzchikov-om",
+        "crumb": "Аккумуляторы для погрузчиков Om"
+      },
+      {
+        "title": "Аккумуляторы для погрузчиков Balkancar",
+        "description": "",
+
+        "img": "/img/category/accumulyatori-dlya-pogruzchikov",
+        "alt": "",
+        "url": "accumulyatori-dlya-pogruzchikov-balkancar",
+        "crumb": "Аккумуляторы для погрузчиков Balkancar"
+      },
+      {
+        "title": "Аккумуляторы для погрузчиков Dimex",
+        "description": "",
+
+        "img": "/img/category/accumulyatori-dlya-pogruzchikov",
+        "alt": "",
+        "url": "accumulyatori-dlya-pogruzchikov-dimex",
+        "crumb": "Аккумуляторы для погрузчиков Dimex"
+      },
+      {
+        "title": "Аккумуляторы для погрузчиков Волжский погрузчик",
+        "description": "",
+
+        "img": "/img/category/accumulyatori-dlya-pogruzchikov",
+        "alt": "",
+        "url": "accumulyatori-dlya-pogruzchikov-vp",
+        "crumb": "Аккумуляторы для погрузчиков Волжский погрузчик"
+      },
+      {
+        "title": "Аккумуляторы для погрузчиков TCM",
+        "description": "",
+
+        "img": "/img/category/accumulyatori-dlya-pogruzchikov",
+        "alt": "",
+        "url": "accumulyatori-dlya-pogruzchikov-tcm",
+        "crumb": "Аккумуляторы для погрузчиков TCM"
+      },
+      {
+        "title": "Аккумуляторы для погрузчиков Hangcha",
+        "description": "",
+
+        "img": "/img/category/accumulyatori-dlya-pogruzchikov",
+        "alt": "",
+        "url": "accumulyatori-dlya-pogruzchikov-hangcha",
+        "crumb": "Аккумуляторы для погрузчиков Hangcha"
+      },
+      {
+        "title": "Аккумуляторы для погрузчиков Hyundai",
+        "description": "",
+
+        "img": "/img/category/accumulyatori-dlya-pogruzchikov",
+        "alt": "",
+        "url": "accumulyatori-dlya-pogruzchikov-hyundai",
+        "crumb": "Аккумуляторы для погрузчиков Hyundai"
+      },
+      {
+        "title": "Аккумуляторы для погрузчиков Daewoo",
+        "description": "",
+
+        "img": "/img/category/accumulyatori-dlya-pogruzchikov",
+        "alt": "",
+        "url": "accumulyatori-dlya-pogruzchikov-daewoo",
+        "crumb": "Аккумуляторы для погрузчиков Daewoo"
+      },
+      {
+        "title": "Аккумуляторы для погрузчиков Doosan",
+        "description": "",
+
+        "img": "/img/category/accumulyatori-dlya-pogruzchikov",
+        "alt": "",
+        "url": "accumulyatori-dlya-pogruzchikov-doosan",
+        "crumb": "Аккумуляторы для погрузчиков Doosan"
+      },
+      {
+        "title": "Аккумуляторы для погрузчиков Dalian",
+        "description": "",
+
+        "img": "/img/category/accumulyatori-dlya-pogruzchikov",
+        "alt": "",
+        "url": "accumulyatori-dlya-pogruzchikov-dalian",
+        "crumb": "Аккумуляторы для погрузчиков Dalian"
+      },
+      {
+        "title": "Аккумуляторы для погрузчиков Nichiyu",
+        "description": "",
+
+        "img": "/img/category/accumulyatori-dlya-pogruzchikov",
+        "alt": "",
+        "url": "accumulyatori-dlya-pogruzchikov-nichiyu",
+        "crumb": "Аккумуляторы для погрузчиков Nichiyu"
+      },
+      {
+        "title": "Аккумуляторы для погрузчиков Jac",
+        "description": "",
+
+        "img": "/img/category/accumulyatori-dlya-pogruzchikov",
+        "alt": "",
+        "url": "accumulyatori-dlya-pogruzchikov-jac",
+        "crumb": "Аккумуляторы для погрузчиков Jac"
+      }
+    ]
+  },
+  "oils": {
+    "name": "oils",
+    "title": "Масла и антифризы",
+    "description": "",
+    "img": "/img/category/oils/oils",
+    "alt": "Масла и антифризы",
+
+    "subcategories": [
+      {
+        "title": "Масло моторное для специальной техники",
+        "description": "",
+        "img": "/img/category/oils/engine-oils",
+        "alt": "Масло моторное для специальной техники",
+        "url": "masla-motornie",
+        "crumb": "Масло моторное"
+      },
+      {
+        "title": "Масло трансмиссионнное для специальной техники",
+        "description": "",
+        "img": "/img/category/oils/transmissionnoe-maslo",
+        "alt": "Трансмиссионное масло для спец техики",
+        "url": "masla-transmissionnie",
+        "crumb": "Масло трансмиссионнное"
+      },
+      {
+        "title": "Масло гидравлическое",
+        "description": "",
+        "img": "/img/category/oils/hydravlic-oils",
+        "alt": "гидравлическое масло",
+        "url": "masla-gidravlichecskie",
+        "crumb": "Масло гидравлическое"
+      },
+      {
+        "title": "Масло индустриальное",
+        "description": "",
+
+        "img": "/img/category/oils/industrial-oils",
+        "alt": "индустриальное масло",
+        "url": "masla-industrialnie",
+        "crumb": "Масло индустриальное"
+      },
+      {
+        "title": "Антифриз g energy",
+        "description": "",
+
+        "img": "/img/category/oils/antifreeze",
+        "alt": "охлождающая жидкость g energy",
+        "url": "antifreezi",
+        "crumb": "Антифризы"
+      }
+    ],
+    "brands": [
+      {
+        "title": "Масла g-energy",
+        "description": "",
+
+        "img": "/img/category/oils/engine-oils",
+        "alt": "Масла и антифиры g-energy",
+        "url": "masla-g-enegry",
+        "crumb": "Масла g-energy"
+      }
+    ]
+  }
+}

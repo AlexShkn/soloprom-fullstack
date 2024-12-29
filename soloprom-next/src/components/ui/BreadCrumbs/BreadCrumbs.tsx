@@ -21,6 +21,8 @@ const dictionary: Dictionary = {
   cart: 'Корзина',
   favorite: 'Избранное',
   tires: 'Шины для спецтехники',
+  battery: 'Аккумуляторы',
+  oils: 'Мала и антифризы',
   'shini-celnolitie': 'Шины цельнолитые',
 }
 

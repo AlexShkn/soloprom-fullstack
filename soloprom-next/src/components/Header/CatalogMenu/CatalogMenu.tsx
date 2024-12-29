@@ -34,7 +34,7 @@ const categoryList: CategoryTab[] = [
 
 const productsList: Record<string, CategoryProduct[]> = {
   acb: [
-    { href: '/catalog/battery"', title: 'Аккумуляторы' },
+    { href: '/catalog/battery', title: 'Аккумуляторы' },
     {
       href: '/catalog/battery/accumulyatori-tyagovie',
       title: 'Тяговые аккумуляторы',
@@ -188,7 +188,7 @@ const CatalogMenu = () => {
         />
 
         <div className="catalog-menu__body relative grid min-h-[65vh] justify-between gap-2.5">
-          <div className="catalog-menu__category-list border-1 border-grayColor h-full border px-7 pb-7 pt-10">
+          <div className="catalog-menu__category-list border-1 h-full border border-grayColor px-7 pb-7 pt-10">
             <Link
               onClick={() =>
                 dispatch(

@@ -1,18 +1,23 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useRef } from 'react'
 import { searchProducts } from '@/app/api/products/products'
 import CloseButton from '@/components/shared/CloseButton'
 import { DebouncedFunction } from '@/supports/debounce'
 import { debounce } from '@/supports/debounce'
 
-import { cardDataProps } from '../ProductList/ProductList'
+import { cardDataProps } from '../ProductListSlider/ProductListSlider'
 import Link from 'next/link'
+import { useClickOutside } from '@/hooks/useClickOutside'
 
 const HeaderSearch = () => {
   const [searchValue, setSearchValue] = useState<string>('')
   const [products, setProducts] = useState<cardDataProps[]>([])
   const [isLoading, setIsLoading] = useState<boolean>(true)
+  const dropRef = useRef(null)
 
-  // Асинхронная функция для поиска
+  useClickOutside(dropRef, () => {
+    resetSearch()
+  })
+
   const searchProductsForValue = async (name: string): Promise<void> => {
     if (name.trim() === '') {
       setProducts([])
@@ -49,7 +54,10 @@ const HeaderSearch = () => {
   }
 
   return (
-    <div className="header-bottom__catalog-field relative flex max-w-[600px] flex-auto items-center">
+    <div
+      ref={dropRef}
+      className="header-bottom__catalog-field relative flex max-w-[600px] flex-auto items-center"
+    >
       <div className="relative h-full w-full">
         <input
           type="text"

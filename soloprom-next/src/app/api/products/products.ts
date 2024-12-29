@@ -1,4 +1,4 @@
-import { cardDataProps } from '@/components/ProductList/ProductList'
+import { cardDataProps } from '@/components/ProductListSlider/ProductListSlider'
 import axios from 'axios'
 
 export async function getProducts() {

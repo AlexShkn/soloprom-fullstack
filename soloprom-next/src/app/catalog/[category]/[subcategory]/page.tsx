@@ -1,8 +1,9 @@
 import { Callback } from '@/components/Callback/Callback'
 import BreadCrumbs from '@/components/ui/BreadCrumbs/BreadCrumbs'
 
-import { categoriesList } from '../page'
+import pagesDataImport from '@/data/products/pagesData.json'
 import PageWrapper from '@/app/PageWrapper'
+import { pagesData } from '../page'
 
 export async function generateMetadata({
   params,
@@ -10,23 +11,20 @@ export async function generateMetadata({
   params: { category: string; subcategory?: string }
 }) {
   const { category, subcategory } = await params
-  const categoryData = categoriesList.find((cat) => cat.slug === category)
 
-  if (!categoryData) {
+  const subcategoryData = pagesData[category].subcategories?.find(
+    (item) => item.url === subcategory,
+  )
+
+  if (!subcategoryData) {
     return {
-      title: 'Категория не найдена',
-      description: 'К сожалению, информация об этой категории отсутствует.',
+      title: 'Подкатегория не найдена',
+      description: 'К сожалению, информация об этой подкатегории отсутствует.',
     }
   }
 
-  const subcategoryData = subcategory
-    ? categoryData.subcategories.find((sub) => sub.slug === subcategory)
-    : undefined
-
-  const pageTitle = subcategoryData ? subcategoryData.title : categoryData.title
-  const pageDescription = subcategoryData
-    ? subcategoryData.description
-    : categoryData.description
+  const pageTitle = subcategoryData.title
+  const pageDescription = subcategoryData.description
 
   return {
     title: `${pageTitle} | Категория`,
@@ -55,14 +53,8 @@ export default async function SubcategoryPage({
 }) {
   const { category, subcategory } = await params
 
-  const categoryData = categoriesList.find((cat) => cat.slug === category)
-
-  if (!categoryData) {
-    return <h1>Категория не найдена</h1>
-  }
-
-  const subcategoryData = categoryData.subcategories.find(
-    (sub) => sub.slug === subcategory,
+  const subcategoryData = pagesData[category].subcategories?.find(
+    (item) => item.url === subcategory,
   )
 
   if (!subcategoryData) {

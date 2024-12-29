@@ -1,0 +1,49 @@
+@use '@/styles/variables.scss';
+
+.page-article {
+  h2 {
+    font-weight: 700;
+    font-size: clamp(1.625rem, 1.4272rem + 0.6593vw, 2rem);
+    line-height: 120%;
+    margin-bottom: 30px;
+  }
+
+  h3 {
+    margin-bottom: 20px;
+    font-weight: 700;
+    font-size: 18px;
+  }
+
+  p {
+    line-height: 120%;
+    margin-bottom: 20px;
+  }
+
+  ul {
+    margin-bottom: 20px;
+
+    li {
+      position: relative;
+      padding-left: 15px;
+      line-height: 120%;
+
+      b {
+        font-weight: 500;
+      }
+      &:not(:last-child) {
+        margin-bottom: 10px;
+      }
+
+      &::before {
+        content: '';
+        position: absolute;
+        top: 3px;
+        left: 0;
+        width: 7px;
+        height: 7px;
+        border-radius: 50%;
+        background-color: variables.$accentColor;
+      }
+    }
+  }
+}
