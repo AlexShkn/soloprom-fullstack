@@ -1,5 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { PrismaClient } from '@prisma/client';
+import { ProductDto } from 'src/crawler/dto/product.dto';
 
 const prisma = new PrismaClient();
 
@@ -240,6 +241,31 @@ export class ProductsService {
     }
 
     return { message: 'Синхронизация популярных товаров завершена!' };
+  }
+
+  async updatePricesFromData(data: ProductDto[]): Promise<void> {
+    for (const productData of data) {
+      const { id, sizes, price } = productData;
+      const adaptId = id.toLocaleLowerCase();
+      const product = await prisma.product.findUnique({
+        where: {
+          productId: adaptId,
+        },
+      });
+
+      if (product) {
+        console.log(product);
+        await prisma.product.update({
+          where: {
+            productId: adaptId,
+          },
+          data: {
+            sizes: sizes,
+            defaultPrice: price,
+          },
+        });
+      }
+    }
   }
 
   async updateProduct(
