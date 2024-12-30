@@ -11,6 +11,8 @@
     "outDir": "./dist",
     "baseUrl": "./",
     "incremental": true,
+    "resolveJsonModule": true, // Добавьте эту строку
+    "esModuleInterop": true, // Д
     "skipLibCheck": true,
     "strictNullChecks": false,
     "noImplicitAny": false,

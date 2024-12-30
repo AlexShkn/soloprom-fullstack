@@ -20,7 +20,8 @@
     "test:cov": "jest --coverage",
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
     "test:e2e": "jest --config ./test/jest-e2e.json",
-    "scrape": "ts-node -r tsconfig-paths/register src/scrape.ts"
+    "scrape": "ts-node -r tsconfig-paths/register src/scrape.ts",
+    "image": "ts-node -r tsconfig-paths/register src/image-downloader/image-downloader.service.ts"
   },
   "dependencies": {
     "@nestjs/common": "^10.0.0",
@@ -30,6 +31,7 @@
     "@nestjs/platform-express": "^10.4.15",
     "@nestjs/schedule": "^4.1.2",
     "@prisma/client": "^6.1.0",
+    "axios": "^1.7.9",
     "dotenv": "^16.4.7",
     "jwt-decode": "^4.0.0",
     "mongoose": "^8.9.1",
