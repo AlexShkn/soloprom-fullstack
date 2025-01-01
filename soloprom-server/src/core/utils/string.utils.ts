@@ -25,7 +25,7 @@ export function processString(str: string): string {
   return withoutSpaces;
 }
 
-export const getWords = (word) => {
+export const getWordsStr = (word) => {
   if (word === 'с замком') return 'szamkom';
   if (word === 'стандарт') return 'standart';
 
