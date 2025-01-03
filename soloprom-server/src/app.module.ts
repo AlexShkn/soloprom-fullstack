@@ -5,6 +5,8 @@ import configuration from './config/configuration';
 import { CrawlerModule } from './crawler/crawler.module';
 import { ConfigModule } from '@nestjs/config';
 import { ScraperJob } from './jobs/scraper.job';
+import { TasksModule } from './tasks/tasks.module';
+import { ProductDescrModule } from './product-descr/product-descr.module';
 
 @Module({
   imports: [
@@ -14,6 +16,8 @@ import { ScraperJob } from './jobs/scraper.job';
     }),
     ScheduleModule.forRoot(),
     CrawlerModule,
+    TasksModule,
+    ProductDescrModule,
   ],
   controllers: [],
   providers: [ScraperJob],

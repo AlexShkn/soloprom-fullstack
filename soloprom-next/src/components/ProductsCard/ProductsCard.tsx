@@ -8,7 +8,7 @@ import './ProductsCard.scss'
 import { ProductsCardProps } from '../FavoriteTabs/FavoriteTabs'
 import { DescriptionTemplate } from './DescriptionTemplate'
 import { PriceBlock } from './PriceBlock'
-import { RegaliaList } from './RegaliaList'
+import { RegaliaList } from './RegaliaList/RegaliaList'
 import {
   addProductToFavorite,
   removeFavoriteProduct,

@@ -1,14 +1,24 @@
-import { cardDataProps } from '@/components/ProductListSlider/ProductListSlider'
+import { cardDataProps } from '@/components/FavoriteTabs/FavoriteTabs'
 import axios from 'axios'
 
 export async function getProducts() {
-  const response = await axios.get('http://localhost:3001/products')
-  return response
+  try {
+    const response = await axios.get('http://localhost:3001/products')
+    return response.data
+  } catch (error) {
+    console.error('Error fetching products:', error)
+    return []
+  }
 }
 
 export async function getProductById(id: string) {
-  const response = await axios.get(`http://localhost:3001/products/${id}`)
-  return response
+  try {
+    const response = await axios.get(`http://localhost:3001/products/${id}`)
+    return response.data
+  } catch (error) {
+    console.error('Error fetching product:', error)
+    return []
+  }
 }
 
 export async function getProductsByCategory(category: string) {

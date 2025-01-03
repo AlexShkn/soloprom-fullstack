@@ -36,7 +36,7 @@ export const DescriptionTemplate: React.FC<DescriptionTypes> = ({
   setVariantValue,
 }) => {
   const {
-    id,
+    productId,
     categoryName,
     productType,
     brand,
@@ -112,18 +112,19 @@ export const DescriptionTemplate: React.FC<DescriptionTypes> = ({
                         id={itemSize}
                         type="radio"
                         value={itemSize}
-                        name={id + itemSize}
+                        name={productId + itemSize}
                         defaultChecked={index === 0}
                       />
                       <label
                         className={
                           cartState.some(
-                            (item) => item.cartId === `${id}-${itemSize}`,
+                            (item) =>
+                              item.cartId === `${productId}-${itemSize}`,
                           )
                             ? 'selected'
                             : ''
                         }
-                        htmlFor={id + itemSize}
+                        htmlFor={productId + itemSize}
                       >
                         <span>{itemSize}</span>
                       </label>

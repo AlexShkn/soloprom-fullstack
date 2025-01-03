@@ -53,7 +53,6 @@ export class PlaywrightService {
     const submitSelector = this.configService.get<string>('submitSelector');
     const username = this.configService.get<string>('userlogin');
     const password = this.configService.get<string>('password');
-    const targetUrl = this.configService.get<string>('targetUrl');
     const usernamePlaceholder =
       this.configService.get<string>('usernamePlaceholder') || 'Логин';
 
@@ -69,11 +68,8 @@ export class PlaywrightService {
     if (!password) {
       console.error('Ошибка: password не определен');
     }
-    if (!targetUrl) {
-      console.error('Ошибка: targetUrl не определен');
-    }
 
-    if (!loginUrl || !submitSelector || !username || !password || !targetUrl) {
+    if (!loginUrl || !submitSelector || !username || !password) {
       throw new Error('Не все параметры для входа на сайт определены.');
     }
 
@@ -149,21 +145,5 @@ export class PlaywrightService {
     // Пауза 10 секунд перед переходом на targetUrl
     console.log('Ждем 1 секунд перед переходом на targetUrl');
     await page.waitForTimeout(1000);
-
-    // Переходим на targetUrl после авторизации
-    console.log('Переходим на targetUrl:', targetUrl);
-    await page.goto(targetUrl);
-
-    // Получаем текущий URL перед поиском элемента data-v-6ed42ab1
-    const currentUrl = page.url();
-    console.log('Текущий URL', currentUrl);
-
-    try {
-      await page.waitForSelector('[data-v-6ed42ab1]', { timeout: 5000 });
-      console.log('Элемент data-v-6ed42ab1 найден на странице после входа.');
-    } catch (e) {
-      console.warn('Элемент data-v-6ed42ab1 не найден после входа');
-      throw new Error('Элемент data-v-6ed42ab1 не найден после входа');
-    }
   }
 }

@@ -1,4 +1,3 @@
-// src/jobs/scraper.job.ts
 import { Injectable } from '@nestjs/common';
 import { CrawlerService } from '../crawler/crawler.service';
 import { ProductDto } from '../crawler/dto/product.dto';
@@ -7,11 +6,20 @@ import { ProductDto } from '../crawler/dto/product.dto';
 export class ScraperJob {
   constructor(private readonly crawlerService: CrawlerService) {}
 
-  async handle(): Promise<ProductDto[] | void> {
+  async handle(category: string): Promise<ProductDto[] | void> {
     try {
-      const data = await this.crawlerService.crawlData();
+      let data: ProductDto[] | null;
+      if (category === 'tires') {
+        data = await this.crawlerService.crawlData('tires');
+      } else if (category === 'batteries') {
+        data = await this.crawlerService.crawlData('batteries');
+      } else {
+        console.error('Неизвестная категория', category);
+        return;
+      }
+
       if (data && data.length > 0) {
-        await this.crawlerService.saveDataToFile(data);
+        await this.crawlerService.saveDataToFile(data, category);
         return data;
       }
       console.log('Данные не были получены.');

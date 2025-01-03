@@ -1,5 +1,11 @@
 @use '@/styles/variables.scss';
 
+.breadCrumbs__container {
+  @media (max-width: 479.98px) {
+    gap: 10px;
+  }
+}
+
 .breadCrumbs.fixed-block {
   position: absolute;
   top: 30px;
@@ -7,6 +13,10 @@
 }
 
 .breadCrumbsLink {
+  &:not(:last-child) {
+    margin-right: 1.25rem;
+    margin-bottom: 5px;
+  }
   @media (any-hover: hover) {
     &:hover {
       svg {

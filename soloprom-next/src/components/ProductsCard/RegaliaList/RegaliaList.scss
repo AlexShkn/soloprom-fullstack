@@ -1,0 +1,14 @@
+.feature-item {
+  @media (any-hover: hover) {
+    &:hover {
+      b {
+        opacity: 1;
+      }
+    }
+  }
+
+  @media (max-width: 479.98px) {
+    width: 35px;
+    height: 35px;
+  }
+}
