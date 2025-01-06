@@ -1,7 +1,7 @@
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from '../app.module';
 import { ProductDescrService } from '@/product-descr/product-descr.service';
-import { PrismaService } from '@/config/database/prisma.service';
+import { PrismaService } from '@/prisma/prisma.service';
 import * as data from '../data/productDescription.json';
 
 async function bootstrap() {

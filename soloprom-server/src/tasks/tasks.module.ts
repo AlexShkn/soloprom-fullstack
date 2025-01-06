@@ -4,10 +4,10 @@ import { ScraperJob } from '../jobs/scraper.job';
 import { CrawlerModule } from '../crawler/crawler.module';
 import { PlaywrightService } from '../core/http/playwright';
 import { ConfigService } from '@nestjs/config';
-import { ProductsModule } from '@/products/products.module'; // Import ProductsModule
+import { ProductsModule } from '@/products/products.module';
 
 @Module({
-  imports: [CrawlerModule, ProductsModule], // <-- Import ProductsModule
+  imports: [CrawlerModule, ProductsModule],
   providers: [TasksService, ScraperJob, PlaywrightService, ConfigService],
 })
 export class TasksModule {}
