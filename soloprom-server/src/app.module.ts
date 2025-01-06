@@ -32,6 +32,7 @@ import { PrismaModule } from './prisma/prisma.module';
     TasksModule,
     ProductDescrModule,
     AuthModule,
+    UserModule,
     ProviderModule,
     MailModule,
     EmailConfirmationModule,

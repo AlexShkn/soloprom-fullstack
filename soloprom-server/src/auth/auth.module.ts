@@ -27,7 +27,7 @@ import { PrismaModule } from '@/prisma/prisma.module'; // Import PrismaModule
       inject: [ConfigService],
     }),
     forwardRef(() => EmailConfirmationModule),
-    PrismaModule, // Import here
+    PrismaModule,
   ],
   controllers: [AuthController],
   providers: [AuthService, UserService, MailService, TwoFactorAuthService],
