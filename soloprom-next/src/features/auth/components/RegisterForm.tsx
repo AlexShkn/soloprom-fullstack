@@ -22,6 +22,7 @@ import { useRegisterMutation } from '@/hooks/auth/useRegisterMutation'
 import { RegisterSchema, TypeRegisterSchema } from '../schemes'
 
 import { AuthWrapper } from './AuthWrapper'
+import { ConfirmFields } from './ConfirmFields'
 
 export interface RegisterFormProps {
   siteKey: string
@@ -139,7 +140,7 @@ export function RegisterForm({ siteKey }: RegisterFormProps) {
             <ReCAPTCHA
               sitekey={siteKey}
               onChange={setRecaptchaValue}
-              theme={theme === 'light' ? 'light' : 'dark'}
+              theme={theme === 'dark' ? 'dark' : 'light'}
             />
           </div>
           <Button type="submit" disabled={isLoadingRegister}>
@@ -147,6 +148,7 @@ export function RegisterForm({ siteKey }: RegisterFormProps) {
           </Button>
         </form>
       </Form>
+      {/* <ConfirmFields /> */}
     </AuthWrapper>
   )
 }

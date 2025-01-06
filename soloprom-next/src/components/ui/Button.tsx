@@ -9,8 +9,10 @@ const buttonVariants = cva(
   {
     variants: {
       variant: {
+        social:
+          'button flex h-10 items-center gap-2 bg-[#e2e2e4] text-darkBlue hover:text-white',
         default:
-          'bg-primary text-primary-foreground shadow hover:bg-primary/90',
+          'button h-10 w-full cursor-pointer bg-accentBlue font-medium text-white',
         destructive:
           'bg-destructive text-destructive-foreground shadow-sm hover:bg-destructive/90',
         outline:

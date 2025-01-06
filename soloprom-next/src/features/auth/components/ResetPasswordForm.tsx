@@ -79,7 +79,7 @@ export function ResetPasswordForm({ siteKey }: RegisterFormProps) {
             <ReCAPTCHA
               sitekey={siteKey}
               onChange={setRecaptchaValue}
-              theme={theme === 'light' ? 'light' : 'dark'}
+              theme={theme === 'dark' ? 'dark' : 'light'}
             />
           </div>
           <Button type="submit" disabled={isLoadingReset}>

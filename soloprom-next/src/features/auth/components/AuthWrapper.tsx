@@ -12,6 +12,7 @@ import {
 } from '@/components/ui'
 
 import { AuthSocial } from './AuthSocial'
+import { LogoLink } from './LogoLink'
 
 interface AuthWrapperProps {
   heading: string
@@ -30,22 +31,29 @@ export function AuthWrapper({
   isShowSocial = false,
 }: PropsWithChildren<AuthWrapperProps>) {
   return (
-    <Card className="w-[400px]">
-      <CardHeader className="space-y-2">
-        <CardTitle>{heading}</CardTitle>
-        {description && <CardDescription>{description}</CardDescription>}
-      </CardHeader>
-      <CardContent>
-        {isShowSocial && <AuthSocial />}
-        {children}
-      </CardContent>
-      <CardFooter>
-        {backButtonLabel && backButtonHref && (
-          <Button variant="link" className="w-full font-normal">
-            <Link href={backButtonHref}>{backButtonLabel}</Link>
-          </Button>
-        )}
-      </CardFooter>
-    </Card>
+    <div className="h-full w-full">
+      <div className="flex min-h-screen items-center justify-center">
+        <div className="mt-10 flex flex-col items-center gap-4">
+          <LogoLink />
+          <Card>
+            <CardHeader className="space-y-2">
+              <CardTitle>{heading}</CardTitle>
+              {description && <CardDescription>{description}</CardDescription>}
+            </CardHeader>
+            <CardContent>
+              {isShowSocial && <AuthSocial />}
+              {children}
+            </CardContent>
+            <CardFooter>
+              {backButtonLabel && backButtonHref && (
+                <Button variant="link" className="w-full font-normal">
+                  <Link href={backButtonHref}>{backButtonLabel}</Link>
+                </Button>
+              )}
+            </CardFooter>
+          </Card>
+        </div>
+      </div>
+    </div>
   )
 }
