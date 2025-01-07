@@ -4,6 +4,7 @@ import {
   InternalServerErrorException,
   NotFoundException,
   UnauthorizedException,
+  Logger,
 } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import { AuthMethod, User } from '@prisma/client';
@@ -21,6 +22,7 @@ import { TwoFactorAuthService } from './two-factor-auth/two-factor-auth.service'
 
 @Injectable()
 export class AuthService {
+  private readonly logger = new Logger(AuthService.name);
   public constructor(
     private readonly prismaService: PrismaService,
     private readonly userService: UserService,
@@ -104,47 +106,98 @@ export class AuthService {
     provider: string,
     code: string,
   ) {
-    const providerInstance = this.providerService.findByService(provider);
-    const profile = await providerInstance.findUserByCode(code);
+    try {
+      const providerInstance = this.providerService.findByService(provider);
+      const profile = await providerInstance.findUserByCode(code);
 
-    const account = await this.prismaService.account.findFirst({
-      where: {
-        id: profile.id,
-        provider: profile.provider,
-      },
-    });
-
-    let user = account?.userId
-      ? await this.userService.findById(account.userId)
-      : null;
-
-    if (user) {
-      return this.saveSession(req, user);
-    }
-
-    user = await this.userService.create(
-      profile.email,
-      '',
-      profile.name,
-      profile.picture,
-      AuthMethod[profile.provider.toUpperCase()],
-      true,
-    );
-
-    if (!account) {
-      await this.prismaService.account.create({
-        data: {
-          userId: user.id,
-          type: 'oauth',
+      const account = await this.prismaService.account.findFirst({
+        where: {
+          id: profile.id,
           provider: profile.provider,
-          accessToken: profile.access_token,
-          refreshToken: profile.refresh_token,
-          expiresAt: profile.expires_at,
         },
       });
-    }
 
-    return this.saveSession(req, user);
+      let user: User | null = null;
+
+      if (account?.userId) {
+        try {
+          user = await this.userService.findById(account.userId);
+        } catch (error) {
+          this.logger.error(
+            `Ошибка при поиске пользователя по id ${account.userId}`,
+            error,
+          );
+          throw error;
+        }
+      }
+
+      if (user) {
+        return this.saveSession(req, user);
+      }
+
+      // Проверяем, есть ли пользователь с таким email
+      const existingUser = await this.userService.findByEmail(profile.email);
+
+      if (existingUser) {
+        try {
+          // Обновляем пользователя, устанавливая isVerified в true
+          const updatedUser = await this.prismaService.user.update({
+            where: { id: existingUser.id },
+            data: { isVerified: true },
+          });
+          await this.prismaService.account.create({
+            data: {
+              userId: updatedUser.id,
+              type: 'oauth',
+              provider: profile.provider,
+              accessToken: profile.access_token,
+              refreshToken: profile.refresh_token,
+              expiresAt: profile.expires_at,
+            },
+          });
+          return this.saveSession(req, updatedUser);
+        } catch (error) {
+          this.logger.error(
+            `Ошибка при связывании аккаунта с существующим пользователем ${existingUser.id} `,
+            error,
+          );
+          throw error;
+        }
+      }
+
+      // Если пользователя нет, создаем нового
+      user = await this.userService.create(
+        profile.email,
+        '',
+        profile.name,
+        profile.picture,
+        AuthMethod[profile.provider.toUpperCase()],
+        true,
+      );
+
+      if (!account) {
+        try {
+          await this.prismaService.account.create({
+            data: {
+              userId: user.id,
+              type: 'oauth',
+              provider: profile.provider,
+              accessToken: profile.access_token,
+              refreshToken: profile.refresh_token,
+              expiresAt: profile.expires_at,
+            },
+          });
+        } catch (error) {
+          this.logger.error(`Ошибка при создании аккаунта ${account}`, error);
+          throw error;
+        }
+      }
+
+      return this.saveSession(req, user);
+    } catch (error) {
+      this.logger.error('Ошибка в extractProfileFromCode:', error);
+      throw error;
+    }
   }
 
   public async logout(req: Request, res: Response): Promise<void> {
@@ -166,7 +219,6 @@ export class AuthService {
   public async saveSession(req: Request, user: User) {
     return new Promise((resolve, reject) => {
       req.session.userId = user.id;
-      // userId
 
       req.session.save((err) => {
         if (err) {

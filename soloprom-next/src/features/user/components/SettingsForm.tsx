@@ -3,6 +3,8 @@
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useForm } from 'react-hook-form'
 import { useEffect } from 'react'
+import { useRouter } from 'next/navigation'
+import { deleteCookie } from 'cookies-next'
 
 import {
   Button,
@@ -25,11 +27,13 @@ import { useProfile } from '@/hooks/useProfile'
 
 import { useUpdateProfileMutation } from '../hooks/useUpdateProfileMutation'
 import { SettingsSchema, TypeSettingsSchema } from '../schemes'
-
-import { UserButton, UserButtonLoading } from './UserButton'
+import { useLogoutMutation } from '../hooks/useLogoutMutation'
 
 export function SettingsForm() {
   const { user, isLoading } = useProfile()
+  const { logout, isLoadingLogout } = useLogoutMutation()
+
+  const router = useRouter()
 
   const form = useForm<TypeSettingsSchema>({
     resolver: zodResolver(SettingsSchema),
@@ -52,18 +56,23 @@ export function SettingsForm() {
     }
   }, [user, form.reset])
 
+  useEffect(() => {
+    if (!user && !isLoading) {
+      logout()
+    }
+  }, [user, isLoading, router])
+
   const onSubmit = (values: TypeSettingsSchema) => {
     update(values)
   }
 
   if (isLoading) return <Loading />
-  if (!user) return <div className="p-10 text-center">Не удалось загрузить</div>
+  if (!user) return null // Достаточно null, т.к. переадресация произойдёт в useEffect выше
 
   return (
-    <Card className="w-[400px]">
+    <Card className="w-full">
       <CardHeader className="flex flex-row items-center justify-between">
         <CardTitle>Настройки профиля</CardTitle>
-        {isLoading ? <UserButtonLoading /> : <UserButton user={user} />}
       </CardHeader>
       <CardContent>
         <Form {...form}>

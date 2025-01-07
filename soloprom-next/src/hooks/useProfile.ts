@@ -8,8 +8,6 @@ export function useProfile() {
     queryFn: () => userService.findProfile(),
   })
 
-  console.log(user, isLoading)
-
   return {
     user,
     isLoading,

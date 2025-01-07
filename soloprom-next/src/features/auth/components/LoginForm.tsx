@@ -110,7 +110,7 @@ export function LoginForm({ siteKey }: RegisterFormProps) {
                       <FormLabel>Пароль</FormLabel>
                       <Link
                         href="/auth/reset-password"
-                        className="ml-auto inline-block text-sm underline"
+                        className="link-hover ml-auto inline-block text-sm underline"
                       >
                         Забыли пароль?
                       </Link>

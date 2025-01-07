@@ -1,25 +1,19 @@
 'use client'
 
-import { useTheme } from 'next-themes'
-
 import { Toaster as Sonner } from 'sonner'
 
 type ToasterProps = React.ComponentProps<typeof Sonner>
 
 const Toaster = ({ ...props }: ToasterProps) => {
-  const { theme } = useTheme()
-  const isDark =
-    theme === 'dark' ||
-    (!theme && window.matchMedia('(prefers-color-scheme: dark)').matches)
+  const isDark = 'dark'
 
   return (
     <Sonner
-      className="toaster font-medium"
+      className="toaster"
       toastOptions={{
         classNames: {
-          toast: `border border-border shadow-lg
-                  ${isDark ? 'bg-[#111827] text-white' : 'bg-blue-500 text-white'}`,
-          description: isDark ? 'text-white' : 'text-black font-medium',
+          toast: `border border-border shadow-custom text-sm bg-white text-accentBlue`,
+          description: 'text-black',
           actionButton: isDark
             ? 'bg-blue-600 text-white'
             : 'bg-blue-700 text-white',

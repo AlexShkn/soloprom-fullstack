@@ -2,7 +2,7 @@
 
 import React, { useState, useRef, useEffect } from 'react'
 import { useClickOutside } from '@/hooks/useClickOutside'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 
 import LocateConfirm from '../LocateConfirm'
 import LocateSearch from '../LocateSearch'
@@ -14,6 +14,16 @@ import { getCityFromIP } from '@/utils/getCityFromIP'
 import './HeaderTop.scss'
 import Link from 'next/link'
 import { buttonVariants } from '@/components/ui'
+import { useProfile } from '@/hooks/useProfile'
+
+import { Loading } from '@/components/ui'
+import {
+  UserButton,
+  UserButtonLoading,
+} from '@/features/user/components/UserButton'
+import { RootState } from '@/redux/store'
+import { changeAuthState } from '@/redux/slices/authSlice'
+import { useLogoutMutation } from '@/features/user/hooks/useLogoutMutation'
 
 export interface LocateSearchTypes {
   setLocateCity: (city: string) => void
@@ -29,6 +39,15 @@ export const HeaderTop: React.FC = () => {
   const [isConfirm, setIsConfirm] = useState(true)
   const windowRef = useRef(null)
   const dispatch = useDispatch()
+  const isAuth = useSelector((state: RootState) => state.auth.isAuth)
+
+  const { user, isLoading } = useProfile()
+
+  useEffect(() => {
+    if (!isLoading) {
+      dispatch(changeAuthState(!!user))
+    }
+  }, [user, isLoading])
 
   useClickOutside(windowRef, () => {
     setIsConfirm(false)
@@ -102,14 +121,23 @@ export const HeaderTop: React.FC = () => {
 
         <div className="flex items-center gap-7">
           <HeaderMenu />
-          <Link
-            href={'/auth/login'}
-            className="header-top__auth-button -margin-2.5 relative inline-flex h-7 w-7 items-center justify-center rounded-[50%] bg-accentBlue p-2.5 outline outline-1 outline-accentBlue transition-colors"
-          >
-            <svg className="icon ttall absolute h-5 w-5 fill-white transition-colors">
-              <use xlinkHref="/img/sprite.svg#lc"></use>
-            </svg>
-          </Link>
+
+          {isAuth && user && !isLoading ? (
+            <UserButton user={user} isLoading={isLoading} />
+          ) : (
+            <Link
+              href={'/auth/login'}
+              className="header-top__auth-button -margin-2.5 relative inline-flex h-7 w-7 items-center justify-center rounded-[50%] bg-accentBlue p-2.5 text-center outline outline-1 outline-accentBlue transition-colors"
+            >
+              {isLoading ? (
+                <Loading classNames="absolute right-[-5px] h-8 w-8" />
+              ) : (
+                <svg className="icon ttall absolute h-5 w-5 fill-white transition-colors">
+                  <use xlinkHref="/img/sprite.svg#lc"></use>
+                </svg>
+              )}
+            </Link>
+          )}
         </div>
       </div>
     </div>

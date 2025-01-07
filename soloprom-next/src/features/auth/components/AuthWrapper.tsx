@@ -33,7 +33,7 @@ export function AuthWrapper({
   return (
     <div className="h-full w-full">
       <div className="flex min-h-screen items-center justify-center">
-        <div className="mt-10 flex flex-col items-center gap-4">
+        <div className="mb-10 flex translate-y-8 flex-col items-center gap-4 pt-10">
           <LogoLink />
           <Card>
             <CardHeader className="space-y-2">
@@ -46,7 +46,10 @@ export function AuthWrapper({
             </CardContent>
             <CardFooter>
               {backButtonLabel && backButtonHref && (
-                <Button variant="link" className="w-full font-normal">
+                <Button
+                  variant="link"
+                  className="link-hover w-full font-normal"
+                >
                   <Link href={backButtonHref}>{backButtonLabel}</Link>
                 </Button>
               )}

@@ -6,6 +6,7 @@ import HeaderSliceReducer from './slices/headerSlice'
 import LocateSearchReducer from './slices/locateSlice'
 import CartSlice from './slices/cartSlice'
 import FavoriteSlice from './slices/favoriteSlice'
+import AuthSlice from './slices/authSlice'
 
 export const store = configureStore({
   reducer: {
@@ -16,6 +17,7 @@ export const store = configureStore({
     cities: LocateSearchReducer,
     cart: CartSlice,
     favorite: FavoriteSlice,
+    auth: AuthSlice,
   },
 })
 
