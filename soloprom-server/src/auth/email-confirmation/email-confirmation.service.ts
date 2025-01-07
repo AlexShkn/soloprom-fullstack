@@ -1,11 +1,12 @@
 import {
   BadRequestException,
+  ConflictException,
   forwardRef,
   Inject,
   Injectable,
   NotFoundException,
 } from '@nestjs/common';
-import { TokenType } from '@prisma/client';
+import { AuthMethod, TokenType } from '@prisma/client';
 import { Request } from 'express';
 import { v4 as uuidv4 } from 'uuid';
 
@@ -16,6 +17,8 @@ import { UserService } from '@/user/user.service';
 import { AuthService } from '../auth.service';
 
 import { ConfirmationDto } from './dto/confirmation.dto';
+import { RegisterDto } from '../dto/register.dto';
+import { TwoFactorAuthService } from '../two-factor-auth/two-factor-auth.service';
 
 @Injectable()
 export class EmailConfirmationService {
@@ -25,7 +28,55 @@ export class EmailConfirmationService {
     private readonly userService: UserService,
     @Inject(forwardRef(() => AuthService))
     private readonly authService: AuthService,
+    private readonly twoFactorAuthService: TwoFactorAuthService,
   ) {}
+
+  public async register(dto: RegisterDto) {
+    const isExists = await this.userService.findByEmail(dto.email);
+
+    if (isExists) {
+      throw new ConflictException(
+        'Регистрация не удалась. Пользователь с таким email уже существует. Пожалуйста, используйте другой email или войдите в систему.',
+      );
+    }
+
+    const newUser = await this.userService.create(
+      dto.email,
+      dto.password,
+      dto.name,
+      '',
+      AuthMethod.CREDENTIALS,
+      false,
+    );
+
+    // Отправка кода для подтверждения почты
+    await this.twoFactorAuthService.sendTwoFactorToken(newUser.email);
+
+    return {
+      message:
+        'Вы успешно зарегистрировались. Пожалуйста, введите код, отправленный на ваш email, для подтверждения вашей почты.',
+    };
+  }
+
+  public async confirmRegistration(email: string, code: string) {
+    // Проверяем введенный код
+    await this.twoFactorAuthService.validateTwoFactorToken(email, code);
+
+    // Обновляем статус пользователя на подтвержденный
+    const user = await this.userService.findByEmail(email);
+    if (!user) {
+      throw new NotFoundException('Пользователь не найден.');
+    }
+
+    await this.prismaService.user.update({
+      where: { id: user.id },
+      data: { isVerified: true },
+    });
+
+    return {
+      message: 'Почта успешно подтверждена. Вы можете войти в свой аккаунт.',
+    };
+  }
 
   public async newVerification(req: Request, dto: ConfirmationDto) {
     const existingToken = await this.prismaService.token.findUnique({

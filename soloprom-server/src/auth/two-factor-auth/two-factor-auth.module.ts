@@ -8,5 +8,6 @@ import { PrismaModule } from '@/prisma/prisma.module';
 @Module({
   imports: [PrismaModule],
   providers: [TwoFactorAuthService, MailService],
+  exports: [TwoFactorAuthService],
 })
 export class TwoFactorAuthModule {}

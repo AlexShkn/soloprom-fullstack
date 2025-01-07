@@ -61,7 +61,7 @@ export function AuthSocial() {
               />
             </svg>
 
-            <span className="block pl-4 leading-none">Войти с Google</span>
+            <span className="block pl-4 leading-none">Google</span>
           </div>
         </Button>
         <Button onClick={() => onClick('yandex')} variant="social">
@@ -86,7 +86,7 @@ export function AuthSocial() {
                 fill="white"
               ></path>
             </svg>
-            <span className="leading-none">Войти с Яндекс ID</span>
+            <span className="leading-none">Яндекс ID</span>
           </div>
         </Button>
       </div>

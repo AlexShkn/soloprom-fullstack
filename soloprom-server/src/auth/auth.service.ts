@@ -50,11 +50,32 @@ export class AuthService {
       false,
     );
 
-    await this.emailConfirmationService.sendVerificationToken(newUser.email);
+    // Отправка кода для подтверждения почты
+    await this.twoFactorAuthService.sendTwoFactorToken(newUser.email);
 
     return {
       message:
-        'Вы успешно зарегистрировались. Пожалуйста, подтвердите ваш email. Сообщение было отправлено на ваш почтовый адрес.',
+        'Вы успешно зарегистрировались. Пожалуйста, введите код, отправленный на ваш email, для подтверждения вашей почты.',
+    };
+  }
+
+  public async confirmRegistration(email: string, code: string) {
+    // Проверяем введенный код
+    await this.twoFactorAuthService.validateTwoFactorToken(email, code);
+
+    // Обновляем статус пользователя на подтвержденный
+    const user = await this.userService.findByEmail(email);
+    if (!user) {
+      throw new NotFoundException('Пользователь не найден.');
+    }
+
+    await this.prismaService.user.update({
+      where: { id: user.id },
+      data: { isVerified: true },
+    });
+
+    return {
+      message: 'Почта успешно подтверждена. Вы можете войти в свой аккаунт.',
     };
   }
 

@@ -37,6 +37,15 @@ export class AuthController {
     return this.authService.register(dto);
   }
 
+  @Post('confirm-registration')
+  @HttpCode(HttpStatus.OK)
+  public async confirmRegistration(
+    @Body('email') email: string,
+    @Body('code') code: string,
+  ) {
+    return this.authService.confirmRegistration(email, code);
+  }
+
   @Recaptcha()
   @Post('login')
   @HttpCode(HttpStatus.OK)

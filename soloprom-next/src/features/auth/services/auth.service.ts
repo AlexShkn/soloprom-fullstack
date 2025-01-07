@@ -1,9 +1,9 @@
 import { api } from '@/components/shared/instance.api'
-import { TypeLoginSchema, TypeRegisterSchema } from '../schemes'
+import { TypeLoginSchema, RegisterFormValues } from '../schemes'
 import { IUser } from '../types'
 
 class AuthService {
-  public async register(body: TypeRegisterSchema, recaptcha?: string) {
+  public async register(body: RegisterFormValues, recaptcha?: string) {
     const headers = recaptcha ? { recaptcha } : undefined
 
     console.log(headers)
@@ -35,6 +35,19 @@ class AuthService {
 
   public async logout() {
     const response = await api.post('auth/logout')
+
+    return response
+  }
+
+  // Добавление нового метода confirmRegistration
+  public async confirmRegistration(email: string, code: string) {
+    const response = await api.post<{ message: string }>(
+      'auth/confirm-registration',
+      {
+        email,
+        code,
+      },
+    )
 
     return response
   }

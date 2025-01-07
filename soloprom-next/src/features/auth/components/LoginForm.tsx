@@ -1,9 +1,8 @@
 'use client'
 
 import { zodResolver } from '@hookform/resolvers/zod'
-import { useTheme } from 'next-themes'
 import Link from 'next/link'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import ReCAPTCHA from 'react-google-recaptcha'
 import { useForm } from 'react-hook-form'
 import { toast } from 'sonner'
@@ -25,25 +24,64 @@ import { LoginSchema, TypeLoginSchema } from '../schemes'
 import { AuthWrapper } from './AuthWrapper'
 
 import { RegisterFormProps } from './RegisterForm'
+import { CodeVerifyBlock } from './CodeVerifyBlock'
+
+const VERIFY_TIME = 300
 
 export function LoginForm({ siteKey }: RegisterFormProps) {
-  const { theme } = useTheme()
   const [recaptchaValue, setRecaptchaValue] = useState<string | null>(null)
   const [isShowTwoFactor, setIsShowFactor] = useState(false)
+  const [reserveValues, setReserveValues] = useState<TypeLoginSchema>({
+    email: '',
+    password: '',
+    code: '',
+  })
+  const [countdown, setCountdown] = useState(VERIFY_TIME)
+  const [isResendEnabled, setIsResendEnabled] = useState(false)
 
   const form = useForm<TypeLoginSchema>({
     resolver: zodResolver(LoginSchema),
     defaultValues: {
       email: '',
       password: '',
+      code: '',
     },
   })
 
   const { login, isLoadingLogin } = useLoginMutation(setIsShowFactor)
 
+  useEffect(() => {
+    if (isShowTwoFactor && countdown > 0) {
+      const timer = setInterval(() => {
+        setCountdown((prev) => prev - 1)
+      }, 1000)
+
+      return () => clearInterval(timer)
+    }
+
+    if (countdown === 0) {
+      setIsResendEnabled(true)
+    }
+  }, [isShowTwoFactor, countdown])
+
+  const resetCode = () => {
+    if (recaptchaValue) {
+      login({ values: reserveValues, recaptcha: recaptchaValue })
+      setCountdown(VERIFY_TIME)
+      setIsResendEnabled(false)
+    } else {
+      toast.error('Пожалуйста, завершите reCAPTCHA')
+    }
+
+    toast.success('Новый код отправлен!')
+  }
+
   const onSubmit = (values: TypeLoginSchema) => {
     if (recaptchaValue) {
+      setReserveValues({ ...values })
       login({ values, recaptcha: recaptchaValue })
+      setCountdown(VERIFY_TIME)
+      setIsResendEnabled(false)
     } else {
       toast.error('Пожалуйста, завершите reCAPTCHA')
     }
@@ -55,7 +93,8 @@ export function LoginForm({ siteKey }: RegisterFormProps) {
       description="Чтобы войти на сайт введите ваш email и пароль"
       backButtonLabel="Еще нет аккаунта? Регистрация"
       backButtonHref="/auth/register"
-      isShowSocial
+      isShowHead={!isShowTwoFactor}
+      isShowSocial={!isShowTwoFactor}
     >
       <Form {...form}>
         <form
@@ -68,12 +107,14 @@ export function LoginForm({ siteKey }: RegisterFormProps) {
               name="code"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Код</FormLabel>
                   <FormControl>
-                    <Input
-                      placeholder="123456"
-                      disabled={isLoadingLogin}
-                      {...field}
+                    <CodeVerifyBlock
+                      emailAddress={reserveValues.email}
+                      field={{ ...field }}
+                      countdown={countdown}
+                      isResendEnabled={isResendEnabled}
+                      resetCode={resetCode}
+                      isLoading={isLoadingLogin}
                     />
                   </FormControl>
                   <FormMessage />
@@ -133,7 +174,7 @@ export function LoginForm({ siteKey }: RegisterFormProps) {
             <ReCAPTCHA
               sitekey={siteKey}
               onChange={setRecaptchaValue}
-              theme={theme === 'dark' ? 'dark' : 'light'}
+              theme={'light'}
             />
           </div>
           <Button type="submit" disabled={isLoadingLogin}>

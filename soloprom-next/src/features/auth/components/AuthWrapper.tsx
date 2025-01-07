@@ -20,6 +20,7 @@ interface AuthWrapperProps {
   backButtonLabel?: string
   backButtonHref?: string
   isShowSocial?: boolean
+  isShowHead?: boolean
 }
 
 export function AuthWrapper({
@@ -28,6 +29,7 @@ export function AuthWrapper({
   description,
   backButtonLabel,
   backButtonHref,
+  isShowHead = true,
   isShowSocial = false,
 }: PropsWithChildren<AuthWrapperProps>) {
   return (
@@ -36,10 +38,15 @@ export function AuthWrapper({
         <div className="mb-10 flex translate-y-8 flex-col items-center gap-4 pt-10">
           <LogoLink />
           <Card>
-            <CardHeader className="space-y-2">
-              <CardTitle>{heading}</CardTitle>
-              {description && <CardDescription>{description}</CardDescription>}
-            </CardHeader>
+            {isShowHead && (
+              <CardHeader className="space-y-2">
+                <CardTitle>{heading}</CardTitle>
+                {description && (
+                  <CardDescription>{description}</CardDescription>
+                )}
+              </CardHeader>
+            )}
+
             <CardContent>
               {isShowSocial && <AuthSocial />}
               {children}

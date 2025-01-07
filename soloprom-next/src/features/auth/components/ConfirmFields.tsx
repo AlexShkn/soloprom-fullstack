@@ -1,11 +1,13 @@
 'use client'
 import React from 'react'
 
-interface Props {
-  className?: string
-}
-
-export const ConfirmFields: React.FC<Props> = ({ className }) => {
+export const ConfirmFields = ({
+  children,
+  emailAddress,
+}: {
+  children: React.ReactNode
+  emailAddress: string
+}) => {
   return (
     <div className="flex flex-col items-center">
       <div className="flex flex-col items-center gap-3">
@@ -30,93 +32,11 @@ export const ConfirmFields: React.FC<Props> = ({ className }) => {
           Введите код подтверждения
         </span>
         <p className="text-center text-sm">
-          Код отправлен на вашу почту{' '}
-          <strong className="font-bold leading-7">lex92cool@yandex.ru</strong>
+          Код отправлен на почту{' '}
+          <strong className="font-bold leading-7">{emailAddress}</strong>
         </p>
       </div>
-      <div className="mt-4 flex flex-col items-center gap-4">
-        <div
-          data-scope="pin-input"
-          data-part="control"
-          id="pin-input:cl-2:control"
-          className="grid grid-cols-4 items-center gap-3"
-        >
-          <input
-            data-scope="pin-input"
-            data-part="input"
-            id="pin-input:cl-2:0"
-            data-ownedby="pin-input:cl-2"
-            aria-label="pin code 1 of 4"
-            inputMode="numeric"
-            type="tel"
-            autoCapitalize="none"
-            autoComplete="off"
-            placeholder="○"
-            tabIndex={1}
-            className="border-1 block h-14 w-14 rounded border border-[#ebebeb] text-center text-2xl font-medium"
-          />
-          <input
-            data-scope="pin-input"
-            data-part="input"
-            id="pin-input:cl-2:1"
-            data-ownedby="pin-input:cl-2"
-            aria-label="pin code 2 of 4"
-            inputMode="numeric"
-            type="tel"
-            autoCapitalize="none"
-            autoComplete="off"
-            placeholder="○"
-            tabIndex={1}
-            className="border-1 block h-14 w-14 rounded border border-[#ebebeb] text-center text-2xl font-medium"
-          />
-          <input
-            data-scope="pin-input"
-            data-part="input"
-            id="pin-input:cl-2:2"
-            data-ownedby="pin-input:cl-2"
-            aria-label="pin code 3 of 4"
-            inputMode="numeric"
-            type="tel"
-            autoCapitalize="none"
-            autoComplete="off"
-            placeholder="○"
-            tabIndex={1}
-            className="border-1 block h-14 w-14 rounded border border-[#ebebeb] text-center text-2xl font-medium"
-          />
-          <input
-            data-scope="pin-input"
-            data-part="input"
-            id="pin-input:cl-2:3"
-            data-ownedby="pin-input:cl-2"
-            aria-label="pin code 4 of 4"
-            inputMode="numeric"
-            type="tel"
-            autoCapitalize="none"
-            autoComplete="off"
-            placeholder="○"
-            tabIndex={1}
-            className="border-1 block h-14 w-14 rounded border border-[#ebebeb] text-center text-2xl font-medium"
-          />
-        </div>
-
-        <span className="text_css_root_r67fmvx text_css_body-1_b1x39ofe utils_css_color_red_ciosmt4"></span>
-
-        <span className="text-center">
-          <span>Код отправлен. Время действия кода</span> <span>288</span>{' '}
-          <span>сек</span>
-        </span>
-
-        <div className="flex flex-col justify-center">
-          <p className="text_css_root_r67fmvx text_css_body-2_b1pxmc10">
-            Время действия кода истекло.
-          </p>
-          <p className="text-center">
-            <button className="p-1 font-bold text-accentBlue">
-              Отправить новый
-            </button>
-          </p>
-        </div>
-      </div>
+      {children}
     </div>
   )
 }

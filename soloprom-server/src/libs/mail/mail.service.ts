@@ -43,6 +43,6 @@ export class MailService {
   public async sendTwoFactorTokenEmail(email: string, token: string) {
     const html = await render(TwoFactorAuthTemplate({ token }));
 
-    return this.sendMail(email, 'Подтверждение вашей личности', html);
+    return this.sendMail(email, `Код для авторизации: ${token}`, html);
   }
 }
