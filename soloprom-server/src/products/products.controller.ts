@@ -43,7 +43,6 @@ export class ProductsController {
   // Получение популярных товаров
   @Get('popular/get')
   async getPopularProducts() {
-    console.log('get');
     return this.productService.getPopularProducts();
   }
 

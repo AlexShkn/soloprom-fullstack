@@ -6,8 +6,6 @@ class AuthService {
   public async register(body: RegisterFormValues, recaptcha?: string) {
     const headers = recaptcha ? { recaptcha } : undefined
 
-    console.log(headers)
-
     const response = await api.post<IUser>('auth/register', body, {
       headers,
     })

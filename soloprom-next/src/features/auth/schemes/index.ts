@@ -1,3 +1,4 @@
+export * from './order.schema'
 export * from './login.schema'
 export * from './new-password.schema'
 export * from './register.schema'

@@ -39,8 +39,6 @@ export class UserService {
       },
     });
 
-    console.log('user', user);
-
     return user;
   }
 

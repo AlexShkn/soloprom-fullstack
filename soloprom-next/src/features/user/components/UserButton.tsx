@@ -7,7 +7,7 @@ import { IUser } from '@/features/auth/types'
 import Link from 'next/link'
 import { useDispatch } from 'react-redux'
 
-import { changeAuthState } from '@/redux/slices/authSlice'
+import { changeAuthStatus } from '@/redux/slices/authSlice'
 
 import {
   Avatar,
@@ -34,7 +34,7 @@ export function UserButton({ user, isLoading }: UserButtonProps) {
 
   const handleLogout = () => {
     logout()
-    dispatch(changeAuthState(false))
+    dispatch(changeAuthStatus(false))
   }
 
   if (!user) return null

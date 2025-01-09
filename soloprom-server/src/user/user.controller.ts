@@ -23,7 +23,6 @@ export class UserController {
   @HttpCode(HttpStatus.OK)
   @Get('profile')
   public async findProfile(@Authorized('id') userId: string) {
-    console.log(userId);
     return this.userService.findById(userId);
   }
 

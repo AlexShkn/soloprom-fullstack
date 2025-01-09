@@ -159,7 +159,7 @@ export const Cart: React.FC = () => {
         </div>
       </div>
       <div className="cart__container">
-        {cartState.length && (
+        {cartState.length > 0 && (
           <CartResult cartLength={cartState.length} totalAmount={totalAmount} />
         )}
       </div>

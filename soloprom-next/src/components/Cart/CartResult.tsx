@@ -1,10 +1,7 @@
 'use client'
 import React, { useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import { RootState } from '@/redux/store'
 import { getDigFormat } from '@/supports'
 import { OrderForm } from './OrderForm/OrderForm'
-import { type } from 'os'
 
 type Props = {
   cartLength: number

@@ -26,14 +26,12 @@ export const ProductsSlider: React.FC<Props> = ({ title, categoryName }) => {
         const formattedProducts = response.data.filter(
           (product: cardDataProps) => product.categoryName === categoryName,
         )
-        console.log(formattedProducts)
 
         setFavoriteData(formattedProducts)
       } catch (err) {
         console.error('Не удалось получить данные')
       } finally {
         setLoading(false)
-        console.log(favoriteData)
       }
     }
 

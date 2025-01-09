@@ -5,13 +5,14 @@ import { useDispatch } from 'react-redux'
 import { modalCallbackStateChange } from '@/redux/slices/modalsSlice'
 
 import './HeaderBody.scss'
+import Link from 'next/link'
 
 const HeaderBody = () => {
   const dispatch = useDispatch()
 
   return (
     <div className="header-body flex items-center justify-between py-[30px]">
-      <a
+      <Link
         href="/"
         className="header__logo flex-0-auto z-[2] mr-10 inline-flex items-center font-bold"
       >
@@ -31,7 +32,7 @@ const HeaderBody = () => {
             Интернет-магазин запчастей для спецтехники
           </span>
         </div>
-      </a>
+      </Link>
       <div className="header-body__content flex w-full items-center justify-between gap-5">
         <div className="header-body__info flex w-full items-center justify-end gap-5">
           <div className="header-body__schedule flex items-center gap-2.5">

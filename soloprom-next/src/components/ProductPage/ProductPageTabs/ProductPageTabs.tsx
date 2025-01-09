@@ -42,7 +42,6 @@ export const ProductPageTabs: React.FC<Props> = ({ category, productId }) => {
     const fetchProduct = async () => {
       setLoading(true)
       const fetchedProduct = await getProductById(productId)
-      console.log(fetchedProduct)
       setProduct(fetchedProduct?.productDescr)
       setLoading(false)
     }

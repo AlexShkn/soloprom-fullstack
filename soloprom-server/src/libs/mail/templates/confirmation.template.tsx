@@ -13,9 +13,6 @@ export function ConfirmationTemplate({
 }: ConfirmationTemplateProps) {
   const confirmLink = `${domain}/auth/new-verification?token=${token}`;
 
-  console.log('token', token);
-  console.log('confirmLink', confirmLink);
-
   return (
     <Tailwind>
       <Html>
