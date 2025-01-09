@@ -4,7 +4,7 @@ import { RootState, AppDispatch } from '@/redux/store'
 import { fetchCities } from '@/redux/thunks/locateThunk'
 import { setSelectedCity } from '@/redux/slices/locateSlice'
 
-import { LocateSearchTypes } from './HeaderTop/HeaderTop'
+import { LocateSearchTypes } from './Header/LocateBlock'
 import CloseButton from '@/components/shared/CloseButton'
 import { useScrollCloseableWindow } from '@/hooks/useScrollCloseableWindow'
 

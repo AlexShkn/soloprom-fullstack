@@ -1,7 +1,7 @@
 import React from 'react'
 import { useDispatch } from 'react-redux'
 import CloseButton from '@/components/shared/CloseButton'
-import { LocateSearchTypes } from './HeaderTop/HeaderTop'
+import { LocateSearchTypes } from './Header/LocateBlock'
 import { setSelectedCity } from '@/redux/slices/locateSlice'
 
 type LocateConfirmTypes = LocateSearchTypes & {
@@ -30,7 +30,10 @@ const LocateConfirm: React.FC<LocateConfirmTypes> = ({
 
   return (
     <div className="locate-confirm tp-[30px] absolute left-0 min-w-[300px] rounded bg-white p-5 shadow-custom transition-all">
-      <CloseButton classNames="window-close-btn" />
+      <CloseButton
+        classNames="window-close-btn"
+        onClick={() => setIsConfirm(false)}
+      />
       <div className="mb-5 text-center text-lg text-darkBlue">
         Ваш город - <b>{city}</b>?
       </div>

@@ -30,7 +30,8 @@ body._lock {
   }
 }
 
-[class*='__container'] {
+[class*='__container'],
+.container {
   max-width: variables.$maxWidthContainer + px;
   margin: 0 auto;
   padding: 0 variables.$containerPadding + px;
@@ -39,7 +40,8 @@ body._lock {
     padding: 0 15px;
   }
 }
-[class*='__inner-container'] {
+[class*='__inner-container'],
+.inner-container {
   max-width: 1000px;
   margin: 0 auto;
   padding: 0 15px;

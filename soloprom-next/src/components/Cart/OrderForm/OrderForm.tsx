@@ -1,9 +1,12 @@
 'use client'
-import React from 'react'
+import React, { useState } from 'react'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useForm } from 'react-hook-form'
 import { toast } from 'sonner'
 import { TypeOrderSchema, OrderSchema } from '@/features/auth/schemes'
+import { useSelector } from 'react-redux'
+import { RootState } from '@/redux/store'
+
 import {
   Button,
   Form,
@@ -18,6 +21,11 @@ import {
 import './OrderForm.scss'
 
 export const OrderForm: React.FC = () => {
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  const { cartState, totalAmount } = useSelector(
+    (state: RootState) => state.cart,
+  )
+
   const form = useForm<TypeOrderSchema>({
     resolver: zodResolver(OrderSchema),
     defaultValues: {
@@ -32,16 +40,38 @@ export const OrderForm: React.FC = () => {
     },
   })
 
-  const onSubmit = (values: TypeOrderSchema) => {
-    console.log(values)
-    toast.success('Форма отправлена!')
+  const onSubmit = async (values: TypeOrderSchema) => {
+    setIsSubmitting(true)
+    try {
+      const response = await fetch('/api/sendTelegram', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ totalAmount, cartState, ...values }),
+      })
+
+      if (response.ok) {
+        toast.success('Форма успешно отправлена!')
+        form.reset()
+      } else {
+        toast.error('Ошибка при отправке формы.')
+      }
+    } catch (error) {
+      toast.error('Ошибка при отправке формы.')
+    } finally {
+      setIsSubmitting(false)
+    }
   }
 
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className="cart-result-form">
-        <div className="cart-result-form__wrapper">
-          <div className="cart-result-form__fields modal-callback__fields">
+      <form
+        onSubmit={form.handleSubmit(onSubmit)}
+        className="cart-result-form mt-5 flex w-full flex-col justify-center rounded p-5 shadow-custom"
+      >
+        <div className="cart-result-form__wrapper mb-7 grid w-full grid-cols-2 gap-7">
+          <div className="mb-6 flex flex-col gap-6">
             <FormField
               control={form.control}
               name="family"
@@ -169,8 +199,8 @@ export const OrderForm: React.FC = () => {
               )}
             />
           </div>
-          <div className="cart-result-form__options">
-            <div className="cart-result-form__person">
+          <div className="flex flex-col gap-5">
+            <div className="cart-result-form__person grid grid-cols-2 gap-2.5">
               <FormField
                 control={form.control}
                 name="personType"
@@ -203,17 +233,17 @@ export const OrderForm: React.FC = () => {
               />
             </div>
 
-            <div className="cart-result-form__delivery">
-              <div className="cart-result-form__subtitle">
+            <div>
+              <div className="mb-5 text-xl font-medium">
                 Транспортные компании:
               </div>
-              <ul className="cart-result-form__delivery-list">
+              <ul className="flex flex-wrap gap-5">
                 <FormField
                   control={form.control}
                   name="deliveryMethods"
                   render={({ field }) => (
                     <>
-                      <li className="cart-result-form__delivery-item">
+                      <li>
                         <label className="cart-result-form__checkbox">
                           <input
                             type="checkbox"
@@ -236,12 +266,12 @@ export const OrderForm: React.FC = () => {
                             }}
                           />
                           <div className="cart-result-form__checkbox-checkmark"></div>
-                          <div className="cart-result-form__checkbox-body">
+                          <div className="cart-result-form__checkbox-body duration-250 transition-color duration-250 hover:bg-lefty overflow-hidden rounded-lg bg-white bg-gradient-to-r from-white to-white bg-[size:200%_100%] bg-right pl-7 font-bold shadow-md duration-1000 ease-in-out hover:shadow-lg">
                             <img src="/img/icons/company/cdek.png" alt="" />
                           </div>
                         </label>
                       </li>
-                      <li className="cart-result-form__delivery-item">
+                      <li>
                         <label className="cart-result-form__checkbox">
                           <input
                             type="checkbox"
@@ -264,7 +294,7 @@ export const OrderForm: React.FC = () => {
                             }}
                           />
                           <div className="cart-result-form__checkbox-checkmark"></div>
-                          <div className="cart-result-form__checkbox-body">
+                          <div className="cart-result-form__checkbox-body duration-250 transition-color duration-250 hover:bg-lefty overflow-hidden rounded-lg bg-white bg-gradient-to-r from-white to-white bg-[size:200%_100%] bg-right pl-7 font-bold shadow-md duration-1000 ease-in-out hover:shadow-lg">
                             <img
                               src="/img/icons/company/delovie-linii.png"
                               alt=""
@@ -272,7 +302,7 @@ export const OrderForm: React.FC = () => {
                           </div>
                         </label>
                       </li>
-                      <li className="cart-result-form__delivery-item">
+                      <li>
                         <label className="cart-result-form__checkbox">
                           <input
                             type="checkbox"
@@ -295,12 +325,12 @@ export const OrderForm: React.FC = () => {
                             }}
                           />
                           <div className="cart-result-form__checkbox-checkmark"></div>
-                          <div className="cart-result-form__checkbox-body">
+                          <div className="cart-result-form__checkbox-body duration-250 transition-color duration-250 hover:bg-lefty overflow-hidden rounded-lg bg-white bg-gradient-to-r from-white to-white bg-[size:200%_100%] bg-right pl-7 font-bold shadow-md duration-1000 ease-in-out hover:shadow-lg">
                             <img src="/img/icons/company/pek.png" alt="" />
                           </div>
                         </label>
                       </li>
-                      <li className="cart-result-form__delivery-item">
+                      <li>
                         <label className="cart-result-form__checkbox">
                           <input
                             type="checkbox"
@@ -323,12 +353,12 @@ export const OrderForm: React.FC = () => {
                             }}
                           />
                           <div className="cart-result-form__checkbox-checkmark"></div>
-                          <div className="cart-result-form__checkbox-body">
+                          <div className="cart-result-form__checkbox-body duration-250 transition-color duration-250 hover:bg-lefty overflow-hidden rounded-lg bg-white bg-gradient-to-r from-white to-white bg-[size:200%_100%] bg-right pl-7 font-bold shadow-md duration-1000 ease-in-out hover:shadow-lg">
                             <img src="/img/icons/company/energiya.png" alt="" />
                           </div>
                         </label>
                       </li>
-                      <li className="cart-result-form__delivery-item">
+                      <li>
                         <label className="cart-result-form__checkbox">
                           <input
                             type="checkbox"
@@ -351,7 +381,7 @@ export const OrderForm: React.FC = () => {
                             }}
                           />
                           <div className="cart-result-form__checkbox-checkmark"></div>
-                          <div className="cart-result-form__checkbox-body">
+                          <div className="cart-result-form__checkbox-body duration-250 transition-color duration-250 hover:bg-lefty overflow-hidden rounded-lg bg-white bg-gradient-to-r from-white to-white bg-[size:200%_100%] bg-right pl-7 font-bold shadow-md duration-1000 ease-in-out hover:shadow-lg">
                             <img src="/img/icons/company/other.png" alt="" />
                           </div>
                         </label>
@@ -364,9 +394,13 @@ export const OrderForm: React.FC = () => {
           </div>
         </div>
 
-        <Button type="submit" className="cart-result-form__button">
-          <img src="/img/icons/buy.svg" alt="" />
-          Отправить
+        <Button
+          type="submit"
+          className="mx-auto my-0 h-12 w-full max-w-96 gap-2.5 px-7 py-4 text-lg font-bold"
+          disabled={isSubmitting}
+        >
+          {isSubmitting ? 'Отправка...' : 'Отправить'}
+          <img className="h-7 w-7" src="/img/icons/buy.svg" alt="" />
         </Button>
       </form>
     </Form>

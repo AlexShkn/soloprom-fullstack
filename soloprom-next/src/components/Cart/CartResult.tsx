@@ -1,7 +1,5 @@
 'use client'
-import React, { useState } from 'react'
 import { getDigFormat } from '@/supports'
-import { OrderForm } from './OrderForm/OrderForm'
 
 type Props = {
   cartLength: number
@@ -9,23 +7,12 @@ type Props = {
 }
 
 export const CartResult: React.FC<Props> = ({ cartLength, totalAmount }) => {
-  const [formIsOpen, setFormIsOpen] = useState(false)
-
   return (
     <div className="cart__result">
       <div className="cart__result-out">
         <b>{`Выбран ${cartLength} товар`}</b> на сумму
         <b> {getDigFormat(totalAmount)}</b>₽
       </div>
-      <button
-        onClick={() => setFormIsOpen(true)}
-        type="button"
-        className={`button cart__order-btn ${formIsOpen && 'hidden'}`}
-      >
-        Оформить заказ
-      </button>
-
-      {formIsOpen && <OrderForm />}
     </div>
   )
 }

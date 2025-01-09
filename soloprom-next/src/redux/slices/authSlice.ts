@@ -35,6 +35,7 @@ export const authSlice = createSlice({
     },
     setUserData: (state, action) => {
       state.userState = { ...action.payload }
+      state.isLoading = true
     },
   },
 })

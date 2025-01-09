@@ -59,6 +59,7 @@ export const LocateBlock: React.FC<Props> = ({ className }) => {
     }
     fetchLocation()
   }, [])
+
   return (
     <div ref={windowRef} className="relative z-10 mr-7">
       <div className="header-top__locate-button flex items-center gap-1 text-sm font-medium text-white">

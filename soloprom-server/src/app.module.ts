@@ -17,6 +17,7 @@ import { EmailConfirmationModule } from './auth/email-confirmation/email-confirm
 import { PasswordRecoveryModule } from './auth/password-recovery/password-recovery.module';
 import { TwoFactorAuthModule } from './auth/two-factor-auth/two-factor-auth.module';
 import { PrismaModule } from './prisma/prisma.module';
+import { TelegramModule } from './telegram/telegram.module';
 
 @Module({
   imports: [
@@ -38,6 +39,7 @@ import { PrismaModule } from './prisma/prisma.module';
     EmailConfirmationModule,
     PasswordRecoveryModule,
     TwoFactorAuthModule,
+    TelegramModule,
   ],
   controllers: [],
   providers: [ScraperJob],

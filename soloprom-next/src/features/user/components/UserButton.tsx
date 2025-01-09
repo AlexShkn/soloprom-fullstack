@@ -5,7 +5,7 @@ import { useEffect, useState } from 'react'
 import { LuLogOut, LuMenu } from 'react-icons/lu'
 import { IUser } from '@/features/auth/types'
 import Link from 'next/link'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 
 import { changeAuthStatus } from '@/redux/slices/authSlice'
 
@@ -22,22 +22,19 @@ import {
 } from '@/components/ui'
 
 import { useLogoutMutation } from '../hooks'
+import { RootState } from '@/redux/store'
 
-interface UserButtonProps {
-  user: IUser
-  isLoading?: boolean
-}
-
-export function UserButton({ user, isLoading }: UserButtonProps) {
+export function UserButton() {
   const dispatch = useDispatch()
   const { logout, isLoadingLogout } = useLogoutMutation()
+  const { userState } = useSelector((state: RootState) => state.auth)
 
   const handleLogout = () => {
     logout()
     dispatch(changeAuthStatus(false))
   }
 
-  if (!user) return null
+  if (!userState) return null
 
   return (
     <DropdownMenu>
@@ -46,22 +43,21 @@ export function UserButton({ user, isLoading }: UserButtonProps) {
           href={'/auth/login'}
           className={`header-top__auth-button -margin-2.5 relative inline-flex h-7 w-7 items-center justify-center rounded-[50%] p-2.5 text-center outline outline-1 outline-accentBlue transition-colors`}
         >
-          {isLoading ? (
-            <Loading classNames="absolute right-[-5px] h-8 w-8" />
-          ) : (
-            <Avatar>
-              <AvatarImage src={user.picture} />
-              <AvatarFallback>{user.displayName.slice(0, 1)}</AvatarFallback>
-            </Avatar>
-          )}
+          <Avatar>
+            <AvatarImage src={userState.picture} />
+            <AvatarFallback>{userState.displayName.slice(0, 1)}</AvatarFallback>
+          </Avatar>
         </Link>
       </DropdownMenuTrigger>
 
       <DropdownMenuContent className="w-40 bg-white" align="end">
-        <DropdownMenuItem className="link-hover cursor-pointer">
+        <Link
+          href={'/dashboard/settings'}
+          className="link-hover flex items-center px-2 py-1.5"
+        >
           <LuMenu className="mr-2 size-4" />
-          <Link href={'/dashboard/settings'}>Кабинет</Link>
-        </DropdownMenuItem>
+          Кабинет
+        </Link>
         <DropdownMenuItem
           className="link-hover cursor-pointer"
           disabled={isLoadingLogout}

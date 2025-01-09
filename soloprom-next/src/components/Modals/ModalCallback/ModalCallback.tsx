@@ -1,18 +1,35 @@
 'use client'
 
-import React, { useRef } from 'react'
+import React, { useRef, useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { RootState } from '@/redux/store'
 import { useClickOutside } from '@/hooks/useClickOutside'
 import { useMediaQuery } from '@/hooks/useMediaQuery'
-
 import { modalCallbackStateChange } from '@/redux/slices/modalsSlice'
+import { zodResolver } from '@hookform/resolvers/zod'
+import { useForm } from 'react-hook-form'
+import { toast } from 'sonner'
+
+import {
+  TypeCallbackSchema,
+  CallbackSchema,
+} from '@/features/auth/schemes/callback.schema'
 
 import CloseButton from '@/components/shared/CloseButton'
-
+import {
+  Button,
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+  Input,
+} from '@/components/ui'
 import './ModalCallback.scss'
 
 const ModalCallback = () => {
+  const [isSubmitting, setIsSubmitting] = useState(false)
   const dispatch = useDispatch()
   const selectedCity = useSelector(
     (state: RootState) => state.cities.selectedCity,
@@ -24,6 +41,47 @@ const ModalCallback = () => {
   })
 
   const isMobileHeight = useMediaQuery('(max-width: 650px)')
+
+  const form = useForm<TypeCallbackSchema>({
+    resolver: zodResolver(CallbackSchema),
+    defaultValues: {
+      name: '',
+      phone: '',
+      email: '',
+      address: '',
+    },
+  })
+
+  useEffect(() => {
+    if (selectedCity) {
+      form.setValue('address', selectedCity)
+    }
+  }, [selectedCity, form.setValue])
+
+  const onSubmit = async (values: TypeCallbackSchema) => {
+    setIsSubmitting(true)
+    try {
+      const response = await fetch('/api/sendTelegram', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(values),
+      })
+
+      if (response.ok) {
+        toast.success('Форма успешно отправлена!')
+        form.reset()
+      } else {
+        toast.error('Ошибка при отправке формы.')
+      }
+    } catch (error) {
+      toast.error('Ошибка при отправке формы.')
+    } finally {
+      setIsSubmitting(false)
+      dispatch(modalCallbackStateChange(false))
+    }
+  }
 
   return (
     <div className={`modal-callback modal fade show z-[99999]`}>
@@ -45,98 +103,118 @@ const ModalCallback = () => {
                 вопросы
               </div>
             </div>
-            <form>
-              <div className="mb-6 flex flex-col gap-6">
-                <div className="form-field-control relative">
-                  <input
-                    data-form-username
-                    id="modal-callback-name"
-                    type="text"
+            <Form {...form}>
+              <form onSubmit={form.handleSubmit(onSubmit)}>
+                <div className="mb-6 flex flex-col gap-6">
+                  <FormField
+                    control={form.control}
                     name="name"
-                    className="modal-callback__input h-[60px] w-full rounded px-5"
-                    placeholder="Имя"
-                    autoComplete="given-name"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormControl>
+                          <Input
+                            placeholder="Имя"
+                            autoComplete="given-name"
+                            className="h-14"
+                            {...field}
+                          />
+                        </FormControl>
+                        <FormLabel>
+                          <FormMessage />
+                        </FormLabel>
+                        <img
+                          src="/img/icons/st.svg"
+                          alt=""
+                          className="form-field-control__star"
+                        />
+                      </FormItem>
+                    )}
                   />
-                  <label
-                    htmlFor="modal-callback-name"
-                    className="absolute -bottom-5 left-5 text-sm"
-                  >
-                    <small>Error Message</small>
-                  </label>
-                  <img
-                    src="/img/icons/st.svg"
-                    alt=""
-                    className="form-field-control__star"
-                  />
-                </div>
-                <div className="form-field-control relative">
-                  <input
-                    data-form-phone
-                    id="modal-callback-phone"
-                    type="tel"
-                    name="phone"
-                    className="modal-callback__input h-[60px] w-full rounded px-5"
-                    placeholder="+7 (999) 999-99-99"
-                    autoComplete="tel"
-                  />
-                  <label
-                    htmlFor="modal-callback-phone"
-                    className="absolute -bottom-5 left-5 text-sm"
-                  >
-                    <small>Error Message</small>
-                  </label>
-                  <img
-                    src="/img/icons/st.svg"
-                    alt=""
-                    className="form-field-control__star"
-                  />
-                </div>
-                <div className="form-field-control relative">
-                  <input
-                    id="modal-callback-email"
-                    type="email"
-                    name="email"
-                    className="modal-callback__input h-[60px] w-full rounded px-5"
-                    placeholder="Почта"
-                  />
-                  <label
-                    htmlFor="modal-callback-email"
-                    className="absolute -bottom-5 left-5 text-sm"
-                  ></label>
-                </div>
-                <div className="form-field-control relative">
-                  <input
-                    id="modal-callback-city"
-                    type="text"
-                    name="city"
-                    defaultValue={selectedCity || ''}
-                    className="modal-callback__input h-[60px] w-full rounded px-5"
-                    placeholder="Город"
-                    autoComplete="address-level2"
-                  />
-                  <label
-                    htmlFor="modal-callback-city"
-                    className="absolute -bottom-5 left-5 text-sm"
-                  ></label>
-                </div>
-              </div>
 
-              <button
-                type="submit"
-                className="button modal-callback__button mb-6 w-full rounded p-5 font-medium"
-              >
-                <span>Отправить</span>
-              </button>
-              <div className="modal-callback__policy text-center text-sm leading-5">
-                Нажимая кнопку отправить, вы принимаете нашу политику{' '}
-                <a
-                  href="/policy"
-                  className="text-[#ff8562] transition-colors hover:text-accentBlue"
+                  <FormField
+                    control={form.control}
+                    name="phone"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormControl>
+                          <Input
+                            data-form-phone
+                            placeholder="+7 (999) 999-99-99"
+                            type="tel"
+                            autoComplete="tel"
+                            className="h-14"
+                            {...field}
+                          />
+                        </FormControl>
+                        <FormLabel>
+                          <FormMessage />
+                        </FormLabel>
+                        <img
+                          src="/img/icons/st.svg"
+                          alt=""
+                          className="form-field-control__star"
+                        />
+                      </FormItem>
+                    )}
+                  />
+
+                  <FormField
+                    control={form.control}
+                    name="email"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormControl>
+                          <Input
+                            type="email"
+                            placeholder="Почта"
+                            {...field}
+                            className="h-14"
+                          />
+                        </FormControl>
+                        <FormLabel>
+                          <FormMessage />
+                        </FormLabel>
+                      </FormItem>
+                    )}
+                  />
+                  <FormField
+                    control={form.control}
+                    name="address"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormControl>
+                          <Input
+                            placeholder="Город"
+                            autoComplete="city"
+                            className="h-14"
+                            {...field}
+                          />
+                        </FormControl>
+                        <FormLabel>
+                          <FormMessage />
+                        </FormLabel>
+                      </FormItem>
+                    )}
+                  />
+                </div>
+                <Button
+                  type="submit"
+                  className="button modal-callback__button font-base mb-6 h-14 w-full rounded p-5 text-lg"
+                  disabled={isSubmitting}
                 >
-                  конфиденциальности
-                </a>
-              </div>
-            </form>
+                  {isSubmitting ? 'Отправка...' : 'Отправить'}
+                </Button>
+                <div className="modal-callback__policy text-center text-sm leading-5">
+                  Нажимая кнопку отправить, вы принимаете нашу политику{' '}
+                  <a
+                    href="/policy"
+                    className="text-[#ff8562] transition-colors hover:text-accentBlue"
+                  >
+                    конфиденциальности
+                  </a>
+                </div>
+              </form>
+            </Form>
           </div>
         </div>
       </div>
