@@ -8,5 +8,5 @@ export const metadata: Metadata = {
 }
 
 export default function LoginPage() {
-  return <LoginForm siteKey={process.env.GOOGLE_RECAPTCHA_SITE_KEY as string} />
+  return <LoginForm />
 }

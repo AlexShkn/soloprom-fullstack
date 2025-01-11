@@ -22,13 +22,11 @@ import { useLoginMutation } from '@/hooks/auth/useLoginMutation'
 import { LoginSchema, TypeLoginSchema } from '../schemes'
 
 import { AuthWrapper } from './AuthWrapper'
-
-import { RegisterFormProps } from './RegisterForm'
 import { CodeVerifyBlock } from './CodeVerifyBlock'
 
 const VERIFY_TIME = 300
 
-export function LoginForm({ siteKey }: RegisterFormProps) {
+export function LoginForm() {
   const [recaptchaValue, setRecaptchaValue] = useState<string | null>(null)
   const [isShowTwoFactor, setIsShowFactor] = useState(false)
   const [reserveValues, setReserveValues] = useState<TypeLoginSchema>({
@@ -172,7 +170,9 @@ export function LoginForm({ siteKey }: RegisterFormProps) {
           )}
           <div className="flex justify-center">
             <ReCAPTCHA
-              sitekey={siteKey}
+              sitekey={
+                process.env.NEXT_PUBLIC_GOOGLE_RECAPTCHA_SITE_KEY as string
+              }
               onChange={setRecaptchaValue}
               theme={'light'}
             />

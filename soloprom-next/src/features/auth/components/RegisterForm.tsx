@@ -28,10 +28,6 @@ import { CodeVerifyBlock } from './CodeVerifyBlock'
 
 const VERIFY_TIME = 300
 
-export interface RegisterFormProps {
-  siteKey: string
-}
-
 export type RegisterFormValues = {
   name: string
   email: string
@@ -43,7 +39,7 @@ export type ConfirmCodeFormValues = {
   code: string
 }
 
-export function RegisterForm({ siteKey }: RegisterFormProps) {
+export function RegisterForm() {
   const { theme } = useTheme()
   const [recaptchaValue, setRecaptchaValue] = useState<string | null>(null)
   const [isShowCodeField, setIsShowCodeField] = useState(false)
@@ -255,7 +251,9 @@ export function RegisterForm({ siteKey }: RegisterFormProps) {
 
           <div className="flex justify-center">
             <ReCAPTCHA
-              sitekey={siteKey}
+              sitekey={
+                process.env.NEXT_PUBLIC_GOOGLE_RECAPTCHA_SITE_KEY as string
+              }
               onChange={setRecaptchaValue}
               theme={theme === 'dark' ? 'dark' : 'light'}
             />

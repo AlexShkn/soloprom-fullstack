@@ -3,13 +3,16 @@ import { NextResponse } from 'next/server'
 export async function POST(request: Request) {
   try {
     const formData = await request.json()
-    const response = await fetch(`${process.env.NEXT_SERVER_URL}/telegram`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
+    const response = await fetch(
+      `${process.env.NEXT_PUBLIC_SERVER_URL}/telegram`,
+      {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
       },
-      body: JSON.stringify(formData),
-    })
+    )
 
     if (!response.ok) {
       throw new Error(`HTTP error! Status: ${response.status}`)

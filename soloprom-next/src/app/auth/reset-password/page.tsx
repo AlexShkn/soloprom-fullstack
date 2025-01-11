@@ -8,9 +8,5 @@ export const metadata: Metadata = {
 }
 
 export default function ResetPasswordPage() {
-  return (
-    <ResetPasswordForm
-      siteKey={process.env.GOOGLE_RECAPTCHA_SITE_KEY as string}
-    />
-  )
+  return <ResetPasswordForm />
 }

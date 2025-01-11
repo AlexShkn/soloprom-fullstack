@@ -19,6 +19,7 @@ import { TwoFactorAuthModule } from './auth/two-factor-auth/two-factor-auth.modu
 import { PrismaModule } from './prisma/prisma.module';
 import { TelegramModule } from './telegram/telegram.module';
 import { OrderModule } from './order/order.module';
+import { StatisticsModule } from './statistics/statistics.module';
 
 @Module({
   imports: [
@@ -42,6 +43,7 @@ import { OrderModule } from './order/order.module';
     TwoFactorAuthModule,
     TelegramModule,
     OrderModule,
+    StatisticsModule,
   ],
   controllers: [],
   providers: [ScraperJob],

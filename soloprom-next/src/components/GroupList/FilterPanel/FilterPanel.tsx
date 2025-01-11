@@ -1,7 +1,7 @@
 'use client'
 import React from 'react'
 
-import { getProductsByCategory } from '@/app/api/products/products'
+import { getProductsByCategory } from '@/app/api/products/route'
 
 import './FilterPanel.scss'
 

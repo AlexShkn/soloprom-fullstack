@@ -1,6 +1,6 @@
 'use client'
 import React, { useState, useEffect } from 'react'
-import { getProductById } from '@/app/api/products/products'
+import { getProductById } from '@/app/api/products/route'
 
 import './ProductPageTabs.scss'
 

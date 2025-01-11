@@ -22,9 +22,8 @@ import { useNewPasswordMutation } from '@/hooks/auth/useNewPasswordMutation'
 import { NewPasswordSchema, TypeNewPasswordSchema } from '../schemes'
 
 import { AuthWrapper } from './AuthWrapper'
-import { RegisterFormProps } from './RegisterForm'
 
-export function NewPasswordForm({ siteKey }: RegisterFormProps) {
+export function NewPasswordForm() {
   const { theme } = useTheme()
   const [recaptchaValue, setRecaptchaValue] = useState<string | null>(null)
 
@@ -77,7 +76,9 @@ export function NewPasswordForm({ siteKey }: RegisterFormProps) {
           />
           <div className="flex justify-center">
             <ReCAPTCHA
-              sitekey={siteKey}
+              sitekey={
+                process.env.NEXT_PUBLIC_GOOGLE_RECAPTCHA_SITE_KEY as string
+              }
               onChange={setRecaptchaValue}
               theme={theme === 'dark' ? 'dark' : 'light'}
             />

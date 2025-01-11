@@ -13,7 +13,7 @@ interface UpdateOrderStatusDto {
   status: string
 }
 
-const BASE_URL = 'http://localhost:3001/order'
+const BASE_URL = `${process.env.NEXT_PUBLIC_SERVER_URL}/order`
 
 export const getOrdersByUserId = async (
   userId: string,

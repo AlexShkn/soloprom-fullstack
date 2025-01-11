@@ -12,10 +12,7 @@ import './CategoryProductsSlider.scss'
 
 import initialCategoriesData from '../../data/products/categoriesData.json'
 
-import {
-  getProductsByGroup,
-  getProductsBySubcategory,
-} from '@/app/api/products/products'
+import { getProductsCounts } from '@/app/api/products/route'
 
 interface CategoryItem {
   id: string
@@ -45,45 +42,15 @@ const categoriesData = initialCategoriesData as CategoriesData
 
 export const CategoryProductsSlider: React.FC<Props> = ({ className }) => {
   const [isReady, setIsReady] = useState(false)
-  const [subcategoryCounts, setSubcategoryCounts] = useState<SubcategoryCount>(
-    {},
-  )
-  const [groupCounts, setGroupCounts] = useState<SubcategoryCount>({})
+  const [productsCounts, setProductsCounts] = useState<SubcategoryCount>({})
 
   useEffect(() => {
     const fetchCounts = async () => {
-      const subCounts: SubcategoryCount = {}
-      const groupCount: SubcategoryCount = {}
+      const result = await getProductsCounts()
 
-      for (const categoryKey in categoriesData) {
-        const category = categoriesData[categoryKey]
-        for (const item of category.items) {
-          const type = item.type
+      console.log(result)
 
-          let result
-
-          if (type === 'subcategory') {
-            result = await getProductsBySubcategory(item.id)
-          }
-          if (type === 'group') {
-            result = await getProductsByGroup(item.id)
-          }
-
-          if (!result) {
-            console.error('Failed to get products for', item)
-            continue
-          }
-
-          if (type === 'subcategory') {
-            subCounts[item.id] = result.count
-          }
-          if (type === 'group') {
-            groupCount[item.id] = result.count
-          }
-        }
-      }
-      setSubcategoryCounts(subCounts)
-      setGroupCounts(groupCount)
+      setProductsCounts(result)
     }
 
     fetchCounts()
@@ -171,23 +138,13 @@ export const CategoryProductsSlider: React.FC<Props> = ({ className }) => {
                               {item.title}
                             </div>
                             <div className="text-sm text-[#b7b7b7]">
-                              {item.type === 'subcategory'
-                                ? ` ${subcategoryCounts[item.id]} товар${
-                                    subcategoryCounts[item.id] === 1
-                                      ? ''
-                                      : subcategoryCounts[item.id] >= 2 &&
-                                          subcategoryCounts[item.id] <= 4
-                                        ? 'а'
-                                        : 'ов'
-                                  } `
-                                : ` ${groupCounts[item.id]} товар${
-                                    groupCounts[item.id] === 1
-                                      ? ''
-                                      : groupCounts[item.id] >= 2 &&
-                                          groupCounts[item.id] <= 4
-                                        ? 'а'
-                                        : 'ов'
-                                  } `}
+                              {productsCounts[item.id]} товар
+                              {productsCounts[item.id] === 1
+                                ? ''
+                                : productsCounts[item.id] >= 2 &&
+                                    productsCounts[item.id] <= 4
+                                  ? 'а'
+                                  : 'ов'}
                             </div>
                           </div>
                         </div>

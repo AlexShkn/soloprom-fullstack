@@ -3,7 +3,7 @@ import { Metadata } from 'next'
 import { Callback } from '@/components/Callback/Callback'
 import BreadCrumbs from '@/components/ui/BreadCrumbs/BreadCrumbs'
 import PageWrapper from '@/app/PageWrapper'
-import { getProducts } from '@/app/api/products/products' // Import Product type
+import { getProducts } from '@/app/api/products/route' // Import Product type
 import { cardDataProps } from '@/types/products.types'
 import { cache } from 'react'
 import { ProductPageCard } from '@/components/ProductPage/ProductPageCard/ProductPageCard'
