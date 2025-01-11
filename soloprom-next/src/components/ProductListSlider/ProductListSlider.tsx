@@ -1,6 +1,6 @@
 'use client'
 import React from 'react'
-import { cardDataProps } from '../FavoriteTabs/FavoriteTabs'
+import { cardDataProps } from '@/types/products.types'
 import './ProductListSlider.scss'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { Navigation } from 'swiper/modules'

@@ -8,9 +8,9 @@ import { getAdaptiveValue } from '@/utils/getAdaptiveValue'
 import { AdaptiveValues } from '@/utils/getAdaptiveValue'
 import { renderDescriptionItem } from '@/utils/renderDescriptionItem'
 
-import { ProductsCardProps } from '../FavoriteTabs/FavoriteTabs'
+import { ProductsCardPropTypes } from '@/types/products.types'
 
-interface DescriptionTypes extends ProductsCardProps {
+interface DescriptionTypes extends ProductsCardPropTypes {
   variantValue: string
   setVariantValue: (value: string) => void
 }

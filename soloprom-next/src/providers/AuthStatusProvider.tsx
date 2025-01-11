@@ -2,9 +2,8 @@
 
 import { useProfile } from '@/hooks/useProfile'
 import { changeAuthStatus, setUserData } from '@/redux/slices/authSlice'
-import { RootState } from '@/redux/store'
 import { useEffect } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
+import { useDispatch } from 'react-redux'
 
 export default function AuthStatusProvider({
   children,

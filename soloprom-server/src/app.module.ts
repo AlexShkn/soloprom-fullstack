@@ -18,6 +18,7 @@ import { PasswordRecoveryModule } from './auth/password-recovery/password-recove
 import { TwoFactorAuthModule } from './auth/two-factor-auth/two-factor-auth.module';
 import { PrismaModule } from './prisma/prisma.module';
 import { TelegramModule } from './telegram/telegram.module';
+import { OrderModule } from './order/order.module';
 
 @Module({
   imports: [
@@ -40,6 +41,7 @@ import { TelegramModule } from './telegram/telegram.module';
     PasswordRecoveryModule,
     TwoFactorAuthModule,
     TelegramModule,
+    OrderModule,
   ],
   controllers: [],
   providers: [ScraperJob],

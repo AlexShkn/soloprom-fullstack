@@ -1,22 +1,19 @@
 'use client'
 
-import React, { useEffect } from 'react'
+import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 
 import HeaderMenu from '../HeaderMenu'
 
 import './HeaderTop.scss'
 import Link from 'next/link'
-import { useProfile } from '@/hooks/useProfile'
 
 import { Loading } from '@/components/ui'
 import { UserButton } from '@/features/user/components/UserButton'
 import { RootState } from '@/redux/store'
-import { changeAuthStatus, setUserData } from '@/redux/slices/authSlice'
 import { LocateBlock } from '../Header/LocateBlock'
 
 export const HeaderTop: React.FC = () => {
-  const dispatch = useDispatch()
   const { isAuth, userState, isLoading } = useSelector(
     (state: RootState) => state.auth,
   )

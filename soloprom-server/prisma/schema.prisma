@@ -97,30 +97,6 @@ model Group {
   updatedAt  DateTime  @updatedAt
 }
 
-model User {
-  id String @id @default(uuid())
-
-  email    String @unique
-  password String
-
-  displayName String
-  picture     String?
-
-  role UserRole @default(REGULAR)
-
-  isVerified         Boolean @default(false) @map("is_verified")
-  isTwoFactorEnabled Boolean @default(false) @map("is_two_factor_enabled")
-
-  method AuthMethod
-
-  accounts Account[]
-
-  createdAt DateTime @default(now()) @map("created_at")
-  updatedAt DateTime @updatedAt @map("updated_at")
-
-  @@map("users")
-}
-
 model Account {
   id String @id @default(uuid())
 
@@ -153,6 +129,45 @@ model Token {
   @@map("tokens")
 }
 
+model User {
+  id       String @id @default(uuid())
+  email    String @unique
+  password String
+
+  displayName String
+  picture     String?
+
+  role UserRole @default(REGULAR)
+
+  isVerified         Boolean @default(false) @map("is_verified")
+  isTwoFactorEnabled Boolean @default(false) @map("is_two_factor_enabled")
+
+  method AuthMethod
+
+  accounts Account[]
+  orders   Order[]
+
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  @@map("users")
+}
+
+model Order {
+  id     String @id @default(uuid())
+  userId String
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  products    Json
+  totalAmount Float
+  status      OrderStatus @default(PROCESSING)
+
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  @@map("orders")
+}
+
 enum UserRole {
   REGULAR
   ADMIN
@@ -168,4 +183,10 @@ enum TokenType {
   VERIFICATION
   TWO_FACTOR
   PASSWORD_RESET
+}
+
+enum OrderStatus {
+  PROCESSING
+  SHIPPED
+  DELIVERED
 }

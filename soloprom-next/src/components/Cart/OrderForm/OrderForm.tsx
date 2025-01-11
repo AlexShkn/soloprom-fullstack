@@ -6,6 +6,7 @@ import { toast } from 'sonner'
 import { TypeOrderSchema, OrderSchema } from '@/features/auth/schemes'
 import { useSelector } from 'react-redux'
 import { RootState } from '@/redux/store'
+import { createOrder } from '@/app/api/order/order'
 
 import {
   Button,
@@ -25,6 +26,7 @@ export const OrderForm: React.FC = () => {
   const { cartState, totalAmount } = useSelector(
     (state: RootState) => state.cart,
   )
+  const { isAuth, userState } = useSelector((state: RootState) => state.auth)
 
   const form = useForm<TypeOrderSchema>({
     resolver: zodResolver(OrderSchema),
@@ -43,7 +45,7 @@ export const OrderForm: React.FC = () => {
   const onSubmit = async (values: TypeOrderSchema) => {
     setIsSubmitting(true)
     try {
-      const response = await fetch('/api/sendTelegram', {
+      const telegramResponse = await fetch('/api/sendTelegram', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -51,11 +53,30 @@ export const OrderForm: React.FC = () => {
         body: JSON.stringify({ totalAmount, cartState, ...values }),
       })
 
-      if (response.ok) {
-        toast.success('Форма успешно отправлена!')
-        form.reset()
+      if (!telegramResponse.ok) {
+        toast.error('Ошибка при отправке формы в Telegram.')
+        return
+      }
+
+      if (isAuth) {
+        const orderData = {
+          userId: userState.id,
+          products: [...cartState],
+          totalAmount: totalAmount,
+          status: 'PROCESSING',
+        }
+
+        const createdOrder = await createOrder(orderData)
+
+        if (createdOrder) {
+          toast.success('Заказ успешно создан!')
+          form.reset()
+        } else {
+          toast.error('Ошибка при создании заказа.')
+        }
       } else {
-        toast.error('Ошибка при отправке формы.')
+        toast.success('Форма успешно отправлена в Telegram')
+        form.reset()
       }
     } catch (error) {
       toast.error('Ошибка при отправке формы.')

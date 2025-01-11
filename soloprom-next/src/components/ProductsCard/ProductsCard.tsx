@@ -5,7 +5,7 @@ import { RootState } from '@/redux/store'
 import { addProductToCart, removeCartProduct } from '@/redux/slices/cartSlice'
 
 import './ProductsCard.scss'
-import { ProductsCardProps } from '../FavoriteTabs/FavoriteTabs'
+import { ProductsCardPropTypes } from '@/types/products.types'
 import { DescriptionTemplate } from './DescriptionTemplate'
 import { PriceBlock } from './PriceBlock'
 import { RegaliaList } from './RegaliaList/RegaliaList'
@@ -14,7 +14,7 @@ import {
   removeFavoriteProduct,
 } from '@/redux/slices/favoriteSlice'
 
-export const ProductsCard: React.FC<ProductsCardProps> = ({ cardData }) => {
+export const ProductsCard: React.FC<ProductsCardPropTypes> = ({ cardData }) => {
   const [variantValue, setVariantValue] = useState('')
   const [cartIsAdded, setCartIsAdded] = useState(false)
   const [favoriteIsAdded, setFavoriteIsAdded] = useState(false)

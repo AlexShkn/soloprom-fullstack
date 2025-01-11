@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from 'react'
 
 import { getPopularProducts } from '@/app/api/products/products'
-import { cardDataProps } from '../FavoriteTabs/FavoriteTabs'
+import { cardDataProps } from '@/types/products.types'
 
 import { ProductListSlider } from '../ProductListSlider/ProductListSlider'
 

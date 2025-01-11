@@ -4,7 +4,7 @@ import CloseButton from '@/components/shared/CloseButton'
 import { DebouncedFunction } from '@/supports/debounce'
 import { debounce } from '@/supports/debounce'
 
-import { cardDataProps } from '../ProductListSlider/ProductListSlider'
+import { cardDataProps } from '@/types/products.types'
 import Link from 'next/link'
 import { useClickOutside } from '@/hooks/useClickOutside'
 
@@ -100,7 +100,7 @@ const HeaderSearch = () => {
             {searchValue && products.length
               ? products.map((item) => (
                   <li
-                    key={item.id}
+                    key={item.productId}
                     className="header-bottom__catalog-search-item link-hover w-full transition-all even:bg-[#e0e0e0]"
                   >
                     <Link

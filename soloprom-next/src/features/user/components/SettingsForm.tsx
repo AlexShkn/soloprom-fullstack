@@ -4,7 +4,6 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import { useForm } from 'react-hook-form'
 import { useEffect } from 'react'
 import { useRouter } from 'next/navigation'
-import { deleteCookie } from 'cookies-next'
 
 import {
   Button,
@@ -28,6 +27,7 @@ import { useProfile } from '@/hooks/useProfile'
 import { useUpdateProfileMutation } from '../hooks/useUpdateProfileMutation'
 import { SettingsSchema, TypeSettingsSchema } from '../schemes'
 import { useLogoutMutation } from '../hooks/useLogoutMutation'
+import { OrderList } from './OrderList'
 
 export function SettingsForm() {
   const { user, isLoading } = useProfile()
@@ -67,81 +67,85 @@ export function SettingsForm() {
   }
 
   if (isLoading) return <Loading />
-  if (!user) return null // Достаточно null, т.к. переадресация произойдёт в useEffect выше
+  if (!user) return null
 
   return (
-    <Card className="w-full">
-      <CardHeader className="flex flex-row items-center justify-between">
-        <CardTitle>Настройки профиля</CardTitle>
-      </CardHeader>
-      <CardContent>
-        <Form {...form}>
-          <form
-            onSubmit={form.handleSubmit(onSubmit)}
-            className="grid gap-2 space-y-2"
-          >
-            <FormField
-              control={form.control}
-              name="name"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Имя</FormLabel>
-                  <FormControl>
-                    <Input
-                      placeholder="Иван"
-                      disabled={isLoadingUpdate}
-                      {...field}
-                    />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-            <FormField
-              control={form.control}
-              name="email"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Почта</FormLabel>
-                  <FormControl>
-                    <Input
-                      placeholder="ivan@example.com"
-                      disabled={isLoadingUpdate}
-                      type="email"
-                      {...field}
-                    />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-            <FormField
-              control={form.control}
-              name="isTwoFactorEnabled"
-              render={({ field }) => (
-                <FormItem className="flex flex-row items-center justify-between rounded-lg border p-3 shadow-sm">
-                  <div className="space-y-0.5">
-                    <FormLabel>Двухфакторная аутентификация</FormLabel>
-                    <FormDescription>
-                      Включите двухфакторную аутентификацию для вашей учетной
-                      записи
-                    </FormDescription>
-                  </div>
-                  <FormControl>
-                    <Switch
-                      checked={field.value}
-                      onCheckedChange={field.onChange}
-                    />
-                  </FormControl>
-                </FormItem>
-              )}
-            />
-            <Button type="submit" disabled={isLoadingUpdate}>
-              Сохранить
-            </Button>
-          </form>
-        </Form>
-      </CardContent>
-    </Card>
+    <div className="border-t-1 border border-grayColor py-10">
+      <div className="container mb-10 w-full">
+        <CardHeader className="flex flex-row items-center justify-between">
+          <CardTitle>Настройки профиля</CardTitle>
+        </CardHeader>
+        <CardContent>
+          <Form {...form}>
+            <form
+              onSubmit={form.handleSubmit(onSubmit)}
+              className="grid gap-2 space-y-2"
+            >
+              <FormField
+                control={form.control}
+                name="name"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Имя</FormLabel>
+                    <FormControl>
+                      <Input
+                        placeholder="Иван"
+                        disabled={isLoadingUpdate}
+                        {...field}
+                      />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+              <FormField
+                control={form.control}
+                name="email"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Почта</FormLabel>
+                    <FormControl>
+                      <Input
+                        placeholder="ivan@example.com"
+                        disabled={isLoadingUpdate}
+                        type="email"
+                        {...field}
+                      />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+              <FormField
+                control={form.control}
+                name="isTwoFactorEnabled"
+                render={({ field }) => (
+                  <FormItem className="flex flex-row items-center justify-between rounded-lg border p-3 shadow-sm">
+                    <div className="space-y-0.5">
+                      <FormLabel>Двухфакторная аутентификация</FormLabel>
+                      <FormDescription>
+                        Включите двухфакторную аутентификацию для вашей учетной
+                        записи
+                      </FormDescription>
+                    </div>
+                    <FormControl>
+                      <Switch
+                        checked={field.value}
+                        onCheckedChange={field.onChange}
+                      />
+                    </FormControl>
+                  </FormItem>
+                )}
+              />
+              <Button type="submit" disabled={isLoadingUpdate}>
+                Сохранить
+              </Button>
+            </form>
+          </Form>
+        </CardContent>
+      </div>
+
+      {!isLoading && user && <OrderList user={user} />}
+    </div>
   )
 }

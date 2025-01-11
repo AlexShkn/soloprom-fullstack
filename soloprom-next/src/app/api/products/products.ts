@@ -1,4 +1,4 @@
-import { cardDataProps } from '@/components/FavoriteTabs/FavoriteTabs'
+import { cardDataProps } from '@/types/products.types'
 import axios from 'axios'
 
 export async function getProducts() {

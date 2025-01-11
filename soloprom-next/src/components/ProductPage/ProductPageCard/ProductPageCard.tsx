@@ -4,13 +4,15 @@ import { useDispatch, useSelector } from 'react-redux'
 import { RootState } from '@/redux/store'
 import { addProductToCart, removeCartProduct } from '@/redux/slices/cartSlice'
 
-import { ProductsCardProps } from '@/components/FavoriteTabs/FavoriteTabs'
+import { ProductsCardPropTypes } from '@/types/products.types'
 import './ProductPageCard.scss'
 import { ProductPageCardDescription } from '../ProductPageCardDescription'
 import { ProductPagePriceBlock } from '../ProductPagePriceBlock'
 import { RegaliaList } from '@/components/ProductsCard/RegaliaList/RegaliaList'
 
-export const ProductPageCard: React.FC<ProductsCardProps> = ({ cardData }) => {
+export const ProductPageCard: React.FC<ProductsCardPropTypes> = ({
+  cardData,
+}) => {
   const [variantValue, setVariantValue] = useState('')
   const [cartIsAdded, setCartIsAdded] = useState(false)
   const [cartIsLoad, setCartIsLoad] = useState(false)
