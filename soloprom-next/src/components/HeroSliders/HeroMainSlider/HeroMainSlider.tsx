@@ -9,6 +9,7 @@ import 'react-loading-skeleton/dist/skeleton.css'
 import './HeroMainSlider.scss'
 
 import { HeroTypes } from '@/components/Hero/Hero'
+import Link from 'next/link'
 
 const mainSliderData = [
   {
@@ -89,12 +90,12 @@ const HeroMainSlider: React.FC<HeroTypes> = ({ isReady }) => {
                     </div>
                   )}
 
-                  <a
+                  <Link
                     href={slide.link}
                     className="button relative z-10 w-full max-w-[300] p-5 font-bold uppercase"
                   >
                     {slide.btnText}
-                  </a>
+                  </Link>
                 </div>
               </div>
             </SwiperSlide>

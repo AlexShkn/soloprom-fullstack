@@ -61,6 +61,19 @@ export class TelegramService {
       }
     }
 
+    if (formData.fastOrder) {
+      const fastState = formData.fastOrder;
+
+      message += `\n\n`;
+      message += `<b>Быстрый заказ:</b>\n`;
+      message += `<b>------------------</b>\n`;
+      message += `<b>${fastState.name}</b>\n`;
+      message += `<b>Id Товара:</b> ${fastState.productId}\n`;
+      message += `<b>Размер:</b> ${fastState.variant}\n`;
+      message += `<b>Ссылка на товар:</b> https://soloprom.ru${fastState.url}\n`;
+      message += `<b>Цена за 1 шт:</b> ${fastState.price}\n`;
+    }
+
     if (formData.cartState) {
       const cartState = formData.cartState;
 

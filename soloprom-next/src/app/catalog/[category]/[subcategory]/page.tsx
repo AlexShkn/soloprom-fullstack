@@ -63,7 +63,12 @@ export default async function SubcategoryPage({
 
   return (
     <PageWrapper>
-      <BreadCrumbs />
+      <BreadCrumbs
+        category={category}
+        subcategory={subcategoryData.title}
+        name={subcategoryData.crumb}
+        url={subcategoryData.url}
+      />
       <h1>{subcategoryData.title}</h1>
       <p>{subcategoryData.description}</p>
       <Callback />

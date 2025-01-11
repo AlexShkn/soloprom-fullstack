@@ -13,6 +13,11 @@ import {
   addProductToFavorite,
   removeFavoriteProduct,
 } from '@/redux/slices/favoriteSlice'
+import {
+  setFastOrderProduct,
+  modalCallbackStateChange,
+} from '@/redux/slices/modalsSlice'
+import Link from 'next/link'
 
 export const ProductsCard: React.FC<ProductsCardPropTypes> = ({ cardData }) => {
   const [variantValue, setVariantValue] = useState('')
@@ -118,6 +123,21 @@ export const ProductsCard: React.FC<ProductsCardPropTypes> = ({ cardData }) => {
     }, 1000)
   }
 
+  const fastOrderHandle = () => {
+    dispatch(
+      setFastOrderProduct({
+        productId,
+        name,
+        variant: variantValue,
+        price: sizesData?.[variantValue] ?? defaultPrice,
+        url,
+        img,
+      }),
+    )
+
+    dispatch(modalCallbackStateChange(true))
+  }
+
   return (
     <div
       data-product-card
@@ -127,7 +147,7 @@ export const ProductsCard: React.FC<ProductsCardPropTypes> = ({ cardData }) => {
         <RegaliaList regalia={regalia} discount={discount} />
       )}
 
-      <a href={url || '/'} className="relative text-center">
+      <Link href={url || '/'} className="relative text-center">
         <img
           className="mb-2.5 inline-block h-[120px] object-contain"
           src={
@@ -138,7 +158,7 @@ export const ProductsCard: React.FC<ProductsCardPropTypes> = ({ cardData }) => {
         <span className="product-card__more invisible absolute right-1 top-2 z-10 rounded bg-white px-2.5 py-1 font-bold opacity-0 transition-all">
           Подробнее
         </span>
-      </a>
+      </Link>
       <div className="mb-2.5 text-center font-bold uppercase leading-5 text-[#272b2c]">
         {name}
       </div>
@@ -155,6 +175,7 @@ export const ProductsCard: React.FC<ProductsCardPropTypes> = ({ cardData }) => {
         />
         <div className="mb-1 flex items-end justify-between gap-2.5">
           <button
+            onClick={() => fastOrderHandle()}
             type="button"
             className="ml-auto font-medium text-[#dd3824] underline"
           >

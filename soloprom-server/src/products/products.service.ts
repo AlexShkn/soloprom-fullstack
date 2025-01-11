@@ -328,10 +328,20 @@ export class ProductsService {
   async searchProducts(name: string) {
     return prisma.product.findMany({
       where: {
-        name: {
-          contains: name,
-          mode: 'insensitive', // Поиск без учета регистра
-        },
+        OR: [
+          {
+            name: {
+              contains: name,
+              mode: 'insensitive',
+            },
+          },
+          {
+            descr: {
+              contains: name,
+              mode: 'insensitive',
+            },
+          },
+        ],
       },
     });
   }

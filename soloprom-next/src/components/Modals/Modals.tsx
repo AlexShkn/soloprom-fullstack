@@ -9,11 +9,15 @@ import ModalCallback from './ModalCallback/ModalCallback'
 import './Modals.scss'
 
 const Modals = () => {
-	const callbackIsOpen = useSelector(
-		(state: RootState) => state.modals.callbackIsOpen,
-	)
+  const { callbackIsOpen, fastOrderProduct } = useSelector(
+    (state: RootState) => state.modals,
+  )
 
-	return <>{callbackIsOpen && <ModalCallback />}</>
+  return (
+    <>
+      {callbackIsOpen && <ModalCallback fastOrderProduct={fastOrderProduct} />}
+    </>
+  )
 }
 
 export default Modals

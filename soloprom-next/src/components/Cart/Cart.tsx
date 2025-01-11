@@ -30,12 +30,15 @@ export const Cart: React.FC = () => {
 
   return (
     <>
-      <div className="cart__inner-container">
+      <div className="cart inner-container">
         <BreadCrumbs />
-        <div className="cart__head">
-          <h1 className="cart__title">Корзина</h1>
-          <Link href="/" className="cart__back-link">
-            <svg className="icon">
+        <div className="mb-10 flex items-center justify-between">
+          <h1 className="cart__title font-bold">Корзина</h1>
+          <Link
+            href="/"
+            className="cart__back-link inline-flex items-center gap-2.5 transition-colors"
+          >
+            <svg className="h-5 w-5 fill-darkBlue transition-colors">
               <use xlinkHref="/img/sprite.svg#back-arrow"></use>
             </svg>
             Вернуться к покупкам
@@ -45,29 +48,32 @@ export const Cart: React.FC = () => {
 
       {isLoading ? (
         <Loading />
-      ) : (
-        cartState.length > 0 && (
-          <>
-            <div className="inner-container">
-              <CartProductList cartState={cartState} />
-            </div>
-            <div className="cart__container flex flex-col items-center">
-              <CartResult
-                cartLength={cartState.length}
-                totalAmount={totalAmount}
-              />
+      ) : cartState.length > 0 ? (
+        <>
+          <div className="cart inner-container">
+            <CartProductList cartState={cartState} />
+          </div>
+          <div className="cart__container flex flex-col items-center">
+            <CartResult
+              cartLength={cartState.length}
+              totalAmount={totalAmount}
+            />
+
+            {!formIsOpen && (
               <button
                 onClick={() => setFormIsOpen(true)}
                 type="button"
-                className={`button cart__order-btn ${formIsOpen && 'hidden'}`}
+                className="button px-7 py-4 text-lg"
               >
                 Оформить заказ
               </button>
+            )}
 
-              {formIsOpen && <OrderForm />}
-            </div>
-          </>
-        )
+            {formIsOpen && <OrderForm />}
+          </div>
+        </>
+      ) : (
+        <div className="cart__item cart__item--empty">Корзина пуста</div>
       )}
     </>
   )

@@ -27,8 +27,14 @@ import {
   Input,
 } from '@/components/ui'
 import './ModalCallback.scss'
+import { FastOrderTypes } from '@/redux/slices/modalsSlice'
+import { getDigFormat } from '@/supports'
 
-const ModalCallback = () => {
+interface ModalProps {
+  fastOrderProduct: FastOrderTypes
+}
+
+const ModalCallback: React.FC<ModalProps> = ({ fastOrderProduct }) => {
   const [isSubmitting, setIsSubmitting] = useState(false)
   const dispatch = useDispatch()
   const selectedCity = useSelector(
@@ -61,12 +67,12 @@ const ModalCallback = () => {
   const onSubmit = async (values: TypeCallbackSchema) => {
     setIsSubmitting(true)
     try {
-      const response = await fetch('/api/sendTelegram', {
+      const response = await fetch('/api/routes/sendTelegram', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(values),
+        body: JSON.stringify({ fastOrder: fastOrderProduct, ...values }),
       })
 
       if (response.ok) {
@@ -197,6 +203,28 @@ const ModalCallback = () => {
                     )}
                   />
                 </div>
+
+                {fastOrderProduct.productId && (
+                  <div className="modal-callback__product">
+                    <img
+                      src={`/img/catalog/${fastOrderProduct.img}.webp`}
+                      alt=""
+                      className="modal-callback__product-image"
+                    />
+                    <div className="modal-callback__product-description">
+                      <div className="modal-callback__product-title">
+                        {fastOrderProduct.name}
+                      </div>
+                      <div className="modal-callback__product-sizes">
+                        {fastOrderProduct.variant}
+                      </div>
+                      <div className="modal-callback__product-price">
+                        {getDigFormat(fastOrderProduct.price)} ₽
+                      </div>
+                    </div>
+                  </div>
+                )}
+
                 <Button
                   type="submit"
                   className="button modal-callback__button font-base mb-6 h-14 w-full rounded p-5 text-lg"

@@ -1,12 +1,13 @@
 'use client'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useForm } from 'react-hook-form'
 import { toast } from 'sonner'
 import { TypeOrderSchema, OrderSchema } from '@/features/auth/schemes'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { RootState } from '@/redux/store'
 import { createOrder } from '@/app/api/routes/order/route'
+import { clearCart } from '@/redux/slices/cartSlice'
 
 import {
   Button,
@@ -23,6 +24,7 @@ import './OrderForm.scss'
 
 export const OrderForm: React.FC = () => {
   const [isSubmitting, setIsSubmitting] = useState(false)
+  const dispatch = useDispatch()
   const { cartState, totalAmount } = useSelector(
     (state: RootState) => state.cart,
   )
@@ -42,6 +44,12 @@ export const OrderForm: React.FC = () => {
     },
   })
 
+  useEffect(() => {
+    if (isAuth && userState) {
+      form.setValue('email', userState.email)
+    }
+  }, [isAuth, userState])
+
   const onSubmit = async (values: TypeOrderSchema) => {
     setIsSubmitting(true)
     try {
@@ -54,9 +62,11 @@ export const OrderForm: React.FC = () => {
       })
 
       if (!telegramResponse.ok) {
-        toast.error('Ошибка при отправке формы в Telegram.')
+        toast.error('Ошибка при отправке формы.')
         return
       }
+
+      toast.success('Форма успешно отправлена')
 
       if (isAuth) {
         const orderData = {
@@ -68,15 +78,27 @@ export const OrderForm: React.FC = () => {
 
         const createdOrder = await createOrder(orderData)
 
-        if (createdOrder) {
-          toast.success('Заказ успешно создан!')
-          form.reset()
-        } else {
-          toast.error('Ошибка при создании заказа.')
+        if (!createdOrder) {
+          await fetch('/api/routes/sendTelegram', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+              message: 'Ошибка при создании заказа в базе данных',
+              orderData,
+            }),
+          })
+
+          return
         }
-      } else {
-        toast.success('Форма успешно отправлена в Telegram')
+
         form.reset()
+        dispatch(clearCart())
+        toast.success('Заказ успешно создан!')
+      } else {
+        form.reset()
+        dispatch(clearCart())
       }
     } catch (error) {
       toast.error('Ошибка при отправке формы.')

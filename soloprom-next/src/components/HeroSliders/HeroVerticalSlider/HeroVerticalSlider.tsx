@@ -8,6 +8,7 @@ import 'react-loading-skeleton/dist/skeleton.css'
 import './HeroVerticalSlider.scss'
 
 import { HeroTypes } from '@/components/Hero/Hero'
+import Link from 'next/link'
 
 const verticalSliderData = [
   {
@@ -77,7 +78,7 @@ const HeroVerticalSlider: React.FC<HeroTypes> = ({ isReady }) => {
         >
           {verticalSliderData.map((slide, index) => (
             <SwiperSlide key={index} className="hero-vertical-slider__slide">
-              <a
+              <Link
                 href={slide.link}
                 className="hero__card hero__card--link btn-glare relative flex h-full items-center justify-center overflow-hidden rounded px-7 pb-[75px] pt-[50px] transition-transform before:absolute before:inset-0 before:z-[1] before:h-full before:w-full before:bg-black before:bg-opacity-60"
               >
@@ -107,7 +108,7 @@ const HeroVerticalSlider: React.FC<HeroTypes> = ({ isReady }) => {
                     <use xlinkHref="/img/sprite-default.svg#arrow-drop"></use>
                   </svg>
                 </div>
-              </a>
+              </Link>
             </SwiperSlide>
           ))}
 

@@ -37,9 +37,9 @@ export const SidePanel: React.FC<Categories> = ({ categoryData }) => {
             <ul data-drop-list className="side-panel__drop-list">
               {brands?.map((brand) => (
                 <li key={brand.url} className="side-panel__drop-item">
-                  <a href={`/catalog/${categoryData.name}/${brand.url}`}>
+                  <Link href={`/catalog/${categoryData.name}/${brand.url}`}>
                     {brand.title}
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>
