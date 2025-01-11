@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from 'react'
 
 import { OrderTypes } from '@/components/Cart/types/order'
-import { getOrdersByUserId } from '@/app/api/order/order'
+import { getOrdersByUserId } from '@/app/api/routes/order/route'
 import { Loading } from '@/components/ui'
 import { IUser } from '@/features/auth/types'
 
@@ -18,12 +18,14 @@ export const OrderList: React.FC<OrderListProps> = ({ user }) => {
   useEffect(() => {
     const fetchOrders = async () => {
       try {
-        console.log(user.id)
-
         const orders = await getOrdersByUserId(user.id)
-        setOrders(orders)
 
-        console.log(orders)
+        const result: OrderTypes[] = orders.map((order) => ({
+          ...order,
+          products: JSON.parse(order.products),
+        }))
+
+        setOrders(result)
       } catch (e: any) {
         setError(e.message)
       } finally {
@@ -42,32 +44,30 @@ export const OrderList: React.FC<OrderListProps> = ({ user }) => {
 
   return (
     <div className="container">
-      {orders.length === 0 ? (
-        <p>Лист пуст</p>
-      ) : (
-        orders.map((order) => (
-          <div
-            key={order.id}
-            className="my-4 rounded border border-gray-300 p-4"
-          >
-            <h3 className="mb-2 text-xl font-bold">Order ID: {order.id}</h3>
-            <p>
-              <strong>Status:</strong> {order.status}
-            </p>
-            <p>
-              <strong>Total Amount:</strong> ${order.totalAmount}
-            </p>
-            <strong>Products:</strong>
-            {/* <ul className="ml-5 list-disc">
+      {orders.length > 0
+        ? orders.map((order) => (
+            <div
+              key={order.id}
+              className="my-4 rounded border border-gray-300 p-4"
+            >
+              <h3 className="mb-2 text-xl font-bold">Order ID: {order.id}</h3>
+              <p>
+                <strong>Status:</strong> {order.status}
+              </p>
+              <p>
+                <strong>Total Amount:</strong> ${order.totalAmount}
+              </p>
+              <strong>Products:</strong>
+              <ul className="ml-5 list-disc">
                 {order.products.map((product, index) => (
                   <li key={index}>
                     {product.name} x {product.count}
                   </li>
                 ))}
-              </ul> */}
-          </div>
-        ))
-      )}
+              </ul>
+            </div>
+          ))
+        : ''}
     </div>
   )
 }

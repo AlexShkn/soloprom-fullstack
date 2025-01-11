@@ -29,7 +29,7 @@ import { SettingsSchema, TypeSettingsSchema } from '../schemes'
 import { useLogoutMutation } from '../hooks/useLogoutMutation'
 import { OrderList } from './OrderList'
 
-export function SettingsForm() {
+export function ProfileSettingsForm() {
   const { user, isLoading } = useProfile()
   const { logout, isLoadingLogout } = useLogoutMutation()
 
@@ -66,7 +66,7 @@ export function SettingsForm() {
     update(values)
   }
 
-  if (isLoading) return <Loading />
+  if (isLoading) return <Loading classNames="mt-[50px] pt-[50px] pb-[50px]" />
   if (!user) return null
 
   return (
@@ -120,7 +120,7 @@ export function SettingsForm() {
                 control={form.control}
                 name="isTwoFactorEnabled"
                 render={({ field }) => (
-                  <FormItem className="flex flex-row items-center justify-between rounded-lg border p-3 shadow-sm">
+                  <FormItem className="shadow- flex flex-row items-center justify-between rounded-lg border p-3">
                     <div className="space-y-0.5">
                       <FormLabel>Двухфакторная аутентификация</FormLabel>
                       <FormDescription>

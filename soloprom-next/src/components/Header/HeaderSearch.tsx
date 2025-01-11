@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useRef } from 'react'
-import { searchProducts } from '@/app/api/products/route'
+import { searchProducts } from '@/app/api/routes/products/route'
 import CloseButton from '@/components/shared/CloseButton'
 import { DebouncedFunction } from '@/supports/debounce'
 import { debounce } from '@/supports/debounce'

@@ -6,7 +6,7 @@ import { toast } from 'sonner'
 import { TypeOrderSchema, OrderSchema } from '@/features/auth/schemes'
 import { useSelector } from 'react-redux'
 import { RootState } from '@/redux/store'
-import { createOrder } from '@/app/api/order/order'
+import { createOrder } from '@/app/api/routes/order/route'
 
 import {
   Button,
@@ -45,7 +45,7 @@ export const OrderForm: React.FC = () => {
   const onSubmit = async (values: TypeOrderSchema) => {
     setIsSubmitting(true)
     try {
-      const telegramResponse = await fetch('/api/sendTelegram', {
+      const telegramResponse = await fetch('/api/routes/sendTelegram', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -61,7 +61,7 @@ export const OrderForm: React.FC = () => {
       if (isAuth) {
         const orderData = {
           userId: userState.id,
-          products: [...cartState],
+          products: cartState,
           totalAmount: totalAmount,
           status: 'PROCESSING',
         }
