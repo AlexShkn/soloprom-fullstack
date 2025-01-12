@@ -6,35 +6,35 @@
       {
         "type": "subcategory",
         "id": "shini-bandazhnie",
-        "href": "/catalog/tires/shini-bandazhnie",
+        "href": "/catalog/shini-bandazhnie",
         "img": "/img/catalog/category/tires/bandazhnie-shini.webp",
         "title": "Бандажные"
       },
       {
         "type": "subcategory",
         "id": "shini-pnevmatichesckie",
-        "href": "/catalog/tires/shini-pnevmatichesckie",
+        "href": "/catalog/shini-pnevmatichesckie",
         "img": "/img/catalog/category/tires/pnevmatichesckie-shini.webp",
         "title": "Пневматические"
       },
       {
         "type": "subcategory",
         "id": "shini-celnolitie",
-        "href": "/catalog/tires/shini-celnolitie",
+        "href": "/catalog/shini-celnolitie",
         "img": "/img/catalog/category/tires/shini-celnolitite.webp",
         "title": "Цельнолитые"
       },
       {
         "type": "subcategory",
         "id": "shini-legkovie",
-        "href": "/catalog/tires/shini-legkovie",
+        "href": "/catalog/shini-legkovie",
         "img": "/img/catalog/category/tires/legkovie.webp",
         "title": "Легковые"
       },
       {
         "type": "group",
         "id": "shini-dlya-vilochnih-pogruzchikov",
-        "href": "/catalog/tires/shini-dlya-vilochnih-pogruzchikov",
+        "href": "/catalog/shini-dlya-vilochnih-pogruzchikov",
         "img": "/img/catalog/category/tires/vilochnii-pogruzchik.webp",
         "title": "Для вилочных погрузчиков"
       },
@@ -42,7 +42,7 @@
         "type": "group",
 
         "id": "shini-dlya-minipogruzchikov",
-        "href": "/catalog/tires/shini-dlya-minipogruzchikov",
+        "href": "/catalog/shini-dlya-minipogruzchikov",
         "img": "/img/catalog/category/tires/shini-dlya-mini-pogruzchikov.webp",
         "title": "Для минипогрузчиков"
       },
@@ -51,7 +51,7 @@
         "type": "group",
 
         "id": "shini-dlya-ekskavator-pogruzchikov",
-        "href": "/catalog/tires/shini-dlya-ekskavator-pogruzchikov",
+        "href": "/catalog/shini-dlya-ekskavator-pogruzchikov",
         "img": "/img/catalog/category/tires/dlya-ekskavator-pogruzchikov.webp",
         "title": "Для экскаватор - погрузчиков"
       },
@@ -59,7 +59,7 @@
         "type": "group",
 
         "id": "shini-dlya-selhoztehniki",
-        "href": "/catalog/tires/shini-dlya-selhoztehniki",
+        "href": "/catalog/shini-dlya-selhoztehniki",
         "img": "/img/catalog/category/tires/selhoztechnika.webp",
         "title": "Для сельскохозяйственной техники"
       },
@@ -67,7 +67,7 @@
         "type": "group",
 
         "id": "shini-dlya-teleskopicheskih-pogruzchikov",
-        "href": "/catalog/tires/shini-dlya-teleskopicheskih-pogruzchikov",
+        "href": "/catalog/shini-dlya-teleskopicheskih-pogruzchikov",
         "img": "/img/catalog/category/tires/teleskopicheskii-pogruzchik.webp",
         "title": "Для телескопических погрузчиков"
       },
@@ -75,7 +75,7 @@
         "type": "group",
 
         "id": "shini-dlya-sochlenennih-samosvalov",
-        "href": "/catalog/tires/shini-dlya-sochlenennih-samosvalov",
+        "href": "/catalog/shini-dlya-sochlenennih-samosvalov",
         "img": "/img/catalog/category/tires/sochlenenni-samosval.webp",
         "title": "Для сочлененных самосвалов"
       },
@@ -83,7 +83,7 @@
         "type": "group",
 
         "id": "shini-dlya-portov-i-terminalov",
-        "href": "/catalog/tires/shini-dlya-portov-i-terminalov",
+        "href": "/catalog/shini-dlya-portov-i-terminalov",
         "img": "/img/catalog/category/tires/richstaker.webp",
         "title": "Для портов и терминалов"
       },
@@ -91,7 +91,7 @@
         "type": "group",
 
         "id": "shini-dlya-zhestkoramnih-samosvalov",
-        "href": "/catalog/tires/shini-dlya-zhestkoramnih-samosvalov",
+        "href": "/catalog/shini-dlya-zhestkoramnih-samosvalov",
         "img": "/img/catalog/category/tires/zhestkoramnii-samosval.webp",
         "title": "Для жесткорамных самосвалов"
       },
@@ -100,7 +100,7 @@
         "type": "group",
 
         "id": "shini-dlya-greiderov",
-        "href": "/catalog/tires/shini-dlya-greiderov",
+        "href": "/catalog/shini-dlya-greiderov",
         "img": "/img/catalog/category/tires/greider.webp",
         "title": "Для грейдеров"
       },
@@ -108,7 +108,7 @@
         "type": "group",
 
         "id": "shini-dlya-frontalnih-pogruzchikov",
-        "href": "/catalog/tires/shini-dlya-frontalnih-pogruzchikov",
+        "href": "/catalog/shini-dlya-frontalnih-pogruzchikov",
         "img": "/img/catalog/category/tires/frontalnii-pogruzchik.webp",
         "title": "Для фронтальных погрузчиков"
       },
@@ -116,7 +116,7 @@
         "type": "group",
 
         "id": "shini-dlya-kolesnih-ekskavatorov",
-        "href": "/catalog/tires/shini-dlya-kolesnih-ekskavatorov",
+        "href": "/catalog/shini-dlya-kolesnih-ekskavatorov",
         "img": "/img/catalog/category/tires/kolesnii-ekskavator.webp",
         "title": "Долесных экскаваторов"
       },
@@ -124,7 +124,7 @@
         "type": "group",
 
         "id": "shini-dlya-asfaltoukladchikov-i-katkov",
-        "href": "/catalog/tires/shini-dlya-asfaltoukladchikov-i-katkov",
+        "href": "/catalog/shini-dlya-asfaltoukladchikov-i-katkov",
         "img": "/img/catalog/category/tires/asphaltoukladchik.webp",
         "title": "Для асфальтоукладчиков и катков"
       }
@@ -138,7 +138,7 @@
         "type": "subcategory",
 
         "id": "accumulyatori-tyagovie",
-        "href": "/catalog/battery/accumulyatori-tyagovie",
+        "href": "/catalog/accumulyatori-tyagovie",
         "img": "/img/catalog/category/battery/tyagovie.webp",
         "title": "Тяговые аккумуляторы"
       },
@@ -146,7 +146,7 @@
         "type": "group",
 
         "id": "accumulyatori-dlya-pogruzchikov",
-        "href": "/catalog/battery/accumulyatori-dlya-pogruzchikov",
+        "href": "/catalog/accumulyatori-dlya-pogruzchikov",
         "img": "/img/catalog/category/battery/akb-dlya-pogruzchijov.webp",
         "title": "Аккумуляторы для погрузчиков"
       },
@@ -154,7 +154,7 @@
         "type": "group",
 
         "id": "accumulyatori-dlya-polomoechnih-mashin",
-        "href": "/catalog/battery/accumulyatori-dlya-polomoechnih-mashin",
+        "href": "/catalog/accumulyatori-dlya-polomoechnih-mashin",
         "img": "/img/catalog/category/battery/akb-dlya-polomoechnih-mashin.webp",
         "title": "Аккумуляторы для поломоечных машин"
       },
@@ -162,7 +162,7 @@
         "type": "group",
 
         "id": "accumulyatori-dlya-richtrakov",
-        "href": "/catalog/battery/accumulyatori-dlya-richtrakov",
+        "href": "/catalog/accumulyatori-dlya-richtrakov",
         "img": "/img/catalog/category/battery/akumulyator-dlya-richtrakov.webp",
         "title": "Аккумуляторы для ричтраков"
       },
@@ -170,7 +170,7 @@
         "type": "subcategory",
 
         "id": "accumulyatori-polutyagovie",
-        "href": "/catalog/battery/accumulyatori-polutyagovie",
+        "href": "/catalog/accumulyatori-polutyagovie",
         "img": "/img/catalog/category/battery/polutyagovie-akkumulyatori.webp",
         "title": "Полутяговые аккумуляторы"
       },
@@ -178,7 +178,7 @@
         "type": "group",
 
         "id": "accumulyatori-dlya-electrotelezhek",
-        "href": "/catalog/battery/accumulyatori-dlya-electrotelezhek",
+        "href": "/catalog/accumulyatori-dlya-electrotelezhek",
         "img": "/img/catalog/category/battery/akkumulyatori-dlya-elektrotelezhek.webp",
         "title": "Аккумуляторы для электротележек"
       },
@@ -186,7 +186,7 @@
         "type": "group",
 
         "id": "accumulyatori-dlya-shtabelerov",
-        "href": "/catalog/battery/accumulyatori-dlya-shtabelerov",
+        "href": "/catalog/accumulyatori-dlya-shtabelerov",
         "img": "/img/catalog/category/battery/akkumulyatori-dlya-shtabelerov.webp",
         "title": "Аккумуляторы для штабелеров"
       },
@@ -194,7 +194,7 @@
         "type": "group",
 
         "id": "accumulyatori-dlya-polletoperevozchikov",
-        "href": "/catalog/battery/accumulyatori-dlya-polletoperevozchikov",
+        "href": "/catalog/accumulyatori-dlya-polletoperevozchikov",
         "img": "/img/catalog/category/battery/akkumelyator-dlya-palletoperevozchikov.webp",
         "title": "Аккумуляторы для паллетоперевозчиков"
       }
@@ -208,7 +208,7 @@
         "type": "subcategory",
 
         "id": "masla-motornie",
-        "href": "/catalog/oils/masla-motornie",
+        "href": "/catalog/masla-motornie",
         "img": "/img/catalog/category/oils/motornoe-maslo.webp",
         "title": "Моторные масла"
       },
@@ -216,7 +216,7 @@
         "type": "subcategory",
 
         "id": "masla-transmissionnie",
-        "href": "/catalog/oils/masla-transmissionnie",
+        "href": "/catalog/masla-transmissionnie",
         "img": "/img/catalog/category/oils/maslo-transmissionnoe.webp",
         "title": "Трансмиссионные масла"
       },
@@ -224,7 +224,7 @@
         "type": "subcategory",
 
         "id": "masla-gidravlicheskie",
-        "href": "/catalog/oils/masla-masla-gidravlicheskie",
+        "href": "/catalog/masla-masla-gidravlicheskie",
         "img": "/img/catalog/category/oils/gidravlicheskoe-maslo.webp",
         "title": "Гидравлические масла"
       },
@@ -232,7 +232,7 @@
         "type": "subcategory",
 
         "id": "masla-industrialnie",
-        "href": "/catalog/oils/masla-industrialnie",
+        "href": "/catalog/masla-industrialnie",
         "img": "/img/catalog/category/oils/industrialnoe-maslo.webp",
         "title": "Индустриальные масла"
       },
@@ -240,7 +240,7 @@
         "type": "subcategory",
 
         "id": "antifreezi",
-        "href": "/catalog/oils/antifreezi",
+        "href": "/catalog/antifreezi",
         "img": "/img/catalog/category/oils/antifreeez.webp",
         "title": "Охлаждающие жидкости"
       }

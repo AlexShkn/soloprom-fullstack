@@ -1,3 +1,7 @@
+import { getTotalProductCount } from '@/app/api/routes/products/route'
+import axios from 'axios'
+
+// server.ts
 export interface PageDataTypes {
   pageType: 'category' | 'subcategory' | 'group' | 'brands'
   category: string
@@ -67,7 +71,30 @@ export async function findPagesData(
 }
 
 export async function generateStaticParams() {
-  return Object.keys(pagesData).map((pageUrl) => ({
-    pageUrl,
-  }))
+  const params = []
+  const limit = 10 // Количество товаров на странице
+
+  for (const pageUrl in pagesData) {
+    const pageData = pagesData[pageUrl]
+
+    if (
+      pageData.pageType === 'category' ||
+      pageData.pageType === 'subcategory' ||
+      pageData.pageType === 'group' ||
+      pageData.pageType === 'brands'
+    ) {
+      params.push({ pageUrl, page: '1' }) // Параметр для главной страницы
+
+      const totalCount = await getTotalProductCount(pageData.name)
+      const totalPages = Math.ceil(totalCount / limit)
+
+      for (let page = 2; page <= totalPages; page++) {
+        params.push({ pageUrl, page: page.toString() }) // Параметр для страниц пагинации
+      }
+    } else {
+      params.push({ pageUrl, page: '1' })
+    }
+  }
+
+  return params
 }

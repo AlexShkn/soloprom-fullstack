@@ -10,9 +10,9 @@ interface SidePanelProps {
   pageData: PageDataTypes
 }
 
-type InputDataType = { [key: string]: any }
+export type InputDataType = { [key: string]: any }
 
-type OutputCategory = {
+export type OutputCategory = {
   name: string
   title: string
   description: string
@@ -67,7 +67,7 @@ export interface Subcategory {
   crumb: string
 }
 
-function transformJson(inputData: InputDataType): {
+export function transformJson(inputData: InputDataType): {
   [key: string]: OutputCategory
 } {
   const result: { [key: string]: OutputCategory } = {}

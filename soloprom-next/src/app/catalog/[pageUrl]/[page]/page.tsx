@@ -1,6 +1,5 @@
-// app/catalog/[pageUrl]/[page].tsx
-import CategoryPageClient from './CategoryPageClient'
-import { findPagesData } from './server'
+import CategoryPageClient from '../CategoryPageClient'
+import { findPagesData } from '../server'
 
 interface PageProps {
   params: { pageUrl: string; page?: string }

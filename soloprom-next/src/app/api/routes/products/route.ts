@@ -2,7 +2,7 @@ import { cardDataProps } from '@/types/products.types'
 import axios from 'axios'
 import { NextRequest, NextResponse } from 'next/server'
 
-const BASE_URL = `${process.env.NEXT_PUBLIC_SERVER_URL}/products`
+export const BASE_URL = `${process.env.NEXT_PUBLIC_SERVER_URL}/products`
 
 interface ProductsRequest {
   categoryName?: string
@@ -11,6 +11,14 @@ interface ProductsRequest {
   sort?: string
   filters?: Record<string, string | string[]>
   search?: string
+}
+
+export async function getTotalProductCount(categoryName: string) {
+  // Замените это на ваш реальный вызов API для подсчета продуктов
+  const response = await axios.get(`${BASE_URL}/get-products`, {
+    params: { categoryName, limit: 1 },
+  })
+  return response.data.totalCount
 }
 
 export async function GET(req: NextRequest) {

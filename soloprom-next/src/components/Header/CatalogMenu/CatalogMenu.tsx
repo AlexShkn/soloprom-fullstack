@@ -36,115 +36,115 @@ const productsList: Record<string, CategoryProduct[]> = {
   acb: [
     { href: '/catalog/battery', title: 'Аккумуляторы' },
     {
-      href: '/catalog/battery/accumulyatori-tyagovie',
+      href: '/catalog/accumulyatori-tyagovie',
       title: 'Тяговые аккумуляторы',
     },
     {
-      href: '/catalog/battery/accumulyatori-polutyagovie',
+      href: '/catalog/accumulyatori-polutyagovie',
       title: 'Полутяговые аккумуляторы',
     },
     {
-      href: '/catalog/battery/accumulyatori-dlya-pogruzchikov',
+      href: '/catalog/accumulyatori-dlya-pogruzchikov',
       title: 'Аккумуляторы для погрузчиков',
     },
     {
-      href: '/catalog/battery/accumulyatori-dlya-electrotelezhek',
+      href: '/catalog/accumulyatori-dlya-electrotelezhek',
       title: 'Аккумуляторы для электротележек',
     },
     {
-      href: '/catalog/battery/accumulyatori-dlya-polomoechnih-mashin',
+      href: '/catalog/accumulyatori-dlya-polomoechnih-mashin',
       title: 'Аккумуляторы для поломоечных машин',
     },
     {
-      href: '/catalog/battery/accumulyatori-dlya-shtabelerov',
+      href: '/catalog/accumulyatori-dlya-shtabelerov',
       title: 'Аккумуляторы для штабелеров',
     },
     {
-      href: '/catalog/battery/accumulyatori-dlya-richtrakov',
+      href: '/catalog/accumulyatori-dlya-richtrakov',
       title: 'Аккумуляторы для ричтраков',
     },
     {
-      href: '/catalog/battery/accumulyatori-dlya-polletoperevozchikov',
+      href: '/catalog/accumulyatori-dlya-polletoperevozchikov',
       title: 'Аккумуляторы для паллетоперевозчика',
     },
   ],
   tires: [
     { href: '/catalog/tires', title: 'Шины для спецтехники' },
     {
-      href: '/catalog/tires/shini-celnolitie',
+      href: '/catalog/shini-celnolitie',
       title: 'Шины цельнолитые (суперэластик)',
     },
     {
-      href: '/catalog/tires/shini-pnevmatichesckie',
+      href: '/catalog/shini-pnevmatichesckie',
       title: 'Шины пневматические',
     },
-    { href: '/catalog/tires/shini-legkovie', title: 'Шины легковые' },
-    { href: '/catalog/tires/shini-bandazhnie', title: 'Бандажные шины' },
+    { href: '/catalog/shini-legkovie', title: 'Шины легковые' },
+    { href: '/catalog/shini-bandazhnie', title: 'Бандажные шины' },
     {
-      href: '/catalog/tires/shini-dlya-vilochnih-pogruzchikov',
+      href: '/catalog/shini-dlya-vilochnih-pogruzchikov',
       title: 'Шины для вилочных погрузчиков',
     },
     {
-      href: '/catalog/tires/shini-dlya-minipogruzchikov',
+      href: '/catalog/shini-dlya-minipogruzchikov',
       title: 'Шины для минипогрузчиков',
     },
     {
-      href: '/catalog/tires/shini-dlya-ekskavator-pogruzchikov',
+      href: '/catalog/shini-dlya-ekskavator-pogruzchikov',
       title: 'Шины для экскаватор - погрузчиков',
     },
     {
-      href: '/catalog/tires/shini-dlya-frontalnih-pogruzchikov',
+      href: '/catalog/shini-dlya-frontalnih-pogruzchikov',
       title: 'Шины для фронтальных погрузчиков',
     },
     {
-      href: '/catalog/tires/shini-dlya-greiderov',
+      href: '/catalog/shini-dlya-greiderov',
       title: 'Шины для грейдеров',
     },
     {
-      href: '/catalog/tires/shini-dlya-selhoztehniki',
+      href: '/catalog/shini-dlya-selhoztehniki',
       title: 'Шины для сельхозтехники',
     },
     {
-      href: '/catalog/tires/shini-dlya-kolesnih-ekskavatorov',
+      href: '/catalog/shini-dlya-kolesnih-ekskavatorov',
       title: 'Шина для колесных экскаваторов',
     },
     {
-      href: '/catalog/tires/shini-dlya-sochlenennih-samosvalov',
+      href: '/catalog/shini-dlya-sochlenennih-samosvalov',
       title: 'Шины для сочлененных самосвалов',
     },
     {
-      href: '/catalog/tires/shini-dlya-teleskopicheskih-pogruzchikov',
+      href: '/catalog/shini-dlya-teleskopicheskih-pogruzchikov',
       title: 'Шины для телескопических погрузчиков',
     },
     {
-      href: '/catalog/tires/shini-dlya-portov-i-terminalov',
+      href: '/catalog/shini-dlya-portov-i-terminalov',
       title: 'Шины для портов и терминалов',
     },
     {
-      href: '/catalog/tires/shini-dlya-asfaltoukladchikov-i-katkov',
+      href: '/catalog/shini-dlya-asfaltoukladchikov-i-katkov',
       title: 'Шины для асфальтоукладчиков и катков',
     },
     {
-      href: '/catalog/tires/shini-dlya-zhestkoramnih-samosvalov',
+      href: '/catalog/shini-dlya-zhestkoramnih-samosvalov',
       title: 'Шины для жесткорамных самосвалов',
     },
   ],
   oils: [
     { href: '/catalog/oils', title: 'Масла' },
-    { href: '/catalog/oils/masla-motornie', title: 'Моторные масла' },
+    { href: '/catalog/masla-motornie', title: 'Моторные масла' },
     {
-      href: '/catalog/oils/masla-transmissionnie',
+      href: '/catalog/masla-transmissionnie',
       title: 'Масла трансмиссионные',
     },
     {
-      href: '/catalog/oils/masla-gidravlichecskie',
+      href: '/catalog/masla-gidravlichecskie',
       title: 'Масла гидравлические',
     },
     {
-      href: '/catalog/oils/masla-industrialnie',
+      href: '/catalog/masla-industrialnie',
       title: 'Масла индустриальные',
     },
-    { href: '/catalog/oils/antifreezi', title: 'Охлаждающие жидкости' },
+    { href: '/catalog/antifreezi', title: 'Охлаждающие жидкости' },
   ],
 }
 
