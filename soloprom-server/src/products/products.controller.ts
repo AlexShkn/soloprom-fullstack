@@ -10,6 +10,28 @@ export class ProductsController {
     return this.productService.loadCategoriesProductsAndGroups(data);
   }
 
+  @Get('get-products')
+  async getProducts(
+    @Query('categoryName') categoryName: string,
+    @Query('page') page: string = '1',
+    @Query('limit') limit: string = '10',
+    @Query('sort') sort?: string,
+    @Query('filters') filters?: string,
+    @Query('search') search?: string,
+  ) {
+    const filtersParsed = filters ? JSON.parse(filters) : {};
+    const pageNumber = parseInt(page, 10);
+    const limitNumber = parseInt(limit, 10);
+    return this.productService.getProducts({
+      categoryName,
+      page: pageNumber,
+      limit: limitNumber,
+      sort,
+      filters: filtersParsed,
+      search,
+    });
+  }
+
   @Get()
   async getAllProducts() {
     return this.productService.getAllProducts();

@@ -3,16 +3,141 @@ import React, { useState } from 'react'
 import Link from 'next/link'
 
 import './SidePanel.scss'
+import { PageDataTypes } from '@/app/catalog/[pageUrl]/server'
+const pagesDataRaw = require('@/data/products/pagesData.json')
 
-import {
-  Group,
-  Brand,
-  Subcategory,
-  Categories,
-} from '@/app/catalog/[category]/page'
+interface SidePanelProps {
+  pageData: PageDataTypes
+}
 
-export const SidePanel: React.FC<Categories> = ({ categoryData }) => {
+type InputDataType = { [key: string]: any }
+
+type OutputCategory = {
+  name: string
+  title: string
+  description: string
+  img: string
+  alt: string
+  pageType: string
+  category: string
+  headGroupTitle?: string
+  url: string
+
+  subcategories?: Array<{
+    title: string
+    description: string
+    img: string
+    alt: string
+    url: string
+    crumb: string
+    pageType: string
+    category: string
+    headGroupTitle?: string
+  }>
+  group?: Array<{
+    headGroupTitle?: string
+    title: string
+    description: string
+    img: string
+    alt: string
+    url: string
+    crumb: string
+    pageType: string
+    category: string
+  }>
+  brands?: Array<{
+    title: string
+    description: string
+    img: string
+    alt: string
+    url: string
+    crumb: string
+    pageType: string
+    category: string
+    headGroupTitle?: string
+  }>
+}
+
+export interface Subcategory {
+  title: string
+  description: string
+  img: string
+  alt: string
+  url: string
+  crumb: string
+}
+
+function transformJson(inputData: InputDataType): {
+  [key: string]: OutputCategory
+} {
+  const result: { [key: string]: OutputCategory } = {}
+
+  Object.keys(inputData).forEach((key) => {
+    const item = inputData[key]
+
+    if (item.pageType === 'category') {
+      result[key] = {
+        name: item.name,
+        title: item.title,
+        description: item.description,
+        img: item.img,
+        alt: item.alt,
+        url: item.url,
+        pageType: item.pageType,
+        category: item.category,
+        subcategories: [],
+        group: [],
+        brands: [],
+      }
+    } else if (item.pageType === 'subcategory' && item.category) {
+      result[item.category]?.subcategories?.push({
+        pageType: item.pageType,
+        category: item.category,
+        title: item.title,
+        description: item.description,
+        img: item.img,
+        alt: item.alt,
+        url: item.url,
+        crumb: item.crumb,
+      })
+    } else if (item.pageType === 'group' && item.category) {
+      result[item.category]?.group?.push({
+        pageType: item.pageType,
+        category: item.category,
+
+        headGroupTitle: item.headGroupTitle,
+        title: item.title,
+        description: item.description,
+        img: item.img,
+        alt: item.alt,
+        url: item.url,
+        crumb: item.crumb,
+      })
+    } else if (item.pageType === 'brands' && item.category) {
+      result[item.category]?.brands?.push({
+        pageType: item.pageType,
+        category: item.category,
+
+        title: item.title,
+        description: item.description,
+        img: item.img,
+        alt: item.alt,
+        url: item.url,
+        crumb: item.crumb,
+      })
+    }
+  })
+
+  return result
+}
+
+export const SidePanel: React.FC<SidePanelProps> = ({ pageData }) => {
   const [isHover, setIsHover] = useState(false)
+  const transformData = transformJson(pagesDataRaw)
+  const categoryData = transformData[pageData.category]
+
+  console.log(categoryData)
+
   const subcategories = categoryData.subcategories
   const groups = categoryData.group
   const brands = categoryData.brands

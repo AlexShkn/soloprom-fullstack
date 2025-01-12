@@ -38,12 +38,14 @@ export const ProductsSlider: React.FC<Props> = ({ title, categoryName }) => {
     fetchPopularProducts()
   }, [])
 
-  return (
+  return favoriteData.length ? (
     <section className="section-offset">
       <div className="list__container">
         <h2 className="section-title">{title}</h2>
-        {favoriteData && <ProductListSlider listData={favoriteData} />}
+        <ProductListSlider listData={favoriteData} />
       </div>
     </section>
+  ) : (
+    ''
   )
 }

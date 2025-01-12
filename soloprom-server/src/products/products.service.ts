@@ -9,6 +9,85 @@ const prisma = new PrismaClient();
 export class ProductsService {
   constructor(private productDescrService: ProductDescrService) {}
 
+  async getProducts(params: {
+    categoryName?: string;
+    page: number;
+    limit: number;
+    sort?: string;
+    filters?: Record<string, string | string[]>;
+    search?: string;
+  }) {
+    const { categoryName, page, limit, sort, filters, search } = params;
+
+    const where: any = {};
+
+    if (categoryName) {
+      where.OR = [
+        { categoryName: categoryName },
+        { subcategoryName: categoryName },
+        {
+          groups: {
+            some: {
+              name: categoryName,
+            },
+          },
+        },
+      ];
+    }
+    if (filters) {
+      for (const key in filters) {
+        if (filters.hasOwnProperty(key)) {
+          const filterValue = filters[key];
+          if (Array.isArray(filterValue)) {
+            where[key] = { in: filterValue };
+          } else {
+            where[key] = filterValue;
+          }
+        }
+      }
+    }
+    if (search) {
+      where.OR = [
+        {
+          name: {
+            contains: search,
+            mode: 'insensitive',
+          },
+        },
+        {
+          descr: {
+            contains: search,
+            mode: 'insensitive',
+          },
+        },
+      ];
+    }
+
+    const orderBy: any = {};
+    if (sort) {
+      const [field, order] = sort.split(':');
+      orderBy[field] = order === 'asc' ? 'asc' : 'desc';
+    }
+
+    const skip = (page - 1) * limit;
+
+    const products = await prisma.product.findMany({
+      where,
+      orderBy,
+      skip,
+      take: limit,
+    });
+
+    const totalCount = await prisma.product.count({ where });
+
+    return {
+      products,
+      totalCount,
+      currentPage: page,
+      totalPages: Math.ceil(totalCount / limit),
+    };
+  }
+
   async getAllProducts() {
     return prisma.product.findMany();
   }
@@ -17,6 +96,8 @@ export class ProductsService {
     const product = await prisma.product.findUnique({
       where: { productId },
     });
+
+    console.log(product);
 
     if (!product) {
       return null;
@@ -32,13 +113,6 @@ export class ProductsService {
     };
   }
 
-  // async getCategoryIdByName(categoryName: string): Promise<string | null> {
-  //   const category = await prisma.category.findUnique({
-  //     where: { name: categoryName },
-  //   });
-  //   return category ? category.id : null;
-  // }
-
   async getProductsByCategory(categoryName: string) {
     const category = await prisma.subCategory.findUnique({
       where: { name: categoryName },
@@ -53,16 +127,6 @@ export class ProductsService {
 
     return category.products;
   }
-
-  // async getSubCategoryIdByName(
-  //   subcategoryName: string,
-  // ): Promise<string | null> {
-  //   const subcategory = await prisma.subCategory.findUnique({
-  //     where: { name: subcategoryName },
-  //   });
-
-  //   return subcategory ? subcategory.id : null;
-  // }
 
   async getProductsBySubCategory(subcategoryName: string) {
     const subcategory = await prisma.subCategory.findUnique({
@@ -214,7 +278,7 @@ export class ProductsService {
 
   async getProductsByGroup(groupName: string) {
     const group = await prisma.group.findUnique({
-      where: { name: groupName }, // Используется уникальное поле name
+      where: { name: groupName },
       include: {
         products: true,
       },
@@ -261,7 +325,7 @@ export class ProductsService {
 
   async updatePricesFromData(data: ProductDto[]): Promise<void> {
     for (const productData of data) {
-      const { id, sizes, price } = productData;
+      const { id, sizes, price, stock, name } = productData;
       const product = await prisma.product.findUnique({
         where: {
           productId: id,
@@ -276,6 +340,7 @@ export class ProductsService {
           data: {
             sizes: sizes,
             defaultPrice: price,
+            stock: stock,
           },
         });
       }
@@ -322,8 +387,6 @@ export class ProductsService {
 
     return popularProductsRecords.map((record) => record.product);
   }
-
-  //====================================================================
 
   async searchProducts(name: string) {
     return prisma.product.findMany({

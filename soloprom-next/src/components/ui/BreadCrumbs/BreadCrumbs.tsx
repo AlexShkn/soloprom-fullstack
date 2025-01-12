@@ -5,27 +5,7 @@ import { usePathname } from 'next/navigation'
 
 import s from './BreadCrumbs.module.scss'
 
-interface Subcategory {
-  title: string
-  description: string
-  img: string
-  alt: string
-  url: string
-  crumb: string
-}
-
-interface Category {
-  name: string
-  title: string
-  description: string
-  img: string
-  alt: string
-  subcategories: Subcategory[]
-}
-
-interface PagesData {
-  [key: string]: Category
-}
+import { pagesData } from '@/app/catalog/[pageUrl]/server'
 
 interface Breadcrumb {
   label: string
@@ -52,27 +32,6 @@ const dictionary: Dictionary = {
   tires: 'Шины для спецтехники',
   battery: 'Аккумуляторы',
   oils: 'Мала и антифризы',
-  'shini-celnolitie': 'Шины цельнолитые',
-}
-
-const getSubCategoryDescription = (
-  category: string,
-  subcategory: string,
-): { crumb: string; url: string } | undefined => {
-  const pagesData = require('@/data/products/pagesData.json') as PagesData
-
-  if (!pagesData[category]) {
-    return undefined
-  }
-
-  const object = pagesData[category].subcategories.find(
-    (obj) => obj.url === subcategory,
-  )
-
-  if (!object) {
-    return undefined
-  }
-  return { crumb: object.crumb, url: object.url }
 }
 
 const BreadCrumbs: React.FC<forcedListTypes> = ({
@@ -84,13 +43,15 @@ const BreadCrumbs: React.FC<forcedListTypes> = ({
   const pathname = usePathname()
   const pathParts = pathname.split('/').filter((part) => part)
 
-  const breadcrumbs: Breadcrumb[] = pathParts.map((part, index) => ({
-    label: dictionary[part] || part,
-    href: `/${pathParts.slice(0, index + 1).join('/')}`,
-  }))
+  const breadcrumbs: Breadcrumb[] = pathParts.map((part, index) => {
+    const label = dictionary[part] || pagesData[part]?.title || part
+    return {
+      label: label,
+      href: `/${pathParts.slice(0, index + 1).join('/')}`,
+    }
+  })
 
-  const subCategoryInfo =
-    category && subcategory && getSubCategoryDescription(category, subcategory)
+  const subCategoryInfo = url ? pagesData[url] : undefined
 
   return (
     <nav aria-label="breadcrumb" className={`relative z-[2] mb-7 pt-5`}>
@@ -105,40 +66,25 @@ const BreadCrumbs: React.FC<forcedListTypes> = ({
             </svg>
           </Link>
 
-          {!category ? (
-            breadcrumbs.map((crumb, index) => (
-              <Link
-                key={index}
-                href={crumb.href}
-                className={`${s.breadCrumbsLink} link-hover relative text-darkBlue`}
-              >
-                {crumb.label}
-              </Link>
-            ))
-          ) : (
-            <>
-              <Link
-                href={`/catalog/${category}`}
-                className={`${s.breadCrumbsLink} link-hover relative text-darkBlue`}
-              >
-                {dictionary[category]}
-              </Link>
-              {subCategoryInfo && (
-                <Link
-                  href={`/catalog/${subcategory}`}
-                  className={`${s.breadCrumbsLink} link-hover relative text-darkBlue`}
-                >
-                  {subCategoryInfo.crumb}
-                </Link>
-              )}
-
-              <Link
-                href={url ? url : '/'}
-                className={`${s.breadCrumbsLink} link-hover relative text-darkBlue`}
-              >
-                {name}
-              </Link>
-            </>
+          {breadcrumbs.map((crumb, index) => (
+            <Link
+              key={index}
+              href={crumb.href}
+              className={`${s.breadCrumbsLink} link-hover relative text-darkBlue`}
+            >
+              {crumb.label}
+            </Link>
+          ))}
+          {subCategoryInfo && (
+            <Link
+              key={'last'}
+              href={`/catalog/${subCategoryInfo.url}`}
+              className={`${s.breadCrumbsLink} link-hover relative text-darkBlue`}
+            >
+              {subCategoryInfo.crumb
+                ? subCategoryInfo.crumb
+                : subCategoryInfo.title}
+            </Link>
           )}
         </div>
       </ul>

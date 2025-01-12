@@ -22,6 +22,7 @@ async function bootstrap() {
     }
     console.log('Скрапинг завершен успешно!');
     await app.close();
+    process.exit(0);
   } catch (error) {
     console.error('Ошибка при скрапинге:', error);
     await app.close();

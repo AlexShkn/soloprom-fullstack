@@ -46,13 +46,16 @@
 
   // .group-list__catalog-list
 
-  &__catalog-list {
+  .group-list__catalog-list {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(4, 1fr);
     gap: 20px;
     padding: 10px 20px;
     overflow: hidden;
 
+    @media (max-width: 1400px) {
+      grid-template-columns: repeat(3, 1fr);
+    }
     @media (max-width: 1199.98px) {
       grid-template-columns: repeat(2, 1fr);
     }
@@ -68,10 +71,10 @@
 
     @media (max-width: 479.98px) {
       padding: 10px 5px 15px;
+      grid-template-columns: 1fr;
     }
 
     @media (max-width: 374.98px) {
-      grid-template-columns: 1fr;
     }
 
     &--list {

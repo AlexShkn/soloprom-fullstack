@@ -28,4 +28,5 @@ export interface cardDataProps {
 
 export interface ProductsCardPropTypes {
   cardData: cardDataProps
+  mod?: string
 }

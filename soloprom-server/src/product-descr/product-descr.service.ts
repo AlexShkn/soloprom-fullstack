@@ -1,6 +1,8 @@
 import { Injectable } from '@nestjs/common';
 import { PrismaService } from '@/prisma/prisma.service';
 
+type OptionsType = [string, string][];
+
 @Injectable()
 export class ProductDescrService {
   constructor(private prisma: PrismaService) {}
@@ -15,10 +17,17 @@ export class ProductDescrService {
     productId: string;
     name: string;
     text?: string;
-    models?: any;
-    reviews?: any[];
+    models?: string[];
+    reviews?: {
+      name: string;
+      positive: string;
+      negative: string;
+      comment: string;
+      rating: number;
+    }[];
+    options?: OptionsType;
   }) {
-    const { productId, name, text, models, reviews } = data;
+    const { productId, name, text, models, reviews, options } = data;
     let rating = 0;
 
     if (reviews && reviews.length > 0) {
@@ -26,6 +35,7 @@ export class ProductDescrService {
         reviews.reduce((sum, review) => sum + review.rating, 0) /
         reviews.length;
     }
+
     return this.prisma.productDescr.create({
       data: {
         productId,
@@ -33,6 +43,7 @@ export class ProductDescrService {
         text,
         models,
         reviews,
+        options,
         rating,
       },
     });
@@ -42,11 +53,18 @@ export class ProductDescrService {
     productId: string,
     data: {
       text?: string;
-      models?: any;
-      reviews?: any[];
+      models?: string[];
+      reviews?: {
+        name: string;
+        positive: string;
+        negative: string;
+        comment: string;
+        rating: number;
+      }[];
+      options?: OptionsType;
     },
   ) {
-    const { text, models, reviews } = data;
+    const { text, models, reviews, options } = data;
     let rating = 0;
 
     if (reviews && reviews.length > 0) {
@@ -54,12 +72,14 @@ export class ProductDescrService {
         reviews.reduce((sum, review) => sum + review.rating, 0) /
         reviews.length;
     }
+
     return this.prisma.productDescr.update({
       where: { productId },
       data: {
         text,
         models,
         reviews,
+        options,
         rating,
       },
     });

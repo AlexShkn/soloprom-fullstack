@@ -11,6 +11,7 @@ model Product {
   productId       String          @unique
   isPopular       Boolean         @default(false)
   discount        Float?
+  stock           Float?          @default(0)
   categoryName    String
   subcategoryName String
   name            String
@@ -51,6 +52,7 @@ model ProductDescr {
   productId String   @unique
   name      String
   text      String?
+  options   Json?
   models    Json?
   reviews   Json?    @default("[]")
   rating    Float    @default(0.0)

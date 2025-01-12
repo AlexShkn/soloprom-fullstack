@@ -13,6 +13,8 @@ export class ScraperJob {
         data = await this.crawlerService.crawlData('tires');
       } else if (category === 'batteries') {
         data = await this.crawlerService.crawlData('batteries');
+      } else if (category === 'batteries-stock') {
+        data = await this.crawlerService.crawlData('batteries-stock');
       } else {
         console.error('Неизвестная категория', category);
         return;

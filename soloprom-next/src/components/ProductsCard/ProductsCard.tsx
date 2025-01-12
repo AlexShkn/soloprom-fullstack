@@ -19,7 +19,10 @@ import {
 } from '@/redux/slices/modalsSlice'
 import Link from 'next/link'
 
-export const ProductsCard: React.FC<ProductsCardPropTypes> = ({ cardData }) => {
+export const ProductsCard: React.FC<ProductsCardPropTypes> = ({
+  cardData,
+  mod,
+}) => {
   const [variantValue, setVariantValue] = useState('')
   const [cartIsAdded, setCartIsAdded] = useState(false)
   const [favoriteIsAdded, setFavoriteIsAdded] = useState(false)
@@ -163,11 +166,14 @@ export const ProductsCard: React.FC<ProductsCardPropTypes> = ({ cardData }) => {
         {name}
       </div>
 
-      <DescriptionTemplate
-        variantValue={variantValue}
-        setVariantValue={setVariantValue}
-        cardData={cardData}
-      />
+      {!mod && (
+        <DescriptionTemplate
+          variantValue={variantValue}
+          setVariantValue={setVariantValue}
+          cardData={cardData}
+        />
+      )}
+
       <div className="mt-auto flex flex-col gap-2.5">
         <PriceBlock
           price={sizesData?.[variantValue] ?? defaultPrice}

@@ -19,6 +19,8 @@ export class CrawlerService {
       targetUrl = this.configService.get<string>('tiresTargetUrl');
     } else if (category === 'batteries') {
       targetUrl = this.configService.get<string>('batteriesTargetUrl');
+    } else if (category === 'batteries-stock') {
+      targetUrl = this.configService.get<string>('batteriesStockTargetUrl');
     } else {
       console.error('Неизвестная категория:', category);
       return [];
@@ -49,6 +51,8 @@ export class CrawlerService {
         result = await this.evaluateTiresData(page);
       } else if (category === 'batteries') {
         result = await this.evaluateBatteriesData(page);
+      } else if (category === 'batteries-stock') {
+        result = await this.evaluateBatteriesStockData(page);
       } else {
         return [];
       }
@@ -139,7 +143,7 @@ export class CrawlerService {
             if (labelElement && valueElement) {
               preResult.options.push([
                 labelElement.textContent.trim(),
-                valueElement.textContent.trim(),
+                valueElement.textContent.replace(/\s+/g, ' ').trim(),
               ]);
             }
           });
@@ -165,9 +169,10 @@ export class CrawlerService {
         let brand,
           model,
           ficha,
+          fichaRu,
           price,
           typeProduct,
-          count = 0;
+          stock = 0;
         let size: string = '';
         let sizes: {} = {};
 
@@ -182,6 +187,7 @@ export class CrawlerService {
           }
           if (index === 3) {
             ficha = getWordsStr(textContent);
+            fichaRu = textContent;
           }
           if (index === 4) {
             typeProduct = getWordType[textContent];
@@ -195,7 +201,7 @@ export class CrawlerService {
           if (index > 6 && index < 22) {
             const num = parseInt(textContent);
             if (num && !isNaN(num)) {
-              count += num || 0;
+              stock += num || 0;
             }
           }
           if (index === 23) {
@@ -207,10 +213,10 @@ export class CrawlerService {
         preResult.id = removeSpacesAndSlashes(
           `${brand}${model}${size}${ficha}`,
         );
-        preResult.name = `Шина ${brand} ${model} ${size} ${ficha}`;
+        preResult.name = `Шина ${brand} ${model} ${size} ${fichaRu}`;
         preResult.price = price;
         preResult.sizes = sizes;
-        preResult.count = count;
+        preResult.stock = stock;
         preResult.tireProduct = typeProduct;
 
         if (model !== 'Камера' && model !== 'Лента') {
@@ -322,6 +328,98 @@ export class CrawlerService {
       return result;
     });
   }
+  private async evaluateBatteriesStockData(page: any): Promise<ProductDto[]> {
+    return await page.evaluate(() => {
+      const processStringFunction = (str: string): string => {
+        return str.replace(/[\s/.-]|[\u0400-\u04FF]/g, '');
+      };
+
+      console.log('Выполняется evaluate...');
+      const tbodys = document.querySelectorAll('tbody');
+      const result: ProductDto[] = [];
+
+      tbodys.forEach((row) => {
+        const tds = row.querySelectorAll('td');
+        const preResult: any = {};
+        let model: string;
+        let name: string;
+        let size: string = '';
+        let price: number;
+        const models: string[] = [];
+
+        tds.forEach((td, index) => {
+          let value: any;
+          if (index === 1 || index === 2 || index === 4 || index === 5) {
+            value = td.querySelector('span');
+          }
+
+          if (value) {
+            if (index === 1) {
+              model = value.textContent.trim();
+            }
+            if (index === 2) {
+              model = `${model}-${value.textContent.trim()}`;
+            }
+            if (index === 4) {
+              name = value.textContent.trim();
+            }
+            if (index === 5) {
+              size = value.textContent.replace(/\s/g, '');
+            }
+            if (index === 6) {
+              price = parseInt(td.textContent.replace(/\s/g, ''));
+            }
+          } else {
+            if (index === 6) {
+              price = parseInt(td.textContent.replace(/\s/g, ''));
+            }
+            if (index === 1) {
+              model = td.textContent.trim();
+            }
+            if (index === 2) {
+              model = `${model}-${td.textContent.trim()}`;
+            }
+            if (index === 4) {
+              name = td.textContent.trim();
+            }
+            if (index === 5) {
+              size = td.textContent.replace(/\s/g, '');
+            }
+          }
+        });
+
+        preResult.id = processStringFunction(name);
+        preResult.name = name;
+        preResult.price = price;
+        preResult.models = models;
+
+        if (result.some((obj) => obj.id === preResult.id)) {
+          const objIndex = result.findIndex((obj) => obj.id === preResult.id);
+          if (objIndex !== -1) {
+            result[objIndex].models.push(model);
+            if (preResult.sizes) {
+              result[objIndex].sizes = {
+                ...result[objIndex].sizes,
+                ...{ [size]: price },
+              };
+            } else {
+              result[objIndex].sizes = {
+                [size]: price,
+              };
+            }
+          }
+        } else {
+          preResult.models = [model];
+          preResult.sizes = {
+            [size]: price,
+          };
+          result.push(preResult);
+        }
+      });
+      console.log('Результат evaluate', result);
+      return result;
+    });
+  }
 
   async saveDataToFile(data: ProductDto[], category: string): Promise<void> {
     let outputFilePath: string;
@@ -330,6 +428,10 @@ export class CrawlerService {
     } else if (category === 'batteries') {
       outputFilePath = this.configService.get<string>(
         'batteriesOutputFilePath',
+      );
+    } else if (category === 'batteries-stock') {
+      outputFilePath = this.configService.get<string>(
+        'batteriesStockOutputFilePath',
       );
     } else {
       console.error('Неизвестная категория:', category);
