@@ -1,6 +1,6 @@
 'use client'
 import React, { useState, useEffect } from 'react'
-import { getProductById } from '@/app/api/routes/products/route'
+import { getProductById } from '@/utils/api/products'
 
 import './ProductPageTabs.scss'
 
@@ -41,6 +41,8 @@ export const ProductPageTabs: React.FC<Props> = ({ category, productId }) => {
   useEffect(() => {
     const fetchProduct = async () => {
       setLoading(true)
+      console.log(productId)
+
       const fetchedProduct = await getProductById(productId)
       setProduct(fetchedProduct?.productDescr)
       setLoading(false)

@@ -24,6 +24,7 @@ export interface cardDataProps {
   discount?: number
   regalia?: string[]
   isPopular?: boolean
+  stock: number
 }
 
 export interface ProductsCardPropTypes {

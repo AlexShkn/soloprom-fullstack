@@ -126,6 +126,13 @@ const BreadCrumbs: React.FC<forcedListTypes> = ({
           ) : (
             <>
               <Link
+                href={`/catalog`}
+                className={`${s.breadCrumbsLink} link-hover relative text-darkBlue`}
+              >
+                Каталог
+              </Link>
+
+              <Link
                 href={`/catalog/${category}`}
                 className={`${s.breadCrumbsLink} link-hover relative text-darkBlue`}
               >
@@ -140,12 +147,14 @@ const BreadCrumbs: React.FC<forcedListTypes> = ({
                 </Link>
               )}
 
-              <Link
-                href={url ? url : '/'}
-                className={`${s.breadCrumbsLink} link-hover relative text-darkBlue`}
-              >
-                {name}
-              </Link>
+              {url !== category && (
+                <Link
+                  href={url ? url : '/'}
+                  className={`${s.breadCrumbsLink} link-hover relative text-darkBlue`}
+                >
+                  {name}
+                </Link>
+              )}
             </>
           )}
         </div>

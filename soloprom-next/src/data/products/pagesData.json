@@ -127,7 +127,12 @@
   "shini-dlya-greiderov": {
     "title": "Шины для грейдеров",
     "description": "",
-    "img": "/img/category/grader"
+    "img": "/img/category/grader",
+    "alt": "Шины для грейдеров",
+    "url": "shini-dlya-greiderov",
+    "crumb": "Шины для грейдеров",
+    "category": "tires",
+    "pageType": "group"
   },
 
   "battery": {
@@ -468,7 +473,7 @@
   "masla-transmissionnie": {
     "category": "oils",
     "pageType": "subcategory",
-    "title": "Масло трансмиссионнное для специальной техники",
+    "title": "Масло трансмиссионнное",
     "description": "",
     "img": "/img/category/oils/transmissionnoe-maslo",
     "alt": "Трансмиссионное масло для спец техики",

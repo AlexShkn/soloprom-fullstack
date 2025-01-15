@@ -9,7 +9,7 @@ import { PaymentDelivery } from '@/components/PaymentDelivery/PaymentDelivery'
 import { ContactsMap } from '@/components/ContactsMap/ContactsMap'
 import PageWrapper from './PageWrapper'
 import { FavoriteTabs } from '@/components/FavoriteTabs/FavoriteTabs'
-import { getPopularProducts } from './api/routes/products/route'
+import { getPopularProducts } from '@/utils/api/products'
 import { cardDataProps } from '@/types/products.types'
 
 export const metadata: Metadata = {

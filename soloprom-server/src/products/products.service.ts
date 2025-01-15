@@ -97,8 +97,6 @@ export class ProductsService {
       where: { productId },
     });
 
-    console.log(product);
-
     if (!product) {
       return null;
     }
@@ -114,7 +112,7 @@ export class ProductsService {
   }
 
   async getProductsByCategory(categoryName: string) {
-    const category = await prisma.subCategory.findUnique({
+    const category = await prisma.category.findUnique({
       where: { name: categoryName },
       include: {
         products: true,

@@ -71,7 +71,7 @@ export function ProfileSettingsForm() {
 
   return (
     <div className="border-t-1 border border-grayColor py-10">
-      <div className="container mb-10 w-full">
+      <div className="page-container mb-10 w-full">
         <CardHeader className="flex flex-row items-center justify-between">
           <CardTitle>Настройки профиля</CardTitle>
         </CardHeader>

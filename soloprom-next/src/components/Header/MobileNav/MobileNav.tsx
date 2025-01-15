@@ -57,7 +57,7 @@ const MobileNav = (props: Props) => {
             className={`mobile-nav__item-icon relative px-[5px] ${favoriteState.length && 'added'}`}
           >
             <svg className="icon h-7 w-7 fill-white transition-colors">
-              <use xlinkHref="/img/sprite.svg#heart"></use>
+              <use xlinkHref="/img/sprite.svg#bookmark"></use>
             </svg>
           </div>
           <span>Избранное</span>

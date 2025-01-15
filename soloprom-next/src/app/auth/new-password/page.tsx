@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-
+import { Suspense } from 'react'
 import { NewPasswordForm } from '@/features/auth/components'
 
 export const metadata: Metadata = {
@@ -7,5 +7,9 @@ export const metadata: Metadata = {
 }
 
 export default function NewPasswordPage() {
-  return <NewPasswordForm />
+  return (
+    <Suspense fallback={<div>Загрузка...</div>}>
+      <NewPasswordForm />
+    </Suspense>
+  )
 }

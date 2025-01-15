@@ -15,14 +15,14 @@
 
   &__body {
     display: grid;
-    grid-template-columns: 275px 1fr;
+    grid-template-columns: 240px 1fr;
 
     &--single {
       grid-template-columns: 1fr;
     }
 
     @media (max-width: 1199.98px) {
-      grid-template-columns: 250px 1fr;
+      grid-template-columns: 240px 1fr;
     }
 
     @media (max-width: 991.98px) {

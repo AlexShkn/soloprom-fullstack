@@ -172,12 +172,15 @@
 //     </div>
 //   )
 // }
+//====================================================================
+
 'use client'
 import React, { useState } from 'react'
 
 import './FilterPanel.scss'
 
 interface Props {
+  productsType: string
   categoryName: string
   onFiltersChange: (filters: Record<string, string[]>) => void
   onSortChange: (sort: string) => void

@@ -1,4 +1,5 @@
-<div className="product-list__body" data-tab="tab-2">
+{
+  /* <div className="product-list__body" data-tab="tab-2">
 <div className="swiper-slider product-list__slider">
 	<ul
 		data-render-list
@@ -2308,4 +2309,5 @@ const favoriteList: FavoriteList = {
 
   // if (error) {
   //   return <div>Error: {error}</div>
-  // }
+  // } */
+}

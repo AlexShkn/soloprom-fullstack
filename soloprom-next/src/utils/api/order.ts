@@ -1,6 +1,7 @@
 import axios from 'axios'
-import { OrderTypes, ResponseOrderTypes } from '@/components/Cart/types/order'
+import { OrderTypes } from '@/components/Cart/types/order'
 import { CartProduct } from '@/redux/slices/cartSlice'
+import { cardDataProps } from '@/types/products.types'
 
 interface OrderDto {
   userId: string
@@ -17,7 +18,7 @@ const BASE_URL = `${process.env.NEXT_PUBLIC_SERVER_URL}/order`
 
 export const getOrdersByUserId = async (
   userId: string,
-): Promise<ResponseOrderTypes[]> => {
+): Promise<OrderTypes[]> => {
   try {
     const response = await axios.get(`${BASE_URL}/${userId}`)
     return response.data

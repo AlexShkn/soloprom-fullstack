@@ -1,6 +1,7 @@
 'use client'
 import React, { useEffect, useState, Suspense } from 'react'
 import './PageArticle.scss'
+import { Loading } from '../ui'
 
 interface Props {
   articleName: string
@@ -11,7 +12,13 @@ const DynamicMDX = ({ articleName }: Props) => {
     () => import(`@/data/articles/${articleName}.mdx`),
   )
   return (
-    <Suspense fallback={<div>Loading...</div>}>
+    <Suspense
+      fallback={
+        <div>
+          <Loading />
+        </div>
+      }
+    >
       <MDXComponent />
     </Suspense>
   )

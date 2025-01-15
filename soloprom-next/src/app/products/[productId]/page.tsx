@@ -1,14 +1,12 @@
-// app/catalog/[productId]/page.tsx
 import { Metadata } from 'next'
 import { Callback } from '@/components/Callback/Callback'
 import BreadCrumbs from '@/components/ui/BreadCrumbs/BreadCrumbs'
 import PageWrapper from '@/app/PageWrapper'
-import { getProducts } from '@/app/api/routes/products/route' // Import Product type
 import { cardDataProps } from '@/types/products.types'
-import { cache } from 'react'
 import { ProductPageCard } from '@/components/ProductPage/ProductPageCard/ProductPageCard'
 import { ProductPageTabs } from '@/components/ProductPage/ProductPageTabs/ProductPageTabs'
 import { ProductPageBenefits } from '@/components/ProductPage/ProductPageBenefits/ProductPageBenefits'
+import { getProductById, getAllProducts } from '@/utils/api/products'
 
 type WordsAdapt = {
   category: {
@@ -24,18 +22,47 @@ const wordsAdapt: WordsAdapt = {
   },
 }
 
-const getCachedProducts = cache(async () => {
-  return await getProducts()
-})
+export type Params = {
+  productId: string
+}
+export type ParamsPromise = Promise<Params>
+
+export async function generateStaticParams() {
+  const response = await getAllProducts()
+
+  // Debug: Log the API Response to inspect
+  // console.log('API response from getAllProducts:', response);
+  if (!response || response.status !== 200) {
+    console.log(
+      `API request failed with status: ${response?.status}, returning empty array for static params`,
+    )
+    return []
+  }
+  // Проверяем, есть ли data и products
+  if (!response?.data || !Array.isArray(response?.data)) {
+    console.log(
+      'Response data is not an array, returning empty array for static params',
+    )
+    return []
+  }
+  const products = response.data as cardDataProps[]
+  // Проверка, что у каждого продукта есть productId
+  if (products.some((product) => !product.productId)) {
+    console.log('Some products missing productId, skipping')
+    return []
+  }
+  return products.map((product: cardDataProps) => ({
+    productId: String(product.productId),
+  }))
+}
 
 export async function generateMetadata({
   params,
 }: {
-  params: { productId: string }
+  params: ParamsPromise
 }): Promise<Metadata> {
   const { productId } = await params
-  const products = await getCachedProducts()
-  const product = products.find((p: cardDataProps) => p.productId === productId)
+  const product = await getProductById(productId)
 
   if (!product) {
     return {
@@ -50,29 +77,25 @@ export async function generateMetadata({
     openGraph: {
       title: `${product.name} `,
       description: product.description || 'Описание товара отсутствует',
-      url: `https://soloprom.ru/${product.productId}`,
+      url: `https://soloprom.ru/products/${product.productId}`,
       images: [
         {
-          url: `https://soloprom.ru/${product.productId}/category.png`,
+          url: `https://soloprom.ru/products/${product.productId}/category.png`,
           alt: `${product.title} Категория`,
         },
       ],
     },
-    alternates: { canonical: `/${product.productId}` },
+    alternates: { canonical: `/products/${product.productId}` },
   }
 }
 
-export default async function ProductPage({
-  params,
-}: {
-  params: { productId: string }
-}) {
-  const { productId } = await params
-  const products = await getCachedProducts()
+interface ProductPageProps {
+  params: ParamsPromise
+}
 
-  const productData = products.find(
-    (p: cardDataProps) => p.productId === productId,
-  ) // Use Product type
+export default async function ProductPage({ params }: ProductPageProps) {
+  const { productId } = await params
+  const productData = await getProductById(productId)
 
   if (!productData) {
     return (
@@ -88,7 +111,7 @@ export default async function ProductPage({
         category={productData.categoryName}
         subcategory={productData.subcategoryName}
         name={productData.name}
-        url={productData.url}
+        url={`/products/${productData.productId}`}
       />
 
       <section className="product-page">

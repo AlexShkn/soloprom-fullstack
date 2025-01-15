@@ -1,12 +1,10 @@
-// CategoryPageClient.tsx
 'use client'
-import React, { useState, useEffect, useTransition } from 'react'
-import { useSearchParams, useRouter } from 'next/navigation'
-import axios from 'axios'
+import React, { Suspense, useMemo } from 'react'
+import { useRouter } from 'next/navigation'
 import { HeroBlock } from '@/components/CategoryPageHero/HeroBlock/HeroBlock'
 import { CategoryPageHero } from '@/components/CategoryPageHero/CategoryPageHero'
 import { SidePanel } from '@/components/CategoryPageHero/SidePanel/SidePanel'
-import { ProductsFilterList } from '@/components/GroupList/ProductsFilterList'
+import { ProductsFilterList } from '@/components/GroupList/ProductsFilterList/ProductsFilterList'
 import { PageArticle } from '@/components/PageArticle/PageArticle'
 import { ProductsSlider } from '@/components/ProductsSlider/ProductsSlider'
 import { Callback } from '@/components/Callback/Callback'
@@ -14,15 +12,22 @@ import BreadCrumbs from '@/components/ui/BreadCrumbs/BreadCrumbs'
 import PageWrapper from '@/app/PageWrapper'
 import { PageDataTypes } from './server'
 import { cardDataProps } from '@/types/products.types'
+import { Loading } from '@/components/ui'
 
-const CategoryPageClient: React.FC<{
+interface CategoryPageClientProps {
   pageData: PageDataTypes
   currentPage: number
-}> = ({ pageData, currentPage }) => {
-  const router = useRouter()
+  initialProducts: cardDataProps[] | null
+  totalCount: number
+}
 
-  const [products, setProducts] = useState<cardDataProps[]>([])
-  const [totalPages, setTotalPages] = useState(1)
+const CategoryPageClient: React.FC<CategoryPageClientProps> = ({
+  pageData,
+  currentPage,
+  initialProducts,
+  totalCount,
+}) => {
+  const router = useRouter()
 
   const handlePageChange = (newPage: number) => {
     router.push(`/catalog/${pageData.name}/${newPage}`)
@@ -36,7 +41,7 @@ const CategoryPageClient: React.FC<{
         name={pageData.crumb}
         url={pageData.url}
       />
-      {pageData.pageType === 'category' && (
+      {currentPage < 2 ? (
         <HeroBlock>
           <SidePanel pageData={pageData} />
           <CategoryPageHero
@@ -45,17 +50,24 @@ const CategoryPageClient: React.FC<{
             categoryAlt={pageData.alt}
           />
         </HeroBlock>
+      ) : (
+        <h1 className="page-container mb-5 text-2xl font-medium">
+          {pageData.title} — страница {currentPage}
+        </h1>
       )}
 
-      <ProductsFilterList
-        categoryName={pageData.name}
-        data={products}
-        currentPage={currentPage}
-        onChangePage={handlePageChange}
-      />
-
+      <Suspense fallback={<Loading />}>
+        <ProductsFilterList
+          productsType={pageData.category}
+          categoryName={pageData.name}
+          currentPage={currentPage}
+          onChangePage={handlePageChange}
+          initialProducts={initialProducts}
+          totalCount={totalCount}
+        />
+      </Suspense>
       <ProductsSlider title={'Похожие товары'} categoryName={pageData.name} />
-      <PageArticle articleName={pageData.name} />
+      {/* <PageArticle articleName={pageData.name} /> */}
       <Callback />
     </PageWrapper>
   )

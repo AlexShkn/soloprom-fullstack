@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from 'react'
 
 import { OrderTypes } from '@/components/Cart/types/order'
-import { getOrdersByUserId } from '@/app/api/routes/order/route'
+import { getOrdersByUserId } from '@/utils/api/order'
 import { Loading } from '@/components/ui'
 import { IUser } from '@/features/auth/types'
 
@@ -22,7 +22,7 @@ export const OrderList: React.FC<OrderListProps> = ({ user }) => {
 
         const result: OrderTypes[] = orders.map((order) => ({
           ...order,
-          products: JSON.parse(order.products),
+          products: order.products,
         }))
 
         setOrders(result)
@@ -43,7 +43,7 @@ export const OrderList: React.FC<OrderListProps> = ({ user }) => {
   }
 
   return (
-    <div className="container">
+    <div className="page-container">
       {orders.length > 0
         ? orders.map((order) => (
             <div
@@ -58,13 +58,13 @@ export const OrderList: React.FC<OrderListProps> = ({ user }) => {
                 <strong>Total Amount:</strong> ${order.totalAmount}
               </p>
               <strong>Products:</strong>
-              <ul className="ml-5 list-disc">
+              {/* <ul className="ml-5 list-disc">
                 {order.products.map((product, index) => (
                   <li key={index}>
                     {product.name} x {product.count}
                   </li>
                 ))}
-              </ul>
+              </ul> */}
             </div>
           ))
         : ''}

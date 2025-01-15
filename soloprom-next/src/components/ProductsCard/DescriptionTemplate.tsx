@@ -1,21 +1,20 @@
 'use client'
-import React, { useRef, useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import { RootState } from '@/redux/store'
+import React from 'react'
 
-import { useClickOutside } from '@/hooks/useClickOutside'
 import { getAdaptiveValue } from '@/utils/getAdaptiveValue'
 import { AdaptiveValues } from '@/utils/getAdaptiveValue'
 import { renderDescriptionItem } from '@/utils/renderDescriptionItem'
 
 import { ProductsCardPropTypes } from '@/types/products.types'
+import { SizesRow } from './RegaliaList/SizesRow'
 
 interface DescriptionTypes extends ProductsCardPropTypes {
   variantValue: string
+  mod: string
   setVariantValue: (value: string) => void
 }
 
-const wordAdaptive: AdaptiveValues<{
+export const ProductsCardWordAdaptive: AdaptiveValues<{
   sizes: { tires: string; battery: string }
   types: { tires: string; battery: string; oils: string }
 }> = {
@@ -34,6 +33,7 @@ export const DescriptionTemplate: React.FC<DescriptionTypes> = ({
   cardData,
   variantValue,
   setVariantValue,
+  mod,
 }) => {
   const {
     productId,
@@ -49,96 +49,53 @@ export const DescriptionTemplate: React.FC<DescriptionTypes> = ({
     voltage,
     plates,
   } = cardData
-  const [dropOpen, setDropOpen] = useState(false)
-  const dropRef = useRef(null)
-  const cartState = useSelector((state: RootState) => state.cart.cartState)
-
-  const selectedVariant = (value: string) => {
-    setVariantValue(value)
-    setDropOpen(false)
-  }
-
-  useClickOutside(dropRef, () => {
-    setDropOpen(false)
-  })
 
   return (
-    <div className="product-card__descr-list">
-      {renderDescriptionItem(
-        getAdaptiveValue(wordAdaptive, 'types', categoryName) || 'Тип',
-        productType,
+    <div
+      className={`product-card__descr-list ${mod === 'mini' ? 'mb-2.5' : ''}`}
+    >
+      {mod !== 'mini' && (
+        <>
+          {renderDescriptionItem(
+            getAdaptiveValue(ProductsCardWordAdaptive, 'types', categoryName) ||
+              'Тип',
+            productType,
+          )}
+
+          {load_index && renderDescriptionItem('Индекс нагрузки', load_index)}
+          {container && renderDescriptionItem('Емкость', container, 'Ah')}
+          {voltage && renderDescriptionItem('Напряжение', voltage, 'V')}
+          {plates && renderDescriptionItem('Тип пластин', plates)}
+          {viscosity && renderDescriptionItem('Вязкость', viscosity)}
+        </>
       )}
 
-      {load_index && renderDescriptionItem('Индекс нагрузки', load_index)}
-      {container && renderDescriptionItem('Емкость', container, 'Ah')}
-      {voltage && renderDescriptionItem('Напряжение', voltage, 'V')}
-      {plates && renderDescriptionItem('Тип пластин', plates)}
-      {viscosity && renderDescriptionItem('Вязкость', viscosity)}
-
-      {sizes && (
-        <div className="product-card__descr-item flex items-center justify-between pb-1 text-sm">
-          <div className="product-card__descr-item-name">
-            {getAdaptiveValue(wordAdaptive, 'sizes', categoryName)}
-          </div>
-          <div className="font-bold">
-            {Object.keys(sizes).length === 1 ? (
-              variantValue
-            ) : (
-              <div
-                ref={dropRef}
-                className={`product-card-dropdown relative z-[2] ${dropOpen && 'show'}`}
-              >
-                <button
-                  onClick={() => setDropOpen((prev) => !prev)}
-                  className="relative inline-flex items-center pr-2.5 font-bold"
-                >
-                  <span className="pointer-events-none select-none">
-                    {variantValue}
-                  </span>
-                  <img
-                    className="pointer-events-none absolute -right-2.5 -top-[3px] h-6 w-6 select-none transition-transform"
-                    src="/img/icons/arrow-right.svg"
-                    alt=""
-                  />
-                </button>
-                <ul className="product-card-dropdown__list scroll-bar invisible absolute -right-1 top-[100%] mt-1 max-h-[200px] w-auto overflow-y-auto overscroll-contain rounded-b-md border-t border-blue-800 bg-white opacity-0 shadow-custom">
-                  {Object.keys(sizes).map((itemSize, index) => (
-                    <li
-                      key={itemSize}
-                      className={`product-card-dropdown__item transition-colors hover:bg-accentBlue hover:text-white ${itemSize === variantValue && 'bg-[#cfcfcf]'}`}
-                      onClick={() => selectedVariant(itemSize)}
-                    >
-                      <input
-                        id={itemSize}
-                        type="radio"
-                        value={itemSize}
-                        name={productId + itemSize}
-                        defaultChecked={index === 0}
-                      />
-                      <label
-                        className={
-                          cartState.some(
-                            (item) =>
-                              item.cartId === `${productId}-${itemSize}`,
-                          )
-                            ? 'selected'
-                            : ''
-                        }
-                        htmlFor={productId + itemSize}
-                      >
-                        <span>{itemSize}</span>
-                      </label>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            )}
-          </div>
-        </div>
+      {sizes && mod === 'mini' && categoryName === 'battery' && (
+        <SizesRow
+          productId={productId}
+          setVariantValue={setVariantValue}
+          variantValue={variantValue}
+          sizes={sizes as { [key: string]: number }}
+          categoryName={categoryName}
+        />
       )}
 
-      {brand && renderDescriptionItem('Бренд', brand)}
-      {country && renderDescriptionItem('Производитель', country)}
+      {mod !== 'mini' && sizes && (
+        <SizesRow
+          productId={productId}
+          setVariantValue={setVariantValue}
+          variantValue={variantValue}
+          sizes={sizes as { [key: string]: number }}
+          categoryName={categoryName}
+        />
+      )}
+
+      {mod !== 'mini' && (
+        <>
+          {brand && renderDescriptionItem('Бренд', brand)}
+          {country && renderDescriptionItem('Производитель', country)}
+        </>
+      )}
     </div>
   )
 }

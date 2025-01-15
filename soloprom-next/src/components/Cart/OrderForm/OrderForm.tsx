@@ -6,7 +6,7 @@ import { toast } from 'sonner'
 import { TypeOrderSchema, OrderSchema } from '@/features/auth/schemes'
 import { useDispatch, useSelector } from 'react-redux'
 import { RootState } from '@/redux/store'
-import { createOrder } from '@/app/api/routes/order/route'
+import { createOrder } from '@/utils/api/order'
 import { clearCart } from '@/redux/slices/cartSlice'
 
 import {

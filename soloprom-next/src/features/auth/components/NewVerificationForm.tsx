@@ -1,29 +1,38 @@
 'use client'
 
 import { useSearchParams } from 'next/navigation'
-import { useEffect } from 'react'
+import { useEffect, Suspense } from 'react'
 
 import { Loading } from '@/components/ui'
-
 import { useVerificationMutation } from '@/hooks/auth/useVerificationMutation'
-
 import { AuthWrapper } from './AuthWrapper'
 
 export function NewVerificationForm() {
+  return (
+    <AuthWrapper heading="Подтверждение почты">
+      <Suspense
+        fallback={
+          <div>
+            <Loading />
+          </div>
+        }
+      >
+        <VerificationContent />
+      </Suspense>
+    </AuthWrapper>
+  )
+}
+function VerificationContent() {
   const searchParams = useSearchParams()
   const token = searchParams.get('token')
 
   const { verification } = useVerificationMutation()
 
   useEffect(() => {
-    verification(token)
-  }, [token])
+    if (token) {
+      verification(token)
+    }
+  }, [token, verification])
 
-  return (
-    <AuthWrapper heading="Подтверждение почты">
-      <div>
-        <Loading />
-      </div>
-    </AuthWrapper>
-  )
+  return <div></div>
 }

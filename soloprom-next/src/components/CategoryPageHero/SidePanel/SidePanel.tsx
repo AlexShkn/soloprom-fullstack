@@ -105,7 +105,7 @@ export function transformJson(inputData: InputDataType): {
         pageType: item.pageType,
         category: item.category,
 
-        headGroupTitle: item.headGroupTitle,
+        headGroupTitle: item?.headGroupTitle,
         title: item.title,
         description: item.description,
         img: item.img,
@@ -136,12 +136,11 @@ export const SidePanel: React.FC<SidePanelProps> = ({ pageData }) => {
   const transformData = transformJson(pagesDataRaw)
   const categoryData = transformData[pageData.category]
 
-  console.log(categoryData)
-
   const subcategories = categoryData.subcategories
   const groups = categoryData.group
   const brands = categoryData.brands
-  const headGroup = groups && groups[0].headGroupTitle
+  const headGroup = groups && groups[0]?.headGroupTitle
+
   return (
     <div className="side-panel">
       <ul className="side-panel__list">
@@ -162,9 +161,7 @@ export const SidePanel: React.FC<SidePanelProps> = ({ pageData }) => {
             <ul data-drop-list className="side-panel__drop-list">
               {brands?.map((brand) => (
                 <li key={brand.url} className="side-panel__drop-item">
-                  <Link href={`/catalog/${categoryData.name}/${brand.url}`}>
-                    {brand.title}
-                  </Link>
+                  <Link href={`/catalog/${brand.url}`}>{brand.title}</Link>
                 </li>
               ))}
             </ul>
@@ -175,7 +172,7 @@ export const SidePanel: React.FC<SidePanelProps> = ({ pageData }) => {
           subcategories.map((link: Subcategory) => (
             <li key={link.url} className="side-panel__item">
               <Link
-                href={`/catalog/${categoryData.name}/${link.url}`}
+                href={`/catalog/${link.url}`}
                 className="side-panel__item-link link-hover"
               >
                 {link.title}
@@ -186,7 +183,7 @@ export const SidePanel: React.FC<SidePanelProps> = ({ pageData }) => {
           groups.map((link: Subcategory) => (
             <li key={link.url} className="side-panel__item">
               <Link
-                href={`/catalog/${categoryData.name}/${link.url}`}
+                href={`/catalog/${link.url}`}
                 className="side-panel__item-link link-hover"
               >
                 {link.title}

@@ -73,7 +73,9 @@ export const Cart: React.FC = () => {
           </div>
         </>
       ) : (
-        <div className="cart__item cart__item--empty">Корзина пуста</div>
+        <div className="cart__item cart__item--empty container flex justify-center py-10 text-2xl font-medium">
+          Корзина пуста
+        </div>
       )}
     </>
   )

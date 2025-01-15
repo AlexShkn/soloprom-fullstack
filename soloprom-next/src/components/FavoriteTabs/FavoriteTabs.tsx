@@ -14,7 +14,7 @@ interface FavoriteTabsProps {
   initialData: FavoriteList
 }
 
-const productTypes = [
+export const productTypes = [
   { name: 'Шины', type: 'tires' },
   { name: 'Аккумуляторы', type: 'battery' },
   { name: 'Масла', type: 'oils' },

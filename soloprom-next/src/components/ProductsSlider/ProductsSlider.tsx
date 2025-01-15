@@ -1,7 +1,7 @@
 'use client'
 import React, { useEffect, useState } from 'react'
 
-import { getPopularProducts } from '@/app/api/routes/products/route'
+import { getPopularProducts } from '@/utils/api/products'
 import { cardDataProps } from '@/types/products.types'
 
 import { ProductListSlider } from '../ProductListSlider/ProductListSlider'

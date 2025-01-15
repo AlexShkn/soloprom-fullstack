@@ -12,7 +12,7 @@ import './CategoryProductsSlider.scss'
 
 import initialCategoriesData from '../../data/products/categoriesData.json'
 
-import { getProductsCounts } from '@/app/api/routes/products/route'
+import { getProductsCounts } from '@/utils/api/products'
 
 interface CategoryItem {
   id: string
