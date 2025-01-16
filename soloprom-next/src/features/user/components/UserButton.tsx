@@ -1,13 +1,9 @@
-// src/features/user/components/UserButton.tsx
 'use client'
-import { useEffect, useState } from 'react'
 
 import { LuLogOut, LuMenu } from 'react-icons/lu'
-import { IUser } from '@/features/auth/types'
 import Link from 'next/link'
-import { useDispatch, useSelector } from 'react-redux'
 
-import { changeAuthStatus } from '@/redux/slices/authSlice'
+import { useAuthStore } from '@/zustand/authStore'
 
 import {
   Avatar,
@@ -22,16 +18,15 @@ import {
 } from '@/components/ui'
 
 import { useLogoutMutation } from '../hooks'
-import { RootState } from '@/redux/store'
 
 export function UserButton() {
-  const dispatch = useDispatch()
   const { logout, isLoadingLogout } = useLogoutMutation()
-  const { userState } = useSelector((state: RootState) => state.auth)
+
+  const { userState, changeAuthStatus } = useAuthStore((state) => state)
 
   const handleLogout = () => {
     logout()
-    dispatch(changeAuthStatus(false))
+    changeAuthStatus(false)
   }
 
   if (!userState) return null

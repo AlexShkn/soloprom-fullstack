@@ -3,10 +3,6 @@ import React, { useRef } from 'react'
 
 import { useScrollHeader } from '@/hooks/useScrollHeader'
 import { useMediaQuery } from '@/hooks/useMediaQuery'
-import { useDispatch, useSelector } from 'react-redux'
-import { catalogMenuStateChange } from '@/redux/slices/catalogMenu'
-import { scrollStatusChange } from '@/utils/scrollStatusChange'
-import { RootState } from '@/redux/store'
 import { useClickOutside } from '@/hooks/useClickOutside'
 
 import MobileNav from '../MobileNav/MobileNav'
@@ -14,32 +10,30 @@ import CatalogMenu from '../CatalogMenu/CatalogMenu'
 
 import './HeaderBottom.scss'
 import HeaderSearch from '../HeaderSearch'
+import { useCatalogMenuStore } from '@/zustand/catalogMenuStore'
+import { useHeaderStore } from '@/zustand/headerStore'
+import { useModalsStore } from '@/zustand/modalsStore'
 
 const HeaderBottom = () => {
+  const { catalogMenuStateChange, catalogIsOpen } = useCatalogMenuStore(
+    (state) => state,
+  )
+  const callbackIsOpen = useModalsStore((state) => state.callbackIsOpen)
+  const headerFixed = useHeaderStore((state) => state.headerFixed)
+
   const headerRef = useRef<HTMLDivElement>(null)
 
-  const dispatch = useDispatch()
   const isBigSmall = useMediaQuery('(min-width: 479.98px)')
   const isTablet = useMediaQuery('(max-width: 991.98px)')
 
   useScrollHeader(isBigSmall)
 
-  const catalogIsOpen = useSelector(
-    (state: RootState) => state.catalogMenu.catalogIsOpen,
-  )
-  const callbackIsOpen = useSelector(
-    (state: RootState) => state.modals.callbackIsOpen,
-  )
-  const headerFixed = useSelector((state: any) => state.header.headerFixed)
-
   useClickOutside(headerRef, () => {
-    dispatch(catalogMenuStateChange({ status: false, screen: isTablet }))
+    catalogMenuStateChange(false, isTablet)
   })
 
   const menuStatusChange = () => {
-    dispatch(
-      catalogMenuStateChange({ status: !catalogIsOpen, screen: isTablet }),
-    )
+    catalogMenuStateChange(!catalogIsOpen, isTablet)
   }
 
   return (

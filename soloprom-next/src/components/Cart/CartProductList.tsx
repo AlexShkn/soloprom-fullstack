@@ -2,10 +2,10 @@
 import React from 'react'
 
 import { CartProductItem } from './CartProductItem'
-import { CartProduct } from '@/redux/slices/cartSlice'
+import { CartProductTypes } from '@/zustand/cartStore'
 
 interface CartProductListProps {
-  cartState: CartProduct[]
+  cartState: CartProductTypes[]
 }
 
 export const CartProductList: React.FC<CartProductListProps> = ({

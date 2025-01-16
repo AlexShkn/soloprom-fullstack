@@ -2,16 +2,12 @@
 import React, { useEffect, useState } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
-import { addProductToCart, removeCartProduct } from '@/redux/slices/cartSlice'
-
-import { removeFavoriteProduct } from '@/redux/slices/favoriteSlice'
-
-import { useDispatch, useSelector } from 'react-redux'
-import { RootState } from '@/redux/store'
 
 import { getDigFormat } from '@/supports'
 
 import { FavoriteProduct } from './Favorite'
+import { useCartStore } from '@/zustand/cartStore'
+import { useFavoriteStore } from '@/zustand/favoriteStore'
 
 interface FavoriteCardProps {
   product: FavoriteProduct
@@ -42,8 +38,13 @@ export const FavoriteCard: React.FC<FavoriteCardProps> = ({ product }) => {
   const [cartIsLoad, setCartIsLoad] = useState(false)
   const [cartIsAdded, setCartIsAdded] = useState(false)
 
-  const dispatch = useDispatch()
-  const cartState = useSelector((state: RootState) => state.cart.cartState)
+  const { cartState, addProductToCart, removeCartProduct } = useCartStore(
+    (state) => state,
+  )
+
+  const removeFavoriteProduct = useFavoriteStore(
+    (state) => state.removeFavoriteProduct,
+  )
 
   const cartId = `${productId}-${variant}`
 
@@ -64,14 +65,14 @@ export const FavoriteCard: React.FC<FavoriteCardProps> = ({ product }) => {
         productType,
         categoryName,
       }
-      dispatch(addProductToCart(product))
+      addProductToCart(product)
       setTimeout(() => {
         setCartIsAdded(true)
         setCartIsLoad(false)
       }, 1000)
     } else {
       setCartIsLoad(true)
-      dispatch(removeCartProduct({ productId, variant }))
+      removeCartProduct(productId, variant)
       setTimeout(() => {
         setCartIsAdded(false)
         setCartIsLoad(false)
@@ -117,14 +118,7 @@ export const FavoriteCard: React.FC<FavoriteCardProps> = ({ product }) => {
 
           <div className="cart__item-buttons">
             <button
-              onClick={() =>
-                dispatch(
-                  removeFavoriteProduct({
-                    productId: productId,
-                    variant: variant,
-                  }),
-                )
-              }
+              onClick={() => removeFavoriteProduct(productId, variant)}
               className="cart__item-button"
             >
               <svg className="icon">

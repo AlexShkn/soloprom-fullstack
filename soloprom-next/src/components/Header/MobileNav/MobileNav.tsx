@@ -1,17 +1,15 @@
 import React from 'react'
-import { useSelector } from 'react-redux'
-import { RootState } from '@/redux/store'
 
 import './MobileNav.scss'
 import Link from 'next/link'
+import { useCartStore } from '@/zustand/cartStore'
+import { useFavoriteStore } from '@/zustand/favoriteStore'
 
 type Props = {}
 
 const MobileNav = (props: Props) => {
-  const cartState = useSelector((state: RootState) => state.cart.cartState)
-  const favoriteState = useSelector(
-    (state: RootState) => state.favorite.favoriteState,
-  )
+  const cartState = useCartStore((state) => state.cartState)
+  const favoriteState = useFavoriteStore((state) => state.favoriteState)
 
   return (
     <div className="mobile-nav flex items-center justify-end gap-1 rounded text-sm font-medium">

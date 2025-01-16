@@ -1,15 +1,14 @@
 'use client'
 import React from 'react'
 
-import { useDispatch } from 'react-redux'
-import { modalCallbackStateChange } from '@/redux/slices/modalsSlice'
-
 import './HeaderBody.scss'
 import Link from 'next/link'
+import { useModalsStore } from '@/zustand/modalsStore'
 
 const HeaderBody = () => {
-  const dispatch = useDispatch()
-
+  const modalCallbackStateChange = useModalsStore(
+    (state) => state.modalCallbackStateChange,
+  )
   return (
     <div className="header-body flex items-center justify-between py-[30px]">
       <Link
@@ -76,7 +75,7 @@ const HeaderBody = () => {
               +7 (903) 656-93-93
             </a>
             <button
-              onClick={() => dispatch(modalCallbackStateChange(true))}
+              onClick={() => modalCallbackStateChange(true)}
               data-btn-callback
               type="button"
               className="link-hover mt-1 text-sm font-bold underline"

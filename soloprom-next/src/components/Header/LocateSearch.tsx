@@ -1,12 +1,10 @@
 import React, { useRef, useState, useCallback, useEffect } from 'react'
-import { useSelector, useDispatch } from 'react-redux'
-import { RootState, AppDispatch } from '@/redux/store'
-import { fetchCities } from '@/redux/thunks/locateThunk'
-import { setSelectedCity } from '@/redux/slices/locateSlice'
+import { fetchCities } from '@/zustand/thunks/locateThunk'
 
 import { LocateSearchTypes } from './Header/LocateBlock'
 import CloseButton from '@/components/shared/CloseButton'
 import { useScrollCloseableWindow } from '@/hooks/useScrollCloseableWindow'
+import { useLocateStore } from '@/zustand/locateStore'
 
 const defaultCities = [
   { city: 'Воронеж', oblast: '' },
@@ -32,14 +30,10 @@ const LocateSearch: React.FC<LocateSearchTypes> = ({
   const [isLoad, setIsLoad] = useState(false)
   const [filteredCities, setFilteredCities] = useState<any[]>([])
   const [dataFetched, setDataFetched] = useState(false)
+  const { setSelectedCity, cities } = useLocateStore((state) => state)
 
   const debounceRef = useRef<NodeJS.Timeout>()
   const windowRef = useRef<HTMLDivElement>(null)
-
-  const dispatch = useDispatch<AppDispatch>()
-  const { cities, loading, error } = useSelector(
-    (state: RootState) => state.cities,
-  )
 
   const debouncedSearchCities = useCallback(() => {
     clearTimeout(debounceRef.current)
@@ -69,7 +63,7 @@ const LocateSearch: React.FC<LocateSearchTypes> = ({
 
   const selectLocateCity = (city: { city: string; oblast: string }) => {
     setLocateCity(city.city)
-    dispatch(setSelectedCity(city.city))
+    setSelectedCity(city.city)
     localStorage.setItem('selectedLocate', city.city)
     setIsConfirm(false)
     setSearchWindowOpen(false)
@@ -77,11 +71,11 @@ const LocateSearch: React.FC<LocateSearchTypes> = ({
 
   useEffect(() => {
     if (!cities.length && searchQuery.trim() !== '') {
-      dispatch(fetchCities()).then(() => setDataFetched(true))
+      fetchCities().then(() => setDataFetched(true))
     } else if (searchQuery.trim() !== '') {
       setDataFetched(true)
     }
-  }, [dispatch, searchQuery, dataFetched])
+  }, [searchQuery, dataFetched])
 
   useEffect(() => {
     debouncedSearchCities()

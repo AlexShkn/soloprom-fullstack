@@ -2,10 +2,9 @@
 
 import Link from 'next/link'
 import Image from 'next/image'
-import { useDispatch } from 'react-redux'
-import { modalCallbackStateChange } from '@/redux/slices/modalsSlice'
 
 import './Footer.scss'
+import { useModalsStore } from '@/zustand/modalsStore'
 
 const catalogList = [
   { title: 'Каталог запчастей', link: '/catalog' },
@@ -27,7 +26,10 @@ const socialList = [
 ]
 
 const Footer = () => {
-  const dispatch = useDispatch()
+  const modalCallbackStateChange = useModalsStore(
+    (state) => state.modalCallbackStateChange,
+  )
+
   return (
     <footer className="footer relative z-10 bg-darkBlue py-9 pb-5">
       <div className="footer__container">
@@ -143,7 +145,7 @@ const Footer = () => {
               <div className="footer__callback flex items-center gap-2.5 whitespace-nowrap text-[#969cb8]">
                 Мы онлайн, воспользуйтесь
                 <button
-                  onClick={() => dispatch(modalCallbackStateChange(true))}
+                  onClick={() => modalCallbackStateChange(true)}
                   type="button"
                   className="link-hover text-white underline"
                 >
@@ -163,7 +165,7 @@ const Footer = () => {
                         className="-m-2.5 p-2.5"
                         target="_blank"
                       >
-                        <svg className="icon -5 fill-grayColor relative w-5">
+                        <svg className="icon -5 relative w-5 fill-grayColor">
                           <use xlinkHref={`/img/sprite.svg#${link.id}`}></use>
                         </svg>
                       </a>

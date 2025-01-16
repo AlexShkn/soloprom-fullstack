@@ -2,13 +2,11 @@
 import React, { useEffect, useState } from 'react'
 import Link from 'next/link'
 
-import { useSelector } from 'react-redux'
-import { RootState } from '@/redux/store'
-
 import BreadCrumbs from '@/components/ui/BreadCrumbs/BreadCrumbs'
 
 import '../Cart/Cart.scss'
 import { FavoriteCard } from './FavoriteCard'
+import { useFavoriteStore } from '@/zustand/favoriteStore'
 
 export interface FavoriteProduct {
   productId: string
@@ -23,7 +21,7 @@ export interface FavoriteProduct {
 }
 
 export const Favorite: React.FC = () => {
-  const { favoriteState } = useSelector((state: RootState) => state.favorite)
+  const favoriteState = useFavoriteStore((state) => state.favoriteState)
 
   return (
     <>

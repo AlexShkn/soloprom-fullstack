@@ -4,8 +4,7 @@ import LocateConfirm from '../LocateConfirm'
 import LocateSearch from '../LocateSearch'
 import { useClickOutside } from '@/hooks/useClickOutside'
 import { getCityFromIP } from '@/utils/getCityFromIP'
-import { setSelectedCity } from '@/redux/slices/locateSlice'
-import { useDispatch } from 'react-redux'
+import { useLocateStore } from '@/zustand/locateStore'
 
 interface Props {
   className?: string
@@ -25,7 +24,7 @@ export const LocateBlock: React.FC<Props> = ({ className }) => {
   const [isConfirm, setIsConfirm] = useState(true)
   const windowRef = useRef(null)
 
-  const dispatch = useDispatch()
+  const setSelectedCity = useLocateStore((state) => state.setSelectedCity)
 
   useClickOutside(windowRef, () => {
     setIsConfirm(false)
@@ -53,7 +52,7 @@ export const LocateBlock: React.FC<Props> = ({ className }) => {
         setLocateCity(storageCity || '')
 
         if (storageCity) {
-          dispatch(setSelectedCity(storageCity))
+          setSelectedCity(storageCity)
         }
       }
     }

@@ -3,23 +3,15 @@ import React, { useEffect, useState } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 
-import { useDispatch, useSelector } from 'react-redux'
-import { RootState } from '@/redux/store'
-import { addProductToCart, removeCartProduct } from '@/redux/slices/cartSlice'
-
 import './ProductsCard.scss'
 import { ProductsCardPropTypes } from '@/types/products.types'
 import { DescriptionTemplate } from './DescriptionTemplate'
 import { PriceBlock } from './PriceBlock'
 import { RegaliaList } from './RegaliaList/RegaliaList'
-import {
-  addProductToFavorite,
-  removeFavoriteProduct,
-} from '@/redux/slices/favoriteSlice'
-import {
-  setFastOrderProduct,
-  modalCallbackStateChange,
-} from '@/redux/slices/modalsSlice'
+
+import { useCartStore } from '@/zustand/cartStore'
+import { useFavoriteStore } from '@/zustand/favoriteStore'
+import { useModalsStore } from '@/zustand/modalsStore'
 
 export const ProductsCard: React.FC<ProductsCardPropTypes> = ({
   cardData,
@@ -29,10 +21,15 @@ export const ProductsCard: React.FC<ProductsCardPropTypes> = ({
   const [cartIsAdded, setCartIsAdded] = useState(false)
   const [favoriteIsAdded, setFavoriteIsAdded] = useState(false)
   const [cartIsLoad, setCartIsLoad] = useState(false)
-  const dispatch = useDispatch()
-  const cartState = useSelector((state: RootState) => state.cart.cartState)
-  const favoriteState = useSelector(
-    (state: RootState) => state.favorite.favoriteState,
+
+  const cartState = useCartStore((state) => state.cartState)
+  const addProductToCart = useCartStore((state) => state.addProductToCart)
+  const removeCartProduct = useCartStore((state) => state.removeCartProduct)
+
+  const { favoriteState, removeFavoriteProduct, addProductToFavorite } =
+    useFavoriteStore((state) => state)
+  const { modalCallbackStateChange, setFastOrderProduct } = useModalsStore(
+    (state) => state,
   )
 
   const {
@@ -85,7 +82,7 @@ export const ProductsCard: React.FC<ProductsCardPropTypes> = ({
       productType,
       categoryName,
     }
-    dispatch(addProductToCart(product))
+    addProductToCart(product)
     setTimeout(() => {
       setCartIsAdded(true)
       setCartIsLoad(false)
@@ -94,7 +91,7 @@ export const ProductsCard: React.FC<ProductsCardPropTypes> = ({
 
   const handleRemoveFromCart = () => {
     setCartIsLoad(true)
-    dispatch(removeCartProduct({ productId, variant: variantValue }))
+    removeCartProduct(productId, variantValue)
     setTimeout(() => {
       setCartIsAdded(false)
       setCartIsLoad(false)
@@ -112,28 +109,25 @@ export const ProductsCard: React.FC<ProductsCardPropTypes> = ({
       productType,
       categoryName,
     }
-    dispatch(addProductToFavorite(product))
+    addProductToFavorite(product)
     setFavoriteIsAdded(true)
   }
 
   const handleRemoveFromFavorites = () => {
-    dispatch(removeFavoriteProduct({ productId, variant: variantValue }))
+    removeFavoriteProduct(productId, variantValue)
     setFavoriteIsAdded(false)
   }
 
   const fastOrderHandle = () => {
-    dispatch(
-      setFastOrderProduct({
-        productId,
-        name,
-        variant: variantValue,
-        price: sizesData?.[variantValue] ?? defaultPrice,
-        url,
-        img,
-      }),
-    )
-
-    dispatch(modalCallbackStateChange(true))
+    setFastOrderProduct({
+      productId,
+      name,
+      variant: variantValue,
+      price: sizesData?.[variantValue] ?? defaultPrice,
+      url,
+      img,
+    })
+    modalCallbackStateChange(true)
   }
 
   return (

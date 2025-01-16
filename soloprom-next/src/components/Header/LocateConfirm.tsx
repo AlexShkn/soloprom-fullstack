@@ -1,8 +1,7 @@
 import React from 'react'
-import { useDispatch } from 'react-redux'
 import CloseButton from '@/components/shared/CloseButton'
 import { LocateSearchTypes } from './Header/LocateBlock'
-import { setSelectedCity } from '@/redux/slices/locateSlice'
+import { useLocateStore } from '@/zustand/locateStore'
 
 type LocateConfirmTypes = LocateSearchTypes & {
   city: string
@@ -15,13 +14,14 @@ const LocateConfirm: React.FC<LocateConfirmTypes> = ({
   setSearchWindowOpen,
   searchWindowOpen,
 }) => {
-  const dispatch = useDispatch()
+  const setSelectedCity = useLocateStore((state) => state.setSelectedCity)
+
   const setCityConfirm = (answer: boolean) => {
     setIsConfirm(!answer)
 
     if (answer) {
       setLocateCity(city)
-      dispatch(setSelectedCity(city))
+      setSelectedCity(city)
       localStorage.setItem('selectedLocate', city)
     } else {
       setSearchWindowOpen(true)

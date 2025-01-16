@@ -1,17 +1,13 @@
 'use client'
 
 import React from 'react'
-import { useSelector } from 'react-redux'
-import { RootState } from '@/redux/store'
-
 import ModalCallback from './ModalCallback/ModalCallback'
 
 import './Modals.scss'
+import { useModalsStore } from '@/zustand/modalsStore'
 
 const Modals = () => {
-  const { callbackIsOpen, fastOrderProduct } = useSelector(
-    (state: RootState) => state.modals,
-  )
+  const { callbackIsOpen, fastOrderProduct } = useModalsStore((state) => state)
 
   return (
     <>

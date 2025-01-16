@@ -3,17 +3,13 @@
 import React, { useRef, useState, useEffect } from 'react'
 import Link from 'next/link'
 
-import { useDispatch, useSelector } from 'react-redux'
-import { RootState } from '@/redux/store'
-import { useCloseOnScroll } from '@/hooks/useCloseOnScroll'
 import { useMediaQuery } from '@/hooks/useMediaQuery'
 
 import './CatalogMenu.scss'
 import CloseButton from '@/components/shared/CloseButton'
-import { catalogMenuStateChange } from '@/redux/slices/catalogMenu'
-import { scrollStatusChange } from '@/utils/scrollStatusChange'
 
 import TabCategory from './TabCategory'
+import { useCatalogMenuStore } from '@/zustand/catalogMenuStore'
 
 export interface CategoryTab {
   id: string
@@ -152,9 +148,8 @@ const CatalogMenu = () => {
   const [currentTab, setCurrentTab] = useState('')
   const menuRef = useRef<HTMLDivElement>(null)
 
-  const dispatch = useDispatch()
-  const catalogIsOpen = useSelector(
-    (state: RootState) => state.catalogMenu.catalogIsOpen,
+  const { catalogIsOpen, catalogMenuStateChange } = useCatalogMenuStore(
+    (state) => state,
   )
 
   const isTablet = useMediaQuery('(max-width: 991.98px)')
@@ -172,7 +167,7 @@ const CatalogMenu = () => {
   // })
 
   const menuClose = () => {
-    dispatch(catalogMenuStateChange({ status: false, screen: isTablet }))
+    catalogMenuStateChange(false, isTablet)
   }
 
   return (
@@ -190,11 +185,7 @@ const CatalogMenu = () => {
         <div className="catalog-menu__body relative grid min-h-[65vh] justify-between gap-2.5">
           <div className="catalog-menu__category-list border-1 h-full border border-grayColor px-7 pb-7 pt-10">
             <Link
-              onClick={() =>
-                dispatch(
-                  catalogMenuStateChange({ status: false, screen: false }),
-                )
-              }
+              onClick={() => catalogMenuStateChange(false, false)}
               href="/catalog"
               className="catalog-menu__link flex items-center justify-between gap-2.5 rounded bg-accentBlue px-2.5 py-5 font-medium"
             >

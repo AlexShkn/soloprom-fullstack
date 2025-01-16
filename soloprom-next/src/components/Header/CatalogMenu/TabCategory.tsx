@@ -1,10 +1,8 @@
 import React from 'react'
 import Link from 'next/link'
 
-import { useDispatch } from 'react-redux'
-import { catalogMenuStateChange } from '@/redux/slices/catalogMenu'
-
 import { CategoryProduct } from './CatalogMenu'
+import { useCatalogMenuStore } from '@/zustand/catalogMenuStore'
 
 interface CategoryTab {
   categoryItems: CategoryProduct[]
@@ -17,7 +15,8 @@ const TabCategory: React.FC<CategoryTab> = ({
   categoryId,
   currentTab,
 }) => {
-  const dispatch = useDispatch()
+  const { catalogMenuStateChange } = useCatalogMenuStore((state) => state)
+
   if (!categoryItems || categoryItems.length === 0) {
     return null
   }
@@ -68,11 +67,7 @@ const TabCategory: React.FC<CategoryTab> = ({
             >
               <Link
                 href={item.href}
-                onClick={() =>
-                  dispatch(
-                    catalogMenuStateChange({ status: false, screen: false }),
-                  )
-                }
+                onClick={() => catalogMenuStateChange(false, false)}
                 className="catalog-menu__category-child-link link-hover inline-flex w-full items-center rounded bg-white py-2.5 pl-2.5 pr-[5px] font-medium"
               >
                 {item.title}

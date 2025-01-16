@@ -1,11 +1,8 @@
 'use client'
 
 import React, { useRef, useState, useEffect } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import { RootState } from '@/redux/store'
 import { useClickOutside } from '@/hooks/useClickOutside'
 import { useMediaQuery } from '@/hooks/useMediaQuery'
-import { modalCallbackStateChange } from '@/redux/slices/modalsSlice'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useForm } from 'react-hook-form'
 import { toast } from 'sonner'
@@ -27,8 +24,10 @@ import {
   Input,
 } from '@/components/ui'
 import './ModalCallback.scss'
-import { FastOrderTypes } from '@/redux/slices/modalsSlice'
+import { FastOrderTypes } from '@/zustand/modalsStore'
 import { getDigFormat } from '@/supports'
+import { useLocateStore } from '@/zustand/locateStore'
+import { useModalsStore } from '@/zustand/modalsStore'
 
 interface ModalProps {
   fastOrderProduct: FastOrderTypes
@@ -36,14 +35,14 @@ interface ModalProps {
 
 const ModalCallback: React.FC<ModalProps> = ({ fastOrderProduct }) => {
   const [isSubmitting, setIsSubmitting] = useState(false)
-  const dispatch = useDispatch()
-  const selectedCity = useSelector(
-    (state: RootState) => state.cities.selectedCity,
+  const selectedCity = useLocateStore((state) => state.selectedCity)
+  const modalCallbackStateChange = useModalsStore(
+    (state) => state.modalCallbackStateChange,
   )
 
   const modalRef = useRef(null)
   useClickOutside(modalRef, () => {
-    dispatch(modalCallbackStateChange(false))
+    modalCallbackStateChange(false)
   })
 
   const isMobileHeight = useMediaQuery('(max-width: 650px)')
@@ -85,7 +84,7 @@ const ModalCallback: React.FC<ModalProps> = ({ fastOrderProduct }) => {
       toast.error('Ошибка при отправке формы.')
     } finally {
       setIsSubmitting(false)
-      dispatch(modalCallbackStateChange(false))
+      modalCallbackStateChange(false)
     }
   }
 

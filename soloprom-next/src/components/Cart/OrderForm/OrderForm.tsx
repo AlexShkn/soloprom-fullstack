@@ -4,10 +4,7 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import { useForm } from 'react-hook-form'
 import { toast } from 'sonner'
 import { TypeOrderSchema, OrderSchema } from '@/features/auth/schemes'
-import { useDispatch, useSelector } from 'react-redux'
-import { RootState } from '@/redux/store'
 import { createOrder } from '@/utils/api/order'
-import { clearCart } from '@/redux/slices/cartSlice'
 
 import {
   Button,
@@ -21,14 +18,15 @@ import {
 } from '@/components/ui'
 
 import './OrderForm.scss'
+import { useCartStore } from '@/zustand/cartStore'
+import { useAuthStore } from '@/zustand/authStore'
 
 export const OrderForm: React.FC = () => {
   const [isSubmitting, setIsSubmitting] = useState(false)
-  const dispatch = useDispatch()
-  const { cartState, totalAmount } = useSelector(
-    (state: RootState) => state.cart,
-  )
-  const { isAuth, userState } = useSelector((state: RootState) => state.auth)
+
+  const { cartState, totalAmount, clearCart } = useCartStore((state) => state)
+
+  const { isAuth, userState } = useAuthStore((state) => state)
 
   const form = useForm<TypeOrderSchema>({
     resolver: zodResolver(OrderSchema),
@@ -94,11 +92,11 @@ export const OrderForm: React.FC = () => {
         }
 
         form.reset()
-        dispatch(clearCart())
+        clearCart()
         toast.success('Заказ успешно создан!')
       } else {
         form.reset()
-        dispatch(clearCart())
+        clearCart()
       }
     } catch (error) {
       toast.error('Ошибка при отправке формы.')

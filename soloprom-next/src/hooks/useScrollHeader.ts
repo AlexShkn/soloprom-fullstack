@@ -1,32 +1,34 @@
 import { useEffect, useState } from 'react'
-import { useDispatch } from 'react-redux'
-import { setHeaderFixedChange } from '@/redux/slices/headerSlice'
+import { useHeaderStore } from '@/zustand/headerStore'
 
 export const useScrollHeader = (isBigSmall: boolean) => {
-	const dispatch = useDispatch()
-	const [headerFixed, setHeaderFixed] = useState(isBigSmall)
-	const scrollLimit = 250
+  const [headerFixed, setHeaderFixed] = useState(isBigSmall)
+  const setHeaderFixedChange = useHeaderStore(
+    (state) => state.setHeaderFixedChange,
+  )
 
-	useEffect(() => {
-		let handleScroll: () => void
+  const scrollLimit = 250
 
-		if (isBigSmall) {
-			handleScroll = () => {
-				const currentScroll = window.scrollY
-				setHeaderFixed(currentScroll > scrollLimit)
+  useEffect(() => {
+    let handleScroll: () => void
 
-				dispatch(setHeaderFixedChange(currentScroll > scrollLimit))
-			}
+    if (isBigSmall) {
+      handleScroll = () => {
+        const currentScroll = window.scrollY
+        setHeaderFixed(currentScroll > scrollLimit)
 
-			window.addEventListener('scroll', handleScroll)
-		}
+        setHeaderFixedChange(currentScroll > scrollLimit)
+      }
 
-		return () => {
-			if (isBigSmall && handleScroll) {
-				window.removeEventListener('scroll', handleScroll)
-			}
-		}
-	}, [dispatch, isBigSmall, scrollLimit])
+      window.addEventListener('scroll', handleScroll)
+    }
 
-	return headerFixed
+    return () => {
+      if (isBigSmall && handleScroll) {
+        window.removeEventListener('scroll', handleScroll)
+      }
+    }
+  }, [isBigSmall, scrollLimit])
+
+  return headerFixed
 }

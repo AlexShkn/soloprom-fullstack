@@ -2,9 +2,8 @@
 import React, { useEffect, useState } from 'react'
 import Link from 'next/link'
 
-import { useSelector } from 'react-redux'
-import { RootState } from '@/redux/store'
 import { Loading } from '../ui'
+import { useCartStore } from '@/zustand/cartStore'
 
 import BreadCrumbs from '@/components/ui/BreadCrumbs/BreadCrumbs'
 import { CartResult } from '@/components/Cart/CartResult'
@@ -18,9 +17,7 @@ export const Cart: React.FC = () => {
   const [formIsOpen, setFormIsOpen] = useState(false)
   const [isLoading, setIsLoading] = useState(true)
 
-  const { cartState, totalAmount } = useSelector(
-    (state: RootState) => state.cart,
-  )
+  const { cartState, totalAmount } = useCartStore((state) => state)
 
   useEffect(() => {
     setTimeout(() => {

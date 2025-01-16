@@ -3,15 +3,11 @@ import React from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 
-import { CartProduct } from '@/redux/slices/cartSlice'
+import { CartProductTypes } from '@/zustand/cartStore'
 
 import { getDigFormat } from '@/supports'
-import {
-  decreaseProductCount,
-  increaseProductCount,
-  removeCartProduct,
-} from '@/redux/slices/cartSlice'
-import { useDispatch } from 'react-redux'
+
+import { useCartStore } from '@/zustand/cartStore'
 
 const sizeNameAdaptive: { [key: string]: string } = {
   tires: 'Размер',
@@ -25,13 +21,14 @@ const typeNameAdaptive: { [key: string]: string } = {
 }
 
 interface CartProductItemProps {
-  product: CartProduct
+  product: CartProductTypes
 }
 
 export const CartProductItem: React.FC<CartProductItemProps> = ({
   product,
 }) => {
-  const dispatch = useDispatch()
+  const { decreaseProductCount, increaseProductCount, removeCartProduct } =
+    useCartStore((state) => state)
 
   return (
     <div
@@ -71,12 +68,7 @@ export const CartProductItem: React.FC<CartProductItemProps> = ({
         <div className="cart__item-counter flex items-center gap-2.5">
           <button
             onClick={() =>
-              dispatch(
-                decreaseProductCount({
-                  productId: product.productId,
-                  variant: product.variant,
-                }),
-              )
+              decreaseProductCount(product.productId, product.variant)
             }
             disabled={product.count === 1}
             type="button"
@@ -89,12 +81,7 @@ export const CartProductItem: React.FC<CartProductItemProps> = ({
           <div className="font-bold">{product.count}</div>
           <button
             onClick={() =>
-              dispatch(
-                increaseProductCount({
-                  productId: product.productId,
-                  variant: product.variant,
-                }),
-              )
+              increaseProductCount(product.productId, product.variant)
             }
             type="button"
             className="cart__item-count border-1-[#d4d4d4] inline-flex h-[36px] w-[36px] items-center justify-center rounded-lg border bg-[#f5f5f5] transition-colors"
@@ -112,12 +99,7 @@ export const CartProductItem: React.FC<CartProductItemProps> = ({
           <div className="cart__item-buttons flex flex-col items-center gap-5">
             <button
               onClick={() =>
-                dispatch(
-                  removeCartProduct({
-                    productId: product.productId,
-                    variant: product.variant,
-                  }),
-                )
+                removeCartProduct(product.productId, product.variant)
               }
               data-cart-remove=""
               className="cart__item-button"

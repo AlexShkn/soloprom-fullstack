@@ -1,18 +1,14 @@
 'use client'
 import React, { useEffect, useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import { RootState } from '@/redux/store'
-import { addProductToCart, removeCartProduct } from '@/redux/slices/cartSlice'
 
 import { ProductsCardPropTypes } from '@/types/products.types'
 import './ProductPageCard.scss'
 import { ProductPageCardDescription } from '../ProductPageCardDescription'
 import { ProductPagePriceBlock } from '../ProductPagePriceBlock'
 import { RegaliaList } from '@/components/ProductsCard/RegaliaList/RegaliaList'
-import {
-  modalCallbackStateChange,
-  setFastOrderProduct,
-} from '@/redux/slices/modalsSlice'
+
+import { useCartStore } from '@/zustand/cartStore'
+import { useModalsStore } from '@/zustand/modalsStore'
 
 export const ProductPageCard: React.FC<ProductsCardPropTypes> = ({
   cardData,
@@ -20,8 +16,13 @@ export const ProductPageCard: React.FC<ProductsCardPropTypes> = ({
   const [variantValue, setVariantValue] = useState('')
   const [cartIsAdded, setCartIsAdded] = useState(false)
   const [cartIsLoad, setCartIsLoad] = useState(false)
-  const dispatch = useDispatch()
-  const cartState = useSelector((state: RootState) => state.cart.cartState)
+
+  const { modalCallbackStateChange, setFastOrderProduct } = useModalsStore(
+    (state) => state,
+  )
+  const { cartState, addProductToCart, removeCartProduct } = useCartStore(
+    (state) => state,
+  )
 
   const {
     productId,
@@ -69,7 +70,7 @@ export const ProductPageCard: React.FC<ProductsCardPropTypes> = ({
       productType,
       categoryName,
     }
-    dispatch(addProductToCart(product))
+    addProductToCart(product)
     setTimeout(() => {
       setCartIsAdded(true)
       setCartIsLoad(false)
@@ -78,7 +79,7 @@ export const ProductPageCard: React.FC<ProductsCardPropTypes> = ({
 
   const handleRemoveFromCart = () => {
     setCartIsLoad(true)
-    dispatch(removeCartProduct({ productId, variant: variantValue }))
+    removeCartProduct(productId, variantValue)
     setTimeout(() => {
       setCartIsAdded(false)
       setCartIsLoad(false)
@@ -86,18 +87,15 @@ export const ProductPageCard: React.FC<ProductsCardPropTypes> = ({
   }
 
   const fastOrderHandle = () => {
-    dispatch(
-      setFastOrderProduct({
-        productId,
-        name,
-        variant: variantValue,
-        price: sizesData?.[variantValue] ?? defaultPrice,
-        url,
-        img,
-      }),
-    )
-
-    dispatch(modalCallbackStateChange(true))
+    setFastOrderProduct({
+      productId,
+      name,
+      variant: variantValue,
+      price: sizesData?.[variantValue] ?? defaultPrice,
+      url,
+      img,
+    }),
+      modalCallbackStateChange(true)
   }
 
   return (

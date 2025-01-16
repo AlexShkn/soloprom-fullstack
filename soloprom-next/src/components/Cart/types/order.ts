@@ -1,4 +1,4 @@
-import { CartProduct } from '@/redux/slices/cartSlice'
+import { CartProductTypes } from '@/zustand/cartStore'
 
 export enum OrderStatus {
   PROCESSING = 'PROCESSING',
@@ -10,7 +10,7 @@ export enum OrderStatus {
 export interface OrderTypes {
   id: string
   userId: string
-  products: CartProduct[]
+  products: CartProductTypes[]
   totalAmount: number
   status: OrderStatus
   createdAt: string

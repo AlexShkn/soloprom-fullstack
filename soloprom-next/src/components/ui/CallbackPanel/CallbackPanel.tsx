@@ -1,8 +1,5 @@
 'use client'
-import { useDispatch, useSelector } from 'react-redux'
-import { RootState } from '@/redux/store'
-
-import { modalCallbackStateChange } from '@/redux/slices/modalsSlice'
+import { useModalsStore } from '@/zustand/modalsStore'
 
 import './CallbackPanel.scss'
 
@@ -11,10 +8,8 @@ interface Props {
 }
 
 export const CallbackPanel: React.FC<Props> = ({ className }) => {
-  const dispatch = useDispatch()
-
-  const callbackIsOpen = useSelector(
-    (state: RootState) => state.modals.callbackIsOpen,
+  const { callbackIsOpen, modalCallbackStateChange } = useModalsStore(
+    (state) => state,
   )
 
   return (
@@ -30,7 +25,7 @@ export const CallbackPanel: React.FC<Props> = ({ className }) => {
         </svg>
       </a>
       <button
-        onClick={() => dispatch(modalCallbackStateChange(true))}
+        onClick={() => modalCallbackStateChange(true)}
         type="button"
         className="callback-panel__link"
       >

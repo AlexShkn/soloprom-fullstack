@@ -1,12 +1,11 @@
 'use client'
 import React, { useRef, useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import { RootState } from '@/redux/store'
 
 import { useClickOutside } from '@/hooks/useClickOutside'
 import { getAdaptiveValue } from '@/utils/getAdaptiveValue'
 import { AdaptiveValues } from '@/utils/getAdaptiveValue'
 import { ProductsCardPropTypes } from '@/types/products.types'
+import { useCartStore } from '@/zustand/cartStore'
 
 interface DescriptionTypes extends ProductsCardPropTypes {
   variantValue: string
@@ -66,7 +65,7 @@ export const ProductPageCardDescription: React.FC<DescriptionTypes> = ({
   } = cardData
   const [dropOpen, setDropOpen] = useState(false)
   const dropRef = useRef(null)
-  const cartState = useSelector((state: RootState) => state.cart.cartState)
+  const cartState = useCartStore((state) => state.cartState)
 
   const selectedVariant = (value: string) => {
     setVariantValue(value)

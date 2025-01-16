@@ -1,16 +1,18 @@
 'use client'
 import Image from 'next/image'
-import { useDispatch } from 'react-redux'
-import { modalCallbackStateChange } from '@/redux/slices/modalsSlice'
 
 import './Callback.scss'
+import { useModalsStore } from '@/zustand/modalsStore'
 
 interface Props {
   className?: string
 }
 
 export const Callback: React.FC<Props> = ({ className }) => {
-  const dispatch = useDispatch()
+  const modalCallbackStateChange = useModalsStore(
+    (state) => state.modalCallbackStateChange,
+  )
+
   return (
     <section className="callback section-offset">
       <div className="callback__container">
@@ -105,7 +107,7 @@ export const Callback: React.FC<Props> = ({ className }) => {
                 свяжется вами.
               </div>
               <button
-                onClick={() => dispatch(modalCallbackStateChange(true))}
+                onClick={() => modalCallbackStateChange(true)}
                 type="button"
                 className="button callback__button w-full max-w-[300px] p-5"
               >

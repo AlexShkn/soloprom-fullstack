@@ -1,10 +1,9 @@
 'use client'
 import React, { useRef, useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import { RootState } from '@/redux/store'
 import { ProductsCardWordAdaptive } from '../DescriptionTemplate'
 import { getAdaptiveValue } from '@/utils/getAdaptiveValue'
 import { useClickOutside } from '@/hooks/useClickOutside'
+import { useCartStore } from '@/zustand/cartStore'
 
 interface Props {
   setVariantValue: (value: string) => void
@@ -23,7 +22,7 @@ export const SizesRow: React.FC<Props> = ({
 }) => {
   const [dropOpen, setDropOpen] = useState(false)
   const dropRef = useRef(null)
-  const cartState = useSelector((state: RootState) => state.cart.cartState)
+  const cartState = useCartStore((state) => state.cartState)
 
   const selectedVariant = (value: string) => {
     setVariantValue(value)
