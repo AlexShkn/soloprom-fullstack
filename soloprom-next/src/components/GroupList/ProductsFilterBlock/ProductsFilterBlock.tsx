@@ -1,6 +1,6 @@
 'use client'
 import React, { useState, useCallback, useTransition, useEffect } from 'react'
-import './ProductsFilterList.scss'
+import './ProductsFilterBlock.scss'
 import { useRouter, useSearchParams } from 'next/navigation'
 import { cardDataProps } from '@/types/products.types'
 import { FilteredList } from '@/components/GroupList/FilteredList/FilteredList'
@@ -20,7 +20,7 @@ interface Props {
   totalCount: number
 }
 
-export const ProductsFilterList: React.FC<Props> = ({
+export const ProductsFilterBlock: React.FC<Props> = ({
   categoryName,
   currentPage,
   onChangePage,

@@ -47,15 +47,15 @@ export const ProductPageCard: React.FC<ProductsCardPropTypes> = ({
 
       setVariantValue(defaultSize)
     }
-    const cartId = `${productId}-${defaultSize}`
+    const storeId = `${productId}-${defaultSize}`
 
-    setCartIsAdded(cartState.some((item) => item.cartId === cartId))
+    setCartIsAdded(cartState.some((item) => item.storeId === storeId))
   }, [])
 
   useEffect(() => {
-    const cartId = `${productId}-${variantValue}`
+    const storeId = `${productId}-${variantValue}`
 
-    setCartIsAdded(cartState.some((item) => item.cartId === cartId))
+    setCartIsAdded(cartState.some((item) => item.storeId === storeId))
   }, [variantValue])
 
   const handleAddToCart = () => {

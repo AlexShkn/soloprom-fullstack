@@ -150,7 +150,7 @@ export const ProductPageCardDescription: React.FC<DescriptionTypes> = ({
                           className={
                             cartState.some(
                               (item) =>
-                                item.cartId === `${productId}-${itemSize}`,
+                                item.storeId === `${productId}-${itemSize}`,
                             )
                               ? 'selected'
                               : ''

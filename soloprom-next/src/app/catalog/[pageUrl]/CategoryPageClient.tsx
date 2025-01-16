@@ -4,7 +4,7 @@ import { useRouter } from 'next/navigation'
 import { HeroBlock } from '@/components/CategoryPageHero/HeroBlock/HeroBlock'
 import { CategoryPageHero } from '@/components/CategoryPageHero/CategoryPageHero'
 import { SidePanel } from '@/components/CategoryPageHero/SidePanel/SidePanel'
-import { ProductsFilterList } from '@/components/GroupList/ProductsFilterList/ProductsFilterList'
+import { ProductsFilterBlock } from '@/components/GroupList/ProductsFilterBlock/ProductsFilterBlock'
 import { PageArticle } from '@/components/PageArticle/PageArticle'
 import { ProductsSlider } from '@/components/ProductsSlider/ProductsSlider'
 import { Callback } from '@/components/Callback/Callback'
@@ -59,7 +59,7 @@ const CategoryPageClient: React.FC<CategoryPageClientProps> = ({
       )}
 
       <Suspense fallback={<Loading />}>
-        <ProductsFilterList
+        <ProductsFilterBlock
           productsType={pageData.category}
           categoryName={pageData.name}
           currentPage={currentPage}

@@ -1,3 +1,5 @@
+// /catalog/[pageUrl]/[page]/page.tsx
+
 import { Metadata } from 'next'
 import CategoryPageClient from '../CategoryPageClient'
 import { findPagesData, pagesData } from '../server'
@@ -6,6 +8,7 @@ import {
   getProductsAnyCategories,
   getTotalProductCount,
 } from '@/utils/api/products'
+import { redirect } from 'next/navigation'
 
 export type Params = {
   pageUrl: string
@@ -34,7 +37,8 @@ export async function generateStaticParams() {
       const totalCount = await getTotalProductCount(pageData.name)
       const totalPages = Math.ceil(totalCount / limit)
 
-      for (let page = 1; page <= totalPages; page++) {
+      for (let page = 2; page <= totalPages; page++) {
+        // Начинаем со 2 страницы
         params.push({ pageUrl, page: page.toString() })
       }
     }
@@ -88,12 +92,15 @@ const CatalogPaginationPage: React.FC<CatalogPageProps> = async ({
 }) => {
   const { pageUrl, page } = await params
   const pageData = await findPagesData(pageUrl)
+  const currentPage = parseInt(page || '1', 10)
+
+  if (currentPage === 1) {
+    redirect(`/catalog/${pageUrl}`)
+  }
 
   if (!pageData) {
     return <h1>Страница не найдена</h1>
   }
-
-  const currentPage = parseInt(page || '1', 10) // Вычисляем номер страницы из URL
 
   const initialProducts = await fetchProducts({
     categoryName: pageData.name,

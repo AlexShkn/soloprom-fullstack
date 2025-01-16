@@ -1,5 +1,5 @@
 'use client'
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useCallback } from 'react'
 import { Accordion } from '@/components/ui/accordion'
 import { FilterCheckbox } from './FilterCheckbox'
 import { FilterInterval } from './FilterInterval'
@@ -47,7 +47,6 @@ const CatalogFilters: React.FC<Props> = ({
   const [models, setModels] = useState<string[]>([])
   const [countries, setCountries] = useState<string[]>([])
   const [radiuses, setRadiuses] = useState<string[]>([])
-
   const createFiltersFields = (data: cardDataProps[]) => {
     if (!data || data.length === 0) {
       return
@@ -169,10 +168,40 @@ const CatalogFilters: React.FC<Props> = ({
     setSearch(value)
     onSearchChange(value)
   }
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault()
-    // onFiltersChange({ brand: brandFilter })
-  }
+  const handleFilterChange = useCallback(
+    (name: string, value: string | string[], isChecked: boolean) => {
+      setFilters((prevFilters) => {
+        const newFilters = { ...prevFilters }
+        if (Array.isArray(value)) {
+          if (isChecked) {
+            newFilters[name] = [...(newFilters[name] || []), ...value]
+          } else {
+            newFilters[name] = (newFilters[name] || []).filter(
+              (item) => !value.includes(item),
+            )
+          }
+        } else {
+          if (isChecked) {
+            newFilters[name] = [...(newFilters[name] || []), value]
+          } else {
+            newFilters[name] = (newFilters[name] || []).filter(
+              (item) => item !== value,
+            )
+          }
+        }
+
+        if (newFilters[name] && newFilters[name].length === 0) {
+          delete newFilters[name]
+        }
+        return newFilters
+      })
+    },
+    [setFilters],
+  )
+  // useEffect(() => {
+  //   onFiltersChange(filters)
+  // }, [filters, onFiltersChange])
+
   return (
     <Accordion
       type="multiple"
@@ -204,6 +233,9 @@ const CatalogFilters: React.FC<Props> = ({
             title=""
             options={brands.map((brand) => ({ label: brand, value: brand }))}
             showMoreCount={brands.length > 5 ? brands.length - 5 : 0}
+            onCheckboxChange={(value, isChecked) =>
+              handleFilterChange('brand', value, isChecked)
+            }
           />
         </FilterItem>
       )}
@@ -216,6 +248,9 @@ const CatalogFilters: React.FC<Props> = ({
               value: volume,
             }))}
             showMoreCount={volumes.length > 5 ? volumes.length - 5 : 0}
+            onCheckboxChange={(value, isChecked) =>
+              handleFilterChange('volumes', value, isChecked)
+            }
           />
         </FilterItem>
       )}
@@ -225,6 +260,9 @@ const CatalogFilters: React.FC<Props> = ({
             title=""
             options={sizes.map((size) => ({ label: size, value: size }))}
             showMoreCount={sizes.length > 5 ? sizes.length - 5 : 0}
+            onCheckboxChange={(value, isChecked) =>
+              handleFilterChange('sizes', value, isChecked)
+            }
           />
         </FilterItem>
       )}
@@ -234,6 +272,9 @@ const CatalogFilters: React.FC<Props> = ({
             title=""
             options={plates.map((plate) => ({ label: plate, value: plate }))}
             showMoreCount={plates.length > 5 ? plates.length - 5 : 0}
+            onCheckboxChange={(value, isChecked) =>
+              handleFilterChange('plates', value, isChecked)
+            }
           />
         </FilterItem>
       )}
@@ -246,6 +287,9 @@ const CatalogFilters: React.FC<Props> = ({
               value: String(volt),
             }))}
             showMoreCount={voltage.length > 5 ? voltage.length - 5 : 0}
+            onCheckboxChange={(value, isChecked) =>
+              handleFilterChange('voltage', value, isChecked)
+            }
           />
         </FilterItem>
       )}
@@ -258,6 +302,9 @@ const CatalogFilters: React.FC<Props> = ({
               value: String(cont),
             }))}
             showMoreCount={container.length > 5 ? container.length - 5 : 0}
+            onCheckboxChange={(value, isChecked) =>
+              handleFilterChange('container', value, isChecked)
+            }
           />
         </FilterItem>
       )}
@@ -267,6 +314,9 @@ const CatalogFilters: React.FC<Props> = ({
             title=""
             options={models.map((model) => ({ label: model, value: model }))}
             showMoreCount={models.length > 5 ? models.length - 5 : 0}
+            onCheckboxChange={(value, isChecked) =>
+              handleFilterChange('models', value, isChecked)
+            }
           />
         </FilterItem>
       )}
@@ -279,6 +329,9 @@ const CatalogFilters: React.FC<Props> = ({
               value: country,
             }))}
             showMoreCount={countries.length > 5 ? countries.length - 5 : 0}
+            onCheckboxChange={(value, isChecked) =>
+              handleFilterChange('country', value, isChecked)
+            }
           />
         </FilterItem>
       )}
@@ -291,6 +344,9 @@ const CatalogFilters: React.FC<Props> = ({
               value: radius,
             }))}
             showMoreCount={radiuses.length > 5 ? radiuses.length - 5 : 0}
+            onCheckboxChange={(value, isChecked) =>
+              handleFilterChange('size', value, isChecked)
+            }
           />
         </FilterItem>
       )}

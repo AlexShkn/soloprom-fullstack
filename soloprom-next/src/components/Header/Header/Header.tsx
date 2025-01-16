@@ -19,6 +19,7 @@ export const Header: React.FC = () => {
     if (typeof window !== 'undefined' && window.localStorage) {
       const initialCart = getStateFromLocalStorage('cart')
       const initialFavorite = getStateFromLocalStorage('favorite')
+
       setCart(initialCart)
       setFavorite(initialFavorite)
     }

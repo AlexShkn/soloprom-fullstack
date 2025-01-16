@@ -1,5 +1,5 @@
 'use client'
-import React, { useRef, useState } from 'react'
+import React, { useRef, useState, useCallback } from 'react'
 
 import { ChevronRight } from 'lucide-react'
 import { useClickOutside } from '@/hooks/useClickOutside'
@@ -21,15 +21,17 @@ export const Sort: React.FC<Props> = ({ onSortChange }) => {
     setDropIsOpen(false)
   })
 
-  const sortValueHandler = (value: string) => {
-    setSortValue(value)
-    setDropIsOpen(false)
-  }
-
-  const handleSortChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    const value = e.target.value
-    setSort(value)
-  }
+  const sortValueHandler = useCallback(
+    (value: string) => {
+      setSortValue(value)
+      setDropIsOpen(false)
+      const sortValue =
+        value === 'Возрастанию цены' ? 'defaultPrice:asc' : 'defaultPrice:desc'
+      onSortChange(sortValue)
+      setSort(sortValue)
+    },
+    [onSortChange],
+  )
 
   return (
     <div className="flex w-full items-center gap-2.5">

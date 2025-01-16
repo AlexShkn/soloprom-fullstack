@@ -1,3 +1,5 @@
+// /catalog/[pageUrl]/page.tsx
+
 import { Metadata } from 'next'
 import CategoryPageClient from './CategoryPageClient'
 import { findPagesData, pagesData } from './server'
@@ -65,7 +67,7 @@ export async function generateStaticParams() {
       pageData.pageType === 'group' ||
       pageData.pageType === 'brands'
     ) {
-      params.push({ pageUrl })
+      params.push({ pageUrl }) // ТОЛЬКО pageUrl, без параметра page
     }
   }
   return params
@@ -99,6 +101,8 @@ const CatalogPage: React.FC<CatalogPageProps> = async ({ params }) => {
   if (!categoryData) {
     console.log('Ошибка получения продуктов категории')
   }
+
+  console.log('render')
 
   return (
     <CategoryPageClient

@@ -10,7 +10,7 @@ import { useFavoriteStore } from '@/zustand/favoriteStore'
 
 export interface FavoriteProduct {
   productId: string
-  favoriteId: string
+  storeId: string
   name: string
   price: number
   url: string

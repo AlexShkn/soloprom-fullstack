@@ -46,10 +46,10 @@ export const FavoriteCard: React.FC<FavoriteCardProps> = ({ product }) => {
     (state) => state.removeFavoriteProduct,
   )
 
-  const cartId = `${productId}-${variant}`
+  const storeId = `${productId}-${variant}`
 
   useEffect(() => {
-    setCartIsAdded(cartState.some((item) => item.cartId === cartId))
+    setCartIsAdded(cartState.some((item) => item.storeId === storeId))
   }, [])
 
   const handleAddToCart = () => {

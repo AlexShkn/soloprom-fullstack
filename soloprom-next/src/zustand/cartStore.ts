@@ -5,7 +5,7 @@ export interface CartProductTypes {
   categoryName: string
   productId: string
   img: string
-  cartId: string
+  storeId: string
   name: string
   price: number
   url: string
@@ -18,7 +18,7 @@ interface CartState {
   cartState: CartProductTypes[]
   totalAmount: number
   addProductToCart: (
-    product: Omit<CartProductTypes, 'count' | 'cartId'>,
+    product: Omit<CartProductTypes, 'count' | 'storeId'>,
   ) => void
   increaseProductCount: (productId: string, variant: string) => void
   decreaseProductCount: (productId: string, variant: string) => void
@@ -38,13 +38,13 @@ export const useCartStore = create<CartState>((set, get) => ({
     })
   },
   addProductToCart: (product) => {
-    const cartId = `${product.productId}-${product.variant}`
+    const storeId = `${product.productId}-${product.variant}`
     const productIndex = get().cartState.findIndex(
-      (item) => item.cartId === cartId,
+      (item) => item.storeId === storeId,
     )
 
     if (productIndex === -1) {
-      const newProduct = { ...product, cartId, count: 1 }
+      const newProduct = { ...product, storeId, count: 1 }
       const newCartState = [...get().cartState, newProduct]
       set({
         cartState: newCartState,
@@ -62,9 +62,9 @@ export const useCartStore = create<CartState>((set, get) => ({
     localStorage.setItem('cart', JSON.stringify(get().cartState))
   },
   increaseProductCount: (productId, variant) => {
-    const cartId = `${productId}-${variant}`
+    const storeId = `${productId}-${variant}`
     const updatedCart = get().cartState.map((item) =>
-      item.cartId === cartId ? { ...item, count: item.count + 1 } : item,
+      item.storeId === storeId ? { ...item, count: item.count + 1 } : item,
     )
     set({
       cartState: updatedCart,
@@ -73,10 +73,10 @@ export const useCartStore = create<CartState>((set, get) => ({
     localStorage.setItem('cart', JSON.stringify(updatedCart))
   },
   decreaseProductCount: (productId, variant) => {
-    const cartId = `${productId}-${variant}`
+    const storeId = `${productId}-${variant}`
     const updatedCart = get()
       .cartState.map((item) => {
-        if (item.cartId === cartId) {
+        if (item.storeId === storeId) {
           if (item.count > 1) {
             return { ...item, count: item.count - 1 }
           } else {
@@ -94,8 +94,10 @@ export const useCartStore = create<CartState>((set, get) => ({
     localStorage.setItem('cart', JSON.stringify(updatedCart))
   },
   removeCartProduct: (productId, variant) => {
-    const cartId = `${productId}-${variant}`
-    const updatedCart = get().cartState.filter((item) => item.cartId !== cartId)
+    const storeId = `${productId}-${variant}`
+    const updatedCart = get().cartState.filter(
+      (item) => item.storeId !== storeId,
+    )
     set({
       cartState: updatedCart,
       totalAmount: calculateCartTotalAmount(updatedCart),

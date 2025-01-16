@@ -480,14 +480,14 @@
     "url": "masla-transmissionnie",
     "crumb": "Масло трансмиссионнное"
   },
-  "masla-gidravlichecskie": {
+  "masla-gidravlicheskie": {
     "category": "oils",
     "pageType": "subcategory",
     "title": "Масло гидравлическое",
     "description": "",
     "img": "/img/category/oils/hydravlic-oils",
     "alt": "гидравлическое масло",
-    "url": "masla-gidravlichecskie",
+    "url": "masla-gidravlicheskie",
     "crumb": "Масло гидравлическое"
   },
   "masla-industrialnie": {

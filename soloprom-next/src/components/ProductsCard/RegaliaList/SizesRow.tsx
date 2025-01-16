@@ -80,7 +80,7 @@ export const SizesRow: React.FC<Props> = ({
                   <label
                     className={
                       cartState.some(
-                        (item) => item.cartId === `${productId}-${itemSize}`,
+                        (item) => item.storeId === `${productId}-${itemSize}`,
                       )
                         ? 'selected'
                         : ''

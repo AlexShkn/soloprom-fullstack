@@ -5,7 +5,7 @@ export default function middleware(request: NextRequest) {
   const session = cookies.get('session')?.value
 
   const isAuthPage = url.includes('/auth')
-  const isProductsPage = url.includes('/products')
+  const isProductsPage = url === `${new URL(url).origin}/products`
   const isDashboardPage = url.includes('/dashboard')
 
   if (isProductsPage) {
@@ -30,5 +30,5 @@ export default function middleware(request: NextRequest) {
 }
 
 export const config = {
-  matcher: ['/auth/:path*', '/dashboard/:path*', '/products/:path*'],
+  matcher: ['/auth/:path*', '/dashboard/:path*', '/products'],
 }

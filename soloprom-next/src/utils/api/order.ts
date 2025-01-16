@@ -1,11 +1,11 @@
 import axios from 'axios'
 import { OrderTypes } from '@/components/Cart/types/order'
-import { CartProduct } from '@/redux/slices/cartSlice'
+import { CartProductTypes } from '@/zustand/cartStore'
 import { cardDataProps } from '@/types/products.types'
 
 interface OrderDto {
   userId: string
-  products: CartProduct[]
+  products: CartProductTypes[]
   totalAmount: number
 }
 
