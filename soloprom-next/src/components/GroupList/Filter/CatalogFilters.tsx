@@ -18,7 +18,7 @@ interface Props {
   currentPage: number
   onFiltersChange: (filters: Record<string, string[]>) => void
   onSearchChange: (search: string) => void
-  initialProducts: cardDataProps[]
+  categoryInitialList: cardDataProps[] | null
 }
 
 const CatalogFilters: React.FC<Props> = ({
@@ -27,25 +27,138 @@ const CatalogFilters: React.FC<Props> = ({
   onSearchChange,
   onFiltersChange,
   currentPage,
-  initialProducts,
+  categoryInitialList,
 }) => {
+  const [filteredData, setFilteredData] = useState<cardDataProps[]>(
+    categoryInitialList || [],
+  )
   const [filters, setFilters] = useState<Record<string, string[]>>({})
   const [search, setSearch] = useState<string>('')
   const [brands, setBrands] = useState<string[]>([])
-  const [capacities, setCapacities] = useState<{
+  const [prices, setPrices] = useState<{
     min: number
     max: number
   } | null>(null)
-  const [polarities, setPolarities] = useState<string[]>([])
-  const [widths, setWidths] = useState<{ min: number; max: number } | null>(
-    null,
-  )
+  const [volumes, setVolumes] = useState<string[]>([])
+  const [sizes, setSizes] = useState<string[]>([])
+  const [plates, setPlates] = useState<string[]>([])
+  const [voltage, setVoltage] = useState<number[]>([])
+  const [container, setContainer] = useState<number[]>([])
+  const [models, setModels] = useState<string[]>([])
+  const [countries, setCountries] = useState<string[]>([])
+  const [radiuses, setRadiuses] = useState<string[]>([])
+
+  const createFiltersFields = (data: cardDataProps[]) => {
+    if (!data || data.length === 0) {
+      return
+    }
+
+    let allBrands: string[] = []
+    let minPrice = Infinity
+    let maxPrice = -Infinity
+    let allVolumes: string[] = []
+    let allSizes: string[] = []
+    let allPlates: (string | null)[] = []
+    let allVoltage: (string | null)[] = []
+    let allContainer: (string | null)[] = []
+    let allModels: string[] = []
+    let allCountries: (string | null)[] = []
+    let allRadiuses: (string | null)[] = []
+
+    data.forEach((item) => {
+      // Brands
+      if (item.brand) {
+        allBrands.push(item.brand)
+      }
+      // Prices
+      if (item.defaultPrice) {
+        minPrice = Math.min(minPrice, item.defaultPrice)
+        maxPrice = Math.max(maxPrice, item.defaultPrice)
+      }
+
+      // Volumes
+      if (item.volumes) {
+        allVolumes.push(...Object.keys(item.volumes))
+      }
+
+      // Sizes
+      if (item.sizes) {
+        allSizes.push(...Object.keys(item.sizes))
+      }
+      // Plates
+      if (item.plates) {
+        allPlates.push(item.plates)
+      }
+
+      // voltage
+      if (item.voltage) {
+        allVoltage.push(item.voltage)
+      }
+
+      // container
+      if (item.container) {
+        allContainer.push(item.container)
+      }
+
+      // models
+      if (item.models && item.models.length > 0) {
+        allModels.push(...item.models)
+      }
+
+      // Countries
+      if (item.country) {
+        allCountries.push(item.country)
+      }
+
+      // Radiuses
+      if (item.size) {
+        allRadiuses.push(item.size)
+      }
+    })
+
+    const uniqueBrands = [...new Set(allBrands)]
+    const uniqueVolumes = [...new Set(allVolumes)]
+    const uniqueSizes = [...new Set(allSizes)]
+    const uniquePlates = [...new Set(allPlates)].filter(Boolean) as string[]
+    const uniqueModels = [...new Set(allModels)]
+    const uniqueCountries = [...new Set(allCountries)].filter(
+      Boolean,
+    ) as string[]
+    const uniqueRadiuses = [...new Set(allRadiuses)].filter(Boolean) as string[]
+
+    const parsedVoltage = [...new Set(allVoltage)]
+      .filter(Boolean)
+      .map((v) => parseInt(v as string, 10))
+      .filter((v) => !isNaN(v))
+      .sort((a, b) => a - b)
+
+    const parsedContainer = [...new Set(allContainer)]
+      .filter(Boolean)
+      .map((c) => parseInt(c as string, 10))
+      .filter((c) => !isNaN(c))
+      .sort((a, b) => a - b)
+
+    setBrands(uniqueBrands)
+    setPrices(
+      minPrice !== Infinity && maxPrice !== -Infinity
+        ? { min: minPrice, max: maxPrice }
+        : null,
+    )
+    setVolumes(uniqueVolumes)
+    setSizes(uniqueSizes)
+    setPlates(uniquePlates)
+    setVoltage(parsedVoltage)
+    setContainer(parsedContainer)
+    setModels(uniqueModels)
+    setCountries(uniqueCountries)
+    setRadiuses(uniqueRadiuses)
+  }
 
   useEffect(() => {
-    if (initialProducts && initialProducts.length > 0) {
-      console.log(initialProducts)
+    if (categoryInitialList && categoryInitialList.length > 0) {
+      createFiltersFields(categoryInitialList)
     }
-  }, [initialProducts])
+  }, [categoryInitialList])
 
   const categoryData = transformData[productsType]
 
@@ -64,7 +177,7 @@ const CatalogFilters: React.FC<Props> = ({
     <Accordion
       type="multiple"
       className="w-full"
-      defaultValue={['category', 'price']}
+      defaultValue={['category', 'price', 'brands', 'volumes', 'sizes']}
     >
       {currentPage > 1 && groups && (
         <FilterList
@@ -75,51 +188,112 @@ const CatalogFilters: React.FC<Props> = ({
         />
       )}
 
-      <FilterItem title="Цена" value="price">
-        <FilterInterval title="" min={931} max={269454} />
-      </FilterItem>
-      <FilterItem title="Цена" value="price">
-        <FilterSlider title="" min={0} max={269454} />
-      </FilterItem>
-      <FilterItem title="Бренды" value="brands">
-        <FilterCheckbox
-          title=""
-          options={[
-            { label: 'WEZER', value: 'wezer' },
-            { label: 'A-MEGA', value: 'a-mega' },
-            { label: 'BOSCH', value: 'bosch' },
-            { label: 'VARTA', value: 'varta' },
-            { label: 'BANNER', value: 'banner' },
-            { label: 'TAB', value: 'tab' },
-            { label: 'MUTLU', value: 'mutlu' },
-            { label: 'EXIDE', value: 'exide' },
-          ]}
-          showMoreCount={167}
-        />
-      </FilterItem>
-      <FilterItem title="Емкость аккумулятора, Ач" value="capacity">
-        <FilterInterval
-          title="Емкость аккумулятора, Ач"
-          min={44}
-          max={240}
-          unit="Ач"
-        />
-      </FilterItem>
-      <FilterItem title="Полярность" value="polarity">
-        <FilterCheckbox
-          title=""
-          options={[
-            { label: '0 (-+) обратная', value: '0-reverse' },
-            { label: '1 (+-) прямая', value: '1-direct' },
-            { label: '2 (-+)', value: '2' },
-            { label: '3 (+-)', value: '3' },
-          ]}
-          showMoreCount={5}
-        />
-      </FilterItem>
-      <FilterItem title="Ширина АКБ, мм" value="width">
-        <FilterInterval title="" min={90} max={518} unit="мм" />
-      </FilterItem>
+      {prices && (
+        <FilterItem title="Цена" value="price">
+          <FilterInterval title="" min={prices.min} max={prices.max} />
+        </FilterItem>
+      )}
+      {/* {prices && (
+        <FilterItem title="Цена" value="price">
+          <FilterSlider title="" min={prices.min} max={prices.max} />
+        </FilterItem>
+      )} */}
+      {brands && brands.length > 0 && (
+        <FilterItem title="Бренды" value="brands">
+          <FilterCheckbox
+            title=""
+            options={brands.map((brand) => ({ label: brand, value: brand }))}
+            showMoreCount={brands.length > 5 ? brands.length - 5 : 0}
+          />
+        </FilterItem>
+      )}
+      {volumes && volumes.length > 0 && (
+        <FilterItem title="Объем" value="volumes">
+          <FilterCheckbox
+            title=""
+            options={volumes.map((volume) => ({
+              label: volume,
+              value: volume,
+            }))}
+            showMoreCount={volumes.length > 5 ? volumes.length - 5 : 0}
+          />
+        </FilterItem>
+      )}
+      {sizes && sizes.length > 0 && (
+        <FilterItem title="Размеры" value="sizes">
+          <FilterCheckbox
+            title=""
+            options={sizes.map((size) => ({ label: size, value: size }))}
+            showMoreCount={sizes.length > 5 ? sizes.length - 5 : 0}
+          />
+        </FilterItem>
+      )}
+      {plates && plates.length > 0 && (
+        <FilterItem title="Тип пластин" value="plates">
+          <FilterCheckbox
+            title=""
+            options={plates.map((plate) => ({ label: plate, value: plate }))}
+            showMoreCount={plates.length > 5 ? plates.length - 5 : 0}
+          />
+        </FilterItem>
+      )}
+      {voltage && voltage.length > 0 && (
+        <FilterItem title="Напряжение, В" value="voltage">
+          <FilterCheckbox
+            title=""
+            options={voltage.map((volt) => ({
+              label: String(volt),
+              value: String(volt),
+            }))}
+            showMoreCount={voltage.length > 5 ? voltage.length - 5 : 0}
+          />
+        </FilterItem>
+      )}
+      {container && container.length > 0 && (
+        <FilterItem title="Емкость, Ач" value="container">
+          <FilterCheckbox
+            title=""
+            options={container.map((cont) => ({
+              label: String(cont),
+              value: String(cont),
+            }))}
+            showMoreCount={container.length > 5 ? container.length - 5 : 0}
+          />
+        </FilterItem>
+      )}
+      {models && models.length > 0 && (
+        <FilterItem title="Модели техники" value="models">
+          <FilterCheckbox
+            title=""
+            options={models.map((model) => ({ label: model, value: model }))}
+            showMoreCount={models.length > 5 ? models.length - 5 : 0}
+          />
+        </FilterItem>
+      )}
+      {countries && countries.length > 0 && (
+        <FilterItem title="Страны производства" value="countries">
+          <FilterCheckbox
+            title=""
+            options={countries.map((country) => ({
+              label: country,
+              value: country,
+            }))}
+            showMoreCount={countries.length > 5 ? countries.length - 5 : 0}
+          />
+        </FilterItem>
+      )}
+      {radiuses && radiuses.length > 0 && (
+        <FilterItem title="Радиус" value="radiuses">
+          <FilterCheckbox
+            title=""
+            options={radiuses.map((radius) => ({
+              label: radius,
+              value: radius,
+            }))}
+            showMoreCount={radiuses.length > 5 ? radiuses.length - 5 : 0}
+          />
+        </FilterItem>
+      )}
     </Accordion>
   )
 }

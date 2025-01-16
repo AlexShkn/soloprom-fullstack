@@ -24,6 +24,7 @@ export const CategoryPageHero: React.FC<Props> = ({
           alt={categoryAlt}
           width={983}
           height={0}
+          priority
         />
         <h1 className="category-hero__title relative z-[2] max-w-[400px] text-center font-bold">
           {categoryTitle}

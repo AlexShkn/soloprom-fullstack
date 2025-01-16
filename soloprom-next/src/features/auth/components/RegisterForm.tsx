@@ -44,9 +44,10 @@ export function RegisterForm() {
   const [recaptchaValue, setRecaptchaValue] = useState<string | null>(null)
   const [isShowCodeField, setIsShowCodeField] = useState(false)
   const [reserveEmail, setReserveEmail] = useState<string>('')
-  const [reservePassword, setReservePassword] = useState<string>('') // Сохраняем пароль
   const [countdown, setCountdown] = useState(VERIFY_TIME)
   const [isResendEnabled, setIsResendEnabled] = useState(false)
+  const [showRecaptcha, setShowRecaptcha] = useState(true)
+  const [isAutoSubmit, setIsAutoSubmit] = useState(false)
 
   const form = useForm<RegisterFormValues | ConfirmCodeFormValues>({
     resolver: zodResolver(isShowCodeField ? ConfirmCodeSchema : RegisterSchema),
@@ -65,12 +66,24 @@ export function RegisterForm() {
     useConfirmRegistrationMutation()
   const { login, isLoadingLogin } = useLoginMutation(() => {})
 
+  const handleSubmit = async (data: any) => {
+    await onSubmit(data)
+    setIsAutoSubmit(false)
+  }
+
+  useEffect(() => {
+    if (isShowCodeField) {
+      setShowRecaptcha(false)
+    } else {
+      setShowRecaptcha(true)
+    }
+  }, [isShowCodeField])
+
   useEffect(() => {
     if (isShowCodeField && countdown > 0) {
       const timer = setInterval(() => {
         setCountdown((prev) => prev - 1)
       }, 1000)
-
       return () => clearInterval(timer)
     }
 
@@ -109,7 +122,7 @@ export function RegisterForm() {
       const registerValues = values as RegisterFormValues
 
       setReserveEmail(registerValues.email)
-      setReservePassword(registerValues.password)
+
       if (recaptchaValue) {
         register({
           values: registerValues,
@@ -127,15 +140,25 @@ export function RegisterForm() {
         email: reserveEmail,
         code: confirmValues.code,
       }).then(() => {
-        login({
-          values: {
-            email: reserveEmail,
-            password: reservePassword,
-          },
-          recaptcha: recaptchaValue ?? '',
-        })
+        const allValues = form.getValues()
+        if ('password' in allValues) {
+          login({
+            values: {
+              email: reserveEmail,
+              password: allValues.password,
+            },
+            recaptcha: recaptchaValue ?? '',
+          })
+        } else {
+          toast.error('Пароль не найден!')
+        }
       })
     }
+  }
+
+  const handleCodeComplete = () => {
+    setIsAutoSubmit(true)
+    form.handleSubmit(handleSubmit)()
   }
 
   return (
@@ -241,6 +264,7 @@ export function RegisterForm() {
                       isResendEnabled={isResendEnabled}
                       resetCode={resetCode}
                       isLoading={isLoadingConfirm}
+                      onComplete={handleCodeComplete} // Передаём onComplete
                     />
                   </FormControl>
                   <FormMessage />
@@ -248,22 +272,46 @@ export function RegisterForm() {
               )}
             />
           )}
-
-          <div className="flex justify-center">
-            <ReCAPTCHA
-              sitekey={
-                process.env.NEXT_PUBLIC_GOOGLE_RECAPTCHA_SITE_KEY as string
+          {showRecaptcha && (
+            <div className="flex justify-center">
+              <ReCAPTCHA
+                sitekey={
+                  process.env.NEXT_PUBLIC_GOOGLE_RECAPTCHA_SITE_KEY as string
+                }
+                onChange={setRecaptchaValue}
+                theme={theme === 'dark' ? 'dark' : 'light'}
+              />
+            </div>
+          )}
+          {reserveEmail ? (
+            countdown !== 0 && (
+              <Button
+                type="submit"
+                disabled={
+                  isLoadingRegister ||
+                  isLoadingConfirm ||
+                  isLoadingLogin ||
+                  isAutoSubmit
+                }
+              >
+                {!isShowCodeField
+                  ? 'Создать аккаунт'
+                  : 'Подтвердить регистрацию'}
+              </Button>
+            )
+          ) : (
+            <Button
+              type="submit"
+              disabled={
+                isLoadingRegister ||
+                isLoadingConfirm ||
+                isLoadingLogin ||
+                isAutoSubmit
               }
-              onChange={setRecaptchaValue}
-              theme={theme === 'dark' ? 'dark' : 'light'}
-            />
-          </div>
-          <Button
-            type="submit"
-            disabled={isLoadingRegister || isLoadingConfirm || isLoadingLogin}
-          >
-            {!isShowCodeField ? 'Создать аккаунт' : 'Подтвердить регистрацию'}
-          </Button>
+            >
+              {!isShowCodeField ? 'Создать аккаунт' : 'Подтвердить регистрацию'}
+            </Button>
+          )}
         </form>
       </Form>
     </AuthWrapper>

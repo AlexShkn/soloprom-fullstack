@@ -18,6 +18,7 @@ interface CategoryPageClientProps {
   pageData: PageDataTypes
   currentPage: number
   initialProducts: cardDataProps[] | null
+  categoryData: cardDataProps[] | null
   totalCount: number
 }
 
@@ -26,6 +27,7 @@ const CategoryPageClient: React.FC<CategoryPageClientProps> = ({
   currentPage,
   initialProducts,
   totalCount,
+  categoryData,
 }) => {
   const router = useRouter()
 
@@ -63,6 +65,7 @@ const CategoryPageClient: React.FC<CategoryPageClientProps> = ({
           currentPage={currentPage}
           onChangePage={handlePageChange}
           initialProducts={initialProducts}
+          categoryData={categoryData}
           totalCount={totalCount}
         />
       </Suspense>

@@ -33,50 +33,12 @@ export class AuthService {
   ) {}
 
   public async register(dto: RegisterDto) {
-    const isExists = await this.userService.findByEmail(dto.email);
-
-    if (isExists) {
-      throw new ConflictException(
-        'Регистрация не удалась. Пользователь с таким email уже существует. Пожалуйста, используйте другой email или войдите в систему.',
-      );
-    }
-
-    const newUser = await this.userService.create(
-      dto.email,
-      dto.password,
-      dto.name,
-      '',
-      AuthMethod.CREDENTIALS,
-      false,
-    );
-
-    // Отправка кода для подтверждения почты
-    await this.twoFactorAuthService.sendTwoFactorToken(newUser.email);
-
-    return {
-      message:
-        'Вы успешно зарегистрировались. Пожалуйста, введите код, отправленный на ваш email, для подтверждения вашей почты.',
-    };
+    return this.emailConfirmationService.register(dto);
   }
 
   public async confirmRegistration(email: string, code: string) {
     // Проверяем введенный код
-    await this.twoFactorAuthService.validateTwoFactorToken(email, code);
-
-    // Обновляем статус пользователя на подтвержденный
-    const user = await this.userService.findByEmail(email);
-    if (!user) {
-      throw new NotFoundException('Пользователь не найден.');
-    }
-
-    await this.prismaService.user.update({
-      where: { id: user.id },
-      data: { isVerified: true },
-    });
-
-    return {
-      message: 'Почта успешно подтверждена. Вы можете войти в свой аккаунт.',
-    };
+    return this.emailConfirmationService.confirmRegistration(email, code);
   }
 
   public async login(req: Request, dto: LoginDto) {
@@ -92,7 +54,7 @@ export class AuthService {
 
     if (!isValidPassword) {
       throw new UnauthorizedException(
-        'Неверный пароль. Пожалуйста, попробуйте еще раз или восстановите пароль, если забыли его.',
+        'Неверная почта или пароль. Пожалуйста, попробуйте еще раз или восстановите пароль, если забыли его.',
       );
     }
 

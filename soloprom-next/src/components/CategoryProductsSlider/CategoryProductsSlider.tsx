@@ -48,8 +48,6 @@ export const CategoryProductsSlider: React.FC<Props> = ({ className }) => {
     const fetchCounts = async () => {
       const result = await getProductsCounts()
 
-      console.log(result)
-
       setProductsCounts(result)
     }
 

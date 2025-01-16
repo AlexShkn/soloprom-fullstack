@@ -9,6 +9,10 @@ import './ProductPageCard.scss'
 import { ProductPageCardDescription } from '../ProductPageCardDescription'
 import { ProductPagePriceBlock } from '../ProductPagePriceBlock'
 import { RegaliaList } from '@/components/ProductsCard/RegaliaList/RegaliaList'
+import {
+  modalCallbackStateChange,
+  setFastOrderProduct,
+} from '@/redux/slices/modalsSlice'
 
 export const ProductPageCard: React.FC<ProductsCardPropTypes> = ({
   cardData,
@@ -81,6 +85,21 @@ export const ProductPageCard: React.FC<ProductsCardPropTypes> = ({
     }, 1000)
   }
 
+  const fastOrderHandle = () => {
+    dispatch(
+      setFastOrderProduct({
+        productId,
+        name,
+        variant: variantValue,
+        price: sizesData?.[variantValue] ?? defaultPrice,
+        url,
+        img,
+      }),
+    )
+
+    dispatch(modalCallbackStateChange(true))
+  }
+
   return (
     <div className="product-page__card product-page-card">
       <div className="product-page-card__title">{name}</div>
@@ -123,7 +142,10 @@ export const ProductPageCard: React.FC<ProductsCardPropTypes> = ({
             </svg>
             В корзину
           </button>
-          <button className="button product-page-card__fast-order">
+          <button
+            onClick={() => fastOrderHandle()}
+            className="button product-page-card__fast-order"
+          >
             Быстрый заказ
             <svg className="icon">
               <use xlinkHref="/img/sprite-default.svg#arrow-drop"></use>

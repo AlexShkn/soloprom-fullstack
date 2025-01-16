@@ -31,7 +31,6 @@ export const getOrdersByUserId = async (
 export const createOrder = async (
   orderDto: OrderDto,
 ): Promise<OrderTypes | null> => {
-  console.log(orderDto)
   try {
     const response = await axios.post(BASE_URL, orderDto)
     return response.data

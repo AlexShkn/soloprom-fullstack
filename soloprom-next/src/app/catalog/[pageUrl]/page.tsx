@@ -2,7 +2,7 @@ import { Metadata } from 'next'
 import CategoryPageClient from './CategoryPageClient'
 import { findPagesData, pagesData } from './server'
 import { cardDataProps } from '@/types/products.types'
-import { fetchProducts } from '@/utils/api/products'
+import { fetchProducts, getProductsAnyCategories } from '@/utils/api/products'
 
 export type Params = {
   pageUrl: string
@@ -13,31 +13,12 @@ interface CatalogPageProps {
   params: ParamsPromise
 }
 
-export async function generateStaticParams() {
-  const params: Params[] = []
-
-  for (const pageUrl in pagesData) {
-    const pageData = pagesData[pageUrl]
-
-    if (
-      pageData.pageType === 'category' ||
-      pageData.pageType === 'subcategory' ||
-      pageData.pageType === 'group' ||
-      pageData.pageType === 'brands'
-    ) {
-      params.push({ pageUrl })
-    }
-  }
-  return params
-}
-
 export async function generateMetadata({
   params,
 }: {
   params: ParamsPromise
 }): Promise<Metadata> {
   const { pageUrl } = await params
-  console.log(pageUrl)
 
   const categoryData = pagesData[pageUrl]
 
@@ -72,6 +53,24 @@ export async function generateMetadata({
   }
 }
 
+export async function generateStaticParams() {
+  const params: Params[] = []
+
+  for (const pageUrl in pagesData) {
+    const pageData = pagesData[pageUrl]
+
+    if (
+      pageData.pageType === 'category' ||
+      pageData.pageType === 'subcategory' ||
+      pageData.pageType === 'group' ||
+      pageData.pageType === 'brands'
+    ) {
+      params.push({ pageUrl })
+    }
+  }
+  return params
+}
+
 const CatalogPage: React.FC<CatalogPageProps> = async ({ params }) => {
   const { pageUrl } = await params
   const pageData = await findPagesData(pageUrl)
@@ -85,11 +84,20 @@ const CatalogPage: React.FC<CatalogPageProps> = async ({ params }) => {
   const initialProducts = await fetchProducts({
     categoryName: pageData.name,
     page: currentPage,
-    limit: 12,
+    limit: 10,
   })
 
+  const categoryData = await getProductsAnyCategories(
+    pageData.pageType,
+    pageData.url,
+  )
+
   if (!initialProducts) {
-    return <div>Error loading products</div>
+    return <div>Ошибка получения списка продуктов страницы</div>
+  }
+
+  if (!categoryData) {
+    console.log('Ошибка получения продуктов категории')
   }
 
   return (
@@ -98,6 +106,7 @@ const CatalogPage: React.FC<CatalogPageProps> = async ({ params }) => {
       currentPage={currentPage}
       initialProducts={initialProducts.products}
       totalCount={initialProducts.totalCount}
+      categoryData={categoryData}
     />
   )
 }

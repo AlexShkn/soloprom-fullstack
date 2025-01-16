@@ -38,6 +38,22 @@ export async function getProductsCounts() {
   }
 }
 
+export async function getProductsAnyCategories(type: string, name: string) {
+  try {
+    const response = await axios.get(`${BASE_URL}/${type}/${name}`)
+
+    if (response.status !== 200) {
+      console.error('Ошибка при получении продуктов категории', response)
+      return null
+    }
+
+    return response.data
+  } catch (error) {
+    console.error('Ошибка получения', error)
+    return null
+  }
+}
+
 export const fetchProducts = async (
   params: ProductsRequest,
 ): Promise<fetchProductsProps | null> => {
@@ -91,7 +107,6 @@ export async function getProductById(id: string) {
 }
 
 export async function getProductsByCategory(category: string) {
-  console.log('get category')
   const response = await axios.get(`${BASE_URL}/category/${category}`)
   return response
 }

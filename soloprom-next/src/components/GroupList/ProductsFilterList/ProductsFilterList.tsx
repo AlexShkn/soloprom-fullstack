@@ -8,6 +8,7 @@ import axios from 'axios'
 import { BASE_URL } from '@/utils/api/products'
 import CatalogFilters from '../Filter/CatalogFilters'
 import Skeleton from 'react-loading-skeleton'
+import 'react-loading-skeleton/dist/skeleton.css'
 
 interface Props {
   categoryName: string
@@ -15,6 +16,7 @@ interface Props {
   currentPage: number
   onChangePage: (newPage: number) => void
   initialProducts: cardDataProps[] | null
+  categoryData: cardDataProps[] | null
   totalCount: number
 }
 
@@ -25,6 +27,7 @@ export const ProductsFilterList: React.FC<Props> = ({
   productsType,
   initialProducts,
   totalCount,
+  categoryData,
 }) => {
   const router = useRouter()
   const searchParams = useSearchParams()
@@ -66,7 +69,7 @@ export const ProductsFilterList: React.FC<Props> = ({
 
       fetchData()
     }
-  }, [categoryName, currentPage, searchParams, initialProducts])
+  }, [categoryName, currentPage, searchParams, initialProducts, categoryData])
 
   const handleFiltersChange = useCallback(
     (filters: Record<string, string[]>) => {
@@ -121,7 +124,7 @@ export const ProductsFilterList: React.FC<Props> = ({
               onFiltersChange={handleFiltersChange}
               onSearchChange={handleSearchChange}
               currentPage={currentPage}
-              initialProducts={products}
+              categoryInitialList={categoryData}
             />
           )}
 

@@ -13,6 +13,7 @@ interface productType {
 
 @Injectable()
 export class TelegramService {
+  private readonly ALLOWED_ORIGIN = process.env.ALLOWED_ORIGIN;
   private readonly TOKEN = process.env.TELEGRAM_BOT_TOKEN;
   private readonly CHAT_ID = process.env.TELEGRAM_CHAT_ID;
   private readonly URL_API = `https://api.telegram.org/bot${this.TOKEN}/sendMessage`;
@@ -70,7 +71,7 @@ export class TelegramService {
       message += `<b>${fastState.name}</b>\n`;
       message += `<b>Id Товара:</b> ${fastState.productId}\n`;
       message += `<b>Размер:</b> ${fastState.variant}\n`;
-      message += `<b>Ссылка на товар:</b> https://soloprom.ru${fastState.url}\n`;
+      message += `<b>Ссылка на товар:</b> ${this.ALLOWED_ORIGIN}/products/${fastState.productId}\n`;
       message += `<b>Цена за 1 шт:</b> ${fastState.price}\n`;
     }
 
@@ -86,7 +87,7 @@ export class TelegramService {
         message += `<b>Id Товара:</b> ${product.productId}\n`;
         message += `<b>Размер:</b> ${product.variant}\n`;
         message += `<b>Тип:</b> ${product.productType}\n`;
-        message += `<b>Ссылка на товар:</b> https://soloprom.ru${product.url}\n`;
+        message += `<b>Ссылка на товар:</b> ${this.ALLOWED_ORIGIN}/products/${product.productId}\n`;
         message += `<b>Цена за 1 шт:</b> ${product.price}\n`;
 
         if (product.count > 1) {

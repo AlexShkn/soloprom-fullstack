@@ -23,7 +23,7 @@ for (const categoryKey in pagesDataRaw) {
   const categoryData = pagesDataRaw[categoryKey]
   flatPagesData[categoryKey] = {
     ...categoryData,
-    pageType: 'category',
+    pageType: categoryData.pageType,
     url: categoryKey,
     name: categoryKey,
   }

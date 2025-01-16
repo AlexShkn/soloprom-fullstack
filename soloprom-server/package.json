@@ -25,7 +25,8 @@
     "scrape-tires": "ts-node -r tsconfig-paths/register ./src/scripts/scrape.ts tires",
     "scrape-batteries": "ts-node -r tsconfig-paths/register ./src/scripts/scrape.ts batteries",
     "scrape-all": "ts-node -r tsconfig-paths/register ./src/scripts/scrape.ts all",
-    "image": "ts-node -r tsconfig-paths/register src/image-downloader/image-downloader.service.ts"
+    "image": "ts-node -r tsconfig-paths/register src/image-downloader/image-downloader.service.ts",
+    "add-products": "node add-products.js"
   },
   "dependencies": {
     "@nestjs-modules/ioredis": "^2.0.2",

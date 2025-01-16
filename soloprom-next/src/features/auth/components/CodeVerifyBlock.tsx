@@ -1,16 +1,18 @@
 'use client'
 import React from 'react'
 import { ConfirmFields } from './ConfirmFields'
-import { Input } from '@/components/ui/Input'
 import { ControllerRenderProps } from 'react-hook-form'
+import InputOTPHookForm from './InputOTPHookForm'
+import { Button } from '@/components/ui'
 
 interface Props {
   emailAddress: string
   isLoading: boolean
   isResendEnabled: boolean
   resetCode: () => void
-  countdown: number
-  field: ControllerRenderProps
+  countdown?: number
+  field: ControllerRenderProps<any, string>
+  onComplete?: () => void // Добавили onComplete
 }
 
 export const CodeVerifyBlock: React.FC<Props> = ({
@@ -20,16 +22,23 @@ export const CodeVerifyBlock: React.FC<Props> = ({
   isResendEnabled,
   resetCode,
   isLoading,
+  onComplete, // Получаем onComplete
 }) => {
   return (
     <ConfirmFields emailAddress={emailAddress}>
-      <Input
-        placeholder="123456"
-        disabled={isLoading}
-        {...field}
-        className={'mt-2'}
-      />
-      {countdown > 0 ? (
+      {countdown && countdown > 0 ? (
+        <InputOTPHookForm
+          field={field}
+          disabled={isLoading}
+          length={6}
+          onComplete={onComplete}
+          countdown={countdown}
+        />
+      ) : (
+        ''
+      )}
+
+      {countdown && countdown > 0 ? (
         <span className="mt-5 text-center">
           <span>Код отправлен. Время действия кода:</span>{' '}
           <span>{countdown}</span> <span>сек</span>
@@ -38,22 +47,19 @@ export const CodeVerifyBlock: React.FC<Props> = ({
         ''
       )}
 
-      {countdown === 0 && (
+      {countdown === 0 ? (
         <div className="mt-2 flex flex-col justify-center">
-          <p className="text_css_root_r67fmvx text_css_body-2_b1pxmc10">
+          <p className="text_css_root_r67fmvx text_css_body-2_b1pxmc10 mb-2.5">
             Время действия кода истекло.
           </p>
           {isResendEnabled && (
-            <p className="text-center">
-              <button
-                className="p-1 font-bold text-accentBlue"
-                onClick={resetCode}
-              >
-                Отправить новый
-              </button>
-            </p>
+            <Button type="submit" onClick={resetCode}>
+              Отправить новый
+            </Button>
           )}
         </div>
+      ) : (
+        ''
       )}
     </ConfirmFields>
   )

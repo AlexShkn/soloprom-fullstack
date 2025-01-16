@@ -1447,7 +1447,7 @@
     "container": "400",
     "voltage": "48",
     "defaultPrice": 456394,
-    "delivery": "30-45 дней",
+    "delivery": "до 21 дней",
     "sizes": {
       "815х740х475": 456394,
       "965х605х465": 456394,
@@ -1476,7 +1476,7 @@
     "container": "400",
     "voltage": "48",
     "defaultPrice": 617409,
-    "delivery": "30-45 дней",
+    "delivery": "до 21 дней",
     "sizes": {
       "815х740х475": 617409,
       "965х605х465": 617409,
@@ -1505,7 +1505,7 @@
     "container": "500",
     "voltage": "48",
     "defaultPrice": 732494,
-    "delivery": "30-45 дней",
+    "delivery": "до 21 дней",
     "sizes": {
       "820х520х620": 732494,
       "827х519х625": 732494,
@@ -1565,7 +1565,7 @@
     "container": "560",
     "voltage": "48",
     "defaultPrice": 887670,
-    "delivery": "30-45 дней",
+    "delivery": "до 21 дней",
     "sizes": {
       "815х905х475": 887670,
       "986х860х457": 887670,
@@ -1590,7 +1590,7 @@
     "container": "375",
     "voltage": "24",
     "defaultPrice": 261756,
-    "delivery": "30-45 дней",
+    "delivery": "до 21 дней",
     "sizes": {
       "830х218х615": 261756
     },
@@ -1613,7 +1613,7 @@
     "container": "775",
     "voltage": "48",
     "defaultPrice": 829927,
-    "delivery": "30-45 дней",
+    "delivery": "до 21 дней",
     "sizes": {
       "832х631х782": 829927,
       "1025х565х780": 829927,
@@ -1651,7 +1651,7 @@
     "container": "125",
     "voltage": "12",
     "defaultPrice": 36588,
-    "delivery": "30-45 дней",
+    "delivery": "до 21 дней",
     "sizes": {
       "513х189х220": 36588
     },
@@ -1673,7 +1673,7 @@
     "container": "120",
     "voltage": "12",
     "defaultPrice": 36588,
-    "delivery": "30-45 дней",
+    "delivery": "до 21 дней",
     "sizes": {
       "343х172х290": 36588
     },
@@ -1695,7 +1695,7 @@
     "container": "90",
     "voltage": "12",
     "defaultPrice": 23625,
-    "delivery": "30-45 дней",
+    "delivery": "до 21 дней",
     "sizes": {
       "343х172х235": 23625
     },
@@ -1717,7 +1717,7 @@
     "container": "140",
     "voltage": "8",
     "defaultPrice": 32000,
-    "delivery": "30-45 дней",
+    "delivery": "до 21 дней",
     "sizes": {
       "260х180х280": 32000
     },
@@ -1739,7 +1739,7 @@
     "container": "185",
     "voltage": "6",
     "defaultPrice": 31644,
-    "delivery": "30-45 дней",
+    "delivery": "до 21 дней",
     "sizes": {
       "243x189x277": 31644
     },
@@ -1761,7 +1761,7 @@
     "container": "175",
     "voltage": "6",
     "defaultPrice": 26500,
-    "delivery": "30-45 дней",
+    "delivery": "до 21 дней",
     "sizes": {
       "260х180х280": 26500
     },
@@ -1783,7 +1783,7 @@
     "container": "190",
     "voltage": "12",
     "defaultPrice": 41256,
-    "delivery": "30-45 дней",
+    "delivery": "до 21 дней",
     "sizes": {
       "517х275х241": 41256
     },
@@ -1805,7 +1805,7 @@
     "container": "155",
     "voltage": "12",
     "defaultPrice": 35520,
-    "delivery": "30-45 дней",
+    "delivery": "до 21 дней",
     "sizes": {
       "513х223х220": 35520
     },
@@ -1827,7 +1827,7 @@
     "container": "120",
     "voltage": "12",
     "defaultPrice": 36500,
-    "delivery": "30-45 дней",
+    "delivery": "до 21 дней",
     "sizes": {
       "513х189х220": 36500
     },
@@ -1849,7 +1849,7 @@
     "container": "90",
     "voltage": "12",
     "defaultPrice": 23600,
-    "delivery": "30-45 дней",
+    "delivery": "до 21 дней",
     "sizes": {
       "343х172х235": 23600
     },
@@ -1871,7 +1871,7 @@
     "container": "70",
     "voltage": "12",
     "defaultPrice": 0,
-    "delivery": "30-45 дней",
+    "delivery": "до 21 дней",
     "sizes": {
       "303х175х230": 0
     },
@@ -1893,7 +1893,7 @@
     "container": "60",
     "voltage": "12",
     "defaultPrice": 0,
-    "delivery": "30-45 дней",
+    "delivery": "до 21 дней",
     "sizes": {
       "260х170х220": 0
     },
@@ -1915,7 +1915,7 @@
     "container": "80",
     "voltage": "12",
     "defaultPrice": 18300,
-    "delivery": "30-45 дней",
+    "delivery": "до 21 дней",
     "sizes": {
       "353х175х190": 18300
     },
@@ -1937,7 +1937,7 @@
     "container": "60",
     "voltage": "12",
     "defaultPrice": 15000,
-    "delivery": "30-45 дней",
+    "delivery": "до 21 дней",
     "sizes": {
       "278х175х190": 15000
     },
@@ -1959,7 +1959,7 @@
     "container": "50",
     "voltage": "12",
     "defaultPrice": 16120,
-    "delivery": "30-45 дней",
+    "delivery": "до 21 дней",
     "sizes": {
       "242х175х190": 16120
     },
@@ -1981,7 +1981,7 @@
     "container": "38",
     "voltage": "12",
     "defaultPrice": 14300,
-    "delivery": "30-45 дней",
+    "delivery": "до 21 дней",
     "sizes": {
       "208x175x190": 14300
     },
@@ -2004,7 +2004,7 @@
     "container": "550",
     "voltage": "48",
     "defaultPrice": 224952,
-    "delivery": "30-45 дней",
+    "delivery": "до 21 дней",
     "sizes": {
       "830х627х627": 224952
     },
@@ -2034,7 +2034,7 @@
     "container": "450",
     "voltage": "48",
     "defaultPrice": 228638,
-    "delivery": "30-45 дней",
+    "delivery": "до 21 дней",
     "sizes": {
       "970х600х455": 228638
     },
@@ -2057,7 +2057,7 @@
     "container": "400",
     "voltage": "48",
     "defaultPrice": 214568,
-    "delivery": "30-45 дней",
+    "delivery": "до 21 дней",
     "sizes": {
       "815х740х475": 214568
     },
@@ -2080,7 +2080,7 @@
     "container": "460",
     "voltage": "48",
     "defaultPrice": 256778,
-    "delivery": "30-45 дней",
+    "delivery": "до 21 дней",
     "sizes": {
       "970х529х575(645)": 256778
     },
@@ -2103,7 +2103,7 @@
     "container": "440",
     "voltage": "48",
     "defaultPrice": 253260,
-    "delivery": "30-45 дней",
+    "delivery": "до 21 дней",
     "sizes": {
       "827x519x627": 253260
     },
@@ -2126,7 +2126,7 @@
     "container": "180",
     "voltage": "2x40",
     "defaultPrice": 189945,
-    "delivery": "30-45 дней",
+    "delivery": "до 21 дней",
     "sizes": {
       "816x696x402": 189945
     },
@@ -2149,7 +2149,7 @@
     "container": "240",
     "voltage": "24",
     "defaultPrice": 80903,
-    "delivery": "30-45 дней",
+    "delivery": "до 21 дней",
     "sizes": {
       "790х210х462": 80903
     },
@@ -2172,7 +2172,7 @@
     "container": "180",
     "voltage": "24",
     "defaultPrice": 73868,
-    "delivery": "30-45 дней",
+    "delivery": "до 21 дней",
     "sizes": {
       "790х210х402": 73868
     },
@@ -2195,7 +2195,7 @@
     "container": "480",
     "voltage": "80",
     "defaultPrice": 404513,
-    "delivery": "30-45 дней",
+    "delivery": "до 21 дней",
     "sizes": {
       "1025х708х784": 404513
     },
@@ -2218,7 +2218,7 @@
     "container": "620",
     "voltage": "80",
     "defaultPrice": 488933,
-    "delivery": "30-45 дней",
+    "delivery": "до 21 дней",
     "sizes": {
       "1025х708х784": 488933
     },
@@ -2241,7 +2241,7 @@
     "container": "750",
     "voltage": "48",
     "defaultPrice": 372855,
-    "delivery": "30-45 дней",
+    "delivery": "до 21 дней",
     "sizes": {
       "830х738х627": 372855
     },
@@ -2264,7 +2264,7 @@
     "container": "510",
     "voltage": "48",
     "defaultPrice": 256778,
-    "delivery": "30-45 дней",
+    "delivery": "до 21 дней",
     "sizes": {
       "975x610x462": 256778
     },
@@ -2287,7 +2287,7 @@
     "container": "775",
     "voltage": "48",
     "defaultPrice": 376373,
-    "delivery": "30-45 дней",
+    "delivery": "до 21 дней",
     "sizes": {
       "1220x425x784": 376373
     },
@@ -2317,7 +2317,7 @@
     "container": "625",
     "voltage": "48",
     "defaultPrice": 309540,
-    "delivery": "30-45 дней",
+    "delivery": "до 21 дней",
     "sizes": {
       "1005х525х627": 309540
     },
@@ -2340,7 +2340,7 @@
     "container": "425",
     "voltage": "48",
     "defaultPrice": 225120,
-    "delivery": "30-45 дней",
+    "delivery": "до 21 дней",
     "sizes": {
       "970х529х575(645)": 225120
     },
@@ -2363,7 +2363,7 @@
     "container": "620",
     "voltage": "48",
     "defaultPrice": 306023,
-    "delivery": "30-45 дней",
+    "delivery": "до 21 дней",
     "sizes": {
       "975x465x780": 306023,
       "1223х355х78": 306023
@@ -2395,7 +2395,7 @@
     "container": "465",
     "voltage": "48",
     "defaultPrice": 249743,
-    "delivery": "30-45 дней",
+    "delivery": "до 21 дней",
     "sizes": {
       "975x460x780": 249743
     },
@@ -2418,7 +2418,7 @@
     "container": "840",
     "voltage": "24",
     "defaultPrice": 211050,
-    "delivery": "30-45 дней",
+    "delivery": "до 21 дней",
     "sizes": {
       "830х425х627": 211050
     },
@@ -2441,7 +2441,7 @@
     "container": "375",
     "voltage": "24",
     "defaultPrice": 116078,
-    "delivery": "30-45 дней",
+    "delivery": "до 21 дней",
     "sizes": {
       "624х284х627": 116078,
       "760х170х675": 116078,
@@ -2466,7 +2466,7 @@
     "container": "400",
     "voltage": "48",
     "defaultPrice": 221603,
-    "delivery": "30-45 дней",
+    "delivery": "до 21 дней",
     "sizes": {
       "970х600х455": 221603
     },
@@ -2489,7 +2489,7 @@
     "container": "560",
     "voltage": "2x40",
     "defaultPrice": 360360,
-    "delivery": "30-45 дней",
+    "delivery": "до 21 дней",
     "sizes": {
       "1142x1030x537": 360360
     },
@@ -2512,7 +2512,7 @@
     "container": "350",
     "voltage": "2x40",
     "defaultPrice": 309540,
-    "delivery": "30-45 дней",
+    "delivery": "до 21 дней",
     "sizes": {
       "1018x826x462": 309540
     },
@@ -2535,7 +2535,7 @@
     "container": "280",
     "voltage": "2x40",
     "defaultPrice": 260295,
-    "delivery": "30-45 дней",
+    "delivery": "до 21 дней",
     "sizes": {
       "856х849х462": 260295,
       "1018х693х462": 260295
@@ -2559,7 +2559,7 @@
     "container": "210",
     "voltage": "2x40",
     "defaultPrice": 204015,
-    "delivery": "30-45 дней",
+    "delivery": "до 21 дней",
     "sizes": {
       "874x678x462": 204015,
       "816х696х462": 204015
@@ -2583,7 +2583,7 @@
     "container": "400",
     "voltage": "48",
     "defaultPrice": 253260,
-    "delivery": "30-45 дней",
+    "delivery": "до 21 дней",
     "sizes": {
       "965х395х700": 253260
     },
@@ -2606,7 +2606,7 @@
     "container": "300",
     "voltage": "24",
     "defaultPrice": 123113,
-    "delivery": "30-45 дней",
+    "delivery": "до 21 дней",
     "sizes": {
       "645х245х565": 123113
     },
@@ -2629,7 +2629,7 @@
     "container": "500",
     "voltage": "48",
     "defaultPrice": 144218,
-    "delivery": "30-45 дней",
+    "delivery": "до 21 дней",
     "sizes": {
       "827х519х627": 144218
     },
@@ -2652,7 +2652,7 @@
     "container": "200",
     "voltage": "6",
     "defaultPrice": 0,
-    "delivery": "30-45 дней",
+    "delivery": "до 21 дней",
     "sizes": {
       "243x189x277": 0
     },
@@ -2675,7 +2675,7 @@
     "container": "185",
     "voltage": "6",
     "defaultPrice": 0,
-    "delivery": "30-45 дней",
+    "delivery": "до 21 дней",
     "sizes": {
       "243x189x277": 0
     },
@@ -2698,7 +2698,7 @@
     "container": "120",
     "voltage": "12",
     "defaultPrice": 0,
-    "delivery": "30-45 дней",
+    "delivery": "до 21 дней",
     "sizes": {
       "343x175x295": 0
     },
@@ -2721,7 +2721,7 @@
     "container": "400",
     "voltage": "40",
     "defaultPrice": 182910,
-    "delivery": "30-45 дней",
+    "delivery": "до 21 дней",
     "sizes": {
       "815х520х462": 182910
     },
@@ -2744,7 +2744,7 @@
     "container": "300",
     "voltage": "48",
     "defaultPrice": 218085,
-    "delivery": "30-45 дней",
+    "delivery": "до 21 дней",
     "sizes": {
       "940х360х565": 218085
     },
@@ -2767,7 +2767,7 @@
     "container": "240",
     "voltage": "24",
     "defaultPrice": 75000,
-    "delivery": "30-45 дней",
+    "delivery": "до 21 дней",
     "sizes": {
       "620х210х627": 75000
     },
@@ -2790,7 +2790,7 @@
     "container": "225",
     "voltage": "24",
     "defaultPrice": 94973,
-    "delivery": "30-45 дней",
+    "delivery": "до 21 дней",
     "sizes": {
       "750х170х585": 94973
     },
@@ -2813,7 +2813,7 @@
     "container": "210",
     "voltage": "24",
     "defaultPrice": 63700,
-    "delivery": "30-45 дней",
+    "delivery": "до 21 дней",
     "sizes": {
       "645х200х565": 63700
     },
@@ -2836,7 +2836,7 @@
     "container": "200",
     "voltage": "24",
     "defaultPrice": 63700,
-    "delivery": "30-45 дней",
+    "delivery": "до 21 дней",
     "sizes": {
       "660х150х680": 63700
     },
@@ -9397,7 +9397,7 @@
     "container": "375",
     "voltage": "48",
     "defaultPrice": 507490,
-    "delivery": "30-45 дней",
+    "delivery": "до 21 дней",
     "sizes": {
       "990х445х635": 507490
     },

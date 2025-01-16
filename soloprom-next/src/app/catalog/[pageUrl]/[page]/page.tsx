@@ -1,8 +1,11 @@
 import { Metadata } from 'next'
-import CategoryPageClient from '../CategoryPageClient' // Путь к Client компоненту
-import { findPagesData, pagesData } from '../server' // Путь к серверным данным
-import { fetchProducts, getTotalProductCount } from '@/utils/api/products' // Путь к API
-import { cardDataProps } from '@/types/products.types'
+import CategoryPageClient from '../CategoryPageClient'
+import { findPagesData, pagesData } from '../server'
+import {
+  fetchProducts,
+  getProductsAnyCategories,
+  getTotalProductCount,
+} from '@/utils/api/products'
 
 export type Params = {
   pageUrl: string
@@ -17,7 +20,7 @@ interface CatalogPageProps {
 
 export async function generateStaticParams() {
   const params: Params[] = []
-  const limit = 12 // Количество товаров на странице
+  const limit = 10 // Количество товаров на странице
 
   for (const pageUrl in pagesData) {
     const pageData = pagesData[pageUrl]
@@ -95,11 +98,20 @@ const CatalogPaginationPage: React.FC<CatalogPageProps> = async ({
   const initialProducts = await fetchProducts({
     categoryName: pageData.name,
     page: currentPage,
-    limit: 12,
+    limit: 10,
   })
 
+  const categoryData = await getProductsAnyCategories(
+    pageData.pageType,
+    pageData.url,
+  )
+
   if (!initialProducts) {
-    return <div>Error loading products</div>
+    return <div>Ошибка получения списка продуктов страницы</div>
+  }
+
+  if (!categoryData) {
+    console.log('Ошибка получения продуктов категории')
   }
 
   return (
@@ -108,6 +120,7 @@ const CatalogPaginationPage: React.FC<CatalogPageProps> = async ({
       currentPage={currentPage}
       initialProducts={initialProducts.products}
       totalCount={initialProducts.totalCount}
+      categoryData={categoryData}
     />
   )
 }

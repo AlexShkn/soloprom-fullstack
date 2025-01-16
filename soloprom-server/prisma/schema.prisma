@@ -132,17 +132,17 @@ model Token {
 }
 
 model User {
-  id       String @id @default(uuid())
-  email    String @unique
-  password String
+  id           String  @id @default(uuid())
+  email        String  @unique
+  password     String?
+  tempPassword String?
 
   displayName String
   picture     String?
 
-  role UserRole @default(REGULAR)
-
-  isVerified         Boolean @default(false) @map("is_verified")
-  isTwoFactorEnabled Boolean @default(false) @map("is_two_factor_enabled")
+  role               UserRole @default(REGULAR)
+  isVerified         Boolean  @default(false) @map("is_verified")
+  isTwoFactorEnabled Boolean  @default(false) @map("is_two_factor_enabled")
 
   method AuthMethod
 

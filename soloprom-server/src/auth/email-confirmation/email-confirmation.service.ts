@@ -9,6 +9,7 @@ import {
 import { AuthMethod, TokenType } from '@prisma/client';
 import { Request } from 'express';
 import { v4 as uuidv4 } from 'uuid';
+import { hash } from 'argon2';
 
 import { MailService } from '@/libs/mail/mail.service';
 import { PrismaService } from '@/prisma/prisma.service';
@@ -32,9 +33,25 @@ export class EmailConfirmationService {
   ) {}
 
   public async register(dto: RegisterDto) {
-    const isExists = await this.userService.findByEmail(dto.email);
+    const existingUser = await this.userService.findByEmail(dto.email);
 
-    if (isExists) {
+    if (existingUser) {
+      if (!existingUser.isVerified) {
+        // Пользователь существует, но не подтвержден, сохраняем временный пароль и отправляем код подтверждения
+        const hashedPassword = await hash(dto.password);
+        await this.prismaService.user.update({
+          where: { id: existingUser.id },
+          data: { tempPassword: hashedPassword },
+        });
+
+        await this.twoFactorAuthService.sendTwoFactorToken(existingUser.email);
+        return {
+          message:
+            'Пользователь с таким email уже существует, но не подтвержден. Пожалуйста, введите код, отправленный на ваш email, для подтверждения вашей почты.',
+        };
+      }
+
+      // Пользователь существует и подтвержден
       throw new ConflictException(
         'Регистрация не удалась. Пользователь с таким email уже существует. Пожалуйста, используйте другой email или войдите в систему.',
       );
@@ -48,7 +65,6 @@ export class EmailConfirmationService {
       AuthMethod.CREDENTIALS,
       false,
     );
-
     // Отправка кода для подтверждения почты
     await this.twoFactorAuthService.sendTwoFactorToken(newUser.email);
 
@@ -61,17 +77,25 @@ export class EmailConfirmationService {
   public async confirmRegistration(email: string, code: string) {
     // Проверяем введенный код
     await this.twoFactorAuthService.validateTwoFactorToken(email, code);
-
-    // Обновляем статус пользователя на подтвержденный
     const user = await this.userService.findByEmail(email);
+
     if (!user) {
       throw new NotFoundException('Пользователь не найден.');
     }
 
-    await this.prismaService.user.update({
-      where: { id: user.id },
-      data: { isVerified: true },
-    });
+    let newPassword;
+    if (user.tempPassword) {
+      newPassword = user.tempPassword;
+      await this.prismaService.user.update({
+        where: { id: user.id },
+        data: { password: newPassword, isVerified: true, tempPassword: null },
+      });
+    } else {
+      await this.prismaService.user.update({
+        where: { id: user.id },
+        data: { isVerified: true },
+      });
+    }
 
     return {
       message: 'Почта успешно подтверждена. Вы можете войти в свой аккаунт.',

@@ -117,10 +117,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
       <section className="product-page">
         <div className="product-page__container">
           <ProductPageCard cardData={productData} />
-          <ProductPageTabs
-            category={productData.categoryName}
-            productId={productData.productId}
-          />
+          <ProductPageTabs productDescr={productData.productDescr} />
           <ProductPageBenefits />
         </div>
       </section>
