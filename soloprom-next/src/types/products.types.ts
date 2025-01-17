@@ -12,7 +12,7 @@ export interface cardDataProps {
   volumes?: { [size: string]: number | undefined }
   models?: string[]
   productType: string
-  brand: string
+  brandName: string
   country: string
   size?: string
   load_index?: string

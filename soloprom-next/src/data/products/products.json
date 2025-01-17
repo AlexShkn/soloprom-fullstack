@@ -18,7 +18,7 @@
         "group": ["et", "ep", "esh"],
         "delivery": "30-45 дней",
         "type": "Тяговый",
-        "brand": "enpower",
+        "brandName": "enpower",
         "country": "Германия",
         "plates": "3PzS",
         "container": "375Ah",
@@ -40,7 +40,7 @@
         "group": [],
         "delivery": "30-45 дней",
         "type": "Полутяговая",
-        "brand": "Elhim",
+        "brandName": "Elhim",
         "country": "РОССИЯ",
         "voltage": "12 V",
         "container": "125 Ah",
@@ -63,7 +63,7 @@
           "14.00-24": 110859
         },
         "type": "Пневматическая",
-        "brand": "Galaxy",
+        "brandName": "Galaxy",
         "country": "Индия",
         "size": "24",
         "discount": 5,
@@ -90,7 +90,7 @@
         "delivery": "2-3 дня",
         "type": "Трансмиссионное",
         "country": "Россия",
-        "brand": "G-Energy"
+        "brandName": "G-Energy"
       }
     ]
   }

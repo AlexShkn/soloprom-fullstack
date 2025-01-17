@@ -53,7 +53,7 @@ export const ProductPageCardDescription: React.FC<DescriptionTypes> = ({
     productId,
     categoryName,
     productType,
-    brand,
+    brandName,
     country,
     sizes,
     load_index,
@@ -79,7 +79,7 @@ export const ProductPageCardDescription: React.FC<DescriptionTypes> = ({
     <div className="product-page-card__description">
       <div className="product-page-card__head">
         <img
-          src={`/img/catalog/brands-logo/${brand}.jpg`}
+          src={`/img/catalog/brands-logo/${brandName}.jpg`}
           className="product-page-card__brand-logo"
           alt=""
         />
@@ -103,7 +103,7 @@ export const ProductPageCardDescription: React.FC<DescriptionTypes> = ({
         {voltage && renderDescriptionItem('Напряжение', voltage, 'V')}
         {plates && renderDescriptionItem('Тип пластин', plates)}
         {viscosity && renderDescriptionItem('Вязкость', viscosity)}
-        {brand && renderDescriptionItem('Бренд', brand)}
+        {brandName && renderDescriptionItem('Бренд', brandName)}
         {country && renderDescriptionItem('Производитель', country)}
 
         {sizes && (

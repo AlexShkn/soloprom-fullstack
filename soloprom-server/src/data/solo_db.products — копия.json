@@ -21,6 +21,18 @@
         "shini-dlya-frontalnih-pogruzchikov",
         "shini-dlya-kolesnih-ekskavatorov",
         "shini-dlya-asfaltoukladchikov-i-katkov"
+      ],
+      "brands": [
+        "Galaxy",
+        "APOLLO",
+        "NAAATS",
+        "ADVANCE",
+        "MRL",
+        "Emrald",
+        "CARLISLE",
+        "DUNLOP",
+        "ET-STONE",
+        "AOTAI"
       ]
     },
     {
@@ -33,6 +45,19 @@
         "accumulyatori-dlya-electrotelezhek",
         "accumulyatori-dlya-shtabelerov",
         "accumulyatori-dlya-polletoperevozchikov"
+      ],
+      "brands": [
+        "Union",
+        "EnPower",
+        "elhim",
+        "LT",
+        "Noblelift",
+        "Chilwee",
+        "Torch",
+        "Nexsys",
+        "Hawker",
+        "Advanced-Energy",
+        "Tianneng"
       ]
     },
     {
@@ -44,7 +69,8 @@
         "masla-gidravlicheskie",
         "antifreezi"
       ],
-      "groups": []
+      "groups": [],
+      "brands": ["G-Energy"]
     }
   ],
   "products": []

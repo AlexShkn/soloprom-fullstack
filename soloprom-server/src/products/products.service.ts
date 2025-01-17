@@ -14,7 +14,7 @@ export class ProductsService {
     page: number;
     limit: number;
     sort?: string;
-    filters?: Record<string, string | string[]>;
+    filters?: string | Record<string, string | string[]>;
     search?: string;
   }) {
     const { categoryName, page, limit, sort, filters, search } = params;
@@ -34,18 +34,51 @@ export class ProductsService {
         },
       ];
     }
+
+    let parsedFilters: Record<string, string | string[]> | undefined;
     if (filters) {
-      for (const key in filters) {
-        if (filters.hasOwnProperty(key)) {
-          const filterValue = filters[key];
-          if (Array.isArray(filterValue)) {
-            where[key] = { in: filterValue };
-          } else {
-            where[key] = filterValue;
+      if (typeof filters === 'string') {
+        try {
+          parsedFilters = JSON.parse(filters);
+        } catch (e) {
+          console.error('Error parsing filters:', e);
+          parsedFilters = {};
+        }
+      } else {
+        parsedFilters = filters;
+      }
+
+      if (parsedFilters) {
+        for (const key in parsedFilters) {
+          if (parsedFilters.hasOwnProperty(key)) {
+            const filterValue = parsedFilters[key];
+            if (Array.isArray(filterValue)) {
+              if (key === 'sizes') {
+                where.OR = [
+                  ...(where.OR || []),
+                  ...filterValue.map((size) => ({
+                    sizes: {
+                      path: [`${size}`],
+                      not: null,
+                    },
+                  })),
+                  {
+                    size: {
+                      in: filterValue,
+                    },
+                  },
+                ];
+              } else {
+                where[key] = { in: filterValue };
+              }
+            } else {
+              where[key] = filterValue;
+            }
           }
         }
       }
     }
+
     if (search) {
       where.OR = [
         {
@@ -184,6 +217,19 @@ export class ProductsService {
           groupsMap.set(group, createdGroup.id);
         }
       }
+      if (category.brands && Array.isArray(category.brands)) {
+        for (const brand of category.brands) {
+          const createdBrand = await prisma.brand.upsert({
+            where: { name: brand },
+            update: { categoryId: createdCategory.id },
+            create: {
+              name: brand,
+              categoryId: createdCategory.id, // Привязка к категории
+            },
+          });
+          groupsMap.set(brand, createdBrand.id);
+        }
+      }
     }
 
     // 2. Загрузка продуктов и их связей
@@ -226,7 +272,7 @@ export class ProductsService {
         container: product.container || null,
         plates: product.plates || null,
         country: product.country || null,
-        brand: product.brand || null,
+        brandName: product.brandName || null,
         productType: product.productType || null,
       };
 

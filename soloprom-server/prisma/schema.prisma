@@ -18,7 +18,7 @@ model Product {
   descr           String?
   url             String?
   img             String?
-  brand           String?
+  brandName       String?
   country         String?
   plates          String?
   container       String?
@@ -37,6 +37,7 @@ model Product {
 
   Category    Category    @relation(fields: [categoryName], references: [name])
   SubCategory SubCategory @relation(fields: [subcategoryName], references: [name])
+  Brand       Brand?      @relation(fields: [brandName], references: [name])
   groups      Group[]     @relation("ProductGroups")
 
   id            String @id @default(uuid())
@@ -95,6 +96,15 @@ model Group {
   categoryId String // Связь с категорией
   Category   Category  @relation(fields: [categoryId], references: [id])
   products   Product[] @relation("ProductGroups")
+  createdAt  DateTime  @default(now())
+  updatedAt  DateTime  @updatedAt
+}
+
+model Brand {
+  id         String    @id @default(uuid())
+  name       String    @unique
+  categoryId String
+  products   Product[]
   createdAt  DateTime  @default(now())
   updatedAt  DateTime  @updatedAt
 }

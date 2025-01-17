@@ -29,6 +29,18 @@ const CATEGORIES = [
       'shini-dlya-kolesnih-ekskavatorov',
       'shini-dlya-asfaltoukladchikov-i-katkov',
     ],
+    brands: [
+      'Galaxy',
+      'APOLLO',
+      'NAAATS',
+      'ADVANCE',
+      'MRL',
+      'Emrald',
+      'CARLISLE',
+      'DUNLOP',
+      'ET-STONE',
+      'AOTAI',
+    ],
   },
   {
     name: 'battery',
@@ -41,6 +53,19 @@ const CATEGORIES = [
       'accumulyatori-dlya-shtabelerov',
       'accumulyatori-dlya-polletoperevozchikov',
     ],
+    brands: [
+      'Union',
+      'EnPower',
+      'elhim',
+      'LT',
+      'Noblelift',
+      'Chilwee',
+      'Torch',
+      'Nexsys',
+      'Hawker',
+      'Advanced-Energy',
+      'Tianneng',
+    ],
   },
   {
     name: 'oils',
@@ -52,6 +77,7 @@ const CATEGORIES = [
       'antifreezi',
     ],
     groups: [],
+    brands: ['G-Energy'],
   },
 ];
 

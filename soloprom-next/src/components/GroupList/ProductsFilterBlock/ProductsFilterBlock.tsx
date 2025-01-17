@@ -1,7 +1,7 @@
 'use client'
 import React, { useState, useCallback, useTransition, useEffect } from 'react'
 import './ProductsFilterBlock.scss'
-import { useRouter, useSearchParams } from 'next/navigation'
+import { useRouter } from 'next/navigation'
 import { cardDataProps } from '@/types/products.types'
 import { FilteredList } from '@/components/GroupList/FilteredList/FilteredList'
 import axios from 'axios'
@@ -26,83 +26,63 @@ export const ProductsFilterBlock: React.FC<Props> = ({
   onChangePage,
   productsType,
   initialProducts,
-  totalCount,
   categoryData,
+  totalCount,
 }) => {
   const router = useRouter()
-  const searchParams = useSearchParams()
   const [isPending, startTransition] = useTransition()
   const [products, setProductsData] = useState<cardDataProps[]>(
     initialProducts || [],
   )
   const [totalProductsCount, setTotalProductsCount] = useState(totalCount)
   const [dataIsLoading, setDataIsLoading] = useState(false)
+  const [currentFilters, setCurrentFilters] = useState<
+    Record<string, string[]>
+  >({})
+  const [currentSearch, setCurrentSearch] = useState<string>('')
+  const [currentSort, setCurrentSort] = useState<string>('')
 
-  useEffect(() => {
-    // Загрузка данных только если есть изменения в фильтрах, сортировке, странице
-    if (searchParams.size > 0 || currentPage > 1) {
-      setDataIsLoading(true)
-      const fetchData = async () => {
-        try {
-          const params = {
-            categoryName: categoryName,
-            page: currentPage,
-            limit: 12,
-            filters: searchParams.get('filters')
-              ? JSON.parse(searchParams.get('filters')!)
-              : null,
-            search: searchParams.get('search'),
-            sort: searchParams.get('sort'),
-          }
-
-          const response = await axios.get<any>(`${BASE_URL}/get-products`, {
-            params,
-          })
-          setProductsData(response.data.products)
-          setTotalProductsCount(response.data.totalCount)
-          setDataIsLoading(false)
-        } catch (error) {
-          console.error('Error fetching products:', error)
-          setDataIsLoading(false)
-        }
+  const fetchData = async () => {
+    setDataIsLoading(true)
+    try {
+      const params = {
+        categoryName: categoryName,
+        page: currentPage,
+        limit: 12,
+        filters:
+          Object.keys(currentFilters).length > 0
+            ? JSON.stringify(currentFilters)
+            : null,
+        search: currentSearch,
+        sort: currentSort,
       }
-
-      fetchData()
+      const response = await axios.get<any>(`${BASE_URL}/get-products`, {
+        params,
+      })
+      setProductsData(response.data.products)
+      setTotalProductsCount(response.data.totalCount)
+      setDataIsLoading(false)
+    } catch (error) {
+      console.error('Error fetching products:', error)
+      setDataIsLoading(false)
     }
-  }, [categoryName, currentPage, searchParams, initialProducts, categoryData])
+  }
 
-  const handleFiltersChange = useCallback(
-    (filters: Record<string, string[]>) => {
-      startTransition(() => {
-        const params = new URLSearchParams(window.location.search)
-        params.set('filters', JSON.stringify(filters))
-        router.push(`/catalog/${categoryName}?${params.toString()}`)
-      })
-    },
-    [router, categoryName, startTransition],
-  )
+  const handleFiltersChange = (filters: Record<string, string[]>) => {
+    setCurrentFilters(filters)
+  }
 
-  const handleSortChange = useCallback(
-    (sort: string) => {
-      startTransition(() => {
-        const params = new URLSearchParams(window.location.search)
-        params.set('sort', sort)
-        router.push(`/catalog/${categoryName}?${params.toString()}`)
-      })
-    },
-    [router, categoryName, startTransition],
-  )
+  const handleSortChange = (sort: string) => {
+    setCurrentSort(sort)
+  }
 
-  const handleSearchChange = useCallback(
-    (search: string) => {
-      startTransition(() => {
-        const params = new URLSearchParams(window.location.search)
-        params.set('search', search)
-        router.push(`/catalog/${categoryName}?${params.toString()}`)
-      })
-    },
-    [router, categoryName, startTransition],
-  )
+  const handleSearchChange = (search: string) => {
+    setCurrentSearch(search)
+  }
+
+  const handleApplyFilters = () => {
+    startTransition(fetchData)
+  }
 
   return (
     <section className="group-list section-offset">
@@ -123,6 +103,7 @@ export const ProductsFilterBlock: React.FC<Props> = ({
               categoryName={categoryName}
               onFiltersChange={handleFiltersChange}
               onSearchChange={handleSearchChange}
+              onApplyFilters={handleApplyFilters}
               currentPage={currentPage}
               categoryInitialList={categoryData}
             />

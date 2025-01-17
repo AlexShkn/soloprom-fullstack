@@ -1,13 +1,13 @@
 'use client'
-import React, { useState, useEffect, useCallback } from 'react'
+import React, { useState, useEffect, useCallback, useMemo } from 'react'
 import { Accordion } from '@/components/ui/accordion'
 import { FilterCheckbox } from './FilterCheckbox'
 import { FilterInterval } from './FilterInterval'
 import { FilterItem } from './FilterItem'
 import { FilterList } from './FilterList'
-import { FilterSlider } from './FilterSlider'
 import { transformJson } from '@/components/CategoryPageHero/SidePanel/SidePanel'
 import { cardDataProps } from '@/types/products.types'
+import { Filter } from 'lucide-react'
 
 const pagesDataRaw = require('@/data/products/pagesData.json')
 const transformData = transformJson(pagesDataRaw)
@@ -16,40 +16,44 @@ interface Props {
   productsType: string
   categoryName: string
   currentPage: number
+  initialFilters?: Record<string, string[]>
   onFiltersChange: (filters: Record<string, string[]>) => void
   onSearchChange: (search: string) => void
+  onApplyFilters: () => void
   categoryInitialList: cardDataProps[] | null
+  initialSearch?: string
 }
 
 const CatalogFilters: React.FC<Props> = ({
   productsType,
   categoryName,
   onSearchChange,
+  onApplyFilters,
+  initialFilters,
+  initialSearch,
   onFiltersChange,
   currentPage,
   categoryInitialList,
 }) => {
-  const [filteredData, setFilteredData] = useState<cardDataProps[]>(
-    categoryInitialList || [],
+  const [filters, setFilters] = useState<Record<string, string[]>>(
+    initialFilters || {},
   )
-  const [filters, setFilters] = useState<Record<string, string[]>>({})
-  const [search, setSearch] = useState<string>('')
-  const [brands, setBrands] = useState<string[]>([])
-  const [prices, setPrices] = useState<{
-    min: number
-    max: number
-  } | null>(null)
-  const [volumes, setVolumes] = useState<string[]>([])
-  const [sizes, setSizes] = useState<string[]>([])
-  const [plates, setPlates] = useState<string[]>([])
-  const [voltage, setVoltage] = useState<number[]>([])
-  const [container, setContainer] = useState<number[]>([])
-  const [models, setModels] = useState<string[]>([])
-  const [countries, setCountries] = useState<string[]>([])
-  const [radiuses, setRadiuses] = useState<string[]>([])
-  const createFiltersFields = (data: cardDataProps[]) => {
-    if (!data || data.length === 0) {
-      return
+  const [search, setSearch] = useState<string>(initialSearch || '')
+
+  const filterData = useMemo(() => {
+    if (!categoryInitialList || categoryInitialList.length === 0) {
+      return {
+        brands: [],
+        prices: null,
+        volumes: [],
+        sizes: [],
+        plates: [],
+        voltage: [],
+        container: [],
+        models: [],
+        countries: [],
+        radiuses: [],
+      }
     }
 
     let allBrands: string[] = []
@@ -64,10 +68,10 @@ const CatalogFilters: React.FC<Props> = ({
     let allCountries: (string | null)[] = []
     let allRadiuses: (string | null)[] = []
 
-    data.forEach((item) => {
+    categoryInitialList.forEach((item) => {
       // Brands
-      if (item.brand) {
-        allBrands.push(item.brand)
+      if (item.brandName) {
+        allBrands.push(item.brandName)
       }
       // Prices
       if (item.defaultPrice) {
@@ -137,30 +141,29 @@ const CatalogFilters: React.FC<Props> = ({
       .filter((c) => !isNaN(c))
       .sort((a, b) => a - b)
 
-    setBrands(uniqueBrands)
-    setPrices(
-      minPrice !== Infinity && maxPrice !== -Infinity
-        ? { min: minPrice, max: maxPrice }
-        : null,
-    )
-    setVolumes(uniqueVolumes)
-    setSizes(uniqueSizes)
-    setPlates(uniquePlates)
-    setVoltage(parsedVoltage)
-    setContainer(parsedContainer)
-    setModels(uniqueModels)
-    setCountries(uniqueCountries)
-    setRadiuses(uniqueRadiuses)
-  }
-
-  useEffect(() => {
-    if (categoryInitialList && categoryInitialList.length > 0) {
-      createFiltersFields(categoryInitialList)
+    return {
+      brands: uniqueBrands,
+      prices:
+        minPrice !== Infinity && maxPrice !== -Infinity
+          ? { min: minPrice, max: maxPrice }
+          : null,
+      volumes: uniqueVolumes,
+      sizes: uniqueSizes,
+      plates: uniquePlates,
+      voltage: parsedVoltage,
+      container: parsedContainer,
+      models: uniqueModels,
+      countries: uniqueCountries,
+      radiuses: uniqueRadiuses,
     }
   }, [categoryInitialList])
 
-  const categoryData = transformData[productsType]
+  useEffect(() => {
+    setFilters(initialFilters || {})
+    setSearch(initialSearch || '')
+  }, [initialFilters, initialSearch])
 
+  const categoryData = transformData[productsType]
   const groups = categoryData.group
 
   const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -168,6 +171,7 @@ const CatalogFilters: React.FC<Props> = ({
     setSearch(value)
     onSearchChange(value)
   }
+
   const handleFilterChange = useCallback(
     (name: string, value: string | string[], isChecked: boolean) => {
       setFilters((prevFilters) => {
@@ -198,9 +202,10 @@ const CatalogFilters: React.FC<Props> = ({
     },
     [setFilters],
   )
-  // useEffect(() => {
-  //   onFiltersChange(filters)
-  // }, [filters, onFiltersChange])
+
+  useEffect(() => {
+    onFiltersChange(filters)
+  }, [filters, onFiltersChange])
 
   return (
     <Accordion
@@ -217,139 +222,186 @@ const CatalogFilters: React.FC<Props> = ({
         />
       )}
 
-      {prices && (
+      {filterData.prices && (
         <FilterItem title="Цена" value="price">
-          <FilterInterval title="" min={prices.min} max={prices.max} />
+          <FilterInterval
+            title=""
+            min={filterData.prices.min}
+            max={filterData.prices.max}
+          />
         </FilterItem>
       )}
       {/* {prices && (
-        <FilterItem title="Цена" value="price">
-          <FilterSlider title="" min={prices.min} max={prices.max} />
-        </FilterItem>
-      )} */}
-      {brands && brands.length > 0 && (
+<FilterItem title="Цена" value="price">
+  <FilterSlider title="" min={prices.min} max={prices.max} />
+</FilterItem>
+)} */}
+      {filterData.brands && filterData.brands.length > 0 && (
         <FilterItem title="Бренды" value="brands">
           <FilterCheckbox
             title=""
-            options={brands.map((brand) => ({ label: brand, value: brand }))}
-            showMoreCount={brands.length > 5 ? brands.length - 5 : 0}
+            options={filterData.brands.map((brand) => ({
+              label: brand,
+              value: brand,
+            }))}
+            showMoreCount={
+              filterData.brands.length > 5 ? filterData.brands.length - 5 : 0
+            }
             onCheckboxChange={(value, isChecked) =>
-              handleFilterChange('brand', value, isChecked)
+              handleFilterChange('brandName', value, isChecked)
             }
           />
         </FilterItem>
       )}
-      {volumes && volumes.length > 0 && (
+      {filterData.volumes && filterData.volumes.length > 0 && (
         <FilterItem title="Объем" value="volumes">
           <FilterCheckbox
             title=""
-            options={volumes.map((volume) => ({
+            options={filterData.volumes.map((volume) => ({
               label: volume,
               value: volume,
             }))}
-            showMoreCount={volumes.length > 5 ? volumes.length - 5 : 0}
+            showMoreCount={
+              filterData.volumes.length > 5 ? filterData.volumes.length - 5 : 0
+            }
             onCheckboxChange={(value, isChecked) =>
               handleFilterChange('volumes', value, isChecked)
             }
           />
         </FilterItem>
       )}
-      {sizes && sizes.length > 0 && (
+      {filterData.sizes && filterData.sizes.length > 0 && (
         <FilterItem title="Размеры" value="sizes">
           <FilterCheckbox
             title=""
-            options={sizes.map((size) => ({ label: size, value: size }))}
-            showMoreCount={sizes.length > 5 ? sizes.length - 5 : 0}
+            options={filterData.sizes.map((size) => ({
+              label: size,
+              value: size,
+            }))}
+            showMoreCount={
+              filterData.sizes.length > 5 ? filterData.sizes.length - 5 : 0
+            }
             onCheckboxChange={(value, isChecked) =>
               handleFilterChange('sizes', value, isChecked)
             }
           />
         </FilterItem>
       )}
-      {plates && plates.length > 0 && (
+      {filterData.plates && filterData.plates.length > 0 && (
         <FilterItem title="Тип пластин" value="plates">
           <FilterCheckbox
             title=""
-            options={plates.map((plate) => ({ label: plate, value: plate }))}
-            showMoreCount={plates.length > 5 ? plates.length - 5 : 0}
+            options={filterData.plates.map((plate) => ({
+              label: plate,
+              value: plate,
+            }))}
+            showMoreCount={
+              filterData.plates.length > 5 ? filterData.plates.length - 5 : 0
+            }
             onCheckboxChange={(value, isChecked) =>
               handleFilterChange('plates', value, isChecked)
             }
           />
         </FilterItem>
       )}
-      {voltage && voltage.length > 0 && (
+      {filterData.voltage && filterData.voltage.length > 0 && (
         <FilterItem title="Напряжение, В" value="voltage">
           <FilterCheckbox
             title=""
-            options={voltage.map((volt) => ({
+            options={filterData.voltage.map((volt) => ({
               label: String(volt),
               value: String(volt),
             }))}
-            showMoreCount={voltage.length > 5 ? voltage.length - 5 : 0}
+            showMoreCount={
+              filterData.voltage.length > 5 ? filterData.voltage.length - 5 : 0
+            }
             onCheckboxChange={(value, isChecked) =>
               handleFilterChange('voltage', value, isChecked)
             }
           />
         </FilterItem>
       )}
-      {container && container.length > 0 && (
+      {filterData.container && filterData.container.length > 0 && (
         <FilterItem title="Емкость, Ач" value="container">
           <FilterCheckbox
             title=""
-            options={container.map((cont) => ({
+            options={filterData.container.map((cont) => ({
               label: String(cont),
               value: String(cont),
             }))}
-            showMoreCount={container.length > 5 ? container.length - 5 : 0}
+            showMoreCount={
+              filterData.container.length > 5
+                ? filterData.container.length - 5
+                : 0
+            }
             onCheckboxChange={(value, isChecked) =>
               handleFilterChange('container', value, isChecked)
             }
           />
         </FilterItem>
       )}
-      {models && models.length > 0 && (
+      {filterData.models && filterData.models.length > 0 && (
         <FilterItem title="Модели техники" value="models">
           <FilterCheckbox
             title=""
-            options={models.map((model) => ({ label: model, value: model }))}
-            showMoreCount={models.length > 5 ? models.length - 5 : 0}
+            options={filterData.models.map((model) => ({
+              label: model,
+              value: model,
+            }))}
+            showMoreCount={
+              filterData.models.length > 5 ? filterData.models.length - 5 : 0
+            }
             onCheckboxChange={(value, isChecked) =>
               handleFilterChange('models', value, isChecked)
             }
           />
         </FilterItem>
       )}
-      {countries && countries.length > 0 && (
+      {filterData.countries && filterData.countries.length > 0 && (
         <FilterItem title="Страны производства" value="countries">
           <FilterCheckbox
             title=""
-            options={countries.map((country) => ({
+            options={filterData.countries.map((country) => ({
               label: country,
               value: country,
             }))}
-            showMoreCount={countries.length > 5 ? countries.length - 5 : 0}
+            showMoreCount={
+              filterData.countries.length > 5
+                ? filterData.countries.length - 5
+                : 0
+            }
             onCheckboxChange={(value, isChecked) =>
               handleFilterChange('country', value, isChecked)
             }
           />
         </FilterItem>
       )}
-      {radiuses && radiuses.length > 0 && (
+      {filterData.radiuses && filterData.radiuses.length > 0 && (
         <FilterItem title="Радиус" value="radiuses">
           <FilterCheckbox
             title=""
-            options={radiuses.map((radius) => ({
+            options={filterData.radiuses.map((radius) => ({
               label: radius,
               value: radius,
             }))}
-            showMoreCount={radiuses.length > 5 ? radiuses.length - 5 : 0}
+            showMoreCount={
+              filterData.radiuses.length > 5
+                ? filterData.radiuses.length - 5
+                : 0
+            }
             onCheckboxChange={(value, isChecked) =>
               handleFilterChange('size', value, isChecked)
             }
           />
         </FilterItem>
       )}
+      <button
+        onClick={onApplyFilters}
+        className="button mt-5 flex w-full items-center gap-2 px-4 py-3"
+      >
+        <Filter className="h-5 w-5" />
+        Применить фильтры
+      </button>
     </Accordion>
   )
 }

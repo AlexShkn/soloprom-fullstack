@@ -39,7 +39,7 @@ export const DescriptionTemplate: React.FC<DescriptionTypes> = ({
     productId,
     categoryName,
     productType,
-    brand,
+    brandName,
     country,
     sizes,
     load_index,
@@ -92,7 +92,7 @@ export const DescriptionTemplate: React.FC<DescriptionTypes> = ({
 
       {mod !== 'mini' && (
         <>
-          {brand && renderDescriptionItem('Бренд', brand)}
+          {brandName && renderDescriptionItem('Бренд', brandName)}
           {country && renderDescriptionItem('Производитель', country)}
         </>
       )}
