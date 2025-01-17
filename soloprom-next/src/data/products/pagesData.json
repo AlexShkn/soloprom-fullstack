@@ -134,6 +134,46 @@
     "category": "tires",
     "pageType": "group"
   },
+  "shini-dlya-teleskopicheskih-pogruzchikov": {
+    "title": "Шины для телескопических погрузчиков",
+    "description": "",
+    "img": "/img/category/tele-pogruzchik",
+    "alt": "Шины для телескопических погрузчиков",
+    "url": "shini-dlya-teleskopicheskih-pogruzchikov",
+    "crumb": "Шины для телескопических погрузчиков",
+    "category": "tires",
+    "pageType": "group"
+  },
+  "shini-dlya-frontalnih-pogruzchikov": {
+    "title": "Шины для фронтальных погрузчиков",
+    "description": "",
+    "img": "/img/category/front-loader",
+    "alt": "Шины для фронтальных погрузчиков",
+    "url": "shini-dlya-frontalnih-pogruzchikov",
+    "crumb": "Шины для фронтальных погрузчиков",
+    "category": "tires",
+    "pageType": "group"
+  },
+  "shini-dlya-kolesnih-ekskavatorov": {
+    "title": "Шины для колесных экскаваторов",
+    "description": "",
+    "img": "/img/category/kolesnii-ekskavator",
+    "alt": "Шины для колесных экскаваторов",
+    "url": "shini-dlya-kolesnih-ekskavatorov",
+    "crumb": "Шины для колесных экскаваторов",
+    "category": "tires",
+    "pageType": "group"
+  },
+  "shini-dlya-asfaltoukladchikov-i-katkov": {
+    "title": "Шины для асфальтоукладчиков и катков",
+    "description": "",
+    "img": "/img/category/katok",
+    "alt": "Шины для асфальтоукладчиков и катков",
+    "url": "shini-dlya-asfaltoukladchikov-i-katkov",
+    "crumb": "Шины для асфальтоукладчиков и катков",
+    "category": "tires",
+    "pageType": "group"
+  },
 
   "battery": {
     "url": "battery",
@@ -176,16 +216,6 @@
     "alt": "",
     "url": "accumulyatori-dlya-pogruzchikov",
     "crumb": "Аккумуляторы для погрузчиков"
-  },
-  "48v": {
-    "category": "battery",
-    "pageType": "group",
-    "title": "Аккумуляторы 48v",
-    "description": "",
-    "img": "/img/category/accumulyatori-dlya-pogruzchikov",
-    "alt": "",
-    "url": "48v",
-    "crumb": "Аккумуляторы 48v"
   },
   "accumulyatori-dlya-vilochnih-pogruzchikov": {
     "category": "battery",

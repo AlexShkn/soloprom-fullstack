@@ -51,10 +51,10 @@ const HeroMainSlider: React.FC<HeroTypes> = ({ isReady }) => {
           loop={true}
           speed={800}
           effect={'fade'}
-          // autoplay={{
-          //   delay: 5000,
-          //   disableOnInteraction: false,
-          // }}
+          autoplay={{
+            delay: 5000,
+            disableOnInteraction: false,
+          }}
           pagination={{
             el: '.hero-main-slider__pagination',
             clickable: true,

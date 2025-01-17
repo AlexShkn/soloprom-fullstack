@@ -11,14 +11,16 @@ export default function AuthStatusProvider({
 }) {
   const { user, isLoading } = useProfile()
 
-  const { changeAuthStatus, setUserData } = useAuthStore()
+  const { changeAuthStatus, setUserLoading, setUserData } = useAuthStore()
 
   useEffect(() => {
     if (!isLoading) {
-      changeAuthStatus(!!user)
+      setUserLoading(isLoading)
+
       if (user) {
         setUserData(user)
       }
+      changeAuthStatus(!!user)
     }
   }, [user, isLoading, changeAuthStatus, setUserData])
 

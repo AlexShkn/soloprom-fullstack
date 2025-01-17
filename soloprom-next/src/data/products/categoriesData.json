@@ -118,7 +118,7 @@
         "id": "shini-dlya-kolesnih-ekskavatorov",
         "href": "/catalog/shini-dlya-kolesnih-ekskavatorov",
         "img": "/img/catalog/category/tires/kolesnii-ekskavator.webp",
-        "title": "Долесных экскаваторов"
+        "title": "Для колесных экскаваторов"
       },
       {
         "type": "group",
@@ -193,8 +193,8 @@
       {
         "type": "group",
 
-        "id": "accumulyatori-dlya-polletoperevozchikov",
-        "href": "/catalog/accumulyatori-dlya-polletoperevozchikov",
+        "id": "accumulyatori-dlya-palletoperevozchikov",
+        "href": "/catalog/accumulyatori-dlya-palletoperevozchikov",
         "img": "/img/catalog/category/battery/akkumelyator-dlya-palletoperevozchikov.webp",
         "title": "Аккумуляторы для паллетоперевозчиков"
       }
@@ -224,7 +224,7 @@
         "type": "subcategory",
 
         "id": "masla-gidravlicheskie",
-        "href": "/catalog/masla-masla-gidravlicheskie",
+        "href": "/catalog/masla-gidravlicheskie",
         "img": "/img/catalog/category/oils/gidravlicheskoe-maslo.webp",
         "title": "Гидравлические масла"
       },

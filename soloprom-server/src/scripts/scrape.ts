@@ -13,6 +13,7 @@ async function bootstrap() {
     if (category === 'all') {
       // Запускаем оба скрапера последовательно
       console.log('Запускаем скрапинг для всех категорий...');
+      await scraperJob.handle('batteries-stock');
       await scraperJob.handle('tires');
       await scraperJob.handle('batteries');
     } else {

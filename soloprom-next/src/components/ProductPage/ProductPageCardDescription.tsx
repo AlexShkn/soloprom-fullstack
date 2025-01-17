@@ -144,7 +144,6 @@ export const ProductPageCardDescription: React.FC<DescriptionTypes> = ({
                           type="radio"
                           value={itemSize}
                           name={productId + itemSize}
-                          defaultChecked={index === 0}
                         />
                         <label
                           className={

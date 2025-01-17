@@ -122,7 +122,7 @@ export const CategoryProductsSlider: React.FC<Props> = ({ className }) => {
                       key={item.href}
                       className="swiper-slide catalog-products__category-link relative flex select-none flex-col items-center justify-center rounded px-2.5 py-5 text-center shadow-custom transition-all"
                     >
-                      <Link href={item.href}>
+                      <Link href={item.href} className="blok h-full w-full">
                         <div className="flex flex-col items-center justify-center">
                           <Image
                             className="catalog-products__category-link-image mb-4 block h-[110px] w-[110px] object-contain"

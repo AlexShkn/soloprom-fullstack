@@ -252,6 +252,7 @@ export class CrawlerService {
         let model: string;
         let name: string;
         let size: string = '';
+
         let price: number;
         const models: string[] = [];
 
@@ -328,6 +329,7 @@ export class CrawlerService {
       return result;
     });
   }
+
   private async evaluateBatteriesStockData(page: any): Promise<ProductDto[]> {
     return await page.evaluate(() => {
       const processStringFunction = (str: string): string => {
@@ -341,63 +343,56 @@ export class CrawlerService {
       tbodys.forEach((row) => {
         const tds = row.querySelectorAll('td');
         const preResult: any = {};
-        let model: string;
+
+        let stock = 0;
+        let price: number;
+        let code: string;
+        let option: string;
+
         let name: string;
         let size: string = '';
-        let price: number;
-        const models: string[] = [];
+        let sizes: {} = {};
 
         tds.forEach((td, index) => {
-          let value: any;
-          if (index === 1 || index === 2 || index === 4 || index === 5) {
-            value = td.querySelector('span');
+          if (index === 0) {
+            code = td.textContent.trim();
+          }
+          if (index === 1) {
+            const text = td.textContent.trim();
+            [name, size] = text.includes(',')
+              ? text.split(',').map((s) => s.trim())
+              : [text, ''];
+
+            size = size.replace(/\*/g, 'x');
+            size = size.split(' ')[0];
           }
 
-          if (value) {
-            if (index === 1) {
-              model = value.textContent.trim();
-            }
-            if (index === 2) {
-              model = `${model}-${value.textContent.trim()}`;
-            }
-            if (index === 4) {
-              name = value.textContent.trim();
-            }
-            if (index === 5) {
-              size = value.textContent.replace(/\s/g, '');
-            }
-            if (index === 6) {
-              price = parseInt(td.textContent.replace(/\s/g, ''));
-            }
-          } else {
-            if (index === 6) {
-              price = parseInt(td.textContent.replace(/\s/g, ''));
-            }
-            if (index === 1) {
-              model = td.textContent.trim();
-            }
-            if (index === 2) {
-              model = `${model}-${td.textContent.trim()}`;
-            }
-            if (index === 4) {
-              name = td.textContent.trim();
-            }
-            if (index === 5) {
-              size = td.textContent.replace(/\s/g, '');
-            }
+          if (index === 2) {
+            option = td.textContent.trim();
+          }
+          if (index === 3) {
+            stock = parseInt(td.textContent.replace(/\s/g, ''));
+          }
+          if (index === 4) {
+            price = parseInt(td.textContent.replace(/\s/g, ''));
+
+            sizes[size] = price;
           }
         });
 
         preResult.id = processStringFunction(name);
+        preResult.code = processStringFunction(code);
         preResult.name = name;
         preResult.price = price;
-        preResult.models = models;
+        preResult.option = option;
+        preResult.stock = stock;
+        preResult.sizes = sizes;
 
         if (result.some((obj) => obj.id === preResult.id)) {
           const objIndex = result.findIndex((obj) => obj.id === preResult.id);
           if (objIndex !== -1) {
-            result[objIndex].models.push(model);
             if (preResult.sizes) {
+              result[objIndex].stock += stock;
               result[objIndex].sizes = {
                 ...result[objIndex].sizes,
                 ...{ [size]: price },
@@ -409,7 +404,6 @@ export class CrawlerService {
             }
           }
         } else {
-          preResult.models = [model];
           preResult.sizes = {
             [size]: price,
           };

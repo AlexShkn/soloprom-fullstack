@@ -323,7 +323,8 @@ export class ProductsService {
 
   async updatePricesFromData(data: ProductDto[]): Promise<void> {
     for (const productData of data) {
-      const { id, sizes, price, stock, name } = productData;
+      const { id, sizes: newSizes, price, stock } = productData;
+
       const product = await prisma.product.findUnique({
         where: {
           productId: id,
@@ -331,12 +332,19 @@ export class ProductsService {
       });
 
       if (product) {
+        const currentSizes = (product.sizes as Record<string, number>) || {};
+
+        const updatedSizes: Record<string, number> = { ...currentSizes };
+        for (const sizeKey in newSizes) {
+          updatedSizes[sizeKey] = newSizes[sizeKey];
+        }
+
         await prisma.product.update({
           where: {
             productId: id,
           },
           data: {
-            sizes: sizes,
+            sizes: updatedSizes, // Сохраняем обновленные размеры
             defaultPrice: price,
             stock: stock,
           },

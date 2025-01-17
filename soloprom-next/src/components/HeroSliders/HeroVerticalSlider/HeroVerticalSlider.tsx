@@ -54,10 +54,10 @@ const HeroVerticalSlider: React.FC<HeroTypes> = ({ isReady }) => {
           loop={true}
           speed={800}
           effect={'fade'}
-          // autoplay={{
-          //   delay: 3000,
-          //   disableOnInteraction: false,
-          // }}
+          autoplay={{
+            delay: 3000,
+            disableOnInteraction: false,
+          }}
           breakpoints={{
             320: {
               direction: 'horizontal',

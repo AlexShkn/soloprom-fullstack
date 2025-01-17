@@ -7,6 +7,7 @@ interface AuthState {
   userState: IUser
   changeAuthStatus: (isAuth: boolean) => void
   setUserData: (userData: IUser) => void
+  setUserLoading: (isLoading: boolean) => void
 }
 
 const initialUserState: IUser = {
@@ -26,12 +27,18 @@ const initialUserState: IUser = {
 
 export const useAuthStore = create<AuthState>((set) => ({
   isAuth: false,
-  isLoading: false,
+  isLoading: true,
   userState: initialUserState,
+
   changeAuthStatus: (isAuth) => {
-    set({ isAuth })
+    set({ isAuth: isAuth })
   },
+
   setUserData: (userData) => {
-    set({ userState: userData, isLoading: true })
+    set({ userState: userData })
+  },
+
+  setUserLoading: (isLoading) => {
+    set({ isLoading })
   },
 }))
