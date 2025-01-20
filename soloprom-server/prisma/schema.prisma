@@ -12,6 +12,7 @@ model Product {
   isPopular       Boolean         @default(false)
   discount        Float?
   stock           Float?          @default(0)
+  rating          Float?          @default(0)
   categoryName    String
   subcategoryName String
   name            String

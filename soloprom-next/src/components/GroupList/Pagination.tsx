@@ -1,4 +1,4 @@
-// components/GroupList/Pagination.tsx
+// components/Pagination.tsx
 'use client'
 import React from 'react'
 
@@ -73,7 +73,11 @@ export const Pagination: React.FC<Props> = ({
             ) : (
               <div
                 key={index}
-                className={`flex h-[48px] w-[48px] items-center justify-center rounded text-lg font-bold ${currentPage === page ? 'bg-accentBlue text-white' : 'link-hover'}`}
+                className={`flex h-[48px] w-[48px] items-center justify-center rounded text-lg font-bold ${
+                  currentPage === page
+                    ? 'bg-accentBlue text-white'
+                    : 'link-hover'
+                }`}
               >
                 <button
                   className="block h-full w-full"

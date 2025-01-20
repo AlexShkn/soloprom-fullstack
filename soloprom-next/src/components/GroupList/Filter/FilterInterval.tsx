@@ -1,8 +1,7 @@
-// components/Filter/FilterInterval.tsx
 'use client'
 import { Input } from '@/components/ui'
 import { DoubleSlider } from '@/components/ui/DoubleSlider'
-import React, { useState, useEffect, useCallback } from 'react'
+import React, { useState, useEffect, useCallback, useRef } from 'react'
 
 interface Props {
   className?: string
@@ -14,10 +13,33 @@ export const FilterInterval: React.FC<{
   max: number
   unit?: string
   onRangeChange: (min: number, max: number) => void
-}> = ({ title, min, max, unit, onRangeChange }) => {
-  const [minValue, setMinValue] = useState(min)
-  const [maxValue, setMaxValue] = useState(max)
-  const [range, setRange] = useState([min, max])
+  initialMin?: number
+  initialMax?: number
+}> = ({ title, min, max, unit, onRangeChange, initialMin, initialMax }) => {
+  const [minValue, setMinValue] = useState(
+    initialMin !== undefined ? initialMin : min,
+  )
+  const [maxValue, setMaxValue] = useState(
+    initialMax !== undefined ? initialMax : max,
+  )
+  const [range, setRange] = useState<number[]>([
+    initialMin !== undefined ? initialMin : min,
+    initialMax !== undefined ? initialMax : max,
+  ])
+  const minInputRef = useRef<HTMLInputElement>(null)
+  const maxInputRef = useRef<HTMLInputElement>(null)
+
+  useEffect(() => {
+    if (initialMin !== undefined && initialMax !== undefined) {
+      setMinValue(initialMin)
+      setMaxValue(initialMax)
+      setRange([initialMin, initialMax])
+    } else {
+      setMinValue(min)
+      setMaxValue(max)
+      setRange([min, max])
+    }
+  }, [initialMin, initialMax, min, max])
 
   const formatLabel = (value: number) => `${value} ${unit || ''}`
 
@@ -39,18 +61,29 @@ export const FilterInterval: React.FC<{
   )
 
   const handleMinInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const newValue = Number(e.target.value)
-    if (newValue <= maxValue) {
-      setMinValue(newValue)
-      onRangeChange(newValue, maxValue)
-    }
+    setMinValue(Number(e.target.value))
   }
+
   const handleMaxInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const newValue = Number(e.target.value)
-    if (newValue >= minValue) {
-      setMaxValue(newValue)
-      onRangeChange(minValue, newValue)
+    setMaxValue(Number(e.target.value))
+  }
+
+  const handleMinInputBlur = () => {
+    let newValue = minValue
+    if (newValue > maxValue) {
+      newValue = maxValue
     }
+    setMinValue(newValue)
+    onRangeChange(newValue, maxValue)
+  }
+
+  const handleMaxInputBlur = () => {
+    let newValue = maxValue
+    if (newValue < minValue) {
+      newValue = minValue
+    }
+    setMaxValue(newValue)
+    onRangeChange(minValue, newValue)
   }
 
   return (
@@ -69,19 +102,19 @@ export const FilterInterval: React.FC<{
           type="number"
           value={minValue}
           onChange={handleMinInputChange}
+          onBlur={handleMinInputBlur}
           className="w-1/2 text-sm"
           placeholder="от"
-          min={min}
-          max={maxValue}
+          ref={minInputRef}
         />
         <Input
           type="number"
           value={maxValue}
           onChange={handleMaxInputChange}
+          onBlur={handleMaxInputBlur}
           className="w-1/2 text-sm"
           placeholder="до"
-          min={minValue}
-          max={max}
+          ref={maxInputRef}
         />
       </div>
     </div>

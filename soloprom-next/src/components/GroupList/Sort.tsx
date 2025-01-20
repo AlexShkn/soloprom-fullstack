@@ -1,7 +1,6 @@
-// components/GroupList/Sort.tsx
+// components/Sort.tsx
 'use client'
 import React, { useRef, useState, useCallback, useEffect } from 'react'
-
 import { ChevronRight } from 'lucide-react'
 import { useClickOutside } from '@/hooks/useClickOutside'
 
@@ -65,7 +64,9 @@ export const Sort: React.FC<Props> = ({ onSortChange, initialSort }) => {
         >
           {sortValue}
           <ChevronRight
-            className={`h-4 w-4 shrink-0 transition-transform duration-100 ${dropIsOpen ? 'rotate-[90deg]' : ''}`}
+            className={`h-4 w-4 shrink-0 transition-transform duration-100 ${
+              dropIsOpen ? 'rotate-[90deg]' : ''
+            }`}
           />
         </button>
         {dropIsOpen && (
@@ -74,7 +75,9 @@ export const Sort: React.FC<Props> = ({ onSortChange, initialSort }) => {
               <li
                 onClick={() => sortValueHandler(item)}
                 key={index}
-                className={`cursor-pointer px-5 py-3 ${item === sortValue ? 'bg-accentBlue text-white' : ''}`}
+                className={`cursor-pointer px-5 py-3 ${
+                  item === sortValue ? 'bg-accentBlue text-white' : ''
+                }`}
               >
                 {item}
               </li>

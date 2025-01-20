@@ -1,8 +1,9 @@
 // /catalog/[pageUrl]/page.tsx
 import { Metadata } from 'next'
 import CategoryPageClient from './CategoryPageClient'
-import { findPagesData, pagesData } from './server'
+import { findPagesData, generateFilterData, pagesData } from './server'
 import { fetchProducts, getProductsAnyCategories } from '@/utils/api/products'
+import { cardDataProps } from '@/types/products.types'
 
 export type Params = {
   pageUrl: string
@@ -12,7 +13,19 @@ export type ParamsPromise = Promise<Params>
 interface CatalogPageProps {
   params: ParamsPromise
 }
-
+export interface FilterData {
+  types: string[]
+  brands: string[]
+  prices: { min: number; max: number } | null
+  volumes: string[]
+  sizes: string[]
+  plates: string[]
+  voltage: number[]
+  container: number[]
+  models: string[]
+  countries: string[]
+  radiuses: string[]
+}
 export async function generateMetadata({
   params,
 }: {
@@ -84,7 +97,7 @@ const CatalogPage: React.FC<CatalogPageProps> = async ({ params }) => {
   const initialProducts = await fetchProducts({
     categoryName: pageData.name,
     page: currentPage,
-    limit: 10,
+    limit: 12,
   })
 
   const categoryData = await getProductsAnyCategories(
@@ -95,7 +108,8 @@ const CatalogPage: React.FC<CatalogPageProps> = async ({ params }) => {
   if (!initialProducts) {
     return <div>Ошибка получения списка продуктов страницы</div>
   }
-  const memoizedCategoryData = categoryData
+
+  const filterData: FilterData = generateFilterData(categoryData)
 
   return (
     <CategoryPageClient
@@ -103,7 +117,7 @@ const CatalogPage: React.FC<CatalogPageProps> = async ({ params }) => {
       currentPage={currentPage}
       initialProducts={initialProducts.products}
       totalCount={initialProducts.totalCount}
-      categoryData={memoizedCategoryData}
+      categoryData={filterData}
     />
   )
 }

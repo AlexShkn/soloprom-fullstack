@@ -1,5 +1,5 @@
 'use client'
-import React, { Suspense, useMemo } from 'react'
+import React, { Suspense } from 'react'
 import { useRouter } from 'next/navigation'
 import { HeroBlock } from '@/components/CategoryPageHero/HeroBlock/HeroBlock'
 import { CategoryPageHero } from '@/components/CategoryPageHero/CategoryPageHero'
@@ -14,11 +14,24 @@ import { PageDataTypes } from './server'
 import { cardDataProps } from '@/types/products.types'
 import { Loading } from '@/components/ui'
 
+interface FilterData {
+  brands: string[]
+  prices: { min: number; max: number } | null
+  volumes: string[]
+  sizes: string[]
+  plates: string[]
+  voltage: number[]
+  container: number[]
+  models: string[]
+  countries: string[]
+  radiuses: string[]
+}
+
 interface CategoryPageClientProps {
   pageData: PageDataTypes
   currentPage: number
   initialProducts: cardDataProps[] | null
-  categoryData: cardDataProps[] | null
+  categoryData: FilterData
   totalCount: number
 }
 
@@ -32,9 +45,14 @@ const CategoryPageClient: React.FC<CategoryPageClientProps> = ({
   const router = useRouter()
 
   const handlePageChange = (newPage: number) => {
-    router.push(`/catalog/${pageData.name}/${newPage}`)
-  }
+    const newPath = `/catalog/${pageData.name}`
 
+    if (newPage > 1) {
+      router.push(`${newPath}/${newPage}`)
+    } else {
+      router.push(newPath)
+    }
+  }
   return (
     <PageWrapper>
       <BreadCrumbs

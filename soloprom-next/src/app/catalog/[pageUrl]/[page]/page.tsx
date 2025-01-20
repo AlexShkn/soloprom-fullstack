@@ -2,13 +2,14 @@
 
 import { Metadata } from 'next'
 import CategoryPageClient from '../CategoryPageClient'
-import { findPagesData, pagesData } from '../server'
+import { findPagesData, generateFilterData, pagesData } from '../server'
 import {
   fetchProducts,
   getProductsAnyCategories,
   getTotalProductCount,
 } from '@/utils/api/products'
 import { redirect } from 'next/navigation'
+import { FilterData } from '../page'
 
 export type Params = {
   pageUrl: string
@@ -105,7 +106,7 @@ const CatalogPaginationPage: React.FC<CatalogPageProps> = async ({
   const initialProducts = await fetchProducts({
     categoryName: pageData.name,
     page: currentPage,
-    limit: 10,
+    limit: 12,
   })
 
   const categoryData = await getProductsAnyCategories(
@@ -121,13 +122,15 @@ const CatalogPaginationPage: React.FC<CatalogPageProps> = async ({
     console.log('Ошибка получения продуктов категории')
   }
 
+  const filterData: FilterData = generateFilterData(categoryData)
+
   return (
     <CategoryPageClient
       pageData={pageData}
       currentPage={currentPage}
       initialProducts={initialProducts.products}
       totalCount={initialProducts.totalCount}
-      categoryData={categoryData}
+      categoryData={filterData}
     />
   )
 }

@@ -1,6 +1,6 @@
+// components/GroupList/FilteredList.tsx
 'use client'
 import React from 'react'
-
 import { ProductsCard } from '@/components/ProductsCard/ProductsCard'
 import { cardDataProps } from '@/types/products.types'
 import { Pagination } from '../Pagination'

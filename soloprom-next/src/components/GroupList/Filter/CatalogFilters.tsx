@@ -7,10 +7,24 @@ import { FilterItem } from './FilterItem'
 import { FilterList } from './FilterList'
 import { transformJson } from '@/components/CategoryPageHero/SidePanel/SidePanel'
 import { cardDataProps } from '@/types/products.types'
-import { Filter } from 'lucide-react'
+import useFilterStore from '@/zustand/filterStore'
+import pagesDataRaw from '@/data/products/pagesData.json'
+import { useSearchParams } from 'next/navigation'
 
-const pagesDataRaw = require('@/data/products/pagesData.json')
 const transformData = transformJson(pagesDataRaw)
+interface FilterData {
+  brands: string[]
+  prices: { min: number; max: number } | null
+  volumes: string[]
+  types: string[]
+  sizes: string[]
+  plates: string[]
+  voltage: number[]
+  container: number[]
+  models: string[]
+  countries: string[]
+  radiuses: string[]
+}
 
 interface Props {
   productsType: string
@@ -18,7 +32,7 @@ interface Props {
   currentPage: number
   initialFilters?: Record<string, string[] | number>
   onFiltersChange: (filters: Record<string, string[] | number>) => void
-  categoryInitialList: cardDataProps[] | null
+  categoryInitialList: FilterData
   initialSearch?: string
 }
 
@@ -31,9 +45,8 @@ const CatalogFilters: React.FC<Props> = ({
   currentPage,
   categoryInitialList,
 }) => {
-  const [filters, setFilters] = useState<Record<string, string[] | number>>(
-    initialFilters || {},
-  )
+  const searchParams = useSearchParams()
+  const setFilters = useFilterStore((state) => state.setFilters)
   const [internalFilters, setInternalFilters] = useState<
     Record<string, string[] | number>
   >(initialFilters || {})
@@ -46,123 +59,6 @@ const CatalogFilters: React.FC<Props> = ({
       setInternalFilters(initialFilters)
     }
   }, [initialFilters])
-
-  const filterData = useMemo(() => {
-    if (!categoryInitialList || categoryInitialList.length === 0) {
-      return {
-        brands: [],
-        prices: null,
-        volumes: [],
-        sizes: [],
-        plates: [],
-        voltage: [],
-        container: [],
-        models: [],
-        countries: [],
-        radiuses: [],
-      }
-    }
-
-    let allBrands: string[] = []
-    let minPrice = Infinity
-    let maxPrice = -Infinity
-    let allVolumes: string[] = []
-    let allSizes: string[] = []
-    let allPlates: (string | null)[] = []
-    let allVoltage: (string | null)[] = []
-    let allContainer: (string | null)[] = []
-    let allModels: string[] = []
-    let allCountries: (string | null)[] = []
-    let allRadiuses: (string | null)[] = []
-    categoryInitialList.forEach((item) => {
-      // Brands
-      if (item.brandName) {
-        allBrands.push(item.brandName)
-      }
-      // Prices
-      if (item.defaultPrice) {
-        minPrice = Math.min(minPrice, item.defaultPrice)
-        maxPrice = Math.max(maxPrice, item.defaultPrice)
-      }
-
-      // Volumes
-      if (item.volumes) {
-        allVolumes.push(...Object.keys(item.volumes))
-      }
-
-      // Sizes
-      if (item.sizes) {
-        allSizes.push(...Object.keys(item.sizes))
-      }
-      // Plates
-      if (item.plates) {
-        allPlates.push(item.plates)
-      }
-
-      // voltage
-      if (item.voltage) {
-        allVoltage.push(item.voltage)
-      }
-
-      // container
-      if (item.container) {
-        allContainer.push(item.container)
-      }
-
-      // models
-      if (item.models && item.models.length > 0) {
-        allModels.push(...item.models)
-      }
-
-      // Countries
-      if (item.country) {
-        allCountries.push(item.country)
-      }
-
-      // Radiuses
-      if (item.size) {
-        allRadiuses.push(item.size)
-      }
-    })
-
-    const uniqueBrands = [...new Set(allBrands)]
-    const uniqueVolumes = [...new Set(allVolumes)]
-    const uniqueSizes = [...new Set(allSizes)]
-    const uniquePlates = [...new Set(allPlates)].filter(Boolean) as string[]
-    const uniqueModels = [...new Set(allModels)]
-    const uniqueCountries = [...new Set(allCountries)].filter(
-      Boolean,
-    ) as string[]
-    const uniqueRadiuses = [...new Set(allRadiuses)].filter(Boolean) as string[]
-
-    const parsedVoltage = [...new Set(allVoltage)]
-      .filter(Boolean)
-      .map((v) => parseInt(v as string, 10))
-      .filter((v) => !isNaN(v))
-      .sort((a, b) => a - b)
-
-    const parsedContainer = [...new Set(allContainer)]
-      .filter(Boolean)
-      .map((c) => parseInt(c as string, 10))
-      .filter((c) => !isNaN(c))
-      .sort((a, b) => a - b)
-
-    return {
-      brands: uniqueBrands,
-      prices:
-        minPrice !== Infinity && maxPrice !== -Infinity
-          ? { min: minPrice, max: maxPrice }
-          : null,
-      volumes: uniqueVolumes,
-      sizes: uniqueSizes,
-      plates: uniquePlates,
-      voltage: parsedVoltage,
-      container: parsedContainer,
-      models: uniqueModels,
-      countries: uniqueCountries,
-      radiuses: uniqueRadiuses,
-    }
-  }, [categoryInitialList])
 
   const categoryData = transformData[productsType]
   const groups = categoryData.group
@@ -215,30 +111,66 @@ const CatalogFilters: React.FC<Props> = ({
         }
       }
 
-      if (JSON.stringify(filters) !== JSON.stringify(newFilters)) {
-        setFilters(newFilters)
-        onFiltersChange(newFilters)
-      }
       setInternalFilters(newFilters)
+      setFilters(newFilters)
+      onFiltersChange(newFilters)
     },
-    [onFiltersChange, filters, internalFilters, setInternalFilters],
+    [setFilters, internalFilters, onFiltersChange],
   )
 
   const handlePriceChange = useCallback(
     (min: number, max: number) => {
-      console.log(min, max)
-      handleFilterChange('minPrice', min, true)
-      handleFilterChange('maxPrice', max, true)
+      const newFilters = { ...internalFilters }
+
+      let hasChanged = false
+      if (min !== newFilters['minPrice']) {
+        newFilters['minPrice'] = min
+        hasChanged = true
+      }
+      if (max !== newFilters['maxPrice']) {
+        newFilters['maxPrice'] = max
+        hasChanged = true
+      }
+
+      if (hasChanged) {
+        setInternalFilters(newFilters)
+        setFilters(newFilters)
+        onFiltersChange(newFilters)
+      }
     },
-    [handleFilterChange],
+    [handleFilterChange, internalFilters, setFilters, onFiltersChange],
   )
+
+  const urlFilters = searchParams.get('filters')
+  let parsedMinPrice: number | undefined
+  let parsedMaxPrice: number | undefined
+
+  if (urlFilters) {
+    try {
+      const parsedFilters = JSON.parse(urlFilters) as Record<
+        string,
+        string[] | number
+      >
+      parsedMinPrice = parsedFilters.minPrice as number
+      parsedMaxPrice = parsedFilters.maxPrice as number
+    } catch (error) {
+      console.error('Error parsing filters from URL:', error)
+    }
+  }
 
   return (
     <Accordion
       type="multiple"
       className="relative w-full"
       ref={accordionRef}
-      defaultValue={['category', 'price', 'brands', 'volumes', 'sizes']}
+      defaultValue={[
+        'category',
+        'price',
+        'brands',
+        'types',
+        'volumes',
+        'sizes',
+      ]}
     >
       {currentPage > 1 && groups && (
         <FilterList
@@ -249,13 +181,15 @@ const CatalogFilters: React.FC<Props> = ({
         />
       )}
 
-      {filterData.prices && (
+      {categoryInitialList.prices && (
         <FilterItem title="Цена" value="price">
           <FilterInterval
             title=""
-            min={filterData.prices.min}
-            max={filterData.prices.max}
+            min={categoryInitialList.prices.min}
+            max={categoryInitialList.prices.max}
             onRangeChange={handlePriceChange}
+            initialMin={parsedMinPrice}
+            initialMax={parsedMaxPrice}
           />
         </FilterItem>
       )}
@@ -264,174 +198,211 @@ const CatalogFilters: React.FC<Props> = ({
 <FilterSlider title="" min={prices.min} max={prices.max} />
 </FilterItem>
 )} */}
-      {filterData.brands && filterData.brands.length > 0 && (
+      {categoryInitialList.brands && categoryInitialList.brands.length > 0 && (
         <FilterItem title="Бренды" value="brands">
           <FilterCheckbox
             title=""
-            options={filterData.brands.map((brand) => ({
+            options={categoryInitialList.brands.map((brand) => ({
               label: brand,
               value: brand,
             }))}
             showMoreCount={
-              filterData.brands.length > 5 ? filterData.brands.length - 5 : 0
+              categoryInitialList.brands.length > 5
+                ? categoryInitialList.brands.length - 5
+                : 0
             }
             onCheckboxChange={(value, isChecked) =>
               handleFilterChange('brandName', value, isChecked)
             }
-            initialChecked={filters['brandName'] as string[]}
+            initialChecked={internalFilters['brandName'] as string[]}
           />
         </FilterItem>
       )}
-      {filterData.volumes && filterData.volumes.length > 0 && (
-        <FilterItem title="Объем" value="volumes">
+      {categoryInitialList.types && categoryInitialList.types.length > 0 && (
+        <FilterItem title="Тип" value="types">
           <FilterCheckbox
             title=""
-            options={filterData.volumes.map((volume) => ({
-              label: volume,
-              value: volume,
+            options={categoryInitialList.types.map((type) => ({
+              label: type,
+              value: type,
             }))}
             showMoreCount={
-              filterData.volumes.length > 5 ? filterData.volumes.length - 5 : 0
+              categoryInitialList.types.length > 5
+                ? categoryInitialList.types.length - 5
+                : 0
             }
             onCheckboxChange={(value, isChecked) =>
-              handleFilterChange('volumes', value, isChecked)
+              handleFilterChange('productType', value, isChecked)
             }
-            initialChecked={filters['volumes'] as string[]}
+            initialChecked={internalFilters['productType'] as string[]}
           />
         </FilterItem>
       )}
-      {filterData.sizes && filterData.sizes.length > 0 && (
+      {categoryInitialList.volumes &&
+        categoryInitialList.volumes.length > 0 && (
+          <FilterItem title="Объем" value="volumes">
+            <FilterCheckbox
+              title=""
+              options={categoryInitialList.volumes.map((volume) => ({
+                label: volume,
+                value: volume,
+              }))}
+              showMoreCount={
+                categoryInitialList.volumes.length > 5
+                  ? categoryInitialList.volumes.length - 5
+                  : 0
+              }
+              onCheckboxChange={(value, isChecked) =>
+                handleFilterChange('volumes', value, isChecked)
+              }
+              initialChecked={internalFilters['volumes'] as string[]}
+            />
+          </FilterItem>
+        )}
+      {categoryInitialList.sizes && categoryInitialList.sizes.length > 0 && (
         <FilterItem title="Размеры" value="sizes">
           <FilterCheckbox
             title=""
-            options={filterData.sizes.map((size) => ({
+            options={categoryInitialList.sizes.map((size) => ({
               label: size,
               value: size,
             }))}
             showMoreCount={
-              filterData.sizes.length > 5 ? filterData.sizes.length - 5 : 0
+              categoryInitialList.sizes.length > 5
+                ? categoryInitialList.sizes.length - 5
+                : 0
             }
             onCheckboxChange={(value, isChecked) =>
               handleFilterChange('sizes', value, isChecked)
             }
-            initialChecked={filters['sizes'] as string[]}
+            initialChecked={internalFilters['sizes'] as string[]}
           />
         </FilterItem>
       )}
-      {filterData.plates && filterData.plates.length > 0 && (
+      {categoryInitialList.plates && categoryInitialList.plates.length > 0 && (
         <FilterItem title="Тип пластин" value="plates">
           <FilterCheckbox
             title=""
-            options={filterData.plates.map((plate) => ({
+            options={categoryInitialList.plates.map((plate) => ({
               label: plate,
               value: plate,
             }))}
             showMoreCount={
-              filterData.plates.length > 5 ? filterData.plates.length - 5 : 0
+              categoryInitialList.plates.length > 5
+                ? categoryInitialList.plates.length - 5
+                : 0
             }
             onCheckboxChange={(value, isChecked) =>
               handleFilterChange('plates', value, isChecked)
             }
-            initialChecked={filters['plates'] as string[]}
+            initialChecked={internalFilters['plates'] as string[]}
           />
         </FilterItem>
       )}
-      {filterData.voltage && filterData.voltage.length > 0 && (
-        <FilterItem title="Напряжение, В" value="voltage">
-          <FilterCheckbox
-            title=""
-            options={filterData.voltage.map((volt) => ({
-              label: String(volt),
-              value: String(volt),
-            }))}
-            showMoreCount={
-              filterData.voltage.length > 5 ? filterData.voltage.length - 5 : 0
-            }
-            onCheckboxChange={(value, isChecked) =>
-              handleFilterChange('voltage', value, isChecked)
-            }
-            initialChecked={filters['voltage'] as string[]}
-          />
-        </FilterItem>
-      )}
-      {filterData.container && filterData.container.length > 0 && (
-        <FilterItem title="Емкость, Ач" value="container">
-          <FilterCheckbox
-            title=""
-            options={filterData.container.map((cont) => ({
-              label: String(cont),
-              value: String(cont),
-            }))}
-            showMoreCount={
-              filterData.container.length > 5
-                ? filterData.container.length - 5
-                : 0
-            }
-            onCheckboxChange={(value, isChecked) =>
-              handleFilterChange('container', value, isChecked)
-            }
-            initialChecked={filters['container'] as string[]}
-          />
-        </FilterItem>
-      )}
-      {filterData.models && filterData.models.length > 0 && (
+      {categoryInitialList.voltage &&
+        categoryInitialList.voltage.length > 0 && (
+          <FilterItem title="Напряжение, В" value="voltage">
+            <FilterCheckbox
+              title=""
+              options={categoryInitialList.voltage.map((volt) => ({
+                label: String(volt),
+                value: String(volt),
+              }))}
+              showMoreCount={
+                categoryInitialList.voltage.length > 5
+                  ? categoryInitialList.voltage.length - 5
+                  : 0
+              }
+              onCheckboxChange={(value, isChecked) =>
+                handleFilterChange('voltage', value, isChecked)
+              }
+              initialChecked={internalFilters['voltage'] as string[]}
+            />
+          </FilterItem>
+        )}
+      {categoryInitialList.container &&
+        categoryInitialList.container.length > 0 && (
+          <FilterItem title="Емкость, Ач" value="container">
+            <FilterCheckbox
+              title=""
+              options={categoryInitialList.container.map((cont) => ({
+                label: String(cont),
+                value: String(cont),
+              }))}
+              showMoreCount={
+                categoryInitialList.container.length > 5
+                  ? categoryInitialList.container.length - 5
+                  : 0
+              }
+              onCheckboxChange={(value, isChecked) =>
+                handleFilterChange('container', value, isChecked)
+              }
+              initialChecked={internalFilters['container'] as string[]}
+            />
+          </FilterItem>
+        )}
+      {categoryInitialList.models && categoryInitialList.models.length > 0 && (
         <FilterItem title="Модели техники" value="models">
           <FilterCheckbox
             title=""
-            options={filterData.models.map((model) => ({
+            options={categoryInitialList.models.map((model) => ({
               label: model,
               value: model,
             }))}
             showMoreCount={
-              filterData.models.length > 5 ? filterData.models.length - 5 : 0
+              categoryInitialList.models.length > 5
+                ? categoryInitialList.models.length - 5
+                : 0
             }
             onCheckboxChange={(value, isChecked) =>
               handleFilterChange('models', value, isChecked)
             }
-            initialChecked={filters['models'] as string[]}
+            initialChecked={internalFilters['models'] as string[]}
           />
         </FilterItem>
       )}
-      {filterData.countries && filterData.countries.length > 0 && (
-        <FilterItem title="Страны производства" value="countries">
-          <FilterCheckbox
-            title=""
-            options={filterData.countries.map((country) => ({
-              label: country,
-              value: country,
-            }))}
-            showMoreCount={
-              filterData.countries.length > 5
-                ? filterData.countries.length - 5
-                : 0
-            }
-            onCheckboxChange={(value, isChecked) =>
-              handleFilterChange('country', value, isChecked)
-            }
-            initialChecked={filters['country'] as string[]}
-          />
-        </FilterItem>
-      )}
-      {filterData.radiuses && filterData.radiuses.length > 0 && (
-        <FilterItem title="Радиус" value="radiuses">
-          <FilterCheckbox
-            title=""
-            options={filterData.radiuses.map((radius) => ({
-              label: radius,
-              value: radius,
-            }))}
-            showMoreCount={
-              filterData.radiuses.length > 5
-                ? filterData.radiuses.length - 5
-                : 0
-            }
-            onCheckboxChange={(value, isChecked) =>
-              handleFilterChange('size', value, isChecked)
-            }
-            initialChecked={filters['size'] as string[]}
-          />
-        </FilterItem>
-      )}
+      {categoryInitialList.countries &&
+        categoryInitialList.countries.length > 0 && (
+          <FilterItem title="Страны производства" value="countries">
+            <FilterCheckbox
+              title=""
+              options={categoryInitialList.countries.map((country) => ({
+                label: country,
+                value: country,
+              }))}
+              showMoreCount={
+                categoryInitialList.countries.length > 5
+                  ? categoryInitialList.countries.length - 5
+                  : 0
+              }
+              onCheckboxChange={(value, isChecked) =>
+                handleFilterChange('country', value, isChecked)
+              }
+              initialChecked={internalFilters['country'] as string[]}
+            />
+          </FilterItem>
+        )}
+      {categoryInitialList.radiuses &&
+        categoryInitialList.radiuses.length > 0 && (
+          <FilterItem title="Радиус" value="radiuses">
+            <FilterCheckbox
+              title=""
+              options={categoryInitialList.radiuses.map((radius) => ({
+                label: radius,
+                value: radius,
+              }))}
+              showMoreCount={
+                categoryInitialList.radiuses.length > 5
+                  ? categoryInitialList.radiuses.length - 5
+                  : 0
+              }
+              onCheckboxChange={(value, isChecked) =>
+                handleFilterChange('size', value, isChecked)
+              }
+              initialChecked={internalFilters['size'] as string[]}
+            />
+          </FilterItem>
+        )}
     </Accordion>
   )
 }

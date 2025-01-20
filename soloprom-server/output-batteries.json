@@ -484,14 +484,10 @@
     "price": 501550,
     "models": [
       "DOOSAN - DAEWOO-BR14JW",
-      "DOOSAN - DAEWOO-BR16JW",
-      "NICHIYU-FBRF 14",
-      "NICHIYU-FBRF 16",
-      "YALE-MR 14",
-      "HYUNDAI-14BRJ-7"
+      "DOOSAN - DAEWOO-BR16JW"
     ],
     "sizes": {
-      "1220х280х787": 501550
+      "1025х345х625": 501550
     }
   },
   {
@@ -506,14 +502,10 @@
       "HELI-CPD20",
       "HELI-CPD25",
       "MAXIMAL-FB25",
-      "HELI-CPD20FJ",
-      "HYUNDAI-16BRJ-7",
-      "NICHIYU-FBRF 14",
-      "NICHIYU-FBRF 16",
-      "NICHIYU-FBRF 20"
+      "HELI-CPD20FJ"
     ],
     "sizes": {
-      "1220х352х782": 578203
+      "1030х515х802": 578203
     }
   },
   {
@@ -526,19 +518,10 @@
       "HELI-CPD20CJ",
       "HELI-CPD20FJ",
       "HELI-CPD25CJ",
-      "HELI-CPD25FJ",
-      "BT----",
-      "BT-RRE160",
-      "HYSTER-R1.6H",
-      "HYSTER-R2.0H",
-      "JUNGHEINRICH-ETV 214",
-      "JUNGHEINRICH-ETV 216",
-      "JUNGHEINRICH-ETV 320",
-      "JUNGHEINRICH-ETV114/ETV116",
-      "KOMATSU-FB14 RJY"
+      "HELI-CPD25FJ"
     ],
     "sizes": {
-      "1220х424х782": 816657
+      "1030х515х802": 816657
     }
   },
   {
@@ -548,31 +531,10 @@
     "models": [
       "STILL-FM-X10N",
       "HELI-FB25",
-      "MAXIMAL-FB25",
-      "BT-RRM16",
-      "BT-RRE140",
-      "CROWN-ESR4500",
-      "HYSTER-R1.6H",
-      "HYUNDAI-16BRJ-7",
-      "JUNGHEINRICH-ETV 214",
-      "JUNGHEINRICH-ETV 216",
-      "JUNGHEINRICH-ETV114/ETV116",
-      "KOMATSU-FB14 RJY",
-      "LINDE-R14",
-      "LINDE-R16S",
-      "NICHIYU-FBRF 14",
-      "NICHIYU-FBRF 16",
-      "NICHIYU-FBRF 20",
-      "OM-XR14",
-      "ROCLA-HS14F7000",
-      "ROCLA-HX16S",
-      "STILL-FM-X 14",
-      "TOYOTA-6FBRE14",
-      "TOYOTA-6FBRE16",
-      "YALE-MR 16"
+      "MAXIMAL-FB25"
     ],
     "sizes": {
-      "1220х352х782": 700156
+      "1030х500х802": 700156
     }
   },
   {
@@ -581,9 +543,7 @@
     "price": 605886,
     "models": [
       "TCM-FB20-7",
-      "TCM-FB20-8",
-      "TCM-FB25-7",
-      "TCM-FB25-8"
+      "TCM-FB20-8"
     ],
     "sizes": {
       "1030х780х495": 605886

@@ -12,6 +12,7 @@ import { RegaliaList } from './RegaliaList/RegaliaList'
 import { useCartStore } from '@/zustand/cartStore'
 import { useFavoriteStore } from '@/zustand/favoriteStore'
 import { useModalsStore } from '@/zustand/modalsStore'
+import { RatingDisplay } from './RatingDisplay'
 
 export const ProductsCard: React.FC<ProductsCardPropTypes> = ({
   cardData,
@@ -46,6 +47,7 @@ export const ProductsCard: React.FC<ProductsCardPropTypes> = ({
     productType,
     stock,
     delivery,
+    rating,
   } = cardData
 
   const sizesData = sizes || volumes
@@ -176,10 +178,11 @@ export const ProductsCard: React.FC<ProductsCardPropTypes> = ({
         )}
 
         <div className="mb-1 flex items-end justify-between gap-2.5">
+          <RatingDisplay rating={rating} />
           <button
             onClick={() => fastOrderHandle()}
             type="button"
-            className={`ml-auto font-medium text-[#dd3824] underline ${mod === 'mini' && 'text-[15px]'}`}
+            className={`ml-auto font-medium text-[#dd3824] underline ${mod === 'mini' && 'text-[14px]'}`}
           >
             Купить в 1 клик
           </button>
@@ -203,7 +206,7 @@ export const ProductsCard: React.FC<ProductsCardPropTypes> = ({
           className={`flex ${mod === 'mini' ? 'w-auto flex-col' : 'items-center justify-between'}`}
         >
           {mod === 'mini' && (
-            <div className="mb-2.5 flex items-end justify-between gap-2.5">
+            <div className="mb-2.5 flex items-center justify-between gap-2.5">
               <div className="font-medium text-slate-600">
                 {categoryName === 'oils'
                   ? 'В наличии'

@@ -31,10 +31,14 @@ export class ProductDescrService {
     let rating = 0;
 
     if (reviews && reviews.length > 0) {
-      rating =
+      rating = Math.round(
         reviews.reduce((sum, review) => sum + review.rating, 0) /
-        reviews.length;
+          reviews.length,
+      );
     }
+
+    // Обновление рейтинга продукта
+    await this.updateProductRating(productId, rating);
 
     return this.prisma.productDescr.create({
       data: {
@@ -68,10 +72,14 @@ export class ProductDescrService {
     let rating = 0;
 
     if (reviews && reviews.length > 0) {
-      rating =
+      rating = Math.round(
         reviews.reduce((sum, review) => sum + review.rating, 0) /
-        reviews.length;
+          reviews.length,
+      );
     }
+
+    // Обновление рейтинга продукта
+    await this.updateProductRating(productId, rating);
 
     return this.prisma.productDescr.update({
       where: { productId },
@@ -82,6 +90,13 @@ export class ProductDescrService {
         options,
         rating,
       },
+    });
+  }
+
+  async updateProductRating(productId: string, rating: number) {
+    await this.prisma.product.update({
+      where: { productId: productId },
+      data: { rating: rating },
     });
   }
 }

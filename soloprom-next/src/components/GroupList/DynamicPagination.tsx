@@ -1,10 +1,10 @@
+// components/DynamicPagination.tsx
 'use client'
 import React from 'react'
 
 interface Props {
   currentPage: number
   totalPages: number
-
   setDynamicCurrentPage: (newPage: number) => void
 }
 
@@ -41,8 +41,6 @@ export const DynamicPagination: React.FC<Props> = React.memo(
       }
       return pages
     }
-
-    console.log('dynamic')
 
     const pageNumbers = generatePageNumbers()
     return (
