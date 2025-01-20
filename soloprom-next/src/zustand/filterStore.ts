@@ -9,7 +9,9 @@ interface FilterState {
   totalProductsCount: number
   dataIsLoading: boolean
   hasFilters: boolean
+  filteredPage: string
   setFilters: (filters: Record<string, string[] | number>) => void
+  setFilteredPage: (filteredPage: string) => void
   setSort: (sort: string) => void
   setDynamicCurrentPage: (page: number) => void
   setProducts: (products: cardDataProps[]) => void
@@ -21,12 +23,14 @@ interface FilterState {
 
 const useFilterStore = create<FilterState>((set) => ({
   filters: {},
+  filteredPage: '',
   sort: '',
   dynamicCurrentPage: 1,
   products: [],
   totalProductsCount: 0,
   dataIsLoading: false,
   hasFilters: false,
+  setFilteredPage: (filteredPage) => set({ filteredPage }),
   setFilters: (filters) =>
     set({ filters, dynamicCurrentPage: 1, hasFilters: true }),
   setSort: (sort) => set({ sort, hasFilters: true }),

@@ -59,6 +59,8 @@ export const ProductsFilterBlock: React.FC<Props> = ({
   const filters = useFilterStore((state) => state.filters)
   const sort = useFilterStore((state) => state.sort)
   const dynamicCurrentPage = useFilterStore((state) => state.dynamicCurrentPage)
+  const filteredPage = useFilterStore((state) => state.filteredPage)
+  const setFilteredPage = useFilterStore((state) => state.setFilteredPage)
   const products = useFilterStore((state) => state.products)
   const totalProductsCount = useFilterStore((state) => state.totalProductsCount)
   const dataIsLoading = useFilterStore((state) => state.dataIsLoading)
@@ -123,6 +125,7 @@ export const ProductsFilterBlock: React.FC<Props> = ({
       console.error('Error fetching products:', error)
       setDataIsLoading(false)
     } finally {
+      setFilteredPage(categoryName)
       fetchControllerRef.current = null
     }
   }
@@ -155,6 +158,17 @@ export const ProductsFilterBlock: React.FC<Props> = ({
       router.push(newUrl, { scroll: false })
     }
   }, [router, debouncedFilters, debouncedSort, dynamicCurrentPage])
+
+  useEffect(() => {
+    console.log(categoryName)
+    console.log(filteredPage)
+
+    if (filteredPage && categoryName !== filteredPage) {
+      console.log('reset')
+
+      resetFilters()
+    }
+  }, [])
 
   useEffect(() => {
     const urlFilters = searchParams.get('filters')
@@ -248,7 +262,7 @@ export const ProductsFilterBlock: React.FC<Props> = ({
             productsType={productsType}
             categoryName={categoryName}
             onFiltersChange={handleFiltersChange}
-            initialFilters={filters}
+            initialFilters={filteredPage !== categoryName ? {} : filters}
             currentPage={currentPage}
             categoryInitialList={categoryData}
           />
