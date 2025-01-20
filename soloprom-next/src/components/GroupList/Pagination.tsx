@@ -1,3 +1,4 @@
+// components/GroupList/Pagination.tsx
 'use client'
 import React from 'react'
 
@@ -94,11 +95,6 @@ export const Pagination: React.FC<Props> = ({
           </svg>
         </button>
       </div>
-      {/* <div className="">
-    <p className="">
-      36 из 1011 товаров
-    </p>
-  </div> */}
     </div>
   )
 }

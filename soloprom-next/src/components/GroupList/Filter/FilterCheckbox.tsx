@@ -1,13 +1,15 @@
+// components/Filter/FilterCheckbox.tsx
 'use client'
 import { Checkbox } from '@/components/ui/checkbox'
 import { ChevronDown, ChevronUp } from 'lucide-react'
-import React, { useState, useCallback } from 'react'
+import React, { useState, useCallback, useEffect } from 'react'
 
 interface Props {
   title: string
   options: { label: string; value: string }[]
   showMoreCount?: number
   onCheckboxChange: (value: string | string[], isChecked: boolean) => void
+  initialChecked?: string[]
 }
 
 export const FilterCheckbox: React.FC<Props> = ({
@@ -15,11 +17,18 @@ export const FilterCheckbox: React.FC<Props> = ({
   options,
   showMoreCount,
   onCheckboxChange,
+  initialChecked,
 }) => {
   const [showAll, setShowAll] = useState(false)
   const [checkedValues, setCheckedValues] = useState<string[]>([])
 
   const visibleOptions = showAll ? options : options.slice(0, 5)
+
+  useEffect(() => {
+    if (initialChecked) {
+      setCheckedValues(initialChecked)
+    }
+  }, [initialChecked])
 
   const shouldShowMoreButton = options.length > 5
 

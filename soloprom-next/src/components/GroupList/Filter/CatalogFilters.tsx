@@ -1,5 +1,5 @@
 'use client'
-import React, { useState, useEffect, useCallback, useMemo } from 'react'
+import React, { useState, useEffect, useCallback, useMemo, useRef } from 'react'
 import { Accordion } from '@/components/ui/accordion'
 import { FilterCheckbox } from './FilterCheckbox'
 import { FilterInterval } from './FilterInterval'
@@ -16,10 +16,8 @@ interface Props {
   productsType: string
   categoryName: string
   currentPage: number
-  initialFilters?: Record<string, string[]>
-  onFiltersChange: (filters: Record<string, string[]>) => void
-  onSearchChange: (search: string) => void
-  onApplyFilters: () => void
+  initialFilters?: Record<string, string[] | number>
+  onFiltersChange: (filters: Record<string, string[] | number>) => void
   categoryInitialList: cardDataProps[] | null
   initialSearch?: string
 }
@@ -27,18 +25,27 @@ interface Props {
 const CatalogFilters: React.FC<Props> = ({
   productsType,
   categoryName,
-  onSearchChange,
-  onApplyFilters,
   initialFilters,
   initialSearch,
   onFiltersChange,
   currentPage,
   categoryInitialList,
 }) => {
-  const [filters, setFilters] = useState<Record<string, string[]>>(
+  const [filters, setFilters] = useState<Record<string, string[] | number>>(
     initialFilters || {},
   )
-  const [search, setSearch] = useState<string>(initialSearch || '')
+  const [internalFilters, setInternalFilters] = useState<
+    Record<string, string[] | number>
+  >(initialFilters || {})
+
+  const buttonRef = useRef<HTMLButtonElement>(null)
+  const accordionRef = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    if (initialFilters) {
+      setInternalFilters(initialFilters)
+    }
+  }, [initialFilters])
 
   const filterData = useMemo(() => {
     if (!categoryInitialList || categoryInitialList.length === 0) {
@@ -67,7 +74,6 @@ const CatalogFilters: React.FC<Props> = ({
     let allModels: string[] = []
     let allCountries: (string | null)[] = []
     let allRadiuses: (string | null)[] = []
-
     categoryInitialList.forEach((item) => {
       // Brands
       if (item.brandName) {
@@ -158,59 +164,80 @@ const CatalogFilters: React.FC<Props> = ({
     }
   }, [categoryInitialList])
 
-  useEffect(() => {
-    setFilters(initialFilters || {})
-    setSearch(initialSearch || '')
-  }, [initialFilters, initialSearch])
-
   const categoryData = transformData[productsType]
   const groups = categoryData.group
 
-  const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const value = e.target.value
-    setSearch(value)
-    onSearchChange(value)
-  }
-
   const handleFilterChange = useCallback(
-    (name: string, value: string | string[], isChecked: boolean) => {
-      setFilters((prevFilters) => {
-        const newFilters = { ...prevFilters }
-        if (Array.isArray(value)) {
-          if (isChecked) {
-            newFilters[name] = [...(newFilters[name] || []), ...value]
-          } else {
-            newFilters[name] = (newFilters[name] || []).filter(
-              (item) => !value.includes(item),
-            )
-          }
-        } else {
-          if (isChecked) {
-            newFilters[name] = [...(newFilters[name] || []), value]
-          } else {
-            newFilters[name] = (newFilters[name] || []).filter(
-              (item) => item !== value,
-            )
-          }
-        }
+    (
+      name: string,
+      value: string | string[] | number,
+      isChecked: boolean | number | number[],
+    ) => {
+      const newFilters = { ...internalFilters }
 
-        if (newFilters[name] && newFilters[name].length === 0) {
+      if (Array.isArray(value)) {
+        if (isChecked) {
+          newFilters[name] = Array.isArray(newFilters[name])
+            ? [...newFilters[name], ...value]
+            : [...value]
+        } else {
+          newFilters[name] = Array.isArray(newFilters[name])
+            ? newFilters[name].filter((item) => !value.includes(item))
+            : []
+        }
+      } else if (typeof value === 'number') {
+        newFilters[name] = value
+      } else if (typeof value === 'string') {
+        if (isChecked) {
+          newFilters[name] = Array.isArray(newFilters[name])
+            ? [...newFilters[name], value]
+            : [value]
+        } else {
+          newFilters[name] = Array.isArray(newFilters[name])
+            ? newFilters[name].filter((item) => item !== value)
+            : []
+        }
+      }
+
+      if (
+        newFilters[name] &&
+        Array.isArray(newFilters[name]) &&
+        newFilters[name].length === 0
+      ) {
+        delete newFilters[name]
+      }
+      if (
+        (newFilters[name] && typeof newFilters[name] === 'number') ||
+        !newFilters[name]
+      ) {
+        if (newFilters[name] === undefined) {
           delete newFilters[name]
         }
-        return newFilters
-      })
+      }
+
+      if (JSON.stringify(filters) !== JSON.stringify(newFilters)) {
+        setFilters(newFilters)
+        onFiltersChange(newFilters)
+      }
+      setInternalFilters(newFilters)
     },
-    [setFilters],
+    [onFiltersChange, filters, internalFilters, setInternalFilters],
   )
 
-  useEffect(() => {
-    onFiltersChange(filters)
-  }, [filters, onFiltersChange])
+  const handlePriceChange = useCallback(
+    (min: number, max: number) => {
+      console.log(min, max)
+      handleFilterChange('minPrice', min, true)
+      handleFilterChange('maxPrice', max, true)
+    },
+    [handleFilterChange],
+  )
 
   return (
     <Accordion
       type="multiple"
-      className="w-full"
+      className="relative w-full"
+      ref={accordionRef}
       defaultValue={['category', 'price', 'brands', 'volumes', 'sizes']}
     >
       {currentPage > 1 && groups && (
@@ -228,12 +255,13 @@ const CatalogFilters: React.FC<Props> = ({
             title=""
             min={filterData.prices.min}
             max={filterData.prices.max}
+            onRangeChange={handlePriceChange}
           />
         </FilterItem>
       )}
       {/* {prices && (
 <FilterItem title="Цена" value="price">
-  <FilterSlider title="" min={prices.min} max={prices.max} />
+<FilterSlider title="" min={prices.min} max={prices.max} />
 </FilterItem>
 )} */}
       {filterData.brands && filterData.brands.length > 0 && (
@@ -250,6 +278,7 @@ const CatalogFilters: React.FC<Props> = ({
             onCheckboxChange={(value, isChecked) =>
               handleFilterChange('brandName', value, isChecked)
             }
+            initialChecked={filters['brandName'] as string[]}
           />
         </FilterItem>
       )}
@@ -267,6 +296,7 @@ const CatalogFilters: React.FC<Props> = ({
             onCheckboxChange={(value, isChecked) =>
               handleFilterChange('volumes', value, isChecked)
             }
+            initialChecked={filters['volumes'] as string[]}
           />
         </FilterItem>
       )}
@@ -284,6 +314,7 @@ const CatalogFilters: React.FC<Props> = ({
             onCheckboxChange={(value, isChecked) =>
               handleFilterChange('sizes', value, isChecked)
             }
+            initialChecked={filters['sizes'] as string[]}
           />
         </FilterItem>
       )}
@@ -301,6 +332,7 @@ const CatalogFilters: React.FC<Props> = ({
             onCheckboxChange={(value, isChecked) =>
               handleFilterChange('plates', value, isChecked)
             }
+            initialChecked={filters['plates'] as string[]}
           />
         </FilterItem>
       )}
@@ -318,6 +350,7 @@ const CatalogFilters: React.FC<Props> = ({
             onCheckboxChange={(value, isChecked) =>
               handleFilterChange('voltage', value, isChecked)
             }
+            initialChecked={filters['voltage'] as string[]}
           />
         </FilterItem>
       )}
@@ -337,6 +370,7 @@ const CatalogFilters: React.FC<Props> = ({
             onCheckboxChange={(value, isChecked) =>
               handleFilterChange('container', value, isChecked)
             }
+            initialChecked={filters['container'] as string[]}
           />
         </FilterItem>
       )}
@@ -354,6 +388,7 @@ const CatalogFilters: React.FC<Props> = ({
             onCheckboxChange={(value, isChecked) =>
               handleFilterChange('models', value, isChecked)
             }
+            initialChecked={filters['models'] as string[]}
           />
         </FilterItem>
       )}
@@ -373,6 +408,7 @@ const CatalogFilters: React.FC<Props> = ({
             onCheckboxChange={(value, isChecked) =>
               handleFilterChange('country', value, isChecked)
             }
+            initialChecked={filters['country'] as string[]}
           />
         </FilterItem>
       )}
@@ -392,16 +428,10 @@ const CatalogFilters: React.FC<Props> = ({
             onCheckboxChange={(value, isChecked) =>
               handleFilterChange('size', value, isChecked)
             }
+            initialChecked={filters['size'] as string[]}
           />
         </FilterItem>
       )}
-      <button
-        onClick={onApplyFilters}
-        className="button mt-5 flex w-full items-center gap-2 px-4 py-3"
-      >
-        <Filter className="h-5 w-5" />
-        Применить фильтры
-      </button>
     </Accordion>
   )
 }

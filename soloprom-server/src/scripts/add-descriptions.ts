@@ -7,18 +7,18 @@ import tiresDataDescrRaw from '../../output-tires.json';
 import batteryDataDescrRaw from '../../output-batteries.json';
 
 interface ProductDescriptionData {
-  [key: string]: {
+  productId: string;
+  name: string;
+  text: string;
+  reviews?: {
     name: string;
-    text: string;
-    reviews?: {
-      name: string;
-      positive: string;
-      negative: string;
-      comment: string;
-      rating: number;
-    }[];
-    models?: string[];
-  };
+    positive: string;
+    negative: string;
+    comment: string;
+    rating: number;
+  }[];
+  models?: string[];
+  options: [string, string][];
 }
 
 interface ProductOptionsData {
@@ -64,25 +64,29 @@ async function bootstrap() {
     for (const keyIter of keys) {
       const key = keyIter as string;
 
-      const descrData = (data as ProductDescriptionData)[key];
+      const descrData = (data as unknown as ProductDescriptionData)[key];
 
       const optionsData =
-        tiresDataDescr.find((obj) => obj.id === key) ||
-        batteryDataDescr.find((obj) => obj.id === key);
+        tiresDataDescr.find((obj) => obj.id === descrData.productId) ||
+        batteryDataDescr.find((obj) => obj.id === descrData.productId);
 
       if (!optionsData) {
         // console.log(
         //   `Данные продукта с id: ${key} не найдены ни в tiresDataDescr, ни в batteryDataDescr`,
         // );
-        noOptionsProductIds.push(key);
+        noOptionsProductIds.push(descrData.productId);
       }
 
       const options: OptionsType = (optionsData?.options || []).map(
         ([key, value]) => [key, String(value)],
       );
 
+      if (!descrData.productId) {
+        console.log('НЕТ ID:', descrData.productId);
+        continue;
+      }
       const product = await prismaService.product.findUnique({
-        where: { productId: key },
+        where: { productId: descrData.productId },
       });
 
       if (product) {
@@ -90,15 +94,17 @@ async function bootstrap() {
       }
 
       if (!product) {
-        console.log(`Продукт с id: ${key} не найден`);
+        console.log(`Продукт с id: ${descrData.productId} не найден`);
         notFoundCount++;
-        notFoundProductIds.push(key);
+        notFoundProductIds.push(descrData.productId);
         continue;
       }
-      const existingDescr = await productDescrService.getProductDescr(key);
+      const existingDescr = await productDescrService.getProductDescr(
+        descrData.productId,
+      );
 
       if (existingDescr) {
-        await productDescrService.updateProductDescr(key, {
+        await productDescrService.updateProductDescr(descrData.productId, {
           text: descrData.text,
           models: descrData.models || [],
           reviews: descrData.reviews || [],
@@ -108,7 +114,7 @@ async function bootstrap() {
         updatedCount++;
       } else {
         await productDescrService.createProductDescr({
-          productId: key,
+          productId: descrData.productId,
           name: descrData.name,
           text: descrData.text,
           models: descrData.models || [],

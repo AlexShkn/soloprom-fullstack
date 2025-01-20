@@ -14,7 +14,10 @@ export const CartProductList: React.FC<CartProductListProps> = ({
   return (
     <div className="border-t-1-grayColor border-b-1-grayColor mb-12 flex flex-col gap-5">
       {cartState.map((product) => (
-        <CartProductItem key={product.productId} product={product} />
+        <CartProductItem
+          key={product.productId + product.variant}
+          product={product}
+        />
       ))}
     </div>
   )

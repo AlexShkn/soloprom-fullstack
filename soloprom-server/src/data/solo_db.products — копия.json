@@ -6,7 +6,8 @@
         "shini-bandazhnie",
         "shini-pnevmatichesckie",
         "shini-legkovie",
-        "shini-celnolitie"
+        "shini-celnolitie",
+        "shini-beskamernie"
       ],
       "groups": [
         "shini-dlya-vilochnih-pogruzchikov",
@@ -24,6 +25,9 @@
       ],
       "brands": [
         "Galaxy",
+        "CARLISLE",
+        "LNP",
+        "WORCRAFT",
         "APOLLO",
         "NAAATS",
         "ADVANCE",
@@ -32,7 +36,8 @@
         "CARLISLE",
         "DUNLOP",
         "ET-STONE",
-        "AOTAI"
+        "AOTAI",
+        "Armour"
       ]
     },
     {

@@ -13,6 +13,7 @@ const CATEGORIES = [
       'shini-bandazhnie',
       'shini-pnevmatichesckie',
       'shini-legkovie',
+      'shini-beskamernie',
       'shini-celnolitie',
     ],
     groups: [
@@ -31,6 +32,9 @@ const CATEGORIES = [
     ],
     brands: [
       'Galaxy',
+      'CARLISLE',
+      'LNP',
+      'WORCRAFT',
       'APOLLO',
       'NAAATS',
       'ADVANCE',
@@ -40,6 +44,7 @@ const CATEGORIES = [
       'DUNLOP',
       'ET-STONE',
       'AOTAI',
+      'Armour',
     ],
   },
   {
@@ -56,7 +61,7 @@ const CATEGORIES = [
     brands: [
       'Union',
       'EnPower',
-      'elhim',
+      'Elhim',
       'LT',
       'Noblelift',
       'Chilwee',

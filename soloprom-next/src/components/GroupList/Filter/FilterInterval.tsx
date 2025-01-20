@@ -1,7 +1,8 @@
+// components/Filter/FilterInterval.tsx
 'use client'
 import { Input } from '@/components/ui'
 import { DoubleSlider } from '@/components/ui/DoubleSlider'
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useCallback } from 'react'
 
 interface Props {
   className?: string
@@ -12,7 +13,8 @@ export const FilterInterval: React.FC<{
   min: number
   max: number
   unit?: string
-}> = ({ title, min, max, unit }) => {
+  onRangeChange: (min: number, max: number) => void
+}> = ({ title, min, max, unit, onRangeChange }) => {
   const [minValue, setMinValue] = useState(min)
   const [maxValue, setMaxValue] = useState(max)
   const [range, setRange] = useState([min, max])
@@ -28,6 +30,29 @@ export const FilterInterval: React.FC<{
     setMaxValue(range[1])
   }, [range])
 
+  const handleRangeChange = useCallback(
+    (newRange: number[]) => {
+      setRange(newRange)
+      onRangeChange(newRange[0], newRange[1])
+    },
+    [onRangeChange],
+  )
+
+  const handleMinInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const newValue = Number(e.target.value)
+    if (newValue <= maxValue) {
+      setMinValue(newValue)
+      onRangeChange(newValue, maxValue)
+    }
+  }
+  const handleMaxInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const newValue = Number(e.target.value)
+    if (newValue >= minValue) {
+      setMaxValue(newValue)
+      onRangeChange(minValue, newValue)
+    }
+  }
+
   return (
     <div className="space-y-2">
       <div className="font-semibold">{title}</div>
@@ -36,19 +61,14 @@ export const FilterInterval: React.FC<{
         max={max}
         step={1}
         value={range}
-        onValueChange={setRange}
+        onValueChange={handleRangeChange}
         formatLabel={formatLabel}
       />
       <div className="flex space-x-2">
         <Input
           type="number"
           value={minValue}
-          onChange={(e) => {
-            const newValue = Number(e.target.value)
-            if (newValue <= maxValue) {
-              setMinValue(newValue)
-            }
-          }}
+          onChange={handleMinInputChange}
           className="w-1/2 text-sm"
           placeholder="от"
           min={min}
@@ -57,12 +77,7 @@ export const FilterInterval: React.FC<{
         <Input
           type="number"
           value={maxValue}
-          onChange={(e) => {
-            const newValue = Number(e.target.value)
-            if (newValue >= minValue) {
-              setMaxValue(newValue)
-            }
-          }}
+          onChange={handleMaxInputChange}
           className="w-1/2 text-sm"
           placeholder="до"
           min={minValue}

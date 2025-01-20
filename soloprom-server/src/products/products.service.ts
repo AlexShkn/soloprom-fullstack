@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { PrismaClient } from '@prisma/client';
+import { Prisma, PrismaClient } from '@prisma/client';
 import { ProductDto } from '@/crawler/dto/product.dto';
 import { ProductDescrService } from '@/product-descr/product-descr.service';
 
@@ -14,7 +14,7 @@ export class ProductsService {
     page: number;
     limit: number;
     sort?: string;
-    filters?: string | Record<string, string | string[]>;
+    filters?: string | Record<string, string | string[] | number>;
     search?: string;
   }) {
     const { categoryName, page, limit, sort, filters, search } = params;
@@ -35,7 +35,7 @@ export class ProductsService {
       ];
     }
 
-    let parsedFilters: Record<string, string | string[]> | undefined;
+    let parsedFilters: Record<string, string | string[] | number> | undefined;
     if (filters) {
       if (typeof filters === 'string') {
         try {
@@ -50,30 +50,25 @@ export class ProductsService {
 
       if (parsedFilters) {
         for (const key in parsedFilters) {
-          if (parsedFilters.hasOwnProperty(key)) {
-            const filterValue = parsedFilters[key];
-            if (Array.isArray(filterValue)) {
-              if (key === 'sizes') {
-                where.OR = [
-                  ...(where.OR || []),
-                  ...filterValue.map((size) => ({
-                    sizes: {
-                      path: [`${size}`],
-                      not: null,
-                    },
-                  })),
-                  {
-                    size: {
-                      in: filterValue,
-                    },
-                  },
-                ];
-              } else {
-                where[key] = { in: filterValue };
-              }
+          const filterValue = parsedFilters[key];
+          if (key === 'minPrice' && typeof filterValue === 'number') {
+            where.defaultPrice = { ...where.defaultPrice, gte: filterValue };
+          } else if (key === 'maxPrice' && typeof filterValue === 'number') {
+            where.defaultPrice = { ...where.defaultPrice, lte: filterValue };
+          } else if (Array.isArray(filterValue)) {
+            if (key === 'sizes') {
+              const sizesConditions = filterValue.map((size) => ({
+                sizes: { path: [size], array_contains: [size] },
+              }));
+              console.log('sizes filter conditions:', sizesConditions);
+              where.AND = [...(where.AND || []), { OR: sizesConditions }];
+            } else if (key === 'size') {
+              where.size = { in: filterValue };
             } else {
-              where[key] = filterValue;
+              where[key] = { in: filterValue };
             }
+          } else {
+            where[key] = filterValue;
           }
         }
       }
@@ -179,6 +174,7 @@ export class ProductsService {
     const categoriesMap = new Map();
     const subcategoriesMap = new Map();
     const groupsMap = new Map();
+    const brandsMap = new Map();
 
     // 1. Загрузка категорий и подкатегорий
     for (const category of data.categories) {
@@ -227,7 +223,7 @@ export class ProductsService {
               categoryId: createdCategory.id, // Привязка к категории
             },
           });
-          groupsMap.set(brand, createdBrand.id);
+          brandsMap.set(brand, createdBrand.id);
         }
       }
     }

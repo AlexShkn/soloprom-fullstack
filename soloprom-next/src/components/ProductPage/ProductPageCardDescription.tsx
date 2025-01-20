@@ -8,8 +8,8 @@ import { ProductsCardPropTypes } from '@/types/products.types'
 import { useCartStore } from '@/zustand/cartStore'
 
 interface DescriptionTypes extends ProductsCardPropTypes {
-  variantValue: string
-  setVariantValue: (value: string) => void
+  // variantValue: string
+  // setVariantValue: (value: string) => void
 }
 
 const wordAdaptive: AdaptiveValues<{
@@ -46,8 +46,6 @@ const renderDescriptionItem = (
 
 export const ProductPageCardDescription: React.FC<DescriptionTypes> = ({
   cardData,
-  variantValue,
-  setVariantValue,
 }) => {
   const {
     productId,
@@ -67,19 +65,19 @@ export const ProductPageCardDescription: React.FC<DescriptionTypes> = ({
   const dropRef = useRef(null)
   const cartState = useCartStore((state) => state.cartState)
 
-  const selectedVariant = (value: string) => {
-    setVariantValue(value)
-    setDropOpen(false)
-  }
+  // const selectedVariant = (value: string) => {
+  //   setVariantValue(value)
+  //   setDropOpen(false)
+  // }
 
-  useClickOutside(dropRef, () => {
-    setDropOpen(false)
-  })
+  // useClickOutside(dropRef, () => {
+  //   setDropOpen(false)
+  // })
   return (
     <div className="product-page-card__description">
       <div className="product-page-card__head">
         <img
-          src={`/img/catalog/brands-logo/${brandName}.jpg`}
+          src={`/img/catalog/brands-logo/${brandName.toLowerCase()}.jpg`}
           className="product-page-card__brand-logo"
           alt=""
         />
@@ -89,8 +87,8 @@ export const ProductPageCardDescription: React.FC<DescriptionTypes> = ({
         </button>
       </div>
       <div className="product-page-card__table-wrapper">
-        <div className="product-page-card__table-title">
-          Основные характеристики
+        <div className="mb-1 flex items-center rounded bg-grayColor px-5 py-2.5 text-2xl font-medium shadow-sm">
+          <span>Основная информация</span>
         </div>
 
         {renderDescriptionItem(
@@ -106,7 +104,7 @@ export const ProductPageCardDescription: React.FC<DescriptionTypes> = ({
         {brandName && renderDescriptionItem('Бренд', brandName)}
         {country && renderDescriptionItem('Производитель', country)}
 
-        {sizes && (
+        {/* {sizes && (
           <div className="product-page-card__table-row">
             <div className="product-page-card__table-item">
               {getAdaptiveValue(wordAdaptive, 'sizes', categoryName)}
@@ -165,7 +163,7 @@ export const ProductPageCardDescription: React.FC<DescriptionTypes> = ({
               )}
             </div>
           </div>
-        )}
+        )} */}
       </div>
     </div>
   )
