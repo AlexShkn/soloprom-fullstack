@@ -1,19 +1,6 @@
 @use '@/styles/variables.scss';
 
 .side-panel {
-  flex: 0 0 25%;
-  background-color: #fff;
-  border-radius: variables.$radius;
-  box-shadow: variables.$shadow;
-  padding: 15px;
-  z-index: 5;
-
-  &--offset-min {
-    .side-panel__item-link {
-      padding: 10px 10px 10px 15px;
-    }
-  }
-
   @media (max-width: 991.98px) {
     flex: 0 0 240px;
     padding: 10px 0;
@@ -69,17 +56,6 @@
     }
   }
 
-  // .side-panel__item-bridge
-
-  &__item-bridge {
-    position: absolute;
-    left: 50%;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    display: none;
-  }
-
   // .side-panel__item-link
 
   &__item-link {
@@ -88,7 +64,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 12px 10px 12px 15px;
+    padding: 10px 10px 10px 15px;
     cursor: pointer;
     border-radius: variables.$radius;
     line-height: 130%;
@@ -127,8 +103,8 @@
 
   &__drop-list {
     position: absolute;
-    left: calc(25% + 10px);
     top: 0;
+    right: -45px;
     width: calc(75% - 10px);
     min-height: 100%;
     padding: 30px;
@@ -143,6 +119,7 @@
     user-select: none;
     pointer-events: none;
     transition: all 0.3s ease 0s;
+    z-index: 20;
     &--grid {
       display: grid;
       grid-template-columns: repeat(2, 1fr);

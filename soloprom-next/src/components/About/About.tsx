@@ -3,11 +3,7 @@ import React from 'react'
 
 import './About.scss'
 
-interface Props {
-  className?: string
-}
-
-export const About: React.FC<Props> = ({ className }) => {
+export const About: React.FC = ({}) => {
   return (
     <section id="about" className="about relative bg-darkBlue py-[120px]">
       <div className="squares absolute inset-0 h-full w-full opacity-40">

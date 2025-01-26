@@ -1,5 +1,4 @@
-import { cardDataProps } from '@/types/products.types'
-import { FilterData } from './page'
+import { cardDataProps, FilterData } from '@/types/products.types'
 
 // server.ts
 export interface PageDataTypes {

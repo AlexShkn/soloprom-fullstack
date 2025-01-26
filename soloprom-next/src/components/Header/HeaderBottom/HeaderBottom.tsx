@@ -29,7 +29,9 @@ const HeaderBottom = () => {
   useScrollHeader(isBigSmall)
 
   useClickOutside(headerRef, () => {
-    catalogMenuStateChange(false, isTablet)
+    if (catalogIsOpen) {
+      catalogMenuStateChange(false, isTablet)
+    }
   })
 
   const menuStatusChange = () => {

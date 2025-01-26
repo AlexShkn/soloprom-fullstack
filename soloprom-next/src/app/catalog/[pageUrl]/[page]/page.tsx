@@ -1,7 +1,6 @@
 // /catalog/[pageUrl]/[page]/page.tsx
 
 import { Metadata } from 'next'
-import CategoryPageClient from '../CategoryPageClient'
 import { findPagesData, generateFilterData, pagesData } from '../server'
 import {
   fetchProducts,
@@ -9,7 +8,8 @@ import {
   getTotalProductCount,
 } from '@/utils/api/products'
 import { redirect } from 'next/navigation'
-import { FilterData } from '../page'
+import { FilterData } from '@/types/products.types'
+import CategoryPageClient from '../CategoryPageClient'
 
 export type Params = {
   pageUrl: string

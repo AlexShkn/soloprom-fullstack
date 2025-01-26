@@ -15,7 +15,9 @@ const HeaderSearch = () => {
   const dropRef = useRef(null)
 
   useClickOutside(dropRef, () => {
-    resetSearch()
+    if (searchValue) {
+      resetSearch()
+    }
   })
 
   const searchProductsForValue = async (name: string): Promise<void> => {

@@ -1,11 +1,7 @@
 'use client'
 import React from 'react'
 
-interface Props {
-  className?: string
-}
-
-export const ViewSetting: React.FC<Props> = ({ className }) => {
+export const ViewSetting = () => {
   return (
     <div className="flex items-center gap-1">
       <button

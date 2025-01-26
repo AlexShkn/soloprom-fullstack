@@ -6,25 +6,12 @@ import { FilterInterval } from './FilterInterval'
 import { FilterItem } from './FilterItem'
 import { FilterList } from './FilterList'
 import { transformJson } from '@/components/CategoryPageHero/SidePanel/SidePanel'
-import { cardDataProps } from '@/types/products.types'
+import { FilterData } from '@/types/products.types'
 import useFilterStore from '@/zustand/filterStore'
 import pagesDataRaw from '@/data/products/pagesData.json'
 import { useSearchParams } from 'next/navigation'
 
 const transformData = transformJson(pagesDataRaw)
-interface FilterData {
-  brands: string[]
-  prices: { min: number; max: number } | null
-  volumes: string[]
-  types: string[]
-  sizes: string[]
-  plates: string[]
-  voltage: number[]
-  container: number[]
-  models: string[]
-  countries: string[]
-  radiuses: string[]
-}
 
 interface Props {
   productsType: string

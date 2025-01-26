@@ -27,7 +27,7 @@ export const Header: React.FC = () => {
 
   return (
     <header className="header relative w-full bg-white transition-all">
-      <div className="header__wrapper relative z-[23] bg-white pb-10 shadow-custom">
+      <div className="header__wrapper relative z-[31] bg-white pb-10 shadow-custom">
         <HeaderTop />
         <div className="header__container">
           <HeaderBody />

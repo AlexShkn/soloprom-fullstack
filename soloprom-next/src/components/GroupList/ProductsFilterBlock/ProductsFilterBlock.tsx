@@ -1,35 +1,16 @@
 'use client'
-import React, {
-  useState,
-  useCallback,
-  useTransition,
-  useEffect,
-  useRef,
-} from 'react'
-import './ProductsFilterBlock.scss'
+import React, { useCallback, useEffect, useMemo, useState, useRef } from 'react'
 import { useRouter, useSearchParams } from 'next/navigation'
-import { cardDataProps } from '@/types/products.types'
-import { FilteredList } from '@/components/GroupList/FilteredList/FilteredList'
+import { cardDataProps, FilterData } from '@/types/products.types'
 import axios from 'axios'
+import { FilteredList } from '@/components/GroupList/FilteredList/FilteredList'
 import { BASE_URL } from '@/utils/api/products'
 import CatalogFilters from '../Filter/CatalogFilters'
-import { useDebounce } from '@/hooks/useDebounce'
 import useFilterStore from '@/zustand/filterStore'
+import { useDebounce } from '@/hooks/useDebounce'
+import './ProductsFilterBlock.scss'
 
-interface FilterData {
-  types: string[]
-  brands: string[]
-  prices: { min: number; max: number } | null
-  volumes: string[]
-  sizes: string[]
-  plates: string[]
-  voltage: number[]
-  container: number[]
-  models: string[]
-  countries: string[]
-  radiuses: string[]
-}
-
+// Props interface
 interface Props {
   categoryName: string
   productsType: string
@@ -42,65 +23,56 @@ interface Props {
 
 export const ProductsFilterBlock: React.FC<Props> = ({
   categoryName,
+  productsType,
   currentPage,
   onChangePage,
-  productsType,
   initialProducts,
   categoryData,
   totalCount,
 }) => {
   const router = useRouter()
   const searchParams = useSearchParams()
-  const [isPending, startTransition] = useTransition()
-  const groupListRef = useRef<HTMLElement>(null)
+  const groupListRef = useRef<HTMLElement | null>(null)
   const fetchControllerRef = useRef<AbortController | null>(null)
 
   // Zustand store
   const filters = useFilterStore((state) => state.filters)
-  const sort = useFilterStore((state) => state.sort)
-  const dynamicCurrentPage = useFilterStore((state) => state.dynamicCurrentPage)
-  const filteredPage = useFilterStore((state) => state.filteredPage)
-  const setFilteredPage = useFilterStore((state) => state.setFilteredPage)
-  const products = useFilterStore((state) => state.products)
-  const totalProductsCount = useFilterStore((state) => state.totalProductsCount)
-  const dataIsLoading = useFilterStore((state) => state.dataIsLoading)
-  const hasFilters = useFilterStore((state) => state.hasFilters)
   const setFilters = useFilterStore((state) => state.setFilters)
+  const sort = useFilterStore((state) => state.sort)
   const setSort = useFilterStore((state) => state.setSort)
-  const setDynamicCurrentPage = useFilterStore(
-    (state) => state.setDynamicCurrentPage,
-  )
   const setProducts = useFilterStore((state) => state.setProducts)
   const setTotalProductsCount = useFilterStore(
     (state) => state.setTotalProductsCount,
   )
-  const setDataIsLoading = useFilterStore((state) => state.setDataIsLoading)
+  const products = useFilterStore((state) => state.products)
+  const totalProductsCount = useFilterStore((state) => state.totalProductsCount)
+  const hasFilters = useFilterStore((state) => state.hasFilters)
   const setHasFilters = useFilterStore((state) => state.setHasFilters)
-  const resetFilters = useFilterStore((state) => state.resetFilters)
+  const dynamicCurrentPage = useFilterStore((state) => state.dynamicCurrentPage)
+  const setDynamicCurrentPage = useFilterStore(
+    (state) => state.setDynamicCurrentPage,
+  )
+  const dataIsLoading = useFilterStore((state) => state.dataIsLoading)
+  const setDataIsLoading = useFilterStore((state) => state.setDataIsLoading)
 
   const debouncedFilters = useDebounce(filters, 500)
   const debouncedSort = useDebounce(sort, 500)
 
-  const [firstRender, setFirstRender] = useState(true)
   const [initialLoad, setInitialLoad] = useState(true)
 
-  console.log('render ProductsFilterBlock')
-
-  const fetchData = async () => {
-    console.log('fetch data')
-
+  // Fetch products data based on filters and sort
+  const fetchData = useCallback(async () => {
     if (fetchControllerRef.current) {
       fetchControllerRef.current.abort()
     }
 
     const controller = new AbortController()
     fetchControllerRef.current = controller
-
     setDataIsLoading(true)
 
     try {
       const params = {
-        categoryName: categoryName,
+        categoryName,
         page: dynamicCurrentPage,
         limit: 12,
         filters:
@@ -109,88 +81,70 @@ export const ProductsFilterBlock: React.FC<Props> = ({
             : null,
         sort: debouncedSort,
       }
+
       const response = await axios.get<any>(`${BASE_URL}/get-products`, {
         params,
         signal: controller.signal,
       })
+
       setProducts(response.data.products)
       setTotalProductsCount(response.data.totalCount)
-      setDataIsLoading(false)
-      if (firstRender) setFirstRender(false)
-    } catch (error) {
-      if (axios.isCancel(error)) {
-        console.log('Request canceled', error.message)
-        return
+    } catch (err) {
+      if (!axios.isCancel(err)) {
+        console.error('Error fetching products:', err)
       }
-      console.error('Error fetching products:', error)
-      setDataIsLoading(false)
     } finally {
-      setFilteredPage(categoryName)
+      setDataIsLoading(false)
       fetchControllerRef.current = null
     }
-  }
+  }, [
+    categoryName,
+    dynamicCurrentPage,
+    debouncedFilters,
+    debouncedSort,
+    setProducts,
+    setTotalProductsCount,
+    setDataIsLoading,
+  ])
 
+  // Handle URL filters and sort updates
   const updateUrl = useCallback(() => {
     const params = new URLSearchParams()
 
     if (Object.keys(debouncedFilters).length > 0) {
       params.set('filters', JSON.stringify(debouncedFilters))
-    } else {
-      params.delete('filters')
     }
 
     if (debouncedSort) {
       params.set('sort', debouncedSort)
-    } else {
-      params.delete('sort')
     }
 
-    if (dynamicCurrentPage !== 1) {
+    if (dynamicCurrentPage > 1) {
       params.set('page', String(dynamicCurrentPage))
-    } else {
-      params.delete('page')
     }
 
     const newUrl = `?${params.toString()}`
-    if (newUrl.length > 1) {
-      router.push(newUrl, { scroll: false })
-    } else {
-      router.push(newUrl, { scroll: false })
-    }
-  }, [router, debouncedFilters, debouncedSort, dynamicCurrentPage])
+    router.push(newUrl, { scroll: false })
+  }, [debouncedFilters, debouncedSort, dynamicCurrentPage, router])
 
+  // Load initial data from server or SSG
   useEffect(() => {
-    console.log(categoryName)
-    console.log(filteredPage)
-
-    if (filteredPage && categoryName !== filteredPage) {
-      console.log('reset')
-
-      resetFilters()
-    }
-  }, [])
-
-  useEffect(() => {
-    const urlFilters = searchParams.get('filters')
-    const urlSort = searchParams.get('sort')
-    const urlPage = searchParams.get('page')
-
     if (initialLoad) {
-      setProducts(initialProducts || [])
-      setTotalProductsCount(totalCount)
+      const urlFilters = searchParams.get('filters')
+      const urlSort = searchParams.get('sort')
+      const urlPage = searchParams.get('page')
 
       if (urlFilters || urlSort || urlPage) {
         if (urlFilters) {
           try {
-            const parsedFilters = JSON.parse(urlFilters) as Record<
-              string,
-              string[] | number
-            >
+            const parsedFilters = JSON.parse(urlFilters)
             setFilters(parsedFilters)
-          } catch (error) {
-            console.error('Error parsing filters from URL:', error)
+            setHasFilters(true)
+          } catch (err) {
+            console.error('Failed to parse filters from URL:', err)
           }
         }
+
         if (urlSort) {
           setSort(urlSort)
         }
@@ -201,25 +155,31 @@ export const ProductsFilterBlock: React.FC<Props> = ({
             setDynamicCurrentPage(parsedPage)
           }
         }
-        setInitialLoad(false)
+
+        fetchData()
       } else {
-        setInitialLoad(false)
-        return
+        // Initial SSG products
+        setProducts(initialProducts || [])
+        setTotalProductsCount(totalCount)
       }
+
+      setInitialLoad(false)
     }
   }, [
     searchParams,
     setFilters,
     setSort,
-    setDynamicCurrentPage,
-    setInitialLoad,
-    initialLoad,
+    fetchData,
     initialProducts,
     totalCount,
     setProducts,
     setTotalProductsCount,
+    setDynamicCurrentPage,
+    setHasFilters,
+    initialLoad,
   ])
 
+  // Fetch data when filters or sort change
   useEffect(() => {
     if (!initialLoad && hasFilters) {
       fetchData()
@@ -228,32 +188,24 @@ export const ProductsFilterBlock: React.FC<Props> = ({
     debouncedFilters,
     debouncedSort,
     dynamicCurrentPage,
-    setProducts,
-    setTotalProductsCount,
-    setDataIsLoading,
-    setFirstRender,
+    fetchData,
+    initialLoad,
+    hasFilters,
+  ])
+
+  // Update URL when filters or pagination change
+  useEffect(() => {
+    if (!initialLoad) {
+      updateUrl()
+    }
+  }, [
+    debouncedFilters,
+    debouncedSort,
+    dynamicCurrentPage,
+    updateUrl,
     initialLoad,
   ])
 
-  useEffect(() => {
-    updateUrl()
-  }, [updateUrl])
-
-  useEffect(() => {
-    if (groupListRef.current && hasFilters) {
-      groupListRef.current.scrollIntoView({ behavior: 'smooth' })
-    }
-  }, [dynamicCurrentPage, router, hasFilters])
-
-  const handleFiltersChange = (filters: Record<string, string[] | number>) => {
-    setFilters(filters)
-    setHasFilters(true)
-  }
-
-  const handleSortChange = (sort: string) => {
-    setSort(sort)
-    setHasFilters(true)
-  }
   return (
     <section className="group-list section-offset" ref={groupListRef}>
       <div className="group-list__container">
@@ -261,12 +213,11 @@ export const ProductsFilterBlock: React.FC<Props> = ({
           <CatalogFilters
             productsType={productsType}
             categoryName={categoryName}
-            onFiltersChange={handleFiltersChange}
-            initialFilters={filteredPage !== categoryName ? {} : filters}
-            currentPage={currentPage}
+            onFiltersChange={setFilters}
+            initialFilters={filters}
             categoryInitialList={categoryData}
+            currentPage={currentPage}
           />
-
           <FilteredList
             data={products}
             currentPage={currentPage}
@@ -275,7 +226,7 @@ export const ProductsFilterBlock: React.FC<Props> = ({
             totalPages={Math.ceil(totalProductsCount / 12)}
             onChangePage={onChangePage}
             dataIsLoading={dataIsLoading}
-            onSortChange={handleSortChange}
+            onSortChange={setSort}
             hasFilters={hasFilters}
           />
         </div>

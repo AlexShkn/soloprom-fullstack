@@ -4,11 +4,7 @@ import Image from 'next/image'
 
 import './Benefits.scss'
 
-interface Props {
-  className?: string
-}
-
-export const Benefits: React.FC<Props> = ({ className }) => {
+export const Benefits = () => {
   return (
     <section className="benefits section-offset bg-sectionWhite">
       <div className="benefits__container">
@@ -23,7 +19,7 @@ export const Benefits: React.FC<Props> = ({ className }) => {
               width={200}
               height={220}
             />
-            <svg className="icon fill-grayColor mb-2.5 h-[50px] w-[50px]">
+            <svg className="icon mb-2.5 h-[50px] w-[50px] fill-grayColor">
               <use xlinkHref="/img/sprite.svg#stock"></use>
             </svg>
             <h3 className="benefits__item-title relative z-[1] mb-2.5 max-w-[250px] text-xl font-bold leading-5 text-white">
@@ -42,7 +38,7 @@ export const Benefits: React.FC<Props> = ({ className }) => {
               height={220}
             />
 
-            <svg className="icon fill-grayColor mb-2.5 h-[50px] w-[50px]">
+            <svg className="icon mb-2.5 h-[50px] w-[50px] fill-grayColor">
               <use xlinkHref="/img/sprite.svg#delivery"></use>
             </svg>
             <h3 className="benefits__item-title relative z-[1] mb-2.5 max-w-[250px] text-xl font-bold leading-5 text-white">
@@ -61,7 +57,7 @@ export const Benefits: React.FC<Props> = ({ className }) => {
               height={259}
             />
 
-            <svg className="icon fill-grayColor mb-2.5 h-[50px] w-[50px]">
+            <svg className="icon mb-2.5 h-[50px] w-[50px] fill-grayColor">
               <use xlinkHref="/img/sprite.svg#search"></use>
             </svg>
             <h3 className="benefits__item-title relative z-[1] mb-2.5 max-w-[250px] text-xl font-bold leading-5 text-white">
@@ -80,7 +76,7 @@ export const Benefits: React.FC<Props> = ({ className }) => {
               height={220}
             />
 
-            <svg className="icon fill-grayColor mb-2.5 h-[50px] w-[50px]">
+            <svg className="icon mb-2.5 h-[50px] w-[50px] fill-grayColor">
               <use xlinkHref="/img/sprite.svg#experience"></use>
             </svg>
             <h3 className="benefits__item-title relative z-[1] mb-2.5 max-w-[250px] text-xl font-bold leading-5 text-white">
@@ -99,7 +95,7 @@ export const Benefits: React.FC<Props> = ({ className }) => {
               height={220}
             />
 
-            <svg className="icon fill-grayColor mb-2.5 h-[50px] w-[50px]">
+            <svg className="icon mb-2.5 h-[50px] w-[50px] fill-grayColor">
               <use xlinkHref="/img/sprite.svg#contact"></use>
             </svg>
             <h3 className="benefits__item-title relative z-[1] mb-2.5 max-w-[250px] text-xl font-bold leading-5 text-white">
@@ -118,7 +114,7 @@ export const Benefits: React.FC<Props> = ({ className }) => {
               height={220}
             />
 
-            <svg className="icon fill-grayColor mb-2.5 h-[50px] w-[50px]">
+            <svg className="icon mb-2.5 h-[50px] w-[50px] fill-grayColor">
               <use xlinkHref="/img/sprite.svg#price"></use>
             </svg>
             <h3 className="benefits__item-title relative z-[1] mb-2.5 max-w-[250px] text-xl font-bold leading-5 text-white">

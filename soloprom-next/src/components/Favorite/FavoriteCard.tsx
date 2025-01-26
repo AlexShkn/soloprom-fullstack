@@ -5,9 +5,10 @@ import Image from 'next/image'
 
 import { getDigFormat } from '@/supports'
 
-import { FavoriteProduct } from './Favorite'
 import { useCartStore } from '@/zustand/cartStore'
 import { useFavoriteStore } from '@/zustand/favoriteStore'
+
+import { FavoriteProduct } from '@/types/products.types'
 
 interface FavoriteCardProps {
   product: FavoriteProduct

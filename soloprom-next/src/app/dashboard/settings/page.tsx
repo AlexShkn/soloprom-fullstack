@@ -1,7 +1,7 @@
 import { type Metadata } from 'next'
 
 import { ProfileSettingsForm } from '@/features/user/components/ProfileSettingsForm'
-import AuthWrapper from '@/app/products/[productId]/AuthWrapper'
+import AuthWrapper from '@/app/AuthWrapper'
 
 export const metadata: Metadata = {
   title: 'Настройки профиля',

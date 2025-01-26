@@ -13,19 +13,7 @@ import PageWrapper from '@/app/PageWrapper'
 import { PageDataTypes } from './server'
 import { cardDataProps } from '@/types/products.types'
 import { Loading } from '@/components/ui'
-
-interface FilterData {
-  brands: string[]
-  prices: { min: number; max: number } | null
-  volumes: string[]
-  sizes: string[]
-  plates: string[]
-  voltage: number[]
-  container: number[]
-  models: string[]
-  countries: string[]
-  radiuses: string[]
-}
+import { FilterData } from '@/types/products.types'
 
 interface CategoryPageClientProps {
   pageData: PageDataTypes

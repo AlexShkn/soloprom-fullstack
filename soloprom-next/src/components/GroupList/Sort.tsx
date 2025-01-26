@@ -1,8 +1,8 @@
-// components/Sort.tsx
 'use client'
 import React, { useRef, useState, useCallback, useEffect } from 'react'
 import { ChevronRight } from 'lucide-react'
 import { useClickOutside } from '@/hooks/useClickOutside'
+import useFilterStore from '@/zustand/filterStore'
 
 interface Props {
   onSortChange: (sort: string) => void
@@ -11,42 +11,51 @@ interface Props {
 
 const sortList = ['По умолчанию', 'Возрастанию цены', 'Убыванию цены']
 
+const getCurrentSort = (value: string) => {
+  let sort = 'По умолчанию'
+  if (value === 'defaultPrice:asc') {
+    sort = 'Возрастанию цены'
+  } else if (value === 'defaultPrice:desc') {
+    sort = 'Убыванию цены'
+  }
+
+  return sort
+}
+
 export const Sort: React.FC<Props> = ({ onSortChange, initialSort }) => {
   const [dropIsOpen, setDropIsOpen] = useState(false)
-  const [sortValue, setSortValue] = useState('По умолчанию')
+  // const [sort, setSort] = useState('По умолчанию')
+  const sort = useFilterStore((state) => state.sort)
+  const setSort = useFilterStore((state) => state.setSort)
 
   const dropRef = useRef(null)
 
   useEffect(() => {
     if (initialSort) {
-      let initialValue = 'По умолчанию'
-      if (initialSort === 'defaultPrice:asc') {
-        initialValue = 'Возрастанию цены'
-      } else if (initialSort === 'defaultPrice:desc') {
-        initialValue = 'Убыванию цены'
-      }
-
-      setSortValue(initialValue)
+      setSort(getCurrentSort(initialSort))
     }
   }, [initialSort])
 
   useClickOutside(dropRef, () => {
-    setDropIsOpen(false)
+    if (dropIsOpen) {
+      setDropIsOpen(false)
+    }
   })
 
-  const sortValueHandler = useCallback(
+  const sortHandler = useCallback(
     (value: string) => {
-      setSortValue(value)
+      setSort(value)
       setDropIsOpen(false)
 
-      let sortValue = ''
+      let sort = ''
       if (value === 'Возрастанию цены') {
-        sortValue = 'defaultPrice:asc'
+        sort = 'defaultPrice:asc'
       } else if (value === 'Убыванию цены') {
-        sortValue = 'defaultPrice:desc'
+        sort = 'defaultPrice:desc'
       }
 
-      onSortChange(sortValue)
+      // Передача выбранного значения наверх (в родительский компонент)
+      onSortChange(sort)
     },
     [onSortChange],
   )
@@ -62,7 +71,7 @@ export const Sort: React.FC<Props> = ({ onSortChange, initialSort }) => {
             'relative z-10 flex w-full items-center justify-between gap-2 rounded bg-gray-100 px-5 py-2'
           }
         >
-          {sortValue}
+          {getCurrentSort(sort)}
           <ChevronRight
             className={`h-4 w-4 shrink-0 transition-transform duration-100 ${
               dropIsOpen ? 'rotate-[90deg]' : ''
@@ -73,10 +82,12 @@ export const Sort: React.FC<Props> = ({ onSortChange, initialSort }) => {
           <ul className="absolute left-0 top-[101%] w-full rounded bg-white py-2 shadow-custom">
             {sortList.map((item, index) => (
               <li
-                onClick={() => sortValueHandler(item)}
+                onClick={() => sortHandler(item)}
                 key={index}
                 className={`cursor-pointer px-5 py-3 ${
-                  item === sortValue ? 'bg-accentBlue text-white' : ''
+                  item === getCurrentSort(sort)
+                    ? 'bg-accentBlue text-white'
+                    : ''
                 }`}
               >
                 {item}

@@ -3,11 +3,13 @@ import React from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 
+import { getDigFormat } from '@/supports'
+import { useCartStore } from '@/zustand/cartStore'
 import { CartProductTypes } from '@/zustand/cartStore'
 
-import { getDigFormat } from '@/supports'
-
-import { useCartStore } from '@/zustand/cartStore'
+interface CartProductItemProps {
+  product: CartProductTypes
+}
 
 const sizeNameAdaptive: { [key: string]: string } = {
   tires: 'Размер',
@@ -18,10 +20,6 @@ const typeNameAdaptive: { [key: string]: string } = {
   tires: 'Тип шины',
   battery: 'Тип аккумулятора',
   oils: 'Тип жидкости',
-}
-
-interface CartProductItemProps {
-  product: CartProductTypes
 }
 
 export const CartProductItem: React.FC<CartProductItemProps> = ({

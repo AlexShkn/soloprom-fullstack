@@ -30,15 +30,12 @@ export type ParamsPromise = Promise<Params>
 export async function generateStaticParams() {
   const response = await getAllProducts()
 
-  // Debug: Log the API Response to inspect
-  // console.log('API response from getAllProducts:', response);
   if (!response || response.status !== 200) {
     console.log(
       `API request failed with status: ${response?.status}, returning empty array for static params`,
     )
     return []
   }
-  // Проверяем, есть ли data и products
   if (!response?.data || !Array.isArray(response?.data)) {
     console.log(
       'Response data is not an array, returning empty array for static params',
@@ -46,7 +43,6 @@ export async function generateStaticParams() {
     return []
   }
   const products = response.data as cardDataProps[]
-  // Проверка, что у каждого продукта есть productId
   if (products.some((product) => !product.productId)) {
     console.log('Some products missing productId, skipping')
     return []
@@ -63,6 +59,8 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { productId } = await params
   const product = await getProductById(productId)
+
+  console.log(`${product.productId}: `, product.productType)
 
   if (!product) {
     return {

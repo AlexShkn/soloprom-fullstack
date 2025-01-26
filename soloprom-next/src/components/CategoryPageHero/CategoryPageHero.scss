@@ -1,6 +1,6 @@
 @use '@/styles/variables.scss';
 
-.page.category-hero {
+.page .category-hero {
   width: calc(75% - 30px);
 
   @media (max-width: 1199.98px) {
@@ -46,69 +46,5 @@
 
   &__title {
     font-size: clamp(1.625rem, 1.0975rem + 1.7582vw, 2.625rem);
-  }
-
-  // .category-hero__brands-slider
-
-  &__brands-slider {
-    @media (max-width: 767.98px) {
-      position: absolute;
-      bottom: -50px;
-      left: 0;
-      z-index: 10;
-    }
-  }
-
-  // .category-hero__brands-list
-
-  &__brands-list {
-    display: inline-flex;
-    align-items: center;
-  }
-
-  // .category-hero__brands-item
-
-  &__brands-item {
-    display: inline-flex;
-    justify-content: center;
-    opacity: 0;
-    transition: opacity 0.3s ease 0s;
-
-    picture {
-      width: 120px;
-      height: 120px;
-      display: block;
-      @media (max-width: 767.98px) {
-        box-shadow: variables.$shadow;
-        border-radius: variables.$radius;
-        overflow: hidden;
-      }
-    }
-
-    &.swiper-slide-visible {
-      opacity: 1;
-    }
-
-    img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-
-    @media (max-width: 1399.98px) {
-      picture {
-        width: 100px;
-        height: 100px;
-        max-width: 100px;
-      }
-    }
-
-    // @media (max-width: 767.98px) {
-    // 	picture {
-    // 		width: 70px;
-    // 		height: 70px;
-    // 		max-width: 70px;
-    // 	}
-    // }
   }
 }

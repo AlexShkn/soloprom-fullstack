@@ -3,6 +3,7 @@ import React from 'react'
 import Image from 'next/image'
 
 import './CategoryPageHero.scss'
+import { CategoryPageBrands } from './CategoryPageBrands'
 
 interface Props {
   categoryTitle: string
@@ -10,13 +11,27 @@ interface Props {
   categoryAlt: string
 }
 
+const brandsList = [
+  'jungheinrich',
+  'komatsu',
+  'balkanar',
+  'hangcha',
+  'maximal',
+  'nichiyu',
+  'om',
+  'still',
+  'tcm',
+  'vp',
+  'jac',
+]
+
 export const CategoryPageHero: React.FC<Props> = ({
   categoryTitle,
   categoryImage,
   categoryAlt,
 }) => {
   return (
-    <section className="category-hero relative mb-12">
+    <section className="category-hero relative">
       <div className="category-hero__body relative mb-5 flex w-full justify-end overflow-hidden rounded px-5 shadow-custom">
         <Image
           className="absolute inset-0 h-full w-[60%] object-cover"
@@ -31,52 +46,7 @@ export const CategoryPageHero: React.FC<Props> = ({
         </h1>
       </div>
 
-      <div className="swiper-slider category-hero__brands-slider w-full overflow-hidden">
-        <ul className="swiper-wrapper category-hero__brands-list">
-          <li className="swiper-slide category-hero__brands-item">
-            <img
-              src="/img/category/brands/battery/jungheinrich.jpg"
-              alt="jungheinrich"
-            />
-          </li>
-          <li className="swiper-slide category-hero__brands-item">
-            <img src="/img/category/brands/battery/komatsu.jpg" alt="komatsu" />
-          </li>
-          <li className="swiper-slide category-hero__brands-item">
-            <img
-              src="/img/category/brands/battery/balkanar.png"
-              alt="balkanar"
-            />
-          </li>
-          <li className="swiper-slide category-hero__brands-item">
-            <img src="/img/category/brands/battery/hangcha.jpg" alt="hangcha" />
-          </li>
-          <li className="swiper-slide category-hero__brands-item">
-            <img src="/img/category/brands/battery/maximal.jpg" alt="maximal" />
-          </li>
-          <li className="swiper-slide category-hero__brands-item">
-            <img src="/img/category/brands/battery/nichiyu.jpg" alt="nichiyu" />
-          </li>
-          <li className="swiper-slide category-hero__brands-item">
-            <img src="/img/category/brands/battery/om.jpg" alt="om" />
-          </li>
-          <li className="swiper-slide category-hero__brands-item">
-            <img src="/img/category/brands/battery/still.jpg" alt="still" />
-          </li>
-          <li className="swiper-slide category-hero__brands-item">
-            <img src="/img/category/brands/battery/tcm.jpg" alt="tcm" />
-          </li>
-          <li className="swiper-slide category-hero__brands-item">
-            <img
-              src="/img/category/brands/battery/vp.jpg"
-              alt="Волжский погрузчик"
-            />
-          </li>
-          <li className="swiper-slide category-hero__brands-item">
-            <img src="/img/category/brands/battery/jac.jpg" alt="jac" />
-          </li>
-        </ul>
-      </div>
+      {/* <CategoryPageBrands brandsList={brandsList} /> */}
     </section>
   )
 }

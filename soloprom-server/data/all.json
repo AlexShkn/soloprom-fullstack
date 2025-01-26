@@ -7052,6 +7052,8 @@
       "645х245х565": 123113
     },
     "volumes": null,
+    "groups": ["accumulyatori-dlya-polletoperevozchikov"],
+
     "isPopular": true,
     "size": null,
     "discount": null,
@@ -7220,6 +7222,7 @@
       "620х210х627": 75000
     },
     "volumes": null,
+    "groups": ["accumulyatori-dlya-polletoperevozchikov"],
     "isPopular": false,
     "size": null,
     "discount": null,

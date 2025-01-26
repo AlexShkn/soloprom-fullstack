@@ -2,23 +2,12 @@
 import React, { useEffect, useState } from 'react'
 import Link from 'next/link'
 
-import BreadCrumbs from '@/components/ui/BreadCrumbs/BreadCrumbs'
-
-import '../Cart/Cart.scss'
-import { FavoriteCard } from './FavoriteCard'
 import { useFavoriteStore } from '@/zustand/favoriteStore'
 
-export interface FavoriteProduct {
-  productId: string
-  storeId: string
-  name: string
-  price: number
-  url: string
-  variant: string
-  img: string
-  categoryName: string
-  productType: string
-}
+import BreadCrumbs from '@/components/ui/BreadCrumbs/BreadCrumbs'
+import { FavoriteCard } from './FavoriteCard'
+
+import '../Cart/Cart.scss'
 
 export const Favorite: React.FC = () => {
   const favoriteState = useFavoriteStore((state) => state.favoriteState)

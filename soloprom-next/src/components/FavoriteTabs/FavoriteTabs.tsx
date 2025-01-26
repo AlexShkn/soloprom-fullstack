@@ -2,13 +2,7 @@
 import React, { useState } from 'react'
 import './FavoriteTabs.scss'
 import { ProductListSlider } from '../ProductListSlider/ProductListSlider'
-import { cardDataProps } from '@/types/products.types'
-
-interface FavoriteList {
-  tires: cardDataProps[]
-  battery: cardDataProps[]
-  oils: cardDataProps[]
-}
+import { FavoriteList } from '@/types/products.types'
 
 interface FavoriteTabsProps {
   initialData: FavoriteList

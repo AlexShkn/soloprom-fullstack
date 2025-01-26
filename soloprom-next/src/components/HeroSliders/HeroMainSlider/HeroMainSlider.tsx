@@ -3,13 +3,14 @@
 import Image from 'next/image'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { Pagination, Autoplay } from 'swiper/modules'
+import Link from 'next/link'
+
 import Skeleton from 'react-loading-skeleton'
 import 'react-loading-skeleton/dist/skeleton.css'
 
 import './HeroMainSlider.scss'
 
 import { HeroTypes } from '@/components/Hero/Hero'
-import Link from 'next/link'
 
 const mainSliderData = [
   {

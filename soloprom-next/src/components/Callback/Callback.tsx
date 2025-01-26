@@ -4,11 +4,7 @@ import Image from 'next/image'
 import './Callback.scss'
 import { useModalsStore } from '@/zustand/modalsStore'
 
-interface Props {
-  className?: string
-}
-
-export const Callback: React.FC<Props> = ({ className }) => {
+export const Callback = () => {
   const modalCallbackStateChange = useModalsStore(
     (state) => state.modalCallbackStateChange,
   )

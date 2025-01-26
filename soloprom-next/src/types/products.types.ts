@@ -32,3 +32,46 @@ export interface ProductsCardPropTypes {
   cardData: cardDataProps
   mod?: string
 }
+export interface FilterData {
+  types: string[]
+  brands: string[]
+  prices: { min: number; max: number } | null
+  volumes: string[]
+  sizes: string[]
+  plates: string[]
+  voltage: number[]
+  container: number[]
+  models: string[]
+  countries: string[]
+  radiuses: string[]
+}
+
+export interface PageDataTypes {
+  pageType: 'category' | 'subcategory' | 'group' | 'brands'
+  category: string
+  name: string
+  title: string
+  description: string
+  img: string
+  alt: string
+  url: string
+  crumb?: string
+  headGroupTitle?: string
+}
+
+export interface FavoriteList {
+  tires: cardDataProps[]
+  battery: cardDataProps[]
+  oils: cardDataProps[]
+}
+export interface FavoriteProduct {
+  productId: string
+  storeId: string
+  name: string
+  price: number
+  url: string
+  variant: string
+  img: string
+  categoryName: string
+  productType: string
+}

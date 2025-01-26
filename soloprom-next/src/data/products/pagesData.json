@@ -114,16 +114,7 @@
     "category": "tires",
     "pageType": "group"
   },
-  "shini-dlya-vilochnih-pogruzchikov": {
-    "title": "Шины для вилочных погрузчиков",
-    "description": "",
-    "img": "/img/category/accumulyatori-dlya-pogruzchikov",
-    "alt": "Шины для вилочных погрузчиков",
-    "url": "shini-dlya-vilochnih-pogruzchikov",
-    "crumb": "Шины для вилочных погрузчиков",
-    "category": "tires",
-    "pageType": "group"
-  },
+
   "shini-dlya-greiderov": {
     "title": "Шины для грейдеров",
     "description": "",
@@ -277,17 +268,6 @@
     "url": "accumulyatori-dlya-shtabelerov",
     "crumb": "Аккумуляторы для штабелеров"
   },
-  "accumulyatori-dlya-palletoperevozchikov": {
-    "category": "battery",
-    "pageType": "group",
-    "title": "Аккумуляторы для транспортировщика паллет",
-    "description": "",
-    "img": "/img/category/perezochik-pallet",
-    "alt": "",
-    "url": "accumulyatori-dlya-palletoperevozchikov",
-    "crumb": "Аккумуляторы для транспортировщика паллет"
-  },
-
   "accumulyatori-dlya-pogruzchikov-still": {
     "category": "battery",
     "pageType": "brands",

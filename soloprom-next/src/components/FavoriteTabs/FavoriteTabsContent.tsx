@@ -2,13 +2,7 @@
 import React from 'react'
 import { ProductListSlider } from '../ProductListSlider/ProductListSlider'
 import { productTypes } from './FavoriteTabs'
-import { cardDataProps } from '@/types/products.types'
-
-interface FavoriteList {
-  tires: cardDataProps[]
-  battery: cardDataProps[]
-  oils: cardDataProps[]
-}
+import { FavoriteList } from '@/types/products.types'
 
 interface FavoriteTabsContentProps {
   currantTab: 'tires' | 'battery' | 'oils'

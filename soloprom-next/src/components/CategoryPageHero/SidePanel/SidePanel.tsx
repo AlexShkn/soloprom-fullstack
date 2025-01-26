@@ -3,8 +3,8 @@ import React, { useState } from 'react'
 import Link from 'next/link'
 
 import './SidePanel.scss'
-import { PageDataTypes } from '@/app/catalog/[pageUrl]/server'
-const pagesDataRaw = require('@/data/products/pagesData.json')
+import { PageDataTypes } from '@/types/products.types'
+import pagesDataRaw from '@/data/products/pagesData.json'
 
 interface SidePanelProps {
   pageData: PageDataTypes
@@ -142,7 +142,7 @@ export const SidePanel: React.FC<SidePanelProps> = ({ pageData }) => {
   const headGroup = groups && groups[0]?.headGroupTitle
 
   return (
-    <div className="side-panel">
+    <div className="side-panel scroll-bar z-30 max-h-[526px] overflow-y-auto overflow-x-hidden overscroll-contain rounded bg-white p-4 shadow-custom">
       <ul className="side-panel__list">
         {headGroup && (
           <li
@@ -151,7 +151,7 @@ export const SidePanel: React.FC<SidePanelProps> = ({ pageData }) => {
             className={`side-panel__item ${isHover && 'current'}`}
           >
             <div className="side-panel__item-link link-hover">
-              <span className="side-panel__item-bridge"></span>
+              <span className="side-panel__item-bridge absolute left-[50%] top-0 hidden h-full w-full"></span>
               {headGroup}
               <svg className="icon">
                 <use xlinkHref="/img/sprite-default.svg#arrow-drop"></use>

@@ -3,7 +3,7 @@ import { Metadata } from 'next'
 import CategoryPageClient from './CategoryPageClient'
 import { findPagesData, generateFilterData, pagesData } from './server'
 import { fetchProducts, getProductsAnyCategories } from '@/utils/api/products'
-import { cardDataProps } from '@/types/products.types'
+import { FilterData } from '@/types/products.types'
 
 export type Params = {
   pageUrl: string
@@ -13,19 +13,7 @@ export type ParamsPromise = Promise<Params>
 interface CatalogPageProps {
   params: ParamsPromise
 }
-export interface FilterData {
-  types: string[]
-  brands: string[]
-  prices: { min: number; max: number } | null
-  volumes: string[]
-  sizes: string[]
-  plates: string[]
-  voltage: number[]
-  container: number[]
-  models: string[]
-  countries: string[]
-  radiuses: string[]
-}
+
 export async function generateMetadata({
   params,
 }: {
