@@ -37,6 +37,7 @@ export const ProductsFilterBlock: React.FC<Props> = ({
 
   const [products, setProducts] = useState(initialProducts || [])
   const [initialLoad, setInitialLoad] = useState(true)
+  const [dataIsLoading, setDataIsLoading] = useState(true)
 
   const {
     filteredPage,
@@ -52,8 +53,6 @@ export const ProductsFilterBlock: React.FC<Props> = ({
     setHasFilters,
     dynamicCurrentPage,
     setDynamicCurrentPage,
-    dataIsLoading,
-    setDataIsLoading,
   } = useFilterStore()
 
   const debouncedFilters = useDebounce(filters, 500)
@@ -156,20 +155,17 @@ export const ProductsFilterBlock: React.FC<Props> = ({
     if (filteredPage && categoryName !== filteredPage) {
       resetFilters()
     }
-  }, [categoryName, filteredPage, resetFilters])
+  }, [categoryName, filteredPage])
 
   useEffect(() => {
     if (initialLoad) {
       console.log('первый')
-      setDataIsLoading(true)
 
       const urlFilters = searchParams.get('filters')
       const urlSort = searchParams.get('sort')
       const urlPage = searchParams.get('page')
 
       if (urlFilters || urlSort || urlPage) {
-        setProducts([])
-
         console.log('change parametrs')
 
         if (urlFilters) {
@@ -193,10 +189,6 @@ export const ProductsFilterBlock: React.FC<Props> = ({
             setDynamicCurrentPage(parsedPage)
           }
         }
-
-        console.log('init fetchData')
-
-        fetchData()
       } else {
         console.log('initial set')
 

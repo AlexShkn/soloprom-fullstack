@@ -56,7 +56,7 @@ const CATEGORIES = [
       'accumulyatori-dlya-richtrakov',
       'accumulyatori-dlya-electrotelezhek',
       'accumulyatori-dlya-shtabelerov',
-      'accumulyatori-dlya-polletoperevozchikov',
+      'accumulyatori-dlya-palletoperevozchikov',
     ],
     brands: [
       'Union',

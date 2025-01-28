@@ -2,7 +2,6 @@
 
 import * as React from 'react'
 import * as SliderPrimitive from '@radix-ui/react-slider'
-
 import { cn } from '@/lib/utils'
 
 type SliderProps = {
@@ -13,6 +12,7 @@ type SliderProps = {
   formatLabel?: (value: number) => string
   value?: number[] | readonly number[]
   onValueChange?: (values: number[]) => void
+  onValueCommit?: (values: number[]) => void // Новое событие
 }
 
 const DoubleSlider = React.forwardRef<
@@ -20,7 +20,17 @@ const DoubleSlider = React.forwardRef<
   SliderProps
 >(
   (
-    { className, min, max, step, formatLabel, value, onValueChange, ...props },
+    {
+      className,
+      min,
+      max,
+      step,
+      formatLabel,
+      value,
+      onValueChange,
+      onValueCommit, // Новая пропса
+      ...props
+    },
     ref,
   ) => {
     const initialValue = Array.isArray(value) ? value : [min, max]
@@ -37,6 +47,12 @@ const DoubleSlider = React.forwardRef<
       }
     }
 
+    const handlePointerUp = () => {
+      if (onValueCommit) {
+        onValueCommit(localValues) // Вызываем после завершения взаимодействия
+      }
+    }
+
     return (
       <SliderPrimitive.Root
         ref={ref}
@@ -49,21 +65,15 @@ const DoubleSlider = React.forwardRef<
         step={step}
         value={localValues}
         onValueChange={handleValueChange}
+        onPointerUp={handlePointerUp} // Обрабатываем завершение взаимодействия
         {...props}
       >
-        <SliderPrimitive.Track className="bg-secondary relative h-2 w-full grow overflow-hidden rounded-full">
-          <SliderPrimitive.Range className="bg-primary absolute h-full" />
+        <SliderPrimitive.Track className="relative h-2 w-full grow overflow-hidden rounded-full bg-secondary">
+          <SliderPrimitive.Range className="absolute h-full bg-primary" />
         </SliderPrimitive.Track>
         {localValues.map((value, index) => (
           <React.Fragment key={index}>
-            <div
-              className="absolute text-center"
-              style={{
-                left: `calc(${((value - min) / (max - min)) * 100}% + 0px)`,
-                top: `10px`,
-              }}
-            ></div>
-            <SliderPrimitive.Thumb className="border-primary block h-5 w-5 rounded-full border-2 bg-background transition-colors focus-visible:outline-none disabled:pointer-events-none disabled:opacity-50" />
+            <SliderPrimitive.Thumb className="block h-5 w-5 rounded-full border-2 border-primary bg-background transition-colors focus-visible:outline-none disabled:pointer-events-none disabled:opacity-50" />
           </React.Fragment>
         ))}
       </SliderPrimitive.Root>

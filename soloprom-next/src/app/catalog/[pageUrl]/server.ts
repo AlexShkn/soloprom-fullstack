@@ -128,14 +128,31 @@ export function generateFilterData(
   const uniqueTypes = [...new Set(allTypes)]
   const uniqueBrands = [...new Set(allBrands)]
   const uniqueVolumes = [...new Set(allVolumes)]
-  const uniqueSizes = [...new Set(allSizes)]
+  const uniqueSizes = [
+    ...new Set(
+      allSizes.sort((a, b) => {
+        const [aLength, aWidth, aHeight] = a.split(/x|х/).map(Number)
+        const [bLength, bWidth, bHeight] = b.split(/x|х/).map(Number)
+
+        if (aLength !== bLength) return aLength - bLength
+        if (aWidth !== bWidth) return aWidth - bWidth
+        return aHeight - bHeight
+      }),
+    ),
+  ]
   const uniquePlates = [...new Set(allPlates)].filter(Boolean) as string[]
-  const uniqueModels = [...new Set(allModels)]
+  const uniqueModels = [
+    ...new Set(allModels.map((model) => model.toUpperCase())),
+  ]
   const uniqueCountries = [...new Set(allCountries)].filter(Boolean) as string[]
   const uniqueRadiuses = [...new Set(allRadiuses)].filter(Boolean) as string[]
 
   const parserRadiuses = uniqueRadiuses.sort(
     (a, b) => parseInt(a) - parseInt(b),
+  )
+  const parserPlates = uniquePlates.sort((a, b) => parseInt(a) - parseInt(b))
+  const parserModels = uniqueModels.sort((a, b) =>
+    a[0].toLowerCase().localeCompare(b[0].toLowerCase()),
   )
 
   const parsedVoltage = [...new Set(allVoltage)]
@@ -159,10 +176,10 @@ export function generateFilterData(
         : null,
     volumes: uniqueVolumes,
     sizes: uniqueSizes,
-    plates: uniquePlates,
+    plates: parserPlates,
     voltage: parsedVoltage,
     container: parsedContainer,
-    models: uniqueModels,
+    models: parserModels,
     countries: uniqueCountries,
     radiuses: parserRadiuses,
   }

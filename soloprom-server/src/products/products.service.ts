@@ -56,12 +56,26 @@ export class ProductsService {
           } else if (key === 'maxPrice' && typeof filterValue === 'number') {
             where.defaultPrice = { ...where.defaultPrice, lte: filterValue };
           } else if (Array.isArray(filterValue)) {
-            if (key === 'sizes') {
+            if (key === 'sizes' || key === 'volumes') {
               const sizesConditions = filterValue.map((size) => ({
-                sizes: { path: [size], array_contains: [size] },
+                [key]: {
+                  path: [size], // Используем путь к ключу в JSON-объекте
+                  not: null, // Проверяем, что ключ существует
+                },
               }));
-              console.log('sizes filter conditions:', sizesConditions);
+
               where.AND = [...(where.AND || []), { OR: sizesConditions }];
+            } else if (key === 'models') {
+              where.AND = [
+                ...(where.AND || []),
+                {
+                  OR: filterValue.map((model) => ({
+                    models: {
+                      array_contains: [model],
+                    },
+                  })),
+                },
+              ];
             } else if (key === 'size') {
               where.size = { in: filterValue };
             } else {
@@ -283,9 +297,8 @@ export class ProductsService {
       if (product.groups && Array.isArray(product.groups)) {
         const groupConnections = [];
 
-        for (const groupName of product.groups.map((group) => group.name)) {
+        for (const groupName of product.groups.map((group) => group)) {
           let groupId = groupsMap.get(groupName);
-
           // Если группа не найдена, создаём её "на лету"
           if (!groupId) {
             const newGroup = await prisma.group.create({

@@ -183,7 +183,7 @@ export class CrawlerService {
             : td.textContent.trim();
 
           if (index === 1) {
-            size = textContent;
+            size = textContent.replace(/х/g, 'x');
           }
           if (index === 3) {
             ficha = getWordsStr(textContent);

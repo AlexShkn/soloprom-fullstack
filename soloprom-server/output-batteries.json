@@ -507,7 +507,10 @@
       "HELI-CPD25",
       "MAXIMAL-FB25",
       "HELI-CPD20FJ",
-      "HYUNDAI-16BRJ-7"
+      "HYUNDAI-16BRJ-7",
+      "NICHIYU-FBRF 14",
+      "NICHIYU-FBRF 16",
+      "NICHIYU-FBRF 20"
     ],
     "sizes": {
       "1220х352х782": 566541
@@ -525,10 +528,17 @@
       "HELI-CPD25CJ",
       "HELI-CPD25FJ",
       "BT----",
-      "BT-RRE160"
+      "BT-RRE160",
+      "HYSTER-R1.6H",
+      "HYSTER-R2.0H",
+      "JUNGHEINRICH-ETV 214",
+      "JUNGHEINRICH-ETV 216",
+      "JUNGHEINRICH-ETV 320",
+      "JUNGHEINRICH-ETV114/ETV116",
+      "KOMATSU-FB14 RJY"
     ],
     "sizes": {
-      "1215х420х770": 800186
+      "1220х424х782": 800186
     }
   },
   {

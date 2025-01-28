@@ -172,18 +172,19 @@ const CatalogFilters: React.FC<Props> = ({
         />
       )}
 
-      {categoryInitialList.prices && products.length > 10 && (
-        <FilterItem title="Цена" value="price">
-          <FilterInterval
-            title=""
-            min={categoryInitialList.prices.min}
-            max={categoryInitialList.prices.max}
-            onRangeChange={handlePriceChange}
-            initialMin={parsedMinPrice}
-            initialMax={parsedMaxPrice}
-          />
-        </FilterItem>
-      )}
+      {categoryInitialList.prices &&
+        categoryInitialList.prices.min !== categoryInitialList.prices.max && (
+          <FilterItem title="Цена" value="price">
+            <FilterInterval
+              title=""
+              min={categoryInitialList.prices.min}
+              max={categoryInitialList.prices.max}
+              onRangeChange={handlePriceChange}
+              initialMin={parsedMinPrice}
+              initialMax={parsedMaxPrice}
+            />
+          </FilterItem>
+        )}
       {/* {prices && (
 <FilterItem title="Цена" value="price">
 <FilterSlider title="" min={prices.min} max={prices.max} />

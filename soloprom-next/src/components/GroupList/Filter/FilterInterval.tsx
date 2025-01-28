@@ -1,11 +1,8 @@
 'use client'
+
 import { Input } from '@/components/ui'
 import { DoubleSlider } from '@/components/ui/DoubleSlider'
 import React, { useState, useEffect, useCallback, useRef } from 'react'
-
-interface Props {
-  className?: string
-}
 
 export const FilterInterval: React.FC<{
   title: string
@@ -22,43 +19,42 @@ export const FilterInterval: React.FC<{
   const [maxValue, setMaxValue] = useState(
     initialMax !== undefined ? initialMax : max,
   )
-  const [range, setRange] = useState<number[]>([
+
+  const [tempValues, setTempValues] = useState<number[]>([
     initialMin !== undefined ? initialMin : min,
     initialMax !== undefined ? initialMax : max,
   ])
-  const minInputRef = useRef<HTMLInputElement>(null)
-  const maxInputRef = useRef<HTMLInputElement>(null)
+
+  const debounceTimeout = useRef<number | undefined>(undefined)
 
   useEffect(() => {
     if (initialMin !== undefined && initialMax !== undefined) {
       setMinValue(initialMin)
       setMaxValue(initialMax)
-      setRange([initialMin, initialMax])
+      setTempValues([initialMin, initialMax])
     } else {
       setMinValue(min)
       setMaxValue(max)
-      setRange([min, max])
+      setTempValues([min, max])
     }
   }, [initialMin, initialMax, min, max])
 
   const formatLabel = (value: number) => `${value} ${unit || ''}`
 
-  useEffect(() => {
-    setRange([minValue, maxValue])
-  }, [minValue, maxValue])
+  const handleRangeChange = (newRange: number[]) => {
+    setTempValues(newRange) // Обновляем локальные значения слайдера
+    setMinValue(newRange[0])
+    setMaxValue(newRange[1])
+  }
 
-  useEffect(() => {
-    setMinValue(range[0])
-    setMaxValue(range[1])
-  }, [range])
-
-  const handleRangeChange = useCallback(
-    (newRange: number[]) => {
-      setRange(newRange)
-      onRangeChange(newRange[0], newRange[1])
-    },
-    [onRangeChange],
-  )
+  const handleRangeCommit = (newRange: number[]) => {
+    if (debounceTimeout.current) {
+      clearTimeout(debounceTimeout.current)
+    }
+    debounceTimeout.current = window.setTimeout(() => {
+      onRangeChange(newRange[0], newRange[1]) // Применяем фильтры только после завершения взаимодействия
+    }, 300) // Дебаунс 300мс
+  }
 
   const handleMinInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setMinValue(Number(e.target.value))
@@ -69,21 +65,17 @@ export const FilterInterval: React.FC<{
   }
 
   const handleMinInputBlur = () => {
-    let newValue = minValue
-    if (newValue > maxValue) {
-      newValue = maxValue
-    }
+    let newValue = Math.max(min, Math.min(minValue, maxValue)) // Гарантируем, что значение не выходит за пределы
     setMinValue(newValue)
     onRangeChange(newValue, maxValue)
+    setTempValues([newValue, maxValue])
   }
 
   const handleMaxInputBlur = () => {
-    let newValue = maxValue
-    if (newValue < minValue) {
-      newValue = minValue
-    }
+    let newValue = Math.min(max, Math.max(maxValue, minValue)) // Гарантируем, что значение не выходит за пределы
     setMaxValue(newValue)
     onRangeChange(minValue, newValue)
+    setTempValues([minValue, newValue])
   }
 
   return (
@@ -93,8 +85,9 @@ export const FilterInterval: React.FC<{
         min={min}
         max={max}
         step={1}
-        value={range}
-        onValueChange={handleRangeChange}
+        value={tempValues}
+        onValueChange={handleRangeChange} // Обновляем локальное состояние
+        onValueCommit={handleRangeCommit} // Применяем фильтры после завершения
         formatLabel={formatLabel}
       />
       <div className="flex space-x-2">
@@ -105,7 +98,6 @@ export const FilterInterval: React.FC<{
           onBlur={handleMinInputBlur}
           className="w-1/2 text-sm"
           placeholder="от"
-          ref={minInputRef}
         />
         <Input
           type="number"
@@ -114,7 +106,6 @@ export const FilterInterval: React.FC<{
           onBlur={handleMaxInputBlur}
           className="w-1/2 text-sm"
           placeholder="до"
-          ref={maxInputRef}
         />
       </div>
     </div>

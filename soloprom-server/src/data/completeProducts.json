@@ -2171,7 +2171,7 @@
         { "name": "accumulyatori-dlya-electrotelezhek" },
         { "name": "accumulyatori-dlya-pogruzchikov" },
         { "name": "accumulyatori-dlya-shtabelerov" },
-        { "name": "accumulyatori-dlya-polletoperevozchikov" }
+        { "name": "accumulyatori-dlya-palletoperevozchikov" }
       ],
       "delivery": "до 21 дней",
       "productType": "Тяговый",
@@ -2403,7 +2403,7 @@
         { "name": "accumulyatori-dlya-pogruzchikov" },
         { "name": "accumulyatori-dlya-shtabelerov" },
         { "name": "accumulyatori-dlya-richtrakov" },
-        { "name": "accumulyatori-dlya-polletoperevozchikov" }
+        { "name": "accumulyatori-dlya-palletoperevozchikov" }
       ],
       "delivery": "до 21 дней",
       "productType": "Тяговый",
@@ -2979,7 +2979,7 @@
       "defaultPrice": 80903,
       "groups": [
         { "name": "accumulyatori-dlya-shtabelerov" },
-        { "name": "accumulyatori-dlya-polletoperevozchikov" }
+        { "name": "accumulyatori-dlya-palletoperevozchikov" }
       ],
       "delivery": "до 21 дней",
       "productType": "Тяговый",
@@ -3006,7 +3006,7 @@
       "defaultPrice": 73868,
       "groups": [
         { "name": "accumulyatori-dlya-shtabelerov" },
-        { "name": "accumulyatori-dlya-polletoperevozchikov" }
+        { "name": "accumulyatori-dlya-palletoperevozchikov" }
       ],
       "delivery": "до 21 дней",
       "productType": "Тяговый",
@@ -3297,7 +3297,7 @@
       "groups": [
         { "name": "accumulyatori-dlya-shtabelerov" },
         { "name": "accumulyatori-dlya-pogruzchikov" },
-        { "name": "accumulyatori-dlya-polletoperevozchikov" }
+        { "name": "accumulyatori-dlya-palletoperevozchikov" }
       ],
       "delivery": "до 21 дней",
       "productType": "Тяговый",
@@ -3477,7 +3477,7 @@
       "groups": [
         { "name": "accumulyatori-dlya-shtabelerov" },
         { "name": "accumulyatori-dlya-electrotelezhek" },
-        { "name": "accumulyatori-dlya-polletoperevozchikov" }
+        { "name": "accumulyatori-dlya-palletoperevozchikov" }
       ],
       "delivery": "до 21 дней",
       "productType": "Тяговый",
@@ -3625,7 +3625,7 @@
       "groups": [
         { "name": "accumulyatori-dlya-pogruzchikov" },
         { "name": "accumulyatori-dlya-shtabelerov" },
-        { "name": "accumulyatori-dlya-polletoperevozchikov" }
+        { "name": "accumulyatori-dlya-palletoperevozchikov" }
       ],
       "delivery": "до 21 дней",
       "productType": "Тяговый",
@@ -3679,7 +3679,7 @@
       "defaultPrice": 94973,
       "groups": [
         { "name": "accumulyatori-dlya-shtabelerov" },
-        { "name": "accumulyatori-dlya-polletoperevozchikov" }
+        { "name": "accumulyatori-dlya-palletoperevozchikov" }
       ],
       "delivery": "до 21 дней",
       "productType": "Тяговый",
@@ -3706,7 +3706,7 @@
       "defaultPrice": 63700,
       "groups": [
         { "name": "accumulyatori-dlya-shtabelerov" },
-        { "name": "accumulyatori-dlya-polletoperevozchikov" }
+        { "name": "accumulyatori-dlya-palletoperevozchikov" }
       ],
       "delivery": "до 21 дней",
       "productType": "Тяговый",
@@ -3733,7 +3733,7 @@
       "defaultPrice": 63700,
       "groups": [
         { "name": "accumulyatori-dlya-shtabelerov" },
-        { "name": "accumulyatori-dlya-polletoperevozchikov" }
+        { "name": "accumulyatori-dlya-palletoperevozchikov" }
       ],
       "delivery": "до 21 дней",
       "productType": "Тяговый",
