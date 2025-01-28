@@ -99,6 +99,8 @@ const CatalogPage: React.FC<CatalogPageProps> = async ({ params }) => {
 
   const filterData: FilterData = generateFilterData(categoryData)
 
+  console.log('redner CatalogPage')
+
   return (
     <CategoryPageClient
       pageData={pageData}

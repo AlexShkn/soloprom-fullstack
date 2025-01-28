@@ -37,7 +37,6 @@ class AuthService {
     return response
   }
 
-  // Добавление нового метода confirmRegistration
   public async confirmRegistration(email: string, code: string) {
     const response = await api.post<{ message: string }>(
       'auth/confirm-registration',

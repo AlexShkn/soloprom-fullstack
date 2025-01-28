@@ -35,40 +35,44 @@ export const ProductsFilterBlock: React.FC<Props> = ({
   const groupListRef = useRef<HTMLElement | null>(null)
   const fetchControllerRef = useRef<AbortController | null>(null)
 
-  // Zustand store
-  const filters = useFilterStore((state) => state.filters)
-  const setFilters = useFilterStore((state) => state.setFilters)
-  const sort = useFilterStore((state) => state.sort)
-  const setSort = useFilterStore((state) => state.setSort)
-  const setProducts = useFilterStore((state) => state.setProducts)
-  const setTotalProductsCount = useFilterStore(
-    (state) => state.setTotalProductsCount,
-  )
-  const products = useFilterStore((state) => state.products)
-  const totalProductsCount = useFilterStore((state) => state.totalProductsCount)
-  const hasFilters = useFilterStore((state) => state.hasFilters)
-  const setHasFilters = useFilterStore((state) => state.setHasFilters)
-  const dynamicCurrentPage = useFilterStore((state) => state.dynamicCurrentPage)
-  const setDynamicCurrentPage = useFilterStore(
-    (state) => state.setDynamicCurrentPage,
-  )
-  const dataIsLoading = useFilterStore((state) => state.dataIsLoading)
-  const setDataIsLoading = useFilterStore((state) => state.setDataIsLoading)
+  const [products, setProducts] = useState(initialProducts || [])
+  const [initialLoad, setInitialLoad] = useState(true)
+
+  const {
+    filteredPage,
+    setFilteredPage,
+    resetFilters,
+    filters,
+    setFilters,
+    sort,
+    setSort,
+    setTotalProductsCount,
+    totalProductsCount,
+    hasFilters,
+    setHasFilters,
+    dynamicCurrentPage,
+    setDynamicCurrentPage,
+    dataIsLoading,
+    setDataIsLoading,
+  } = useFilterStore()
 
   const debouncedFilters = useDebounce(filters, 500)
   const debouncedSort = useDebounce(sort, 500)
 
-  const [initialLoad, setInitialLoad] = useState(true)
+  const totalPages = useMemo(
+    () => Math.ceil(totalProductsCount / 12),
+    [totalProductsCount],
+  )
 
-  // Fetch products data based on filters and sort
   const fetchData = useCallback(async () => {
+    console.log('fetch')
+
     if (fetchControllerRef.current) {
       fetchControllerRef.current.abort()
     }
 
     const controller = new AbortController()
     fetchControllerRef.current = controller
-    setDataIsLoading(true)
 
     try {
       const params = {
@@ -91,9 +95,10 @@ export const ProductsFilterBlock: React.FC<Props> = ({
       setTotalProductsCount(response.data.totalCount)
     } catch (err) {
       if (!axios.isCancel(err)) {
-        console.error('Error fetching products:', err)
+        console.error('Ошибка получения продуктов:', err)
       }
     } finally {
+      setFilteredPage(categoryName)
       setDataIsLoading(false)
       fetchControllerRef.current = null
     }
@@ -105,9 +110,9 @@ export const ProductsFilterBlock: React.FC<Props> = ({
     setProducts,
     setTotalProductsCount,
     setDataIsLoading,
+    setFilteredPage,
   ])
 
-  // Handle URL filters and sort updates
   const updateUrl = useCallback(() => {
     const params = new URLSearchParams()
 
@@ -124,20 +129,53 @@ export const ProductsFilterBlock: React.FC<Props> = ({
     }
 
     const newUrl = `?${params.toString()}`
-    router.push(newUrl, { scroll: false })
+
+    if (newUrl.length > 1) {
+      console.log(newUrl)
+
+      router.push(newUrl, { scroll: false })
+    }
   }, [debouncedFilters, debouncedSort, dynamicCurrentPage, router])
 
-  // Load initial data from server or SSG
+  // Прокрутка к началу списка при изменении страницы динамической пагинации
+  useEffect(() => {
+    if (
+      !initialLoad &&
+      groupListRef.current &&
+      filteredPage &&
+      categoryName === filteredPage
+    ) {
+      groupListRef.current.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start',
+      })
+    }
+  }, [dynamicCurrentPage, initialLoad])
+
+  useEffect(() => {
+    if (filteredPage && categoryName !== filteredPage) {
+      resetFilters()
+    }
+  }, [categoryName, filteredPage, resetFilters])
+
   useEffect(() => {
     if (initialLoad) {
+      console.log('первый')
+      setDataIsLoading(true)
+
       const urlFilters = searchParams.get('filters')
       const urlSort = searchParams.get('sort')
       const urlPage = searchParams.get('page')
 
       if (urlFilters || urlSort || urlPage) {
+        setProducts([])
+
+        console.log('change parametrs')
+
         if (urlFilters) {
           try {
             const parsedFilters = JSON.parse(urlFilters)
+
             setFilters(parsedFilters)
             setHasFilters(true)
           } catch (err) {
@@ -156,10 +194,13 @@ export const ProductsFilterBlock: React.FC<Props> = ({
           }
         }
 
+        console.log('init fetchData')
+
         fetchData()
       } else {
-        // Initial SSG products
-        setProducts(initialProducts || [])
+        console.log('initial set')
+
+        setDataIsLoading(false)
         setTotalProductsCount(totalCount)
       }
 
@@ -169,52 +210,42 @@ export const ProductsFilterBlock: React.FC<Props> = ({
     searchParams,
     setFilters,
     setSort,
-    fetchData,
     initialProducts,
     totalCount,
     setProducts,
     setTotalProductsCount,
     setDynamicCurrentPage,
     setHasFilters,
-    initialLoad,
   ])
 
-  // Fetch data when filters or sort change
-  useEffect(() => {
-    if (!initialLoad && hasFilters) {
-      fetchData()
-    }
-  }, [
-    debouncedFilters,
-    debouncedSort,
-    dynamicCurrentPage,
-    fetchData,
-    initialLoad,
-    hasFilters,
-  ])
-
-  // Update URL when filters or pagination change
+  // Обновление URL при изменении фильтров, сортировки или страницы
   useEffect(() => {
     if (!initialLoad) {
+      console.log('не первый и апдейт фильтров')
       updateUrl()
+
+      if (hasFilters) {
+        console.log('не первый с фильтрами')
+
+        setDataIsLoading(true)
+        setProducts([])
+
+        console.log('init fetchData')
+
+        fetchData()
+      }
     }
-  }, [
-    debouncedFilters,
-    debouncedSort,
-    dynamicCurrentPage,
-    updateUrl,
-    initialLoad,
-  ])
+  }, [debouncedFilters, debouncedSort, dynamicCurrentPage, updateUrl])
 
   return (
     <section className="group-list section-offset" ref={groupListRef}>
       <div className="group-list__container">
-        <div className={`group-list__body`}>
+        <div className="group-list__body">
           <CatalogFilters
+            products={products}
             productsType={productsType}
             categoryName={categoryName}
             onFiltersChange={setFilters}
-            initialFilters={filters}
             categoryInitialList={categoryData}
             currentPage={currentPage}
           />
@@ -223,7 +254,7 @@ export const ProductsFilterBlock: React.FC<Props> = ({
             currentPage={currentPage}
             dynamicCurrentPage={dynamicCurrentPage}
             setDynamicCurrentPage={setDynamicCurrentPage}
-            totalPages={Math.ceil(totalProductsCount / 12)}
+            totalPages={totalPages}
             onChangePage={onChangePage}
             dataIsLoading={dataIsLoading}
             onSortChange={setSort}

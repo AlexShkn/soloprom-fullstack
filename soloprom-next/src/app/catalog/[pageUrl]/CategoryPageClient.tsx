@@ -5,7 +5,7 @@ import { HeroBlock } from '@/components/CategoryPageHero/HeroBlock/HeroBlock'
 import { CategoryPageHero } from '@/components/CategoryPageHero/CategoryPageHero'
 import { SidePanel } from '@/components/CategoryPageHero/SidePanel/SidePanel'
 import { ProductsFilterBlock } from '@/components/GroupList/ProductsFilterBlock/ProductsFilterBlock'
-import { PageArticle } from '@/components/PageArticle/PageArticle'
+import PageArticle from '@/components/PageArticle/PageArticle'
 import { ProductsSlider } from '@/components/ProductsSlider/ProductsSlider'
 import { Callback } from '@/components/Callback/Callback'
 import BreadCrumbs from '@/components/ui/BreadCrumbs/BreadCrumbs'
@@ -40,7 +40,9 @@ const CategoryPageClient: React.FC<CategoryPageClientProps> = ({
     } else {
       router.push(newPath)
     }
+    console.log('handle page')
   }
+
   return (
     <PageWrapper>
       <BreadCrumbs
@@ -76,7 +78,7 @@ const CategoryPageClient: React.FC<CategoryPageClientProps> = ({
         />
       </Suspense>
       <ProductsSlider title={'Похожие товары'} categoryName={pageData.name} />
-      {/* <PageArticle articleName={pageData.name} /> */}
+      <PageArticle articleName={pageData.name} />
       <Callback />
     </PageWrapper>
   )

@@ -52,9 +52,9 @@ export const DescriptionTemplate: React.FC<DescriptionTypes> = ({
 
   return (
     <div
-      className={`product-card__descr-list ${mod === 'mini' ? 'mb-2.5' : ''}`}
+      className={`product-card__descr-list ${mod === 'grid' ? 'mb-2.5' : ''}`}
     >
-      {mod !== 'mini' && (
+      {mod !== 'grid' && (
         <>
           {renderDescriptionItem(
             getAdaptiveValue(ProductsCardWordAdaptive, 'types', categoryName) ||
@@ -70,7 +70,7 @@ export const DescriptionTemplate: React.FC<DescriptionTypes> = ({
         </>
       )}
 
-      {sizes && mod === 'mini' && categoryName === 'battery' && (
+      {sizes && mod === 'grid' && categoryName === 'battery' && (
         <SizesRow
           productId={productId}
           setVariantValue={setVariantValue}
@@ -80,7 +80,7 @@ export const DescriptionTemplate: React.FC<DescriptionTypes> = ({
         />
       )}
 
-      {mod !== 'mini' && sizes && (
+      {mod !== 'grid' && sizes && (
         <SizesRow
           productId={productId}
           setVariantValue={setVariantValue}
@@ -90,7 +90,7 @@ export const DescriptionTemplate: React.FC<DescriptionTypes> = ({
         />
       )}
 
-      {mod !== 'mini' && (
+      {mod !== 'grid' && (
         <>
           {brandName && renderDescriptionItem('Бренд', brandName)}
           {country && renderDescriptionItem('Производитель', country)}

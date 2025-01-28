@@ -1,6 +1,6 @@
 // components/GroupList/FilteredList.tsx
 'use client'
-import React from 'react'
+import React, { useState } from 'react'
 import { ProductsCard } from '@/components/ProductsCard/ProductsCard'
 import { cardDataProps } from '@/types/products.types'
 import { Pagination } from '../Pagination'
@@ -33,19 +33,31 @@ export const FilteredList: React.FC<Props> = ({
   setDynamicCurrentPage,
   dynamicCurrentPage,
 }) => {
+  const [viewMode, setViewMode] = useState('grid')
+
   return (
     <div className="filter__catalog">
       <div className="mx-5 mb-5 flex items-center justify-between gap-5">
         <Sort onSortChange={onSortChange} />
-        <ViewSetting />
+        <ViewSetting viewMode={viewMode} setViewMode={setViewMode} />
       </div>
-      <ul className="group-list__catalog-list">
+      <ul
+        className={`catalog-list--${viewMode} grid grid-cols-4 gap-5 overflow-hidden px-5 py-2.5`}
+      >
         {dataIsLoading
           ? Array.from({ length: 12 }).map((_, index) => (
-              <Skeleton key={index} width={'100%'} height={'320px'} />
+              <Skeleton
+                key={index}
+                width={'100%'}
+                height={viewMode === 'grid' ? '320px' : '177px'}
+              />
             ))
           : data.map((item) => (
-              <ProductsCard key={item.productId} cardData={item} mod="mini" />
+              <ProductsCard
+                key={item.productId}
+                cardData={item}
+                mod={viewMode}
+              />
             ))}
       </ul>
       {totalPages > 1 && !dataIsLoading && !hasFilters && (

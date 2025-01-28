@@ -24,7 +24,6 @@ const getCurrentSort = (value: string) => {
 
 export const Sort: React.FC<Props> = ({ onSortChange, initialSort }) => {
   const [dropIsOpen, setDropIsOpen] = useState(false)
-  // const [sort, setSort] = useState('По умолчанию')
   const sort = useFilterStore((state) => state.sort)
   const setSort = useFilterStore((state) => state.setSort)
 
@@ -54,7 +53,6 @@ export const Sort: React.FC<Props> = ({ onSortChange, initialSort }) => {
         sort = 'defaultPrice:desc'
       }
 
-      // Передача выбранного значения наверх (в родительский компонент)
       onSortChange(sort)
     },
     [onSortChange],

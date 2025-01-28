@@ -6,46 +6,50 @@ import { FilterInterval } from './FilterInterval'
 import { FilterItem } from './FilterItem'
 import { FilterList } from './FilterList'
 import { transformJson } from '@/components/CategoryPageHero/SidePanel/SidePanel'
-import { FilterData } from '@/types/products.types'
+import { cardDataProps, FilterData } from '@/types/products.types'
 import useFilterStore from '@/zustand/filterStore'
 import pagesDataRaw from '@/data/products/pagesData.json'
 import { useSearchParams } from 'next/navigation'
+import { isEqual } from '@/supports/isEqual'
 
 const transformData = transformJson(pagesDataRaw)
 
 interface Props {
+  products: cardDataProps[]
   productsType: string
   categoryName: string
   currentPage: number
-  initialFilters?: Record<string, string[] | number>
   onFiltersChange: (filters: Record<string, string[] | number>) => void
   categoryInitialList: FilterData
-  initialSearch?: string
 }
 
 const CatalogFilters: React.FC<Props> = ({
+  products,
   productsType,
   categoryName,
-  initialFilters,
-  initialSearch,
   onFiltersChange,
   currentPage,
   categoryInitialList,
 }) => {
   const searchParams = useSearchParams()
-  const setFilters = useFilterStore((state) => state.setFilters)
+  const { filters, setFilters } = useFilterStore()
   const [internalFilters, setInternalFilters] = useState<
     Record<string, string[] | number>
-  >(initialFilters || {})
+  >(filters || {})
+  const [currentFilters, setCurrentFilters] = useState({})
 
-  const buttonRef = useRef<HTMLButtonElement>(null)
   const accordionRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
-    if (initialFilters) {
-      setInternalFilters(initialFilters)
+    if (filters && Object.keys(filters).length > 0) {
+      if (!isEqual(currentFilters, filters)) {
+        console.log(filters)
+        console.log('setInternalFilters')
+        setCurrentFilters({ ...filters })
+        setInternalFilters(filters)
+      }
     }
-  }, [initialFilters])
+  }, [filters])
 
   const categoryData = transformData[productsType]
   const groups = categoryData.group
@@ -168,7 +172,7 @@ const CatalogFilters: React.FC<Props> = ({
         />
       )}
 
-      {categoryInitialList.prices && (
+      {categoryInitialList.prices && products.length > 10 && (
         <FilterItem title="Цена" value="price">
           <FilterInterval
             title=""

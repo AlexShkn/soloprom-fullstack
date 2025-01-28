@@ -11,6 +11,7 @@ import PageWrapper from './PageWrapper'
 import { FavoriteTabs } from '@/components/FavoriteTabs/FavoriteTabs'
 import { getPopularProducts } from '@/utils/api/products'
 import { cardDataProps, FavoriteList } from '@/types/products.types'
+import TransitionWrapper from '@/providers/TransitionWrapper'
 
 export const metadata: Metadata = {
   title: 'Главная',
@@ -32,16 +33,18 @@ export default async function Home() {
     ),
   }
   return (
-    <PageWrapper>
-      <Hero />
-      <CategoryProductsSlider />
-      <SubHero />
-      <FavoriteTabs initialData={formattedProducts} />
-      <About />
-      <Benefits />
-      <Callback />
-      <PaymentDelivery level={'h2'} />
-      <ContactsMap />
-    </PageWrapper>
+    <TransitionWrapper>
+      <PageWrapper>
+        <Hero />
+        <CategoryProductsSlider />
+        <SubHero />
+        <FavoriteTabs initialData={formattedProducts} />
+        <About />
+        <Benefits />
+        <Callback />
+        <PaymentDelivery level={'h2'} />
+        <ContactsMap />
+      </PageWrapper>
+    </TransitionWrapper>
   )
 }

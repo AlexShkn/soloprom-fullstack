@@ -1,5 +1,6 @@
-'use client'
-import React, { useEffect, useState, Suspense } from 'react'
+'use client' // Чётко указываем, что это Client Component, иначе Next.js может смешивать обработку
+
+import React, { Suspense, useMemo } from 'react'
 import './PageArticle.scss'
 import { Loading } from '../ui'
 
@@ -7,29 +8,21 @@ interface Props {
   articleName: string
 }
 
-const DynamicMDX = ({ articleName }: Props) => {
-  const MDXComponent = React.lazy(
-    () => import(`@/data/articles/${articleName}.mdx`),
-  )
-  return (
-    <Suspense
-      fallback={
-        <div>
-          <Loading />
-        </div>
-      }
-    >
-      <MDXComponent />
-    </Suspense>
-  )
-}
+const PageArticle: React.FC<Props> = ({ articleName }) => {
+  // Используем useMemo для создания lazy импорта, зависящего только от articleName
+  const MDXComponent = useMemo(() => {
+    return React.lazy(() => import(`@/data/articles/${articleName}.mdx`))
+  }, [articleName])
 
-export const PageArticle: React.FC<Props> = ({ articleName }) => {
   return (
     <section className="page-article">
       <div className="page-article__container">
-        <DynamicMDX articleName={articleName} />
+        <Suspense fallback={<Loading />}>
+          <MDXComponent />
+        </Suspense>
       </div>
     </section>
   )
 }
+
+export default PageArticle

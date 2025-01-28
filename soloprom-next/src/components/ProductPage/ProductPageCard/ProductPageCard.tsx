@@ -51,7 +51,10 @@ export const ProductPageCard: React.FC<ProductsCardPropTypes> = ({
             <div className="">
               <Image
                 className="product-page-card__image"
-                src={`/img/catalog/${img}.webp`}
+                src={
+                  (img && `/img/catalog/${img}.webp`) ||
+                  '/img/catalog/not-found.jpg'
+                }
                 alt=""
                 width={300}
                 height={300}

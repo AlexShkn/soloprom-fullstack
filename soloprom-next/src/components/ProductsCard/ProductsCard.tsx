@@ -135,12 +135,14 @@ export const ProductsCard: React.FC<ProductsCardPropTypes> = ({
   return (
     <div
       data-product-card
-      className="product-card relative flex h-full flex-col rounded bg-white p-4 shadow-custom"
+      className={`product-card relative flex h-full ${mod !== 'row' && 'flex-col'} ${mod === 'row' && 'gap-5'} rounded bg-white p-4 shadow-custom`}
     >
       {regalia.length > 0 && (
         <RegaliaList regalia={regalia} discount={discount} />
       )}
-      <div className="mb-2.5 flex justify-center">
+      <div
+        className={`${mod !== 'row' ? 'mb-2.5' : 'items-center'} flex justify-center`}
+      >
         <Image
           className="inline-block h-[120px] object-contain"
           src={
@@ -152,23 +154,25 @@ export const ProductsCard: React.FC<ProductsCardPropTypes> = ({
         />
       </div>
 
-      <Link href={url || '/'} className="relative mb-2.5 text-center">
-        <div
-          className={`link-hover font-bold uppercase leading-5 text-[#272b2c] ${mod === 'mini' ? 'text-left text-sm' : 'text-center'}`}
-        >
-          {name}
-        </div>
-      </Link>
+      <div className={`${mod === 'row' && 'flex flex-auto flex-col'}`}>
+        <Link href={url || '/'} className="relative mb-2.5 text-center">
+          <div
+            className={`link-hover font-bold uppercase leading-5 text-[#272b2c] ${mod === 'grid' ? 'text-left text-sm' : 'text-center'}`}
+          >
+            {name}
+          </div>
+        </Link>
 
-      <DescriptionTemplate
-        variantValue={variantValue}
-        setVariantValue={setVariantValue}
-        cardData={cardData}
-        mod={mod || ''}
-      />
+        <DescriptionTemplate
+          variantValue={variantValue}
+          setVariantValue={setVariantValue}
+          cardData={cardData}
+          mod={mod || ''}
+        />
+      </div>
 
       <div className="mt-auto flex flex-col gap-2.5">
-        {mod !== 'mini' ? (
+        {mod !== 'grid' ? (
           <PriceBlock
             price={sizesData?.[variantValue] ?? defaultPrice}
             discount={discount}
@@ -177,12 +181,12 @@ export const ProductsCard: React.FC<ProductsCardPropTypes> = ({
           ''
         )}
 
-        <div className="mb-1 flex items-end justify-between gap-2.5">
+        <div className="mb-1 flex items-center justify-between gap-2.5">
           <RatingDisplay rating={rating} />
           <button
             onClick={() => fastOrderHandle()}
             type="button"
-            className={`ml-auto font-medium text-[#dd3824] underline ${mod === 'mini' && 'text-[14px]'}`}
+            className={`ml-auto font-medium text-[#dd3824] underline ${mod === 'grid' && 'text-[14px]'}`}
           >
             Купить в 1 клик
           </button>
@@ -193,7 +197,7 @@ export const ProductsCard: React.FC<ProductsCardPropTypes> = ({
               {Object.keys(volumes).map((volume) => (
                 <li
                   key={volume}
-                  className={`relative flex cursor-pointer items-center justify-center rounded bg-accentBlue ${mod === 'mini' ? 'px-2 py-1 text-sm' : 'px-4 py-1'} text-center transition-colors ${volume === variantValue && 'bg-successColor'}`}
+                  className={`relative flex cursor-pointer items-center justify-center rounded bg-accentBlue ${mod === 'grid' ? 'px-2 py-1 text-sm' : 'px-4 py-1'} text-center transition-colors ${volume === variantValue && 'bg-successColor'}`}
                   onClick={() => setVariantValue(volume)}
                 >
                   <span className="font-medium text-white">{volume}</span>
@@ -203,9 +207,9 @@ export const ProductsCard: React.FC<ProductsCardPropTypes> = ({
           </div>
         )}
         <div
-          className={`flex ${mod === 'mini' ? 'w-auto flex-col' : 'items-center justify-between'}`}
+          className={`flex ${mod === 'grid' ? 'w-auto flex-col' : 'items-center justify-between gap-2.5'}`}
         >
-          {mod === 'mini' && (
+          {mod === 'grid' && (
             <div className="mb-2.5 flex items-center justify-between gap-2.5">
               <div className="font-medium text-slate-600">
                 {categoryName === 'oils'
@@ -227,7 +231,7 @@ export const ProductsCard: React.FC<ProductsCardPropTypes> = ({
               // onClick={
               //   favoriteIsAdded ? handleRemoveFromFavorites : handleAddToFavorites
               // }
-              className={`product-card__favorite ${mod === 'mini' && 'absolute right-2 top-12'} ${favoriteIsAdded && 'added'}`}
+              className={`product-card__favorite ${mod === 'grid' && 'absolute right-2 top-12'} ${favoriteIsAdded && 'added'}`}
             >
               <svg className="icon h-7 w-7 fill-accentBlue transition-colors">
                 <use xlinkHref="/img/sprite.svg#scales" />
@@ -240,7 +244,7 @@ export const ProductsCard: React.FC<ProductsCardPropTypes> = ({
                   ? handleRemoveFromFavorites
                   : handleAddToFavorites
               }
-              className={`product-card__favorite ${mod === 'mini' && 'absolute right-3 top-3'} ${favoriteIsAdded && 'added'}`}
+              className={`product-card__favorite ${mod === 'grid' && 'absolute right-3 top-3'} ${favoriteIsAdded && 'added'}`}
             >
               <svg className="icon h-6 w-6 fill-accentBlue transition-colors">
                 <use xlinkHref="/img/sprite.svg#bookmark" />
@@ -252,7 +256,7 @@ export const ProductsCard: React.FC<ProductsCardPropTypes> = ({
             type="button"
             onClick={cartIsAdded ? handleRemoveFromCart : handleAddToCart}
             disabled={cartIsLoad}
-            className={`button product-card__button ${mod === 'mini' && 'mini w-auto'} ${cartIsLoad && mod !== 'mini' && 'load'} ${cartIsLoad && mod === 'mini' && 'load load--mini'} ${cartIsAdded && 'added'}`}
+            className={`button product-card__button ${mod === 'grid' && 'grid-view w-auto'} ${cartIsLoad && mod !== 'grid' && 'load'} ${cartIsLoad && mod === 'grid' && 'load load--mini'} ${cartIsAdded && 'added'}`}
           >
             <span className="ttall invisible absolute inline-flex h-full w-full items-center justify-center rounded bg-hoverBlue opacity-0 transition-colors">
               <img
@@ -261,11 +265,11 @@ export const ProductsCard: React.FC<ProductsCardPropTypes> = ({
                 alt="Availability"
               />
             </span>
-            <svg className={`${mod === 'mini' && 'mini'}`}>
+            <svg className={`${mod === 'grid' && 'grid'}`}>
               <use xlinkHref="/img/sprite.svg#cart" />
             </svg>
 
-            <b className={`${mod === 'mini' && 'text-sm'}`}>В корзину</b>
+            <b className={`${mod === 'grid' && 'text-sm'}`}>В корзину</b>
           </button>
         </div>
       </div>
