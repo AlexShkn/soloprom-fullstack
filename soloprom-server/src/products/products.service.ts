@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { Prisma, PrismaClient } from '@prisma/client';
-import { ProductDto } from '@/crawler/dto/product.dto';
+import { ProductDto } from '@/scrape/crawler/dto/product.dto';
 import { ProductDescrService } from '@/product-descr/product-descr.service';
 
 const prisma = new PrismaClient();
@@ -284,6 +284,7 @@ export class ProductsService {
         country: product.country || null,
         brandName: product.brandName || null,
         productType: product.productType || null,
+        groupsList: product.groupsList || [],
       };
 
       // Создаём или обновляем продукт
@@ -294,10 +295,10 @@ export class ProductsService {
       });
 
       // Привязываем продукт к группам
-      if (product.groups && Array.isArray(product.groups)) {
+      if (product.groupsList && Array.isArray(product.groupsList)) {
         const groupConnections = [];
 
-        for (const groupName of product.groups.map((group) => group)) {
+        for (const groupName of product.groupsList.map((group) => group.name)) {
           let groupId = groupsMap.get(groupName);
           // Если группа не найдена, создаём её "на лету"
           if (!groupId) {

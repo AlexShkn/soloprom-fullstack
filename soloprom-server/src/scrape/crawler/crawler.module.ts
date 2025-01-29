@@ -1,6 +1,6 @@
 import { Module } from '@nestjs/common';
 import { CrawlerService } from './crawler.service';
-import { PlaywrightService } from '@/core/http/playwright';
+import { PlaywrightService } from '@/scrape/playwright';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { ProductsModule } from '@/products/products.module';
 

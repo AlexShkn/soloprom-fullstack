@@ -11,16 +11,6 @@
     "crumb": "Шины для спецтехники"
   },
 
-  "shini-bandazhnie": {
-    "category": "tires",
-    "pageType": "subcategory",
-    "title": "Бандажные шины",
-    "description": "",
-    "img": "/img/category/bandazhnie",
-    "alt": "бандажные шины",
-    "url": "shini-bandazhnie",
-    "crumb": "Шины бандажные"
-  },
   "shini-pnevmatichesckie": {
     "pageType": "subcategory",
     "category": "tires",
@@ -31,6 +21,17 @@
     "alt": "пневматические шины",
     "url": "shini-pnevmatichesckie",
     "crumb": "Шины пневматические"
+  },
+
+  "shini-celnolitie": {
+    "category": "tires",
+    "pageType": "subcategory",
+    "title": "Шины цельнолитые",
+    "description": "",
+    "img": "/img/category/pnevmoticheskie",
+    "alt": "цельнолитые шины для погрузчиков и асфальтоукладчиков",
+    "url": "shini-celnolitie",
+    "crumb": "Шины цельнолитые"
   },
   "shini-legkovie": {
     "pageType": "subcategory",
@@ -43,17 +44,16 @@
     "url": "shini-legkovie",
     "crumb": "Шины легковые"
   },
-  "shini-celnolitie": {
+  "shini-bandazhnie": {
     "category": "tires",
     "pageType": "subcategory",
-    "title": "Шины цельнолитые",
+    "title": "Бандажные шины",
     "description": "",
-    "img": "/img/category/pnevmoticheskie",
-    "alt": "цельнолитые шины для погрузчиков и асфальтоукладчиков",
-    "url": "shini-celnolitie",
-    "crumb": "Шины цельнолитые"
+    "img": "/img/category/bandazhnie",
+    "alt": "бандажные шины",
+    "url": "shini-bandazhnie",
+    "crumb": "Шины бандажные"
   },
-
   "shini-dlya-minipogruzchikov": {
     "title": "Шины для мини-погрузчиков",
     "description": "",

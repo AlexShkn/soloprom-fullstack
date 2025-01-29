@@ -82,14 +82,15 @@ export const FavoriteCard: React.FC<FavoriteCardProps> = ({ product }) => {
   }
 
   return (
-    <div className="cart__item">
-      <div className="cart__item-left">
-        <Link href={url} className="cart__item-link"></Link>
-        <div className="cart__item-image">
-          <Link href={url} className="cart__item-link">
+    <div className="cart__item ga-5 flex items-center p-2.5">
+      <div className="flex flex-auto items-center">
+        <div className="cart__item-image mr-5 h-[150px] w-[150px]">
+          <Link href={product.url} className="cart__item-link">
             <Image
               src={
-                img ? `/img/catalog/${img}.webp` : '/img/catalog/not-found.jpg'
+                product.img
+                  ? `/img/catalog/${product.img}.webp`
+                  : '/img/catalog/not-found.jpg'
               }
               width={150}
               height={150}
@@ -98,22 +99,27 @@ export const FavoriteCard: React.FC<FavoriteCardProps> = ({ product }) => {
           </Link>
         </div>
 
-        <div className="cart__item-description">
-          <div className="cart__item-title">
-            <b>{name}</b>
+        <div className="flex flex-col gap-2.5">
+          <Link
+            href={product.url}
+            className="cart__item-title link-hover text-lg font-medium leading-5"
+          >
+            <b>{product.name}</b>
+          </Link>
+
+          <div>
+            {sizeNameAdaptive[product.categoryName]}: <b>{product.variant}</b>
           </div>
-          <div className="cart__item-sizes">
-            {sizeNameAdaptive[categoryName]}: <b>{variant}</b>
-          </div>
-          <div className="cart__item-type">
-            {typeNameAdaptive[categoryName]}: <b>{productType}</b>
+          <div>
+            {typeNameAdaptive[product.categoryName]}:{' '}
+            <b>{product.productType}</b>
           </div>
         </div>
       </div>
 
-      <div className="cart__item-row cart__item-row--column">
-        <div className="cart__item-right">
-          <div className="cart__item-price">
+      <div className="cart__item-row cart__item-row flex flex-col items-center gap-2.5">
+        <div className="flex w-full items-center justify-between gap-2.5 border-b border-dashed border-gray-400">
+          <div className="text-lg font-medium">
             <span>{getDigFormat(price)}₽</span>
           </div>
 

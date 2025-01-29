@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { PlaywrightService } from '@/core/http/playwright';
+import { PlaywrightService } from '@/scrape/playwright';
 import { ProductDto } from './dto/product.dto';
 import * as fs from 'fs';
 import { ConfigService } from '@nestjs/config';

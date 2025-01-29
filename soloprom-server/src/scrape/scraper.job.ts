@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
-import { CrawlerService } from '../crawler/crawler.service';
-import { ProductDto } from '../crawler/dto/product.dto';
+import { CrawlerService } from './crawler/crawler.service';
+import { ProductDto } from './crawler/dto/product.dto';
 
 @Injectable()
 export class ScraperJob {

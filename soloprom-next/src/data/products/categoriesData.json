@@ -5,13 +5,6 @@
     "items": [
       {
         "type": "subcategory",
-        "id": "shini-bandazhnie",
-        "href": "/catalog/shini-bandazhnie",
-        "img": "/img/catalog/category/tires/bandazhnie-shini.webp",
-        "title": "Бандажные"
-      },
-      {
-        "type": "subcategory",
         "id": "shini-pnevmatichesckie",
         "href": "/catalog/shini-pnevmatichesckie",
         "img": "/img/catalog/category/tires/pnevmatichesckie-shini.webp",
@@ -46,7 +39,38 @@
         "img": "/img/catalog/category/tires/shini-dlya-mini-pogruzchikov.webp",
         "title": "Для минипогрузчиков"
       },
+      {
+        "type": "subcategory",
+        "id": "shini-bandazhnie",
+        "href": "/catalog/shini-bandazhnie",
+        "img": "/img/catalog/category/tires/bandazhnie-shini.webp",
+        "title": "Бандажные"
+      },
 
+      {
+        "type": "group",
+
+        "id": "shini-dlya-greiderov",
+        "href": "/catalog/shini-dlya-greiderov",
+        "img": "/img/catalog/category/tires/greider.webp",
+        "title": "Для грейдеров"
+      },
+      {
+        "type": "group",
+
+        "id": "shini-dlya-zhestkoramnih-samosvalov",
+        "href": "/catalog/shini-dlya-zhestkoramnih-samosvalov",
+        "img": "/img/catalog/category/tires/zhestkoramnii-samosval.webp",
+        "title": "Для жесткорамных самосвалов"
+      },
+      {
+        "type": "group",
+
+        "id": "shini-dlya-frontalnih-pogruzchikov",
+        "href": "/catalog/shini-dlya-frontalnih-pogruzchikov",
+        "img": "/img/catalog/category/tires/frontalnii-pogruzchik.webp",
+        "title": "Для фронтальных погрузчиков"
+      },
       {
         "type": "group",
 
@@ -87,31 +111,7 @@
         "img": "/img/catalog/category/tires/richstaker.webp",
         "title": "Для портов и терминалов"
       },
-      {
-        "type": "group",
 
-        "id": "shini-dlya-zhestkoramnih-samosvalov",
-        "href": "/catalog/shini-dlya-zhestkoramnih-samosvalov",
-        "img": "/img/catalog/category/tires/zhestkoramnii-samosval.webp",
-        "title": "Для жесткорамных самосвалов"
-      },
-
-      {
-        "type": "group",
-
-        "id": "shini-dlya-greiderov",
-        "href": "/catalog/shini-dlya-greiderov",
-        "img": "/img/catalog/category/tires/greider.webp",
-        "title": "Для грейдеров"
-      },
-      {
-        "type": "group",
-
-        "id": "shini-dlya-frontalnih-pogruzchikov",
-        "href": "/catalog/shini-dlya-frontalnih-pogruzchikov",
-        "img": "/img/catalog/category/tires/frontalnii-pogruzchik.webp",
-        "title": "Для фронтальных погрузчиков"
-      },
       {
         "type": "group",
 

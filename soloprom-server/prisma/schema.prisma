@@ -40,6 +40,7 @@ model Product {
   SubCategory SubCategory @relation(fields: [subcategoryName], references: [name])
   Brand       Brand?      @relation(fields: [brandName], references: [name])
   groups      Group[]     @relation("ProductGroups")
+  groupsList  Json?
 
   id            String @id @default(uuid())
   categoryId    String

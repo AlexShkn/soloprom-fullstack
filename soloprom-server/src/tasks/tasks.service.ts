@@ -1,6 +1,6 @@
 import { Injectable, Logger } from '@nestjs/common';
 import { Cron, CronExpression } from '@nestjs/schedule';
-import { ScraperJob } from '../jobs/scraper.job';
+import { ScraperJob } from '../scrape/scraper.job';
 import { StatisticsService } from '@/statistics/statistics.service';
 
 @Injectable()

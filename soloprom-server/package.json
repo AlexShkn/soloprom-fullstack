@@ -21,9 +21,9 @@
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
     "test:e2e": "jest --config ./test/jest-e2e.json",
     "add-descr": "node -r ./tsconfig-paths-bootstrap.js ./node_modules/ts-node/dist/bin.js ./src/scripts/add-descriptions.ts",
-    "scrape": "ts-node -r tsconfig-paths/register ./src/scripts/scrape.ts all",
-    "scrape-tires": "ts-node -r tsconfig-paths/register ./src/scripts/scrape.ts tires",
-    "scrape-batteries": "ts-node -r tsconfig-paths/register ./src/scripts/scrape.ts batteries",
+    "scrape": "ts-node -r tsconfig-paths/register ./src/scrape/scrape.ts all",
+    "scrape-tires": "ts-node -r tsconfig-paths/register ./src/scrape/scrape.ts tires",
+    "scrape-batteries": "ts-node -r tsconfig-paths/register ./src/scrape/scrape.ts batteries",
     "image": "ts-node -r tsconfig-paths/register src/image-downloader/image-downloader.service.ts",
     "add-products": "node add-products.js"
   },

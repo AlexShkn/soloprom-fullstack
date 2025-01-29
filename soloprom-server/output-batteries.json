@@ -506,10 +506,14 @@
       "HELI-CPD20",
       "HELI-CPD25",
       "MAXIMAL-FB25",
-      "HELI-CPD20FJ"
+      "HELI-CPD20FJ",
+      "HYUNDAI-16BRJ-7",
+      "NICHIYU-FBRF 14",
+      "NICHIYU-FBRF 16",
+      "NICHIYU-FBRF 20"
     ],
     "sizes": {
-      "1030x515x802": 560199
+      "1220x352x782": 560199
     }
   },
   {
@@ -524,10 +528,17 @@
       "HELI-CPD25CJ",
       "HELI-CPD25FJ",
       "BT----",
-      "BT-RRE160"
+      "BT-RRE160",
+      "HYSTER-R1.6H",
+      "HYSTER-R2.0H",
+      "JUNGHEINRICH-ETV 214",
+      "JUNGHEINRICH-ETV 216",
+      "JUNGHEINRICH-ETV 320",
+      "JUNGHEINRICH-ETV114/ETV116",
+      "KOMATSU-FB14 RJY"
     ],
     "sizes": {
-      "1215x420x770": 791227
+      "1220x424x782": 791227
     }
   },
   {
@@ -549,7 +560,16 @@
       "KOMATSU-FB14 RJY",
       "LINDE-R14",
       "LINDE-R16S",
-      "NICHIYU-FBRF 14"
+      "NICHIYU-FBRF 14",
+      "NICHIYU-FBRF 16",
+      "NICHIYU-FBRF 20",
+      "OM-XR14",
+      "ROCLA-HS14F7000",
+      "ROCLA-HX16S",
+      "STILL-FM-X 14",
+      "TOYOTA-6FBRE14",
+      "TOYOTA-6FBRE16",
+      "YALE-MR 16"
     ],
     "sizes": {
       "1220x352x782": 678354

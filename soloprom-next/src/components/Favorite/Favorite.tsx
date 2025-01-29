@@ -14,18 +14,21 @@ export const Favorite: React.FC = () => {
 
   return (
     <>
-      <div className="cart__inner-container">
+      <div className="cart inner-container">
         <BreadCrumbs />
-        <div className="cart__head">
-          <h1 className="cart__title">Избранное</h1>
-          <Link href="/" className="cart__back-link">
-            <svg className="icon">
+        <div className="mb-10 flex items-center justify-between">
+          <h1 className="cart__title font-bold">Избранное</h1>
+          <Link
+            href="/"
+            className="cart__back-link inline-flex items-center gap-2.5 transition-colors"
+          >
+            <svg className="h-5 w-5 fill-darkBlue transition-colors">
               <use xlinkHref="/img/sprite.svg#back-arrow"></use>
             </svg>
             Вернуться к покупкам
           </Link>
         </div>
-        <div className="cart__list">
+        <div className="border-t-1-grayColor border-b-1-grayColor mb-12 flex flex-col gap-5">
           {favoriteState.length ? (
             favoriteState.map((product) => (
               <FavoriteCard
@@ -34,7 +37,9 @@ export const Favorite: React.FC = () => {
               />
             ))
           ) : (
-            <div className="cart__item cart__item--empty">Список пуст</div>
+            <div className="cart__item cart__item--empty page-container flex justify-center py-10 text-2xl font-medium">
+              Список пуст
+            </div>
           )}
         </div>
       </div>

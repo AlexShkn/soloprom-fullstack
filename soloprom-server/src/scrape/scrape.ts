@@ -1,6 +1,6 @@
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from '../app.module';
-import { ScraperJob } from '../jobs/scraper.job';
+import { ScraperJob } from './scraper.job';
 
 async function bootstrap() {
   const app = await NestFactory.createApplicationContext(AppModule);

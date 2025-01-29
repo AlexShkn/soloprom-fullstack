@@ -47,9 +47,9 @@
     "id": "Torch48V5PzS600Ah",
     "code": "20000056105",
     "name": "АКБ Torch 48V 5PzS 600Ah",
-    "price": 281750,
-    "option": "ППП 11.24",
-    "stock": 7,
+    "price": 375327,
+    "option": "снят с ET20-3i2 с/н L9710203XP001787",
+    "stock": 8,
     "sizes": {
       "835x634x784": 281750
     }
@@ -314,7 +314,7 @@
     "name": "АКБ Union 24V 2PzB 150Ah",
     "price": 82093,
     "option": "сухой",
-    "stock": 2,
+    "stock": 1,
     "sizes": {
       "650x150x560": 82093
     }
