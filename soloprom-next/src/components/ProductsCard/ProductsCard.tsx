@@ -48,6 +48,7 @@ export const ProductsCard: React.FC<ProductsCardPropTypes> = ({
     stock,
     delivery,
     rating,
+    brandName,
   } = cardData
 
   const sizesData = sizes || volumes
@@ -146,7 +147,8 @@ export const ProductsCard: React.FC<ProductsCardPropTypes> = ({
         <Image
           className="inline-block h-[120px] object-contain"
           src={
-            (img && `/img/catalog/${img}.webp`) || '/img/catalog/not-found.jpg'
+            (img && `/img/catalog/${img}.webp`) ||
+            `/img/brands/${brandName}.webp`
           }
           width={120}
           height={120}

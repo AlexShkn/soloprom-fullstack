@@ -127,7 +127,6 @@ export function generateFilterData(
 
   const uniqueTypes = [...new Set(allTypes)]
   const uniqueBrands = [...new Set(allBrands)]
-  const uniqueVolumes = [...new Set(allVolumes)]
   const uniqueSizes = [
     ...new Set(
       allSizes.sort((a, b) => {
@@ -153,6 +152,9 @@ export function generateFilterData(
   const parserPlates = uniquePlates.sort((a, b) => parseInt(a) - parseInt(b))
   const parserModels = uniqueModels.sort((a, b) =>
     a[0].toLowerCase().localeCompare(b[0].toLowerCase()),
+  )
+  const uniqueVolumes = [...new Set(allVolumes)].sort(
+    (a, b) => parseInt(a) - parseInt(b),
   )
 
   const parsedVoltage = [...new Set(allVoltage)]

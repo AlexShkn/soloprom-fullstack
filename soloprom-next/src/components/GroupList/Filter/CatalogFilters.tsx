@@ -190,7 +190,7 @@ const CatalogFilters: React.FC<Props> = ({
 <FilterSlider title="" min={prices.min} max={prices.max} />
 </FilterItem>
 )} */}
-      {categoryInitialList.brands && categoryInitialList.brands.length > 0 && (
+      {categoryInitialList.brands && categoryInitialList.brands.length > 1 && (
         <FilterItem title="Бренды" value="brands">
           <FilterCheckbox
             title=""
@@ -210,7 +210,7 @@ const CatalogFilters: React.FC<Props> = ({
           />
         </FilterItem>
       )}
-      {categoryInitialList.types && categoryInitialList.types.length > 0 && (
+      {categoryInitialList.types && categoryInitialList.types.length > 1 && (
         <FilterItem title="Тип" value="types">
           <FilterCheckbox
             title=""
@@ -231,7 +231,7 @@ const CatalogFilters: React.FC<Props> = ({
         </FilterItem>
       )}
       {categoryInitialList.volumes &&
-        categoryInitialList.volumes.length > 0 && (
+        categoryInitialList.volumes.length > 1 && (
           <FilterItem title="Объем" value="volumes">
             <FilterCheckbox
               title=""
@@ -251,7 +251,7 @@ const CatalogFilters: React.FC<Props> = ({
             />
           </FilterItem>
         )}
-      {categoryInitialList.sizes && categoryInitialList.sizes.length > 0 && (
+      {categoryInitialList.sizes && categoryInitialList.sizes.length > 1 && (
         <FilterItem title="Размеры" value="sizes">
           <FilterCheckbox
             title=""
@@ -271,7 +271,7 @@ const CatalogFilters: React.FC<Props> = ({
           />
         </FilterItem>
       )}
-      {categoryInitialList.plates && categoryInitialList.plates.length > 0 && (
+      {categoryInitialList.plates && categoryInitialList.plates.length > 1 && (
         <FilterItem title="Тип пластин" value="plates">
           <FilterCheckbox
             title=""
@@ -292,7 +292,7 @@ const CatalogFilters: React.FC<Props> = ({
         </FilterItem>
       )}
       {categoryInitialList.voltage &&
-        categoryInitialList.voltage.length > 0 && (
+        categoryInitialList.voltage.length > 1 && (
           <FilterItem title="Напряжение, В" value="voltage">
             <FilterCheckbox
               title=""
@@ -313,7 +313,7 @@ const CatalogFilters: React.FC<Props> = ({
           </FilterItem>
         )}
       {categoryInitialList.container &&
-        categoryInitialList.container.length > 0 && (
+        categoryInitialList.container.length > 1 && (
           <FilterItem title="Емкость, Ач" value="container">
             <FilterCheckbox
               title=""
@@ -333,7 +333,7 @@ const CatalogFilters: React.FC<Props> = ({
             />
           </FilterItem>
         )}
-      {categoryInitialList.models && categoryInitialList.models.length > 0 && (
+      {categoryInitialList.models && categoryInitialList.models.length > 1 && (
         <FilterItem title="Модели техники" value="models">
           <FilterCheckbox
             title=""
@@ -354,7 +354,7 @@ const CatalogFilters: React.FC<Props> = ({
         </FilterItem>
       )}
       {categoryInitialList.countries &&
-        categoryInitialList.countries.length > 0 && (
+        categoryInitialList.countries.length > 1 && (
           <FilterItem title="Страны производства" value="countries">
             <FilterCheckbox
               title=""
@@ -375,7 +375,7 @@ const CatalogFilters: React.FC<Props> = ({
           </FilterItem>
         )}
       {categoryInitialList.radiuses &&
-        categoryInitialList.radiuses.length > 0 && (
+        categoryInitialList.radiuses.length > 1 && (
           <FilterItem title="Радиус" value="radiuses">
             <FilterCheckbox
               title=""

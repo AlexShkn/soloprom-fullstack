@@ -273,7 +273,7 @@ export class CrawlerService {
               name = value.textContent.trim();
             }
             if (index === 5) {
-              size = value.textContent.replace(/\s/g, '');
+              size = value.textContent.replace(/\s/g, '').replace(/х/g, 'x');
             }
             if (index === 6) {
               price = parseInt(td.textContent.replace(/\s/g, ''));
@@ -292,7 +292,7 @@ export class CrawlerService {
               name = td.textContent.trim();
             }
             if (index === 5) {
-              size = td.textContent.replace(/\s/g, '');
+              size = td.textContent.replace(/\s/g, '').replace(/х/g, 'x');
             }
           }
         });
@@ -363,7 +363,7 @@ export class CrawlerService {
               ? text.split(',').map((s) => s.trim())
               : [text, ''];
 
-            size = size.replace(/\*/g, 'x');
+            size = size.replace(/\*/g, 'x').replace(/х/g, 'x');
             size = size.split(' ')[0];
           }
 

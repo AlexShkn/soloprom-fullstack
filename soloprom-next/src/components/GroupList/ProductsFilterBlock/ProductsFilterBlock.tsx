@@ -189,6 +189,8 @@ export const ProductsFilterBlock: React.FC<Props> = ({
             setDynamicCurrentPage(parsedPage)
           }
         }
+
+        setHasFilters(true)
       } else {
         console.log('initial set')
 
