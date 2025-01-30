@@ -1,32 +1,30 @@
 import { useState, useEffect } from 'react'
 
 const useCurrentScroll = () => {
-	const [scrollPosition, setScrollPosition] = useState(0)
+  const [scrollPosition, setScrollPosition] = useState(0)
 
-	useEffect(() => {
-		let ticking = false
+  useEffect(() => {
+    let ticking = false
 
-		const handleScroll = () => {
-			if (!ticking && typeof window !== 'undefined') {
-				// Added check
-				window.requestAnimationFrame(() => {
-					setScrollPosition(window.pageYOffset)
-					ticking = false
-				})
-				ticking = true
-			}
-		}
+    const handleScroll = () => {
+      if (!ticking && typeof window !== 'undefined') {
+        window.requestAnimationFrame(() => {
+          setScrollPosition(window.pageYOffset)
+          ticking = false
+        })
+        ticking = true
+      }
+    }
 
-		if (typeof window !== 'undefined') {
-			// Added check
-			window.addEventListener('scroll', handleScroll)
-			return () => window.removeEventListener('scroll', handleScroll)
-		}
+    if (typeof window !== 'undefined') {
+      window.addEventListener('scroll', handleScroll)
+      return () => window.removeEventListener('scroll', handleScroll)
+    }
 
-		return () => {} // Return a cleanup function even if window is undefined
-	}, [])
+    return () => {}
+  }, [])
 
-	return scrollPosition
+  return scrollPosition
 }
 
 export default useCurrentScroll

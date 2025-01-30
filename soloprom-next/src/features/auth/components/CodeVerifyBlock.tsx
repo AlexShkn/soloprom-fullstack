@@ -12,7 +12,7 @@ interface Props {
   resetCode: () => void
   countdown?: number
   field: ControllerRenderProps<any, string>
-  onComplete?: () => void // Добавили onComplete
+  onComplete?: () => void
 }
 
 export const CodeVerifyBlock: React.FC<Props> = ({
@@ -22,7 +22,7 @@ export const CodeVerifyBlock: React.FC<Props> = ({
   isResendEnabled,
   resetCode,
   isLoading,
-  onComplete, // Получаем onComplete
+  onComplete,
 }) => {
   return (
     <ConfirmFields emailAddress={emailAddress}>

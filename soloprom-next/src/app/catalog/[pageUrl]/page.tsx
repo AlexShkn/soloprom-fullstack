@@ -1,4 +1,3 @@
-// /catalog/[pageUrl]/page.tsx
 import { Metadata } from 'next'
 import CategoryPageClient from './CategoryPageClient'
 import { findPagesData, generateFilterData, pagesData } from './server'
@@ -61,7 +60,10 @@ export async function generateStaticParams() {
     const pageData = pagesData[page]
 
     const pageUrl =
-      pageData.pageType === 'model' && pageData.subUrl ? pageData.subUrl : page
+      (pageData.pageType === 'model' || pageData.pageType === 'brands') &&
+      pageData.subUrl
+        ? pageData.subUrl
+        : page
 
     if (
       pageData.pageType === 'category' ||
@@ -85,7 +87,9 @@ const CatalogPage: React.FC<CatalogPageProps> = async ({ params }) => {
     return <h1>Страница не найдена</h1>
   }
 
-  const currentPage = 1 // Всегда 1 для основной страницы
+  const currentPage = 1
+
+  console.log(pageData)
 
   const initialProducts = await fetchProducts({
     categoryName: pageData.subUrl ? pageData.subUrl : pageData.name,
@@ -94,14 +98,19 @@ const CatalogPage: React.FC<CatalogPageProps> = async ({ params }) => {
   })
 
   const interUrl =
-    pageData.pageType === 'model' && pageData.subUrl
+    (pageData.pageType === 'model' || pageData.pageType === 'brands') &&
+    pageData.subUrl
       ? pageData.subUrl
       : pageData.url
+
+  console.log(interUrl)
 
   const categoryData = await getProductsAnyCategories(
     pageData.pageType,
     interUrl,
   )
+
+  console.log(categoryData)
 
   if (!initialProducts) {
     return <div>Ошибка получения списка продуктов страницы</div>

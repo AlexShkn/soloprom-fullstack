@@ -42,7 +42,7 @@ export const FilterInterval: React.FC<{
   const formatLabel = (value: number) => `${value} ${unit || ''}`
 
   const handleRangeChange = (newRange: number[]) => {
-    setTempValues(newRange) // Обновляем локальные значения слайдера
+    setTempValues(newRange)
     setMinValue(newRange[0])
     setMaxValue(newRange[1])
   }
@@ -52,8 +52,8 @@ export const FilterInterval: React.FC<{
       clearTimeout(debounceTimeout.current)
     }
     debounceTimeout.current = window.setTimeout(() => {
-      onRangeChange(newRange[0], newRange[1]) // Применяем фильтры только после завершения взаимодействия
-    }, 300) // Дебаунс 300мс
+      onRangeChange(newRange[0], newRange[1])
+    }, 300)
   }
 
   const handleMinInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -65,14 +65,14 @@ export const FilterInterval: React.FC<{
   }
 
   const handleMinInputBlur = () => {
-    let newValue = Math.max(min, Math.min(minValue, maxValue)) // Гарантируем, что значение не выходит за пределы
+    let newValue = Math.max(min, Math.min(minValue, maxValue))
     setMinValue(newValue)
     onRangeChange(newValue, maxValue)
     setTempValues([newValue, maxValue])
   }
 
   const handleMaxInputBlur = () => {
-    let newValue = Math.min(max, Math.max(maxValue, minValue)) // Гарантируем, что значение не выходит за пределы
+    let newValue = Math.min(max, Math.max(maxValue, minValue))
     setMaxValue(newValue)
     onRangeChange(minValue, newValue)
     setTempValues([minValue, newValue])
@@ -86,8 +86,8 @@ export const FilterInterval: React.FC<{
         max={max}
         step={1}
         value={tempValues}
-        onValueChange={handleRangeChange} // Обновляем локальное состояние
-        onValueCommit={handleRangeCommit} // Применяем фильтры после завершения
+        onValueChange={handleRangeChange}
+        onValueCommit={handleRangeCommit}
         formatLabel={formatLabel}
       />
       <div className="flex space-x-2">

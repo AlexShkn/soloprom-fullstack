@@ -2,7 +2,6 @@
 import React, { useState, useCallback, useMemo } from 'react'
 import './ProductPageTabs.scss'
 
-// Типы
 type Review = {
   name: string
   rating: number

@@ -45,6 +45,17 @@ export type OutputCategory = {
     pageType: string
     category: string
   }>
+  brands?: Array<{
+    title: string
+    description: string
+    img: string
+    alt: string
+    url: string
+    crumb: string
+    pageType: string
+    category: string
+    headGroupTitle?: string
+  }>
   model?: Array<{
     title: string
     description: string
@@ -87,6 +98,7 @@ export function transformJson(inputData: InputDataType): {
         category: item.category,
         subcategories: [],
         group: [],
+        brands: [],
         model: [],
       }
     } else if (item.pageType === 'subcategory' && item.category) {
@@ -125,6 +137,18 @@ export function transformJson(inputData: InputDataType): {
         url: item.url,
         crumb: item.crumb,
       })
+    } else if (item.pageType === 'brands' && item.category) {
+      result[item.category]?.brands?.push({
+        pageType: item.pageType,
+        category: item.category,
+        title: item.title,
+        headGroupTitle: item?.headGroupTitle,
+        description: item.description,
+        img: item.img,
+        alt: item.alt,
+        url: item.url,
+        crumb: item.crumb,
+      })
     }
   })
 
@@ -132,23 +156,30 @@ export function transformJson(inputData: InputDataType): {
 }
 
 export const SidePanel: React.FC<SidePanelProps> = ({ pageData }) => {
-  const [isHover, setIsHover] = useState(false)
+  const [isHoverGroup, setIsHoverGroup] = useState(false)
+  const [isHoverBrand, setIsHoverBrand] = useState(false)
+  const [activeItem, setActiveItem] = useState('')
+
   const transformData = transformJson(pagesDataRaw)
+
   const categoryData = transformData[pageData.category]
 
   const subcategories = categoryData.subcategories
   const groups = categoryData.group
+  const brands = categoryData.brands
   const model = categoryData.model
   const headGroup = groups && groups[0]?.headGroupTitle
+  const headBrand = brands && brands[0]?.headGroupTitle
 
   return (
     <div className="side-panel scroll-bar z-30 max-h-[526px] overflow-y-auto overflow-x-hidden overscroll-contain rounded bg-white p-4 shadow-custom">
       <ul className="side-panel__list">
         {headGroup && (
           <li
-            onMouseEnter={() => setIsHover(true)}
-            onMouseLeave={() => setIsHover(false)}
-            className={`side-panel__item ${isHover && 'current'}`}
+            onClick={() =>
+              setActiveItem((prev) => (prev !== 'headGroup' ? 'headGroup' : ''))
+            }
+            className={`side-panel__item ${(isHoverGroup || activeItem === 'headGroup') && 'current'}`}
           >
             <div className="side-panel__item-link link-hover">
               <span className="side-panel__item-bridge absolute left-[50%] top-0 hidden h-full w-full"></span>
@@ -158,16 +189,55 @@ export const SidePanel: React.FC<SidePanelProps> = ({ pageData }) => {
               </svg>
             </div>
 
-            <ul data-drop-list className="side-panel__drop-list">
+            <ul className="side-panel__drop-list">
               {model?.map((brand) => (
-                <li key={brand.url} className="side-panel__drop-item">
-                  <Link href={`/catalog/${brand.url}`}>{brand.title}</Link>
+                <li
+                  key={brand.url}
+                  className="side-panel__drop-item h-auto transition-colors"
+                >
+                  <Link
+                    href={`/catalog/${brand.url}`}
+                    className="inline-flex h-full w-full items-center justify-center px-2.5 py-2 text-center font-medium transition-colors"
+                  >
+                    {brand.title}
+                  </Link>
                 </li>
               ))}
             </ul>
           </li>
         )}
+        {headBrand && (
+          <li
+            onClick={() =>
+              setActiveItem((prev) => (prev !== 'headBrand' ? 'headBrand' : ''))
+            }
+            className={`side-panel__item ${(isHoverBrand || activeItem === 'headBrand') && 'current'}`}
+          >
+            <div className="side-panel__item-link link-hover">
+              <span className="side-panel__item-bridge absolute left-[50%] top-0 hidden h-full w-full"></span>
+              {headBrand}
+              <svg className="icon">
+                <use xlinkHref="/img/sprite-default.svg#arrow-drop"></use>
+              </svg>
+            </div>
 
+            <ul className="side-panel__drop-list">
+              {brands?.map((brand) => (
+                <li
+                  key={brand.url}
+                  className="side-panel__drop-item h-auto transition-colors"
+                >
+                  <Link
+                    href={`/catalog/${brand.url}`}
+                    className="inline-flex h-full w-full items-center justify-center px-2.5 py-2 text-center font-medium transition-colors"
+                  >
+                    {brand.title}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </li>
+        )}
         {subcategories &&
           subcategories.map((link: Subcategory) => (
             <li key={link.url} className="side-panel__item">

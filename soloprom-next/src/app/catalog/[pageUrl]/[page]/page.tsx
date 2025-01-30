@@ -28,7 +28,8 @@ export async function generateStaticParams() {
     const pageData = pagesData[pageItem]
 
     const pageUrl =
-      pageData.pageType === 'model' && pageData.subUrl
+      (pageData.pageType === 'model' || pageData.pageType === 'brands') &&
+      pageData.subUrl
         ? pageData.subUrl
         : pageItem
 
@@ -114,7 +115,8 @@ const CatalogPaginationPage: React.FC<CatalogPageProps> = async ({
   })
 
   const interUrl =
-    pageData.pageType === 'model' && pageData.subUrl
+    (pageData.pageType === 'model' || pageData.pageType === 'brands') &&
+    pageData.subUrl
       ? pageData.subUrl
       : pageData.url
 

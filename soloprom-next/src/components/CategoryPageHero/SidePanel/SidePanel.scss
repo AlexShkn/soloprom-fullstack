@@ -146,9 +146,6 @@
   // .side-panel__drop-item
 
   &__drop-item {
-    transition: background-color 0.3s ease 0s;
-    height: auto;
-
     @media (min-width: 767.98px) {
       border: 1px solid variables.$accentColor;
       border-radius: variables.$radius;
@@ -161,18 +158,6 @@
       }
     }
 
-    a {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      padding: 12px 10px;
-      width: 100%;
-      height: 100%;
-      text-align: center;
-      font-weight: 500;
-      transition: color 0.3s ease 0s;
-    }
-
     @media (any-hover: hover) {
       &:hover {
         background-color: variables.$hoverAccentColor;
@@ -182,8 +167,4 @@
       }
     }
   }
-}
-.icon {
-}
-.link-hover {
 }

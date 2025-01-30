@@ -10,7 +10,6 @@ import useFilterStore from '@/zustand/filterStore'
 import { useDebounce } from '@/hooks/useDebounce'
 import './ProductsFilterBlock.scss'
 
-// Props interface
 interface Props {
   categoryName: string
   productsType: string
@@ -136,7 +135,6 @@ export const ProductsFilterBlock: React.FC<Props> = ({
     }
   }, [debouncedFilters, debouncedSort, dynamicCurrentPage, router])
 
-  // Прокрутка к началу списка при изменении страницы динамической пагинации
   useEffect(() => {
     if (
       !initialLoad &&
@@ -212,7 +210,6 @@ export const ProductsFilterBlock: React.FC<Props> = ({
     setHasFilters,
   ])
 
-  // Обновление URL при изменении фильтров, сортировки или страницы
   useEffect(() => {
     if (!initialLoad) {
       console.log('не первый и апдейт фильтров')

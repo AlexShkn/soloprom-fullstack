@@ -1,4 +1,3 @@
-// components/Filter/FilterCheckbox.tsx
 'use client'
 import { Checkbox } from '@/components/ui/checkbox'
 import { ChevronDown, ChevronUp } from 'lucide-react'

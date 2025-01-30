@@ -80,7 +80,7 @@ const CategoryPageClient: React.FC<CategoryPageClientProps> = ({
           totalCount={totalCount}
         />
       </Suspense>
-      <PageArticle articleName={pageData.name} />
+      <PageArticle category={pageData.category} articleName={pageData.name} />
       <CategoryPageSlider category={pageData.category} />
       <Callback />
     </PageWrapper>

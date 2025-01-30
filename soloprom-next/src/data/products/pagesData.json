@@ -10,11 +10,177 @@
     "url": "tires",
     "crumb": "Шины для спецтехники"
   },
+  "shini-specialnie": {
+    "category": "tires",
+    "pageType": "brands",
+    "headGroupTitle": "Шины специальные",
+    "title": "Шины специальные",
+    "description": "",
+    "img": "/img/category/tyres",
+    "alt": "",
+    "url": "shini-specialnie",
+    "crumb": "Шины специальные"
+  },
+  "shini-apollo": {
+    "category": "tires",
+    "pageType": "brands",
+    "name": "APOLLO",
+    "title": "Шины APOLLO",
+    "description": "",
+    "img": "/img/category/tyres",
+    "alt": "специальные шины APOLLO",
+    "url": "shini-apollo",
+    "subUrl": "APOLLO",
+    "crumb": "Шины APOLLO"
+  },
+  "shini-naaats": {
+    "category": "tires",
+    "pageType": "brands",
+    "name": "NAAATS",
+    "title": "Шины NAAATS",
+    "description": "",
+    "img": "/img/category/tyres",
+    "alt": "специальные шины NAAATS",
+    "url": "shini-naaats",
+    "subUrl": "NAAATS",
+    "crumb": "Шины NAAATS"
+  },
+  "shini-emrald": {
+    "category": "tires",
+    "pageType": "brands",
+    "name": "Emrald",
+    "title": "Шины Emrald",
+    "description": "",
+    "img": "/img/category/tyres",
+    "alt": "специальные шины Emrald",
+    "url": "shini-emrald",
+    "subUrl": "Emrald",
+    "crumb": "Шины Emrald"
+  },
+  "shini-mrl": {
+    "category": "tires",
+    "pageType": "brands",
+    "name": "MRL",
+    "title": "Шины MRL",
+    "description": "",
+    "img": "/img/category/tyres",
+    "alt": "специальные шины MRL",
+    "url": "shini-mrl",
+    "subUrl": "MRL",
+    "crumb": "Шины MRL"
+  },
+  "shini-galaxy": {
+    "category": "tires",
+    "pageType": "brands",
+    "name": "Galaxy",
+    "title": "Шины Galaxy",
+    "description": "",
+    "img": "/img/category/tyres",
+    "alt": "специальные шины Galaxy",
+    "url": "shini-galaxy",
+    "subUrl": "Galaxy",
+    "crumb": "Шины Galaxy"
+  },
+  "shini-lnp": {
+    "category": "tires",
+    "pageType": "brands",
+    "name": "LNP",
+    "title": "Шины LNP",
+    "description": "",
+    "img": "/img/category/tyres",
+    "alt": "специальные шины LNP",
+    "url": "shini-lnp",
+    "subUrl": "LNP",
+    "crumb": "Шины LNP"
+  },
+  "shini-armour": {
+    "category": "tires",
+    "pageType": "brands",
+    "name": "Armour",
+    "title": "Шины Armour",
+    "description": "",
+    "img": "/img/category/tyres",
+    "alt": "специальные шины Armour",
+    "url": "shini-armour",
+    "subUrl": "Armour",
+    "crumb": "Шины Armour"
+  },
+  "shini-dunlop": {
+    "category": "tires",
+    "pageType": "brands",
+    "name": "DUNLOP",
+    "title": "Шины DUNLOP",
+    "description": "",
+    "img": "/img/category/tyres",
+    "alt": "специальные шины DUNLOP",
+    "url": "shini-dunlop",
+    "subUrl": "DUNLOP",
+    "crumb": "Шины DUNLOP"
+  },
+  "shini-carlisle": {
+    "category": "tires",
+    "pageType": "brands",
+    "name": "CARLISLE",
+    "title": "Шины CARLISLE",
+    "description": "",
+    "img": "/img/category/tyres",
+    "alt": "специальные шины CARLISLE",
+    "url": "shini-carlisle",
+    "subUrl": "CARLISLE",
+    "crumb": "Шины CARLISLE"
+  },
+  "shini-worcraft": {
+    "category": "tires",
+    "pageType": "brands",
+    "name": "WORCRAFT",
+    "title": "Шины WORCRAFT",
+    "description": "",
+    "img": "/img/category/tyres",
+    "alt": "специальные шины WORCRAFT",
+    "url": "shini-worcraft",
+    "subUrl": "WORCRAFT",
+    "crumb": "Шины WORCRAFT"
+  },
+  "shini-advance": {
+    "category": "tires",
+    "pageType": "brands",
+    "name": "ADVANCE",
+    "title": "Шины ADVANCE",
+    "description": "",
+    "img": "/img/category/tyres",
+    "alt": "специальные шины ADVANCE",
+    "url": "shini-advance",
+    "subUrl": "ADVANCE",
+    "crumb": "Шины ADVANCE"
+  },
+  "shini-aotai": {
+    "category": "tires",
+    "pageType": "brands",
+    "name": "AOTAI",
+    "title": "Шины AOTAI",
+    "description": "",
+    "img": "/img/category/tyres",
+    "alt": "специальные шины AOTAI",
+    "url": "shini-aotai",
+    "subUrl": "AOTAI",
+    "crumb": "Шины AOTAI"
+  },
+  "shini-et-stone": {
+    "category": "tires",
+    "pageType": "brands",
+    "name": "ET-STONE",
+    "title": "Шины ET-STONE",
+    "description": "",
+    "img": "/img/category/tyres",
+    "alt": "специальные шины ET-STONE",
+    "url": "shini-et-stone",
+    "subUrl": "ET-STONE",
+    "crumb": "Шины ET-STONE"
+  },
 
   "shini-pnevmatichesckie": {
     "pageType": "subcategory",
     "category": "tires",
-
     "title": "Пневматические шины",
     "description": "",
     "img": "/img/category/tyres",
@@ -197,6 +363,7 @@
     "url": "accumulyatori-polutyagovie",
     "crumb": "Полутяговые аккумуляторы"
   },
+
   "accumulyatori-dlya-pogruzchikov": {
     "category": "battery",
     "pageType": "group",
@@ -277,7 +444,7 @@
     "alt": "",
     "url": "accumulyatori-dlya-pogruzchikov-still",
     "subUrl": "STILL",
-    "crumb": "Аккумуляторы для погрузчиков Still"
+    "crumb": "Still"
   },
   "accumulyatori-dlya-pogruzchikov-linde": {
     "category": "battery",
@@ -288,7 +455,7 @@
     "alt": "",
     "url": "accumulyatori-dlya-pogruzchikov-linde",
     "subUrl": "LINDE",
-    "crumb": "Аккумуляторы для погрузчиков Linde"
+    "crumb": "Linde"
   },
   "accumulyatori-dlya-pogruzchikov-komatsu": {
     "category": "battery",
@@ -299,7 +466,7 @@
     "alt": "",
     "url": "accumulyatori-dlya-pogruzchikov-komatsu",
     "subUrl": "KOMATSU",
-    "crumb": "Аккумуляторы для погрузчиков Komatsu"
+    "crumb": "Komatsu"
   },
   "accumulyatori-dlya-pogruzchikov-jungheinrich": {
     "category": "battery",
@@ -310,7 +477,7 @@
     "alt": "",
     "url": "accumulyatori-dlya-pogruzchikov-jungheinrich",
     "subUrl": "JUNGHEINRICH",
-    "crumb": "Аккумуляторы для погрузчиков Jungheinrich"
+    "crumb": "Jungheinrich"
   },
   "accumulyatori-dlya-pogruzchikov-maximal": {
     "category": "battery",
@@ -321,7 +488,7 @@
     "alt": "",
     "url": "accumulyatori-dlya-pogruzchikov-maximal",
     "subUrl": "MAXIMAL",
-    "crumb": "Аккумуляторы для погрузчиков Maximal"
+    "crumb": "Maximal"
   },
   "accumulyatori-dlya-pogruzchikov-heli": {
     "category": "battery",
@@ -332,7 +499,7 @@
     "alt": "",
     "url": "accumulyatori-dlya-pogruzchikov-heli",
     "subUrl": "HELI",
-    "crumb": "Аккумуляторы для погрузчиков Heli"
+    "crumb": "Heli"
   },
   "accumulyatori-dlya-pogruzchikov-toyota": {
     "category": "battery",
@@ -343,7 +510,7 @@
     "alt": "",
     "url": "accumulyatori-dlya-pogruzchikov-toyota",
     "subUrl": "TOYOTA",
-    "crumb": "Аккумуляторы для погрузчиков Toyota"
+    "crumb": "Toyota"
   },
   "accumulyatori-dlya-pogruzchikov-om": {
     "category": "battery",
@@ -354,7 +521,7 @@
     "alt": "",
     "url": "accumulyatori-dlya-pogruzchikov-om",
     "subUrl": "OM",
-    "crumb": "Аккумуляторы для погрузчиков Om"
+    "crumb": "Om"
   },
   "accumulyatori-dlya-pogruzchikov-balkancar": {
     "category": "battery",
@@ -365,7 +532,7 @@
     "alt": "",
     "url": "accumulyatori-dlya-pogruzchikov-balkancar",
     "subUrl": "BALKANCAR",
-    "crumb": "Аккумуляторы для погрузчиков Balkancar"
+    "crumb": "Balkancar"
   },
   "accumulyatori-dlya-pogruzchikov-dimex": {
     "category": "battery",
@@ -376,7 +543,7 @@
     "alt": "",
     "url": "accumulyatori-dlya-pogruzchikov-dimex",
     "subUrl": "DIMEX",
-    "crumb": "Аккумуляторы для погрузчиков Dimex"
+    "crumb": "Dimex"
   },
   "accumulyatori-dlya-pogruzchikov-vp": {
     "category": "battery",
@@ -387,7 +554,7 @@
     "alt": "",
     "url": "accumulyatori-dlya-pogruzchikov-vp",
     "subUrl": "VP",
-    "crumb": "Аккумуляторы для погрузчиков Волжский погрузчик"
+    "crumb": "Волжский погрузчик"
   },
   "accumulyatori-dlya-pogruzchikov-tcm": {
     "category": "battery",
@@ -398,7 +565,7 @@
     "alt": "",
     "url": "accumulyatori-dlya-pogruzchikov-tcm",
     "subUrl": "TCM",
-    "crumb": "Аккумуляторы для погрузчиков TCM"
+    "crumb": "TCM"
   },
   "accumulyatori-dlya-pogruzchikov-hangcha": {
     "category": "battery",
@@ -409,7 +576,7 @@
     "alt": "",
     "url": "accumulyatori-dlya-pogruzchikov-hangcha",
     "subUrl": "HANGCHA",
-    "crumb": "Аккумуляторы для погрузчиков Hangcha"
+    "crumb": "Hangcha"
   },
   "accumulyatori-dlya-pogruzchikov-hyundai": {
     "category": "battery",
@@ -420,7 +587,7 @@
     "alt": "",
     "url": "accumulyatori-dlya-pogruzchikov-hyundai",
     "subUrl": "HYUNDAI",
-    "crumb": "Аккумуляторы для погрузчиков Hyundai"
+    "crumb": "Hyundai"
   },
   "accumulyatori-dlya-pogruzchikov-daewoo": {
     "category": "battery",
@@ -431,7 +598,7 @@
     "alt": "",
     "url": "accumulyatori-dlya-pogruzchikov-daewoo",
     "subUrl": "DAEWOO",
-    "crumb": "Аккумуляторы для погрузчиков Daewoo"
+    "crumb": "Daewoo"
   },
   "accumulyatori-dlya-pogruzchikov-doosan": {
     "category": "battery",
@@ -442,7 +609,7 @@
     "alt": "",
     "url": "accumulyatori-dlya-pogruzchikov-doosan",
     "subUrl": "DOOSAN",
-    "crumb": "Аккумуляторы для погрузчиков Doosan"
+    "crumb": "Doosan"
   },
   "accumulyatori-dlya-pogruzchikov-dalian": {
     "category": "battery",
@@ -453,7 +620,7 @@
     "alt": "",
     "url": "accumulyatori-dlya-pogruzchikov-dalian",
     "subUrl": "DALIAN",
-    "crumb": "Аккумуляторы для погрузчиков Dalian"
+    "crumb": "Dalian"
   },
   "accumulyatori-dlya-pogruzchikov-nichiyu": {
     "category": "battery",
@@ -464,7 +631,7 @@
     "alt": "",
     "url": "accumulyatori-dlya-pogruzchikov-nichiyu",
     "subUrl": "NICHIYU",
-    "crumb": "Аккумуляторы для погрузчиков Nichiyu"
+    "crumb": "Nichiyu"
   },
   "accumulyatori-dlya-pogruzchikov-jac": {
     "category": "battery",
@@ -475,7 +642,7 @@
     "alt": "",
     "url": "accumulyatori-dlya-pogruzchikov-jac",
     "subUrl": "JAC",
-    "crumb": "Аккумуляторы для погрузчиков Jac"
+    "crumb": "Jac"
   },
 
   "oils": {

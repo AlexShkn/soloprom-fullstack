@@ -159,13 +159,6 @@ const CatalogMenu = () => {
     if (!is650) setCurrentTab('battery')
   }, [is650, setCurrentTab])
 
-  // useCloseOnScroll({
-  // 	targetRef: menuRef,
-  // 	onClose: () => {
-  // 		dispatch(catalogMenuStateChange(false))
-  // 	},
-  // })
-
   const menuClose = () => {
     catalogMenuStateChange(false, isTablet)
   }

@@ -51,6 +51,10 @@ export class ProductsController {
   async getProductsBySubCategory(@Param('name') name: string) {
     return this.productService.getProductsBySubCategory(name);
   }
+  @Get('brands/:name')
+  async getProductsBySubBrand(@Param('name') name: string) {
+    return this.productService.getProductsBySubBrand(name);
+  }
 
   @Get('model/:name')
   async getProductsByModel(@Param('name') name: string) {

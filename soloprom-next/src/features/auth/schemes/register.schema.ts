@@ -1,6 +1,5 @@
 import { z } from 'zod'
 
-// Схема для первого этапа (регистрация)
 export const RegisterSchema = z
   .object({
     name: z.string().min(1, { message: 'Введите имя' }),
@@ -15,11 +14,9 @@ export const RegisterSchema = z
     path: ['passwordRepeat'],
   })
 
-// Схема для второго этапа (ввод кода)
 export const ConfirmCodeSchema = z.object({
   code: z.string().length(6, { message: 'Код должен быть длиной 6 символов' }),
 })
 
-// Типы для форм
 export type RegisterFormValues = z.infer<typeof RegisterSchema>
 export type ConfirmCodeFormValues = z.infer<typeof ConfirmCodeSchema>

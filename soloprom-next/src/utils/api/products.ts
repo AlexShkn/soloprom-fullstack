@@ -60,6 +60,8 @@ export const fetchProducts = async (
   try {
     const { filters, ...otherParams } = params
 
+    console.log(params)
+
     const response = await axios.get<fetchProductsProps>(
       `${process.env.NEXT_PUBLIC_SERVER_URL}/products/get-products`,
       {

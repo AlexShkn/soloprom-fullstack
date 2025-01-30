@@ -12,7 +12,7 @@ type SliderProps = {
   formatLabel?: (value: number) => string
   value?: number[] | readonly number[]
   onValueChange?: (values: number[]) => void
-  onValueCommit?: (values: number[]) => void // Новое событие
+  onValueCommit?: (values: number[]) => void
 }
 
 const DoubleSlider = React.forwardRef<
@@ -28,7 +28,7 @@ const DoubleSlider = React.forwardRef<
       formatLabel,
       value,
       onValueChange,
-      onValueCommit, // Новая пропса
+      onValueCommit,
       ...props
     },
     ref,
@@ -49,7 +49,7 @@ const DoubleSlider = React.forwardRef<
 
     const handlePointerUp = () => {
       if (onValueCommit) {
-        onValueCommit(localValues) // Вызываем после завершения взаимодействия
+        onValueCommit(localValues)
       }
     }
 
@@ -65,7 +65,7 @@ const DoubleSlider = React.forwardRef<
         step={step}
         value={localValues}
         onValueChange={handleValueChange}
-        onPointerUp={handlePointerUp} // Обрабатываем завершение взаимодействия
+        onPointerUp={handlePointerUp}
         {...props}
       >
         <SliderPrimitive.Track className="relative h-2 w-full grow overflow-hidden rounded-full bg-secondary">

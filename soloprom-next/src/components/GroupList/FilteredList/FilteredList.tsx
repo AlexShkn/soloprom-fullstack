@@ -1,4 +1,3 @@
-// components/GroupList/FilteredList.tsx
 'use client'
 import React, { useState } from 'react'
 import { ProductsCard } from '@/components/ProductsCard/ProductsCard'

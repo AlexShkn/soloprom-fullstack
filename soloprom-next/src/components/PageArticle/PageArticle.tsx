@@ -1,4 +1,4 @@
-'use client' // Чётко указываем, что это Client Component, иначе Next.js может смешивать обработку
+'use client'
 
 import React, { Suspense, useMemo } from 'react'
 import './PageArticle.scss'
@@ -6,13 +6,17 @@ import { Loading } from '../ui'
 
 interface Props {
   articleName: string
+  category: string
 }
 
-const PageArticle: React.FC<Props> = ({ articleName }) => {
-  // Используем useMemo для создания lazy импорта, зависящего только от articleName
+const PageArticle: React.FC<Props> = ({ articleName, category }) => {
   const MDXComponent = useMemo(() => {
-    return React.lazy(() => import(`@/data/articles/${articleName}.mdx`))
+    return React.lazy(
+      () => import(`@/data/articles/${category}/${articleName}.mdx`),
+    )
   }, [articleName])
+
+  if (!MDXComponent) return
 
   return (
     <section className="page-article">

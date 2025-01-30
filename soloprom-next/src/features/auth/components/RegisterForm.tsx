@@ -264,7 +264,7 @@ export function RegisterForm() {
                       isResendEnabled={isResendEnabled}
                       resetCode={resetCode}
                       isLoading={isLoadingConfirm}
-                      onComplete={handleCodeComplete} // Передаём onComplete
+                      onComplete={handleCodeComplete}
                     />
                   </FormControl>
                   <FormMessage />

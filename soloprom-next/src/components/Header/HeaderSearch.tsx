@@ -85,7 +85,7 @@ const HeaderSearch = () => {
       <button
         type="button"
         id="search-product-btn"
-        onClick={resetSearch} // Добавляем обработчик клика для очистки
+        onClick={resetSearch}
         className="button rounded-tr-4 rounded-br-4 px-8 py-4"
       >
         <span> {searchValue ? 'Сбросить' : 'Найти'} </span>

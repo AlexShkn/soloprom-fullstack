@@ -33,9 +33,20 @@ export class ProductsService {
           },
         },
         {
+          Brand: {
+            name: {
+              equals: categoryName,
+              mode: 'insensitive',
+            },
+          },
+        },
+        {
           model: {
             some: {
-              name: categoryName,
+              name: {
+                equals: categoryName,
+                mode: 'insensitive',
+              },
             },
           },
         },
@@ -188,6 +199,25 @@ export class ProductsService {
     }
 
     return subcategory.products;
+  }
+  async getProductsBySubBrand(brandName: string) {
+    const brand = await prisma.brand.findFirst({
+      where: {
+        name: {
+          equals: brandName,
+          mode: 'insensitive',
+        },
+      },
+      include: {
+        products: true,
+      },
+    });
+
+    if (!brand) {
+      throw new Error(`SubCategory with name "${brandName}" not found`);
+    }
+
+    return brand.products;
   }
 
   async loadCategoriesProductsAndGroups(data: any) {
@@ -384,8 +414,13 @@ export class ProductsService {
   }
 
   async getProductsByModel(modelName: string) {
-    const model = await prisma.model.findUnique({
-      where: { name: modelName },
+    const model = await prisma.model.findFirst({
+      where: {
+        name: {
+          equals: modelName,
+          mode: 'insensitive',
+        },
+      },
       include: {
         products: true,
       },
@@ -397,6 +432,7 @@ export class ProductsService {
 
     return model.products;
   }
+
   async getProductsByGroup(groupName: string) {
     const group = await prisma.group.findUnique({
       where: { name: groupName },
