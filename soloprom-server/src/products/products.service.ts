@@ -32,6 +32,13 @@ export class ProductsService {
             },
           },
         },
+        {
+          model: {
+            some: {
+              name: categoryName,
+            },
+          },
+        },
       ];
     }
 
@@ -188,6 +195,7 @@ export class ProductsService {
     const categoriesMap = new Map();
     const subcategoriesMap = new Map();
     const groupsMap = new Map();
+    const modelMap = new Map();
     const brandsMap = new Map();
 
     // 1. Загрузка категорий и подкатегорий
@@ -225,6 +233,19 @@ export class ProductsService {
             },
           });
           groupsMap.set(group, createdGroup.id);
+        }
+      }
+      if (category.models && category.models.length) {
+        for (const model of category.models) {
+          const createdModel = await prisma.model.upsert({
+            where: { name: model },
+            update: { categoryId: createdCategory.id },
+            create: {
+              name: model,
+              categoryId: createdCategory.id, // Привязка к категории
+            },
+          });
+          modelMap.set(model, createdModel.id);
         }
       }
       if (category.brands && Array.isArray(category.brands)) {
@@ -285,6 +306,7 @@ export class ProductsService {
         brandName: product.brandName || null,
         productType: product.productType || null,
         groupsList: product.groupsList || [],
+        viscosity: product.viscosity || null,
       };
 
       // Создаём или обновляем продукт
@@ -323,6 +345,37 @@ export class ProductsService {
           },
         });
       }
+
+      if (product.models && product.models.length) {
+        const modelConnections = [];
+
+        for (const modelName of product.models) {
+          let modelId = modelMap.get(modelName);
+          console.log(modelName);
+          console.log(modelId);
+          // Если модель не найдена, создаём её "на лету"
+          if (!modelId) {
+            const newModel = await prisma.model.create({
+              data: { name: modelName, categoryId: categoryId },
+            });
+            modelId = newModel.id;
+            modelMap.set(modelName, modelId); // Сохраняем в карту
+          }
+
+          // Формируем соединение
+          modelConnections.push(modelId);
+        }
+
+        // Обновляем связь продуктов с группами (через реляцию)
+        await prisma.product.update({
+          where: { id: createdProduct.id },
+          data: {
+            model: {
+              set: modelConnections.map((id) => ({ id })), // Связь с существующими группами
+            },
+          },
+        });
+      }
     }
 
     return {
@@ -330,6 +383,20 @@ export class ProductsService {
     };
   }
 
+  async getProductsByModel(modelName: string) {
+    const model = await prisma.model.findUnique({
+      where: { name: modelName },
+      include: {
+        products: true,
+      },
+    });
+
+    if (!model) {
+      throw new Error(`Group with name "${modelName}" not found`);
+    }
+
+    return model.products;
+  }
   async getProductsByGroup(groupName: string) {
     const group = await prisma.group.findUnique({
       where: { name: groupName },

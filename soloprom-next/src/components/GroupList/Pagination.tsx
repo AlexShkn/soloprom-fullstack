@@ -48,7 +48,7 @@ export const Pagination: React.FC<Props> = ({
   const pageNumbers = generatePageNumbers()
   return (
     <div className="my-5 flex flex-col items-center">
-      <div className="mb-5 flex items-center justify-center">
+      <div className="flex items-center justify-center">
         {currentPage > 1 && (
           <button
             className="flex h-[48px] w-[48px] items-center justify-center rounded text-lg font-bold"

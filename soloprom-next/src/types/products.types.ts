@@ -39,6 +39,7 @@ export interface FilterData {
   volumes: string[]
   sizes: string[]
   plates: string[]
+  viscosity?: string[]
   voltage: number[]
   container: number[]
   models: string[]
@@ -47,7 +48,7 @@ export interface FilterData {
 }
 
 export interface PageDataTypes {
-  pageType: 'category' | 'subcategory' | 'group' | 'brands'
+  pageType: 'category' | 'subcategory' | 'group' | 'brands' | 'model'
   category: string
   name: string
   title: string
@@ -55,6 +56,7 @@ export interface PageDataTypes {
   img: string
   alt: string
   url: string
+  subUrl?: string
   crumb?: string
   headGroupTitle?: string
 }

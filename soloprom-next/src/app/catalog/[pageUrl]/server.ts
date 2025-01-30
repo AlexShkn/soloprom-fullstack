@@ -1,20 +1,10 @@
-import { cardDataProps, FilterData } from '@/types/products.types'
+import {
+  cardDataProps,
+  FilterData,
+  PageDataTypes,
+} from '@/types/products.types'
 
-// server.ts
-export interface PageDataTypes {
-  pageType: 'category' | 'subcategory' | 'group' | 'brands'
-  category: string
-  name: string
-  title: string
-  description: string
-  img: string
-  alt: string
-  url: string
-  crumb?: string
-  headGroupTitle?: string
-}
-
-interface PagesData {
+export interface PagesData {
   [key: string]: PageDataTypes
 }
 
@@ -55,6 +45,7 @@ export function generateFilterData(
       models: [],
       countries: [],
       radiuses: [],
+      viscosity: [],
     }
   }
 
@@ -66,6 +57,7 @@ export function generateFilterData(
   let allSizes: string[] = []
   let allPlates: (string | null)[] = []
   let allVoltage: (string | null)[] = []
+  let allViscosity: string[] = []
   let allContainer: (string | null)[] = []
   let allModels: string[] = []
   let allCountries: (string | null)[] = []
@@ -102,6 +94,9 @@ export function generateFilterData(
     // voltage
     if (item.voltage) {
       allVoltage.push(item.voltage)
+    }
+    if (item.viscosity) {
+      allViscosity.push(item.viscosity)
     }
 
     // container
@@ -162,6 +157,9 @@ export function generateFilterData(
     .map((v) => parseInt(v as string, 10))
     .filter((v) => !isNaN(v))
     .sort((a, b) => a - b)
+  const parsedViscosity = [...new Set(allViscosity)].sort(
+    (a, b) => parseInt(a) - parseInt(b),
+  )
 
   const parsedContainer = [...new Set(allContainer)]
     .filter(Boolean)
@@ -180,6 +178,7 @@ export function generateFilterData(
     sizes: uniqueSizes,
     plates: parserPlates,
     voltage: parsedVoltage,
+    viscosity: parsedViscosity,
     container: parsedContainer,
     models: parserModels,
     countries: uniqueCountries,

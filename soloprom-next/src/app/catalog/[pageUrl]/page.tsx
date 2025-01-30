@@ -57,14 +57,18 @@ export async function generateMetadata({
 export async function generateStaticParams() {
   const params: Params[] = []
 
-  for (const pageUrl in pagesData) {
-    const pageData = pagesData[pageUrl]
+  for (const page in pagesData) {
+    const pageData = pagesData[page]
+
+    const pageUrl =
+      pageData.pageType === 'model' && pageData.subUrl ? pageData.subUrl : page
 
     if (
       pageData.pageType === 'category' ||
       pageData.pageType === 'subcategory' ||
       pageData.pageType === 'group' ||
-      pageData.pageType === 'brands'
+      pageData.pageType === 'brands' ||
+      pageData.pageType === 'model'
     ) {
       params.push({ pageUrl })
     }
@@ -74,6 +78,7 @@ export async function generateStaticParams() {
 
 const CatalogPage: React.FC<CatalogPageProps> = async ({ params }) => {
   const { pageUrl } = await params
+
   const pageData = await findPagesData(pageUrl)
 
   if (!pageData) {
@@ -83,14 +88,19 @@ const CatalogPage: React.FC<CatalogPageProps> = async ({ params }) => {
   const currentPage = 1 // Всегда 1 для основной страницы
 
   const initialProducts = await fetchProducts({
-    categoryName: pageData.name,
+    categoryName: pageData.subUrl ? pageData.subUrl : pageData.name,
     page: currentPage,
     limit: 12,
   })
 
+  const interUrl =
+    pageData.pageType === 'model' && pageData.subUrl
+      ? pageData.subUrl
+      : pageData.url
+
   const categoryData = await getProductsAnyCategories(
     pageData.pageType,
-    pageData.url,
+    interUrl,
   )
 
   if (!initialProducts) {
@@ -98,8 +108,6 @@ const CatalogPage: React.FC<CatalogPageProps> = async ({ params }) => {
   }
 
   const filterData: FilterData = generateFilterData(categoryData)
-
-  console.log('redner CatalogPage')
 
   return (
     <CategoryPageClient

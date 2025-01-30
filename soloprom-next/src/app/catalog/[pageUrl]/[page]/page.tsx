@@ -1,5 +1,3 @@
-// /catalog/[pageUrl]/[page]/page.tsx
-
 import { Metadata } from 'next'
 import { findPagesData, generateFilterData, pagesData } from '../server'
 import {
@@ -26,21 +24,27 @@ export async function generateStaticParams() {
   const params: Params[] = []
   const limit = 10 // Количество товаров на странице
 
-  for (const pageUrl in pagesData) {
-    const pageData = pagesData[pageUrl]
+  for (const pageItem in pagesData) {
+    const pageData = pagesData[pageItem]
+
+    const pageUrl =
+      pageData.pageType === 'model' && pageData.subUrl
+        ? pageData.subUrl
+        : pageItem
 
     if (
       pageData.pageType === 'category' ||
       pageData.pageType === 'subcategory' ||
       pageData.pageType === 'group' ||
-      pageData.pageType === 'brands'
+      pageData.pageType === 'brands' ||
+      pageData.pageType === 'model'
     ) {
       const totalCount = await getTotalProductCount(pageData.name)
       const totalPages = Math.ceil(totalCount / limit)
 
-      for (let page = 2; page <= totalPages; page++) {
+      for (let currentPage = 2; currentPage <= totalPages; currentPage++) {
         // Начинаем со 2 страницы
-        params.push({ pageUrl, page: page.toString() })
+        params.push({ pageUrl, page: currentPage.toString() })
       }
     }
   }
@@ -104,14 +108,19 @@ const CatalogPaginationPage: React.FC<CatalogPageProps> = async ({
   }
 
   const initialProducts = await fetchProducts({
-    categoryName: pageData.name,
+    categoryName: pageData.subUrl ? pageData.subUrl : pageData.name,
     page: currentPage,
     limit: 12,
   })
 
+  const interUrl =
+    pageData.pageType === 'model' && pageData.subUrl
+      ? pageData.subUrl
+      : pageData.url
+
   const categoryData = await getProductsAnyCategories(
     pageData.pageType,
-    pageData.url,
+    interUrl,
   )
 
   if (!initialProducts) {

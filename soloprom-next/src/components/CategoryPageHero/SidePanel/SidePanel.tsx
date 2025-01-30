@@ -45,7 +45,7 @@ export type OutputCategory = {
     pageType: string
     category: string
   }>
-  brands?: Array<{
+  model?: Array<{
     title: string
     description: string
     img: string
@@ -87,7 +87,7 @@ export function transformJson(inputData: InputDataType): {
         category: item.category,
         subcategories: [],
         group: [],
-        brands: [],
+        model: [],
       }
     } else if (item.pageType === 'subcategory' && item.category) {
       result[item.category]?.subcategories?.push({
@@ -113,8 +113,8 @@ export function transformJson(inputData: InputDataType): {
         url: item.url,
         crumb: item.crumb,
       })
-    } else if (item.pageType === 'brands' && item.category) {
-      result[item.category]?.brands?.push({
+    } else if (item.pageType === 'model' && item.category) {
+      result[item.category]?.model?.push({
         pageType: item.pageType,
         category: item.category,
 
@@ -138,7 +138,7 @@ export const SidePanel: React.FC<SidePanelProps> = ({ pageData }) => {
 
   const subcategories = categoryData.subcategories
   const groups = categoryData.group
-  const brands = categoryData.brands
+  const model = categoryData.model
   const headGroup = groups && groups[0]?.headGroupTitle
 
   return (
@@ -159,7 +159,7 @@ export const SidePanel: React.FC<SidePanelProps> = ({ pageData }) => {
             </div>
 
             <ul data-drop-list className="side-panel__drop-list">
-              {brands?.map((brand) => (
+              {model?.map((brand) => (
                 <li key={brand.url} className="side-panel__drop-item">
                   <Link href={`/catalog/${brand.url}`}>{brand.title}</Link>
                 </li>

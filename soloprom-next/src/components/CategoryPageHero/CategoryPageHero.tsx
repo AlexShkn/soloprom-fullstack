@@ -32,7 +32,7 @@ export const CategoryPageHero: React.FC<Props> = ({
 }) => {
   return (
     <section className="category-hero relative">
-      <div className="category-hero__body relative mb-5 flex w-full justify-end overflow-hidden rounded px-5 shadow-custom">
+      <div className="category-hero__body relative flex h-full w-full items-center justify-end overflow-hidden rounded px-5 py-5 shadow-custom">
         <Image
           className="absolute inset-0 h-full w-[60%] object-cover"
           src={`${categoryImage}.webp`}

@@ -8,11 +8,11 @@ datasource db {
 }
 
 model Product {
-  productId       String          @unique
-  isPopular       Boolean         @default(false)
+  productId       String  @unique
+  isPopular       Boolean @default(false)
   discount        Float?
-  stock           Float?          @default(0)
-  rating          Float?          @default(0)
+  stock           Float?  @default(0)
+  rating          Float?  @default(0)
   categoryName    String
   subcategoryName String
   name            String
@@ -24,17 +24,20 @@ model Product {
   plates          String?
   container       String?
   voltage         String?
+  viscosity       String?
   load_index      String?
   defaultPrice    Float
   delivery        String?
   sizes           Json?
   volumes         Json?
   models          Json?
-  regalia         Json?
-  popularRecord   PopularProduct? @relation("PopularRelation")
-  size            String?
-  productType     String
-  productDescr    ProductDescr?   @relation(name: "ProductToDescr")
+  model           Model[] @relation("ProductModels")
+
+  regalia       Json?
+  popularRecord PopularProduct? @relation("PopularRelation")
+  size          String?
+  productType   String
+  productDescr  ProductDescr?   @relation(name: "ProductToDescr")
 
   Category    Category    @relation(fields: [categoryName], references: [name])
   SubCategory SubCategory @relation(fields: [subcategoryName], references: [name])
@@ -80,6 +83,7 @@ model Category {
   createdAt   DateTime      @default(now())
   updatedAt   DateTime      @updatedAt
   Group       Group[]
+  Model       Model[]
 }
 
 model SubCategory {
@@ -88,6 +92,16 @@ model SubCategory {
   categoryId String
   products   Product[]
   Category   Category  @relation(fields: [categoryId], references: [id])
+  createdAt  DateTime  @default(now())
+  updatedAt  DateTime  @updatedAt
+}
+
+model Model {
+  id         String    @id @default(uuid())
+  name       String    @unique
+  categoryId String // Связь с категорией
+  Category   Category  @relation(fields: [categoryId], references: [id])
+  products   Product[] @relation("ProductModels")
   createdAt  DateTime  @default(now())
   updatedAt  DateTime  @updatedAt
 }

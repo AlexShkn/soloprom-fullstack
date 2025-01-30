@@ -53,6 +53,7 @@ const CatalogFilters: React.FC<Props> = ({
 
   const categoryData = transformData[productsType]
   const groups = categoryData.group
+  const subCategories = categoryData.subcategories
 
   const handleFilterChange = useCallback(
     (
@@ -158,6 +159,7 @@ const CatalogFilters: React.FC<Props> = ({
         'category',
         'price',
         'brands',
+        'viscosity',
         'types',
         'volumes',
         'sizes',
@@ -168,7 +170,7 @@ const CatalogFilters: React.FC<Props> = ({
           initial={true}
           maxHeight={'200'}
           title={categoryData.title}
-          items={groups}
+          items={groups && groups.length ? groups : subCategories || []}
         />
       )}
 
@@ -210,6 +212,27 @@ const CatalogFilters: React.FC<Props> = ({
           />
         </FilterItem>
       )}
+      {categoryInitialList.viscosity &&
+        categoryInitialList.viscosity.length > 1 && (
+          <FilterItem title="Вязкость" value="viscosity">
+            <FilterCheckbox
+              title=""
+              options={categoryInitialList.viscosity.map((viscosity) => ({
+                label: viscosity,
+                value: viscosity,
+              }))}
+              showMoreCount={
+                categoryInitialList.viscosity.length > 5
+                  ? categoryInitialList.viscosity.length - 5
+                  : 0
+              }
+              onCheckboxChange={(value, isChecked) =>
+                handleFilterChange('viscosity', value, isChecked)
+              }
+              initialChecked={internalFilters['viscosity'] as string[]}
+            />
+          </FilterItem>
+        )}
       {categoryInitialList.types && categoryInitialList.types.length > 1 && (
         <FilterItem title="Тип" value="types">
           <FilterCheckbox

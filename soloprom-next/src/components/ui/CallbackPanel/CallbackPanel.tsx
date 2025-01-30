@@ -8,12 +8,13 @@ interface Props {
 }
 
 export const CallbackPanel: React.FC<Props> = ({ className }) => {
-  const { callbackIsOpen, modalCallbackStateChange } = useModalsStore(
-    (state) => state,
-  )
+  const { callbackIsOpen, modalCallbackStateChange, shareModal } =
+    useModalsStore((state) => state)
 
   return (
-    <div className={`callback-panel ${callbackIsOpen && 'fixed-panel'}`}>
+    <div
+      className={`callback-panel ${(callbackIsOpen || shareModal.isOpen) && 'fixed-panel'}`}
+    >
       <a href="https://t.me/+79036569393" className="callback-panel__link">
         <svg className="icon">
           <use xlinkHref="/img/sprite.svg#footer-tg"></use>

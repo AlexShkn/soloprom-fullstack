@@ -18,7 +18,7 @@ const HeaderBottom = () => {
   const { catalogMenuStateChange, catalogIsOpen } = useCatalogMenuStore(
     (state) => state,
   )
-  const callbackIsOpen = useModalsStore((state) => state.callbackIsOpen)
+  const { shareModal, callbackIsOpen } = useModalsStore((state) => state)
   const headerFixed = useHeaderStore((state) => state.headerFixed)
 
   const headerRef = useRef<HTMLDivElement>(null)
@@ -39,11 +39,10 @@ const HeaderBottom = () => {
   }
 
   return (
-    <div className={`header-bottom relative ${headerFixed && 'header_fixed'}`}>
-      <div
-        ref={headerRef}
-        className={`header-bottom__wrapper relative ${callbackIsOpen && 'fixed-panel'}`}
-      >
+    <div
+      className={`header-bottom relative ${headerFixed && 'header_fixed'} ${(callbackIsOpen || shareModal.isOpen) && 'compensate'}`}
+    >
+      <div ref={headerRef} className={`header-bottom__wrapper relative`}>
         <div
           className={`header-bottom__panel grid items-center justify-between gap-5 ${catalogIsOpen && 'fixed-panel'}`}
         >

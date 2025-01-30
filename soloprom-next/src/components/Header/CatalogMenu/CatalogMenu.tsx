@@ -23,13 +23,13 @@ export interface CategoryProduct {
 }
 
 const categoryList: CategoryTab[] = [
-  { id: 'acb', alt: 'купить тяговый акб', title: 'Аккумуляторы' },
+  { id: 'battery', alt: 'купить тяговый акб', title: 'Аккумуляторы' },
   { id: 'tires', alt: 'шина для погрузчика', title: 'Шины' },
   { id: 'oils', alt: 'моторные масла', title: 'Масла и антифризы' },
 ]
 
 const productsList: Record<string, CategoryProduct[]> = {
-  acb: [
+  battery: [
     { href: '/catalog/battery', title: 'Аккумуляторы' },
     {
       href: '/catalog/accumulyatori-tyagovie',
@@ -145,7 +145,7 @@ const productsList: Record<string, CategoryProduct[]> = {
 }
 
 const CatalogMenu = () => {
-  const [currentTab, setCurrentTab] = useState('')
+  const [currentTab, setCurrentTab] = useState('battery')
   const menuRef = useRef<HTMLDivElement>(null)
 
   const { catalogIsOpen, catalogMenuStateChange } = useCatalogMenuStore(
@@ -156,7 +156,7 @@ const CatalogMenu = () => {
   const is650 = useMediaQuery('(max-width: 650px)')
 
   useEffect(() => {
-    if (!is650) setCurrentTab('acb')
+    if (!is650) setCurrentTab('battery')
   }, [is650, setCurrentTab])
 
   // useCloseOnScroll({
@@ -206,7 +206,9 @@ const CatalogMenu = () => {
               <div
                 key={category.id}
                 onClick={() =>
-                  setCurrentTab(currentTab !== category.id ? category.id : '')
+                  setCurrentTab(
+                    currentTab !== category.id ? category.id : currentTab,
+                  )
                 }
                 className={`catalog-menu__category-item rounded-tr-4 rounded-br-4 flex cursor-pointer items-center gap-2.5 bg-white pl-2.5 font-medium ${
                   currentTab === category.id

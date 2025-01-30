@@ -3,10 +3,11 @@ import React, { useEffect, useState } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 
+import { getProductsCounts } from '@/utils/api/products'
+import { SubcategoryCount } from '../CategoryProductsSlider/CategoryProductsSlider'
 import initialCategoriesData from '../../data/products/categoriesData.json'
 
 import './CatalogMain.scss'
-import { getProductsCounts } from '@/utils/api/products'
 
 interface CategoryItem {
   id: string
@@ -26,10 +27,6 @@ interface CategoriesData {
 
 interface Props {
   className?: string
-}
-
-interface SubcategoryCount {
-  [subcategory: string]: number
 }
 
 const categoriesData = initialCategoriesData as CategoriesData

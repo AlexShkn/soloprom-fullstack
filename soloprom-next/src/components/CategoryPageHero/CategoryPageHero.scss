@@ -13,7 +13,6 @@
 
   @media (max-width: 767.98px) {
     width: 100%;
-    margin-bottom: 100px;
   }
 }
 
@@ -21,9 +20,6 @@
   // .category-hero__body
 
   &__body {
-    padding-top: clamp(6.25rem, 2.9533rem + 10.989vw, 12.5rem);
-    padding-bottom: clamp(6.25rem, 2.9533rem + 10.989vw, 12.5rem);
-
     &::before {
       content: '';
       position: absolute;
@@ -45,6 +41,6 @@
   // .category-hero__title
 
   &__title {
-    font-size: clamp(1.625rem, 1.0975rem + 1.7582vw, 2.625rem);
+    font-size: clamp(1.375rem, 1.132rem + 1.215vw, 2.1875rem);
   }
 }

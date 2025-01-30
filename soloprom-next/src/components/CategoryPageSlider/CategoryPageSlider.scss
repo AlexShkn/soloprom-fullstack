@@ -1,0 +1,53 @@
+@use '@/styles/variables.scss';
+
+.page-category-slider {
+  .swiper-scrollbar-drag {
+    height: 5px;
+    background-color: variables.$accentColor;
+  }
+
+  .swiper-scrollbar {
+    background-color: #d1d1d1;
+    width: 95%;
+    height: 5px;
+    margin: 25px auto 0;
+    border-radius: 10px;
+  }
+
+  .swiper-wrapper {
+    display: flex;
+  }
+
+  // .page-category-slider__category-title
+
+  &__category-title {
+    margin-bottom: clamp(0.9375rem, 0.443rem + 1.6484vw, 1.875rem);
+    font-size: clamp(1.25rem, 1.0522rem + 0.6593vw, 1.625rem);
+  }
+
+  // .page-category-slider__category-link
+
+  .page-category-slider__category-link {
+    @media (any-hover: hover) {
+      &:hover {
+        background-color: variables.$accentColor;
+        .page-category-slider__category-link-title {
+          color: #fff;
+        }
+
+        .page-category-slider__category-link-text {
+          color: #fff;
+        }
+
+        .page-category-slider__category-link-button {
+          background-color: #fff;
+          color: variables.$accentColor;
+        }
+      }
+    }
+
+    @media (max-width: 479.98px) {
+      padding: 20px 10px;
+    }
+  }
+}

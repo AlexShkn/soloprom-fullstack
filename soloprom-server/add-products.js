@@ -1,7 +1,7 @@
 const fs = require('fs').promises;
 const axios = require('axios');
 
-const BATCH_SIZE = 10; // Размер пакета продуктов для каждого запроса
+const BATCH_SIZE = 50; // Размер пакета продуктов для каждого запроса
 const API_URL = 'http://localhost:3001/products/load'; // Замените на URL вашего API
 const DATA_FILE = './data/all.json'; // Путь к файлу с данными
 
@@ -117,6 +117,40 @@ const CATEGORIES = [
       'Hawker',
       'Advanced-Energy',
       'Tianneng',
+    ],
+
+    models: [
+      'BT',
+      'BALCANCAR',
+      'BOSS-JE',
+      'CROWN',
+      'CATERPILLAR',
+      'DAEWOO',
+      'DOOSAN',
+      'DIMEX',
+      'DALIAN',
+      'HELI',
+      'HYUNDAI',
+      'HANGCHA',
+      'HYSTER',
+      'JUNGHEINRICH',
+      'JAC',
+      'KOMATSU',
+      'LINDE',
+      'LOC',
+      'MAXIMAL',
+      'MITSUBISHI',
+      'NICHIYU',
+      'NISSAN',
+      'OM',
+      'PRAMAC',
+      'ROCLA',
+      'STILL',
+      'TOYOTA',
+      'TFN',
+      'TCM',
+      'VP',
+      'YALE',
     ],
   },
   {

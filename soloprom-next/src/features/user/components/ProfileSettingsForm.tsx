@@ -116,7 +116,7 @@ export function ProfileSettingsForm() {
                   </FormItem>
                 )}
               />
-              <FormField
+              {/* <FormField
                 control={form.control}
                 name="isTwoFactorEnabled"
                 render={({ field }) => (
@@ -136,7 +136,7 @@ export function ProfileSettingsForm() {
                     </FormControl>
                   </FormItem>
                 )}
-              />
+              /> */}
               <Button type="submit" disabled={isLoadingUpdate}>
                 Сохранить
               </Button>

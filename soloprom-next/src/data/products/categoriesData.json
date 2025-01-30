@@ -85,7 +85,7 @@
         "id": "shini-dlya-selhoztehniki",
         "href": "/catalog/shini-dlya-selhoztehniki",
         "img": "/img/catalog/category/tires/selhoztechnika.webp",
-        "title": "Для сельскохозяйственной техники"
+        "title": "Для сельхоз техники"
       },
       {
         "type": "group",
@@ -130,7 +130,7 @@
       }
     ]
   },
-  "acb": {
+  "battery": {
     "icon": "catalog-battery",
     "title": "Аккумуляторные батареи",
     "items": [

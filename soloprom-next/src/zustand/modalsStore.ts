@@ -1,5 +1,6 @@
 import { create } from 'zustand'
 import { scrollStatusChange } from '@/utils/scrollStatusChange'
+import { boolean } from 'zod'
 
 export interface FastOrderTypes {
   productId: string
@@ -10,10 +11,17 @@ export interface FastOrderTypes {
   variant: string
 }
 
+interface ShareTypes {
+  isOpen: boolean
+  productId: string
+}
+
 interface ModalsState {
   callbackIsOpen: boolean
   fastOrderProduct: FastOrderTypes
+  shareModal: ShareTypes
   modalCallbackStateChange: (isOpen: boolean) => void
+  setShareModal: (productId: string, isOpen: boolean) => void
   setFastOrderProduct: (product: FastOrderTypes) => void
 }
 
@@ -27,8 +35,25 @@ const initialFastOrderProduct: FastOrderTypes = {
 }
 
 export const useModalsStore = create<ModalsState>((set, get) => ({
+  shareModal: {
+    productId: '',
+    isOpen: false,
+  },
   callbackIsOpen: false,
   fastOrderProduct: initialFastOrderProduct,
+
+  setShareModal: (productId, isOpen) =>
+    set(
+      () => (
+        scrollStatusChange(isOpen),
+        {
+          shareModal: {
+            productId,
+            isOpen,
+          },
+        }
+      ),
+    ),
   modalCallbackStateChange: (isOpen) => {
     set({ callbackIsOpen: isOpen })
     scrollStatusChange(isOpen)

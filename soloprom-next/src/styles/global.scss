@@ -180,8 +180,11 @@
     left: 50%;
     transform: translateX(-50%);
     width: 100%;
-
     animation: fadeIn 0.1s ease-in;
+
+    &.compensate {
+      left: calc(50% - 10px);
+    }
 
     .header-bottom__wrapper {
       padding: 10px;

@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
+import { Share } from 'lucide-react'
 
 import './ProductsCard.scss'
 import { ProductsCardPropTypes } from '@/types/products.types'
@@ -26,6 +27,8 @@ export const ProductsCard: React.FC<ProductsCardPropTypes> = ({
   const cartState = useCartStore((state) => state.cartState)
   const addProductToCart = useCartStore((state) => state.addProductToCart)
   const removeCartProduct = useCartStore((state) => state.removeCartProduct)
+
+  const { setShareModal } = useModalsStore()
 
   const { favoriteState, removeFavoriteProduct, addProductToFavorite } =
     useFavoriteStore((state) => state)
@@ -141,7 +144,8 @@ export const ProductsCard: React.FC<ProductsCardPropTypes> = ({
       {regalia.length > 0 && (
         <RegaliaList regalia={regalia} discount={discount} />
       )}
-      <div
+      <Link
+        href={url || '/'}
         className={`${mod !== 'row' ? 'mb-2.5' : 'items-center'} flex justify-center`}
       >
         <Image
@@ -154,12 +158,12 @@ export const ProductsCard: React.FC<ProductsCardPropTypes> = ({
           height={120}
           alt={name}
         />
-      </div>
+      </Link>
 
       <div className={`${mod === 'row' && 'flex flex-auto flex-col'}`}>
         <Link href={url || '/'} className="relative mb-2.5 text-center">
           <div
-            className={`link-hover font-bold uppercase leading-5 text-[#272b2c] ${mod === 'grid' ? 'text-left text-sm' : 'text-center'}`}
+            className={`link-hover mb-2.5 font-bold uppercase leading-5 text-[#272b2c] ${mod === 'grid' ? 'text-left text-sm' : 'text-center'}`}
           >
             {name}
           </div>
@@ -230,10 +234,19 @@ export const ProductsCard: React.FC<ProductsCardPropTypes> = ({
           <div className="flex items-center gap-4">
             <button
               type="button"
+              className={`product-card__favorite absolute right-2 top-3`}
+              onClick={() => setShareModal(productId, true)}
+            >
+              <svg className="icon h-6 w-6 fill-accentBlue transition-colors">
+                <use xlinkHref="/img/sprite.svg#shared" />
+              </svg>
+            </button>
+            <button
+              type="button"
               // onClick={
               //   favoriteIsAdded ? handleRemoveFromFavorites : handleAddToFavorites
               // }
-              className={`product-card__favorite ${mod === 'grid' && 'absolute right-2 top-12'} ${favoriteIsAdded && 'added'}`}
+              className={`product-card__favorite ${mod === 'grid' && 'absolute right-2 top-20'} ${favoriteIsAdded && 'added'}`}
             >
               <svg className="icon h-7 w-7 fill-accentBlue transition-colors">
                 <use xlinkHref="/img/sprite.svg#scales" />
@@ -246,7 +259,7 @@ export const ProductsCard: React.FC<ProductsCardPropTypes> = ({
                   ? handleRemoveFromFavorites
                   : handleAddToFavorites
               }
-              className={`product-card__favorite ${mod === 'grid' && 'absolute right-3 top-3'} ${favoriteIsAdded && 'added'}`}
+              className={`product-card__favorite ${mod === 'grid' && 'absolute right-[10px] top-12'} ${favoriteIsAdded && 'added'}`}
             >
               <svg className="icon h-6 w-6 fill-accentBlue transition-colors">
                 <use xlinkHref="/img/sprite.svg#bookmark" />

@@ -10,10 +10,13 @@ import { ProductsSlider } from '@/components/ProductsSlider/ProductsSlider'
 import { Callback } from '@/components/Callback/Callback'
 import BreadCrumbs from '@/components/ui/BreadCrumbs/BreadCrumbs'
 import PageWrapper from '@/app/PageWrapper'
-import { PageDataTypes } from './server'
-import { cardDataProps } from '@/types/products.types'
 import { Loading } from '@/components/ui'
-import { FilterData } from '@/types/products.types'
+import {
+  FilterData,
+  cardDataProps,
+  PageDataTypes,
+} from '@/types/products.types'
+import { CategoryPageSlider } from '@/components/CategoryPageSlider/CategoryPageSlider'
 
 interface CategoryPageClientProps {
   pageData: PageDataTypes
@@ -69,7 +72,7 @@ const CategoryPageClient: React.FC<CategoryPageClientProps> = ({
       <Suspense fallback={<Loading />}>
         <ProductsFilterBlock
           productsType={pageData.category}
-          categoryName={pageData.name}
+          categoryName={pageData.subUrl ? pageData.subUrl : pageData.name}
           currentPage={currentPage}
           onChangePage={handlePageChange}
           initialProducts={initialProducts}
@@ -77,8 +80,8 @@ const CategoryPageClient: React.FC<CategoryPageClientProps> = ({
           totalCount={totalCount}
         />
       </Suspense>
-      <ProductsSlider title={'Похожие товары'} categoryName={pageData.name} />
       <PageArticle articleName={pageData.name} />
+      <CategoryPageSlider category={pageData.category} />
       <Callback />
     </PageWrapper>
   )

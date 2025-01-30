@@ -51,6 +51,7 @@ const TabCategory: React.FC<CategoryTab> = ({
           >
             <Link
               href={item.href}
+              onClick={() => catalogMenuStateChange(false, false)}
               className="catalog-menu__category-child-link link-hover inline-flex w-full items-center rounded bg-white py-2.5 pl-2.5 pr-[5px] font-medium"
             >
               {item.title}

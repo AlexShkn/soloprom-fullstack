@@ -206,7 +206,11 @@ const ModalCallback: React.FC<ModalProps> = ({ fastOrderProduct }) => {
                 {fastOrderProduct.productId && (
                   <div className="modal-callback__product">
                     <img
-                      src={`/img/catalog/${fastOrderProduct.img}.webp`}
+                      src={
+                        fastOrderProduct.img
+                          ? `/img/catalog/${fastOrderProduct.img}.webp`
+                          : '/img/catalog/not-found.webp'
+                      }
                       alt=""
                       className="modal-callback__product-image"
                     />
