@@ -1,6 +1,6 @@
 import { type NextRequest, NextResponse } from 'next/server'
 
-export default function middleware(request: NextRequest) {
+export default async function middleware(request: NextRequest) {
   const { url, cookies } = request
   const session = cookies.get('session')?.value
 
@@ -15,15 +15,23 @@ export default function middleware(request: NextRequest) {
 
   if (isAuthPage) {
     if (session) {
-      const dashboardUrl = new URL('/dashboard/settings', request.url)
-      return NextResponse.redirect(dashboardUrl)
+      const isValidSession = await checkSession(request)
+      if (isValidSession) {
+        const dashboardUrl = new URL('/dashboard/settings', request.url)
+        return NextResponse.redirect(dashboardUrl)
+      }
     }
     return NextResponse.next()
   }
 
-  if (isDashboardPage && !session) {
-    const loginUrl = new URL('/auth/login', request.url)
-    return NextResponse.redirect(loginUrl)
+  if (isDashboardPage) {
+    const isValidSession = await checkSession(request)
+
+    if (!isValidSession) {
+      const loginUrl = new URL('/auth/login', request.url)
+      return NextResponse.redirect(loginUrl)
+    }
+    return NextResponse.next()
   }
 
   return NextResponse.next()
@@ -31,4 +39,34 @@ export default function middleware(request: NextRequest) {
 
 export const config = {
   matcher: ['/auth/:path*', '/dashboard/:path*', '/products'],
+}
+
+const checkSession = async (request: NextRequest) => {
+  const session = request.cookies.get('session')?.value
+  const apiUrl = process.env.NEXT_PUBLIC_SERVER_URL
+
+  if (!session) return false
+
+  if (!apiUrl) {
+    console.log('API URL не найден')
+    return false
+  }
+
+  try {
+    const response = await fetch(`${apiUrl}/auth/check-session`, {
+      method: 'GET',
+      headers: {
+        Cookie: `session=${session}`,
+      },
+    })
+
+    if (!response.ok) {
+      return false
+    }
+    const { isValid } = await response.json()
+    return isValid
+  } catch (error) {
+    console.log('error check session', error)
+    return false
+  }
 }

@@ -82,6 +82,15 @@ export class AuthController {
     };
   }
 
+  @Get('check-session')
+  async checkSession(@Req() req: Request) {
+    const userId = req.session.userId;
+    if (userId) {
+      return { isValid: true };
+    }
+    return { isValid: false };
+  }
+
   @Post('logout')
   @HttpCode(HttpStatus.OK)
   public async logout(
