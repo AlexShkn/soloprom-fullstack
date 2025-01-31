@@ -1,14 +1,14 @@
 'use client'
 import React, { useCallback, useEffect, useMemo, useState, useRef } from 'react'
 import { useRouter, useSearchParams } from 'next/navigation'
-import { api } from '@/components/shared/instance.api'
-
 import { cardDataProps, FilterData } from '@/types/products.types'
 import { FilteredList } from '@/components/GroupList/FilteredList/FilteredList'
 import CatalogFilters from '../Filter/CatalogFilters'
 import useFilterStore from '@/zustand/filterStore'
 import { useDebounce } from '@/hooks/useDebounce'
 import './ProductsFilterBlock.scss'
+import { api } from '@/components/shared/instance.api'
+export const BASE_URL = `${process.env.NEXT_PUBLIC_SERVER_URL}/products`
 
 interface Props {
   categoryName: string
@@ -229,14 +229,7 @@ export const ProductsFilterBlock: React.FC<Props> = ({
         fetchData()
       }
     }
-  }, [
-    debouncedFilters,
-    debouncedSort,
-    dynamicCurrentPage,
-    updateUrl,
-    hasFilters,
-    fetchData,
-  ])
+  }, [debouncedFilters, debouncedSort, dynamicCurrentPage, updateUrl])
 
   return (
     <section className="group-list section-offset" ref={groupListRef}>

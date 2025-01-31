@@ -20,7 +20,7 @@ type ProductDescription = {
 }
 
 interface Props {
-  productDescr: ProductDescription
+  productDescr?: ProductDescription // Changed to optional
 }
 
 type CurrentTabType = number
@@ -30,9 +30,9 @@ const DescriptionTab = React.memo(({ text }: { text: string }) => (
 ))
 
 const CharacteristicsTab = React.memo(
-  ({ options }: { options: [string, string][] }) => (
+  ({ options }: { options: [string, string][] | undefined }) => (
     <div className="product-page-tabs__description">
-      {options.length ? (
+      {options && options?.length ? (
         <table className="w-full border-collapse text-left text-sm text-gray-500">
           <thead className="border-b border-gray-900/60 bg-gray-50 text-xs uppercase text-gray-700">
             <tr>
@@ -62,35 +62,37 @@ const CharacteristicsTab = React.memo(
   ),
 )
 
-const CompatibilityTab = React.memo(({ models }: { models: string[] }) => (
-  <div className="product-page-card__table-info">
-    {models.length > 0 ? (
-      <ul className="product-page-card__table-list">
-        {models.map((model, index) => (
-          <li key={index} className="product-page-card__table-item">
-            {model}
-          </li>
-        ))}
-      </ul>
-    ) : (
-      <div className="product-page-tabs__reviews-not">Список пуст</div>
-    )}
-  </div>
-))
+const CompatibilityTab = React.memo(
+  ({ models }: { models: string[] | undefined }) => (
+    <div className="product-page-card__table-info">
+      {models && models?.length > 0 ? (
+        <ul className="product-page-card__table-list">
+          {models.map((model, index) => (
+            <li key={index} className="product-page-card__table-item">
+              {model}
+            </li>
+          ))}
+        </ul>
+      ) : (
+        <div className="product-page-tabs__reviews-not">Список пуст</div>
+      )}
+    </div>
+  ),
+)
 
 const ReviewsTab = React.memo(
   ({
     productDescr,
     reviews,
   }: {
-    productDescr: ProductDescription
-    reviews: Review[]
+    productDescr?: ProductDescription
+    reviews: Review[] | undefined
   }) => (
     <div className="product-page-tabs__reviews">
-      {reviews.length > 0 ? (
+      {reviews && reviews?.length > 0 ? (
         <>
           <h2 className="section-title product-page-tabs__reviews-title">
-            {productDescr.name}
+            {productDescr?.name || 'Имя продукта'}
           </h2>
           <ul className="product-page-tabs__reviews-list">
             {reviews.map((review, index) => (
@@ -183,20 +185,23 @@ const DeliveryTab = React.memo(() => (
 export const ProductPageTabs: React.FC<Props> = ({ productDescr }) => {
   const [currentTab, setCurrentTab] = useState<CurrentTabType>(0)
 
-  if (!productDescr) {
-    return <div>Product not found</div>
-  }
+  const {
+    models = [],
+    reviews = [],
+    options = [],
+    text = '',
+    name = '',
+  } = productDescr || {}
 
-  const { models = [], reviews = [], options = [], text, name } = productDescr
   const captions = useMemo(
     () => [
       'Описание товара',
       'Характеристики',
       'Совместимость',
-      `Отзывы (${reviews.length})`,
+      `Отзывы (${(reviews || []).length})`,
       'Доставка',
     ],
-    [reviews.length],
+    [reviews?.length],
   )
 
   const handleTabClick = useCallback((index: CurrentTabType) => {

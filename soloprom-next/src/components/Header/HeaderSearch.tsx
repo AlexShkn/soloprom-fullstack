@@ -29,7 +29,7 @@ const HeaderSearch = () => {
     try {
       setIsLoading(true)
       const response = await searchProducts('name', name)
-      const data: cardDataProps[] = await response.data
+      const data: cardDataProps[] = await response
       setProducts(data)
     } catch (error) {
       console.error('An error occurred while searching:', error)

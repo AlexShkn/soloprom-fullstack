@@ -32,7 +32,7 @@ const orderDto: Record<
   },
   DELIVERED: {
     label: 'Исполнен',
-    icon: <CheckCircle className="text-success h-4 w-4" />,
+    icon: <CheckCircle className="h-4 w-4 text-success" />,
     color: 'text-success',
   },
   CANCELED: {
@@ -40,6 +40,18 @@ const orderDto: Record<
     icon: <XCircle className="h-4 w-4 text-destructive" />,
     color: 'text-destructive',
   },
+}
+
+function formatDateTime(dateString: string): string {
+  const date = new Date(dateString)
+
+  const day: string = String(date.getDate()).padStart(2, '0')
+  const month: string = String(date.getMonth() + 1).padStart(2, '0')
+  const year: number = date.getFullYear()
+  const hours: string = String(date.getHours()).padStart(2, '0')
+  const minutes: string = String(date.getMinutes()).padStart(2, '0')
+
+  return `${day}/${month}/${year} ${hours}:${minutes}`
 }
 
 export const OrderList: React.FC<OrderListProps> = ({ user }) => {
@@ -83,6 +95,7 @@ export const OrderList: React.FC<OrderListProps> = ({ user }) => {
             <thead className="bg-gray-100 text-gray-700">
               <tr>
                 <th className="px-4 py-2">Номер заказа</th>
+                <th className="px-4 py-2">Создан</th>
                 <th className="px-4 py-2">Статус</th>
                 <th className="px-4 py-2">Сумма</th>
                 <th className="px-4 py-2">Товары</th>
@@ -101,6 +114,9 @@ export const OrderList: React.FC<OrderListProps> = ({ user }) => {
                     }`}
                   >
                     <td className="px-4 py-2 font-medium">{order.id}</td>
+                    <td className="px-4 py-2 font-medium">
+                      {formatDateTime(order.createdAt)}
+                    </td>
                     <td className="px-4 py-2">
                       <div className="flex items-center space-x-2">
                         {orderDto[order.status]?.icon}

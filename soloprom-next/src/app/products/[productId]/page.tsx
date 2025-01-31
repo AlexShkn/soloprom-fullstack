@@ -36,13 +36,13 @@ export async function generateStaticParams() {
     )
     return []
   }
-  if (!response?.data || !Array.isArray(response?.data)) {
+  if (!response || !Array.isArray(response)) {
     console.log(
-      'Response data is not an array, returning empty array for static params',
+      'Данные ответа не являются массивом и возвращают пустой массив для статических параметров',
     )
     return []
   }
-  const products = response.data as cardDataProps[]
+  const products = response as cardDataProps[]
   if (products.some((product) => !product.productId)) {
     console.log('Some products missing productId, skipping')
     return []

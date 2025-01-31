@@ -23,7 +23,7 @@ export const ProductsSlider: React.FC<Props> = ({ title, categoryName }) => {
         setLoading(true)
         const response = await getPopularProducts()
 
-        const formattedProducts = response.data.filter(
+        const formattedProducts = response.filter(
           (product: cardDataProps) => product.categoryName === categoryName,
         )
 

@@ -22,13 +22,13 @@ export default async function Home() {
   const response = await getPopularProducts()
 
   const formattedProducts: FavoriteList = {
-    tires: response.data.filter(
+    tires: response.filter(
       (product: cardDataProps) => product.categoryName === 'tires',
     ),
-    battery: response.data.filter(
+    battery: response.filter(
       (product: cardDataProps) => product.categoryName === 'battery',
     ),
-    oils: response.data.filter(
+    oils: response.filter(
       (product: cardDataProps) => product.categoryName === 'oils',
     ),
   }

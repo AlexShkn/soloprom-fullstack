@@ -17,11 +17,9 @@ export interface fetchProductsProps {
   totalPages: number
 }
 
-const BASE_URL = `products` // Обновлено
-
 export async function getTotalProductCount(categoryName: string) {
   const response = await api.get<{ totalCount: number }>(
-    `${BASE_URL}/get-products`,
+    `products/get-products`,
     {
       params: { categoryName, limit: 1 },
     },
@@ -41,7 +39,7 @@ export async function getProductsCounts() {
 
 export async function getProductsAnyCategories(type: string, name: string) {
   try {
-    const response = await api.get<any>(`${BASE_URL}/${type}/${name}`) // Указать тип данных если известен.
+    const response = await api.get<any>(`products/${type}/${name}`) // Указать тип данных если известен.
 
     return response
   } catch (error) {
@@ -74,17 +72,17 @@ export const fetchProducts = async (
 }
 
 export async function getPopularProducts() {
-  const response = await api.get<any>(`${BASE_URL}/popular/get`)
+  const response = await api.get<any>(`products/popular/get`)
   return response
 }
 
 export async function getAllProducts() {
-  const response = await api.get<any>(`${BASE_URL}`)
+  const response = await api.get<any>(`products`)
   return response
 }
 
 export async function searchProducts(field: string, value: string) {
-  const response = await api.get<any>(`${BASE_URL}/search/product`, {
+  const response = await api.get<any>(`products/search/product`, {
     params: { [field]: value },
   })
   return response
@@ -92,7 +90,7 @@ export async function searchProducts(field: string, value: string) {
 
 export async function getProductById(id: string) {
   try {
-    const response = await api.get<any>(`${BASE_URL}/${id}`)
+    const response = await api.get<any>(`products/${id}`)
     return response
   } catch (error) {
     console.error('Error fetching product:', error)
@@ -106,7 +104,7 @@ export async function getProducts(p0: {
   limit: number
 }) {
   try {
-    const response = await api.get<any>(BASE_URL, { params: p0 })
+    const response = await api.get<any>('products', { params: p0 })
     return response
   } catch (error) {
     console.error('Error fetching products:', error)
@@ -115,7 +113,7 @@ export async function getProducts(p0: {
 }
 
 export async function getProductsByCategory(category: string) {
-  const response = await api.get<any>(`${BASE_URL}/category/${category}`)
+  const response = await api.get<any>(`products/category/${category}`)
   return response
 }
 
@@ -124,7 +122,7 @@ export async function getProductsBySubcategory(
 ): Promise<{ data: cardDataProps[]; count: number } | null> {
   try {
     const response = await api.get<{ data: cardDataProps[]; count: number }>(
-      `${BASE_URL}/subcategory/${subcategory}`,
+      `products/subcategory/${subcategory}`,
     )
 
     return response
@@ -139,7 +137,7 @@ export async function getProductsByGroup(
 ): Promise<{ data: cardDataProps[]; count: number } | null> {
   try {
     const response = await api.get<{ data: cardDataProps[]; count: number }>(
-      `${BASE_URL}/group/${group}`,
+      `products/group/${group}`,
     )
     return response
   } catch (error) {
