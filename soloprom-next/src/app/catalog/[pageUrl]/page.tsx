@@ -89,8 +89,6 @@ const CatalogPage: React.FC<CatalogPageProps> = async ({ params }) => {
 
   const currentPage = 1
 
-  console.log(pageData)
-
   const initialProducts = await fetchProducts({
     categoryName: pageData.subUrl ? pageData.subUrl : pageData.name,
     page: currentPage,
@@ -103,14 +101,10 @@ const CatalogPage: React.FC<CatalogPageProps> = async ({ params }) => {
       ? pageData.subUrl
       : pageData.url
 
-  console.log(interUrl)
-
   const categoryData = await getProductsAnyCategories(
     pageData.pageType,
     interUrl,
   )
-
-  console.log(categoryData)
 
   if (!initialProducts) {
     return <div>Ошибка получения списка продуктов страницы</div>

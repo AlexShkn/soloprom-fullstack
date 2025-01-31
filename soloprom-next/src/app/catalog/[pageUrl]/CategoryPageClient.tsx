@@ -43,7 +43,6 @@ const CategoryPageClient: React.FC<CategoryPageClientProps> = ({
     } else {
       router.push(newPath)
     }
-    console.log('handle page')
   }
 
   return (

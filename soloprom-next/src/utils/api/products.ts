@@ -1,5 +1,5 @@
+import { api } from '@/components/shared/instance.api'
 import { cardDataProps } from '@/types/products.types'
-import axios from 'axios'
 
 interface ProductsRequest {
   categoryName?: string
@@ -17,21 +17,22 @@ export interface fetchProductsProps {
   totalPages: number
 }
 
-export const BASE_URL = `${process.env.NEXT_PUBLIC_SERVER_URL}/products`
+const BASE_URL = `products` // Обновлено
 
 export async function getTotalProductCount(categoryName: string) {
-  const response = await axios.get(`${BASE_URL}/get-products`, {
-    params: { categoryName, limit: 1 },
-  })
-  return response.data.totalCount
+  const response = await api.get<{ totalCount: number }>(
+    `${BASE_URL}/get-products`,
+    {
+      params: { categoryName, limit: 1 },
+    },
+  )
+  return response.totalCount
 }
 
 export async function getProductsCounts() {
   try {
-    const response = await axios.get(
-      `${process.env.NEXT_PUBLIC_SERVER_URL}/statistics/counts`,
-    )
-    return response.data
+    const response = await api.get<Record<string, number>>(`statistics/counts`)
+    return response
   } catch (error) {
     console.error('Error fetching products:', error)
     return []
@@ -40,14 +41,9 @@ export async function getProductsCounts() {
 
 export async function getProductsAnyCategories(type: string, name: string) {
   try {
-    const response = await axios.get(`${BASE_URL}/${type}/${name}`)
+    const response = await api.get<any>(`${BASE_URL}/${type}/${name}`) // Указать тип данных если известен.
 
-    if (response.status !== 200) {
-      console.error('Ошибка при получении продуктов категории', response)
-      return null
-    }
-
-    return response.data
+    return response
   } catch (error) {
     console.error('Ошибка получения', error)
     return null
@@ -60,10 +56,8 @@ export const fetchProducts = async (
   try {
     const { filters, ...otherParams } = params
 
-    console.log(params)
-
-    const response = await axios.get<fetchProductsProps>(
-      `${process.env.NEXT_PUBLIC_SERVER_URL}/products/get-products`,
+    const response = await api.get<fetchProductsProps>(
+      `products/get-products`,
       {
         params: {
           ...otherParams,
@@ -72,12 +66,7 @@ export const fetchProducts = async (
       },
     )
 
-    if (response.status !== 200) {
-      console.error('Failed to fetch products', response)
-      return null
-    }
-
-    return response.data
+    return response
   } catch (error) {
     console.error('Error fetching products', error)
     return null
@@ -85,80 +74,76 @@ export const fetchProducts = async (
 }
 
 export async function getPopularProducts() {
-  const response = await axios.get(`${BASE_URL}/popular/get`)
+  const response = await api.get<any>(`${BASE_URL}/popular/get`)
   return response
 }
+
 export async function getAllProducts() {
-  const response = await axios.get(`${BASE_URL}`)
+  const response = await api.get<any>(`${BASE_URL}`)
   return response
 }
 
 export async function searchProducts(field: string, value: string) {
-  const response = await axios.get(
-    `${BASE_URL}/search/product?${field}=${value}`,
-  )
+  const response = await api.get<any>(`${BASE_URL}/search/product`, {
+    params: { [field]: value },
+  })
   return response
 }
 
 export async function getProductById(id: string) {
   try {
-    const response = await axios.get(`${BASE_URL}/${id}`)
-    return response.data
+    const response = await api.get<any>(`${BASE_URL}/${id}`)
+    return response
   } catch (error) {
     console.error('Error fetching product:', error)
     return []
   }
 }
 
-// export async function getProducts(p0: {
-//   categoryName: string
-//   page: number
-//   limit: number
-// }) {
-//   try {
-//     const response = await axios.get(BASE_URL)
-//     return response.data
-//   } catch (error) {
-//     console.error('Error fetching products:', error)
-//     return []
-//   }
-// }
+export async function getProducts(p0: {
+  categoryName: string
+  page: number
+  limit: number
+}) {
+  try {
+    const response = await api.get<any>(BASE_URL, { params: p0 })
+    return response
+  } catch (error) {
+    console.error('Error fetching products:', error)
+    return []
+  }
+}
 
-// export async function getProductsByCategory(category: string) {
-//   const response = await axios.get(`${BASE_URL}/category/${category}`)
-//   return response
-// }
+export async function getProductsByCategory(category: string) {
+  const response = await api.get<any>(`${BASE_URL}/category/${category}`)
+  return response
+}
 
-// export async function getProductsBySubcategory(
-//   subcategory: string,
-// ): Promise<{ data: cardDataProps[]; count: number } | null> {
-//   try {
-//     const response = await axios.get(`${BASE_URL}/subcategory/${subcategory}`)
+export async function getProductsBySubcategory(
+  subcategory: string,
+): Promise<{ data: cardDataProps[]; count: number } | null> {
+  try {
+    const response = await api.get<{ data: cardDataProps[]; count: number }>(
+      `${BASE_URL}/subcategory/${subcategory}`,
+    )
 
-//     if (response.status === 200 && Array.isArray(response.data)) {
-//       return { data: response.data, count: response.data.length }
-//     }
+    return response
+  } catch (error) {
+    console.error('Error fetching products:', error)
+    return null
+  }
+}
 
-//     return null
-//   } catch (error) {
-//     console.error('Error fetching products:', error)
-//     return null
-//   }
-// }
-
-// export async function getProductsByGroup(
-//   group: string,
-// ): Promise<{ data: cardDataProps[]; count: number } | null> {
-//   try {
-//     const response = await axios.get(`${BASE_URL}/group/${group}`)
-
-//     if (response.status === 200 && Array.isArray(response.data)) {
-//       return { data: response.data, count: response.data.length }
-//     }
-
-//     return null
-//   } catch (error) {
-//     console.error('Error fetching products:', error)
-//     return null
-//   }
-// }
+export async function getProductsByGroup(
+  group: string,
+): Promise<{ data: cardDataProps[]; count: number } | null> {
+  try {
+    const response = await api.get<{ data: cardDataProps[]; count: number }>(
+      `${BASE_URL}/group/${group}`,
+    )
+    return response
+  } catch (error) {
+    console.error('Error fetching products:', error)
+    return null
+  }
+}

@@ -1,10 +1,10 @@
 'use client'
 import React, { useCallback, useEffect, useMemo, useState, useRef } from 'react'
 import { useRouter, useSearchParams } from 'next/navigation'
+import { api } from '@/components/shared/instance.api'
+
 import { cardDataProps, FilterData } from '@/types/products.types'
-import axios from 'axios'
 import { FilteredList } from '@/components/GroupList/FilteredList/FilteredList'
-import { BASE_URL } from '@/utils/api/products'
 import CatalogFilters from '../Filter/CatalogFilters'
 import useFilterStore from '@/zustand/filterStore'
 import { useDebounce } from '@/hooks/useDebounce'
@@ -84,15 +84,18 @@ export const ProductsFilterBlock: React.FC<Props> = ({
         sort: debouncedSort,
       }
 
-      const response = await axios.get<any>(`${BASE_URL}/get-products`, {
-        params,
+      const response = await api.get<{
+        products: cardDataProps[]
+        totalCount: number
+      }>('products/get-products', {
+        params: params as any,
         signal: controller.signal,
       })
 
-      setProducts(response.data.products)
-      setTotalProductsCount(response.data.totalCount)
+      setProducts(response.products)
+      setTotalProductsCount(response.totalCount)
     } catch (err) {
-      if (!axios.isCancel(err)) {
+      if (err instanceof Error && err.name !== 'AbortError') {
         console.error('Ошибка получения продуктов:', err)
       }
     } finally {
@@ -226,7 +229,14 @@ export const ProductsFilterBlock: React.FC<Props> = ({
         fetchData()
       }
     }
-  }, [debouncedFilters, debouncedSort, dynamicCurrentPage, updateUrl])
+  }, [
+    debouncedFilters,
+    debouncedSort,
+    dynamicCurrentPage,
+    updateUrl,
+    hasFilters,
+    fetchData,
+  ])
 
   return (
     <section className="group-list section-offset" ref={groupListRef}>

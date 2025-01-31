@@ -1,7 +1,6 @@
-import axios from 'axios'
 import { OrderTypes } from '@/components/Cart/types/order'
+import { api } from '@/components/shared/instance.api'
 import { CartProductTypes } from '@/zustand/cartStore'
-import { cardDataProps } from '@/types/products.types'
 
 interface OrderDto {
   userId: string
@@ -14,14 +13,12 @@ interface UpdateOrderStatusDto {
   status: string
 }
 
-const BASE_URL = `${process.env.NEXT_PUBLIC_SERVER_URL}/order`
-
 export const getOrdersByUserId = async (
   userId: string,
 ): Promise<OrderTypes[]> => {
   try {
-    const response = await axios.get(`${BASE_URL}/${userId}`)
-    return response.data
+    const response = await api.get<OrderTypes[]>(`order/${userId}`)
+    return response
   } catch (error) {
     console.error('Error fetching orders:', error)
     return []
@@ -32,8 +29,8 @@ export const createOrder = async (
   orderDto: OrderDto,
 ): Promise<OrderTypes | null> => {
   try {
-    const response = await axios.post(BASE_URL, orderDto)
-    return response.data
+    const response = await api.post<OrderTypes>('order', orderDto)
+    return response
   } catch (error) {
     console.error('Error creating order:', error)
     return null
@@ -45,8 +42,8 @@ export const updateOrderStatus = async ({
   status,
 }: UpdateOrderStatusDto): Promise<OrderTypes | null> => {
   try {
-    const response = await axios.patch(`${BASE_URL}/${id}/${status}`)
-    return response.data
+    const response = await api.patch<OrderTypes>(`order/${id}/${status}`)
+    return response
   } catch (error) {
     console.error('Error updating order status:', error)
     return null
