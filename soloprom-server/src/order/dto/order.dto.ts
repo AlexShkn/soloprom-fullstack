@@ -43,7 +43,7 @@ export class CreateOrderDto {
 }
 
 export interface OrderTypes {
-  id: string;
+  id: number;
   userId: string;
   products: CartProduct[];
   totalAmount: number;

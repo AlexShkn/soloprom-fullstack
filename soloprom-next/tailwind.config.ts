@@ -53,6 +53,7 @@ export default {
         sectionWhite: '#f8fafc',
         grayColor: '#e5e5e5',
         greenColor: '#25d366',
+        redColor: '#ef4444',
         successColor: '#23cc71',
         card: {
           DEFAULT: 'hsl(var(--card))',
@@ -65,6 +66,10 @@ export default {
         primary: {
           DEFAULT: 'var(--primary)',
           foreground: 'hsl(var(--primary-foreground))',
+        },
+        success: {
+          DEFAULT: 'var(--success)',
+          foreground: 'hsl(var(--success-foreground))',
         },
         secondary: {
           DEFAULT: 'hsl(var(--secondary))',

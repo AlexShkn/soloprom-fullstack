@@ -25,7 +25,7 @@ export class OrderService {
     });
   }
 
-  async updateOrderStatus(id: string, status: OrderStatus) {
+  async updateOrderStatus(id: number, status: OrderStatus) {
     return this.prisma.order.update({
       where: {
         id: id,

@@ -28,10 +28,13 @@ import { useUpdateProfileMutation } from '../hooks/useUpdateProfileMutation'
 import { SettingsSchema, TypeSettingsSchema } from '../schemes'
 import { useLogoutMutation } from '../hooks/useLogoutMutation'
 import { OrderList } from './OrderList'
+import { useAuthStore } from '@/zustand/authStore'
 
 export function ProfileSettingsForm() {
   const { user, isLoading } = useProfile()
   const { logout, isLoadingLogout } = useLogoutMutation()
+  const { update, isLoadingUpdate } = useUpdateProfileMutation()
+  const { userState, changeAuthStatus } = useAuthStore((state) => state)
 
   const router = useRouter()
 
@@ -43,8 +46,6 @@ export function ProfileSettingsForm() {
       isTwoFactorEnabled: false,
     },
   })
-
-  const { update, isLoadingUpdate } = useUpdateProfileMutation()
 
   useEffect(() => {
     if (user) {
@@ -71,7 +72,7 @@ export function ProfileSettingsForm() {
 
   return (
     <div className="border-t-1 border border-grayColor py-10">
-      <div className="page-container mb-10 w-full">
+      <div className="page-container mb-10 flex w-full flex-col gap-5">
         <CardHeader className="flex flex-row items-center justify-between">
           <CardTitle>Настройки профиля</CardTitle>
         </CardHeader>
@@ -143,9 +144,9 @@ export function ProfileSettingsForm() {
             </form>
           </Form>
         </CardContent>
-      </div>
 
-      {!isLoading && user && <OrderList user={user} />}
+        {!isLoading && user && <OrderList user={user} />}
+      </div>
     </div>
   )
 }
