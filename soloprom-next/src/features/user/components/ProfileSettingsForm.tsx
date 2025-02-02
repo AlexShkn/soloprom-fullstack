@@ -28,7 +28,7 @@ import { useUpdateProfileMutation } from '../hooks/useUpdateProfileMutation'
 import { SettingsSchema, TypeSettingsSchema } from '../schemes'
 import { useLogoutMutation } from '../hooks/useLogoutMutation'
 import { OrderList } from './OrderList'
-import { useAuthStore } from '@/zustand/authStore'
+import { useAuthStore } from '@/store/authStore'
 
 export function ProfileSettingsForm() {
   const { user, isLoading } = useProfile()

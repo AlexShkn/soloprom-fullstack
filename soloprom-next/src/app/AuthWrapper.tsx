@@ -1,7 +1,5 @@
 'use client'
 import React from 'react'
-
-import { Header } from '@/components/Header/Header/Header'
 import Footer from '@/components/Footer/Footer'
 import Modals from '@/components/Modals/Modals'
 import { CallbackPanel } from '@/components/ui/CallbackPanel/CallbackPanel'

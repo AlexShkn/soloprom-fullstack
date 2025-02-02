@@ -12,7 +12,7 @@ import {
   CallbackSchema,
 } from '@/features/auth/schemes/callback.schema'
 
-import CloseButton from '@/components/shared/CloseButton'
+import CloseButton from '@/components/ui/CloseButton'
 import {
   Button,
   Form,
@@ -24,10 +24,10 @@ import {
   Input,
 } from '@/components/ui'
 import './ModalCallback.scss'
-import { FastOrderTypes } from '@/zustand/modalsStore'
+import { FastOrderTypes } from '@/store/modalsStore'
 import { getDigFormat } from '@/supports'
-import { useLocateStore } from '@/zustand/locateStore'
-import { useModalsStore } from '@/zustand/modalsStore'
+import { useLocateStore } from '@/store/locateStore'
+import { useModalsStore } from '@/store/modalsStore'
 
 interface ModalProps {
   fastOrderProduct: FastOrderTypes

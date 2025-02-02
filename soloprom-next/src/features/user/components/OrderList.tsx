@@ -8,7 +8,7 @@ import { getOrdersByUserId } from '@/utils/api/order'
 import { Loading } from '@/components/ui'
 import { IUser } from '@/features/auth/types'
 
-import { CartProductTypes } from '@/zustand/cartStore'
+import { CartProductTypes } from '@/store/cartStore'
 import { getDigFormat } from '@/supports'
 import { AlertTriangle, Package, CheckCircle, XCircle } from 'lucide-react'
 
@@ -32,8 +32,8 @@ const orderDto: Record<
   },
   DELIVERED: {
     label: 'Исполнен',
-    icon: <CheckCircle className="h-4 w-4 text-success" />,
-    color: 'text-success',
+    icon: <CheckCircle className="h-4 w-4 text-accentBlue" />,
+    color: 'text-accentBlue',
   },
   CANCELED: {
     label: 'Отменен',
@@ -118,7 +118,7 @@ export const OrderList: React.FC<OrderListProps> = ({ user }) => {
                       {formatDateTime(order.createdAt)}
                     </td>
                     <td className="px-4 py-2">
-                      <div className="flex items-center space-x-2">
+                      <div className="flex items-center space-x-2 whitespace-nowrap">
                         {orderDto[order.status]?.icon}
                         <span
                           className={`${orderDto[order.status]?.color} font-medium`}
@@ -127,7 +127,7 @@ export const OrderList: React.FC<OrderListProps> = ({ user }) => {
                         </span>
                       </div>
                     </td>
-                    <td className="px-4 py-2 font-medium">
+                    <td className="whitespace-nowrap px-4 py-2 font-medium">
                       {getDigFormat(order.totalAmount)} ₽
                     </td>
                     <td className="px-4 py-2">
@@ -148,12 +148,18 @@ export const OrderList: React.FC<OrderListProps> = ({ user }) => {
                                   width={30}
                                   height={30}
                                 />
-                                <span>{product.name}</span>
-                                <span className={'font-medium'}>
+                                <span className="min-w-36">{product.name}</span>
+                                <span
+                                  className={'whitespace-nowrap font-medium'}
+                                >
                                   {product.variant}
                                 </span>
-                                <span>x {product.count}</span>
-                                <span>- {getDigFormat(product.price)} ₽</span>
+                                <span className="whitespace-nowrap">
+                                  x {product.count}
+                                </span>
+                                <span className="whitespace-nowrap">
+                                  - {getDigFormat(product.price)} ₽
+                                </span>
                               </Link>
                             </li>
                           ),

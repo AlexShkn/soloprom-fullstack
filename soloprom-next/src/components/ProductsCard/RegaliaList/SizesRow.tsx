@@ -3,7 +3,7 @@ import React, { useRef, useState } from 'react'
 import { ProductsCardWordAdaptive } from '../DescriptionTemplate'
 import { getAdaptiveValue } from '@/utils/getAdaptiveValue'
 import { useClickOutside } from '@/hooks/useClickOutside'
-import { useCartStore } from '@/zustand/cartStore'
+import { useCartStore } from '@/store/cartStore'
 
 interface Props {
   setVariantValue: (value: string) => void

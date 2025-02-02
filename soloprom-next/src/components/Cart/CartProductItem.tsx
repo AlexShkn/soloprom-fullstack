@@ -4,8 +4,8 @@ import Link from 'next/link'
 import Image from 'next/image'
 
 import { getDigFormat } from '@/supports'
-import { useCartStore } from '@/zustand/cartStore'
-import { CartProductTypes } from '@/zustand/cartStore'
+import { useCartStore } from '@/store/cartStore'
+import { CartProductTypes } from '@/store/cartStore'
 
 interface CartProductItemProps {
   product: CartProductTypes

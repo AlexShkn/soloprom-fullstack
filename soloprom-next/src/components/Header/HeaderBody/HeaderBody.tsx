@@ -3,7 +3,7 @@ import React from 'react'
 
 import './HeaderBody.scss'
 import Link from 'next/link'
-import { useModalsStore } from '@/zustand/modalsStore'
+import { useModalsStore } from '@/store/modalsStore'
 
 const HeaderBody = () => {
   const modalCallbackStateChange = useModalsStore(

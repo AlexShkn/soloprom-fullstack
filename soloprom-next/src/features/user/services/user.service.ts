@@ -1,6 +1,6 @@
 import { IUser } from '@/features/auth/types'
 
-import { api } from '@/components/shared/instance.api'
+import { api } from '@/utils/fetch/instance.api'
 import { TypeSettingsSchema } from '../schemes'
 
 class UserService {

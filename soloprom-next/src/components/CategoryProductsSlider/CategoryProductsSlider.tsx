@@ -46,9 +46,20 @@ export const CategoryProductsSlider: React.FC<Props> = ({ className }) => {
 
   useEffect(() => {
     const fetchCounts = async () => {
-      const result = await getProductsCounts()
+      try {
+        const result = await getProductsCounts()
 
-      setProductsCounts(result)
+        if (result && typeof result === 'object' && !Array.isArray(result)) {
+          setProductsCounts(result as SubcategoryCount)
+        } else {
+          console.error(
+            'Invalid data format received from getProductsCounts:',
+            result,
+          )
+        }
+      } catch (error) {
+        console.error('Failed to fetch product counts:', error)
+      }
     }
 
     fetchCounts()

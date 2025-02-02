@@ -2,7 +2,7 @@
 
 import React from 'react'
 import ModalCallback from './ModalCallback/ModalCallback'
-import { useModalsStore } from '@/zustand/modalsStore'
+import { useModalsStore } from '@/store/modalsStore'
 
 import './Modals.scss'
 import { SharedModal } from '../ui/SharedModal'

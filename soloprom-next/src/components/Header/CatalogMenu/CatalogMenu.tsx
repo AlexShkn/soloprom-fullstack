@@ -6,10 +6,10 @@ import Link from 'next/link'
 import { useMediaQuery } from '@/hooks/useMediaQuery'
 
 import './CatalogMenu.scss'
-import CloseButton from '@/components/shared/CloseButton'
+import CloseButton from '@/components/ui/CloseButton'
 
 import TabCategory from './TabCategory'
-import { useCatalogMenuStore } from '@/zustand/catalogMenuStore'
+import { useCatalogMenuStore } from '@/store/catalogMenuStore'
 
 export interface CategoryTab {
   id: string

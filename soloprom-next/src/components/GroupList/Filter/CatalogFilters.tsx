@@ -7,7 +7,7 @@ import { FilterItem } from './FilterItem'
 import { FilterList } from './FilterList'
 import { transformJson } from '@/components/CategoryPageHero/SidePanel/SidePanel'
 import { cardDataProps, FilterData } from '@/types/products.types'
-import useFilterStore from '@/zustand/filterStore'
+import useFilterStore from '@/store/filterStore'
 import pagesDataRaw from '@/data/products/pagesData.json'
 import { useSearchParams } from 'next/navigation'
 import { isEqual } from '@/supports/isEqual'
@@ -41,14 +41,19 @@ const CatalogFilters: React.FC<Props> = ({
   const accordionRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
-    if (filters && Object.keys(filters).length > 0) {
-      if (!isEqual(currentFilters, filters)) {
-        console.log(filters)
-        console.log('setInternalFilters')
-        setCurrentFilters({ ...filters })
-        setInternalFilters(filters)
-      }
-    }
+    console.log(filters)
+
+    setCurrentFilters(filters)
+    setInternalFilters(filters)
+
+    // if (filters && Object.keys(filters).length > 0) {
+    //   if (!isEqual(currentFilters, filters)) {
+    //     console.log(filters)
+    //     console.log('setInternalFilters')
+    //     setCurrentFilters(filters)
+    //     setInternalFilters(filters)
+    //   }
+    // }
   }, [filters])
 
   const categoryData = transformData[productsType]

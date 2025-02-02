@@ -1,10 +1,10 @@
 'use client'
 import React, { useState, useRef, useEffect } from 'react'
-import LocateConfirm from '../LocateConfirm'
-import LocateSearch from '../LocateSearch'
+import LocateConfirm from './LocateConfirm'
+import LocateSearch from './LocateSearch'
 import { useClickOutside } from '@/hooks/useClickOutside'
 import { getCityFromIP } from '@/utils/getCityFromIP'
-import { useLocateStore } from '@/zustand/locateStore'
+import { useLocateStore } from '@/store/locateStore'
 
 interface Props {
   className?: string

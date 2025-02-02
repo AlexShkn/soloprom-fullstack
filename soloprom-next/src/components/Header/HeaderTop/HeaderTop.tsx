@@ -9,8 +9,8 @@ import Link from 'next/link'
 
 import { Loading } from '@/components/ui'
 import { UserButton } from '@/features/user/components/UserButton'
-import { LocateBlock } from '../Header/LocateBlock'
-import { useAuthStore } from '@/zustand/authStore'
+import { LocateBlock } from '../LocateBlock'
+import { useAuthStore } from '@/store/authStore'
 
 export const HeaderTop: React.FC = () => {
   const { isAuth, userState, isLoading } = useAuthStore((state) => state)

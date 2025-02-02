@@ -32,12 +32,19 @@
 
     @media (min-width: 479.98px) {
       &:first-child,
-      &:nth-child(2),
+      // &:nth-child(2),
       &:last-child {
         display: none;
       }
     }
 
+    &:nth-child(2) {
+      .mobile-nav__item-icon {
+        &::before {
+          content: attr(data-compare-count);
+        }
+      }
+    }
     &:nth-child(3) {
       .mobile-nav__item-icon {
         &::before {

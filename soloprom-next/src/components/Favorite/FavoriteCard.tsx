@@ -5,8 +5,8 @@ import Image from 'next/image'
 
 import { getDigFormat } from '@/supports'
 
-import { useCartStore } from '@/zustand/cartStore'
-import { useFavoriteStore } from '@/zustand/favoriteStore'
+import { useCartStore } from '@/store/cartStore'
+import { useFavoriteStore } from '@/store/favoriteStore'
 
 import { FavoriteProduct } from '@/types/products.types'
 

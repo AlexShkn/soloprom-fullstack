@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react'
 import Link from 'next/link'
 
 import { Loading } from '../ui'
-import { useCartStore } from '@/zustand/cartStore'
+import { useCartStore } from '@/store/cartStore'
 
 import BreadCrumbs from '@/components/ui/BreadCrumbs/BreadCrumbs'
 import { CartResult } from '@/components/Cart/CartResult'

@@ -1,6 +1,7 @@
 @use '@/styles/variables.scss';
 
 footer.footer {
+  margin-top: auto;
   @media (max-width: 479.98px) {
     padding-bottom: 90px;
   }

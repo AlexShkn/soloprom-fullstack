@@ -1,4 +1,4 @@
-import { api } from '@/components/shared/instance.api'
+import { api } from '@/utils/fetch/instance.api'
 import { cardDataProps } from '@/types/products.types'
 
 interface ProductsRequest {

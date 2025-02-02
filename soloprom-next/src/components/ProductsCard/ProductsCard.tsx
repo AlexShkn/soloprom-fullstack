@@ -2,18 +2,18 @@
 import React, { useEffect, useState } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
-import { Share } from 'lucide-react'
 
 import './ProductsCard.scss'
-import { ProductsCardPropTypes } from '@/types/products.types'
+import { ProductsCardPropTypes, ProductCardData } from '@/types/products.types'
 import { DescriptionTemplate } from './DescriptionTemplate'
 import { PriceBlock } from './PriceBlock'
 import { RegaliaList } from './RegaliaList/RegaliaList'
 
-import { useCartStore } from '@/zustand/cartStore'
-import { useFavoriteStore } from '@/zustand/favoriteStore'
-import { useModalsStore } from '@/zustand/modalsStore'
+import { useCartStore } from '@/store/cartStore'
+import { useFavoriteStore } from '@/store/favoriteStore'
+import { useModalsStore } from '@/store/modalsStore'
 import { RatingDisplay } from './RatingDisplay'
+import { useCompareStore } from '@/store/compareStore'
 
 export const ProductsCard: React.FC<ProductsCardPropTypes> = ({
   cardData,
@@ -22,6 +22,7 @@ export const ProductsCard: React.FC<ProductsCardPropTypes> = ({
   const [variantValue, setVariantValue] = useState('')
   const [cartIsAdded, setCartIsAdded] = useState(false)
   const [favoriteIsAdded, setFavoriteIsAdded] = useState(false)
+  const [compareIsAdded, setCompareIsAdded] = useState(false)
   const [cartIsLoad, setCartIsLoad] = useState(false)
 
   const cartState = useCartStore((state) => state.cartState)
@@ -33,6 +34,10 @@ export const ProductsCard: React.FC<ProductsCardPropTypes> = ({
   const { favoriteState, removeFavoriteProduct, addProductToFavorite } =
     useFavoriteStore((state) => state)
   const { modalCallbackStateChange, setFastOrderProduct } = useModalsStore(
+    (state) => state,
+  )
+
+  const { comparedItems, addToCompare, removeFromCompare } = useCompareStore(
     (state) => state,
   )
 
@@ -56,17 +61,33 @@ export const ProductsCard: React.FC<ProductsCardPropTypes> = ({
 
   const sizesData = sizes || volumes
 
+  const productData: ProductCardData = {
+    productId,
+    name,
+    variant: variantValue,
+    price: sizesData?.[variantValue] ?? defaultPrice,
+    url,
+    img,
+    productType,
+    categoryName,
+  }
+
   useEffect(() => {
-    let defaultSize
+    let defaultSize: string | undefined = undefined // Явное указание типа
     if (sizesData) {
       defaultSize = Object.keys(sizesData)?.[0]
-
-      setVariantValue(defaultSize)
+      setVariantValue(defaultSize || '')
     }
     const storeId = `${productId}-${defaultSize}`
 
     setCartIsAdded(cartState.some((item) => item.storeId === storeId))
     setFavoriteIsAdded(favoriteState.some((item) => item.storeId === storeId))
+    setCompareIsAdded(
+      comparedItems[categoryName as keyof typeof comparedItems]?.some(
+        (item) =>
+          item.productId === productId && item.variant === (defaultSize || ''),
+      ) || false,
+    )
   }, [])
 
   useEffect(() => {
@@ -74,6 +95,11 @@ export const ProductsCard: React.FC<ProductsCardPropTypes> = ({
 
     setCartIsAdded(cartState.some((item) => item.storeId === storeId))
     setFavoriteIsAdded(favoriteState.some((item) => item.storeId === storeId))
+    setCompareIsAdded(
+      comparedItems[categoryName as keyof typeof comparedItems]?.some(
+        (item) => item.productId === productId && item.variant === variantValue,
+      ) || false,
+    )
   }, [variantValue])
 
   const handleAddToCart = () => {
@@ -122,6 +148,20 @@ export const ProductsCard: React.FC<ProductsCardPropTypes> = ({
   const handleRemoveFromFavorites = () => {
     removeFavoriteProduct(productId, variantValue)
     setFavoriteIsAdded(false)
+  }
+
+  const handleAddToCompare = () => {
+    console.log(categoryName, productData)
+
+    addToCompare(categoryName, productData)
+    setCompareIsAdded(true)
+
+    console.log(comparedItems)
+  }
+
+  const handleRemoveFromCompare = () => {
+    removeFromCompare(categoryName, productId, variantValue)
+    setCompareIsAdded(false)
   }
 
   const fastOrderHandle = () => {
@@ -243,10 +283,10 @@ export const ProductsCard: React.FC<ProductsCardPropTypes> = ({
             </button>
             <button
               type="button"
-              // onClick={
-              //   favoriteIsAdded ? handleRemoveFromFavorites : handleAddToFavorites
-              // }
-              className={`product-card__favorite ${mod === 'grid' && 'absolute right-2 top-20'} ${favoriteIsAdded && 'added'}`}
+              onClick={
+                compareIsAdded ? handleRemoveFromCompare : handleAddToCompare
+              }
+              className={`product-card__favorite ${mod === 'grid' && 'absolute right-2 top-20'} ${compareIsAdded && 'added'}`}
             >
               <svg className="icon h-7 w-7 fill-accentBlue transition-colors">
                 <use xlinkHref="/img/sprite.svg#scales" />

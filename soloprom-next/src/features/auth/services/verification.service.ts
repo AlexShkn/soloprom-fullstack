@@ -1,4 +1,4 @@
-import { api } from '@/components/shared/instance.api'
+import { api } from '@/utils/fetch/instance.api'
 class VerificationService {
   public async newVerification(token: string | null) {
     const response = await api.post('auth/email-confirmation', { token })

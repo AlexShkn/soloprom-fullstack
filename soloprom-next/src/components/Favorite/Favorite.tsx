@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from 'react'
 import Link from 'next/link'
 
-import { useFavoriteStore } from '@/zustand/favoriteStore'
+import { useFavoriteStore } from '@/store/favoriteStore'
 
 import BreadCrumbs from '@/components/ui/BreadCrumbs/BreadCrumbs'
 import { FavoriteCard } from './FavoriteCard'

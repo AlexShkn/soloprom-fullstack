@@ -1,7 +1,7 @@
 'use client'
 
 import { useProfile } from '@/hooks/useProfile'
-import { useAuthStore } from '@/zustand/authStore'
+import { useAuthStore } from '@/store/authStore'
 import { useEffect } from 'react'
 
 export default function AuthStatusProvider({

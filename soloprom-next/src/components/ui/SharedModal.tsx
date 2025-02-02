@@ -3,7 +3,7 @@ import React, { useRef } from 'react'
 import Image from 'next/image'
 import { toast } from 'sonner'
 
-import { useModalsStore } from '@/zustand/modalsStore'
+import { useModalsStore } from '@/store/modalsStore'
 import { useClickOutside } from '@/hooks/useClickOutside'
 
 const CLIENT_URL = process.env.NEXT_PUBLIC_CLIENT_URL as string

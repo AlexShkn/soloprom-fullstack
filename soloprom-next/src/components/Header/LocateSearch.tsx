@@ -1,10 +1,10 @@
 import React, { useRef, useState, useCallback, useEffect } from 'react'
-import { fetchCities } from '@/zustand/thunks/locateThunk'
+import { fetchCities } from '@/store/thunks/locateThunk'
 
-import { LocateSearchTypes } from './Header/LocateBlock'
-import CloseButton from '@/components/shared/CloseButton'
+import { LocateSearchTypes } from './LocateBlock'
+import CloseButton from '@/components/ui/CloseButton'
 import { useScrollCloseableWindow } from '@/hooks/useScrollCloseableWindow'
-import { useLocateStore } from '@/zustand/locateStore'
+import { useLocateStore } from '@/store/locateStore'
 
 const defaultCities = [
   { city: 'Воронеж', oblast: '' },

@@ -2,7 +2,7 @@
 import React, { useRef, useState, useCallback, useEffect } from 'react'
 import { ChevronRight } from 'lucide-react'
 import { useClickOutside } from '@/hooks/useClickOutside'
-import useFilterStore from '@/zustand/filterStore'
+import useFilterStore from '@/store/filterStore'
 
 interface Props {
   onSortChange: (sort: string) => void

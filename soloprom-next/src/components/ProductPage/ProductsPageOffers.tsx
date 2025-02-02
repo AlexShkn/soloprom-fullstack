@@ -1,7 +1,7 @@
 'use client'
 import { getDigFormat } from '@/supports'
 import { cardDataProps } from '@/types/products.types'
-import { useCartStore } from '@/zustand/cartStore'
+import { useCartStore } from '@/store/cartStore'
 import React, { useEffect, useState } from 'react'
 
 interface Props {

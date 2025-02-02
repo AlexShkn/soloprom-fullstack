@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { useHeaderStore } from '@/zustand/headerStore'
+import { useHeaderStore } from '@/store/headerStore'
 
 export const useScrollHeader = (isBigSmall: boolean) => {
   const [headerFixed, setHeaderFixed] = useState(isBigSmall)

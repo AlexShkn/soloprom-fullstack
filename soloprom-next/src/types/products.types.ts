@@ -77,3 +77,14 @@ export interface FavoriteProduct {
   categoryName: string
   productType: string
 }
+
+export interface ProductCardData {
+  productId: string
+  name: string
+  variant: string
+  price: number
+  url: string
+  img: string
+  productType: string
+  categoryName: string
+}

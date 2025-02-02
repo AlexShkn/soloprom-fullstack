@@ -1,5 +1,5 @@
 'use client'
-import { useModalsStore } from '@/zustand/modalsStore'
+import { useModalsStore } from '@/store/modalsStore'
 
 import './CallbackPanel.scss'
 

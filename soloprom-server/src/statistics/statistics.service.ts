@@ -23,6 +23,12 @@ export class StatisticsService {
     const groups = await this.prismaService.group.findMany({
       include: { products: true },
     });
+    const model = await this.prismaService.model.findMany({
+      include: { products: true },
+    });
+    const brands = await this.prismaService.brand.findMany({
+      include: { products: true },
+    });
 
     const statistics = {};
 
@@ -36,6 +42,14 @@ export class StatisticsService {
 
     groups.forEach((group) => {
       statistics[group.name] = group.products.length;
+    });
+
+    model.forEach((model) => {
+      statistics[model.name] = model.products.length;
+    });
+
+    brands.forEach((brand) => {
+      statistics[brand.name] = brand.products.length;
     });
 
     return statistics;

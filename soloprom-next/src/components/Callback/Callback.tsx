@@ -2,7 +2,7 @@
 import Image from 'next/image'
 
 import './Callback.scss'
-import { useModalsStore } from '@/zustand/modalsStore'
+import { useModalsStore } from '@/store/modalsStore'
 
 export const Callback = () => {
   const modalCallbackStateChange = useModalsStore(

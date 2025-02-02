@@ -1,4 +1,4 @@
-import { CartProductTypes } from '@/zustand/cartStore'
+import { CartProductTypes } from '@/store/cartStore'
 
 export const calculateCartTotalAmount = (
   cartState: CartProductTypes[],

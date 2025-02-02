@@ -5,7 +5,7 @@ import { useClickOutside } from '@/hooks/useClickOutside'
 import { getAdaptiveValue } from '@/utils/getAdaptiveValue'
 import { AdaptiveValues } from '@/utils/getAdaptiveValue'
 import { ProductsCardPropTypes } from '@/types/products.types'
-import { useCartStore } from '@/zustand/cartStore'
+import { useCartStore } from '@/store/cartStore'
 
 interface DescriptionTypes extends ProductsCardPropTypes {
   // variantValue: string

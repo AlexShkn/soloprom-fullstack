@@ -1,5 +1,5 @@
 import { create } from 'zustand'
-import { CityTypes, fetchCities } from '@/zustand/thunks/locateThunk'
+import { CityTypes, fetchCities } from '@/store/thunks/locateThunk'
 
 interface CityState {
   cities: CityTypes[]

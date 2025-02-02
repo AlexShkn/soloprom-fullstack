@@ -2,7 +2,7 @@ import React from 'react'
 import Link from 'next/link'
 
 import { CategoryProduct } from './CatalogMenu'
-import { useCatalogMenuStore } from '@/zustand/catalogMenuStore'
+import { useCatalogMenuStore } from '@/store/catalogMenuStore'
 
 interface CategoryTab {
   categoryItems: CategoryProduct[]

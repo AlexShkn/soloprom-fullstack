@@ -18,8 +18,8 @@ import {
 } from '@/components/ui'
 
 import './OrderForm.scss'
-import { useCartStore } from '@/zustand/cartStore'
-import { useAuthStore } from '@/zustand/authStore'
+import { useCartStore } from '@/store/cartStore'
+import { useAuthStore } from '@/store/authStore'
 
 export const OrderForm: React.FC = () => {
   const [isSubmitting, setIsSubmitting] = useState(false)

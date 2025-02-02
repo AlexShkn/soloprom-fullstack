@@ -10,9 +10,9 @@ import CatalogMenu from '../CatalogMenu/CatalogMenu'
 
 import './HeaderBottom.scss'
 import HeaderSearch from '../HeaderSearch'
-import { useCatalogMenuStore } from '@/zustand/catalogMenuStore'
-import { useHeaderStore } from '@/zustand/headerStore'
-import { useModalsStore } from '@/zustand/modalsStore'
+import { useCatalogMenuStore } from '@/store/catalogMenuStore'
+import { useHeaderStore } from '@/store/headerStore'
+import { useModalsStore } from '@/store/modalsStore'
 
 const HeaderBottom = () => {
   const { catalogMenuStateChange, catalogIsOpen } = useCatalogMenuStore(

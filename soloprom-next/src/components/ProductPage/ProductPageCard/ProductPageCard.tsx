@@ -7,8 +7,8 @@ import { ProductPageCardDescription } from '../ProductPageCardDescription'
 import { ProductPagePriceBlock } from '../ProductPagePriceBlock'
 import { RegaliaList } from '@/components/ProductsCard/RegaliaList/RegaliaList'
 
-import { useCartStore } from '@/zustand/cartStore'
-import { useModalsStore } from '@/zustand/modalsStore'
+import { useCartStore } from '@/store/cartStore'
+import { useModalsStore } from '@/store/modalsStore'
 import { ProductsPageOffers } from '../ProductsPageOffers'
 
 export const ProductPageCard: React.FC<ProductsCardPropTypes> = ({

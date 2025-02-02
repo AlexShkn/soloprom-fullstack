@@ -78,6 +78,19 @@
   }
 }
 
+.scroll-bar-row {
+  &::-webkit-scrollbar {
+    height: 7px;
+  }
+  &::-webkit-scrollbar-track {
+    background: #e0e0e0;
+  }
+  &::-webkit-scrollbar-thumb {
+    background: variables.$accentColor;
+    // border-radius: 5px;
+  }
+}
+
 .button {
   display: inline-flex;
   align-items: center;

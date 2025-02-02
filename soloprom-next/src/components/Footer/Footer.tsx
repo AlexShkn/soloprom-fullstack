@@ -4,7 +4,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 
 import './Footer.scss'
-import { useModalsStore } from '@/zustand/modalsStore'
+import { useModalsStore } from '@/store/modalsStore'
 
 const catalogList = [
   { title: 'Каталог запчастей', link: '/catalog' },

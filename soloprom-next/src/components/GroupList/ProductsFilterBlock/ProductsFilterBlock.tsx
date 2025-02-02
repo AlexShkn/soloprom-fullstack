@@ -4,10 +4,10 @@ import { useRouter, useSearchParams } from 'next/navigation'
 import { cardDataProps, FilterData } from '@/types/products.types'
 import { FilteredList } from '@/components/GroupList/FilteredList/FilteredList'
 import CatalogFilters from '../Filter/CatalogFilters'
-import useFilterStore from '@/zustand/filterStore'
+import useFilterStore from '@/store/filterStore'
 import { useDebounce } from '@/hooks/useDebounce'
 import './ProductsFilterBlock.scss'
-import { api } from '@/components/shared/instance.api'
+import { api } from '@/utils/fetch/instance.api'
 export const BASE_URL = `${process.env.NEXT_PUBLIC_SERVER_URL}/products`
 
 interface Props {
@@ -153,8 +153,15 @@ export const ProductsFilterBlock: React.FC<Props> = ({
   }, [dynamicCurrentPage, initialLoad])
 
   useEffect(() => {
+    console.log(filteredPage)
+    console.log(categoryName)
+
     if (filteredPage && categoryName !== filteredPage) {
+      console.log('resetFilters')
+
       resetFilters()
+
+      console.log(filters)
     }
   }, [categoryName, filteredPage])
 
