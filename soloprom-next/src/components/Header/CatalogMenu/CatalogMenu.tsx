@@ -145,7 +145,7 @@ const productsList: Record<string, CategoryProduct[]> = {
 }
 
 const CatalogMenu = () => {
-  const [currentTab, setCurrentTab] = useState('battery')
+  const [currentTab, setCurrentTab] = useState('')
   const menuRef = useRef<HTMLDivElement>(null)
 
   const { catalogIsOpen, catalogMenuStateChange } = useCatalogMenuStore(
@@ -158,6 +158,18 @@ const CatalogMenu = () => {
   useEffect(() => {
     if (!is650) setCurrentTab('battery')
   }, [is650, setCurrentTab])
+
+  const setCatalogTab = (tabName: string) => {
+    if (is650) {
+      if (currentTab === tabName) {
+        setCurrentTab('')
+      } else {
+        setCurrentTab(tabName)
+      }
+    } else {
+      setCurrentTab(tabName)
+    }
+  }
 
   const menuClose = () => {
     catalogMenuStateChange(false, isTablet)
@@ -198,11 +210,7 @@ const CatalogMenu = () => {
             {categoryList.map((category) => (
               <div
                 key={category.id}
-                onClick={() =>
-                  setCurrentTab(
-                    currentTab !== category.id ? category.id : currentTab,
-                  )
-                }
+                onClick={() => setCatalogTab(category.id)}
                 className={`catalog-menu__category-item rounded-tr-4 rounded-br-4 flex cursor-pointer items-center gap-2.5 bg-white pl-2.5 font-medium ${
                   currentTab === category.id
                     ? 'active'

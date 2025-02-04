@@ -16,33 +16,12 @@ export default {
         '5px': '5px',
       },
       screens: {
-        xs: {
-          max: '374.98',
-        },
-        mmbs: {
-          min: '479.98',
-        },
-        mbs: {
-          max: '479.98',
-        },
-        mbm: {
-          max: '575.98',
-        },
-        mbh: {
-          max: '649.98',
-        },
-        mb: {
-          max: '767.98',
-        },
-        tb: {
-          max: '991.98',
-        },
-        pc: {
-          max: '1199.98',
-        },
-        md: {
-          max: '1399.98',
-        },
+        xs: '320px',
+        sm: '640px',
+        md: '768px',
+        lg: '1024px',
+        xl: '1280px',
+        '2xl': '1536px',
       },
       colors: {
         background: 'hsl(var(--background))',

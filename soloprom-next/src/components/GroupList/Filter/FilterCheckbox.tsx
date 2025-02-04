@@ -3,12 +3,23 @@ import { Checkbox } from '@/components/ui/checkbox'
 import { ChevronDown, ChevronUp } from 'lucide-react'
 import React, { useState, useCallback, useEffect } from 'react'
 
+interface Option {
+  label: string
+  value: string
+}
+
 interface Props {
   title: string
-  options: { label: string; value: string }[]
+  options: Option[]
   showMoreCount?: number
   onCheckboxChange: (value: string | string[], isChecked: boolean) => void
   initialChecked?: string[]
+  reset?: boolean
+  checkedValues: Record<string, string[]>
+  setCheckedValues: React.Dispatch<
+    React.SetStateAction<Record<string, string[]>>
+  >
+  filterName: string
 }
 
 export const FilterCheckbox: React.FC<Props> = ({
@@ -17,17 +28,20 @@ export const FilterCheckbox: React.FC<Props> = ({
   showMoreCount,
   onCheckboxChange,
   initialChecked,
+  reset,
+  setCheckedValues,
+  checkedValues,
+  filterName,
 }) => {
   const [showAll, setShowAll] = useState(false)
-  const [checkedValues, setCheckedValues] = useState<string[]>([])
 
   const visibleOptions = showAll ? options : options.slice(0, 5)
 
   useEffect(() => {
-    if (initialChecked) {
-      setCheckedValues(initialChecked)
+    if (initialChecked && initialChecked.length > 0) {
+      setCheckedValues((prev) => ({ ...prev, [filterName]: initialChecked }))
     }
-  }, [initialChecked])
+  }, [initialChecked, setCheckedValues, filterName])
 
   const shouldShowMoreButton = options.length > 5
 
@@ -35,14 +49,32 @@ export const FilterCheckbox: React.FC<Props> = ({
     (value: string, checked: boolean | 'indeterminate') => {
       const isChecked = checked === true
 
-      if (isChecked) {
-        setCheckedValues((prev) => [...prev, value])
-      } else {
-        setCheckedValues((prev) => prev.filter((v) => v !== value))
-      }
+      setCheckedValues((prev) => {
+        const currentValues = prev[filterName] || []
+        let newValues
+
+        if (isChecked) {
+          newValues = [...new Set([...currentValues, value])]
+        } else {
+          newValues = currentValues.filter((v) => v !== value)
+        }
+
+        return {
+          ...prev,
+          [filterName]: newValues,
+        }
+      })
+
       onCheckboxChange(value, isChecked)
     },
-    [onCheckboxChange],
+    [onCheckboxChange, setCheckedValues, filterName],
+  )
+
+  const isOptionChecked = useCallback(
+    (value: string) => {
+      return checkedValues[filterName]?.includes(value) || false
+    },
+    [checkedValues, filterName],
   )
 
   return (
@@ -53,7 +85,7 @@ export const FilterCheckbox: React.FC<Props> = ({
           <div key={index} className="flex items-center space-x-2">
             <Checkbox
               id={option.value}
-              checked={checkedValues.includes(option.value)}
+              checked={isOptionChecked(option.value)}
               onCheckedChange={(checked) =>
                 handleCheckboxChange(option.value, checked)
               }

@@ -13,7 +13,7 @@ export const Benefits = () => {
         <ul className="benefits__list grid grid-cols-3 gap-7">
           <li className="benefits__item relative min-h-[220px] overflow-hidden rounded bg-accentBlue p-7">
             <Image
-              className="absolute -right-2.5 top-0 h-auto w-auto object-cover transition-transform"
+              className="absolute -right-2.5 top-0 h-full w-[200px] object-cover transition-transform"
               src="/img/benefits/zp.png"
               alt=""
               width={200}
@@ -31,7 +31,7 @@ export const Benefits = () => {
           </li>
           <li className="benefits__item relative min-h-[220px] overflow-hidden rounded bg-accentBlue p-7">
             <Image
-              className="absolute -right-2.5 top-0 h-auto w-auto object-cover transition-transform"
+              className="absolute -right-2.5 top-0 h-full w-[200px] object-cover transition-transform"
               src="/img/benefits/delivery.png"
               alt=""
               width={200}
@@ -50,7 +50,7 @@ export const Benefits = () => {
           </li>
           <li className="benefits__item relative min-h-[220px] overflow-hidden rounded bg-accentBlue p-7">
             <Image
-              className="absolute -right-2.5 top-0 h-auto w-auto object-cover"
+              className="absolute -right-2.5 top-0 h-full w-[200px] object-cover"
               src="/img/benefits/search.png"
               alt=""
               width={200}
@@ -69,7 +69,7 @@ export const Benefits = () => {
           </li>
           <li className="benefits__item relative min-h-[220px] overflow-hidden rounded bg-accentBlue p-7">
             <Image
-              className="absolute -right-2.5 top-0 h-auto w-auto object-cover transition-transform"
+              className="absolute -right-2.5 top-0 h-full w-[200px] object-cover transition-transform"
               src="/img/benefits/experience.png"
               alt=""
               width={200}
@@ -88,7 +88,7 @@ export const Benefits = () => {
           </li>
           <li className="benefits__item relative min-h-[220px] overflow-hidden rounded bg-accentBlue p-7">
             <Image
-              className="absolute -right-2.5 top-0 h-auto w-auto object-cover transition-transform"
+              className="absolute -right-2.5 top-0 h-full w-[200px] object-cover transition-transform"
               src="/img/benefits/contact.png"
               alt=""
               width={200}
@@ -107,7 +107,7 @@ export const Benefits = () => {
           </li>
           <li className="benefits__item relative min-h-[220px] overflow-hidden rounded bg-accentBlue p-7">
             <Image
-              className="absolute -right-2.5 top-0 h-auto w-auto object-cover transition-transform"
+              className="absolute -right-2.5 top-0 h-full w-[200px] object-cover transition-transform"
               src="/img/benefits/price.png"
               alt=""
               width={200}

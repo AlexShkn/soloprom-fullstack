@@ -3,6 +3,7 @@ import React, { useRef, useState, useCallback, useEffect } from 'react'
 import { ChevronRight } from 'lucide-react'
 import { useClickOutside } from '@/hooks/useClickOutside'
 import useFilterStore from '@/store/filterStore'
+import { getCurrentWindowSize } from '@/supports'
 
 interface Props {
   onSortChange: (sort: string) => void
@@ -60,13 +61,20 @@ export const Sort: React.FC<Props> = ({ onSortChange, initialSort }) => {
 
   return (
     <div className="flex w-full items-center gap-2.5">
-      Сортировать по:
+      <div className="">
+        <svg className="icon block h-5 w-5 rotate-[90deg] fill-darkBlue transition-colors hover:fill-accentBlue md:hidden">
+          <use xlinkHref="/img/sprite.svg#sort" />
+        </svg>
+
+        <span className="hidden md:block">Сортировать по:</span>
+      </div>
+
       <div ref={dropRef} className="relative z-20 w-full max-w-[300px]">
         <button
           onClick={() => setDropIsOpen((prev) => !prev)}
           type="button"
           className={
-            'relative z-10 flex w-full items-center justify-between gap-2 rounded bg-gray-100 px-5 py-2'
+            'relative z-10 flex w-full items-center justify-between gap-2 rounded bg-gray-100 px-5 py-2 text-left text-sm leading-4 md:text-base'
           }
         >
           {getCurrentSort(sort)}
@@ -82,7 +90,7 @@ export const Sort: React.FC<Props> = ({ onSortChange, initialSort }) => {
               <li
                 onClick={() => sortHandler(item)}
                 key={index}
-                className={`cursor-pointer px-5 py-3 ${
+                className={`cursor-pointer px-5 py-3 text-sm md:text-base ${
                   item === getCurrentSort(sort)
                     ? 'bg-accentBlue text-white'
                     : ''

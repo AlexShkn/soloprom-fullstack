@@ -6,7 +6,7 @@ type Props = {
   totalAmount: number
 }
 
-const declension = (num: number, forms: [string, string, string]) => {
+export const declension = (num: number, forms: [string, string, string]) => {
   const lastDigit = num % 10
   const lastTwoDigits = num % 100
   if (lastTwoDigits >= 11 && lastTwoDigits <= 19) {

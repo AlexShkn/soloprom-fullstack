@@ -84,8 +84,13 @@ export function generateFilterData(
 
     // Sizes
     if (item.sizes) {
-      allSizes.push(...Object.keys(item.sizes))
+      Object.keys(item.sizes).forEach((size) => {
+        if (size !== '') {
+          allSizes.push(size)
+        }
+      })
     }
+
     // Plates
     if (item.plates) {
       allPlates.push(item.plates)

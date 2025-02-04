@@ -1,5 +1,6 @@
 'use client'
-import React from 'react'
+import { getCurrentWindowSize } from '@/supports'
+import React, { useEffect, useLayoutEffect, useState } from 'react'
 
 interface Props {
   currentPage: number
@@ -14,21 +15,24 @@ export const Pagination: React.FC<Props> = ({
 }) => {
   const generatePageNumbers = () => {
     const pages = []
-    if (totalPages <= 7) {
+    if (totalPages <= 5) {
+      // Reduced limit for mobile
       for (let i = 1; i <= totalPages; i++) {
         pages.push(i)
       }
     } else {
-      if (currentPage <= 4) {
-        for (let i = 1; i <= 5; i++) {
+      if (currentPage <= 3) {
+        // Adjusted logic for mobile
+        for (let i = 1; i <= 3; i++) {
           pages.push(i)
         }
         pages.push('...')
         pages.push(totalPages)
-      } else if (currentPage >= totalPages - 3) {
+      } else if (currentPage >= totalPages - 2) {
+        // Adjusted logic for mobile
         pages.push(1)
         pages.push('...')
-        for (let i = totalPages - 4; i <= totalPages; i++) {
+        for (let i = totalPages - 2; i <= totalPages; i++) {
           pages.push(i)
         }
       } else {
@@ -50,11 +54,11 @@ export const Pagination: React.FC<Props> = ({
       <div className="flex items-center justify-center">
         {currentPage > 1 && (
           <button
-            className="flex h-[48px] w-[48px] items-center justify-center rounded text-lg font-bold"
+            className="flex h-10 w-10 items-center justify-center rounded text-lg font-bold md:h-12 md:w-12"
             onClick={() => onChangePage(currentPage - 1)}
-            disabled={currentPage === totalPages}
+            disabled={currentPage === 1}
           >
-            <svg className="icon h-5 w-5 rotate-[90deg] fill-darkBlue transition-colors hover:fill-accentBlue">
+            <svg className="icon h-4 w-4 rotate-[90deg] fill-darkBlue transition-colors hover:fill-accentBlue md:h-5 md:w-5">
               <use xlinkHref="/img/sprite.svg#arrow-drop" />
             </svg>
           </button>
@@ -65,18 +69,18 @@ export const Pagination: React.FC<Props> = ({
             page === '...' ? (
               <div
                 key={index}
-                className="flex h-[48px] w-[48px] items-center justify-center rounded text-lg font-bold"
+                className="flex items-center justify-center rounded text-lg font-bold"
               >
                 <p>...</p>
               </div>
             ) : (
               <div
                 key={index}
-                className={`flex h-[48px] w-[48px] items-center justify-center rounded text-lg font-bold ${
+                className={`flex h-11 w-11 items-center justify-center rounded text-lg font-bold md:h-12 md:w-12 ${
                   currentPage === page
                     ? 'bg-accentBlue text-white'
                     : 'link-hover'
-                }`}
+                } md:text-lg`}
               >
                 <button
                   className="block h-full w-full"
@@ -88,15 +92,17 @@ export const Pagination: React.FC<Props> = ({
             ),
           )}
         </div>
-        <button
-          className="flex h-[48px] w-[48px] items-center justify-center rounded text-lg font-bold"
-          onClick={() => onChangePage(currentPage + 1)}
-          disabled={currentPage === totalPages}
-        >
-          <svg className="icon h-5 w-5 rotate-[-90deg] fill-darkBlue transition-colors hover:fill-accentBlue">
-            <use xlinkHref="/img/sprite.svg#arrow-drop" />
-          </svg>
-        </button>
+        {currentPage < totalPages && (
+          <button
+            className="flex h-10 w-10 items-center justify-center rounded text-lg font-bold md:h-12 md:w-12"
+            onClick={() => onChangePage(currentPage + 1)}
+            disabled={currentPage === totalPages}
+          >
+            <svg className="icon h-4 w-4 rotate-[-90deg] fill-darkBlue transition-colors hover:fill-accentBlue md:h-5 md:w-5">
+              <use xlinkHref="/img/sprite.svg#arrow-drop" />
+            </svg>
+          </button>
+        )}
       </div>
     </div>
   )

@@ -1,5 +1,12 @@
 'use client'
-import React, { useCallback, useEffect, useMemo, useState, useRef } from 'react'
+import React, {
+  useCallback,
+  useEffect,
+  useMemo,
+  useState,
+  useRef,
+  useLayoutEffect,
+} from 'react'
 import { useRouter, useSearchParams } from 'next/navigation'
 import { cardDataProps, FilterData } from '@/types/products.types'
 import { FilteredList } from '@/components/GroupList/FilteredList/FilteredList'
@@ -8,6 +15,7 @@ import useFilterStore from '@/store/filterStore'
 import { useDebounce } from '@/hooks/useDebounce'
 import './ProductsFilterBlock.scss'
 import { api } from '@/utils/fetch/instance.api'
+import { getCurrentWindowSize } from '@/supports'
 export const BASE_URL = `${process.env.NEXT_PUBLIC_SERVER_URL}/products`
 
 interface Props {
@@ -38,6 +46,8 @@ export const ProductsFilterBlock: React.FC<Props> = ({
   const [initialLoad, setInitialLoad] = useState(true)
   const [dataIsLoading, setDataIsLoading] = useState(true)
 
+  const [filterOpen, setFilterOpen] = useState(false)
+
   const {
     filteredPage,
     setFilteredPage,
@@ -63,8 +73,6 @@ export const ProductsFilterBlock: React.FC<Props> = ({
   )
 
   const fetchData = useCallback(async () => {
-    console.log('fetch')
-
     if (fetchControllerRef.current) {
       fetchControllerRef.current.abort()
     }
@@ -132,8 +140,6 @@ export const ProductsFilterBlock: React.FC<Props> = ({
     const newUrl = `?${params.toString()}`
 
     if (newUrl.length > 1) {
-      console.log(newUrl)
-
       router.push(newUrl, { scroll: false })
     }
   }, [debouncedFilters, debouncedSort, dynamicCurrentPage, router])
@@ -153,29 +159,18 @@ export const ProductsFilterBlock: React.FC<Props> = ({
   }, [dynamicCurrentPage, initialLoad])
 
   useEffect(() => {
-    console.log(filteredPage)
-    console.log(categoryName)
-
     if (filteredPage && categoryName !== filteredPage) {
-      console.log('resetFilters')
-
       resetFilters()
-
-      console.log(filters)
     }
   }, [categoryName, filteredPage])
 
   useEffect(() => {
     if (initialLoad) {
-      console.log('первый')
-
       const urlFilters = searchParams.get('filters')
       const urlSort = searchParams.get('sort')
       const urlPage = searchParams.get('page')
 
       if (urlFilters || urlSort || urlPage) {
-        console.log('change parametrs')
-
         if (urlFilters) {
           try {
             const parsedFilters = JSON.parse(urlFilters)
@@ -200,8 +195,6 @@ export const ProductsFilterBlock: React.FC<Props> = ({
 
         setHasFilters(true)
       } else {
-        console.log('initial set')
-
         setDataIsLoading(false)
         setTotalProductsCount(totalCount)
       }
@@ -222,19 +215,11 @@ export const ProductsFilterBlock: React.FC<Props> = ({
 
   useEffect(() => {
     if (!initialLoad) {
-      console.log('не первый и апдейт фильтров')
       updateUrl()
 
-      if (hasFilters) {
-        console.log('не первый с фильтрами')
-
-        setDataIsLoading(true)
-        setProducts([])
-
-        console.log('init fetchData')
-
-        fetchData()
-      }
+      setDataIsLoading(true)
+      setProducts([])
+      fetchData()
     }
   }, [debouncedFilters, debouncedSort, dynamicCurrentPage, updateUrl])
 
@@ -249,6 +234,8 @@ export const ProductsFilterBlock: React.FC<Props> = ({
             onFiltersChange={setFilters}
             categoryInitialList={categoryData}
             currentPage={currentPage}
+            filterOpen={filterOpen}
+            setFilterOpen={setFilterOpen}
           />
           <FilteredList
             data={products}
@@ -260,6 +247,8 @@ export const ProductsFilterBlock: React.FC<Props> = ({
             dataIsLoading={dataIsLoading}
             onSortChange={setSort}
             hasFilters={hasFilters}
+            filterOpen={filterOpen}
+            setFilterOpen={setFilterOpen}
           />
         </div>
       </div>

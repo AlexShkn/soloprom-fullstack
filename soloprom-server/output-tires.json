@@ -440,7 +440,7 @@
     "sizes": {
       "16x6-8": 6573
     },
-    "stock": 176,
+    "stock": 178,
     "tireProduct": "камерная, шинокомплект",
     "modal_name": "Шинокомплект 16x6-8 18PR Greckster IND01",
     "img": "https://shop.liftnet.ru/tr-lift/dealer.work//pic/00000037865.jpg",
@@ -518,7 +518,7 @@
     "sizes": {
       "16x6-8": 6896
     },
-    "stock": 52,
+    "stock": 48,
     "tireProduct": "камерная, шинокомплект",
     "modal_name": "Шинокомплект 16x6-8 18PR Greckster Gold IND01",
     "img": "https://shop.liftnet.ru/tr-lift/dealer.work//pic/20000020247.jpg",
@@ -596,7 +596,7 @@
     "sizes": {
       "16x6-8": 11996
     },
-    "stock": 45,
+    "stock": 46,
     "modal_name": "Шина цельнолитая 16х6-8 Greckster Gold",
     "img": "https://shop.liftnet.ru/tr-lift/dealer.work//pic/20000022104.jpg",
     "options": [
@@ -954,7 +954,7 @@
     "sizes": {
       "18x7-8": 9018
     },
-    "stock": 177,
+    "stock": 181,
     "tireProduct": "камерная, шинокомплект",
     "modal_name": "Шинокомплект 18x7-8 14PR Greckster IND01",
     "img": "https://shop.liftnet.ru/tr-lift/dealer.work//pic/00000037864.jpg",
@@ -1260,91 +1260,13 @@
     ]
   },
   {
-    "id": "EmraldGRECKSTERGOLDIND0118x7818PR",
-    "name": "Шина Emrald GRECKSTERGOLDIND01 18x7-8 18PR",
-    "price": 13319,
-    "sizes": {
-      "18x7-8": 13319
-    },
-    "stock": 2,
-    "tireProduct": "камерная, шинокомплект",
-    "modal_name": "Шинокомплект 18x7-8 18PR Greckster Gold IND01",
-    "img": "https://shop.liftnet.ru/tr-lift/dealer.work//pic/20000041906.jpg",
-    "options": [
-      [
-        "Производитель:",
-        "Emrald"
-      ],
-      [
-        "Модель:",
-        "GRECKSTER GOLD IND01"
-      ],
-      [
-        "Типоразмер:",
-        "18x7-8"
-      ],
-      [
-        "Исполнение:",
-        "Пневматическая"
-      ],
-      [
-        "Тип:",
-        "TTF"
-      ],
-      [
-        "Конструкция каркаса:",
-        "Диагональная"
-      ],
-      [
-        "Сегмент:",
-        "Премиум"
-      ],
-      [
-        "Тип протектора (по TRA):",
-        "IND-1"
-      ],
-      [
-        "Нагрузка (кг):",
-        "1700 (126A5) / 2210 (135A5)"
-      ],
-      [
-        "Наружный диаметр (мм):",
-        "462"
-      ],
-      [
-        "Ширина (мм):",
-        "170"
-      ],
-      [
-        "Рекомендованный обод:",
-        "4.33"
-      ],
-      [
-        "Вес (кг):",
-        "12.5"
-      ],
-      [
-        "Объем (м3):",
-        "0,036"
-      ],
-      [
-        "Гарантия (лет):",
-        "5"
-      ],
-      [
-        "Страна производитель:",
-        "ИНДИЯ"
-      ]
-    ]
-  },
-  {
-    "id": "EmraldGRECKSTERGOLD18x78szamkom",
-    "name": "Шина Emrald GRECKSTERGOLD 18x7-8 с замком",
+    "id": "EmraldGRECKSTERGOLD18x78standart",
+    "name": "Шина Emrald GRECKSTERGOLD 18x7-8 стандарт",
     "price": 15399,
     "sizes": {
       "18x7-8": 15399
     },
-    "stock": 11,
+    "stock": 57,
     "modal_name": "Шина цельнолитая 18х7-8 Greckster Gold",
     "img": "https://shop.liftnet.ru/tr-lift/dealer.work//pic/20000020258.jpg",
     "options": [
@@ -1362,7 +1284,7 @@
       ],
       [
         "Исполнение:",
-        "Цельнолитая, с замком"
+        "Цельнолитая, стандарт"
       ],
       [
         "Тип:",
@@ -1407,13 +1329,13 @@
     ]
   },
   {
-    "id": "EmraldGRECKSTERGOLD18x78standart",
-    "name": "Шина Emrald GRECKSTERGOLD 18x7-8 стандарт",
+    "id": "EmraldGRECKSTERGOLD18x78szamkom",
+    "name": "Шина Emrald GRECKSTERGOLD 18x7-8 с замком",
     "price": 15399,
     "sizes": {
       "18x7-8": 15399
     },
-    "stock": 55,
+    "stock": 9,
     "modal_name": "Шина цельнолитая 18х7-8 Greckster Gold",
     "img": "https://shop.liftnet.ru/tr-lift/dealer.work//pic/20000020258.jpg",
     "options": [
@@ -1431,7 +1353,7 @@
       ],
       [
         "Исполнение:",
-        "Цельнолитая, стандарт"
+        "Цельнолитая, с замком"
       ],
       [
         "Тип:",
@@ -1570,75 +1492,6 @@
       [
         "Исполнение:",
         "Цельнолитая, стандарт"
-      ],
-      [
-        "Тип:",
-        "CE"
-      ],
-      [
-        "Сегмент:",
-        "Средний"
-      ],
-      [
-        "Нагрузка (кг):",
-        "1650 (125A5) / 2145 (134A5)"
-      ],
-      [
-        "Наружный диаметр (мм):",
-        "457"
-      ],
-      [
-        "Ширина (мм):",
-        "150"
-      ],
-      [
-        "Рекомендованный обод:",
-        "4.33"
-      ],
-      [
-        "Вес (кг):",
-        "21"
-      ],
-      [
-        "Объем (м3):",
-        "0,031"
-      ],
-      [
-        "Гарантия (лет):",
-        "5"
-      ],
-      [
-        "Страна производитель:",
-        "ИНДИЯ"
-      ]
-    ]
-  },
-  {
-    "id": "EmraldGRECKSTERGOLD18x78szamkom",
-    "name": "Шина Emrald GRECKSTERGOLD 18x7-8 с замком",
-    "price": 19245,
-    "sizes": {
-      "18x7-8": 19245
-    },
-    "stock": 6,
-    "modal_name": "Шина цельнолитая 18х7-8 Greckster Gold немаркая",
-    "img": "https://shop.liftnet.ru/tr-lift/dealer.work//pic/20000022536.jpg",
-    "options": [
-      [
-        "Производитель:",
-        "Emrald"
-      ],
-      [
-        "Модель:",
-        "GRECKSTER GOLD белая"
-      ],
-      [
-        "Типоразмер:",
-        "18x7-8"
-      ],
-      [
-        "Исполнение:",
-        "Цельнолитая, с замком"
       ],
       [
         "Тип:",
@@ -1991,7 +1844,7 @@
     "sizes": {
       "5.00-8": 5158
     },
-    "stock": 599,
+    "stock": 619,
     "tireProduct": "камерная, шинокомплект",
     "modal_name": "Шинокомплект 5.00-8 10PR Greckster IND04",
     "img": "https://shop.liftnet.ru/tr-lift/dealer.work//pic/00000033474.jpg",
@@ -2069,7 +1922,7 @@
     "sizes": {
       "5.00-8": 6331
     },
-    "stock": 111,
+    "stock": 103,
     "tireProduct": "камерная, шинокомплект",
     "modal_name": "Шинокомплект 5.00-8 10PR Greckster Gold IND01",
     "img": "https://shop.liftnet.ru/tr-lift/dealer.work//pic/20000041903.jpg",
@@ -2147,7 +2000,7 @@
     "sizes": {
       "5.00-8": 8936
     },
-    "stock": 8,
+    "stock": 6,
     "modal_name": "Шина цельнолитая 5.00-8 Greckster Gold",
     "img": "https://shop.liftnet.ru/tr-lift/dealer.work//pic/20000020722.jpg",
     "options": [
@@ -2220,7 +2073,7 @@
     "sizes": {
       "5.00-8": 8936
     },
-    "stock": 246,
+    "stock": 242,
     "modal_name": "Шина цельнолитая 5.00-8 Greckster Gold",
     "img": "https://shop.liftnet.ru/tr-lift/dealer.work//pic/20000020722.jpg",
     "options": [
@@ -2366,7 +2219,7 @@
     "sizes": {
       "5.00-8": 10266
     },
-    "stock": 31,
+    "stock": 51,
     "modal_name": "Шина цельнолитая 5.00-8 EmPower",
     "img": "https://shop.liftnet.ru/tr-lift/dealer.work//pic/20000020253.jpg",
     "options": [
@@ -2486,79 +2339,6 @@
       [
         "Допустимый обод:",
         "3.50"
-      ],
-      [
-        "Вес (кг):",
-        "14.9"
-      ],
-      [
-        "Объем (м3):",
-        "0,026"
-      ],
-      [
-        "Гарантия (лет):",
-        "5"
-      ],
-      [
-        "Страна производитель:",
-        "ИНДИЯ"
-      ]
-    ]
-  },
-  {
-    "id": "EmraldEMPOWER5008standart",
-    "name": "Шина Emrald EMPOWER 5.00-8 стандарт",
-    "price": 12833,
-    "sizes": {
-      "5.00-8": 12833
-    },
-    "stock": 2,
-    "modal_name": "Шина цельнолитая 5.00-8 EmPower немаркая",
-    "img": "https://shop.liftnet.ru/tr-lift/dealer.work//pic/20000026938.jpg",
-    "options": [
-      [
-        "Производитель:",
-        "Emrald"
-      ],
-      [
-        "Модель:",
-        "EMPOWER белая"
-      ],
-      [
-        "Типоразмер:",
-        "5.00-8"
-      ],
-      [
-        "Исполнение:",
-        "Цельнолитая, стандарт"
-      ],
-      [
-        "Тип:",
-        "CE"
-      ],
-      [
-        "Сегмент:",
-        "Премиум"
-      ],
-      [
-        "Нагрузка (кг):",
-        "1090 (111A5) / 1420 (120A5)"
-      ],
-      [
-        "Наружный диаметр (мм):",
-        "455"
-      ],
-      [
-        "Ширина (мм):",
-        "124"
-      ],
-      [
-        "Рекомендованный обод:",
-        "3.00"
-      ],
-      [
-        "Допустимый обод:",
-        "3.75"
       ],
       [
         "Вес (кг):",
@@ -3011,13 +2791,13 @@
     ]
   },
   {
-    "id": "EmraldGRECKSTERGOLD21x89szamkom",
-    "name": "Шина Emrald GRECKSTERGOLD 21x8-9 с замком",
+    "id": "EmraldGRECKSTERGOLD21x89standart",
+    "name": "Шина Emrald GRECKSTERGOLD 21x8-9 стандарт",
     "price": 23649,
     "sizes": {
       "21x8-9": 23649
     },
-    "stock": 8,
+    "stock": 17,
     "modal_name": "Шина цельнолитая 21х8-9 Greckster Gold",
     "img": "https://shop.liftnet.ru/tr-lift/dealer.work//pic/20000022105.jpg",
     "options": [
@@ -3035,7 +2815,7 @@
       ],
       [
         "Исполнение:",
-        "Цельнолитая, с замком"
+        "Цельнолитая, стандарт"
       ],
       [
         "Тип:",
@@ -3080,13 +2860,13 @@
     ]
   },
   {
-    "id": "EmraldGRECKSTERGOLD21x89standart",
-    "name": "Шина Emrald GRECKSTERGOLD 21x8-9 стандарт",
+    "id": "EmraldGRECKSTERGOLD21x89szamkom",
+    "name": "Шина Emrald GRECKSTERGOLD 21x8-9 с замком",
     "price": 23649,
     "sizes": {
       "21x8-9": 23649
     },
-    "stock": 17,
+    "stock": 8,
     "modal_name": "Шина цельнолитая 21х8-9 Greckster Gold",
     "img": "https://shop.liftnet.ru/tr-lift/dealer.work//pic/20000022105.jpg",
     "options": [
@@ -3104,7 +2884,7 @@
       ],
       [
         "Исполнение:",
-        "Цельнолитая, стандарт"
+        "Цельнолитая, с замком"
       ],
       [
         "Тип:",
@@ -3425,6 +3205,75 @@
     ]
   },
   {
+    "id": "EmraldEMPOWER21x89szamkom",
+    "name": "Шина Emrald EMPOWER 21x8-9 с замком",
+    "price": 34001,
+    "sizes": {
+      "21x8-9": 34001
+    },
+    "stock": 4,
+    "modal_name": "Шина цельнолитая 21х8-9 EmPower немаркая",
+    "img": "https://shop.liftnet.ru/tr-lift/dealer.work//pic/20000023502.jpg",
+    "options": [
+      [
+        "Производитель:",
+        "Emrald"
+      ],
+      [
+        "Модель:",
+        "EMPOWER белая"
+      ],
+      [
+        "Типоразмер:",
+        "21x8-9"
+      ],
+      [
+        "Исполнение:",
+        "Цельнолитая, с замком"
+      ],
+      [
+        "Тип:",
+        "CE"
+      ],
+      [
+        "Сегмент:",
+        "Премиум"
+      ],
+      [
+        "Нагрузка (кг):",
+        "2120 (134A5) / 2755 (143A5)"
+      ],
+      [
+        "Наружный диаметр (мм):",
+        "526"
+      ],
+      [
+        "Ширина (мм):",
+        "193"
+      ],
+      [
+        "Рекомендованный обод:",
+        "6.00"
+      ],
+      [
+        "Вес (кг):",
+        "36.69"
+      ],
+      [
+        "Объем (м3):",
+        "0,053"
+      ],
+      [
+        "Гарантия (лет):",
+        "5"
+      ],
+      [
+        "Страна производитель:",
+        "ИНДИЯ"
+      ]
+    ]
+  },
+  {
     "id": "MRLMFL437600910PR",
     "name": "Шина MRL MFL437 6.00-9 10PR",
     "price": 7394,
@@ -3509,7 +3358,7 @@
     "sizes": {
       "6.00-9": 7568
     },
-    "stock": 346,
+    "stock": 338,
     "tireProduct": "камерная, шинокомплект",
     "modal_name": "Шинокомплект 6.00-9 12PR Greckster IND04",
     "img": "https://shop.liftnet.ru/tr-lift/dealer.work//pic/00000037862.jpg",
@@ -3665,7 +3514,7 @@
     "sizes": {
       "6.00-9": 10477
     },
-    "stock": 116,
+    "stock": 134,
     "tireProduct": "камерная, шинокомплект",
     "modal_name": "Шинокомплект 6.00-9 12PR Greckster Gold IND01",
     "img": "https://shop.liftnet.ru/tr-lift/dealer.work//pic/20000042595.jpg",
@@ -3812,7 +3661,7 @@
     "sizes": {
       "6.00-9": 16758
     },
-    "stock": 109,
+    "stock": 107,
     "modal_name": "Шина цельнолитая 6.00-9 Greckster Gold",
     "img": "https://shop.liftnet.ru/tr-lift/dealer.work//pic/20000022103.jpg",
     "options": [
@@ -3875,13 +3724,13 @@
     ]
   },
   {
-    "id": "EmraldEMPOWER6009szamkom",
-    "name": "Шина Emrald EMPOWER 6.00-9 с замком",
+    "id": "EmraldEMPOWER6009standart",
+    "name": "Шина Emrald EMPOWER 6.00-9 стандарт",
     "price": 19274,
     "sizes": {
       "6.00-9": 19274
     },
-    "stock": 3,
+    "stock": 8,
     "modal_name": "Шина цельнолитая 6.00-9 EmPower",
     "img": "https://shop.liftnet.ru/tr-lift/dealer.work//pic/20000020256.jpg",
     "options": [
@@ -3899,7 +3748,7 @@
       ],
       [
         "Исполнение:",
-        "Цельнолитая, с замком"
+        "Цельнолитая, стандарт"
       ],
       [
         "Тип:",
@@ -3944,13 +3793,13 @@
     ]
   },
   {
-    "id": "EmraldEMPOWER6009standart",
-    "name": "Шина Emrald EMPOWER 6.00-9 стандарт",
+    "id": "EmraldEMPOWER6009szamkom",
+    "name": "Шина Emrald EMPOWER 6.00-9 с замком",
     "price": 19274,
     "sizes": {
       "6.00-9": 19274
     },
-    "stock": 10,
+    "stock": 3,
     "modal_name": "Шина цельнолитая 6.00-9 EmPower",
     "img": "https://shop.liftnet.ru/tr-lift/dealer.work//pic/20000020256.jpg",
     "options": [
@@ -3968,7 +3817,7 @@
       ],
       [
         "Исполнение:",
-        "Цельнолитая, стандарт"
+        "Цельнолитая, с замком"
       ],
       [
         "Тип:",
@@ -4088,7 +3937,7 @@
     "sizes": {
       "6.00-9": 24092
     },
-    "stock": 2,
+    "stock": 4,
     "modal_name": "Шина цельнолитая 6.00-9 EmPower немаркая",
     "img": "https://shop.liftnet.ru/tr-lift/dealer.work//pic/20000020820.jpg",
     "options": [
@@ -4157,7 +4006,7 @@
     "sizes": {
       "200/50-10": 18774
     },
-    "stock": 14,
+    "stock": 18,
     "modal_name": "Шина цельнолитая 200/50-10 Greckster Gold",
     "img": "https://shop.liftnet.ru/tr-lift/dealer.work//pic/20000020808.jpg",
     "options": [
@@ -4442,7 +4291,7 @@
     "sizes": {
       "6.50-10": 8722
     },
-    "stock": 9,
+    "stock": 32,
     "tireProduct": "камерная, шинокомплект",
     "modal_name": "Шинокомплект 6.50-10 12PR Greckster IND04",
     "img": "https://shop.liftnet.ru/tr-lift/dealer.work//pic/00000037860.jpg",
@@ -4524,7 +4373,7 @@
     "sizes": {
       "6.50-10": 13548
     },
-    "stock": 47,
+    "stock": 19,
     "tireProduct": "камерная, шинокомплект",
     "modal_name": "Шинокомплект 6.50-10 14PR Greckster Gold IND01",
     "img": "https://shop.liftnet.ru/tr-lift/dealer.work//pic/20000042247.jpg",
@@ -4600,86 +4449,13 @@
     ]
   },
   {
-    "id": "EmraldGRECKSTERGOLD65010standart",
-    "name": "Шина Emrald GRECKSTERGOLD 6.50-10 стандарт",
-    "price": 20861,
-    "sizes": {
-      "6.50-10": 20861
-    },
-    "stock": 327,
-    "modal_name": "Шина цельнолитая 6.50-10  Greckster Gold",
-    "img": "https://shop.liftnet.ru/tr-lift/dealer.work//pic/20000020723.jpg",
-    "options": [
-      [
-        "Производитель:",
-        "Emrald"
-      ],
-      [
-        "Модель:",
-        "GRECKSTER GOLD"
-      ],
-      [
-        "Типоразмер:",
-        "6.50-10"
-      ],
-      [
-        "Исполнение:",
-        "Цельнолитая, стандарт"
-      ],
-      [
-        "Тип:",
-        "CE"
-      ],
-      [
-        "Сегмент:",
-        "Средний"
-      ],
-      [
-        "Нагрузка (кг):",
-        "1800 (128A5) / 2340 (137A5)"
-      ],
-      [
-        "Наружный диаметр (мм):",
-        "577"
-      ],
-      [
-        "Ширина (мм):",
-        "160"
-      ],
-      [
-        "Рекомендованный обод:",
-        "5.00"
-      ],
-      [
-        "Допустимый обод:",
-        "5.50"
-      ],
-      [
-        "Вес (кг):",
-        "35.8"
-      ],
-      [
-        "Объем (м3):",
-        "0,053"
-      ],
-      [
-        "Гарантия (лет):",
-        "5"
-      ],
-      [
-        "Страна производитель:",
-        "ИНДИЯ"
-      ]
-    ]
-  },
-  {
     "id": "EmraldGRECKSTERGOLD65010szamkom",
     "name": "Шина Emrald GRECKSTERGOLD 6.50-10 с замком",
     "price": 20861,
     "sizes": {
       "6.50-10": 20861
     },
-    "stock": 29,
+    "stock": 39,
     "modal_name": "Шина цельнолитая 6.50-10  Greckster Gold",
     "img": "https://shop.liftnet.ru/tr-lift/dealer.work//pic/20000020723.jpg",
     "options": [
@@ -4746,15 +4522,15 @@
     ]
   },
   {
-    "id": "EmraldEMPOWER65010standart",
-    "name": "Шина Emrald EMPOWER 6.50-10 стандарт",
-    "price": 23992,
+    "id": "EmraldGRECKSTERGOLD65010standart",
+    "name": "Шина Emrald GRECKSTERGOLD 6.50-10 стандарт",
+    "price": 20861,
     "sizes": {
-      "6.50-10": 23992
+      "6.50-10": 20861
     },
-    "stock": 57,
-    "modal_name": "Шина цельнолитая 6.50-10 EmPower",
-    "img": "https://shop.liftnet.ru/tr-lift/dealer.work//pic/20000020252.jpg",
+    "stock": 315,
+    "modal_name": "Шина цельнолитая 6.50-10  Greckster Gold",
+    "img": "https://shop.liftnet.ru/tr-lift/dealer.work//pic/20000020723.jpg",
     "options": [
       [
         "Производитель:",
@@ -4762,7 +4538,7 @@
       ],
       [
         "Модель:",
-        "EMPOWER"
+        "GRECKSTER GOLD"
       ],
       [
         "Типоразмер:",
@@ -4778,7 +4554,7 @@
       ],
       [
         "Сегмент:",
-        "Премиум"
+        "Средний"
       ],
       [
         "Нагрузка (кг):",
@@ -4844,6 +4620,79 @@
       [
         "Исполнение:",
         "Цельнолитая, с замком"
+      ],
+      [
+        "Тип:",
+        "CE"
+      ],
+      [
+        "Сегмент:",
+        "Премиум"
+      ],
+      [
+        "Нагрузка (кг):",
+        "1800 (128A5) / 2340 (137A5)"
+      ],
+      [
+        "Наружный диаметр (мм):",
+        "577"
+      ],
+      [
+        "Ширина (мм):",
+        "160"
+      ],
+      [
+        "Рекомендованный обод:",
+        "5.00"
+      ],
+      [
+        "Допустимый обод:",
+        "5.50"
+      ],
+      [
+        "Вес (кг):",
+        "35.8"
+      ],
+      [
+        "Объем (м3):",
+        "0,053"
+      ],
+      [
+        "Гарантия (лет):",
+        "5"
+      ],
+      [
+        "Страна производитель:",
+        "ИНДИЯ"
+      ]
+    ]
+  },
+  {
+    "id": "EmraldEMPOWER65010standart",
+    "name": "Шина Emrald EMPOWER 6.50-10 стандарт",
+    "price": 23992,
+    "sizes": {
+      "6.50-10": 23992
+    },
+    "stock": 55,
+    "modal_name": "Шина цельнолитая 6.50-10 EmPower",
+    "img": "https://shop.liftnet.ru/tr-lift/dealer.work//pic/20000020252.jpg",
+    "options": [
+      [
+        "Производитель:",
+        "Emrald"
+      ],
+      [
+        "Модель:",
+        "EMPOWER"
+      ],
+      [
+        "Типоразмер:",
+        "6.50-10"
+      ],
+      [
+        "Исполнение:",
+        "Цельнолитая, стандарт"
       ],
       [
         "Тип:",
@@ -4971,7 +4820,7 @@
     "sizes": {
       "6.50-10": 26080
     },
-    "stock": 8,
+    "stock": 6,
     "modal_name": "Шина цельнолитая 6.50-10  Greckster Gold немаркая",
     "img": "https://shop.liftnet.ru/tr-lift/dealer.work//pic/20000026939.jpg",
     "options": [
@@ -5109,7 +4958,7 @@
     "sizes": {
       "23x10-12": 43724
     },
-    "stock": 20,
+    "stock": 24,
     "modal_name": "Шина цельнолитая 23х10-12 EmPower",
     "img": "https://shop.liftnet.ru/tr-lift/dealer.work//pic/20000021814.jpg",
     "options": [
@@ -5394,7 +5243,7 @@
     "sizes": {
       "7.00-12": 15088
     },
-    "stock": 283,
+    "stock": 361,
     "tireProduct": "камерная, шинокомплект",
     "modal_name": "Шинокомплект 7.00-12 16PR Greckster IND04",
     "img": "https://shop.liftnet.ru/tr-lift/dealer.work//pic/20000048943.jpg",
@@ -5550,7 +5399,7 @@
     "sizes": {
       "7.00-12": 19028
     },
-    "stock": 165,
+    "stock": 174,
     "tireProduct": "камерная, шинокомплект",
     "modal_name": "Шинокомплект 7.00-12 16PR Greckster Gold IND01",
     "img": "https://shop.liftnet.ru/tr-lift/dealer.work//pic/20000042596.jpg",
@@ -5622,13 +5471,13 @@
     ]
   },
   {
-    "id": "EmraldGRECKSTERGOLD70012szamkom",
-    "name": "Шина Emrald GRECKSTERGOLD 7.00-12 с замком",
+    "id": "EmraldGRECKSTERGOLD70012standart",
+    "name": "Шина Emrald GRECKSTERGOLD 7.00-12 стандарт",
     "price": 29283,
     "sizes": {
       "7.00-12": 29283
     },
-    "stock": 13,
+    "stock": 88,
     "modal_name": "Шина цельнолитая 7.00-12 Greckster Gold",
     "img": "https://shop.liftnet.ru/tr-lift/dealer.work//pic/20000020721.jpg",
     "options": [
@@ -5646,7 +5495,7 @@
       ],
       [
         "Исполнение:",
-        "Цельнолитая, с замком"
+        "Цельнолитая, стандарт"
       ],
       [
         "Тип:",
@@ -5691,13 +5540,13 @@
     ]
   },
   {
-    "id": "EmraldGRECKSTERGOLD70012standart",
-    "name": "Шина Emrald GRECKSTERGOLD 7.00-12 стандарт",
+    "id": "EmraldGRECKSTERGOLD70012szamkom",
+    "name": "Шина Emrald GRECKSTERGOLD 7.00-12 с замком",
     "price": 29283,
     "sizes": {
       "7.00-12": 29283
     },
-    "stock": 92,
+    "stock": 25,
     "modal_name": "Шина цельнолитая 7.00-12 Greckster Gold",
     "img": "https://shop.liftnet.ru/tr-lift/dealer.work//pic/20000020721.jpg",
     "options": [
@@ -5715,7 +5564,7 @@
       ],
       [
         "Исполнение:",
-        "Цельнолитая, стандарт"
+        "Цельнолитая, с замком"
       ],
       [
         "Тип:",
@@ -6409,7 +6258,7 @@
     "sizes": {
       "300-15": 39328
     },
-    "stock": 68,
+    "stock": 66,
     "tireProduct": "камерная, шинокомплект",
     "modal_name": "Шинокомплект 300-15 18PR Greckster IND01",
     "img": "https://shop.liftnet.ru/tr-lift/dealer.work//pic/00000037867.jpg",
@@ -6565,7 +6414,7 @@
     "sizes": {
       "300-15": 43202
     },
-    "stock": 52,
+    "stock": 54,
     "tireProduct": "камерная, шинокомплект",
     "modal_name": "Шинокомплект 300-15 20PR Greckster Gold IND01",
     "img": "https://shop.liftnet.ru/tr-lift/dealer.work//pic/20000020250.jpg",
@@ -7451,7 +7300,7 @@
     "sizes": {
       "8.15-15": 18050
     },
-    "stock": 101,
+    "stock": 129,
     "tireProduct": "камерная, шинокомплект",
     "modal_name": "Шинокомплект 8.15-15 16PR Greckster IND04",
     "img": "https://shop.liftnet.ru/tr-lift/dealer.work//pic/00000037861.jpg",
@@ -7685,7 +7534,7 @@
     "sizes": {
       "8.15-15": 24292
     },
-    "stock": 101,
+    "stock": 98,
     "tireProduct": "камерная, шинокомплект",
     "modal_name": "Шинокомплект 8.15-15 16PR Greckster Gold IND01",
     "img": "https://shop.liftnet.ru/tr-lift/dealer.work//pic/20000041966.jpg",
@@ -7832,7 +7681,7 @@
     "sizes": {
       "8.15-15": 37647
     },
-    "stock": 154,
+    "stock": 160,
     "modal_name": "Шина цельнолитая 8.15-15 Greckster Gold",
     "img": "https://shop.liftnet.ru/tr-lift/dealer.work//pic/20000020254.jpg",
     "options": [
@@ -7901,7 +7750,7 @@
     "sizes": {
       "8.15-15": 43295
     },
-    "stock": 41,
+    "stock": 39,
     "modal_name": "Шина цельнолитая 8.15-15 EmPower",
     "img": "https://shop.liftnet.ru/tr-lift/dealer.work//pic/20000020255.jpg",
     "options": [
@@ -8104,7 +7953,7 @@
     "sizes": {
       "8.25-15": 30047
     },
-    "stock": 145,
+    "stock": 146,
     "tireProduct": "камерная, шинокомплект",
     "modal_name": "Шинокомплект 8.25-15 14PR Greckster IND01",
     "img": "https://shop.liftnet.ru/tr-lift/dealer.work//pic/00000038144.jpg",
@@ -8186,7 +8035,7 @@
     "sizes": {
       "8.25-15": 31548
     },
-    "stock": 113,
+    "stock": 122,
     "tireProduct": "камерная, шинокомплект",
     "modal_name": "Шинокомплект 8.25-15 16PR Greckster IND01",
     "img": "https://shop.liftnet.ru/tr-lift/dealer.work//pic/20000041910.jpg",
@@ -8341,7 +8190,7 @@
     "sizes": {
       "7.50-16": 58909
     },
-    "stock": 13,
+    "stock": 11,
     "modal_name": "Шина цельнолитая 7.50-16 Greckster",
     "img": "https://shop.liftnet.ru/tr-lift/dealer.work//pic/00000039318.jpg",
     "options": [
@@ -8488,7 +8337,7 @@
     "sizes": {
       "10.00-20": 45142
     },
-    "stock": 6,
+    "stock": 4,
     "tireProduct": "камерная, шинокомплект",
     "modal_name": "Шинокомплект 10.00-20 16PR Greckster IND04",
     "img": "https://shop.liftnet.ru/tr-lift/dealer.work//pic/20000062859.jpg",
@@ -8633,13 +8482,13 @@
     ]
   },
   {
-    "id": "EmraldEMPOWER100020standart",
-    "name": "Шина Emrald EMPOWER 10.00-20 стандарт",
+    "id": "EmraldEMPOWER100020стандарт(обод80020)",
+    "name": "Шина Emrald EMPOWER 10.00-20 стандарт (обод 8.00-20)",
     "price": 113528,
     "sizes": {
       "10.00-20": 113528
     },
-    "stock": 11,
+    "stock": 2,
     "modal_name": "Шина цельнолитая 10.00-20 EmPower",
     "img": "https://shop.liftnet.ru/tr-lift/dealer.work//pic/20000024538.jpg",
     "options": [
@@ -8657,7 +8506,7 @@
       ],
       [
         "Исполнение:",
-        "Цельнолитая, стандарт"
+        "Цельнолитая, стандарт (обод 8.00-20)"
       ],
       [
         "Тип:",
@@ -8706,13 +8555,13 @@
     ]
   },
   {
-    "id": "EmraldEMPOWER100020стандарт(обод80020)",
-    "name": "Шина Emrald EMPOWER 10.00-20 стандарт (обод 8.00-20)",
+    "id": "EmraldEMPOWER100020standart",
+    "name": "Шина Emrald EMPOWER 10.00-20 стандарт",
     "price": 113528,
     "sizes": {
       "10.00-20": 113528
     },
-    "stock": 2,
+    "stock": 11,
     "modal_name": "Шина цельнолитая 10.00-20 EmPower",
     "img": "https://shop.liftnet.ru/tr-lift/dealer.work//pic/20000024538.jpg",
     "options": [
@@ -8730,7 +8579,7 @@
       ],
       [
         "Исполнение:",
-        "Цельнолитая, стандарт (обод 8.00-20)"
+        "Цельнолитая, стандарт"
       ],
       [
         "Тип:",
@@ -8912,7 +8761,7 @@
     "sizes": {
       "12.5/80-18": 25822
     },
-    "stock": 129,
+    "stock": 132,
     "tireProduct": "бескамерная",
     "modal_name": "Шина пневмо 12.5/80-18 MRL ATU410 TL",
     "img": "https://shop.liftnet.ru/tr-lift/dealer.work//pic/20000032028.jpg",
@@ -8994,7 +8843,7 @@
     "sizes": {
       "12.5/80-18": 27575
     },
-    "stock": 73,
+    "stock": 69,
     "tireProduct": "бескамерная",
     "modal_name": "Шина пневмо 12.5/80-18 Galaxy Sup Ind Lug TL",
     "img": "https://shop.liftnet.ru/tr-lift/dealer.work//pic/20000023320.jpg",
@@ -9150,7 +8999,7 @@
     "sizes": {
       "12.5/80-18": 30517
     },
-    "stock": 281,
+    "stock": 279,
     "tireProduct": "бескамерная",
     "modal_name": "Шина пневмо 12.5/80-18 14PR Apollo AIT 426 TL",
     "img": "https://shop.liftnet.ru/tr-lift/dealer.work//pic/20000062112.jpg",
@@ -9626,7 +9475,7 @@
     "sizes": {
       "10.00-20": 33843
     },
-    "stock": 86,
+    "stock": 104,
     "modal_name": "Шина пневмо 10.00-20 Apollo AWE 713 TT",
     "img": "https://shop.liftnet.ru/tr-lift/dealer.work//pic/20000051327.jpg",
     "options": [
@@ -10014,7 +9863,7 @@
     "sizes": {
       "16.0/70-20": 48165
     },
-    "stock": 20,
+    "stock": 18,
     "tireProduct": "бескамерная",
     "modal_name": "Шина пневмо 16.0/70-20 Galaxy Sup Ind Lug TL",
     "img": "https://shop.liftnet.ru/tr-lift/dealer.work//pic/20000023339.jpg",
@@ -10408,7 +10257,7 @@
     "sizes": {
       "9.00-20": 31691
     },
-    "stock": 2,
+    "stock": 8,
     "modal_name": "Шина пневмо 9.00-20 14PR Apollo AWE 713 TT",
     "img": "https://shop.liftnet.ru/tr-lift/dealer.work//pic/20000063341.jpg",
     "options": [
@@ -10567,7 +10416,7 @@
     "sizes": {
       "16.9-24": 50470
     },
-    "stock": 148,
+    "stock": 146,
     "tireProduct": "бескамерная",
     "modal_name": "Шина пневмо 16.9-24 MRL MTU428 TL",
     "img": "https://shop.liftnet.ru/tr-lift/dealer.work//pic/20000032029.jpg",
@@ -10649,7 +10498,7 @@
     "sizes": {
       "16.9-24": 53516
     },
-    "stock": 160,
+    "stock": 158,
     "tireProduct": "бескамерная",
     "modal_name": "Шина пневмо 16.9-24 Galaxy Sup Ind Lug TL",
     "img": "https://shop.liftnet.ru/tr-lift/dealer.work//pic/20000023321.jpg",
@@ -10883,7 +10732,7 @@
     "sizes": {
       "16.9-24": 60564
     },
-    "stock": 253,
+    "stock": 265,
     "tireProduct": "бескамерная",
     "modal_name": "Шина пневмо 16.9-24 14PR Apollo AIT 416 TL",
     "img": "https://shop.liftnet.ru/tr-lift/dealer.work//pic/20000062113.jpg",
@@ -11203,7 +11052,7 @@
     "sizes": {
       "19.5L-24": 65924
     },
-    "stock": 28,
+    "stock": 22,
     "tireProduct": "бескамерная",
     "modal_name": "Шина пневмо 19.5L-24 12PR Apollo Terra BHL TL",
     "img": "https://shop.liftnet.ru/tr-lift/dealer.work//pic/20000063350.jpg",
@@ -11925,7 +11774,7 @@
     "sizes": {
       "18.4-26": 76292
     },
-    "stock": 155,
+    "stock": 151,
     "tireProduct": "бескамерная",
     "modal_name": "Шина пневмо 18.4-26 14PR Apollo AIT 416 TL",
     "img": "https://shop.liftnet.ru/tr-lift/dealer.work//pic/20000062114.jpg",
@@ -12081,7 +11930,7 @@
     "sizes": {
       "16.9-28": 55752
     },
-    "stock": 286,
+    "stock": 284,
     "tireProduct": "бескамерная",
     "modal_name": "Шина пневмо 16.9-28 MRL MTU428 TL",
     "img": "https://shop.liftnet.ru/tr-lift/dealer.work//pic/20000032031.jpg",
@@ -12163,7 +12012,7 @@
     "sizes": {
       "16.9-28": 57479
     },
-    "stock": 168,
+    "stock": 160,
     "tireProduct": "бескамерная",
     "modal_name": "Шина пневмо 16.9-28 Galaxy Sup Ind Lug TL",
     "img": "https://shop.liftnet.ru/tr-lift/dealer.work//pic/20000023327.jpg",
@@ -12323,7 +12172,7 @@
     "sizes": {
       "16.9-28": 62325
     },
-    "stock": 110,
+    "stock": 112,
     "tireProduct": "бескамерная",
     "modal_name": "Шина пневмо 16.9-28 16PR MRL MTU 430 TL",
     "img": "https://shop.liftnet.ru/tr-lift/dealer.work//pic/20000068104.jpg",
@@ -12401,7 +12250,7 @@
     "sizes": {
       "16.9-28": 66805
     },
-    "stock": 12,
+    "stock": 14,
     "tireProduct": "бескамерная",
     "modal_name": "Шина пневмо 16.9-28 14PR Apollo Terra BHL TL",
     "img": "https://shop.liftnet.ru/tr-lift/dealer.work//pic/20000063339.jpg",
@@ -12479,7 +12328,7 @@
     "sizes": {
       "16.9-28": 67020
     },
-    "stock": 293,
+    "stock": 287,
     "tireProduct": "бескамерная",
     "modal_name": "Шина пневмо 16.9-28 14PR Apollo AIT 426 TL",
     "img": "https://shop.liftnet.ru/tr-lift/dealer.work//pic/20000062115.jpg",
@@ -12793,84 +12642,6 @@
     ]
   },
   {
-    "id": "GalaxySUPINDLUG1693014PR",
-    "name": "Шина Galaxy SUPINDLUG 16.9-30 14PR",
-    "price": 69448,
-    "sizes": {
-      "16.9-30": 69448
-    },
-    "stock": 4,
-    "tireProduct": "бескамерная",
-    "modal_name": "Шина пневмо 16.9-30 Galaxy Sup Ind Lug TL",
-    "img": "https://shop.liftnet.ru/tr-lift/dealer.work//pic/20000023328.jpg",
-    "options": [
-      [
-        "Производитель:",
-        "Galaxy"
-      ],
-      [
-        "Модель:",
-        "SUP IND LUG"
-      ],
-      [
-        "Типоразмер:",
-        "16.9-30"
-      ],
-      [
-        "Исполнение:",
-        "Пневматическая"
-      ],
-      [
-        "Тип:",
-        "TL"
-      ],
-      [
-        "Конструкция каркаса:",
-        "Диагональная"
-      ],
-      [
-        "Сегмент:",
-        "Средний"
-      ],
-      [
-        "Тип протектора (по TRA):",
-        "R-4"
-      ],
-      [
-        "Нагрузка (кг):",
-        "3875 (155A8)"
-      ],
-      [
-        "Наружный диаметр (мм):",
-        "1455"
-      ],
-      [
-        "Ширина (мм):",
-        "429"
-      ],
-      [
-        "Рекомендованный обод:",
-        "W15L"
-      ],
-      [
-        "Вес (кг):",
-        "98"
-      ],
-      [
-        "Объем (м3):",
-        "0,908"
-      ],
-      [
-        "Гарантия (лет):",
-        "5"
-      ],
-      [
-        "Страна производитель:",
-        "ИНДИЯ"
-      ]
-    ]
-  },
-  {
     "id": "MRLMG5415x60066PR",
     "name": "Шина MRL MG54 15x6.00-6 6PR",
     "price": 3169,
@@ -13123,7 +12894,7 @@
     "sizes": {
       "10.0/80-12": 9155
     },
-    "stock": 70,
+    "stock": 62,
     "tireProduct": "бескамерная",
     "modal_name": "Шина пневмо 10.0/80-12 12PR MRL MAW 200 TL",
     "img": "https://shop.liftnet.ru/tr-lift/dealer.work//pic/20000062236.jpg",
@@ -13205,7 +12976,7 @@
     "sizes": {
       "11L-15": 11503
     },
-    "stock": 170,
+    "stock": 166,
     "tireProduct": "бескамерная",
     "modal_name": "Шина пневмо 11L-15 12PR MRL MIM 104 TL",
     "img": "https://shop.liftnet.ru/tr-lift/dealer.work//pic/20000062151.jpg",
@@ -13365,7 +13136,7 @@
     "sizes": {
       "12.5L-15": 16197
     },
-    "stock": 70,
+    "stock": 66,
     "tireProduct": "бескамерная",
     "modal_name": "Шина пневмо 12.5L-15 14PR MRL MIM 104 TL",
     "img": "https://shop.liftnet.ru/tr-lift/dealer.work//pic/20000062137.jpg",
@@ -13603,7 +13374,7 @@
     "sizes": {
       "9.5L-15": 9272
     },
-    "stock": 73,
+    "stock": 69,
     "tireProduct": "бескамерная",
     "modal_name": "Шина пневмо 9.5L-15 12PR MRL MIM 104 TL",
     "img": "https://shop.liftnet.ru/tr-lift/dealer.work//pic/20000062136.jpg",
@@ -13685,7 +13456,7 @@
     "sizes": {
       "10.0/75-15.3": 8803
     },
-    "stock": 387,
+    "stock": 315,
     "tireProduct": "бескамерная",
     "modal_name": "Шина пневмо 10.0/75-15.3 12PR MRL MAW 200 TL",
     "img": "https://shop.liftnet.ru/tr-lift/dealer.work//pic/20000062132.jpg",
@@ -13841,7 +13612,7 @@
     "sizes": {
       "11.5/80-15.3": 11620
     },
-    "stock": 308,
+    "stock": 312,
     "tireProduct": "бескамерная",
     "modal_name": "Шина пневмо 11.5/80-15.3 14PR MRL MAW 200 TL",
     "img": "https://shop.liftnet.ru/tr-lift/dealer.work//pic/20000062133.jpg",
@@ -13997,7 +13768,7 @@
     "sizes": {
       "12.5/80-15.3": 14202
     },
-    "stock": 274,
+    "stock": 286,
     "tireProduct": "бескамерная",
     "modal_name": "Шина пневмо 12.5/80-15.3 14PR MRL MAW 200 TL",
     "img": "https://shop.liftnet.ru/tr-lift/dealer.work//pic/20000062150.jpg",
@@ -14075,7 +13846,7 @@
     "sizes": {
       "400/60-15.5": 20658
     },
-    "stock": 132,
+    "stock": 142,
     "tireProduct": "бескамерная",
     "modal_name": "Шина пневмо 400/60-15.5 16PR MRL MAW 977 TL",
     "img": "https://shop.liftnet.ru/tr-lift/dealer.work//pic/20000062225.jpg",
@@ -14309,7 +14080,7 @@
     "sizes": {
       "7.50-16": 9859
     },
-    "stock": 55,
+    "stock": 51,
     "tireProduct": "бескамерная",
     "modal_name": "Шина пневмо 7.50-16 8PR MRL MIM 374 TL",
     "img": "https://shop.liftnet.ru/tr-lift/dealer.work//pic/20000062226.jpg",
@@ -14469,7 +14240,7 @@
     "sizes": {
       "16.5L-16.1": 41433
     },
-    "stock": 20,
+    "stock": 16,
     "tireProduct": "бескамерная",
     "modal_name": "Шина пневмо 16.5L-16.1 16PR MRL MIM 104 TL",
     "img": "https://shop.liftnet.ru/tr-lift/dealer.work//pic/20000062230.jpg",
@@ -14789,7 +14560,7 @@
     "sizes": {
       "500/50-17": 35212
     },
-    "stock": 36,
+    "stock": 40,
     "tireProduct": "бескамерная",
     "modal_name": "Шина пневмо 500/50-17 18PR MRL MAW 977 TL",
     "img": "https://shop.liftnet.ru/tr-lift/dealer.work//pic/20000062232.jpg",
@@ -14867,7 +14638,7 @@
     "sizes": {
       "11.2-20": 18193
     },
-    "stock": 38,
+    "stock": 42,
     "modal_name": "Шина пневмо 11.2-20 8PR MRL MRT 329 TT",
     "img": "https://shop.liftnet.ru/tr-lift/dealer.work//pic/20000065007.jpg",
     "options": [
@@ -15182,7 +14953,7 @@
     "sizes": {
       "11.2-24": 21127
     },
-    "stock": 56,
+    "stock": 52,
     "modal_name": "Шина пневмо 11.2-24 8PR MRL MRT 329 TT",
     "img": "https://shop.liftnet.ru/tr-lift/dealer.work//pic/20000062153.jpg",
     "options": [
@@ -15263,7 +15034,7 @@
     "sizes": {
       "12.4-24": 24766
     },
-    "stock": 59,
+    "stock": 45,
     "modal_name": "Шина пневмо 12.4-24 8PR MRL MRT 329 TT",
     "img": "https://shop.liftnet.ru/tr-lift/dealer.work//pic/20000062155.jpg",
     "options": [
@@ -15425,7 +15196,7 @@
     "sizes": {
       "16.5/85-24": 56574
     },
-    "stock": 21,
+    "stock": 19,
     "tireProduct": "бескамерная",
     "modal_name": "Шина пневмо 16.5/85-24 16PR MRL MIM 374 TL",
     "img": "https://shop.liftnet.ru/tr-lift/dealer.work//pic/20000062140.jpg",
@@ -15583,88 +15354,6 @@
     ]
   },
   {
-    "id": "MRLRRT77042070R24130A8B",
-    "name": "Шина MRL RRT770 420/70R-24 130A8/B",
-    "price": 53405,
-    "sizes": {
-      "420/70R-24": 53405
-    },
-    "stock": 6,
-    "tireProduct": "бескамерная",
-    "modal_name": "Шина пневмо 420/70R24 130A8/B MRL RRT 770 TL",
-    "img": "https://shop.liftnet.ru/tr-lift/dealer.work//pic/20000062262.jpg",
-    "options": [
-      [
-        "Производитель:",
-        "MRL"
-      ],
-      [
-        "Модель:",
-        "RRT 770"
-      ],
-      [
-        "Типоразмер:",
-        "420/70R-24"
-      ],
-      [
-        "Исполнение:",
-        "Пневматическая"
-      ],
-      [
-        "Тип:",
-        "TL"
-      ],
-      [
-        "Конструкция каркаса:",
-        "Радиальная"
-      ],
-      [
-        "Сегмент:",
-        "Средний"
-      ],
-      [
-        "Тип протектора (по TRA):",
-        "R-1W"
-      ],
-      [
-        "Нагрузка (кг):",
-        "130A8/B"
-      ],
-      [
-        "Наружный диаметр (мм):",
-        "1248"
-      ],
-      [
-        "Ширина (мм):",
-        "418"
-      ],
-      [
-        "Рекомендованный обод:",
-        "W13"
-      ],
-      [
-        "Допустимый обод:",
-        "W12,W14L"
-      ],
-      [
-        "Вес (кг):",
-        "86.4"
-      ],
-      [
-        "Объем (м3):",
-        "0,651"
-      ],
-      [
-        "Гарантия (лет):",
-        "7"
-      ],
-      [
-        "Страна производитель:",
-        "ИНДИЯ"
-      ]
-    ]
-  },
-  {
     "id": "MRLMRT32983248PR",
     "name": "Шина MRL MRT329 8.3-24 8PR",
     "price": 13967,
@@ -15752,7 +15441,7 @@
     "sizes": {
       "9.5-24": 16432
     },
-    "stock": 120,
+    "stock": 116,
     "modal_name": "Шина пневмо 9.5-24 8PR MRL MRT 329 TT",
     "img": "https://shop.liftnet.ru/tr-lift/dealer.work//pic/20000062152.jpg",
     "options": [
@@ -15914,7 +15603,7 @@
     "sizes": {
       "18.4-26": 56222
     },
-    "stock": 61,
+    "stock": 57,
     "modal_name": "Шина пневмо 18.4-26 12PR MRL MRT 329 TT",
     "img": "https://shop.liftnet.ru/tr-lift/dealer.work//pic/20000062156.jpg",
     "options": [
@@ -16946,7 +16635,7 @@
     "sizes": {
       "600/70R-30": 118664
     },
-    "stock": 7,
+    "stock": 12,
     "tireProduct": "бескамерная",
     "modal_name": "Шина пневмо 600/70R30 155A8/152D MRL RRT 770 TL",
     "img": "https://shop.liftnet.ru/tr-lift/dealer.work//pic/20000062256.jpg",
@@ -17420,7 +17109,7 @@
     "sizes": {
       "15.5-38": 46010
     },
-    "stock": 72,
+    "stock": 74,
     "modal_name": "Шина пневмо 15.5-38 10PR MRL MRT 329 TT",
     "img": "https://shop.liftnet.ru/tr-lift/dealer.work//pic/20000062158.jpg",
     "options": [
@@ -18378,7 +18067,7 @@
     "sizes": {
       "710/70R-42": 207163
     },
-    "stock": 68,
+    "stock": 62,
     "tireProduct": "бескамерная",
     "modal_name": "Шина пневмо 710/70R42 176A8/173D MRL RRT 770 TL",
     "img": "https://shop.liftnet.ru/tr-lift/dealer.work//pic/20000062250.jpg",
@@ -18698,7 +18387,7 @@
     "sizes": {
       "380/90R-46": 110917
     },
-    "stock": 30,
+    "stock": 29,
     "tireProduct": "бескамерная",
     "modal_name": "Шина пневмо 380/90R46 162A8/159D MRL RC 950 TL",
     "img": "https://shop.liftnet.ru/tr-lift/dealer.work//pic/20000062242.jpg",
@@ -19804,7 +19493,7 @@
     "sizes": {
       "10-16.5": 24061
     },
-    "stock": 14,
+    "stock": 8,
     "tireProduct": "бескамерная",
     "modal_name": "Шина пневмо 10-16.5 10PR Apollo ASR 624 TL",
     "img": "https://shop.liftnet.ru/tr-lift/dealer.work//pic/20000066169.jpg",
@@ -19864,84 +19553,6 @@
       [
         "Объем (м3):",
         "0,164"
-      ],
-      [
-        "Гарантия (лет):",
-        "5"
-      ],
-      [
-        "Страна производитель:",
-        "ИНДИЯ"
-      ]
-    ]
-  },
-  {
-    "id": "EmraldGrecksterSKT051016514PR",
-    "name": "Шина Emrald GrecksterSKT05 10-16.5 14PR",
-    "price": 25226,
-    "sizes": {
-      "10-16.5": 25226
-    },
-    "stock": 1,
-    "tireProduct": "бескамерная",
-    "modal_name": "Шина пневмо 10-16.5 Greckster SKT05 TL",
-    "img": "https://shop.liftnet.ru/tr-lift/dealer.work//pic/20000041056.jpg",
-    "options": [
-      [
-        "Производитель:",
-        "Emrald"
-      ],
-      [
-        "Модель:",
-        "Greckster SKT05"
-      ],
-      [
-        "Типоразмер:",
-        "10-16.5"
-      ],
-      [
-        "Исполнение:",
-        "Пневматическая"
-      ],
-      [
-        "Тип:",
-        "TL"
-      ],
-      [
-        "Конструкция каркаса:",
-        "Диагональная"
-      ],
-      [
-        "Сегмент:",
-        "Премиум"
-      ],
-      [
-        "Тип протектора (по TRA):",
-        "L-5"
-      ],
-      [
-        "Нагрузка (кг):",
-        "2375 (138A2)"
-      ],
-      [
-        "Наружный диаметр (мм):",
-        "802"
-      ],
-      [
-        "Ширина (мм):",
-        "262"
-      ],
-      [
-        "Рекомендованный обод:",
-        "8.25"
-      ],
-      [
-        "Вес (кг):",
-        "40"
-      ],
-      [
-        "Объем (м3):",
-        "0,169"
       ],
       [
         "Гарантия (лет):",
@@ -20020,6 +19631,84 @@
       [
         "Объем (м3):",
         "0,165"
+      ],
+      [
+        "Гарантия (лет):",
+        "5"
+      ],
+      [
+        "Страна производитель:",
+        "ИНДИЯ"
+      ]
+    ]
+  },
+  {
+    "id": "EmraldGrecksterSKT051016514PR",
+    "name": "Шина Emrald GrecksterSKT05 10-16.5 14PR",
+    "price": 25226,
+    "sizes": {
+      "10-16.5": 25226
+    },
+    "stock": 1,
+    "tireProduct": "бескамерная",
+    "modal_name": "Шина пневмо 10-16.5 Greckster SKT05 TL",
+    "img": "https://shop.liftnet.ru/tr-lift/dealer.work//pic/20000041056.jpg",
+    "options": [
+      [
+        "Производитель:",
+        "Emrald"
+      ],
+      [
+        "Модель:",
+        "Greckster SKT05"
+      ],
+      [
+        "Типоразмер:",
+        "10-16.5"
+      ],
+      [
+        "Исполнение:",
+        "Пневматическая"
+      ],
+      [
+        "Тип:",
+        "TL"
+      ],
+      [
+        "Конструкция каркаса:",
+        "Диагональная"
+      ],
+      [
+        "Сегмент:",
+        "Премиум"
+      ],
+      [
+        "Тип протектора (по TRA):",
+        "L-5"
+      ],
+      [
+        "Нагрузка (кг):",
+        "2375 (138A2)"
+      ],
+      [
+        "Наружный диаметр (мм):",
+        "802"
+      ],
+      [
+        "Ширина (мм):",
+        "262"
+      ],
+      [
+        "Рекомендованный обод:",
+        "8.25"
+      ],
+      [
+        "Вес (кг):",
+        "40"
+      ],
+      [
+        "Объем (м3):",
+        "0,169"
       ],
       [
         "Гарантия (лет):",
@@ -20116,7 +19805,7 @@
     "sizes": {
       "12-16.5": 20736
     },
-    "stock": 78,
+    "stock": 72,
     "tireProduct": "бескамерная",
     "modal_name": "Шина пневмо 12-16.5 12PR Apollo ASR 604 TL",
     "img": "https://shop.liftnet.ru/tr-lift/dealer.work//pic/20000066172.jpg",
@@ -21275,7 +20964,7 @@
     "sizes": {
       "215/75R-17.5": 20785
     },
-    "stock": 26,
+    "stock": 25,
     "tireProduct": "бескамерная",
     "modal_name": "",
     "img": "https://shop.liftnet.ru/tr-lift/dealer.work//pic/20000066178.jpg",
@@ -21345,7 +21034,7 @@
     "sizes": {
       "215/75R-17.5": 20907
     },
-    "stock": 48,
+    "stock": 47,
     "tireProduct": "бескамерная",
     "modal_name": "",
     "img": "https://shop.liftnet.ru/tr-lift/dealer.work//pic/20000065913.jpg",
@@ -21695,7 +21384,7 @@
     "sizes": {
       "315/80R-22.5": 47316
     },
-    "stock": 124,
+    "stock": 122,
     "tireProduct": "бескамерная",
     "modal_name": "",
     "img": "https://shop.liftnet.ru/tr-lift/dealer.work//pic/20000065908.jpg",
@@ -21765,7 +21454,7 @@
     "sizes": {
       "315/80R-22.5": 48416
     },
-    "stock": 4,
+    "stock": 2,
     "tireProduct": "бескамерная",
     "modal_name": "",
     "img": "https://shop.liftnet.ru/tr-lift/dealer.work//pic/20000066174.jpg",
@@ -21835,7 +21524,7 @@
     "sizes": {
       "315/80R-22.5": 52573
     },
-    "stock": 65,
+    "stock": 61,
     "tireProduct": "бескамерная",
     "modal_name": "",
     "img": "https://shop.liftnet.ru/tr-lift/dealer.work//pic/20000065909.jpg",
@@ -21905,7 +21594,7 @@
     "sizes": {
       "315/80R-22.5": 53185
     },
-    "stock": 44,
+    "stock": 213,
     "tireProduct": "бескамерная",
     "modal_name": "",
     "img": "https://shop.liftnet.ru/tr-lift/dealer.work//pic/20000065910.jpg",
@@ -21975,7 +21664,7 @@
     "sizes": {
       "385/65R-22.5": 53674
     },
-    "stock": 212,
+    "stock": 210,
     "tireProduct": "бескамерная",
     "modal_name": "",
     "img": "https://shop.liftnet.ru/tr-lift/dealer.work//pic/20000065911.jpg",
@@ -22045,7 +21734,7 @@
     "sizes": {
       "385/65R-22.5": 54774
     },
-    "stock": 285,
+    "stock": 284,
     "tireProduct": "бескамерная",
     "modal_name": "",
     "img": "https://shop.liftnet.ru/tr-lift/dealer.work//pic/20000066175.jpg",
@@ -22185,7 +21874,7 @@
     "sizes": {
       "12.00R24": 85829
     },
-    "stock": 79,
+    "stock": 78,
     "tireProduct": "камерная, шинокомплект",
     "modal_name": "",
     "img": "https://shop.liftnet.ru/tr-lift/dealer.work//pic/20000065907.jpg",
@@ -22723,7 +22412,7 @@
     "sizes": {
       "17.5-25": 60330
     },
-    "stock": 40,
+    "stock": 37,
     "tireProduct": "камерная, шинокомплект",
     "modal_name": "Шинокомплект 17.5-25 28PR Naaats G2/L2",
     "img": "https://shop.liftnet.ru/tr-lift/dealer.work//pic/20000062854.jpg",
@@ -22801,7 +22490,7 @@
     "sizes": {
       "17.5-25": 62912
     },
-    "stock": 83,
+    "stock": 91,
     "tireProduct": "камерная, шинокомплект",
     "modal_name": "Шинокомплект 17.5-25 28PR LNP E3/L3C",
     "img": "https://shop.liftnet.ru/tr-lift/dealer.work//pic/20000064998.jpg",
@@ -22875,7 +22564,7 @@
     "sizes": {
       "17.5-25": 62912
     },
-    "stock": 76,
+    "stock": 84,
     "tireProduct": "камерная, шинокомплект",
     "modal_name": "Шинокомплект 17.5-25 28PR LNP E3/L3A",
     "img": "https://shop.liftnet.ru/tr-lift/dealer.work//pic/20000064996.jpg",
@@ -22943,16 +22632,16 @@
     ]
   },
   {
-    "id": "NAAATSE3L31752528PR",
-    "name": "Шина NAAATS E3/L3 17.5-25 28PR",
+    "id": "NAAATSNA1951752528PR",
+    "name": "Шина NAAATS NA195 17.5-25 28PR",
     "price": 63616,
     "sizes": {
       "17.5-25": 63616
     },
-    "stock": 190,
-    "tireProduct": "камерная, шинокомплект",
-    "modal_name": "Шинокомплект 17.5-25 28PR Naaats E3/L3",
-    "img": "https://shop.liftnet.ru/tr-lift/dealer.work//pic/20000062853.jpg",
+    "stock": 5,
+    "tireProduct": "бескамерная",
+    "modal_name": "Шина пневмо 17.5-25 28PR Naaats NA195 TL",
+    "img": "https://shop.liftnet.ru/tr-lift/dealer.work//pic/20000063705.jpg",
     "options": [
       [
         "Производитель:",
@@ -22960,7 +22649,7 @@
       ],
       [
         "Модель:",
-        "E3/L3"
+        "NA195"
       ],
       [
         "Типоразмер:",
@@ -22972,7 +22661,7 @@
       ],
       [
         "Тип:",
-        "TTF"
+        "TL"
       ],
       [
         "Конструкция каркаса:",
@@ -22985,10 +22674,6 @@
       [
         "Тип протектора (по TRA):",
         "E-3/L-3"
-      ],
-      [
-        "Нагрузка (кг):",
-        "8500 (182A2)"
       ],
       [
         "Наружный диаметр (мм):",
@@ -23004,7 +22689,7 @@
       ],
       [
         "Вес (кг):",
-        "124.5"
+        "112.5"
       ],
       [
         "Объем (м3):",
@@ -23027,7 +22712,7 @@
     "sizes": {
       "17.5-25": 63616
     },
-    "stock": 33,
+    "stock": 35,
     "tireProduct": "камерная, шинокомплект",
     "modal_name": "Шинокомплект 17.5-25 28PR Naaats NA195",
     "img": "https://shop.liftnet.ru/tr-lift/dealer.work//pic/20000062904.jpg",
@@ -23083,6 +22768,84 @@
       [
         "Вес (кг):",
         "123"
+      ],
+      [
+        "Объем (м3):",
+        "0,811"
+      ],
+      [
+        "Гарантия (лет):",
+        "2"
+      ],
+      [
+        "Страна производитель:",
+        "КИТАЙ"
+      ]
+    ]
+  },
+  {
+    "id": "NAAATSE3L31752528PR",
+    "name": "Шина NAAATS E3/L3 17.5-25 28PR",
+    "price": 63616,
+    "sizes": {
+      "17.5-25": 63616
+    },
+    "stock": 196,
+    "tireProduct": "камерная, шинокомплект",
+    "modal_name": "Шинокомплект 17.5-25 28PR Naaats E3/L3",
+    "img": "https://shop.liftnet.ru/tr-lift/dealer.work//pic/20000062853.jpg",
+    "options": [
+      [
+        "Производитель:",
+        "NAAATS"
+      ],
+      [
+        "Модель:",
+        "E3/L3"
+      ],
+      [
+        "Типоразмер:",
+        "17.5-25"
+      ],
+      [
+        "Исполнение:",
+        "Пневматическая"
+      ],
+      [
+        "Тип:",
+        "TTF"
+      ],
+      [
+        "Конструкция каркаса:",
+        "Диагональная"
+      ],
+      [
+        "Сегмент:",
+        "Эконом"
+      ],
+      [
+        "Тип протектора (по TRA):",
+        "E-3/L-3"
+      ],
+      [
+        "Нагрузка (кг):",
+        "8500 (182A2)"
+      ],
+      [
+        "Наружный диаметр (мм):",
+        "1350"
+      ],
+      [
+        "Ширина (мм):",
+        "445"
+      ],
+      [
+        "Рекомендованный обод:",
+        "14.00/1.5"
+      ],
+      [
+        "Вес (кг):",
+        "124.5"
       ],
       [
         "Объем (м3):",
@@ -23161,80 +22924,6 @@
       [
         "Вес (кг):",
         "113.7"
-      ],
-      [
-        "Объем (м3):",
-        "0,811"
-      ],
-      [
-        "Гарантия (лет):",
-        "2"
-      ],
-      [
-        "Страна производитель:",
-        "КИТАЙ"
-      ]
-    ]
-  },
-  {
-    "id": "NAAATSNA1951752528PR",
-    "name": "Шина NAAATS NA195 17.5-25 28PR",
-    "price": 63616,
-    "sizes": {
-      "17.5-25": 63616
-    },
-    "stock": 3,
-    "tireProduct": "бескамерная",
-    "modal_name": "Шина пневмо 17.5-25 28PR Naaats NA195 TL",
-    "img": "https://shop.liftnet.ru/tr-lift/dealer.work//pic/20000063705.jpg",
-    "options": [
-      [
-        "Производитель:",
-        "NAAATS"
-      ],
-      [
-        "Модель:",
-        "NA195"
-      ],
-      [
-        "Типоразмер:",
-        "17.5-25"
-      ],
-      [
-        "Исполнение:",
-        "Пневматическая"
-      ],
-      [
-        "Тип:",
-        "TL"
-      ],
-      [
-        "Конструкция каркаса:",
-        "Диагональная"
-      ],
-      [
-        "Сегмент:",
-        "Эконом"
-      ],
-      [
-        "Тип протектора (по TRA):",
-        "E-3/L-3"
-      ],
-      [
-        "Наружный диаметр (мм):",
-        "1350"
-      ],
-      [
-        "Ширина (мм):",
-        "445"
-      ],
-      [
-        "Рекомендованный обод:",
-        "14.00/1.5"
-      ],
-      [
-        "Вес (кг):",
-        "112.5"
       ],
       [
         "Объем (м3):",
@@ -23413,7 +23102,7 @@
     "sizes": {
       "17.5-25": 81091
     },
-    "stock": 63,
+    "stock": 57,
     "tireProduct": "бескамерная",
     "modal_name": "Шина пневмо 17.5-25 Galaxy EXR-300 TL",
     "img": "https://shop.liftnet.ru/tr-lift/dealer.work//pic/20000023322.jpg",
@@ -23651,7 +23340,7 @@
     "sizes": {
       "17.5-25": 117373
     },
-    "stock": 13,
+    "stock": 15,
     "tireProduct": "бескамерная",
     "modal_name": "Шина пневмо 17.5-25 16PR Naaats L5 TL",
     "img": "https://shop.liftnet.ru/tr-lift/dealer.work//pic/20000041898.jpg",
@@ -23957,16 +23646,16 @@
     ]
   },
   {
-    "id": "NAAATSG2L22052528PR",
-    "name": "Шина NAAATS G2/L2 20.5-25 28PR",
+    "id": "NAAATSNA1952052528PR",
+    "name": "Шина NAAATS NA195 20.5-25 28PR",
     "price": 89673,
     "sizes": {
       "20.5-25": 89673
     },
-    "stock": 17,
+    "stock": 14,
     "tireProduct": "камерная, шинокомплект",
-    "modal_name": "Шинокомплект 20.5-25 28PR Naaats G2/L2",
-    "img": "https://shop.liftnet.ru/tr-lift/dealer.work//pic/20000062905.jpg",
+    "modal_name": "Шинокомплект 20.5-25 28PR Naaats NA195",
+    "img": "https://shop.liftnet.ru/tr-lift/dealer.work//pic/20000063707.jpg",
     "options": [
       [
         "Производитель:",
@@ -23974,7 +23663,7 @@
       ],
       [
         "Модель:",
-        "G2/L2"
+        "NA195"
       ],
       [
         "Типоразмер:",
@@ -23998,11 +23687,7 @@
       ],
       [
         "Тип протектора (по TRA):",
-        "G-2/L-2"
-      ],
-      [
-        "Нагрузка (кг):",
-        "7500 (178B)"
+        "E3/L3"
       ],
       [
         "Наружный диаметр (мм):",
@@ -24018,7 +23703,7 @@
       ],
       [
         "Вес (кг):",
-        "158.1"
+        "178.4"
       ],
       [
         "Объем (м3):",
@@ -24097,6 +23782,84 @@
     ]
   },
   {
+    "id": "NAAATSG2L22052528PR",
+    "name": "Шина NAAATS G2/L2 20.5-25 28PR",
+    "price": 89673,
+    "sizes": {
+      "20.5-25": 89673
+    },
+    "stock": 23,
+    "tireProduct": "камерная, шинокомплект",
+    "modal_name": "Шинокомплект 20.5-25 28PR Naaats G2/L2",
+    "img": "https://shop.liftnet.ru/tr-lift/dealer.work//pic/20000062905.jpg",
+    "options": [
+      [
+        "Производитель:",
+        "NAAATS"
+      ],
+      [
+        "Модель:",
+        "G2/L2"
+      ],
+      [
+        "Типоразмер:",
+        "20.5-25"
+      ],
+      [
+        "Исполнение:",
+        "Пневматическая"
+      ],
+      [
+        "Тип:",
+        "TTF"
+      ],
+      [
+        "Конструкция каркаса:",
+        "Диагональная"
+      ],
+      [
+        "Сегмент:",
+        "Эконом"
+      ],
+      [
+        "Тип протектора (по TRA):",
+        "G-2/L-2"
+      ],
+      [
+        "Нагрузка (кг):",
+        "7500 (178B)"
+      ],
+      [
+        "Наружный диаметр (мм):",
+        "1490"
+      ],
+      [
+        "Ширина (мм):",
+        "520"
+      ],
+      [
+        "Рекомендованный обод:",
+        "17.00/2.0"
+      ],
+      [
+        "Вес (кг):",
+        "158.1"
+      ],
+      [
+        "Объем (м3):",
+        "1,154"
+      ],
+      [
+        "Гарантия (лет):",
+        "2"
+      ],
+      [
+        "Страна производитель:",
+        "КИТАЙ"
+      ]
+    ]
+  },
+  {
     "id": "NAAATS3L32052528PR",
     "name": "Шина NAAATS 3/L3 20.5-25 28PR",
     "price": 89673,
@@ -24159,80 +23922,6 @@
       [
         "Вес (кг):",
         "178.9"
-      ],
-      [
-        "Объем (м3):",
-        "1,154"
-      ],
-      [
-        "Гарантия (лет):",
-        "2"
-      ],
-      [
-        "Страна производитель:",
-        "КИТАЙ"
-      ]
-    ]
-  },
-  {
-    "id": "NAAATSNA1952052528PR",
-    "name": "Шина NAAATS NA195 20.5-25 28PR",
-    "price": 89673,
-    "sizes": {
-      "20.5-25": 89673
-    },
-    "stock": 14,
-    "tireProduct": "камерная, шинокомплект",
-    "modal_name": "Шинокомплект 20.5-25 28PR Naaats NA195",
-    "img": "https://shop.liftnet.ru/tr-lift/dealer.work//pic/20000063707.jpg",
-    "options": [
-      [
-        "Производитель:",
-        "NAAATS"
-      ],
-      [
-        "Модель:",
-        "NA195"
-      ],
-      [
-        "Типоразмер:",
-        "20.5-25"
-      ],
-      [
-        "Исполнение:",
-        "Пневматическая"
-      ],
-      [
-        "Тип:",
-        "TTF"
-      ],
-      [
-        "Конструкция каркаса:",
-        "Диагональная"
-      ],
-      [
-        "Сегмент:",
-        "Эконом"
-      ],
-      [
-        "Тип протектора (по TRA):",
-        "E3/L3"
-      ],
-      [
-        "Наружный диаметр (мм):",
-        "1490"
-      ],
-      [
-        "Ширина (мм):",
-        "520"
-      ],
-      [
-        "Рекомендованный обод:",
-        "17.00/2.0"
-      ],
-      [
-        "Вес (кг):",
-        "178.4"
       ],
       [
         "Объем (м3):",
@@ -24793,7 +24482,7 @@
     "sizes": {
       "23.5-25": 117021
     },
-    "stock": 62,
+    "stock": 67,
     "tireProduct": "камерная, шинокомплект",
     "modal_name": "Шинокомплект 23.5-25 28PR LNP E3/L3C",
     "img": "https://shop.liftnet.ru/tr-lift/dealer.work//pic/20000065001.jpg",
@@ -24949,7 +24638,7 @@
     "sizes": {
       "23.5-25": 118194
     },
-    "stock": 197,
+    "stock": 201,
     "tireProduct": "камерная, шинокомплект",
     "modal_name": "Шинокомплект 23.5-25 28PR Naaats Е3/L3",
     "img": "https://shop.liftnet.ru/tr-lift/dealer.work//pic/20000062908.jpg",
@@ -26990,7 +26679,7 @@
     "sizes": {
       "14.00-24": 60447
     },
-    "stock": 63,
+    "stock": 47,
     "tireProduct": "бескамерная",
     "modal_name": "Шина пневмо 14.00-24 Apollo ARG 217 TL",
     "img": "https://shop.liftnet.ru/tr-lift/dealer.work//pic/20000051326.jpg",
@@ -27505,6 +27194,2747 @@
       [
         "Гарантия (лет):",
         "5"
+      ],
+      [
+        "Страна производитель:",
+        "ИНДИЯ"
+      ]
+    ]
+  },
+  {
+    "id": "GalaxyPORTSTARPLUSE418002540PR",
+    "name": "Шина Galaxy PORTSTARPLUSE-4 18.00-25 40PR",
+    "price": 326510,
+    "sizes": {
+      "18.00-25": 326510
+    },
+    "stock": 3,
+    "tireProduct": "бескамерная",
+    "modal_name": "Шина пневмо GALAXY PORT STAR PLUS E-4 TL",
+    "img": "https://shop.liftnet.ru/tr-lift/dealer.work//pic/20000024472.jpg",
+    "options": [
+      [
+        "Производитель:",
+        "Galaxy"
+      ],
+      [
+        "Модель:",
+        "PORT STAR PLUS E-4"
+      ],
+      [
+        "Типоразмер:",
+        "18.00-25"
+      ],
+      [
+        "Исполнение:",
+        "Пневматическая"
+      ],
+      [
+        "Тип:",
+        "TL"
+      ],
+      [
+        "Конструкция каркаса:",
+        "Диагональная"
+      ],
+      [
+        "Сегмент:",
+        "Средний"
+      ],
+      [
+        "Тип протектора (по TRA):",
+        "E-4/IND-4"
+      ],
+      [
+        "Нагрузка (кг):",
+        "23600 (218A2)"
+      ],
+      [
+        "Наружный диаметр (мм):",
+        "1673"
+      ],
+      [
+        "Ширина (мм):",
+        "498"
+      ],
+      [
+        "Вес (кг):",
+        "426"
+      ],
+      [
+        "Объем (м3):",
+        "1,394"
+      ],
+      [
+        "Гарантия (лет):",
+        "5"
+      ],
+      [
+        "Страна производитель:",
+        "ИНДИЯ"
+      ]
+    ]
+  },
+  {
+    "id": "GalaxyWORKMASTER155802416PR",
+    "name": "Шина Galaxy WORKMASTER 15.5/80-24 16PR",
+    "price": 48512,
+    "sizes": {
+      "15.5/80-24": 48512
+    },
+    "stock": 7,
+    "tireProduct": "бескамерная",
+    "modal_name": "Шина пневмо 15.5/80-24 Galaxy Work Master TL",
+    "img": "https://shop.liftnet.ru/tr-lift/dealer.work//pic/20000034463.jpg",
+    "options": [
+      [
+        "Производитель:",
+        "Galaxy"
+      ],
+      [
+        "Модель:",
+        "WORK MASTER"
+      ],
+      [
+        "Типоразмер:",
+        "15.5/80-24"
+      ],
+      [
+        "Исполнение:",
+        "Пневматическая"
+      ],
+      [
+        "Тип:",
+        "TL"
+      ],
+      [
+        "Конструкция каркаса:",
+        "Диагональная"
+      ],
+      [
+        "Сегмент:",
+        "Средний"
+      ],
+      [
+        "Тип протектора (по TRA):",
+        "R-1"
+      ],
+      [
+        "Нагрузка (кг):",
+        "4875 (163A8)"
+      ],
+      [
+        "Наружный диаметр (мм):",
+        "1262"
+      ],
+      [
+        "Ширина (мм):",
+        "384"
+      ],
+      [
+        "Рекомендованный обод:",
+        "12"
+      ],
+      [
+        "Вес (кг):",
+        "72"
+      ],
+      [
+        "Объем (м3):",
+        "0,612"
+      ],
+      [
+        "Гарантия (лет):",
+        "5"
+      ],
+      [
+        "Страна производитель:",
+        "ИНДИЯ"
+      ]
+    ]
+  },
+  {
+    "id": "APOLLOFX525155802416PR",
+    "name": "Шина APOLLO FX525 15.5/80-24 16PR",
+    "price": 52622,
+    "sizes": {
+      "15.5/80-24": 52622
+    },
+    "stock": 140,
+    "tireProduct": "бескамерная",
+    "modal_name": "Шина пневмо 15.5/80-24 16PR Apollo FX525 TL",
+    "img": "https://shop.liftnet.ru/tr-lift/dealer.work//pic/20000062116.jpg",
+    "options": [
+      [
+        "Производитель:",
+        "APOLLO"
+      ],
+      [
+        "Модель:",
+        "FX525"
+      ],
+      [
+        "Типоразмер:",
+        "15.5/80-24"
+      ],
+      [
+        "Исполнение:",
+        "Пневматическая"
+      ],
+      [
+        "Тип:",
+        "TL"
+      ],
+      [
+        "Конструкция каркаса:",
+        "Диагональная"
+      ],
+      [
+        "Сегмент:",
+        "Премиум"
+      ],
+      [
+        "Тип протектора (по TRA):",
+        "R-4"
+      ],
+      [
+        "Нагрузка (кг):",
+        "3450 (151A8)"
+      ],
+      [
+        "Наружный диаметр (мм):",
+        "1270"
+      ],
+      [
+        "Ширина (мм):",
+        "390"
+      ],
+      [
+        "Рекомендованный обод:",
+        "W13.00"
+      ],
+      [
+        "Вес (кг):",
+        "79.4"
+      ],
+      [
+        "Объем (м3):",
+        "0,629"
+      ],
+      [
+        "Гарантия (лет):",
+        "5"
+      ],
+      [
+        "Страна производитель:",
+        "ИНДИЯ"
+      ]
+    ]
+  },
+  {
+    "id": "GalaxySUPERHIGHLIFT155802416PR",
+    "name": "Шина Galaxy SUPERHIGHLIFT 15.5/80-24 16PR",
+    "price": 64955,
+    "sizes": {
+      "15.5/80-24": 64955
+    },
+    "stock": 6,
+    "tireProduct": "бескамерная",
+    "modal_name": "Шина пневмо 15.5/80-24 Galaxy Super High Lift TL",
+    "img": "https://shop.liftnet.ru/tr-lift/dealer.work//pic/20000030182.jpg",
+    "options": [
+      [
+        "Производитель:",
+        "Galaxy"
+      ],
+      [
+        "Модель:",
+        "SUPER HIGH LIFT"
+      ],
+      [
+        "Типоразмер:",
+        "15.5/80-24"
+      ],
+      [
+        "Исполнение:",
+        "Пневматическая"
+      ],
+      [
+        "Тип:",
+        "TL"
+      ],
+      [
+        "Конструкция каркаса:",
+        "Диагональная"
+      ],
+      [
+        "Сегмент:",
+        "Средний"
+      ],
+      [
+        "Тип протектора (по TRA):",
+        "R-1"
+      ],
+      [
+        "Нагрузка (кг):",
+        "4875 (163A6)"
+      ],
+      [
+        "Наружный диаметр (мм):",
+        "1240"
+      ],
+      [
+        "Ширина (мм):",
+        "394"
+      ],
+      [
+        "Рекомендованный обод:",
+        "W12"
+      ],
+      [
+        "Вес (кг):",
+        "86"
+      ],
+      [
+        "Объем (м3):",
+        "0,606"
+      ],
+      [
+        "Гарантия (лет):",
+        "5"
+      ],
+      [
+        "Страна производитель:",
+        "ИНДИЯ"
+      ]
+    ]
+  },
+  {
+    "id": "APOLLOAMP928405702414PR",
+    "name": "Шина APOLLO AMP928 405/70-24 14PR",
+    "price": 63577,
+    "sizes": {
+      "405/70-24": 63577
+    },
+    "stock": 24,
+    "tireProduct": "бескамерная",
+    "modal_name": "Шина пневмо 405/70-24 Apollo AMP 928 TL",
+    "img": "https://shop.liftnet.ru/tr-lift/dealer.work//pic/20000051325.jpg",
+    "options": [
+      [
+        "Производитель:",
+        "APOLLO"
+      ],
+      [
+        "Модель:",
+        "AMP 928"
+      ],
+      [
+        "Типоразмер:",
+        "405/70-24"
+      ],
+      [
+        "Исполнение:",
+        "Пневматическая"
+      ],
+      [
+        "Тип:",
+        "TL"
+      ],
+      [
+        "Конструкция каркаса:",
+        "Диагональная"
+      ],
+      [
+        "Сегмент:",
+        "Премиум"
+      ],
+      [
+        "Тип протектора (по TRA):",
+        "R-1"
+      ],
+      [
+        "Нагрузка (кг):",
+        "3550 (152A8)"
+      ],
+      [
+        "Наружный диаметр (мм):",
+        "1178"
+      ],
+      [
+        "Ширина (мм):",
+        "407"
+      ],
+      [
+        "Рекомендованный обод:",
+        "W13.00"
+      ],
+      [
+        "Вес (кг):",
+        "79.09"
+      ],
+      [
+        "Объем (м3):",
+        "0,565"
+      ],
+      [
+        "Гарантия (лет):",
+        "5"
+      ],
+      [
+        "Страна производитель:",
+        "ИНДИЯ"
+      ]
+    ]
+  },
+  {
+    "id": "GalaxyHIGHLIFTRADIAL40570R24152A8",
+    "name": "Шина Galaxy HIGHLIFTRADIAL 405/70R-24 152A8",
+    "price": 78947,
+    "sizes": {
+      "405/70R-24": 78947
+    },
+    "stock": 20,
+    "tireProduct": "бескамерная",
+    "modal_name": "Шина пневмо 405/70R24 Galaxy High Lift Radial TL",
+    "img": "https://shop.liftnet.ru/tr-lift/dealer.work//pic/20000037194.jpg",
+    "options": [
+      [
+        "Производитель:",
+        "Galaxy"
+      ],
+      [
+        "Модель:",
+        "HIGH LIFT RADIAL"
+      ],
+      [
+        "Типоразмер:",
+        "405/70R-24"
+      ],
+      [
+        "Исполнение:",
+        "Пневматическая"
+      ],
+      [
+        "Тип:",
+        "TL"
+      ],
+      [
+        "Конструкция каркаса:",
+        "Радиальная"
+      ],
+      [
+        "Сегмент:",
+        "Средний"
+      ],
+      [
+        "Тип протектора (по TRA):",
+        "R-1"
+      ],
+      [
+        "Нагрузка (кг):",
+        "3550 (152A8)"
+      ],
+      [
+        "Наружный диаметр (мм):",
+        "1178"
+      ],
+      [
+        "Ширина (мм):",
+        "407"
+      ],
+      [
+        "Рекомендованный обод:",
+        "W13"
+      ],
+      [
+        "Вес (кг):",
+        "80.903"
+      ],
+      [
+        "Объем (м3):",
+        "0,565"
+      ],
+      [
+        "Гарантия (лет):",
+        "5"
+      ],
+      [
+        "Страна производитель:",
+        "ИНДИЯ"
+      ]
+    ]
+  },
+  {
+    "id": "GalaxyHIGHLIFTRADIAL46070R24159A8",
+    "name": "Шина Galaxy HIGHLIFTRADIAL 460/70R-24 159A8",
+    "price": 72553,
+    "sizes": {
+      "460/70R-24": 72553
+    },
+    "stock": 2,
+    "tireProduct": "бескамерная",
+    "modal_name": "Шина пневмо 460/70R24 Galaxy High Lift Radial TL",
+    "img": "https://shop.liftnet.ru/tr-lift/dealer.work//pic/20000037195.jpg",
+    "options": [
+      [
+        "Производитель:",
+        "Galaxy"
+      ],
+      [
+        "Модель:",
+        "HIGH LIFT RADIAL"
+      ],
+      [
+        "Типоразмер:",
+        "460/70R-24"
+      ],
+      [
+        "Исполнение:",
+        "Пневматическая"
+      ],
+      [
+        "Тип:",
+        "TL"
+      ],
+      [
+        "Конструкция каркаса:",
+        "Радиальная"
+      ],
+      [
+        "Сегмент:",
+        "Средний"
+      ],
+      [
+        "Тип протектора (по TRA):",
+        "R-1"
+      ],
+      [
+        "Нагрузка (кг):",
+        "4375 (159A8)"
+      ],
+      [
+        "Наружный диаметр (мм):",
+        "1245"
+      ],
+      [
+        "Ширина (мм):",
+        "445"
+      ],
+      [
+        "Рекомендованный обод:",
+        "W15L"
+      ],
+      [
+        "Допустимый обод:",
+        "W14L"
+      ],
+      [
+        "Вес (кг):",
+        "91.733"
+      ],
+      [
+        "Объем (м3):",
+        "0,69"
+      ],
+      [
+        "Гарантия (лет):",
+        "5"
+      ],
+      [
+        "Страна производитель:",
+        "ИНДИЯ"
+      ]
+    ]
+  },
+  {
+    "id": "MRLGT33346070R24159A8",
+    "name": "Шина MRL GT333 460/70R-24 159A8",
+    "price": 83922,
+    "sizes": {
+      "460/70R-24": 83922
+    },
+    "stock": 17,
+    "tireProduct": "бескамерная",
+    "modal_name": "Шина пневмо 460/70R24 MRL GT 333 TL",
+    "img": "https://shop.liftnet.ru/tr-lift/dealer.work//pic/20000060160.jpg",
+    "options": [
+      [
+        "Производитель:",
+        "MRL"
+      ],
+      [
+        "Модель:",
+        "GT 333"
+      ],
+      [
+        "Типоразмер:",
+        "460/70R-24"
+      ],
+      [
+        "Исполнение:",
+        "Пневматическая"
+      ],
+      [
+        "Тип:",
+        "TL"
+      ],
+      [
+        "Конструкция каркаса:",
+        "Радиальная"
+      ],
+      [
+        "Сегмент:",
+        "Средний"
+      ],
+      [
+        "Тип протектора (по TRA):",
+        "R-4"
+      ],
+      [
+        "Нагрузка (кг):",
+        "4375 (159A8/B)"
+      ],
+      [
+        "Наружный диаметр (мм):",
+        "1254"
+      ],
+      [
+        "Ширина (мм):",
+        "455"
+      ],
+      [
+        "Рекомендованный обод:",
+        "W15L"
+      ],
+      [
+        "Допустимый обод:",
+        "W14L"
+      ],
+      [
+        "Вес (кг):",
+        "102.5"
+      ],
+      [
+        "Объем (м3):",
+        "0,715"
+      ],
+      [
+        "Гарантия (лет):",
+        "5"
+      ],
+      [
+        "Страна производитель:",
+        "ИНДИЯ"
+      ]
+    ]
+  },
+  {
+    "id": "NAAATSE3L318002532PR",
+    "name": "Шина NAAATS E3/L3 18.00-25 32PR",
+    "price": 136152,
+    "sizes": {
+      "18.00-25": 136152
+    },
+    "stock": 59,
+    "tireProduct": "камерная, шинокомплект",
+    "modal_name": "Шинокомплект 18.00-25 32PR Naaats E3/L3",
+    "img": "https://shop.liftnet.ru/tr-lift/dealer.work//pic/20000051708.jpg",
+    "options": [
+      [
+        "Производитель:",
+        "NAAATS"
+      ],
+      [
+        "Модель:",
+        "E3/L3"
+      ],
+      [
+        "Типоразмер:",
+        "18.00-25"
+      ],
+      [
+        "Исполнение:",
+        "Пневматическая"
+      ],
+      [
+        "Тип:",
+        "TTF"
+      ],
+      [
+        "Конструкция каркаса:",
+        "Диагональная"
+      ],
+      [
+        "Сегмент:",
+        "Эконом"
+      ],
+      [
+        "Тип протектора (по TRA):",
+        "E-3/L-3"
+      ],
+      [
+        "Нагрузка (кг):",
+        "8540 (182B)"
+      ],
+      [
+        "Наружный диаметр (мм):",
+        "1615"
+      ],
+      [
+        "Ширина (мм):",
+        "495"
+      ],
+      [
+        "Рекомендованный обод:",
+        "13.00/2.5"
+      ],
+      [
+        "Вес (кг):",
+        "201.6"
+      ],
+      [
+        "Объем (м3):",
+        "1,291"
+      ],
+      [
+        "Гарантия (лет):",
+        "2"
+      ],
+      [
+        "Страна производитель:",
+        "КИТАЙ"
+      ]
+    ]
+  },
+  {
+    "id": "GalaxyHTSR400235R25185B",
+    "name": "Шина Galaxy HTSR400 23.5R-25 185B",
+    "price": 204669,
+    "sizes": {
+      "23.5R-25": 204669
+    },
+    "stock": 35,
+    "tireProduct": "бескамерная",
+    "modal_name": "Шина пневмо 23.5R25 Galaxy HTSR 400 TL",
+    "img": "https://shop.liftnet.ru/tr-lift/dealer.work//pic/20000038951.jpg",
+    "options": [
+      [
+        "Производитель:",
+        "Galaxy"
+      ],
+      [
+        "Модель:",
+        "HTSR 400"
+      ],
+      [
+        "Типоразмер:",
+        "23.5R-25"
+      ],
+      [
+        "Исполнение:",
+        "Пневматическая"
+      ],
+      [
+        "Тип:",
+        "TL"
+      ],
+      [
+        "Конструкция каркаса:",
+        "Радиальная"
+      ],
+      [
+        "Сегмент:",
+        "Средний"
+      ],
+      [
+        "Тип протектора (по TRA):",
+        "E-4/L-4"
+      ],
+      [
+        "Нагрузка (кг):",
+        "9250 (185B)"
+      ],
+      [
+        "Наружный диаметр (мм):",
+        "1643"
+      ],
+      [
+        "Ширина (мм):",
+        "602"
+      ],
+      [
+        "Рекомендованный обод:",
+        "19.50/2.50"
+      ],
+      [
+        "Вес (кг):",
+        "362.331"
+      ],
+      [
+        "Объем (м3):",
+        "1,625"
+      ],
+      [
+        "Гарантия (лет):",
+        "5"
+      ],
+      [
+        "Страна производитель:",
+        "ИНДИЯ"
+      ]
+    ]
+  },
+  {
+    "id": "WORCRAFTADT01265R25193B",
+    "name": "Шина WORCRAFT ADT01 26.5R-25 193B",
+    "price": 329329,
+    "sizes": {
+      "26.5R-25": 329329
+    },
+    "stock": 6,
+    "tireProduct": "бескамерная",
+    "modal_name": "Шина пневмо 26.5R25 193B Worcraft ADT 01 TL",
+    "img": "https://shop.liftnet.ru/tr-lift/dealer.work//pic/20000064118.jpg",
+    "options": [
+      [
+        "Производитель:",
+        "WORCRAFT"
+      ],
+      [
+        "Модель:",
+        "ADT 01"
+      ],
+      [
+        "Типоразмер:",
+        "26.5R-25"
+      ],
+      [
+        "Исполнение:",
+        "Пневматическая"
+      ],
+      [
+        "Тип:",
+        "TL"
+      ],
+      [
+        "Конструкция каркаса:",
+        "Радиальная"
+      ],
+      [
+        "Сегмент:",
+        "Эконом"
+      ],
+      [
+        "Тип протектора (по TRA):",
+        "E-4/L-4"
+      ],
+      [
+        "Нагрузка (кг):",
+        "11500 (193B)"
+      ],
+      [
+        "Наружный диаметр (мм):",
+        "1800"
+      ],
+      [
+        "Ширина (мм):",
+        "675"
+      ],
+      [
+        "Рекомендованный обод:",
+        "22.00/3.0"
+      ],
+      [
+        "Вес (кг):",
+        "485"
+      ],
+      [
+        "Объем (м3):",
+        "2,187"
+      ],
+      [
+        "Гарантия (лет):",
+        "2"
+      ],
+      [
+        "Страна производитель:",
+        "КИТАЙ"
+      ]
+    ]
+  },
+  {
+    "id": "GalaxyHTSR400265R25193B",
+    "name": "Шина Galaxy HTSR400 26.5R-25 193B",
+    "price": 330187,
+    "sizes": {
+      "26.5R-25": 330187
+    },
+    "stock": 18,
+    "tireProduct": "бескамерная",
+    "modal_name": "Шина пневмо 26.5R25 Galaxy HTSR 400 TL",
+    "img": "https://shop.liftnet.ru/tr-lift/dealer.work//pic/20000038952.jpg",
+    "options": [
+      [
+        "Производитель:",
+        "Galaxy"
+      ],
+      [
+        "Модель:",
+        "HTSR 400"
+      ],
+      [
+        "Типоразмер:",
+        "26.5R-25"
+      ],
+      [
+        "Исполнение:",
+        "Пневматическая"
+      ],
+      [
+        "Тип:",
+        "TL"
+      ],
+      [
+        "Конструкция каркаса:",
+        "Радиальная"
+      ],
+      [
+        "Сегмент:",
+        "Средний"
+      ],
+      [
+        "Тип протектора (по TRA):",
+        "E-4/L-4"
+      ],
+      [
+        "Нагрузка (кг):",
+        "11500 (193B)"
+      ],
+      [
+        "Наружный диаметр (мм):",
+        "1761"
+      ],
+      [
+        "Ширина (мм):",
+        "675"
+      ],
+      [
+        "Рекомендованный обод:",
+        "22.00/3.0"
+      ],
+      [
+        "Вес (кг):",
+        "478"
+      ],
+      [
+        "Объем (м3):",
+        "2,093"
+      ],
+      [
+        "Гарантия (лет):",
+        "5"
+      ],
+      [
+        "Страна производитель:",
+        "ИНДИЯ"
+      ]
+    ]
+  },
+  {
+    "id": "WORCRAFTADT01295R25216A2200B",
+    "name": "Шина WORCRAFT ADT01 29.5R-25 216A2/200B",
+    "price": 336860,
+    "sizes": {
+      "29.5R-25": 336860
+    },
+    "stock": 6,
+    "tireProduct": "бескамерная",
+    "modal_name": "Шина пневмо 29.5R25 216A2/200B Worсraft ADT 01 TL",
+    "img": "https://shop.liftnet.ru/tr-lift/dealer.work//pic/20000064120.jpg",
+    "options": [
+      [
+        "Производитель:",
+        "WORCRAFT"
+      ],
+      [
+        "Модель:",
+        "ADT 01"
+      ],
+      [
+        "Типоразмер:",
+        "29.5R-25"
+      ],
+      [
+        "Исполнение:",
+        "Пневматическая"
+      ],
+      [
+        "Тип:",
+        "TL"
+      ],
+      [
+        "Конструкция каркаса:",
+        "Радиальная"
+      ],
+      [
+        "Сегмент:",
+        "Эконом"
+      ],
+      [
+        "Тип протектора (по TRA):",
+        "E-4/L-4"
+      ],
+      [
+        "Нагрузка (кг):",
+        "14000 (200B)"
+      ],
+      [
+        "Наружный диаметр (мм):",
+        "1920"
+      ],
+      [
+        "Ширина (мм):",
+        "750"
+      ],
+      [
+        "Рекомендованный обод:",
+        "25.00/3.5"
+      ],
+      [
+        "Вес (кг):",
+        "588"
+      ],
+      [
+        "Объем (м3):",
+        "2,765"
+      ],
+      [
+        "Гарантия (лет):",
+        "2"
+      ],
+      [
+        "Страна производитель:",
+        "КИТАЙ"
+      ]
+    ]
+  },
+  {
+    "id": "WORCRAFTADT02295R25216A2200B",
+    "name": "Шина WORCRAFT ADT02 29.5R-25 216A2/200B",
+    "price": 378723,
+    "sizes": {
+      "29.5R-25": 378723
+    },
+    "stock": 6,
+    "tireProduct": "бескамерная",
+    "modal_name": "Шина пневмо 29.5R25 216A2/200B Worсraft ADT 02 TL",
+    "img": "https://shop.liftnet.ru/tr-lift/dealer.work//pic/20000064121.jpg",
+    "options": [
+      [
+        "Производитель:",
+        "WORCRAFT"
+      ],
+      [
+        "Модель:",
+        "ADT 02"
+      ],
+      [
+        "Типоразмер:",
+        "29.5R-25"
+      ],
+      [
+        "Исполнение:",
+        "Пневматическая"
+      ],
+      [
+        "Тип:",
+        "TL"
+      ],
+      [
+        "Конструкция каркаса:",
+        "Радиальная"
+      ],
+      [
+        "Сегмент:",
+        "Эконом"
+      ],
+      [
+        "Тип протектора (по TRA):",
+        "E-4/L-4"
+      ],
+      [
+        "Нагрузка (кг):",
+        "14000 (200B)"
+      ],
+      [
+        "Наружный диаметр (мм):",
+        "1920"
+      ],
+      [
+        "Ширина (мм):",
+        "750"
+      ],
+      [
+        "Рекомендованный обод:",
+        "25.00/3.5"
+      ],
+      [
+        "Вес (кг):",
+        "627"
+      ],
+      [
+        "Объем (м3):",
+        "2,765"
+      ],
+      [
+        "Гарантия (лет):",
+        "2"
+      ],
+      [
+        "Страна производитель:",
+        "КИТАЙ"
+      ]
+    ]
+  },
+  {
+    "id": "GalaxyHTSR400295R25200B",
+    "name": "Шина Galaxy HTSR400 29.5R-25 200B",
+    "price": 410665,
+    "sizes": {
+      "29.5R-25": 410665
+    },
+    "stock": 24,
+    "tireProduct": "бескамерная",
+    "modal_name": "Шина пневмо 29.5R25 Galaxy HTSR 400 TL",
+    "img": "https://shop.liftnet.ru/tr-lift/dealer.work//pic/20000030593.jpg",
+    "options": [
+      [
+        "Производитель:",
+        "Galaxy"
+      ],
+      [
+        "Модель:",
+        "HTSR 400"
+      ],
+      [
+        "Типоразмер:",
+        "29.5R-25"
+      ],
+      [
+        "Исполнение:",
+        "Пневматическая"
+      ],
+      [
+        "Тип:",
+        "TL"
+      ],
+      [
+        "Конструкция каркаса:",
+        "Радиальная"
+      ],
+      [
+        "Сегмент:",
+        "Средний"
+      ],
+      [
+        "Тип протектора (по TRA):",
+        "E-4/L-4"
+      ],
+      [
+        "Нагрузка (кг):",
+        "14000 (200B)"
+      ],
+      [
+        "Наружный диаметр (мм):",
+        "1890"
+      ],
+      [
+        "Ширина (мм):",
+        "765"
+      ],
+      [
+        "Рекомендованный обод:",
+        "25.00/3.5"
+      ],
+      [
+        "Вес (кг):",
+        "630"
+      ],
+      [
+        "Объем (м3):",
+        "2,733"
+      ],
+      [
+        "Гарантия (лет):",
+        "5"
+      ],
+      [
+        "Страна производитель:",
+        "ИНДИЯ"
+      ]
+    ]
+  },
+  {
+    "id": "NAAATSLairdFC2227545R20110V",
+    "name": "Шина NAAATS LairdFC22 275/45R-20 110V",
+    "price": 9492,
+    "sizes": {
+      "275/45R-20": 9492
+    },
+    "stock": 8,
+    "modal_name": "",
+    "img": "https://shop.liftnet.ru/tr-lift/dealer.work//pic/20000063834.jpg",
+    "options": [
+      [
+        "Производитель:",
+        "NAAATS"
+      ],
+      [
+        "Модель:",
+        "Laird FC22"
+      ],
+      [
+        "Типоразмер:",
+        "275/45R-20"
+      ],
+      [
+        "Исполнение:",
+        "Пневматическая"
+      ],
+      [
+        "Сегмент:",
+        "Эконом"
+      ],
+      [
+        "Вес (кг):",
+        "15.795"
+      ],
+      [
+        "Гарантия (лет):",
+        "2"
+      ]
+    ]
+  },
+  {
+    "id": "NAAATSLairdFC2227540ZR20106W",
+    "name": "Шина NAAATS LairdFC22 275/40ZR-20 106W",
+    "price": 9249,
+    "sizes": {
+      "275/40ZR-20": 9249
+    },
+    "stock": 10,
+    "modal_name": "",
+    "img": "https://shop.liftnet.ru/tr-lift/dealer.work//pic/20000063835.jpg",
+    "options": [
+      [
+        "Производитель:",
+        "NAAATS"
+      ],
+      [
+        "Модель:",
+        "Laird FC22"
+      ],
+      [
+        "Типоразмер:",
+        "275/40ZR-20"
+      ],
+      [
+        "Исполнение:",
+        "Пневматическая"
+      ],
+      [
+        "Сегмент:",
+        "Эконом"
+      ],
+      [
+        "Вес (кг):",
+        "15.39"
+      ],
+      [
+        "Гарантия (лет):",
+        "2"
+      ]
+    ]
+  },
+  {
+    "id": "NAAATSLairdFC2223555ZR19105W",
+    "name": "Шина NAAATS LairdFC22 235/55ZR-19 105W",
+    "price": 8422,
+    "sizes": {
+      "235/55ZR-19": 8422
+    },
+    "stock": 10,
+    "modal_name": "",
+    "img": "https://shop.liftnet.ru/tr-lift/dealer.work//pic/20000063831.jpg",
+    "options": [
+      [
+        "Производитель:",
+        "NAAATS"
+      ],
+      [
+        "Модель:",
+        "Laird FC22"
+      ],
+      [
+        "Типоразмер:",
+        "235/55ZR-19"
+      ],
+      [
+        "Исполнение:",
+        "Пневматическая"
+      ],
+      [
+        "Сегмент:",
+        "Эконом"
+      ],
+      [
+        "Вес (кг):",
+        "14.176"
+      ],
+      [
+        "Гарантия (лет):",
+        "2"
+      ]
+    ]
+  },
+  {
+    "id": "NAAATSLairdFC2222555R1999Y",
+    "name": "Шина NAAATS LairdFC22 225/55R-19 99Y",
+    "price": 7883,
+    "sizes": {
+      "225/55R-19": 7883
+    },
+    "stock": 8,
+    "modal_name": "",
+    "img": "https://shop.liftnet.ru/tr-lift/dealer.work//pic/20000063830.jpg",
+    "options": [
+      [
+        "Производитель:",
+        "NAAATS"
+      ],
+      [
+        "Модель:",
+        "Laird FC22"
+      ],
+      [
+        "Типоразмер:",
+        "225/55R-19"
+      ],
+      [
+        "Исполнение:",
+        "Пневматическая"
+      ],
+      [
+        "Сегмент:",
+        "Эконом"
+      ],
+      [
+        "Вес (кг):",
+        "13.272"
+      ],
+      [
+        "Гарантия (лет):",
+        "2"
+      ]
+    ]
+  },
+  {
+    "id": "NAAATSLairdFC2225550ZR19107W",
+    "name": "Шина NAAATS LairdFC22 255/50ZR-19 107W",
+    "price": 9002,
+    "sizes": {
+      "255/50ZR-19": 9002
+    },
+    "stock": 6,
+    "modal_name": "",
+    "img": "https://shop.liftnet.ru/tr-lift/dealer.work//pic/20000063832.jpg",
+    "options": [
+      [
+        "Производитель:",
+        "NAAATS"
+      ],
+      [
+        "Модель:",
+        "Laird FC22"
+      ],
+      [
+        "Типоразмер:",
+        "255/50ZR-19"
+      ],
+      [
+        "Исполнение:",
+        "Пневматическая"
+      ],
+      [
+        "Сегмент:",
+        "Эконом"
+      ],
+      [
+        "Вес (кг):",
+        "15.153"
+      ],
+      [
+        "Гарантия (лет):",
+        "2"
+      ]
+    ]
+  },
+  {
+    "id": "NAAATSToucansFC1924540ZR1893Y",
+    "name": "Шина NAAATS ToucansFC19 245/40ZR-18 93Y",
+    "price": 6714,
+    "sizes": {
+      "245/40ZR-18": 6714
+    },
+    "stock": 16,
+    "modal_name": "",
+    "img": "https://shop.liftnet.ru/tr-lift/dealer.work//pic/20000063816.jpg",
+    "options": [
+      [
+        "Производитель:",
+        "NAAATS"
+      ],
+      [
+        "Модель:",
+        "Toucans FC19"
+      ],
+      [
+        "Типоразмер:",
+        "245/40ZR-18"
+      ],
+      [
+        "Исполнение:",
+        "Пневматическая"
+      ],
+      [
+        "Сегмент:",
+        "Эконом"
+      ],
+      [
+        "Вес (кг):",
+        "11.439"
+      ],
+      [
+        "Гарантия (лет):",
+        "2"
+      ]
+    ]
+  },
+  {
+    "id": "NAAATSLairdFC2222555R1898V",
+    "name": "Шина NAAATS LairdFC22 225/55R-18 98V",
+    "price": 7443,
+    "sizes": {
+      "225/55R-18": 7443
+    },
+    "stock": 12,
+    "modal_name": "",
+    "img": "https://shop.liftnet.ru/tr-lift/dealer.work//pic/20000063829.jpg",
+    "options": [
+      [
+        "Производитель:",
+        "NAAATS"
+      ],
+      [
+        "Модель:",
+        "Laird FC22"
+      ],
+      [
+        "Типоразмер:",
+        "225/55R-18"
+      ],
+      [
+        "Исполнение:",
+        "Пневматическая"
+      ],
+      [
+        "Сегмент:",
+        "Эконом"
+      ],
+      [
+        "Вес (кг):",
+        "12.68"
+      ],
+      [
+        "Гарантия (лет):",
+        "2"
+      ]
+    ]
+  },
+  {
+    "id": "NAAATSLairdFC2221555R1899V",
+    "name": "Шина NAAATS LairdFC22 215/55R-18 99V",
+    "price": 7015,
+    "sizes": {
+      "215/55R-18": 7015
+    },
+    "stock": 16,
+    "modal_name": "",
+    "img": "https://shop.liftnet.ru/tr-lift/dealer.work//pic/20000063828.jpg",
+    "options": [
+      [
+        "Производитель:",
+        "NAAATS"
+      ],
+      [
+        "Модель:",
+        "Laird FC22"
+      ],
+      [
+        "Типоразмер:",
+        "215/55R-18"
+      ],
+      [
+        "Исполнение:",
+        "Пневматическая"
+      ],
+      [
+        "Сегмент:",
+        "Эконом"
+      ],
+      [
+        "Вес (кг):",
+        "11.951"
+      ],
+      [
+        "Гарантия (лет):",
+        "2"
+      ]
+    ]
+  },
+  {
+    "id": "NAAATSLairdFC2223565R17108V",
+    "name": "Шина NAAATS LairdFC22 235/65R-17 108V",
+    "price": 8065,
+    "sizes": {
+      "235/65R-17": 8065
+    },
+    "stock": 32,
+    "modal_name": "",
+    "img": "https://shop.liftnet.ru/tr-lift/dealer.work//pic/20000063821.jpg",
+    "options": [
+      [
+        "Производитель:",
+        "NAAATS"
+      ],
+      [
+        "Модель:",
+        "Laird FC22"
+      ],
+      [
+        "Типоразмер:",
+        "235/65R-17"
+      ],
+      [
+        "Исполнение:",
+        "Пневматическая"
+      ],
+      [
+        "Сегмент:",
+        "Эконом"
+      ],
+      [
+        "Вес (кг):",
+        "13.907"
+      ],
+      [
+        "Гарантия (лет):",
+        "2"
+      ]
+    ]
+  },
+  {
+    "id": "NAAATSLairdFC2222565R17102H",
+    "name": "Шина NAAATS LairdFC22 225/65R-17 102H",
+    "price": 7291,
+    "sizes": {
+      "225/65R-17": 7291
+    },
+    "stock": 32,
+    "modal_name": "",
+    "img": "https://shop.liftnet.ru/tr-lift/dealer.work//pic/20000063820.jpg",
+    "options": [
+      [
+        "Производитель:",
+        "NAAATS"
+      ],
+      [
+        "Модель:",
+        "Laird FC22"
+      ],
+      [
+        "Типоразмер:",
+        "225/65R-17"
+      ],
+      [
+        "Исполнение:",
+        "Пневматическая"
+      ],
+      [
+        "Сегмент:",
+        "Эконом"
+      ],
+      [
+        "Вес (кг):",
+        "12.573"
+      ],
+      [
+        "Гарантия (лет):",
+        "2"
+      ]
+    ]
+  },
+  {
+    "id": "NAAATSToucansFC1922550ZR1798W",
+    "name": "Шина NAAATS ToucansFC19 225/50ZR-17 98W",
+    "price": 6401,
+    "sizes": {
+      "225/50ZR-17": 6401
+    },
+    "stock": 36,
+    "modal_name": "",
+    "img": "https://shop.liftnet.ru/tr-lift/dealer.work//pic/20000063807.jpg",
+    "options": [
+      [
+        "Производитель:",
+        "NAAATS"
+      ],
+      [
+        "Модель:",
+        "Toucans FC19"
+      ],
+      [
+        "Типоразмер:",
+        "225/50ZR-17"
+      ],
+      [
+        "Исполнение:",
+        "Пневматическая"
+      ],
+      [
+        "Сегмент:",
+        "Эконом"
+      ],
+      [
+        "Вес (кг):",
+        "11.037"
+      ],
+      [
+        "Гарантия (лет):",
+        "2"
+      ]
+    ]
+  },
+  {
+    "id": "NAAATSToucansFC1922545ZR1794W",
+    "name": "Шина NAAATS ToucansFC19 225/45ZR-17 94W",
+    "price": 5601,
+    "sizes": {
+      "225/45ZR-17": 5601
+    },
+    "stock": 8,
+    "modal_name": "",
+    "img": "https://shop.liftnet.ru/tr-lift/dealer.work//pic/20000063808.jpg",
+    "options": [
+      [
+        "Производитель:",
+        "NAAATS"
+      ],
+      [
+        "Модель:",
+        "Toucans FC19"
+      ],
+      [
+        "Типоразмер:",
+        "225/45ZR-17"
+      ],
+      [
+        "Исполнение:",
+        "Пневматическая"
+      ],
+      [
+        "Сегмент:",
+        "Эконом"
+      ],
+      [
+        "Вес (кг):",
+        "9.658"
+      ],
+      [
+        "Гарантия (лет):",
+        "2"
+      ]
+    ]
+  },
+  {
+    "id": "NAAATSLairdFC2221565R1799H",
+    "name": "Шина NAAATS LairdFC22 215/65R-17 99H",
+    "price": 6966,
+    "sizes": {
+      "215/65R-17": 6966
+    },
+    "stock": 12,
+    "modal_name": "",
+    "img": "https://shop.liftnet.ru/tr-lift/dealer.work//pic/20000063819.jpg",
+    "options": [
+      [
+        "Производитель:",
+        "NAAATS"
+      ],
+      [
+        "Модель:",
+        "Laird FC22"
+      ],
+      [
+        "Типоразмер:",
+        "215/65R-17"
+      ],
+      [
+        "Исполнение:",
+        "Пневматическая"
+      ],
+      [
+        "Сегмент:",
+        "Эконом"
+      ],
+      [
+        "Вес (кг):",
+        "12.011"
+      ],
+      [
+        "Гарантия (лет):",
+        "2"
+      ]
+    ]
+  },
+  {
+    "id": "NAAATSLairdFC2221560R1796H",
+    "name": "Шина NAAATS LairdFC22 215/60R-17 96H",
+    "price": 6700,
+    "sizes": {
+      "215/60R-17": 6700
+    },
+    "stock": 36,
+    "modal_name": "",
+    "img": "https://shop.liftnet.ru/tr-lift/dealer.work//pic/20000063823.jpg",
+    "options": [
+      [
+        "Производитель:",
+        "NAAATS"
+      ],
+      [
+        "Модель:",
+        "Laird FC22"
+      ],
+      [
+        "Типоразмер:",
+        "215/60R-17"
+      ],
+      [
+        "Исполнение:",
+        "Пневматическая"
+      ],
+      [
+        "Сегмент:",
+        "Эконом"
+      ],
+      [
+        "Вес (кг):",
+        "11.553"
+      ],
+      [
+        "Гарантия (лет):",
+        "2"
+      ]
+    ]
+  },
+  {
+    "id": "NAAATSLairdFC2222560R1799V",
+    "name": "Шина NAAATS LairdFC22 225/60R-17 99V",
+    "price": 7225,
+    "sizes": {
+      "225/60R-17": 7225
+    },
+    "stock": 44,
+    "modal_name": "",
+    "img": "https://shop.liftnet.ru/tr-lift/dealer.work//pic/20000063824.jpg",
+    "options": [
+      [
+        "Производитель:",
+        "NAAATS"
+      ],
+      [
+        "Модель:",
+        "Laird FC22"
+      ],
+      [
+        "Типоразмер:",
+        "225/60R-17"
+      ],
+      [
+        "Исполнение:",
+        "Пневматическая"
+      ],
+      [
+        "Сегмент:",
+        "Эконом"
+      ],
+      [
+        "Вес (кг):",
+        "12.459"
+      ],
+      [
+        "Гарантия (лет):",
+        "2"
+      ]
+    ]
+  },
+  {
+    "id": "NAAATSToucansFC1922555ZR17101W",
+    "name": "Шина NAAATS ToucansFC19 225/55ZR-17 101W",
+    "price": 6589,
+    "sizes": {
+      "225/55ZR-17": 6589
+    },
+    "stock": 4,
+    "modal_name": "",
+    "img": "https://shop.liftnet.ru/tr-lift/dealer.work//pic/20000063804.jpg",
+    "options": [
+      [
+        "Производитель:",
+        "NAAATS"
+      ],
+      [
+        "Модель:",
+        "Toucans FC19"
+      ],
+      [
+        "Типоразмер:",
+        "225/55ZR-17"
+      ],
+      [
+        "Исполнение:",
+        "Пневматическая"
+      ],
+      [
+        "Сегмент:",
+        "Эконом"
+      ],
+      [
+        "Вес (кг):",
+        "11.357"
+      ],
+      [
+        "Гарантия (лет):",
+        "2"
+      ]
+    ]
+  },
+  {
+    "id": "NAAATSGepardFC1621560R1695V",
+    "name": "Шина NAAATS GepardFC16 215/60R-16 95V",
+    "price": 5436,
+    "sizes": {
+      "215/60R-16": 5436
+    },
+    "stock": 64,
+    "modal_name": "",
+    "img": "https://shop.liftnet.ru/tr-lift/dealer.work//pic/20000063799.jpg",
+    "options": [
+      [
+        "Производитель:",
+        "NAAATS"
+      ],
+      [
+        "Модель:",
+        "Gepard FC16"
+      ],
+      [
+        "Типоразмер:",
+        "215/60R-16"
+      ],
+      [
+        "Исполнение:",
+        "Пневматическая"
+      ],
+      [
+        "Сегмент:",
+        "Эконом"
+      ],
+      [
+        "Вес (кг):",
+        "10.11"
+      ],
+      [
+        "Гарантия (лет):",
+        "2"
+      ]
+    ]
+  },
+  {
+    "id": "NAAATSGepardFC1620560R1692V",
+    "name": "Шина NAAATS GepardFC16 205/60R-16 92V",
+    "price": 5140,
+    "sizes": {
+      "205/60R-16": 5140
+    },
+    "stock": 70,
+    "modal_name": "",
+    "img": "https://shop.liftnet.ru/tr-lift/dealer.work//pic/20000063798.jpg",
+    "options": [
+      [
+        "Производитель:",
+        "NAAATS"
+      ],
+      [
+        "Модель:",
+        "Gepard FC16"
+      ],
+      [
+        "Типоразмер:",
+        "205/60R-16"
+      ],
+      [
+        "Исполнение:",
+        "Пневматическая"
+      ],
+      [
+        "Сегмент:",
+        "Эконом"
+      ],
+      [
+        "Вес (кг):",
+        "9.557"
+      ],
+      [
+        "Гарантия (лет):",
+        "2"
+      ]
+    ]
+  },
+  {
+    "id": "NAAATSToucansFC1920555ZR1694W",
+    "name": "Шина NAAATS ToucansFC19 205/55ZR-16 94W",
+    "price": 4876,
+    "sizes": {
+      "205/55ZR-16": 4876
+    },
+    "stock": 144,
+    "modal_name": "",
+    "img": "https://shop.liftnet.ru/tr-lift/dealer.work//pic/20000063802.jpg",
+    "options": [
+      [
+        "Производитель:",
+        "NAAATS"
+      ],
+      [
+        "Модель:",
+        "Toucans FC19"
+      ],
+      [
+        "Типоразмер:",
+        "205/55ZR-16"
+      ],
+      [
+        "Исполнение:",
+        "Пневматическая"
+      ],
+      [
+        "Сегмент:",
+        "Эконом"
+      ],
+      [
+        "Вес (кг):",
+        "9.065"
+      ],
+      [
+        "Гарантия (лет):",
+        "2"
+      ]
+    ]
+  },
+  {
+    "id": "NAAATSGepardFC1621565R1698H",
+    "name": "Шина NAAATS GepardFC16 215/65R-16 98H",
+    "price": 5687,
+    "sizes": {
+      "215/65R-16": 5687
+    },
+    "stock": 2,
+    "modal_name": "",
+    "img": "https://shop.liftnet.ru/tr-lift/dealer.work//pic/20000063796.jpg",
+    "options": [
+      [
+        "Производитель:",
+        "NAAATS"
+      ],
+      [
+        "Модель:",
+        "Gepard FC16"
+      ],
+      [
+        "Типоразмер:",
+        "215/65R-16"
+      ],
+      [
+        "Исполнение:",
+        "Пневматическая"
+      ],
+      [
+        "Сегмент:",
+        "Эконом"
+      ],
+      [
+        "Вес (кг):",
+        "10.573"
+      ],
+      [
+        "Гарантия (лет):",
+        "2"
+      ]
+    ]
+  },
+  {
+    "id": "NAAATSGepardFC1619565R1591V",
+    "name": "Шина NAAATS GepardFC16 195/65R-15 91V",
+    "price": 4843,
+    "sizes": {
+      "195/65R-15": 4843
+    },
+    "stock": 140,
+    "modal_name": "",
+    "img": "https://shop.liftnet.ru/tr-lift/dealer.work//pic/20000063788.jpg",
+    "options": [
+      [
+        "Производитель:",
+        "NAAATS"
+      ],
+      [
+        "Модель:",
+        "Gepard FC16"
+      ],
+      [
+        "Типоразмер:",
+        "195/65R-15"
+      ],
+      [
+        "Исполнение:",
+        "Пневматическая"
+      ],
+      [
+        "Сегмент:",
+        "Эконом"
+      ],
+      [
+        "Вес (кг):",
+        "9.002"
+      ],
+      [
+        "Гарантия (лет):",
+        "2"
+      ]
+    ]
+  },
+  {
+    "id": "NAAATSGepardFC1619560R1588V",
+    "name": "Шина NAAATS GepardFC16 195/60R-15 88V",
+    "price": 4308,
+    "sizes": {
+      "195/60R-15": 4308
+    },
+    "stock": 40,
+    "modal_name": "",
+    "img": "https://shop.liftnet.ru/tr-lift/dealer.work//pic/20000063791.jpg",
+    "options": [
+      [
+        "Производитель:",
+        "NAAATS"
+      ],
+      [
+        "Модель:",
+        "Gepard FC16"
+      ],
+      [
+        "Типоразмер:",
+        "195/60R-15"
+      ],
+      [
+        "Исполнение:",
+        "Пневматическая"
+      ],
+      [
+        "Сегмент:",
+        "Эконом"
+      ],
+      [
+        "Вес (кг):",
+        "8.01"
+      ],
+      [
+        "Гарантия (лет):",
+        "2"
+      ]
+    ]
+  },
+  {
+    "id": "NAAATSGepardFC1619555R1585V",
+    "name": "Шина NAAATS GepardFC16 195/55R-15 85V",
+    "price": 4319,
+    "sizes": {
+      "195/55R-15": 4319
+    },
+    "stock": 2,
+    "modal_name": "",
+    "img": "https://shop.liftnet.ru/tr-lift/dealer.work//pic/20000063793.jpg",
+    "options": [
+      [
+        "Производитель:",
+        "NAAATS"
+      ],
+      [
+        "Модель:",
+        "Gepard FC16"
+      ],
+      [
+        "Типоразмер:",
+        "195/55R-15"
+      ],
+      [
+        "Исполнение:",
+        "Пневматическая"
+      ],
+      [
+        "Сегмент:",
+        "Эконом"
+      ],
+      [
+        "Вес (кг):",
+        "8.03"
+      ],
+      [
+        "Гарантия (лет):",
+        "2"
+      ]
+    ]
+  },
+  {
+    "id": "NAAATSGepardFC1618565R1588H",
+    "name": "Шина NAAATS GepardFC16 185/65R-15 88H",
+    "price": 4086,
+    "sizes": {
+      "185/65R-15": 4086
+    },
+    "stock": 140,
+    "modal_name": "",
+    "img": "https://shop.liftnet.ru/tr-lift/dealer.work//pic/20000063787.jpg",
+    "options": [
+      [
+        "Производитель:",
+        "NAAATS"
+      ],
+      [
+        "Модель:",
+        "Gepard FC16"
+      ],
+      [
+        "Типоразмер:",
+        "185/65R-15"
+      ],
+      [
+        "Исполнение:",
+        "Пневматическая"
+      ],
+      [
+        "Сегмент:",
+        "Эконом"
+      ],
+      [
+        "Вес (кг):",
+        "7.597"
+      ],
+      [
+        "Гарантия (лет):",
+        "2"
+      ]
+    ]
+  },
+  {
+    "id": "NAAATSGepardFC1618560R1584H",
+    "name": "Шина NAAATS GepardFC16 185/60R-15 84H",
+    "price": 4001,
+    "sizes": {
+      "185/60R-15": 4001
+    },
+    "stock": 36,
+    "modal_name": "",
+    "img": "https://shop.liftnet.ru/tr-lift/dealer.work//pic/20000063790.jpg",
+    "options": [
+      [
+        "Производитель:",
+        "NAAATS"
+      ],
+      [
+        "Модель:",
+        "Gepard FC16"
+      ],
+      [
+        "Типоразмер:",
+        "185/60R-15"
+      ],
+      [
+        "Исполнение:",
+        "Пневматическая"
+      ],
+      [
+        "Сегмент:",
+        "Эконом"
+      ],
+      [
+        "Вес (кг):",
+        "7.44"
+      ],
+      [
+        "Гарантия (лет):",
+        "2"
+      ]
+    ]
+  },
+  {
+    "id": "NAAATSGepardFC1618570R1488T",
+    "name": "Шина NAAATS GepardFC16 185/70R-14 88T",
+    "price": 4282,
+    "sizes": {
+      "185/70R-14": 4282
+    },
+    "stock": 46,
+    "modal_name": "",
+    "img": "https://shop.liftnet.ru/tr-lift/dealer.work//pic/20000063783.jpg",
+    "options": [
+      [
+        "Производитель:",
+        "NAAATS"
+      ],
+      [
+        "Модель:",
+        "Gepard FC16"
+      ],
+      [
+        "Типоразмер:",
+        "185/70R-14"
+      ],
+      [
+        "Исполнение:",
+        "Пневматическая"
+      ],
+      [
+        "Сегмент:",
+        "Эконом"
+      ],
+      [
+        "Вес (кг):",
+        "7.962"
+      ],
+      [
+        "Гарантия (лет):",
+        "2"
+      ]
+    ]
+  },
+  {
+    "id": "NAAATSGepardFC1618565R1486H",
+    "name": "Шина NAAATS GepardFC16 185/65R-14 86H",
+    "price": 3861,
+    "sizes": {
+      "185/65R-14": 3861
+    },
+    "stock": 84,
+    "modal_name": "",
+    "img": "https://shop.liftnet.ru/tr-lift/dealer.work//pic/20000063785.jpg",
+    "options": [
+      [
+        "Производитель:",
+        "NAAATS"
+      ],
+      [
+        "Модель:",
+        "Gepard FC16"
+      ],
+      [
+        "Типоразмер:",
+        "185/65R-14"
+      ],
+      [
+        "Исполнение:",
+        "Пневматическая"
+      ],
+      [
+        "Сегмент:",
+        "Эконом"
+      ],
+      [
+        "Вес (кг):",
+        "7.179"
+      ],
+      [
+        "Гарантия (лет):",
+        "2"
+      ]
+    ]
+  },
+  {
+    "id": "NAAATSGepardFC1618560R1482H",
+    "name": "Шина NAAATS GepardFC16 185/60R-14 82H",
+    "price": 3732,
+    "sizes": {
+      "185/60R-14": 3732
+    },
+    "stock": 66,
+    "modal_name": "",
+    "img": "https://shop.liftnet.ru/tr-lift/dealer.work//pic/20000063786.jpg",
+    "options": [
+      [
+        "Производитель:",
+        "NAAATS"
+      ],
+      [
+        "Модель:",
+        "Gepard FC16"
+      ],
+      [
+        "Типоразмер:",
+        "185/60R-14"
+      ],
+      [
+        "Исполнение:",
+        "Пневматическая"
+      ],
+      [
+        "Сегмент:",
+        "Эконом"
+      ],
+      [
+        "Вес (кг):",
+        "6.937"
+      ],
+      [
+        "Гарантия (лет):",
+        "2"
+      ]
+    ]
+  },
+  {
+    "id": "NAAATSGepardFC1617570R1484T",
+    "name": "Шина NAAATS GepardFC16 175/70R-14 84T",
+    "price": 3773,
+    "sizes": {
+      "175/70R-14": 3773
+    },
+    "stock": 56,
+    "modal_name": "",
+    "img": "https://shop.liftnet.ru/tr-lift/dealer.work//pic/20000063782.jpg",
+    "options": [
+      [
+        "Производитель:",
+        "NAAATS"
+      ],
+      [
+        "Модель:",
+        "Gepard FC16"
+      ],
+      [
+        "Типоразмер:",
+        "175/70R-14"
+      ],
+      [
+        "Исполнение:",
+        "Пневматическая"
+      ],
+      [
+        "Сегмент:",
+        "Эконом"
+      ],
+      [
+        "Вес (кг):",
+        "7.011"
+      ],
+      [
+        "Гарантия (лет):",
+        "2"
+      ]
+    ]
+  },
+  {
+    "id": "NAAATSGepardFC1617565R1482H",
+    "name": "Шина NAAATS GepardFC16 175/65R-14 82H",
+    "price": 3598,
+    "sizes": {
+      "175/65R-14": 3598
+    },
+    "stock": 115,
+    "modal_name": "",
+    "img": "https://shop.liftnet.ru/tr-lift/dealer.work//pic/20000063784.jpg",
+    "options": [
+      [
+        "Производитель:",
+        "NAAATS"
+      ],
+      [
+        "Модель:",
+        "Gepard FC16"
+      ],
+      [
+        "Типоразмер:",
+        "175/65R-14"
+      ],
+      [
+        "Исполнение:",
+        "Пневматическая"
+      ],
+      [
+        "Сегмент:",
+        "Эконом"
+      ],
+      [
+        "Вес (кг):",
+        "6.692"
+      ],
+      [
+        "Гарантия (лет):",
+        "2"
+      ]
+    ]
+  },
+  {
+    "id": "NAAATSGepardFC1615565R1373H",
+    "name": "Шина NAAATS GepardFC16 155/65R-13 73H",
+    "price": 2981,
+    "sizes": {
+      "155/65R-13": 2981
+    },
+    "stock": 12,
+    "modal_name": "",
+    "img": "https://shop.liftnet.ru/tr-lift/dealer.work//pic/20000063781.jpg",
+    "options": [
+      [
+        "Производитель:",
+        "NAAATS"
+      ],
+      [
+        "Модель:",
+        "Gepard FC16"
+      ],
+      [
+        "Типоразмер:",
+        "155/65R-13"
+      ],
+      [
+        "Исполнение:",
+        "Пневматическая"
+      ],
+      [
+        "Сегмент:",
+        "Эконом"
+      ],
+      [
+        "Вес (кг):",
+        "5.543"
+      ],
+      [
+        "Гарантия (лет):",
+        "2"
+      ]
+    ]
+  },
+  {
+    "id": "AVIS10165TR15",
+    "name": "Шина AVIS  10-16.5 TR15",
+    "price": 1588,
+    "sizes": {
+      "10-16.5": 1588
+    },
+    "stock": 174,
+    "modal_name": "",
+    "img": "https://shop.liftnet.ru/tr-lift/dealer.work//pic/20000065668.jpg",
+    "options": [
+      [
+        "Производитель:",
+        "AVIS"
+      ],
+      [
+        "Модель:",
+        "Камера"
+      ],
+      [
+        "Типоразмер:",
+        "10-16.5"
+      ],
+      [
+        "Исполнение:",
+        "Камера"
+      ],
+      [
+        "Вес (кг):",
+        "1.8"
+      ],
+      [
+        "Страна производитель:",
+        "ИНДИЯ"
+      ]
+    ]
+  },
+  {
+    "id": "AVIS10075153TR15",
+    "name": "Шина AVIS  10.0/75-15.3 TR15",
+    "price": 1865,
+    "sizes": {
+      "10.0/75-15.3": 1865
+    },
+    "stock": 143,
+    "modal_name": "",
+    "img": "https://shop.liftnet.ru/tr-lift/dealer.work//pic/20000065679.jpg",
+    "options": [
+      [
+        "Производитель:",
+        "AVIS"
+      ],
+      [
+        "Модель:",
+        "Камера"
+      ],
+      [
+        "Типоразмер:",
+        "10.0/75-15.3"
+      ],
+      [
+        "Исполнение:",
+        "Камера"
+      ],
+      [
+        "Вес (кг):",
+        "2"
+      ],
+      [
+        "Страна производитель:",
+        "ИНДИЯ"
+      ]
+    ]
+  },
+  {
+    "id": "AVIS1008012TR15",
+    "name": "Шина AVIS  10.0/80-12 TR15",
+    "price": 1904,
+    "sizes": {
+      "10.0/80-12": 1904
+    },
+    "stock": 45,
+    "modal_name": "",
+    "img": "https://shop.liftnet.ru/tr-lift/dealer.work//pic/20000065700.jpg",
+    "options": [
+      [
+        "Производитель:",
+        "AVIS"
+      ],
+      [
+        "Модель:",
+        "Камера"
+      ],
+      [
+        "Типоразмер:",
+        "10.0/80-12"
+      ],
+      [
+        "Исполнение:",
+        "Камера"
+      ],
+      [
+        "Вес (кг):",
+        "2.1"
+      ],
+      [
+        "Страна производитель:",
+        "ИНДИЯ"
+      ]
+    ]
+  },
+  {
+    "id": "AVIS100015TR13",
+    "name": "Шина AVIS  10.00-15 TR13",
+    "price": 1684,
+    "sizes": {
+      "10.00-15": 1684
+    },
+    "stock": 150,
+    "modal_name": "",
+    "img": "https://shop.liftnet.ru/tr-lift/dealer.work//pic/20000065705.jpg",
+    "options": [
+      [
+        "Производитель:",
+        "AVIS"
+      ],
+      [
+        "Модель:",
+        "Камера"
+      ],
+      [
+        "Типоразмер:",
+        "10.00-15"
+      ],
+      [
+        "Исполнение:",
+        "Камера"
+      ],
+      [
+        "Вес (кг):",
+        "2.17"
+      ],
+      [
+        "Страна производитель:",
+        "ИНДИЯ"
+      ]
+    ]
+  },
+  {
+    "id": "AVIS100020TR78A",
+    "name": "Шина AVIS  10.00-20 TR78A",
+    "price": 2673,
+    "sizes": {
+      "10.00-20": 2673
+    },
+    "stock": 174,
+    "modal_name": "",
+    "img": "https://shop.liftnet.ru/tr-lift/dealer.work//pic/20000065676.jpg",
+    "options": [
+      [
+        "Производитель:",
+        "AVIS"
+      ],
+      [
+        "Модель:",
+        "Камера"
+      ],
+      [
+        "Типоразмер:",
+        "10.00-20"
+      ],
+      [
+        "Исполнение:",
+        "Камера"
+      ],
+      [
+        "Вес (кг):",
+        "2.83"
+      ],
+      [
+        "Страна производитель:",
+        "ИНДИЯ"
+      ]
+    ]
+  },
+  {
+    "id": "AVIS11220TR218A",
+    "name": "Шина AVIS  11.2-20 TR218A",
+    "price": 3347,
+    "sizes": {
+      "11.2-20": 3347
+    },
+    "stock": 41,
+    "modal_name": "",
+    "img": "https://shop.liftnet.ru/tr-lift/dealer.work//pic/20000065699.jpg",
+    "options": [
+      [
+        "Производитель:",
+        "AVIS"
+      ],
+      [
+        "Модель:",
+        "Камера"
+      ],
+      [
+        "Типоразмер:",
+        "11.2-20"
+      ],
+      [
+        "Исполнение:",
+        "Камера"
+      ],
+      [
+        "Вес (кг):",
+        "3.4"
+      ],
+      [
+        "Страна производитель:",
+        "ИНДИЯ"
+      ]
+    ]
+  },
+  {
+    "id": "AVIS11224TR218A",
+    "name": "Шина AVIS  11.2-24 TR218A",
+    "price": 3491,
+    "sizes": {
+      "11.2-24": 3491
+    },
+    "stock": 92,
+    "modal_name": "",
+    "img": "https://shop.liftnet.ru/tr-lift/dealer.work//pic/20000065694.jpg",
+    "options": [
+      [
+        "Производитель:",
+        "AVIS"
+      ],
+      [
+        "Модель:",
+        "Камера"
+      ],
+      [
+        "Типоразмер:",
+        "11.2-24"
+      ],
+      [
+        "Исполнение:",
+        "Камера"
+      ],
+      [
+        "Вес (кг):",
+        "3.5"
+      ],
+      [
+        "Страна производитель:",
+        "ИНДИЯ"
+      ]
+    ]
+  },
+  {
+    "id": "AVIS11236TR218A",
+    "name": "Шина AVIS  11.2-36 TR218A",
+    "price": 4605,
+    "sizes": {
+      "11.2-36": 4605
+    },
+    "stock": 86,
+    "modal_name": "",
+    "img": "https://shop.liftnet.ru/tr-lift/dealer.work//pic/20000065709.jpg",
+    "options": [
+      [
+        "Производитель:",
+        "AVIS"
+      ],
+      [
+        "Модель:",
+        "Камера"
+      ],
+      [
+        "Типоразмер:",
+        "11.2-36"
+      ],
+      [
+        "Исполнение:",
+        "Камера"
+      ],
+      [
+        "Вес (кг):",
+        "5.5"
       ],
       [
         "Страна производитель:",

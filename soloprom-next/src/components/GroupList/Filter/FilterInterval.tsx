@@ -12,7 +12,17 @@ export const FilterInterval: React.FC<{
   onRangeChange: (min: number, max: number) => void
   initialMin?: number
   initialMax?: number
-}> = ({ title, min, max, unit, onRangeChange, initialMin, initialMax }) => {
+  reset?: boolean
+}> = ({
+  title,
+  min,
+  max,
+  unit,
+  onRangeChange,
+  initialMin,
+  initialMax,
+  reset,
+}) => {
   const [minValue, setMinValue] = useState(
     initialMin !== undefined ? initialMin : min,
   )

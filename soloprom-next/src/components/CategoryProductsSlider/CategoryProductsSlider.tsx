@@ -76,7 +76,7 @@ export const CategoryProductsSlider: React.FC<Props> = ({ className }) => {
   }, [isReady])
 
   return (
-    <div className={`catalog-products pb-[50px] pt-10 ${className || ''}`}>
+    <div className={`catalog-products pb-[20px] pt-10 ${className || ''}`}>
       <div className="catalog-products__container">
         {Object.entries(categoriesData).map(([key, category]) => (
           <div className="catalog-products__category" key={key}>

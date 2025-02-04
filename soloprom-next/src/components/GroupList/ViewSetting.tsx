@@ -9,7 +9,7 @@ interface Props {
 
 export const ViewSetting: React.FC<Props> = ({ viewMode, setViewMode }) => {
   return (
-    <div className="flex items-center gap-1">
+    <div className="hidden items-center gap-1 md:flex">
       <button
         type="button"
         className={`h-6 w-6 ${viewMode === 'grid' ? 'text-accentBlue' : 'text-darkBlue'} hover:text-accentBlue`}

@@ -51,7 +51,7 @@ const HeaderBottom = () => {
               <button
                 onClick={menuStatusChange}
                 type="button"
-                className={`button header-bottom__catalog-button rounded px-8 py-4 text-lg font-bold ${
+                className={`button header-bottom__catalog-button min-w-11 rounded px-8 py-4 text-lg font-bold ${
                   catalogIsOpen && 'open'
                 }`}
               >

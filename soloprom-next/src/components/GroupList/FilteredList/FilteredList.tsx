@@ -9,6 +9,9 @@ import { Sort } from '../Sort'
 import { ViewSetting } from '../ViewSetting'
 import { DynamicPagination } from '../DynamicPagination'
 
+import './FilteredList.scss'
+import useFilterStore from '@/store/filterStore'
+
 interface Props {
   data: cardDataProps[]
   currentPage: number
@@ -19,6 +22,8 @@ interface Props {
   onSortChange: (sort: string) => void
   hasFilters: boolean
   dataIsLoading: boolean
+  filterOpen: boolean
+  setFilterOpen: (status: boolean) => void
 }
 
 export const FilteredList: React.FC<Props> = ({
@@ -31,15 +36,92 @@ export const FilteredList: React.FC<Props> = ({
   hasFilters,
   setDynamicCurrentPage,
   dynamicCurrentPage,
+  filterOpen,
+  setFilterOpen,
 }) => {
   const [viewMode, setViewMode] = useState('grid')
+  const { filters, setFilters } = useFilterStore() // Get setFilters from the store
+  const filterKeysToIgnore = ['minPrice', 'maxPrice']
+
+  // Create a set to store unique filter values
+  const uniqueFilterValues = new Set<string>()
+
+  const activeFilters = Object.entries(filters)
+    .filter(
+      ([key, value]) =>
+        !filterKeysToIgnore.includes(key) &&
+        Array.isArray(value) &&
+        value.length > 0,
+    )
+    .map(([key, value]) => [
+      key,
+      (value as string[]).filter((filterValue) => {
+        const uniqueKey = `${key}-${filterValue}` // Create a unique key
+        if (uniqueFilterValues.has(uniqueKey)) {
+          return false // Skip if already exists
+        }
+        uniqueFilterValues.add(uniqueKey)
+        return true
+      }),
+    ])
+    .filter(([, value]) => (value as string[]).length > 0) as [
+    string,
+    string[],
+  ][] // Explicit type assertion here
+
+  const handleRemoveFilter = (filterName: string, filterValue: string) => {
+    const currentFilterValues = (filters[filterName] as string[]) || []
+    const updatedFilterValues = currentFilterValues.filter(
+      (value) => value !== filterValue,
+    )
+
+    if (updatedFilterValues.length === 0) {
+      const { [filterName]: removed, ...remainingFilters } = filters
+      setFilters(remainingFilters)
+    } else {
+      setFilters({ ...filters, [filterName]: updatedFilterValues })
+    }
+  }
 
   return (
     <div className="filter__catalog">
-      <div className="mx-5 mb-5 flex items-center justify-between gap-5">
+      <div className="mb-5 mt-5 flex items-center justify-between gap-5 md:mx-5 md:mt-0">
         <Sort onSortChange={onSortChange} />
+
+        <button
+          onClick={() => setFilterOpen(true)}
+          type="button"
+          className="flex items-center gap-1 rounded bg-accentBlue p-2.5 px-2.5 font-medium text-white md:hidden"
+        >
+          <svg className="icon h-4 w-4 rotate-[90deg] fill-white md:h-5 md:w-5">
+            <use xlinkHref="/img/sprite.svg#filters" />
+          </svg>
+          Фильтр
+        </button>
         <ViewSetting viewMode={viewMode} setViewMode={setViewMode} />
       </div>
+
+      <ul className="flex flex-wrap items-center gap-2.5">
+        {activeFilters.map(([filterName, filterValues]) =>
+          (filterValues as string[]).map((filterValue, index) => (
+            <li
+              key={`${filterName}-${index}`}
+              className="flex items-center gap-1 rounded bg-gray-200 px-2 py-1 text-sm"
+            >
+              {filterValue}
+              <button
+                onClick={() => handleRemoveFilter(filterName, filterValue)}
+                className="text-gray-500 hover:text-gray-700"
+              >
+                <svg className="h-4 w-4 fill-current" viewBox="0 0 20 20">
+                  <path d="M14.348 14.849a1.2 1.2 0 0 1-1.697 0L10 11.819l-2.651 3.029a1.2 1.2 0 1 1-1.697-1.697l2.758-3.15-2.759-3.152a1.2 1.2 0 1 1 1.697-1.697L10 8.183l2.651-3.031a1.2 1.2 0 1 1 1.697 1.697l-2.758 3.152 2.758 3.15a1.2 1.2 0 0 1 0 1.698z" />
+                </svg>
+              </button>
+            </li>
+          )),
+        )}
+      </ul>
+
       <ul
         className={`catalog-list--${viewMode} grid grid-cols-4 gap-5 overflow-hidden px-5 py-2.5`}
       >
