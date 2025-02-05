@@ -7,8 +7,6 @@ import { getProductsCounts } from '@/utils/api/products'
 import { SubcategoryCount } from '../CategoryProductsSlider/CategoryProductsSlider'
 import initialCategoriesData from '../../data/products/categoriesData.json'
 
-import './CatalogMain.scss'
-
 interface CategoryItem {
   id: string
   href: string
@@ -62,22 +60,22 @@ export const CatalogMain: React.FC<Props> = ({ className }) => {
       <div className="catalog-main__container">
         <h1 className="section-title">Каталог товаров</h1>
         {Object.entries(categoriesData).map(([categoryKey, categoryData]) => (
-          <div className="catalog-main__category" key={categoryKey}>
+          <div className="[&:not(:last-child)]:mb-12" key={categoryKey}>
             <div className="relative mb-7 inline-flex items-center gap-2.5 text-[22px] font-medium before:absolute before:-bottom-2.5 before:left-0 before:h-[2px] before:w-[60%] before:bg-accentBlue">
               <svg className="icon h-7 w-7 fill-accentBlue">
                 <use xlinkHref={`/img/sprite.svg#${categoryData.icon}`} />
               </svg>
               {categoryData.title}
             </div>
-            <div className="catalog-main__category-list grid grid-cols-4 gap-5">
+            <div className="mds:grid-cols-2 mds:gap-5 grid grid-cols-1 xs:gap-2.5 md:grid-cols-3 lg:grid-cols-4">
               {categoryData.items.map((item) => (
                 <Link
                   href={item.href}
-                  className="catalog-main__category-link flex flex-col items-center rounded p-5 text-center shadow-custom"
+                  className="mds:p-5 flex flex-col items-center rounded px-2.5 py-5 text-center shadow-custom hover:bg-accentBlue hover:text-white"
                   key={item.href}
                 >
                   <Image
-                    className="catalog-main__category-link-image mb-4 block aspect-square max-h-[200px] max-w-[200px] object-contain"
+                    className="mds:max-h-48 mds:max-w-48 mb-4 block aspect-square max-h-32 max-w-32 object-contain"
                     src={item.img}
                     width={200}
                     height={200}

@@ -15,7 +15,7 @@ const TabCategory: React.FC<CategoryTab> = ({
   categoryId,
   currentTab,
 }) => {
-  const { catalogMenuStateChange } = useCatalogMenuStore((state) => state)
+  const { catalogMenuStateChange } = useCatalogMenuStore()
 
   if (!categoryItems || categoryItems.length === 0) {
     return null
@@ -39,20 +39,20 @@ const TabCategory: React.FC<CategoryTab> = ({
 
   return (
     <div
-      className={`catalog-menu__category-body scroll-bar invisible hidden grid-cols-2 gap-5 pr-2.5 opacity-0 transition-all ${
+      className={`catalog-menu__category-body scroll-bar invisible hidden max-h-[calc(100vh-70px)] grid-cols-1 overflow-y-auto border-b border-grayColor p-2.5 pr-2.5 opacity-0 transition-all lg:grid-cols-2 lg:gap-5 lg:p-0 ${
         categoryId === currentTab && 'active'
       }`}
     >
-      <ul className="catalog-menu__category-child-list flex flex-col gap-x-5 gap-y-1">
+      <ul className="flex h-auto flex-col items-start justify-start gap-x-5 gap-y-1 bg-white pl-4 sm:bg-none">
         {firstPart.map((item, index) => (
           <li
             key={index}
-            className="catalog-menu__category-child-item relative leading-3"
+            className="relative text-sm leading-3 lg:text-base [&:not(:last-child)]:mb-1"
           >
             <Link
               href={item.href}
               onClick={() => catalogMenuStateChange(false, false)}
-              className="catalog-menu__category-child-link link-hover inline-flex w-full items-center rounded bg-white py-2.5 pl-2.5 pr-[5px] font-medium"
+              className="link-hover inline-flex w-full items-center rounded bg-white py-2.5 pl-2.5 pr-1 font-medium leading-5 underline lg:pr-[5px]"
             >
               {item.title}
             </Link>
@@ -60,16 +60,16 @@ const TabCategory: React.FC<CategoryTab> = ({
         ))}
       </ul>
       {secondPart.length > 0 && (
-        <ul className="catalog-menu__category-child-list flex flex-col gap-x-5 gap-y-1">
+        <ul className="flex h-auto flex-col items-start justify-start gap-x-5 gap-y-1 bg-white pl-4 sm:bg-none">
           {secondPart.map((item, index) => (
             <li
               key={index + firstPart.length}
-              className="catalog-menu__category-child-item relative leading-3"
+              className="relative text-sm leading-3 lg:text-base [&:not(:last-child)]:mb-1"
             >
               <Link
                 href={item.href}
                 onClick={() => catalogMenuStateChange(false, false)}
-                className="catalog-menu__category-child-link link-hover inline-flex w-full items-center rounded bg-white py-2.5 pl-2.5 pr-[5px] font-medium"
+                className="link-hover inline-flex w-full items-center rounded bg-white py-2.5 pl-2.5 pr-1 font-medium leading-5 underline lg:pr-[5px]"
               >
                 {item.title}
               </Link>

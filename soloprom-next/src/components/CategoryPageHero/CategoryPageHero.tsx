@@ -2,7 +2,6 @@
 import React from 'react'
 import Image from 'next/image'
 
-import './CategoryPageHero.scss'
 import { CategoryPageBrands } from './CategoryPageBrands'
 
 interface Props {
@@ -31,8 +30,8 @@ export const CategoryPageHero: React.FC<Props> = ({
   categoryAlt,
 }) => {
   return (
-    <section className="category-hero relative">
-      <div className="category-hero__body relative flex h-full w-full items-center justify-end overflow-hidden rounded px-5 py-5 shadow-custom">
+    <section className="relative w-full md:w-[calc(100%-250px)] lg:w-[calc(100%-260px)] xl:w-[calc(75%-30px)]">
+      <div className="relative flex h-full w-full items-center justify-end overflow-hidden rounded px-5 py-5 shadow-custom before:absolute before:inset-0 before:z-[1] before:h-full before:w-full before:bg-[linear-gradient(100deg,rgba(0,0,0,0.1)_0%,#ebebeb_55.9%,#f8f8f8_100%)]">
         <Image
           className="absolute inset-0 h-full w-[60%] object-cover"
           src={`${categoryImage}.webp`}
@@ -41,7 +40,7 @@ export const CategoryPageHero: React.FC<Props> = ({
           height={0}
           priority
         />
-        <h1 className="category-hero__title relative z-[2] max-w-[400px] text-center font-bold">
+        <h1 className="category-title relative z-[2] max-w-[400px] text-center font-bold">
           {categoryTitle}
         </h1>
       </div>

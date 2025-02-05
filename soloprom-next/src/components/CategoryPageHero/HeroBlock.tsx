@@ -1,8 +1,6 @@
 'use client'
 import React from 'react'
 
-import './HeroBlock.scss'
-
 export const HeroBlock = ({
   children,
 }: Readonly<{
@@ -11,7 +9,7 @@ export const HeroBlock = ({
   return (
     <div>
       <div className="page-container">
-        <div className="category-block-body relative flex gap-7">
+        <div className="relative flex flex-col gap-2.5 md:flex-row lg:gap-5 xl:gap-7">
           {children}
         </div>
       </div>

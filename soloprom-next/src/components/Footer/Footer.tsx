@@ -26,15 +26,13 @@ const socialList = [
 ]
 
 const Footer = () => {
-  const modalCallbackStateChange = useModalsStore(
-    (state) => state.modalCallbackStateChange,
-  )
+  const { modalCallbackStateChange } = useModalsStore()
 
   return (
-    <footer className="footer relative z-10 bg-darkBlue py-9 pb-5">
-      <div className="footer__container">
-        <div className="footer__body mb-5 flex justify-between gap-5 pb-5">
-          <div className="footer__left flex justify-between gap-7">
+    <footer className="mds:pb-5 relative z-10 mt-auto bg-darkBlue py-9 pb-24">
+      <div className="page-container">
+        <div className="mb-5 flex flex-col justify-between gap-7 border-b border-gray-300 pb-5 lg:flex-row lg:gap-5">
+          <div className="mdl:flex mdl:justify-between grid grid-cols-2 grid-rows-2 md:gap-7">
             <div className="footer__nav">
               <div className="mb-4 text-lg font-medium uppercase text-[#969cb8]">
                 КАТАЛОГ
@@ -44,7 +42,7 @@ const Footer = () => {
                   <li key={index} className="footer__nav-item max-w-[250px]">
                     <Link
                       href={item.link}
-                      className="footer__nav-link link-hover w-full font-medium leading-5 text-white"
+                      className="link-hover w-full text-sm font-medium leading-5 text-white md:text-base"
                     >
                       {item.title}
                     </Link>
@@ -61,7 +59,7 @@ const Footer = () => {
                   <li key={index} className="footer__nav-item max-w-[250px]">
                     <Link
                       href={item.link}
-                      className="footer__nav-link link-hover w-full font-medium leading-5 text-white"
+                      className="link-hover w-full text-sm font-medium leading-5 text-white md:text-base"
                     >
                       {item.title}
                     </Link>
@@ -77,7 +75,7 @@ const Footer = () => {
                 <li className="footer__nav-item max-w-[250px]">
                   <Link
                     href="/agreement"
-                    className="footer__nav-link link-hover w-full font-medium leading-5 text-white"
+                    className="link-hover w-full text-sm font-medium leading-5 text-white md:text-base"
                   >
                     Соглашение об использовании персональных данных
                   </Link>
@@ -85,7 +83,7 @@ const Footer = () => {
                 <li className="footer__nav-item max-w-[250px]">
                   <Link
                     href="/policy"
-                    className="footer__nav-link link-hover w-full font-medium leading-5 text-white"
+                    className="link-hover w-full text-sm font-medium leading-5 text-white md:text-base"
                   >
                     Политика конфиденциальности
                   </Link>
@@ -103,14 +101,14 @@ const Footer = () => {
               </div>
             </div>
           </div>
-          <div className="footer__right flex flex-col gap-5">
-            <div className="footer__row flex justify-between">
+          <div className="mdl:flex-row mdl:justify-between flex flex-col gap-5 lg:flex-col">
+            <div className="mdl:justify-between flex justify-start gap-5 md:gap-7">
               <div className="footer__contacts-block">
                 <div className="mb-4 text-lg font-medium uppercase text-[#969cb8]">
                   КОНТАКТЫ
                 </div>
                 <ul className="footer__contacts-list">
-                  <li className="footer__contacts-item mb-2.5 font-medium leading-5 text-white">
+                  <li className="mb-2.5 text-sm font-medium leading-5 text-white md:text-base">
                     <a
                       href="tel:+79036569393"
                       className="link-hover whitespace-nowrap"
@@ -118,7 +116,7 @@ const Footer = () => {
                       +7 (903) 656-93-93
                     </a>
                   </li>
-                  <li className="footer__contacts-item mb-2.5 font-medium leading-5 text-white">
+                  <li className="mb-2.5 text-sm font-medium leading-5 text-white md:text-base">
                     <a
                       href="mailto:solo.vrn@mail.ru"
                       className="link-hover whitespace-nowrap"
@@ -133,8 +131,8 @@ const Footer = () => {
                   АДРЕС
                 </div>
                 <ul className="footer__contacts-list">
-                  <li className="footer__contacts-item font-medium leading-5 text-white">
-                    <address className="max-w-[200px] not-italic leading-5">
+                  <li className="text-sm font-medium leading-5 text-white md:text-base">
+                    <address className="max-w-64 not-italic leading-5 lg:max-w-52">
                       г.Воронеж, ул.45-й Стрелковой дивизии, д.224, офис 200
                     </address>
                   </li>
@@ -142,7 +140,7 @@ const Footer = () => {
               </div>
             </div>
             <div className="flex flex-col justify-between gap-5">
-              <div className="footer__callback flex items-center gap-2.5 whitespace-nowrap text-[#969cb8]">
+              <div className="flex flex-col items-center gap-2.5 whitespace-nowrap text-sm text-[#969cb8] md:text-base lg:flex-row">
                 Мы онлайн, воспользуйтесь
                 <button
                   onClick={() => modalCallbackStateChange(true)}
@@ -153,7 +151,7 @@ const Footer = () => {
                 </button>
               </div>
 
-              <div className="footer__social-block relative text-center">
+              <div className="relative text-center before:absolute before:left-[50%] before:top-[50%] before:h-[1px] before:w-full before:translate-x-[-50%] before:translate-y-[-50%] before:bg-white before:bg-opacity-80">
                 <ul className="relative z-[1] inline-flex items-center gap-2.5 bg-darkBlue px-6">
                   {socialList.map((link, index) => (
                     <li
@@ -165,7 +163,7 @@ const Footer = () => {
                         className="-m-2.5 p-2.5"
                         target="_blank"
                       >
-                        <svg className="icon -5 relative w-5 fill-grayColor">
+                        <svg className="icon relative h-5 w-5 fill-grayColor">
                           <use xlinkHref={`/img/sprite.svg#${link.id}`}></use>
                         </svg>
                       </a>
@@ -177,7 +175,7 @@ const Footer = () => {
           </div>
         </div>
 
-        <div className="footer__copyright text-sm font-medium text-[#e1e5f8]">
+        <div className="mds:text-sm text-ss font-medium text-[#e1e5f8]">
           2018 © ООО «Соло» - запчасти для сельскохозяйственной и специальной
           техники
         </div>

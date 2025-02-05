@@ -24,9 +24,9 @@ import { useAuthStore } from '@/store/authStore'
 export const OrderForm: React.FC = () => {
   const [isSubmitting, setIsSubmitting] = useState(false)
 
-  const { cartState, totalAmount, clearCart } = useCartStore((state) => state)
+  const { cartState, totalAmount, clearCart } = useCartStore()
 
-  const { isAuth, userState } = useAuthStore((state) => state)
+  const { isAuth, userState } = useAuthStore()
 
   const form = useForm<TypeOrderSchema>({
     resolver: zodResolver(OrderSchema),

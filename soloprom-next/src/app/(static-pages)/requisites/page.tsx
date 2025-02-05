@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 import { Callback } from '@/components/Callback/Callback'
 import { ContactsMap } from '@/components/ContactsMap/ContactsMap'
-import BreadCrumbs from '@/components/ui/BreadCrumbs/BreadCrumbs'
+import BreadCrumbs from '@/components/BreadCrumbs/BreadCrumbs'
 import { Requisites } from '@/components/Requisites/Requisites'
 import PageWrapper from '../../PageWrapper'
 

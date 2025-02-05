@@ -1,6 +1,6 @@
 'use client'
 import React, { useRef, useState } from 'react'
-import { ProductsCardWordAdaptive } from '../DescriptionTemplate'
+import { ProductsCardWordAdaptive } from './DescriptionTemplate'
 import { getAdaptiveValue } from '@/utils/getAdaptiveValue'
 import { useClickOutside } from '@/hooks/useClickOutside'
 import { useCartStore } from '@/store/cartStore'
@@ -22,7 +22,7 @@ export const SizesRow: React.FC<Props> = ({
 }) => {
   const [dropOpen, setDropOpen] = useState(false)
   const dropRef = useRef(null)
-  const cartState = useCartStore((state) => state.cartState)
+  const { cartState } = useCartStore()
 
   const selectedVariant = (value: string) => {
     setVariantValue(value)
@@ -38,8 +38,8 @@ export const SizesRow: React.FC<Props> = ({
   }
 
   return (
-    <div className="product-card__descr-item flex items-center justify-between pb-1 text-sm">
-      <div className="product-card__descr-item-name">
+    <div className="flex items-center justify-between border-b border-grayColor pb-1 text-sm [&:not(:last-child)]:mb-1.5">
+      <div className="">
         {getAdaptiveValue(ProductsCardWordAdaptive, 'sizes', categoryName)}
       </div>
       <div className="font-bold">

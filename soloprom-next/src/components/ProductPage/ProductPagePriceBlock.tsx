@@ -18,7 +18,7 @@ export const ProductPagePriceBlock: React.FC<PriceProps> = ({
   return (
     <div className={` ${discount ? 'mt-7' : 'mt-2'}`}>
       <div
-        className={`product-page-card__price relative text-2xl font-bold ${discount ? 'text-accentBlue' : 'text-[#272b2c]'} `}
+        className={`relative text-2xl font-bold ${discount ? 'text-accentBlue' : 'text-[#272b2c]'} `}
       >
         {formattedDiscountPrice && (
           <>

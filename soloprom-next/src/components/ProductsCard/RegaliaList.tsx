@@ -11,7 +11,6 @@ interface RegaliaItem {
   text: string
   discount?: number
 }
-import './RegaliaList.scss'
 
 const regaliaSettings: RegaliaItem[] = [
   { icon: 'new', text: 'Новинка' },
@@ -26,7 +25,10 @@ export const RegaliaList: React.FC<RegaliaProps> = ({ regalia, discount }) => {
       {regalia.map((item) => {
         const regaliaItem = regaliaSettings.find((r) => r.icon === item)
         return (
-          <li key={item} className="feature-item relative h-9 w-9">
+          <li
+            key={item}
+            className="feature-item mds:h-9 mds:w-9 group relative h-9 w-9"
+          >
             <img
               className="relative z-[6] h-full w-full"
               src={`/img/icons/${item}.svg`}
@@ -39,7 +41,7 @@ export const RegaliaList: React.FC<RegaliaProps> = ({ regalia, discount }) => {
                     -{discount}%
                   </span>
                 ) : (
-                  <b className="absolute left-10 top-[50%] translate-y-[-50%] rounded bg-white p-1 text-sm font-bold text-accentBlue opacity-0 transition-opacity">
+                  <b className="absolute left-10 top-[50%] translate-y-[-50%] rounded bg-white p-1 text-sm font-bold text-accentBlue opacity-0 transition-opacity group-hover:opacity-100">
                     {regaliaItem.text}
                   </b>
                 )}

@@ -39,13 +39,9 @@ export const FavoriteCard: React.FC<FavoriteCardProps> = ({ product }) => {
   const [cartIsLoad, setCartIsLoad] = useState(false)
   const [cartIsAdded, setCartIsAdded] = useState(false)
 
-  const { cartState, addProductToCart, removeCartProduct } = useCartStore(
-    (state) => state,
-  )
+  const { cartState, addProductToCart, removeCartProduct } = useCartStore()
 
-  const removeFavoriteProduct = useFavoriteStore(
-    (state) => state.removeFavoriteProduct,
-  )
+  const { removeFavoriteProduct } = useFavoriteStore()
 
   const storeId = `${productId}-${variant}`
 
@@ -82,9 +78,9 @@ export const FavoriteCard: React.FC<FavoriteCardProps> = ({ product }) => {
   }
 
   return (
-    <div className="cart__item ga-5 flex items-center p-2.5">
+    <div className="mdl:flex-row mds:p-2.5 flex flex-col items-center gap-5 py-2.5 [&:not(:last-child)]:border-b [&:not(:last-child)]:border-grayColor">
       <div className="flex flex-auto items-center">
-        <div className="cart__item-image mr-5 h-[150px] w-[150px]">
+        <div className="mds:h-36 mds:w-36 mr-5 h-24 w-24">
           <Link href={product.url} className="cart__item-link">
             <Image
               src={
@@ -92,6 +88,7 @@ export const FavoriteCard: React.FC<FavoriteCardProps> = ({ product }) => {
                   ? `/img/catalog/${product.img}.webp`
                   : '/img/catalog/not-found.jpg'
               }
+              className="h-full w-full object-contain"
               width={150}
               height={150}
               alt=""
@@ -117,19 +114,19 @@ export const FavoriteCard: React.FC<FavoriteCardProps> = ({ product }) => {
         </div>
       </div>
 
-      <div className="cart__item-row cart__item-row flex flex-col items-center gap-2.5">
+      <div className="mdl:flex-col mds:flex-row mdl:gap-5 flex items-center gap-2.5 xs:gap-10">
         <div className="flex w-full items-center justify-between gap-2.5 border-b border-dashed border-gray-400">
           <div className="text-lg font-medium">
             <span>{getDigFormat(price)}₽</span>
           </div>
 
-          <div className="cart__item-buttons">
+          <div className="mdl:order-none mdl:flex-row order-2 flex items-center gap-5 md:flex-col">
             <button
               onClick={() => removeFavoriteProduct(productId, variant)}
-              className="cart__item-button"
+              className="group"
             >
-              <svg className="icon">
-                <use xlinkHref="img/sprite.svg#remove"></use>
+              <svg className="icon h-6 w-6 fill-darkBlue transition-colors group-hover:fill-hoverBlue">
+                <use xlinkHref="/img/sprite.svg#remove"></use>
               </svg>
             </button>
           </div>
@@ -138,12 +135,12 @@ export const FavoriteCard: React.FC<FavoriteCardProps> = ({ product }) => {
         <button
           onClick={handleAddToCart}
           type="button"
-          className={`button cart__item-order-button ${cartIsLoad && 'load'} ${cartIsAdded && 'added'}`}
+          className={`button cart__item-order-button relative gap-2.5 px-5 py-2.5 font-bold ${cartIsLoad && 'load'} ${cartIsAdded && 'added'}`}
         >
-          <span>
-            <img src="img/icons/availability.svg" alt="" />
+          <span className="ttall invisible absolute inline-flex h-full w-full items-center justify-center rounded bg-hoverBlue opacity-0 transition-all">
+            <img className="h-7 w-7" src="img/icons/availability.svg" alt="" />
           </span>
-          <svg className="icon">
+          <svg className="icon h-7 w-7 fill-white">
             <use xlinkHref="img/sprite.svg#cart"></use>
           </svg>
           В корзину

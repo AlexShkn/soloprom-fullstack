@@ -4,15 +4,15 @@ import React from 'react'
 
 export const LogoLink: React.FC = () => {
   return (
-    <div className="mb-8">
-      <Link href="/">
-        <span className="text-[28px] font-bold leading-9 text-darkBlue">
+    <Link href="/">
+      <div className="flex flex-col">
+        <span className="mds:text-2xl text-xl font-bold leading-9 text-darkBlue xl:text-[28px]">
           СОЛО
           <b className="mt-[-5px] inline-block rounded bg-accentBlue px-1 leading-8 text-white">
             PROM
           </b>
         </span>
-      </Link>
-    </div>
+      </div>
+    </Link>
   )
 }

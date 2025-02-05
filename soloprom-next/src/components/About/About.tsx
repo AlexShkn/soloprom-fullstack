@@ -5,7 +5,7 @@ import './About.scss'
 
 export const About: React.FC = ({}) => {
   return (
-    <section id="about" className="about relative bg-darkBlue py-[120px]">
+    <section id="about" className="mds:py-40 relative bg-darkBlue py-16">
       <div className="squares absolute inset-0 h-full w-full opacity-40">
         <div className="square"></div>
         <div className="square square2"></div>

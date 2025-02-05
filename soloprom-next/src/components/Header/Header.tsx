@@ -3,20 +3,19 @@ import React, { useEffect } from 'react'
 
 import { getStateFromLocalStorage } from '@/utils/localStorage/getStateFromLocalStorage'
 
-import { HeaderTop } from './HeaderTop/HeaderTop'
-import HeaderBody from './HeaderBody/HeaderBody'
+import { HeaderTop } from './HeaderTop'
+import HeaderBody from './HeaderBody'
 import HeaderBottom from './HeaderBottom/HeaderBottom'
 
-import './Header.scss'
 import { useCartStore } from '@/store/cartStore'
 import { useFavoriteStore } from '@/store/favoriteStore'
 import { useCompareStore } from '@/store/compareStore'
 import { getCompareLocalStorage } from '@/utils/localStorage/getCompareLocalStorage'
 
 export const Header: React.FC = () => {
-  const setCart = useCartStore((state) => state.setCart)
-  const setFavorite = useFavoriteStore((state) => state.setFavorite)
-  const setComparedItems = useCompareStore((state) => state.setComparedItems)
+  const { setCart } = useCartStore()
+  const { setFavorite } = useFavoriteStore()
+  const { setComparedItems } = useCompareStore()
 
   useEffect(() => {
     if (typeof window !== 'undefined' && window.localStorage) {
@@ -33,7 +32,7 @@ export const Header: React.FC = () => {
 
   return (
     <header className="header relative w-full bg-white transition-all">
-      <div className="header__wrapper relative z-[31] bg-white pb-10 shadow-custom">
+      <div className="relative z-[31] bg-white pb-7 shadow-custom lg:pb-10">
         <HeaderTop />
         <div className="header__container">
           <HeaderBody />

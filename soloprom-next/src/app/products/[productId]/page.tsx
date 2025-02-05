@@ -1,11 +1,11 @@
 import { Metadata } from 'next'
 import { Callback } from '@/components/Callback/Callback'
-import BreadCrumbs from '@/components/ui/BreadCrumbs/BreadCrumbs'
+import BreadCrumbs from '@/components/BreadCrumbs/BreadCrumbs'
 import PageWrapper from '@/app/PageWrapper'
 import { cardDataProps } from '@/types/products.types'
 import { ProductPageCard } from '@/components/ProductPage/ProductPageCard/ProductPageCard'
-import { ProductPageTabs } from '@/components/ProductPage/ProductPageTabs/ProductPageTabs'
-import { ProductPageBenefits } from '@/components/ProductPage/ProductPageBenefits/ProductPageBenefits'
+import { ProductPageTabs } from '@/components/ProductPage/ProductPageTabs'
+import { ProductPageBenefits } from '@/components/ProductPage/ProductPageBenefits'
 import { getProductById, getAllProducts } from '@/utils/api/products'
 
 type WordsAdapt = {

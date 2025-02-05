@@ -87,6 +87,8 @@ export function generateFilterData(
       Object.keys(item.sizes).forEach((size) => {
         if (size !== '') {
           allSizes.push(size)
+        } else {
+          console.log(item)
         }
       })
     }

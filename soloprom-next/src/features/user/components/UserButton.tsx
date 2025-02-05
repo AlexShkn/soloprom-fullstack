@@ -36,7 +36,7 @@ export function UserButton() {
       <DropdownMenuTrigger className="flex">
         <Link
           href={'/auth/login'}
-          className={`header-top__auth-button -margin-2.5 relative inline-flex h-7 w-7 items-center justify-center rounded-[50%] p-2.5 text-center outline outline-1 outline-accentBlue transition-colors`}
+          className={`header-top__auth-button -margin-2.5 group relative inline-flex h-7 w-7 items-center justify-center rounded-[50%] bg-accentBlue p-2.5 text-center outline outline-1 outline-accentBlue transition-colors hover:bg-white`}
         >
           <Avatar>
             <AvatarImage src={userState.picture} />

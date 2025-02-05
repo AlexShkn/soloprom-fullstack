@@ -24,7 +24,7 @@ export const LocateBlock: React.FC<Props> = ({ className }) => {
   const [isConfirm, setIsConfirm] = useState(true)
   const windowRef = useRef(null)
 
-  const setSelectedCity = useLocateStore((state) => state.setSelectedCity)
+  const { setSelectedCity } = useLocateStore()
 
   useClickOutside(windowRef, () => {
     setIsConfirm(false)
@@ -69,7 +69,7 @@ export const LocateBlock: React.FC<Props> = ({ className }) => {
         <button
           onClick={() => setSearchWindowOpen((prev) => !prev)}
           type="button"
-          className="relative transition-colors"
+          className="relative transition-colors before:absolute before:bottom-[-1] before:left-0 before:h-[1px] before:w-full before:bg-white before:transition-colors hover:text-accentBlue before:hover:bg-accentBlue"
         >
           {!locateCity ? 'Выбрать' : locateCity || 'Выбрать'}
         </button>

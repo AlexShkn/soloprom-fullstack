@@ -1,0 +1,13 @@
+.contacts-map {
+  // .contacts-map__map
+
+  .contacts-map__map {
+    [class*='copyrights-pane'] {
+      display: none !important;
+    }
+
+    .ymaps-2-1-79-image {
+      filter: brightness(50%);
+    }
+  }
+}

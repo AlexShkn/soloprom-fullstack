@@ -67,28 +67,20 @@ const HeaderSearch = () => {
           value={searchValue}
           onChange={(e) => setSearchValue(e.target.value)}
           placeholder="Поиск по наименованию и размеру"
-          className="rounded-tl-4 rounded-bl-4 h-full w-full bg-[#f4f5fa] px-8 py-4 placeholder:text-sm placeholder:text-[#c2c5da]"
+          className="rounded-tl-4 rounded-bl-4 h-full w-full bg-[#f4f5fa] px-5 py-[13px] placeholder:text-sm placeholder:text-[#c2c5da] lg:px-8 lg:py-4"
         />
-        <ul className="absolute right-2.5 top-[50%] flex translate-y-[-50%] gap-1">
-          <li className="hidden rounded bg-white p-2.5 text-sm font-bold">
-            АКБ
-          </li>
-          <li className="hidden rounded bg-white p-2.5 text-sm font-bold">
-            Шины
-          </li>
-          <li className="hidden rounded bg-white p-2.5 text-sm font-bold">
-            Опоры
-          </li>
-        </ul>
       </div>
       <button
         type="button"
         id="search-product-btn"
         onClick={resetSearch}
-        className="button rounded-tr-4 rounded-br-4 px-8 py-4"
+        className="button rounded-tr-4 rounded-br-4 mdl:py-[14px] mdl:px-5 h-full p-[12px] text-sm lg:h-auto lg:px-8 lg:py-4 lg:text-base"
       >
-        <span> {searchValue ? 'Сбросить' : 'Найти'} </span>
-        <svg className="icon hidden h-5 w-5 fill-white">
+        <span className="mdl:inline-block hidden">
+          {' '}
+          {searchValue ? 'Сбросить' : 'Найти'}{' '}
+        </span>
+        <svg className="icon mdl:hidden h-5 w-5 fill-white">
           <use xlinkHref="/img/sprite.svg#search"></use>
         </svg>
       </button>

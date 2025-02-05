@@ -45,7 +45,7 @@ const HeroMainSlider: React.FC<HeroTypes> = ({ isReady }) => {
     <>
       {isReady ? (
         <Swiper
-          className="hero-main-slider"
+          className="hero-main-slider relative h-auto w-full overflow-hidden lg:rounded-[0_4px_4px_0]"
           modules={[Pagination, Autoplay]}
           spaceBetween={20}
           slidesPerView={1}
@@ -102,7 +102,7 @@ const HeroMainSlider: React.FC<HeroTypes> = ({ isReady }) => {
             </SwiperSlide>
           ))}
 
-          <div className="hero-main-slider__pagination right-[50%]translate-x-[-50%] absolute bottom-7 z-[8] flex items-center gap-2.5"></div>
+          <div className="hero-main-slider__pagination absolute bottom-2.5 right-[50%] z-[8] flex items-center gap-2.5 md:right-5 lg:bottom-7 lg:translate-x-[-50%]"></div>
         </Swiper>
       ) : (
         <Skeleton count={1} width={'100%'} height={'300px'} />

@@ -15,11 +15,9 @@ import { useHeaderStore } from '@/store/headerStore'
 import { useModalsStore } from '@/store/modalsStore'
 
 const HeaderBottom = () => {
-  const { catalogMenuStateChange, catalogIsOpen } = useCatalogMenuStore(
-    (state) => state,
-  )
-  const { shareModal, callbackIsOpen } = useModalsStore((state) => state)
-  const headerFixed = useHeaderStore((state) => state.headerFixed)
+  const { catalogMenuStateChange, catalogIsOpen } = useCatalogMenuStore()
+  const { shareModal, callbackIsOpen } = useModalsStore()
+  const { headerFixed } = useHeaderStore()
 
   const headerRef = useRef<HTMLDivElement>(null)
 
@@ -46,26 +44,26 @@ const HeaderBottom = () => {
         <div
           className={`header-bottom__panel grid items-center justify-between gap-5 ${catalogIsOpen && 'fixed-panel'}`}
         >
-          <div className="header-bottom__left flex items-center gap-7">
+          <div className="mds:w-auto flex h-11 w-full items-center gap-1 md:gap-4 lg:h-auto lg:gap-7">
             <div className="relative">
               <button
                 onClick={menuStatusChange}
                 type="button"
-                className={`button header-bottom__catalog-button min-w-11 rounded px-8 py-4 text-lg font-bold ${
+                className={`button header-bottom__catalog-button min-w-11 rounded py-[12px] font-bold lg:px-8 lg:py-4 lg:text-lg ${
                   catalogIsOpen && 'open'
                 }`}
               >
                 <img
-                  className="mr-3 hidden h-5 w-5"
+                  className="hidden h-5 w-5 lg:mr-3"
                   src="/img/icons/xmark.svg"
                   alt=""
                 />
                 <img
-                  className="mr-3 h-5 w-5"
+                  className="h-5 w-5 lg:mr-3"
                   src="/img/icons/catalog.svg"
                   alt=""
                 />
-                <span>Каталог</span>
+                <span className="hidden lg:block">Каталог</span>
               </button>
             </div>
 

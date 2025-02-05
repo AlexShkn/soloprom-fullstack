@@ -26,9 +26,10 @@ export const CartResult: React.FC<Props> = ({ cartLength, totalAmount }) => {
 
   return (
     <div className="cart flex flex-col items-center">
-      <div className="cart__result-out mb-7 leading-5">
-        <b>{`Выбрано ${cartLength} ${productWord}`}</b> на сумму
-        <b> {getDigFormat(totalAmount)}</b>₽
+      <div className="mb-7 text-[clamp(1.125rem,0.9272rem+0.6593vw,1.5rem)] leading-5">
+        <b className="whitespace-nowrap">{`Выбрано ${cartLength} ${productWord}`}</b>{' '}
+        на сумму
+        <b className="whitespace-nowrap"> {getDigFormat(totalAmount)}</b> ₽
       </div>
     </div>
   )

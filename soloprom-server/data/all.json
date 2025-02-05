@@ -8582,40 +8582,6 @@
     ]
   },
   {
-    "name": "АКБ Noblelift 12в/150ач для SPN15 370x170x290 мм",
-    "descr": "АКБ Noblelift 12в/150ач для SPN15 370x170x290 мм",
-    "url": "/products/Noblelift12150SPN15370170290",
-    "img": null,
-    "defaultPrice": 38000,
-    "delivery": "до 21 дня",
-    "sizes": {
-      "302158": 38000
-    },
-    "volumes": null,
-    "isPopular": false,
-    "size": null,
-    "discount": null,
-    "models": [],
-    "regalia": [],
-    "productId": "Noblelift12150SPN15370170290",
-    "categoryName": "battery",
-    "subcategoryName": "accumulyatori-tyagovie",
-    "container": "150",
-    "country": "Китай",
-    "load_index": null,
-    "plates": null,
-    "productType": "Тяговый",
-    "voltage": "12",
-    "stock": 0,
-    "brandName": "Noblelift",
-    "rating": 0,
-    "groupsList": [
-      {
-        "name": "accumulyatori-dlya-shtabelerov"
-      }
-    ]
-  },
-  {
     "name": "АКБ Noblelift 48V 560Ah",
     "descr": "АКБ Noblelift 48V 560Ah",
     "url": "/products/Noblelift48V560Ah",

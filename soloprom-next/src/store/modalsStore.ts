@@ -43,16 +43,14 @@ export const useModalsStore = create<ModalsState>((set, get) => ({
   fastOrderProduct: initialFastOrderProduct,
 
   setShareModal: (productId, isOpen) =>
-    set(
-      () => (
-        scrollStatusChange(isOpen),
-        {
-          shareModal: {
-            productId,
-            isOpen,
-          },
-        }
-      ),
+    set(() =>
+      // scrollStatusChange(isOpen),
+      ({
+        shareModal: {
+          productId,
+          isOpen,
+        },
+      }),
     ),
   modalCallbackStateChange: (isOpen) => {
     set({ callbackIsOpen: isOpen })

@@ -9,7 +9,7 @@ import React, {
 } from 'react'
 import { useRouter, useSearchParams } from 'next/navigation'
 import { cardDataProps, FilterData } from '@/types/products.types'
-import { FilteredList } from '@/components/GroupList/FilteredList/FilteredList'
+import { FilteredList } from '@/components/GroupList/FilteredList'
 import CatalogFilters from '../Filter/CatalogFilters'
 import useFilterStore from '@/store/filterStore'
 import { useDebounce } from '@/hooks/useDebounce'
@@ -41,13 +41,13 @@ export const ProductsFilterBlock: React.FC<Props> = ({
   const searchParams = useSearchParams()
   const groupListRef = useRef<HTMLElement | null>(null)
   const fetchControllerRef = useRef<AbortController | null>(null)
-
   const [products, setProducts] = useState(initialProducts || [])
   const [initialLoad, setInitialLoad] = useState(true)
   const [dataIsLoading, setDataIsLoading] = useState(true)
-
   const [filterOpen, setFilterOpen] = useState(false)
-
+  const [checkedValues, setCheckedValues] = useState<Record<string, string[]>>(
+    {},
+  )
   const {
     filteredPage,
     setFilteredPage,
@@ -226,7 +226,7 @@ export const ProductsFilterBlock: React.FC<Props> = ({
   return (
     <section className="group-list section-offset" ref={groupListRef}>
       <div className="group-list__container">
-        <div className="group-list__body">
+        <div className="grid grid-cols-1 md:grid-cols-[220px,1fr] lg:grid-cols-[240px,1fr]">
           <CatalogFilters
             products={products}
             productsType={productsType}
@@ -236,6 +236,8 @@ export const ProductsFilterBlock: React.FC<Props> = ({
             currentPage={currentPage}
             filterOpen={filterOpen}
             setFilterOpen={setFilterOpen}
+            setCheckedValues={setCheckedValues}
+            checkedValues={checkedValues}
           />
           <FilteredList
             data={products}
@@ -249,6 +251,8 @@ export const ProductsFilterBlock: React.FC<Props> = ({
             hasFilters={hasFilters}
             filterOpen={filterOpen}
             setFilterOpen={setFilterOpen}
+            setCheckedValues={setCheckedValues}
+            checkedValues={checkedValues}
           />
         </div>
       </div>

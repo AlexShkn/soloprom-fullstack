@@ -26,22 +26,23 @@ export const CartProductItem: React.FC<CartProductItemProps> = ({
   product,
 }) => {
   const { decreaseProductCount, increaseProductCount, removeCartProduct } =
-    useCartStore((state) => state)
+    useCartStore()
 
   return (
     <div
       key={product.productId + product.variant}
-      className="cart__item ga-5 flex items-center p-2.5"
+      className="mdl:flex-row mds:p-2.5 flex flex-col items-center gap-5 py-2.5 [&:not(:last-child)]:border-b [&:not(:last-child)]:border-grayColor"
     >
       <div className="flex flex-auto items-center">
-        <div className="cart__item-image mr-5 h-[150px] w-[150px]">
-          <Link href={product.url} className="cart__item-link">
+        <div className="mds:h-36 mds:w-36 mr-5 h-24 w-24">
+          <Link href={product.url}>
             <Image
               src={
                 product.img
                   ? `/img/catalog/${product.img}.webp`
                   : '/img/catalog/not-found.jpg'
               }
+              className="h-full w-full object-contain"
               width={150}
               height={150}
               alt=""
@@ -50,7 +51,7 @@ export const CartProductItem: React.FC<CartProductItemProps> = ({
         </div>
 
         <div className="flex flex-col gap-2.5">
-          <div className="cart__item-title text-lg font-medium leading-5">
+          <div className="mdl:text-lg font-medium leading-5">
             <b>{product.name}</b>
           </div>
           <div>
@@ -62,8 +63,8 @@ export const CartProductItem: React.FC<CartProductItemProps> = ({
           </div>
         </div>
       </div>
-      <div className="cart__item-row flex items-center gap-5">
-        <div className="cart__item-counter flex items-center gap-2.5">
+      <div className="mdl:flex-col mds:flex-row mdl:gap-5 flex items-center gap-2.5 xs:gap-10">
+        <div className="mds:order-none order-2 flex items-center gap-2.5">
           <button
             onClick={() =>
               decreaseProductCount(product.productId, product.variant)
@@ -89,20 +90,21 @@ export const CartProductItem: React.FC<CartProductItemProps> = ({
             </svg>
           </button>
         </div>
-        <div className="cart__item-right flex items-center gap-5">
-          <div className="cart__item-price whitespace-nowrap text-xl">
-            <span>{getDigFormat(product.price * product.count)}₽</span>
+        <div className="mdl:flex-col mdl:items-end mdl:order-none order-2 flex items-center gap-5 md:flex-row md:items-center">
+          <div className="order-2 whitespace-nowrap text-xl md:order-none">
+            <span className="font-bold">
+              {getDigFormat(product.price * product.count)}₽
+            </span>
           </div>
 
-          <div className="cart__item-buttons flex flex-col items-center gap-5">
+          <div className="mdl:order-none mdl:flex-row order-2 flex items-center gap-5 md:flex-col">
             <button
               onClick={() =>
                 removeCartProduct(product.productId, product.variant)
               }
-              data-cart-remove=""
-              className="cart__item-button"
+              className="group"
             >
-              <svg className="icon">
+              <svg className="icon h-6 w-6 fill-darkBlue transition-colors group-hover:fill-hoverBlue">
                 <use xlinkHref="/img/sprite.svg#remove"></use>
               </svg>
             </button>

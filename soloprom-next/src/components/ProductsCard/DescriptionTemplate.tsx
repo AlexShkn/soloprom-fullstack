@@ -6,7 +6,7 @@ import { AdaptiveValues } from '@/utils/getAdaptiveValue'
 import { renderDescriptionItem } from '@/utils/renderDescriptionItem'
 
 import { ProductsCardPropTypes } from '@/types/products.types'
-import { SizesRow } from './RegaliaList/SizesRow'
+import { SizesRow } from './SizesRow'
 
 interface DescriptionTypes extends ProductsCardPropTypes {
   variantValue: string

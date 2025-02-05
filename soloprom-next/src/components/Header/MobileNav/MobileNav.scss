@@ -1,35 +1,9 @@
 @use '@/styles/variables.scss';
 
-.header .mobile-nav {
-  @media (max-width: 479.98px) {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    justify-content: space-around;
-    border-top: 1px solid variables.$lightGrayColor;
-    background-color: #fff;
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    padding: 2px 5px;
-    gap: 0;
-  }
-}
-
 .mobile-nav {
   // .mobile-nav__item
 
   .mobile-nav__item {
-    @media (max-width: 992.98px) {
-      height: 45px;
-    }
-
-    @media (max-width: 479.98px) {
-      height: 60px;
-      background-color: #fff;
-      border: none;
-    }
-
     @media (min-width: 479.98px) {
       &:first-child,
       // &:nth-child(2),
@@ -83,33 +57,6 @@
     }
   }
 
-  // .mobile-nav__item-link
-
-  .mobile-nav__item-link {
-    &.active {
-      svg {
-        fill: variables.$hoverAccentColor;
-      }
-
-      color: variables.$hoverAccentColor;
-    }
-
-    @media (max-width: 991.98px) {
-      flex-direction: column;
-      justify-content: center;
-      gap: 5px;
-      font-size: 12px;
-    }
-
-    @media (min-width: 479.98px) {
-      padding: 5px 10px;
-    }
-
-    @media (max-width: 374.98px) {
-      font-size: 10px;
-    }
-  }
-
   // .mobile-nav__item-icon
 
   .mobile-nav__item-icon {
@@ -158,31 +105,10 @@
   // .mobile-nav__callback-list
 
   .mobile-nav__callback-list {
-    @media (min-width: 479.98px) {
-      display: none;
-    }
-
-    @media (max-width: 479.98px) {
-      position: absolute;
-      right: -15px;
-      bottom: calc(100% + 10px);
-      flex-direction: column;
-      gap: 10px;
-      background-color: #fff;
-      padding: 10px;
-      z-index: 10;
-      border-radius: variables.$radius;
-      box-shadow: variables.$shadow;
-      visibility: hidden;
-      opacity: 0;
-      transform: translateX(100px);
-      transition: all 0.3s ease 0s;
-
-      &.show {
-        visibility: visible;
-        opacity: 1;
-        transform: translateX(0);
-      }
+    &.show {
+      visibility: visible;
+      opacity: 1;
+      transform: translateX(0);
     }
   }
 }

@@ -1,52 +1,52 @@
 'use client'
 import React from 'react'
 
-import './HeaderBody.scss'
 import Link from 'next/link'
 import { useModalsStore } from '@/store/modalsStore'
 
 const HeaderBody = () => {
-  const modalCallbackStateChange = useModalsStore(
-    (state) => state.modalCallbackStateChange,
-  )
+  const { modalCallbackStateChange } = useModalsStore()
   return (
-    <div className="header-body flex items-center justify-between py-[30px]">
+    <div className="header-body flex flex-col items-center justify-between gap-4 py-4 xs:flex-row xs:gap-0 lg:py-7">
       <Link
         href="/"
-        className="header__logo flex-0-auto z-[2] mr-10 inline-flex items-center font-bold"
+        className="header__logo flex-0-auto z-[2] mr-10 inline-flex items-center font-bold xs:mr-6"
       >
         <img
           src="/img/logo-icons.svg"
-          className="mr-2.5 h-[50px] w-[50px]"
+          className="mr-2.5 h-10 w-10 xl:h-[50px] xl:w-[50px]"
           alt=""
         />
         <div className="header__logo-text flex flex-col">
-          <span className="text-[28px] font-bold leading-9 text-darkBlue">
+          <span className="mds:text-2xl text-xl font-bold leading-9 text-darkBlue xl:text-[28px]">
             СОЛО
             <b className="mt-[-5px] inline-block rounded bg-accentBlue px-1 leading-8 text-white">
               PROM
             </b>
           </span>
-          <span className="max-w-[170px] pl-[5px] text-[11px] leading-3 text-[#3b3b3b]">
+          <span className="mds:max-w-36 max-w-32 pl-[5px] text-[9px] leading-3 text-[#3b3b3b] xl:max-w-[170px] xl:text-[11px]">
             Интернет-магазин запчастей для спецтехники
           </span>
         </div>
       </Link>
-      <div className="header-body__content flex w-full items-center justify-between gap-5">
-        <div className="header-body__info flex w-full items-center justify-end gap-5">
-          <div className="header-body__schedule flex items-center gap-2.5">
-            <img src="/img/icons/clock.svg" alt="" className="h-7 w-7" />
+      <div className="flex w-full items-end justify-end gap-5 lg:items-center">
+        <div className="hidden w-full items-center justify-end gap-2.5 md:flex md:max-w-60 md:flex-col md:gap-5 lg:max-w-full lg:flex-row">
+          <div className="flex items-center gap-2.5">
+            <img
+              src="/img/icons/clock.svg"
+              alt=""
+              className="h-5 w-5 lg:h-7 lg:w-7"
+            />
 
-            <div className="header-body__schedule-block flex gap-1 whitespace-nowrap text-sm font-medium leading-5">
-              <i className="not-italic">Мы работаем:</i>
+            <div className="flex gap-1 whitespace-nowrap text-sm font-medium leading-5">
               <div className="flex flex-col text-right">
                 <span className="whitespace-nowrap">будни - 9:00-21:00</span>
                 <span className="whitespace-nowrap"> сб. - 10:00-15:00</span>
               </div>
             </div>
           </div>
-          <div className="header-body__address-block flex max-w-[300px] items-center gap-2.5 text-sm font-medium leading-5">
-            <svg className="icon h-7 w-7 min-w-7 fill-darkBlue">
+          <div className="flex max-w-[300px] items-center gap-2.5 text-ss font-medium leading-5 xl:text-sm">
+            <svg className="icon h-5 w-5 min-w-5 fill-darkBlue lg:h-7 lg:w-7 lg:min-w-7">
               <use xlinkHref="/img/sprite.svg#locate"></use>
             </svg>
             <address className="not-italic">
@@ -55,11 +55,11 @@ const HeaderBody = () => {
           </div>
         </div>
 
-        <div className="header-body__contacts flex items-center gap-5">
-          <div className="header-body__social">
+        <div className="mdl:gap-4 mdl:flex-row lg-gap-0 flex items-center gap-5 xs:flex-col md:flex-col md:gap-2.5 xl:flex-row">
+          <div className="md:order-1 lg:order-none">
             <a
               href="https://wa.me/79036569393"
-              className="header-body__social-link flex min-w-[140px] items-center gap-1 rounded bg-greenColor p-2.5 text-center text-ss font-medium text-white"
+              className="flex min-w-[140px] items-center gap-1 rounded bg-greenColor px-1 py-1 text-center text-ss font-medium text-white md:p-2.5"
             >
               <svg className="icon h-7 w-7 fill-white">
                 <use xlinkHref="/img/sprite.svg#footer-wp"></use>
@@ -70,7 +70,7 @@ const HeaderBody = () => {
           <div className="header-body__phone flex flex-col">
             <a
               href="tel:+79036569393"
-              className="link-hover whitespace-nowrap text-xl font-bold"
+              className="link-hover whitespace-nowrap text-[clamp(0.875rem,0.6772rem+0.6593vw,1.25rem)] font-bold"
             >
               +7 (903) 656-93-93
             </a>
@@ -78,7 +78,7 @@ const HeaderBody = () => {
               onClick={() => modalCallbackStateChange(true)}
               data-btn-callback
               type="button"
-              className="link-hover mt-1 text-sm font-bold underline"
+              className="link-hover mt-1 text-sm font-bold underline md:text-base"
             >
               обратная связь
             </button>

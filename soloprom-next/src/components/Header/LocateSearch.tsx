@@ -30,7 +30,7 @@ const LocateSearch: React.FC<LocateSearchTypes> = ({
   const [isLoad, setIsLoad] = useState(false)
   const [filteredCities, setFilteredCities] = useState<any[]>([])
   const [dataFetched, setDataFetched] = useState(false)
-  const { setSelectedCity, cities } = useLocateStore((state) => state)
+  const { setSelectedCity, cities } = useLocateStore()
 
   const debounceRef = useRef<NodeJS.Timeout>()
   const windowRef = useRef<HTMLDivElement>(null)
@@ -94,7 +94,7 @@ const LocateSearch: React.FC<LocateSearchTypes> = ({
   return (
     <div
       ref={windowRef}
-      className="header-top__locate-search absolute left-0 top-[25px] min-w-[280px] overflow-hidden rounded bg-white px-5 py-6 shadow-custom"
+      className="mds:w-auto absolute left-0 top-[25px] w-[calc(100vw-40px)] min-w-[280px] overflow-hidden rounded bg-white px-5 py-6 shadow-custom"
     >
       <CloseButton
         onClick={closeLocateWindows}

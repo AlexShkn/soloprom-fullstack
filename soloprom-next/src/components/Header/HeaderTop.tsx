@@ -2,18 +2,17 @@
 
 import React from 'react'
 
-import HeaderMenu from '../HeaderMenu'
+import HeaderMenu from './HeaderMenu'
 
-import './HeaderTop.scss'
 import Link from 'next/link'
 
 import { Loading } from '@/components/ui'
 import { UserButton } from '@/features/user/components/UserButton'
-import { LocateBlock } from '../LocateBlock'
+import { LocateBlock } from './LocateBlock'
 import { useAuthStore } from '@/store/authStore'
 
 export const HeaderTop: React.FC = () => {
-  const { isAuth, userState, isLoading } = useAuthStore((state) => state)
+  const { isAuth, userState, isLoading } = useAuthStore()
 
   return (
     <div className="header-top bg-darkBlue py-2.5 text-white">
@@ -27,10 +26,10 @@ export const HeaderTop: React.FC = () => {
           ) : (
             <Link
               href={'/auth/login'}
-              className="header-top__auth-button -margin-2.5 relative inline-flex h-7 w-7 items-center justify-center rounded-[50%] bg-accentBlue p-2.5 text-center outline outline-1 outline-accentBlue transition-colors"
+              className="header-top__auth-button -margin-2.5 group relative inline-flex h-7 w-7 items-center justify-center rounded-[50%] bg-accentBlue p-2.5 text-center outline outline-1 outline-accentBlue transition-colors hover:bg-white"
             >
               {!isLoading && !isAuth ? (
-                <svg className="icon ttall absolute h-5 w-5 fill-white transition-colors">
+                <svg className="icon ttall absolute h-5 w-5 fill-white transition-colors group-hover:fill-accentBlue">
                   <use xlinkHref="/img/sprite.svg#lc"></use>
                 </svg>
               ) : (

@@ -25,8 +25,7 @@ const getCurrentSort = (value: string) => {
 
 export const Sort: React.FC<Props> = ({ onSortChange, initialSort }) => {
   const [dropIsOpen, setDropIsOpen] = useState(false)
-  const sort = useFilterStore((state) => state.sort)
-  const setSort = useFilterStore((state) => state.setSort)
+  const { sort, setSort } = useFilterStore()
 
   const dropRef = useRef(null)
 

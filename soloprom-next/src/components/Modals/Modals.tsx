@@ -8,9 +8,7 @@ import './Modals.scss'
 import { SharedModal } from '../ui/SharedModal'
 
 const Modals = () => {
-  const { shareModal, callbackIsOpen, fastOrderProduct } = useModalsStore(
-    (state) => state,
-  )
+  const { shareModal, callbackIsOpen, fastOrderProduct } = useModalsStore()
 
   return (
     <>

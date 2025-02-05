@@ -24,6 +24,10 @@ interface Props {
   categoryInitialList: FilterData
   filterOpen: boolean
   setFilterOpen: (status: boolean) => void
+  checkedValues: Record<string, string[]>
+  setCheckedValues: React.Dispatch<
+    React.SetStateAction<Record<string, string[]>>
+  >
 }
 
 interface dtoTypes {
@@ -45,6 +49,8 @@ const CatalogFilters: React.FC<Props> = ({
   categoryInitialList,
   filterOpen,
   setFilterOpen,
+  setCheckedValues,
+  checkedValues,
 }) => {
   const searchParams = useSearchParams()
   const router = useRouter()
@@ -57,9 +63,6 @@ const CatalogFilters: React.FC<Props> = ({
     min: categoryInitialList.prices?.min || 0,
     max: categoryInitialList.prices?.max || 0,
   })
-  const [checkedValues, setCheckedValues] = useState<Record<string, string[]>>(
-    {},
-  )
 
   const accordionRef = useRef<HTMLDivElement>(null)
 
@@ -159,7 +162,7 @@ const CatalogFilters: React.FC<Props> = ({
       min: categoryInitialList.prices?.min || 0,
       max: categoryInitialList.prices?.max || 0,
     })
-    setCheckedValues({}) // Reset checked values
+    setCheckedValues({})
     router.push(window.location.pathname, { scroll: false })
     resetFilters()
   }
@@ -547,7 +550,7 @@ const CatalogFilters: React.FC<Props> = ({
             className="button flex-auto gap-1.5 py-2.5"
           >
             Показать
-            {products.length && (
+            {products.length > 0 && (
               <span>
                 {products.length} {productWord}
               </span>

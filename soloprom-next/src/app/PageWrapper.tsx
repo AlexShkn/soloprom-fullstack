@@ -4,7 +4,7 @@ import React from 'react'
 import { Header } from '@/components/Header/Header'
 import Footer from '@/components/Footer/Footer'
 import Modals from '@/components/Modals/Modals'
-import { CallbackPanel } from '@/components/ui/CallbackPanel/CallbackPanel'
+import { CallbackPanel } from '@/components/CallbackPanel/CallbackPanel'
 import TransitionWrapper from '@/providers/TransitionWrapper'
 
 export default function PageWrapper({

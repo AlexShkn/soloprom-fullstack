@@ -1,7 +1,6 @@
 'use client'
 import React from 'react'
 
-import './ContactsMap.scss'
 import YaMap from './YaMap'
 
 interface Props {
@@ -10,10 +9,13 @@ interface Props {
 
 export const ContactsMap: React.FC<Props> = ({ className }) => {
   return (
-    <section id="contacts" className="contacts-map relative">
+    <section
+      id="contacts"
+      className="contacts-map relative flex flex-col bg-accentBlue lg:block lg:bg-none"
+    >
       <YaMap />
-      <div className="contacts-map__container">
-        <div className="contacts-map__body relative mb-14 mt-14 inline-flex max-w-[460px] flex-col rounded p-14 shadow-custom">
+      <div className="page-container">
+        <div className="relative my-14 inline-flex flex-col rounded p-14 px-4 py-7 shadow-custom xs:p-7 md:w-full md:max-w-max lg:max-w-[460px] lg:bg-accentBlue">
           <h2 className="mb-7 text-3xl font-medium leading-9 text-white">
             Офис продаж
             <br />

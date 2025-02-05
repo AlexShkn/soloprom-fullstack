@@ -2,7 +2,7 @@ import type { Metadata } from 'next'
 import { Callback } from '@/components/Callback/Callback'
 import { PaymentDelivery } from '@/components/PaymentDelivery/PaymentDelivery'
 import { ContactsMap } from '@/components/ContactsMap/ContactsMap'
-import BreadCrumbs from '@/components/ui/BreadCrumbs/BreadCrumbs'
+import BreadCrumbs from '@/components/BreadCrumbs/BreadCrumbs'
 import PageWrapper from '../../PageWrapper'
 
 export const metadata: Metadata = {

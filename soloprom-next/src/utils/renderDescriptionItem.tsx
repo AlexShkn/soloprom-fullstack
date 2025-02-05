@@ -5,8 +5,8 @@ export const renderDescriptionItem = (
 ) => {
   if (value === undefined || value === null) return null
   return (
-    <div className="product-card__descr-item flex items-center justify-between pb-1 text-sm">
-      <div className="product-card__descr-item-name">{name}</div>
+    <div className="flex items-center justify-between border-b border-grayColor pb-1 text-sm [&:not(:last-child)]:mb-1.5">
+      <div className="">{name}</div>
       <div className="font-bold">
         {value}
         {unit || ''}

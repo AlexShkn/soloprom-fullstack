@@ -1,6 +1,5 @@
 'use client'
 import React, { useState } from 'react'
-import './FavoriteTabs.scss'
 import { ProductListSlider } from '../ProductListSlider/ProductListSlider'
 import { FavoriteList } from '@/types/products.types'
 
@@ -32,7 +31,7 @@ export const FavoriteTabs: React.FC<FavoriteTabsProps> = ({ initialData }) => {
                 }
                 key={caption.type}
                 className={`favorite-tabs__caption border-1 cursor-pointer rounded border border-[#d1d1d1] px-5 py-4 text-center font-medium ${
-                  caption.type === currantTab ? 'active' : ''
+                  caption.type === currantTab ? 'bg-hoverBlue text-white' : ''
                 }`}
               >
                 {caption.name}

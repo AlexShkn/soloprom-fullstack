@@ -2,9 +2,7 @@
 
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-
-import s from './BreadCrumbs.module.scss'
-
+import { Home, ChevronRight } from 'lucide-react'
 import { transformJson } from '@/components/CategoryPageHero/SidePanel/SidePanel'
 
 interface Subcategory {
@@ -103,57 +101,70 @@ const BreadCrumbs: React.FC<forcedListTypes> = ({
   return (
     <nav aria-label="breadcrumb" className={`relative z-[2] mb-7 pt-5`}>
       <ul>
-        <div className="breadCrumbs__container flex flex-wrap items-center">
+        <div className="breadCrumbs__container flex flex-wrap items-center text-sm md:text-base">
           <Link
             href="/"
-            className={`${s.breadCrumbsLink} relative text-accentBlue`}
+            className={`relative flex items-center text-accentBlue`}
           >
-            <svg className="icon h-5 w-5 fill-accentBlue transition-colors hover:text-darkBlue">
-              <use xlinkHref="/img/sprite.svg#home" />
-            </svg>
+            <Home className="h-4 w-4" />
           </Link>
 
           {!category ? (
             breadcrumbs.map((crumb, index) => (
-              <Link
-                key={index}
-                href={crumb.href}
-                className={`${s.breadCrumbsLink} link-hover relative text-darkBlue`}
-              >
-                {crumb.label}
-              </Link>
+              <span key={index} className="flex items-center">
+                <ChevronRight className="mx-1 h-4 w-4 text-gray-500" />{' '}
+                <Link
+                  href={crumb.href}
+                  className={`link-hover relative text-darkBlue`}
+                >
+                  {crumb.label}
+                </Link>
+              </span>
             ))
           ) : (
             <>
-              <Link
-                href={`/catalog`}
-                className={`${s.breadCrumbsLink} link-hover relative text-darkBlue`}
-              >
-                Каталог
-              </Link>
-
-              <Link
-                href={`/catalog/${category}`}
-                className={`${s.breadCrumbsLink} link-hover relative text-darkBlue`}
-              >
-                {dictionary[category]}
-              </Link>
-              {subCategoryInfo && (
+              <span className="flex items-center">
+                <ChevronRight className="mx-1 h-4 w-4 text-gray-500" />
                 <Link
-                  href={`/catalog/${subcategory}`}
-                  className={`${s.breadCrumbsLink} link-hover relative text-darkBlue`}
+                  href={`/catalog`}
+                  className={`link-hover relative text-darkBlue`}
                 >
-                  {subCategoryInfo.crumb}
+                  Каталог
                 </Link>
+              </span>
+
+              <span className="flex items-center">
+                <ChevronRight className="mx-1 h-4 w-4 text-gray-500" />
+                <Link
+                  href={`/catalog/${category}`}
+                  className={`link-hover relative text-darkBlue`}
+                >
+                  {dictionary[category]}
+                </Link>
+              </span>
+
+              {subCategoryInfo && (
+                <span className="flex items-center">
+                  <ChevronRight className="mx-1 h-4 w-4 text-gray-500" />
+                  <Link
+                    href={`/catalog/${subcategory}`}
+                    className={`link-hover relative text-darkBlue`}
+                  >
+                    {subCategoryInfo.crumb}
+                  </Link>
+                </span>
               )}
 
               {url !== category && (
-                <Link
-                  href={url ? url : '/'}
-                  className={`${s.breadCrumbsLink} link-hover relative text-darkBlue`}
-                >
-                  {name}
-                </Link>
+                <span className="flex items-center">
+                  <ChevronRight className="mx-1 h-4 w-4 text-gray-500" />
+                  <Link
+                    href={url ? url : '/'}
+                    className={`link-hover relative text-darkBlue`}
+                  >
+                    {name}
+                  </Link>
+                </span>
               )}
             </>
           )}

@@ -1,6 +1,5 @@
 'use client'
 import React, { useState, useCallback, useMemo } from 'react'
-import './ProductPageTabs.scss'
 
 type Review = {
   name: string
@@ -20,18 +19,18 @@ type ProductDescription = {
 }
 
 interface Props {
-  productDescr?: ProductDescription // Changed to optional
+  productDescr?: ProductDescription
 }
 
 type CurrentTabType = number
 
 const DescriptionTab = React.memo(({ text }: { text: string }) => (
-  <div className="product-page-tabs__description">{text}</div>
+  <div className="text-base">{text}</div>
 ))
 
 const CharacteristicsTab = React.memo(
   ({ options }: { options: [string, string][] | undefined }) => (
-    <div className="product-page-tabs__description">
+    <div className="text-base">
       {options && options?.length ? (
         <table className="w-full border-collapse text-left text-sm text-gray-500">
           <thead className="border-b border-gray-900/60 bg-gray-50 text-xs uppercase text-gray-700">
@@ -56,7 +55,9 @@ const CharacteristicsTab = React.memo(
           </tbody>
         </table>
       ) : (
-        <div className="product-page-tabs__reviews-not">Нет характеристик</div>
+        <div className="my-12 text-center text-3xl font-bold">
+          Нет характеристик
+        </div>
       )}
     </div>
   ),
@@ -64,17 +65,17 @@ const CharacteristicsTab = React.memo(
 
 const CompatibilityTab = React.memo(
   ({ models }: { models: string[] | undefined }) => (
-    <div className="product-page-card__table-info">
+    <div className="">
       {models && models?.length > 0 ? (
-        <ul className="product-page-card__table-list">
+        <ul className="flex max-w-5xl flex-wrap items-center">
           {models.map((model, index) => (
-            <li key={index} className="product-page-card__table-item">
+            <li key={index} className="border-1 border-b border-grayColor">
               {model}
             </li>
           ))}
         </ul>
       ) : (
-        <div className="product-page-tabs__reviews-not">Список пуст</div>
+        <div className="my-12 text-center text-3xl font-bold">Список пуст</div>
       )}
     </div>
   ),
@@ -91,26 +92,29 @@ const ReviewsTab = React.memo(
     <div className="product-page-tabs__reviews">
       {reviews && reviews?.length > 0 ? (
         <>
-          <h2 className="section-title product-page-tabs__reviews-title">
+          <h2 className="mb-7 text-xl font-bold lg:text-3xl">
             {productDescr?.name || 'Имя продукта'}
           </h2>
           <ul className="product-page-tabs__reviews-list">
             {reviews.map((review, index) => (
-              <li key={index} className="product-page-tabs__reviews-item">
-                <div className="product-page-tabs__reviews-head">
-                  <div className="product-page-tabs__reviews-profile">
-                    <div className="product-page-tabs__reviews-avatar">
-                      <img src="/img/icons/profile.svg" alt="" />
+              <li key={index} className="mb-6 rounded bg-[#fafafa] p-4 md:p-7">
+                <div className="border-1 mb-5 flex items-center justify-between gap-7 border-b border-[#f1eff2] pb-4">
+                  <div className="flex items-center">
+                    <div className="mr-2.5 flex h-10 w-10 items-center rounded-br-full bg-[#d9dde7] pb-1 pl-1">
+                      <img
+                        className="h-6 w-6"
+                        src="/img/icons/profile.svg"
+                        alt=""
+                      />
                     </div>
-                    <div className="product-page-tabs__reviews-name">
-                      {review.name}
-                    </div>
+                    <div className="text-lg font-medium">{review.name}</div>
                   </div>
-                  <div className="product-page-tabs__reviews-stars">
+                  <div className="flex items-center gap-1 md:gap-2.5">
                     {Array.from({ length: 5 }).map((_, starIndex) => (
                       <img
                         key={starIndex}
                         src="/img/icons/star.svg"
+                        className="h-5 w-5"
                         alt=""
                         style={{
                           opacity: starIndex + 1 <= review.rating ? 1 : 0.3,
@@ -118,33 +122,21 @@ const ReviewsTab = React.memo(
                       />
                     ))}
 
-                    <span>{review.rating}</span>
+                    <span className="font-medium">{review.rating}</span>
                   </div>
                 </div>
                 <div className="product-page-tabs__reviews-body">
-                  <div className="product-page-tabs__reviews-point">
-                    <div className="product-page-tabs__reviews-point-title">
-                      Достоинства
-                    </div>
-                    <div className="product-page-tabs__reviews-point-text">
-                      {review.positive}
-                    </div>
+                  <div className="mb-5">
+                    <div className="mb-4 text-lg font-medium">Достоинства</div>
+                    <div className="text-base">{review.positive}</div>
                   </div>
-                  <div className="product-page-tabs__reviews-point">
-                    <div className="product-page-tabs__reviews-point-title">
-                      Недостатки
-                    </div>
-                    <div className="product-page-tabs__reviews-point-text">
-                      {review.negative}
-                    </div>
+                  <div className="mb-5">
+                    <div className="mb-4 text-lg font-medium">Недостатки</div>
+                    <div className="text-base">{review.negative}</div>
                   </div>
-                  <div className="product-page-tabs__reviews-point">
-                    <div className="product-page-tabs__reviews-point-title">
-                      Комментарий
-                    </div>
-                    <div className="product-page-tabs__reviews-point-text">
-                      {review.comment}
-                    </div>
+                  <div className="mb-5">
+                    <div className="mb-4 text-lg font-medium">Комментарий</div>
+                    <div className="text-base">{review.comment}</div>
                   </div>
                 </div>
               </li>
@@ -152,7 +144,7 @@ const ReviewsTab = React.memo(
           </ul>
         </>
       ) : (
-        <div className="product-page-tabs__reviews-not">Нет отзывов</div>
+        <div className="my-12 text-center text-3xl font-bold">Нет отзывов</div>
       )}
     </div>
   ),
@@ -160,19 +152,15 @@ const ReviewsTab = React.memo(
 
 const DeliveryTab = React.memo(() => (
   <div className="product-page-tabs__delivery">
-    <div className="product-page-tabs__delivery-block">
-      <div className="product-page-tabs__delivery-title">
+    <div className="mb-5">
+      <div className="mb-5 font-bold">
         Доставка осуществляется в интервалах:
       </div>
-      <div className="product-page-tabs__delivery-text">
-        - Буди: 9:00 до 18:00
-      </div>
-      <div className="product-page-tabs__delivery-text">
-        - В выходные дни: - с 10:00 до 15:00
-      </div>
+      <div className="mb-5 text-base">- Буди: 9:00 до 18:00</div>
+      <div className="mb-5 text-base">- В выходные дни: - с 10:00 до 15:00</div>
     </div>
-    <div className="product-page-tabs__delivery-block">
-      <div className="product-page-tabs__delivery-text">
+    <div className="mb-5">
+      <div className="mb-5 text-base">
         Если Вы хотите уточнить сумму доставки, то после приема заказа по
         телефону или на нашем сайте, можете задать вопрос нашим менеджерам, и
         они быстро рассчитают Вам стоимость доставки товара по указанному Вами
@@ -225,14 +213,14 @@ export const ProductPageTabs: React.FC<Props> = ({ productDescr }) => {
     }
   }
   return (
-    <div className="product-page-tabs">
-      <div className="product-page-tabs__caption-wrapper">
-        <div className="product-page-tabs__caption-list">
+    <div className="mb-7">
+      <div className="mb-10">
+        <div className="border-1 scroll-bar-row scroll-bar-row--mini flex items-center gap-5 overflow-x-auto overflow-y-hidden border-b border-grayColor">
           {captions.map((caption, index) => (
             <div
               key={caption}
-              className={`product-page-tabs__caption ${
-                index === currentTab && 'active'
+              className={`font-lg relative cursor-pointer whitespace-nowrap px-1 py-5 text-xl md:px-4 md:py-5 md:font-medium ${
+                index === currentTab && 'text-accentBlue'
               }`}
               onClick={() => handleTabClick(index)}
             >
@@ -240,11 +228,8 @@ export const ProductPageTabs: React.FC<Props> = ({ productDescr }) => {
             </div>
           ))}
         </div>
-        <div className="product-page-tabs__caption-scrollbar">
-          <div className="product-page-tabs__caption-scrollbar-drag"></div>
-        </div>
       </div>
-      <div className="product-page-tabs__content">{renderTabContent()}</div>
+      <div className="">{renderTabContent()}</div>
     </div>
   )
 }

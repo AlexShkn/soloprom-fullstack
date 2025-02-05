@@ -2,14 +2,13 @@
 import React, { useState } from 'react'
 import { ProductsCard } from '@/components/ProductsCard/ProductsCard'
 import { cardDataProps } from '@/types/products.types'
-import { Pagination } from '../Pagination'
+import { Pagination } from './Pagination'
 import Skeleton from 'react-loading-skeleton'
 import 'react-loading-skeleton/dist/skeleton.css'
-import { Sort } from '../Sort'
-import { ViewSetting } from '../ViewSetting'
-import { DynamicPagination } from '../DynamicPagination'
+import { Sort } from './Sort'
+import { ViewSetting } from './ViewSetting'
+import { DynamicPagination } from './DynamicPagination'
 
-import './FilteredList.scss'
 import useFilterStore from '@/store/filterStore'
 
 interface Props {
@@ -24,6 +23,10 @@ interface Props {
   dataIsLoading: boolean
   filterOpen: boolean
   setFilterOpen: (status: boolean) => void
+  setCheckedValues: React.Dispatch<
+    React.SetStateAction<Record<string, string[]>>
+  >
+  checkedValues: Record<string, string[]>
 }
 
 export const FilteredList: React.FC<Props> = ({
@@ -38,12 +41,13 @@ export const FilteredList: React.FC<Props> = ({
   dynamicCurrentPage,
   filterOpen,
   setFilterOpen,
+  setCheckedValues,
+  checkedValues,
 }) => {
   const [viewMode, setViewMode] = useState('grid')
-  const { filters, setFilters } = useFilterStore() // Get setFilters from the store
+  const { filters, setFilters } = useFilterStore()
   const filterKeysToIgnore = ['minPrice', 'maxPrice']
 
-  // Create a set to store unique filter values
   const uniqueFilterValues = new Set<string>()
 
   const activeFilters = Object.entries(filters)
@@ -56,9 +60,9 @@ export const FilteredList: React.FC<Props> = ({
     .map(([key, value]) => [
       key,
       (value as string[]).filter((filterValue) => {
-        const uniqueKey = `${key}-${filterValue}` // Create a unique key
+        const uniqueKey = `${key}-${filterValue}`
         if (uniqueFilterValues.has(uniqueKey)) {
-          return false // Skip if already exists
+          return false
         }
         uniqueFilterValues.add(uniqueKey)
         return true
@@ -67,7 +71,7 @@ export const FilteredList: React.FC<Props> = ({
     .filter(([, value]) => (value as string[]).length > 0) as [
     string,
     string[],
-  ][] // Explicit type assertion here
+  ][]
 
   const handleRemoveFilter = (filterName: string, filterValue: string) => {
     const currentFilterValues = (filters[filterName] as string[]) || []
@@ -78,13 +82,23 @@ export const FilteredList: React.FC<Props> = ({
     if (updatedFilterValues.length === 0) {
       const { [filterName]: removed, ...remainingFilters } = filters
       setFilters(remainingFilters)
+
+      const { [filterName]: removedChecked, ...remainingChecked } =
+        checkedValues
+      setCheckedValues(remainingChecked)
     } else {
       setFilters({ ...filters, [filterName]: updatedFilterValues })
+      if (checkedValues[filterName]) {
+        setCheckedValues({
+          ...checkedValues,
+          [filterName]: updatedFilterValues,
+        })
+      }
     }
   }
 
   return (
-    <div className="filter__catalog">
+    <div className="filter-catalog">
       <div className="mb-5 mt-5 flex items-center justify-between gap-5 md:mx-5 md:mt-0">
         <Sort onSortChange={onSortChange} />
 
@@ -101,18 +115,19 @@ export const FilteredList: React.FC<Props> = ({
         <ViewSetting viewMode={viewMode} setViewMode={setViewMode} />
       </div>
 
-      <ul className="flex flex-wrap items-center gap-2.5">
+      <ul className="mx-5 mb-4 flex flex-wrap items-center gap-2.5">
         {activeFilters.map(([filterName, filterValues]) =>
           (filterValues as string[]).map((filterValue, index) => (
             <li
               key={`${filterName}-${index}`}
-              className="flex items-center gap-1 rounded bg-gray-200 px-2 py-1 text-sm"
+              className="rounded bg-accentBlue"
             >
-              {filterValue}
               <button
                 onClick={() => handleRemoveFilter(filterName, filterValue)}
-                className="text-gray-500 hover:text-gray-700"
+                className="flex items-center gap-1 px-2 py-1 text-sm text-white transition-colors"
               >
+                {filterValue}
+
                 <svg className="h-4 w-4 fill-current" viewBox="0 0 20 20">
                   <path d="M14.348 14.849a1.2 1.2 0 0 1-1.697 0L10 11.819l-2.651 3.029a1.2 1.2 0 1 1-1.697-1.697l2.758-3.15-2.759-3.152a1.2 1.2 0 1 1 1.697-1.697L10 8.183l2.651-3.031a1.2 1.2 0 1 1 1.697 1.697l-2.758 3.152 2.758 3.15a1.2 1.2 0 0 1 0 1.698z" />
                 </svg>
@@ -123,7 +138,7 @@ export const FilteredList: React.FC<Props> = ({
       </ul>
 
       <ul
-        className={`catalog-list--${viewMode} grid grid-cols-4 gap-5 overflow-hidden px-5 py-2.5`}
+        className={`catalog-list catalog-list--${viewMode} grid grid-cols-4 gap-5 overflow-hidden px-5 py-2.5`}
       >
         {dataIsLoading
           ? Array.from({ length: 12 }).map((_, index) => (

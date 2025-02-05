@@ -9,7 +9,7 @@ import { useClickOutside } from '@/hooks/useClickOutside'
 const CLIENT_URL = process.env.NEXT_PUBLIC_CLIENT_URL as string
 
 export const SharedModal = () => {
-  const { setShareModal, shareModal } = useModalsStore((state) => state)
+  const { setShareModal, shareModal } = useModalsStore()
   const modalRef = useRef(null)
 
   const id = shareModal.productId
@@ -33,7 +33,7 @@ export const SharedModal = () => {
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
       <div
         ref={modalRef}
-        className="relative w-full max-w-md rounded bg-white p-6 shadow-lg"
+        className="relative mx-4 w-full max-w-md rounded bg-white p-6 shadow-lg"
       >
         <button
           className="absolute right-2 top-2 font-bold text-darkBlue hover:text-accentBlue"

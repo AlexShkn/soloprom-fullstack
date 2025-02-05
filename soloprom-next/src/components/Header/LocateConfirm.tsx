@@ -14,7 +14,7 @@ const LocateConfirm: React.FC<LocateConfirmTypes> = ({
   setSearchWindowOpen,
   searchWindowOpen,
 }) => {
-  const setSelectedCity = useLocateStore((state) => state.setSelectedCity)
+  const { setSelectedCity } = useLocateStore()
 
   const setCityConfirm = (answer: boolean) => {
     setIsConfirm(!answer)

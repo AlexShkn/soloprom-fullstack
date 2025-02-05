@@ -29,9 +29,7 @@ export const ProductsPageOffers: React.FC<Props> = ({ cardData }) => {
 
   const [cartIsAddedList, setCartIsAddedList] = useState<string[]>([])
 
-  const { cartState, addProductToCart, removeCartProduct } = useCartStore(
-    (state) => state,
-  )
+  const { cartState, addProductToCart, removeCartProduct } = useCartStore()
 
   const sizesData = sizes || volumes
 
@@ -119,15 +117,19 @@ export const ProductsPageOffers: React.FC<Props> = ({ cardData }) => {
                     : handleAddToCart(variant)
                 }
                 disabled={cartIsLoad}
-                className={`button product-page-card__button-cart ${
+                className={`button product-page-card__button-cart relative gap-2.5 p-2.5 font-bold ${
                   checkProductInCart(variant) && 'added'
                 }`}
               >
-                <span>
-                  <img src="/img/icons/availability.svg" alt="" />
+                <span className="tall invisible absolute inline-flex h-full w-full items-center justify-center gap-2.5 rounded bg-hoverBlue opacity-0 transition-all">
+                  <img
+                    src="/img/icons/availability.svg"
+                    className="h-7 w-7"
+                    alt=""
+                  />
                   Добавлен
                 </span>
-                <svg className="icon">
+                <svg className="icon h-6 w-6 fill-white">
                   <use xlinkHref="/img/sprite.svg#cart"></use>
                 </svg>
                 Добавить

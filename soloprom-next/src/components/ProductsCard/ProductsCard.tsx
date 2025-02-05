@@ -7,7 +7,7 @@ import './ProductsCard.scss'
 import { ProductsCardPropTypes, ProductCardData } from '@/types/products.types'
 import { DescriptionTemplate } from './DescriptionTemplate'
 import { PriceBlock } from './PriceBlock'
-import { RegaliaList } from './RegaliaList/RegaliaList'
+import { RegaliaList } from './RegaliaList'
 
 import { useCartStore } from '@/store/cartStore'
 import { useFavoriteStore } from '@/store/favoriteStore'
@@ -25,21 +25,17 @@ export const ProductsCard: React.FC<ProductsCardPropTypes> = ({
   const [compareIsAdded, setCompareIsAdded] = useState(false)
   const [cartIsLoad, setCartIsLoad] = useState(false)
 
-  const cartState = useCartStore((state) => state.cartState)
-  const addProductToCart = useCartStore((state) => state.addProductToCart)
-  const removeCartProduct = useCartStore((state) => state.removeCartProduct)
+  const { cartState } = useCartStore()
+  const { addProductToCart } = useCartStore()
+  const { removeCartProduct } = useCartStore()
 
   const { setShareModal } = useModalsStore()
 
   const { favoriteState, removeFavoriteProduct, addProductToFavorite } =
-    useFavoriteStore((state) => state)
-  const { modalCallbackStateChange, setFastOrderProduct } = useModalsStore(
-    (state) => state,
-  )
+    useFavoriteStore()
+  const { modalCallbackStateChange, setFastOrderProduct } = useModalsStore()
 
-  const { comparedItems, addToCompare, removeFromCompare } = useCompareStore(
-    (state) => state,
-  )
+  const { comparedItems, addToCompare, removeFromCompare } = useCompareStore()
 
   const {
     productId,
@@ -311,7 +307,7 @@ export const ProductsCard: React.FC<ProductsCardPropTypes> = ({
             type="button"
             onClick={cartIsAdded ? handleRemoveFromCart : handleAddToCart}
             disabled={cartIsLoad}
-            className={`button product-card__button ${mod === 'grid' && 'grid-view w-auto'} ${cartIsLoad && mod !== 'grid' && 'load'} ${cartIsLoad && mod === 'grid' && 'load load--mini'} ${cartIsAdded && 'added'}`}
+            className={`button product-card__button relative items-center gap-2.5 px-5 py-2.5 font-bold ${mod === 'grid' && 'grid-view w-auto'} ${cartIsLoad && mod !== 'grid' && 'load'} ${cartIsLoad && mod === 'grid' && 'load load--mini'} ${cartIsAdded && 'added'}`}
           >
             <span className="ttall invisible absolute inline-flex h-full w-full items-center justify-center rounded bg-hoverBlue opacity-0 transition-colors">
               <img
@@ -320,7 +316,9 @@ export const ProductsCard: React.FC<ProductsCardPropTypes> = ({
                 alt="Availability"
               />
             </span>
-            <svg className={`${mod === 'grid' && 'grid'}`}>
+            <svg
+              className={`h-7 w-7 fill-white ${mod === 'grid' && 'grid-view'}`}
+            >
               <use xlinkHref="/img/sprite.svg#cart" />
             </svg>
 

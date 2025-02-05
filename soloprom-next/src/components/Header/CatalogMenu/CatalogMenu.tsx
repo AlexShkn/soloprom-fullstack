@@ -148,9 +148,7 @@ const CatalogMenu = () => {
   const [currentTab, setCurrentTab] = useState('')
   const menuRef = useRef<HTMLDivElement>(null)
 
-  const { catalogIsOpen, catalogMenuStateChange } = useCatalogMenuStore(
-    (state) => state,
-  )
+  const { catalogMenuStateChange } = useCatalogMenuStore()
 
   const isTablet = useMediaQuery('(max-width: 991.98px)')
   const is650 = useMediaQuery('(max-width: 650px)')
@@ -178,31 +176,31 @@ const CatalogMenu = () => {
   return (
     <div
       ref={menuRef}
-      className="catalog-menu scroll-bar absolute left-0 top-[85px] z-20 h-auto min-h-[65vh] w-full rounded bg-white shadow-custom"
+      className="catalog-menu scroll-bar fixed left-0 top-0 z-20 h-full min-h-[65vh] w-full overscroll-contain rounded bg-white shadow-[0_4px_30px_0_rgba(0,0,0,0.1)] lg:absolute lg:top-[85px] lg:h-auto"
     >
-      <div className="h-full min-h-[65vh] tb:min-h-[100vh]">
+      <div className="tb:min-h-[100vh] h-full min-h-[65vh]">
         <CloseButton
           onClick={menuClose}
-          classNames="catalog-menu__close"
-          iconClass="icon-close"
+          classNames="hidden sm:block catalog-menu__close absolute top-[5px] right-[5px] -margin-1 z-10"
+          iconClass="w-7 h-7 fill-darkBlue cursor-pointer"
         />
 
-        <div className="catalog-menu__body relative grid min-h-[65vh] justify-between gap-2.5">
-          <div className="catalog-menu__category-list border-1 h-full border border-grayColor px-7 pb-7 pt-10">
+        <div className="catalog-menu__body relative grid h-full min-h-screen grid-cols-1 justify-between gap-2.5 overflow-y-auto sm:grid-cols-2 md:grid-cols-[40%,calc(60%-20px)] lg:grid-cols-[30%,calc(70%-20px)] 2xl:min-h-[65vh] 2xl:grid-cols-[25%,calc(75%-20px)]">
+          <div className="border-1 flex h-full flex-col items-start gap-2.5 border border-grayColor bg-[#dfefff] px-5 pb-5 pt-20 lg:bg-none lg:pb-7 lg:pt-10 xl:px-7 xl:pb-7 xl:pt-10">
             <Link
               onClick={() => catalogMenuStateChange(false, false)}
               href="/catalog"
-              className="catalog-menu__link flex items-center justify-between gap-2.5 rounded bg-accentBlue px-2.5 py-5 font-medium"
+              className="flex max-w-48 items-center justify-between gap-2.5 rounded bg-accentBlue px-2.5 py-4 text-sm font-medium sm:mb-2.5 sm:max-w-max md:text-base"
             >
               <span className="flex items-center gap-2.5 text-white">
                 <img
                   src="/img/icons/catalog-link.svg"
                   alt=""
-                  className="h-6 w-6"
+                  className="mds:h-6 mds:w-6 h-5 w-5"
                 />
                 Весь каталог
               </span>
-              <svg className="icon h-5 w-5 rotate-[-90deg] fill-white">
+              <svg className="icon mds:h-5 mds:w-5 h-4 w-4 rotate-[-90deg] fill-white">
                 <use xlinkHref="/img/sprite-default.svg#arrow-drop"></use>
               </svg>
             </Link>
@@ -211,7 +209,7 @@ const CatalogMenu = () => {
               <div
                 key={category.id}
                 onClick={() => setCatalogTab(category.id)}
-                className={`catalog-menu__category-item rounded-tr-4 rounded-br-4 flex cursor-pointer items-center gap-2.5 bg-white pl-2.5 font-medium ${
+                className={`catalog-menu__category-item rounded-tr-4 rounded-br-4 flex w-full cursor-pointer items-center gap-2.5 bg-white pl-2.5 font-medium ${
                   currentTab === category.id
                     ? 'active'
                     : `${is650 && currentTab && 'hidden-block'}`
@@ -223,7 +221,7 @@ const CatalogMenu = () => {
                   alt={category.alt}
                 />
                 <span className="flex-auto">{category.title}</span>
-                <div className="catalog-menu__category-item-button rounded-tr-4 rounded-br-4 relative z-[1] inline-flex h-full items-center justify-center bg-accentBlue px-2.5 py-6">
+                <div className="catalog-menu__category-item-button rounded-tr-4 rounded-br-4 relative z-[1] inline-flex h-full items-center justify-center bg-accentBlue px-2.5 py-5 sm:px-2.5 sm:py-6">
                   <svg className="icon h-5 w-5 rotate-[-90deg] fill-white">
                     <use xlinkHref="/img/sprite-default.svg#arrow-drop"></use>
                   </svg>
@@ -231,7 +229,7 @@ const CatalogMenu = () => {
               </div>
             ))}
           </div>
-          <div className="catalog-menu__category-content h-full pb-7 pl-0 pr-7 pt-10">
+          <div className="h-full sm:pb-7 sm:pl-0 sm:pr-7 sm:pt-10">
             {categoryList.map((category) => (
               <TabCategory
                 key={category.id}
@@ -242,16 +240,16 @@ const CatalogMenu = () => {
             ))}
           </div>
 
-          <div className="catalog-menu__bottom hidden">
+          <div className="px-5 py-7 sm:hidden">
             <div className="mb-7 text-center text-lg font-bold">
               Напишите нам
             </div>
-            <ul className="catalog-menu__bottom-list mb-5 grid grid-cols-4 gap-2.5 py-5">
+            <ul className="mds:grid-cols-4 mb-5 grid grid-cols-2 gap-2.5 border-b border-t border-[#cdcfd8] py-10 sm:py-5">
               <li className="catalog-menu__bottom-item">
                 <button
                   data-btn-callback
                   type="button"
-                  className="flex h-full w-full flex-col items-center justify-center rounded bg-white px-2.5 pt-5 shadow-custom"
+                  className="flex h-full w-full flex-col items-center justify-center rounded bg-white px-2.5 pb-5 pt-5 shadow-custom"
                 >
                   <svg className="icon mb-2.5 h-7 w-7 fill-black">
                     <use xlinkHref="/img/sprite.svg#callback"></use>
@@ -264,7 +262,7 @@ const CatalogMenu = () => {
               <li className="catalog-menu__bottom-item">
                 <a
                   href="https://wa.me/79036569393"
-                  className="flex h-full w-full flex-col items-center justify-center rounded bg-white px-2.5 pt-5 shadow-custom"
+                  className="flex h-full w-full flex-col items-center justify-center rounded bg-white px-2.5 pb-5 pt-5 shadow-custom"
                 >
                   <svg className="icon mb-2.5 h-7 w-7 fill-black">
                     <use xlinkHref="/img/sprite.svg#footer-wp"></use>
@@ -277,7 +275,7 @@ const CatalogMenu = () => {
               <li className="catalog-menu__bottom-item">
                 <a
                   href="https://t.me/+79036569393"
-                  className="flex h-full w-full flex-col items-center justify-center rounded bg-white px-2.5 pt-5 shadow-custom"
+                  className="flex h-full w-full flex-col items-center justify-center rounded bg-white px-2.5 pb-5 pt-5 shadow-custom"
                 >
                   <svg className="icon mb-2.5 h-7 w-7 fill-black">
                     <use xlinkHref="/img/sprite.svg#footer-tg"></use>
@@ -290,7 +288,7 @@ const CatalogMenu = () => {
               <li className="catalog-menu__bottom-item">
                 <a
                   href="mailto:solo.vrn@mail.ru"
-                  className="flex h-full w-full flex-col items-center justify-center rounded bg-white px-2.5 pt-5 shadow-custom"
+                  className="flex h-full w-full flex-col items-center justify-center rounded bg-white px-2.5 pb-5 pt-5 shadow-custom"
                 >
                   <svg className="icon mb-2.5 h-7 w-7 fill-black">
                     <use xlinkHref="/img/sprite.svg#mail"></use>

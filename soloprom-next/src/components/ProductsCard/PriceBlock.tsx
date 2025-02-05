@@ -14,7 +14,7 @@ export const PriceBlock: React.FC<PriceProps> = ({ discount, price, mod }) => {
       ? `${getDigFormat(Math.floor(price * (1 + discount / 100)))}`
       : ''
   return (
-    <div className={`flex items-center justify-between gap-2.5`}>
+    <div className={`mt-2.5 flex items-center justify-between gap-2.5`}>
       <div
         data-price
         className={`relative flex flex-col items-end font-bold ${discount ? 'text-accentBlue' : 'text-[#272b2c]'} ${mod ? 'text-lg' : 'text-2xl'} `}

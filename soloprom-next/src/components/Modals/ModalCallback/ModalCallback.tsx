@@ -28,6 +28,7 @@ import { FastOrderTypes } from '@/store/modalsStore'
 import { getDigFormat } from '@/supports'
 import { useLocateStore } from '@/store/locateStore'
 import { useModalsStore } from '@/store/modalsStore'
+import Image from 'next/image'
 
 interface ModalProps {
   fastOrderProduct: FastOrderTypes
@@ -35,10 +36,8 @@ interface ModalProps {
 
 const ModalCallback: React.FC<ModalProps> = ({ fastOrderProduct }) => {
   const [isSubmitting, setIsSubmitting] = useState(false)
-  const selectedCity = useLocateStore((state) => state.selectedCity)
-  const modalCallbackStateChange = useModalsStore(
-    (state) => state.modalCallbackStateChange,
-  )
+  const { selectedCity } = useLocateStore()
+  const { modalCallbackStateChange } = useModalsStore()
 
   const modalRef = useRef(null)
   useClickOutside(modalRef, () => {
@@ -93,9 +92,9 @@ const ModalCallback: React.FC<ModalProps> = ({ fastOrderProduct }) => {
       {!isMobileHeight && <CloseButton classNames={'modal__close'} />}
       <div
         ref={modalRef}
-        className="modal-callback__dialog modal__dialog relative mx-auto mb-5 mt-[50px] w-full max-w-[560px]"
+        className="modal-callback__dialog modal__dialog relative mx-auto my-2.5 w-full sm:mb-5 sm:mt-[50px] sm:max-w-[560px]"
       >
-        <div className="modal-callback__content modal__content relative overflow-hidden rounded bg-white px-11 py-10">
+        <div className="modal__content mds:px-11 mds:py-10 relative overflow-hidden rounded bg-white px-4 py-10 xs:px-6">
           {isMobileHeight && <CloseButton classNames={'modal__close'} />}
 
           <div className="modal-callback__body">
@@ -103,7 +102,7 @@ const ModalCallback: React.FC<ModalProps> = ({ fastOrderProduct }) => {
               <div className="modal-callback__title mb-2.5 text-center font-medium leading-10 text-black">
                 Оставьте свои контактные данные
               </div>
-              <div className="modal-callback__subtitle text-center leading-5 text-[#313131]">
+              <div className="mds:text-base text-center text-sm leading-5 text-[#313131]">
                 Наш менеджер свяжется с вами в течении 5 минут и ответит на все
                 вопросы
               </div>
@@ -204,24 +203,24 @@ const ModalCallback: React.FC<ModalProps> = ({ fastOrderProduct }) => {
                 </div>
 
                 {fastOrderProduct.productId && (
-                  <div className="modal-callback__product">
-                    <img
+                  <div className="mb-5 flex items-center gap-2.5">
+                    <Image
                       src={
                         fastOrderProduct.img
                           ? `/img/catalog/${fastOrderProduct.img}.webp`
                           : '/img/catalog/not-found.webp'
                       }
+                      width={96}
+                      height={96}
                       alt=""
-                      className="modal-callback__product-image"
+                      className="h-24 w-24 object-contain"
                     />
-                    <div className="modal-callback__product-description">
-                      <div className="modal-callback__product-title">
+                    <div className="flex flex-col gap-2.5">
+                      <div className="mds:text-lg text-base font-medium">
                         {fastOrderProduct.name}
                       </div>
-                      <div className="modal-callback__product-sizes">
-                        {fastOrderProduct.variant}
-                      </div>
-                      <div className="modal-callback__product-price">
+                      <div className="">{fastOrderProduct.variant}</div>
+                      <div className="font-medium">
                         {getDigFormat(fastOrderProduct.price)} ₽
                       </div>
                     </div>
@@ -230,12 +229,12 @@ const ModalCallback: React.FC<ModalProps> = ({ fastOrderProduct }) => {
 
                 <Button
                   type="submit"
-                  className="button modal-callback__button font-base mb-6 h-14 w-full rounded p-5 text-lg"
+                  className="button font-base mb-6 h-14 w-full rounded p-5 text-lg"
                   disabled={isSubmitting}
                 >
                   {isSubmitting ? 'Отправка...' : 'Отправить'}
                 </Button>
-                <div className="modal-callback__policy text-center text-sm leading-5">
+                <div className="text-center text-sm leading-5">
                   Нажимая кнопку отправить, вы принимаете нашу политику{' '}
                   <a
                     href="/policy"
