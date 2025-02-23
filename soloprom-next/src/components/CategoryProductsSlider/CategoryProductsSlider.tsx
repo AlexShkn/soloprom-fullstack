@@ -53,12 +53,12 @@ export const CategoryProductsSlider: React.FC<Props> = ({ className }) => {
           setProductsCounts(result as SubcategoryCount)
         } else {
           console.error(
-            'Invalid data format received from getProductsCounts:',
+            'Неверный формат данных, полученных из getProductsCounts:',
             result,
           )
         }
       } catch (error) {
-        console.error('Failed to fetch product counts:', error)
+        console.error('Не удалось получить количество продуктов:', error)
       }
     }
 
@@ -90,7 +90,7 @@ export const CategoryProductsSlider: React.FC<Props> = ({ className }) => {
                   grabCursor={true}
                   followFinger={true}
                   watchSlidesProgress={true}
-                  spaceBetween={20}
+                  spaceBetween={15}
                   grid={{ rows: 2, fill: 'row' }}
                   scrollbar={{
                     el: '.service-packages__scrollbar',
@@ -107,20 +107,20 @@ export const CategoryProductsSlider: React.FC<Props> = ({ className }) => {
                       slidesPerView: 2,
                     },
                     550: {
-                      spaceBetween: 20,
+                      spaceBetween: 15,
                       slidesPerView: 2.3,
                     },
 
                     650: {
-                      spaceBetween: 20,
+                      spaceBetween: 15,
                       slidesPerView: 2.8,
                     },
                     780: {
-                      spaceBetween: 20,
+                      spaceBetween: 15,
                       slidesPerView: 3.4,
                     },
                     992: {
-                      spaceBetween: 20,
+                      spaceBetween: 15,
                       slidesPerView: 4,
                     },
                     1200: {
@@ -131,7 +131,7 @@ export const CategoryProductsSlider: React.FC<Props> = ({ className }) => {
                   {category.items.map((item) => (
                     <SwiperSlide
                       key={item.href}
-                      className="swiper-slide catalog-products__category-link relative flex select-none flex-col items-center justify-center rounded px-2.5 py-5 text-center shadow-custom transition-all"
+                      className="swiper-slide catalog-products__category-link rounded-custom relative flex select-none flex-col items-center justify-center px-2.5 py-5 text-center shadow-custom transition-all"
                     >
                       <Link href={item.href} className="blok h-full w-full">
                         <div className="flex flex-col items-center justify-center">

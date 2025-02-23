@@ -2,6 +2,14 @@
 import React, { useEffect, useState } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from '@/components/ui/tooltip'
+
+import { ArrowLeft } from 'lucide-react'
 
 import './ProductsCard.scss'
 import { ProductsCardPropTypes, ProductCardData } from '@/types/products.types'
@@ -69,7 +77,7 @@ export const ProductsCard: React.FC<ProductsCardPropTypes> = ({
   }
 
   useEffect(() => {
-    let defaultSize: string | undefined = undefined // Явное указание типа
+    let defaultSize: string | undefined = undefined
     if (sizesData) {
       defaultSize = Object.keys(sizesData)?.[0]
       setVariantValue(defaultSize || '')
@@ -173,157 +181,198 @@ export const ProductsCard: React.FC<ProductsCardPropTypes> = ({
   }
 
   return (
-    <div
-      data-product-card
-      className={`product-card relative flex h-full ${mod !== 'row' && 'flex-col'} ${mod === 'row' && 'gap-5'} rounded bg-white p-4 shadow-custom`}
-    >
-      {regalia.length > 0 && (
-        <RegaliaList regalia={regalia} discount={discount} />
-      )}
-      <Link
-        href={url || '/'}
-        className={`${mod !== 'row' ? 'mb-2.5' : 'items-center'} flex justify-center`}
+    <div className="h-full">
+      <div
+        className={`product-card relative flex h-full ${mod !== 'row' && 'flex-col'} ${mod === 'row' && 'gap-5'} rounded-custom bg-white p-4 shadow-custom`}
       >
-        <Image
-          className="inline-block h-[120px] object-contain"
-          src={
-            (img && `/img/catalog/${img}.webp`) ||
-            `/img/brands/${brandName}.webp`
-          }
-          width={120}
-          height={120}
-          alt={name}
-        />
-      </Link>
-
-      <div className={`${mod === 'row' && 'flex flex-auto flex-col'}`}>
-        <Link href={url || '/'} className="relative mb-2.5 text-center">
-          <div
-            className={`link-hover mb-2.5 font-bold uppercase leading-5 text-[#272b2c] ${mod === 'grid' ? 'text-left text-sm' : 'text-center'}`}
-          >
-            {name}
-          </div>
-        </Link>
-
-        <DescriptionTemplate
-          variantValue={variantValue}
-          setVariantValue={setVariantValue}
-          cardData={cardData}
-          mod={mod || ''}
-        />
-      </div>
-
-      <div className="mt-auto flex flex-col gap-2.5">
-        {mod !== 'grid' ? (
-          <PriceBlock
-            price={sizesData?.[variantValue] ?? defaultPrice}
-            discount={discount}
-          />
-        ) : (
-          ''
+        {regalia.length > 0 && (
+          <RegaliaList regalia={regalia} discount={discount} />
         )}
 
-        <div className="mb-1 flex items-center justify-between gap-2.5">
-          <RatingDisplay rating={rating} />
-          <button
-            onClick={() => fastOrderHandle()}
-            type="button"
-            className={`ml-auto font-medium text-[#dd3824] underline ${mod === 'grid' && 'text-[14px]'}`}
+        <div className="group">
+          <Link
+            href={url || '/'}
+            className={`${mod !== 'row' ? 'mb-2.5' : 'items-center'} flex justify-center`}
           >
-            Купить в 1 клик
-          </button>
-        </div>
-        {volumes && (
-          <div className="mb-1">
-            <ul className="flex flex-wrap justify-end gap-2.5">
-              {Object.keys(volumes).map((volume) => (
-                <li
-                  key={volume}
-                  className={`relative flex cursor-pointer items-center justify-center rounded bg-accentBlue ${mod === 'grid' ? 'px-2 py-1 text-sm' : 'px-4 py-1'} text-center transition-colors ${volume === variantValue && 'bg-successColor'}`}
-                  onClick={() => setVariantValue(volume)}
-                >
-                  <span className="font-medium text-white">{volume}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
-        )}
-        <div
-          className={`flex ${mod === 'grid' ? 'w-auto flex-col' : 'items-center justify-between gap-2.5'}`}
-        >
-          {mod === 'grid' && (
-            <div className="mb-2.5 flex items-center justify-between gap-2.5">
-              <div className="font-medium text-slate-600">
-                {categoryName === 'oils'
-                  ? 'В наличии'
-                  : stock
-                    ? `${stock} шт.`
-                    : delivery}
+            <Image
+              className="inline-block h-[120px] object-contain"
+              src={
+                (img && `/img/catalog/${img}.webp`) ||
+                `/img/brands/${brandName}.webp`
+              }
+              width={120}
+              height={120}
+              alt={name}
+            />
+          </Link>
+
+          <div className={`${mod === 'row' && 'flex flex-auto flex-col'}`}>
+            <Link href={url || '/'} className="relative mb-2.5 text-center">
+              <div
+                className={`link-hover mb-2.5 flex items-center gap-2 font-bold uppercase leading-none text-[#272b2c] group-hover:text-hoverBlue ${mod === 'grid' ? 'text-left text-sm' : 'text-center'}`}
+              >
+                {name}
               </div>
-              <PriceBlock
-                price={sizesData?.[variantValue] ?? defaultPrice}
-                discount={discount}
-                mod={mod}
-              />
+            </Link>
+
+            <DescriptionTemplate
+              variantValue={variantValue}
+              setVariantValue={setVariantValue}
+              cardData={cardData}
+              mod={mod || ''}
+            />
+          </div>
+        </div>
+        <div className="mt-auto flex flex-col gap-2.5">
+          {mod !== 'grid' ? (
+            <PriceBlock
+              price={sizesData?.[variantValue] ?? defaultPrice}
+              discount={discount}
+            />
+          ) : (
+            ''
+          )}
+
+          <div className="mb-1 flex items-center justify-between gap-2.5">
+            <RatingDisplay rating={rating} />
+            <button
+              onClick={() => fastOrderHandle()}
+              type="button"
+              className={`ml-auto font-medium text-[#dd3824] underline ${mod === 'grid' && 'text-[14px]'}`}
+            >
+              Купить в 1 клик
+            </button>
+          </div>
+          {volumes && (
+            <div className="mb-1">
+              <div className="flex flex-wrap justify-end gap-2.5">
+                {Object.keys(volumes).map((volume) => (
+                  <button
+                    key={volume}
+                    className={`relative flex cursor-pointer items-center justify-center rounded-custom bg-accentBlue ${mod === 'grid' ? 'px-2 py-1 text-sm' : 'px-4 py-1'} text-center transition-colors ${volume === variantValue && 'bg-successColor'}`}
+                    onClick={() => setVariantValue(volume)}
+                  >
+                    <span className="font-medium text-white">{volume}</span>
+                  </button>
+                ))}
+              </div>
             </div>
           )}
-          <div className="flex items-center gap-4">
+          <div
+            className={`flex ${mod === 'grid' ? 'w-auto flex-col' : 'items-center justify-between gap-2.5'}`}
+          >
+            {mod === 'grid' && (
+              <div className="mb-2.5 flex items-center justify-between gap-2.5">
+                <div className="font-medium text-slate-600">
+                  {categoryName === 'oils'
+                    ? 'В наличии'
+                    : stock
+                      ? `${stock} шт.`
+                      : delivery}
+                </div>
+                <PriceBlock
+                  price={sizesData?.[variantValue] ?? defaultPrice}
+                  discount={discount}
+                  mod={mod}
+                />
+              </div>
+            )}
+            <div className="flex items-center gap-4">
+              <TooltipProvider delayDuration={100}>
+                <Tooltip>
+                  <TooltipTrigger asChild>
+                    <button
+                      type="button"
+                      className={`product-card__favorite absolute right-2 top-3`}
+                      onClick={() => setShareModal(productId, true)}
+                    >
+                      <svg className="icon h-6 w-6 fill-accentBlue transition-colors">
+                        <use xlinkHref="/img/sprite.svg#shared" />
+                      </svg>
+                    </button>
+                  </TooltipTrigger>
+                  <TooltipContent side="left">
+                    <p>Поделиться</p>
+                  </TooltipContent>
+                </Tooltip>
+              </TooltipProvider>
+              <TooltipProvider delayDuration={100}>
+                <Tooltip>
+                  <TooltipTrigger asChild>
+                    <button
+                      type="button"
+                      onClick={
+                        compareIsAdded
+                          ? handleRemoveFromCompare
+                          : handleAddToCompare
+                      }
+                      className={`product-card__favorite ${mod === 'grid' && 'absolute right-2 top-20'} ${compareIsAdded && 'added'}`}
+                    >
+                      <svg className="icon h-7 w-7 fill-accentBlue transition-colors">
+                        <use xlinkHref="/img/sprite.svg#scales" />
+                      </svg>
+                    </button>
+                  </TooltipTrigger>
+                  <TooltipContent side="left">
+                    <p>В сравнение</p>
+                  </TooltipContent>
+                </Tooltip>
+              </TooltipProvider>
+              <TooltipProvider delayDuration={100}>
+                <Tooltip>
+                  <TooltipTrigger asChild>
+                    <button
+                      type="button"
+                      onClick={
+                        favoriteIsAdded
+                          ? handleRemoveFromFavorites
+                          : handleAddToFavorites
+                      }
+                      className={`product-card__favorite ${mod === 'grid' && 'absolute right-[10px] top-12'} ${favoriteIsAdded && 'added'}`}
+                    >
+                      <svg className="icon h-6 w-6 fill-accentBlue transition-colors">
+                        <use xlinkHref="/img/sprite.svg#bookmark" />
+                      </svg>
+                    </button>
+                  </TooltipTrigger>
+                  <TooltipContent side="left">
+                    <p>В избранное</p>
+                  </TooltipContent>
+                </Tooltip>
+              </TooltipProvider>
+            </div>
+
             <button
               type="button"
-              className={`product-card__favorite absolute right-2 top-3`}
-              onClick={() => setShareModal(productId, true)}
+              onClick={cartIsAdded ? handleRemoveFromCart : handleAddToCart}
+              disabled={cartIsLoad}
+              className={`button product-card__button group relative items-center gap-2 px-5 py-2.5 font-bold ${mod === 'grid' && 'grid-view w-auto'} ${cartIsLoad && mod !== 'grid' && 'load'} ${cartIsLoad && mod === 'grid' && 'load load--mini'} ${cartIsAdded && 'added bg-transparent'}`}
             >
-              <svg className="icon h-6 w-6 fill-accentBlue transition-colors">
-                <use xlinkHref="/img/sprite.svg#shared" />
-              </svg>
-            </button>
-            <button
-              type="button"
-              onClick={
-                compareIsAdded ? handleRemoveFromCompare : handleAddToCompare
-              }
-              className={`product-card__favorite ${mod === 'grid' && 'absolute right-2 top-20'} ${compareIsAdded && 'added'}`}
-            >
-              <svg className="icon h-7 w-7 fill-accentBlue transition-colors">
-                <use xlinkHref="/img/sprite.svg#scales" />
-              </svg>
-            </button>
-            <button
-              type="button"
-              onClick={
-                favoriteIsAdded
-                  ? handleRemoveFromFavorites
-                  : handleAddToFavorites
-              }
-              className={`product-card__favorite ${mod === 'grid' && 'absolute right-[10px] top-12'} ${favoriteIsAdded && 'added'}`}
-            >
-              <svg className="icon h-6 w-6 fill-accentBlue transition-colors">
-                <use xlinkHref="/img/sprite.svg#bookmark" />
-              </svg>
+              <span className="ttall invisible absolute inline-flex h-full w-full items-center justify-center rounded-custom bg-successColor opacity-0 transition-colors">
+                <img
+                  className="h-7 w-7"
+                  src="/img/icons/availability-w.svg"
+                  alt="Availability"
+                />
+              </span>
+
+              <div className="relative flex items-center gap-1">
+                <svg
+                  className={`h-5 w-5 fill-white transition-transform ${mod === 'grid' && 'grid-view group-hover:translate-x-[-16px]'}`}
+                >
+                  <use xlinkHref="/img/sprite.svg#cart" />
+                </svg>
+                <ArrowLeft
+                  className={`invisible absolute right-0 top-1 h-4 w-4 opacity-0 transition-all ${mod === 'grid' && 'group-hover:visible group-hover:opacity-100'}`}
+                />
+              </div>
+              <b
+                className={`${mod === 'grid' ? 'text-sm leading-none' : 'mt-[2px] text-base'}`}
+              >
+                В корзину
+              </b>
             </button>
           </div>
-
-          <button
-            type="button"
-            onClick={cartIsAdded ? handleRemoveFromCart : handleAddToCart}
-            disabled={cartIsLoad}
-            className={`button product-card__button relative items-center gap-2.5 px-5 py-2.5 font-bold ${mod === 'grid' && 'grid-view w-auto'} ${cartIsLoad && mod !== 'grid' && 'load'} ${cartIsLoad && mod === 'grid' && 'load load--mini'} ${cartIsAdded && 'added'}`}
-          >
-            <span className="ttall invisible absolute inline-flex h-full w-full items-center justify-center rounded bg-hoverBlue opacity-0 transition-colors">
-              <img
-                className="h7 w-7"
-                src="/img/icons/availability.svg"
-                alt="Availability"
-              />
-            </span>
-            <svg
-              className={`h-7 w-7 fill-white ${mod === 'grid' && 'grid-view'}`}
-            >
-              <use xlinkHref="/img/sprite.svg#cart" />
-            </svg>
-
-            <b className={`${mod === 'grid' && 'text-sm'}`}>В корзину</b>
-          </button>
         </div>
       </div>
     </div>

@@ -22,7 +22,6 @@ export const Header: React.FC = () => {
       const initialCart = getStateFromLocalStorage('cart')
       const initialFavorite = getStateFromLocalStorage('favorite')
       const initialCompare = getCompareLocalStorage('comparedItems')
-      console.log(initialCompare)
 
       setComparedItems(initialCompare)
       setCart(initialCart)
@@ -32,7 +31,7 @@ export const Header: React.FC = () => {
 
   return (
     <header className="header relative w-full bg-white transition-all">
-      <div className="relative z-[31] bg-white pb-7 shadow-custom lg:pb-10">
+      <div className="relative z-[31] bg-white pb-7 shadow-custom">
         <HeaderTop />
         <div className="header__container">
           <HeaderBody />

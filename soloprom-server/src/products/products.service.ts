@@ -59,7 +59,7 @@ export class ProductsService {
         try {
           parsedFilters = JSON.parse(filters);
         } catch (e) {
-          console.error('Error parsing filters:', e);
+          console.error('Ошибка разбора фильтров:', e);
           parsedFilters = {};
         }
       } else {

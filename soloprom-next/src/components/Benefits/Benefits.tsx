@@ -10,8 +10,8 @@ export const Benefits = () => {
       <div className="benefits__container">
         <h2 className="section-title">Преимущества</h2>
 
-        <ul className="benefits__list grid grid-cols-3 gap-7">
-          <li className="benefits__item relative min-h-[220px] overflow-hidden rounded bg-accentBlue p-7">
+        <ul className="benefits__list grid grid-cols-3 gap-3">
+          <li className="benefits__item rounded-custom relative min-h-[220px] overflow-hidden bg-accentBlue p-7">
             <Image
               className="absolute -right-2.5 top-0 h-full w-[200px] object-cover transition-transform"
               src="/img/benefits/zp.png"
@@ -29,7 +29,7 @@ export const Benefits = () => {
               Более 500 наименований на складе
             </p>
           </li>
-          <li className="benefits__item relative min-h-[220px] overflow-hidden rounded bg-accentBlue p-7">
+          <li className="benefits__item rounded-custom relative min-h-[220px] overflow-hidden bg-accentBlue p-7">
             <Image
               className="absolute -right-2.5 top-0 h-full w-[200px] object-cover transition-transform"
               src="/img/benefits/delivery.png"
@@ -48,7 +48,7 @@ export const Benefits = () => {
               Бесплатная доставка до транспортной компании
             </p>
           </li>
-          <li className="benefits__item relative min-h-[220px] overflow-hidden rounded bg-accentBlue p-7">
+          <li className="benefits__item rounded-custom relative min-h-[220px] overflow-hidden bg-accentBlue p-7">
             <Image
               className="absolute -right-2.5 top-0 h-full w-[200px] object-cover"
               src="/img/benefits/search.png"
@@ -67,7 +67,7 @@ export const Benefits = () => {
               Оригинальные детали и их аналоги
             </p>
           </li>
-          <li className="benefits__item relative min-h-[220px] overflow-hidden rounded bg-accentBlue p-7">
+          <li className="benefits__item rounded-custom relative min-h-[220px] overflow-hidden bg-accentBlue p-7">
             <Image
               className="absolute -right-2.5 top-0 h-full w-[200px] object-cover transition-transform"
               src="/img/benefits/experience.png"
@@ -86,7 +86,7 @@ export const Benefits = () => {
               10 лет успешной работы
             </p>
           </li>
-          <li className="benefits__item relative min-h-[220px] overflow-hidden rounded bg-accentBlue p-7">
+          <li className="benefits__item rounded-custom relative min-h-[220px] overflow-hidden bg-accentBlue p-7">
             <Image
               className="absolute -right-2.5 top-0 h-full w-[200px] object-cover transition-transform"
               src="/img/benefits/contact.png"
@@ -105,7 +105,7 @@ export const Benefits = () => {
               Запасные части хорошего качества в кратчайшие сроки
             </p>
           </li>
-          <li className="benefits__item relative min-h-[220px] overflow-hidden rounded bg-accentBlue p-7">
+          <li className="benefits__item rounded-custom relative min-h-[220px] overflow-hidden bg-accentBlue p-7">
             <Image
               className="absolute -right-2.5 top-0 h-full w-[200px] object-cover transition-transform"
               src="/img/benefits/price.png"

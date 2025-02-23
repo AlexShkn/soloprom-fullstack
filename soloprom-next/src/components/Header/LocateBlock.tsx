@@ -45,7 +45,7 @@ export const LocateBlock: React.FC<Props> = ({ className }) => {
 
           setLocating(city)
         } catch (error) {
-          console.error('Error fetching location:', error)
+          console.error('Ошибка при получении местоположения:', error)
         }
       } else {
         const storageCity = localStorage.getItem('selectedLocate')

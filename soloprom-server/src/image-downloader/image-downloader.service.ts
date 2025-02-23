@@ -27,12 +27,15 @@ export class ImageDownloaderService {
         const fileName = `${id}${fileExtension}`;
         const filePath = path.join(this.imagesDir, fileName);
 
-        this.logger.log(`Starting download for ${fileName} from ${img}`);
+        this.logger.log(`Запуск загрузки для ${fileName} от ${img}`);
         try {
           await this.downloadFile(img, filePath);
-          this.logger.log(`Downloaded image ${fileName} successfully`);
+          this.logger.log(`Загрузка изображения ${fileName} успешна`);
         } catch (error) {
-          this.logger.error(`Failed to download image ${fileName}:`, error);
+          this.logger.error(
+            `Не удалось загрузить изображение ${fileName}:`,
+            error,
+          );
         }
       }
     }
@@ -45,26 +48,28 @@ export class ImageDownloaderService {
         if (response.statusCode !== 200) {
           reject(
             new Error(
-              `Failed to download ${url}: Status code ${response.statusCode}`,
+              `Не удалось загрузить ${url}: Код состояния ${response.statusCode}`,
             ),
           );
           return;
         }
 
-        this.logger.log(`Downloading ${url} to ${filePath}...`);
+        this.logger.log(`Загрузка ${url} для ${filePath}...`);
         const fileStream = fs.createWriteStream(filePath);
         pipeline(response, fileStream)
           .then(() => {
-            this.logger.log(`Download complete for ${url}`);
+            this.logger.log(`Загрузка завершена для ${url}`);
             resolve();
           })
           .catch((err) => {
             fs.unlink(filePath, () => {}); //удаляем недокачанный файл
             this.logger.error(
-              `Failed to pipe ${url} to ${filePath}: ${err.message}`,
+              `Не удалось передать ${url} к ${filePath}: ${err.message}`,
             );
             reject(
-              new Error(`Failed to pipe ${url} to ${filePath}: ${err.message}`),
+              new Error(
+                `Не удалось передать по ${url} к ${filePath}: ${err.message}`,
+              ),
             );
           });
       });

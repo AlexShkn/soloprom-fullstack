@@ -10,8 +10,8 @@ export const Callback = () => {
     <section className="callback section-offset">
       <div className="page-container">
         <div className="grid grid-cols-1 gap-7 lg:grid-cols-2">
-          <div className="rounded bg-white p-10 px-5 shadow-custom">
-            <h2 className="mds:mb-7 mds:px-16 mb-5 px-2.5 text-center font-bold leading-5">
+          <div className="rounded-custom bg-white p-10 px-5 shadow-custom">
+            <h2 className="mb-5 px-2.5 text-center font-bold leading-5 mds:mb-7 mds:px-16">
               Продукция высокого качества
               <br /> от надежных поставщиков
             </h2>
@@ -90,8 +90,8 @@ export const Callback = () => {
               </li>
             </ul>
           </div>
-          <div className="before:mdl:hidden relative flex flex-col justify-center rounded bg-accentBlue px-5 py-9 text-center shadow-custom before:absolute before:inset-0 before:z-[1] before:h-full before:w-full before:bg-black before:bg-opacity-30 xs:px-7 xs:py-12 lg:p-5">
-            <div className="mdl:max-w-[70%] relative z-[2] lg:max-w-[60%]">
+          <div className="rounded-custom relative flex flex-col justify-center bg-accentBlue px-5 py-9 text-center shadow-custom before:absolute before:inset-0 before:z-[1] before:h-full before:w-full before:bg-black before:bg-opacity-30 xs:px-7 xs:py-12 before:mdl:hidden lg:p-5">
+            <div className="relative z-[2] mdl:max-w-[70%] lg:max-w-[60%]">
               <div className="mb-5 text-xl font-bold leading-5 text-white">
                 Нужна помощь в выборе запчастей?
               </div>

@@ -190,17 +190,17 @@ const CatalogMenu = () => {
             <Link
               onClick={() => catalogMenuStateChange(false, false)}
               href="/catalog"
-              className="flex max-w-48 items-center justify-between gap-2.5 rounded bg-accentBlue px-2.5 py-4 text-sm font-medium sm:mb-2.5 sm:max-w-max md:text-base"
+              className="rounded-custom flex max-w-48 items-center justify-between gap-2.5 bg-accentBlue px-2.5 py-4 text-sm font-medium sm:mb-2.5 sm:max-w-max md:text-base"
             >
               <span className="flex items-center gap-2.5 text-white">
                 <img
                   src="/img/icons/catalog-link.svg"
                   alt=""
-                  className="mds:h-6 mds:w-6 h-5 w-5"
+                  className="h-5 w-5 mds:h-6 mds:w-6"
                 />
                 Весь каталог
               </span>
-              <svg className="icon mds:h-5 mds:w-5 h-4 w-4 rotate-[-90deg] fill-white">
+              <svg className="icon h-4 w-4 rotate-[-90deg] fill-white mds:h-5 mds:w-5">
                 <use xlinkHref="/img/sprite-default.svg#arrow-drop"></use>
               </svg>
             </Link>
@@ -244,7 +244,7 @@ const CatalogMenu = () => {
             <div className="mb-7 text-center text-lg font-bold">
               Напишите нам
             </div>
-            <ul className="mds:grid-cols-4 mb-5 grid grid-cols-2 gap-2.5 border-b border-t border-[#cdcfd8] py-10 sm:py-5">
+            <ul className="mb-5 grid grid-cols-2 gap-2.5 border-b border-t border-[#cdcfd8] py-10 mds:grid-cols-4 sm:py-5">
               <li className="catalog-menu__bottom-item">
                 <button
                   data-btn-callback

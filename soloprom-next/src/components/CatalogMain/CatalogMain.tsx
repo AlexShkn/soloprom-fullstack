@@ -41,14 +41,14 @@ export const CatalogMain: React.FC<Props> = ({ className }) => {
           setProductsCounts(result as SubcategoryCount)
         } else {
           console.error(
-            'Invalid data format received from getProductsCounts:',
+            'Неверный формат данных, полученных из getProductsCounts:',
             result,
           )
         }
 
         console.log(result)
       } catch (error) {
-        console.error('Failed to fetch product counts:', error)
+        console.error('Не удалось получить количество продуктов:', error)
       }
     }
 
@@ -67,15 +67,15 @@ export const CatalogMain: React.FC<Props> = ({ className }) => {
               </svg>
               {categoryData.title}
             </div>
-            <div className="mds:grid-cols-2 mds:gap-5 grid grid-cols-1 xs:gap-2.5 md:grid-cols-3 lg:grid-cols-4">
+            <div className="grid grid-cols-1 xs:gap-2.5 mds:grid-cols-2 mds:gap-5 md:grid-cols-3 lg:grid-cols-4">
               {categoryData.items.map((item) => (
                 <Link
                   href={item.href}
-                  className="mds:p-5 flex flex-col items-center rounded px-2.5 py-5 text-center shadow-custom hover:bg-accentBlue hover:text-white"
+                  className="rounded-custom flex flex-col items-center px-2.5 py-5 text-center shadow-custom hover:bg-accentBlue hover:text-white mds:p-5"
                   key={item.href}
                 >
                   <Image
-                    className="mds:max-h-48 mds:max-w-48 mb-4 block aspect-square max-h-32 max-w-32 object-contain"
+                    className="mb-4 block aspect-square max-h-32 max-w-32 object-contain mds:max-h-48 mds:max-w-48"
                     src={item.img}
                     width={200}
                     height={200}

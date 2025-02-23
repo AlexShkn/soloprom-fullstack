@@ -10,17 +10,16 @@ import { ViewSetting } from './ViewSetting'
 import { DynamicPagination } from './DynamicPagination'
 
 import useFilterStore from '@/store/filterStore'
+import { Button } from '../ui'
 
 interface Props {
   data: cardDataProps[]
   currentPage: number
-  dynamicCurrentPage: number
   totalPages: number
-  setDynamicCurrentPage: (newPage: number) => void
+  handleResetFilters: () => void
   onChangePage: (newPage: number) => void
   onSortChange: (sort: string) => void
   hasFilters: boolean
-  dataIsLoading: boolean
   filterOpen: boolean
   setFilterOpen: (status: boolean) => void
   setCheckedValues: React.Dispatch<
@@ -34,18 +33,23 @@ export const FilteredList: React.FC<Props> = ({
   currentPage,
   totalPages,
   onChangePage,
-  dataIsLoading,
   onSortChange,
   hasFilters,
-  setDynamicCurrentPage,
-  dynamicCurrentPage,
   filterOpen,
   setFilterOpen,
   setCheckedValues,
   checkedValues,
+  handleResetFilters,
 }) => {
   const [viewMode, setViewMode] = useState('grid')
-  const { filters, setFilters } = useFilterStore()
+  const {
+    filters,
+    setFilters,
+    dataIsLoading,
+    setDynamicCurrentPage,
+    dynamicCurrentPage,
+  } = useFilterStore()
+
   const filterKeysToIgnore = ['minPrice', 'maxPrice']
 
   const uniqueFilterValues = new Set<string>()
@@ -145,6 +149,7 @@ export const FilteredList: React.FC<Props> = ({
               <Skeleton
                 key={index}
                 width={'100%'}
+                style={{ borderRadius: '2.25rem' }}
                 height={viewMode === 'grid' ? '320px' : '177px'}
               />
             ))
@@ -156,6 +161,21 @@ export const FilteredList: React.FC<Props> = ({
               />
             ))}
       </ul>
+
+      {!dataIsLoading && !data.length && (
+        <div className="py-10 text-center text-2xl font-bold">
+          Нет подходящих товаров
+          <Button
+            disabled={!hasFilters}
+            variant={'outline'}
+            onClick={handleResetFilters}
+            className="border-1 mx-auto mt-5 hidden rounded border border-accentBlue px-4 py-2.5 font-medium text-accentBlue md:flex"
+          >
+            Сбросить фильтры
+          </Button>
+        </div>
+      )}
+
       {totalPages > 1 && !dataIsLoading && !hasFilters && (
         <Pagination
           currentPage={currentPage}

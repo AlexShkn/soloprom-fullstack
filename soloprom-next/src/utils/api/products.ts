@@ -32,7 +32,7 @@ export async function getProductsCounts() {
     const response = await api.get<Record<string, number>>(`statistics/counts`)
     return response
   } catch (error) {
-    console.error('Error fetching products:', error)
+    console.error('Ошибка при получении продуктов:', error)
     return []
   }
 }
@@ -66,7 +66,7 @@ export const fetchProducts = async (
 
     return response
   } catch (error) {
-    console.error('Error fetching products', error)
+    console.error('Ошибка получения продуктов', error)
     return null
   }
 }
@@ -93,7 +93,7 @@ export async function getProductById(id: string) {
     const response = await api.get<any>(`products/${id}`)
     return response
   } catch (error) {
-    console.error('Error fetching product:', error)
+    console.error('Ошибка получения продукта:', error)
     return []
   }
 }
@@ -107,7 +107,7 @@ export async function getProducts(p0: {
     const response = await api.get<any>('products', { params: p0 })
     return response
   } catch (error) {
-    console.error('Error fetching products:', error)
+    console.error('Ошибка получения продуктов:', error)
     return []
   }
 }
@@ -127,7 +127,7 @@ export async function getProductsBySubcategory(
 
     return response
   } catch (error) {
-    console.error('Error fetching products:', error)
+    console.error('Ошибка получения продуктов:', error)
     return null
   }
 }
@@ -141,7 +141,7 @@ export async function getProductsByGroup(
     )
     return response
   } catch (error) {
-    console.error('Error fetching products:', error)
+    console.error('Ошибка получения продуктов:', error)
     return null
   }
 }

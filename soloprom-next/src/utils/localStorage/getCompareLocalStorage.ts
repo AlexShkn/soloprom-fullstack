@@ -14,7 +14,10 @@ export const getCompareLocalStorage = (
         ? JSON.parse(compareJson)
         : { tires: [], battery: [], oils: [] }
     } catch (error) {
-      console.error('Error parsing compare data from localStorage:', error)
+      console.error(
+        'Ошибка при разборе данных сравнения из  localStorage:',
+        error,
+      )
       return { tires: [], battery: [], oils: [] }
     }
   } else {

@@ -29,10 +29,10 @@ const Footer = () => {
   const { modalCallbackStateChange } = useModalsStore()
 
   return (
-    <footer className="mds:pb-5 relative z-10 mt-auto bg-darkBlue py-9 pb-24">
+    <footer className="relative z-10 mt-auto bg-darkBlue py-9 pb-24 mds:pb-5">
       <div className="page-container">
         <div className="mb-5 flex flex-col justify-between gap-7 border-b border-gray-300 pb-5 lg:flex-row lg:gap-5">
-          <div className="mdl:flex mdl:justify-between grid grid-cols-2 grid-rows-2 md:gap-7">
+          <div className="grid grid-cols-2 grid-rows-2 mdl:flex mdl:justify-between md:gap-7">
             <div className="footer__nav">
               <div className="mb-4 text-lg font-medium uppercase text-[#969cb8]">
                 КАТАЛОГ
@@ -101,8 +101,8 @@ const Footer = () => {
               </div>
             </div>
           </div>
-          <div className="mdl:flex-row mdl:justify-between flex flex-col gap-5 lg:flex-col">
-            <div className="mdl:justify-between flex justify-start gap-5 md:gap-7">
+          <div className="flex flex-col gap-5 mdl:flex-row mdl:justify-between lg:flex-col">
+            <div className="flex justify-start gap-5 mdl:justify-between md:gap-7">
               <div className="footer__contacts-block">
                 <div className="mb-4 text-lg font-medium uppercase text-[#969cb8]">
                   КОНТАКТЫ
@@ -156,7 +156,7 @@ const Footer = () => {
                   {socialList.map((link, index) => (
                     <li
                       key={index}
-                      className={`footer__social-item footer__social-item--${link.id} inline-flex h-10 w-10 items-center justify-center overflow-hidden rounded opacity-50 transition-colors`}
+                      className={`footer__social-item footer__social-item--${link.id} rounded-custom inline-flex h-10 w-10 items-center justify-center overflow-hidden opacity-50 transition-colors`}
                     >
                       <a
                         href={link.href}
@@ -175,7 +175,7 @@ const Footer = () => {
           </div>
         </div>
 
-        <div className="mds:text-sm text-ss font-medium text-[#e1e5f8]">
+        <div className="text-ss font-medium text-[#e1e5f8] mds:text-sm">
           2018 © ООО «Соло» - запчасти для сельскохозяйственной и специальной
           техники
         </div>

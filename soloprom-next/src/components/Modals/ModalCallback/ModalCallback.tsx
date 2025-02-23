@@ -24,11 +24,11 @@ import {
   Input,
 } from '@/components/ui'
 import './ModalCallback.scss'
-import { FastOrderTypes } from '@/store/modalsStore'
+import { FastOrderTypes, useModalsStore } from '@/store/modalsStore'
 import { getDigFormat } from '@/supports'
 import { useLocateStore } from '@/store/locateStore'
-import { useModalsStore } from '@/store/modalsStore'
 import Image from 'next/image'
+import { Textarea } from '@/components/ui/textarea'
 
 interface ModalProps {
   fastOrderProduct: FastOrderTypes
@@ -37,11 +37,13 @@ interface ModalProps {
 const ModalCallback: React.FC<ModalProps> = ({ fastOrderProduct }) => {
   const [isSubmitting, setIsSubmitting] = useState(false)
   const { selectedCity } = useLocateStore()
-  const { modalCallbackStateChange } = useModalsStore()
+  const { modalCallbackStateChange, modalMessageStateChange, showMessage } =
+    useModalsStore()
 
   const modalRef = useRef(null)
   useClickOutside(modalRef, () => {
     modalCallbackStateChange(false)
+    modalMessageStateChange(false)
   })
 
   const isMobileHeight = useMediaQuery('(max-width: 650px)')
@@ -53,6 +55,7 @@ const ModalCallback: React.FC<ModalProps> = ({ fastOrderProduct }) => {
       phone: '',
       email: '',
       address: '',
+      message: '',
     },
   })
 
@@ -84,6 +87,7 @@ const ModalCallback: React.FC<ModalProps> = ({ fastOrderProduct }) => {
     } finally {
       setIsSubmitting(false)
       modalCallbackStateChange(false)
+      modalMessageStateChange(false)
     }
   }
 
@@ -94,7 +98,7 @@ const ModalCallback: React.FC<ModalProps> = ({ fastOrderProduct }) => {
         ref={modalRef}
         className="modal-callback__dialog modal__dialog relative mx-auto my-2.5 w-full sm:mb-5 sm:mt-[50px] sm:max-w-[560px]"
       >
-        <div className="modal__content mds:px-11 mds:py-10 relative overflow-hidden rounded bg-white px-4 py-10 xs:px-6">
+        <div className="modal__content relative overflow-hidden rounded-custom bg-white px-4 py-10 xs:px-6 mds:px-11 mds:py-10">
           {isMobileHeight && <CloseButton classNames={'modal__close'} />}
 
           <div className="modal-callback__body">
@@ -102,7 +106,7 @@ const ModalCallback: React.FC<ModalProps> = ({ fastOrderProduct }) => {
               <div className="modal-callback__title mb-2.5 text-center font-medium leading-10 text-black">
                 Оставьте свои контактные данные
               </div>
-              <div className="mds:text-base text-center text-sm leading-5 text-[#313131]">
+              <div className="text-center text-sm leading-5 text-[#313131] mds:text-base">
                 Наш менеджер свяжется с вами в течении 5 минут и ответит на все
                 вопросы
               </div>
@@ -200,6 +204,27 @@ const ModalCallback: React.FC<ModalProps> = ({ fastOrderProduct }) => {
                       </FormItem>
                     )}
                   />
+
+                  {showMessage && (
+                    <FormField
+                      control={form.control}
+                      name="message"
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormControl>
+                            <Textarea
+                              placeholder="Ваш вопрос"
+                              className="min-h-32 resize-none"
+                              {...field}
+                            />
+                          </FormControl>
+                          <FormLabel>
+                            <FormMessage />
+                          </FormLabel>
+                        </FormItem>
+                      )}
+                    />
+                  )}
                 </div>
 
                 {fastOrderProduct.productId && (
@@ -216,7 +241,7 @@ const ModalCallback: React.FC<ModalProps> = ({ fastOrderProduct }) => {
                       className="h-24 w-24 object-contain"
                     />
                     <div className="flex flex-col gap-2.5">
-                      <div className="mds:text-lg text-base font-medium">
+                      <div className="text-base font-medium mds:text-lg">
                         {fastOrderProduct.name}
                       </div>
                       <div className="">{fastOrderProduct.variant}</div>

@@ -43,7 +43,6 @@ export const ProductsFilterBlock: React.FC<Props> = ({
   const fetchControllerRef = useRef<AbortController | null>(null)
   const [products, setProducts] = useState(initialProducts || [])
   const [initialLoad, setInitialLoad] = useState(true)
-  const [dataIsLoading, setDataIsLoading] = useState(true)
   const [filterOpen, setFilterOpen] = useState(false)
   const [checkedValues, setCheckedValues] = useState<Record<string, string[]>>(
     {},
@@ -51,7 +50,6 @@ export const ProductsFilterBlock: React.FC<Props> = ({
   const {
     filteredPage,
     setFilteredPage,
-    resetFilters,
     filters,
     setFilters,
     sort,
@@ -62,6 +60,9 @@ export const ProductsFilterBlock: React.FC<Props> = ({
     setHasFilters,
     dynamicCurrentPage,
     setDynamicCurrentPage,
+    setDataIsLoading,
+    setPriceRange,
+    resetFilters,
   } = useFilterStore()
 
   const debouncedFilters = useDebounce(filters, 500)
@@ -108,7 +109,9 @@ export const ProductsFilterBlock: React.FC<Props> = ({
       }
     } finally {
       setFilteredPage(categoryName)
-      setDataIsLoading(false)
+      setTimeout(() => {
+        setDataIsLoading(false)
+      }, 500)
       fetchControllerRef.current = null
     }
   }, [
@@ -124,7 +127,6 @@ export const ProductsFilterBlock: React.FC<Props> = ({
 
   const updateUrl = useCallback(() => {
     const params = new URLSearchParams()
-
     if (Object.keys(debouncedFilters).length > 0) {
       params.set('filters', JSON.stringify(debouncedFilters))
     }
@@ -178,7 +180,10 @@ export const ProductsFilterBlock: React.FC<Props> = ({
             setFilters(parsedFilters)
             setHasFilters(true)
           } catch (err) {
-            console.error('Failed to parse filters from URL:', err)
+            console.error(
+              'Не удалось проанализировать фильтры по URL-адресу:',
+              err,
+            )
           }
         }
 
@@ -195,7 +200,9 @@ export const ProductsFilterBlock: React.FC<Props> = ({
 
         setHasFilters(true)
       } else {
-        setDataIsLoading(false)
+        setTimeout(() => {
+          setDataIsLoading(false)
+        }, 500)
         setTotalProductsCount(totalCount)
       }
 
@@ -216,16 +223,24 @@ export const ProductsFilterBlock: React.FC<Props> = ({
   useEffect(() => {
     if (!initialLoad) {
       updateUrl()
-
-      setDataIsLoading(true)
       setProducts([])
       fetchData()
     }
   }, [debouncedFilters, debouncedSort, dynamicCurrentPage, updateUrl])
 
+  const handleResetFilters = () => {
+    setPriceRange({
+      min: categoryData.prices?.min,
+      max: categoryData.prices?.max,
+    })
+    setCheckedValues({})
+    router.push(window.location.pathname, { scroll: false })
+    resetFilters()
+  }
+
   return (
     <section className="group-list section-offset" ref={groupListRef}>
-      <div className="group-list__container">
+      <div className="page-container">
         <div className="grid grid-cols-1 md:grid-cols-[220px,1fr] lg:grid-cols-[240px,1fr]">
           <CatalogFilters
             products={products}
@@ -238,21 +253,20 @@ export const ProductsFilterBlock: React.FC<Props> = ({
             setFilterOpen={setFilterOpen}
             setCheckedValues={setCheckedValues}
             checkedValues={checkedValues}
+            handleResetFilters={handleResetFilters}
           />
           <FilteredList
             data={products}
             currentPage={currentPage}
-            dynamicCurrentPage={dynamicCurrentPage}
-            setDynamicCurrentPage={setDynamicCurrentPage}
             totalPages={totalPages}
             onChangePage={onChangePage}
-            dataIsLoading={dataIsLoading}
             onSortChange={setSort}
             hasFilters={hasFilters}
             filterOpen={filterOpen}
             setFilterOpen={setFilterOpen}
             setCheckedValues={setCheckedValues}
             checkedValues={checkedValues}
+            handleResetFilters={handleResetFilters}
           />
         </div>
       </div>

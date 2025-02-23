@@ -47,7 +47,7 @@ export const DynamicPagination: React.FC<Props> = React.memo(
         <div className="flex items-center justify-center">
           {currentPage > 1 && (
             <button
-              className="flex h-10 w-10 items-center justify-center rounded text-lg font-bold md:h-12 md:w-12"
+              className="flex h-10 w-10 items-center justify-center rounded text-lg font-bold"
               onClick={() => setDynamicCurrentPage(currentPage - 1)}
             >
               <svg className="icon h-5 w-5 rotate-[90deg] fill-darkBlue transition-colors hover:fill-accentBlue">
@@ -68,7 +68,7 @@ export const DynamicPagination: React.FC<Props> = React.memo(
               ) : (
                 <div
                   key={index}
-                  className={`flex h-11 w-11 items-center justify-center rounded text-lg font-bold md:h-12 md:w-12 ${
+                  className={`flex h-11 w-11 items-center justify-center rounded-custom text-lg font-bold ${
                     currentPage === page
                       ? 'bg-accentBlue text-white'
                       : 'link-hover'
@@ -86,7 +86,7 @@ export const DynamicPagination: React.FC<Props> = React.memo(
           </div>
           {currentPage < totalPages && (
             <button
-              className="flex h-10 w-10 items-center justify-center rounded text-lg font-bold md:h-12 md:w-12"
+              className="flex h-10 w-10 items-center justify-center rounded text-lg font-bold"
               onClick={() => setDynamicCurrentPage(currentPage + 1)}
             >
               <svg className="icon h-5 w-5 rotate-[-90deg] fill-darkBlue transition-colors hover:fill-accentBlue">

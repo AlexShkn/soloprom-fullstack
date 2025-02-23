@@ -46,7 +46,7 @@ const CharacteristicsTab = React.memo(
           <tbody>
             {options.map((row, index) => (
               <tr key={index} className="border-b bg-white hover:bg-gray-50">
-                <td className="whitespace-nowrap px-6 py-4 font-medium text-gray-900">
+                <td className="whitespace-nowrap px-2 py-4 font-medium text-gray-900 mds:px-6">
                   {row[0]}
                 </td>
                 <td className="px-6 py-4">{row[1]}</td>
@@ -67,10 +67,13 @@ const CompatibilityTab = React.memo(
   ({ models }: { models: string[] | undefined }) => (
     <div className="">
       {models && models?.length > 0 ? (
-        <ul className="flex max-w-5xl flex-wrap items-center">
+        <ul className="flex max-w-5xl flex-wrap items-center gap-2">
           {models.map((model, index) => (
-            <li key={index} className="border-1 border-b border-grayColor">
-              {model}
+            <li
+              key={model + index}
+              className="border-1 border-b border-grayColor"
+            >
+              {model},
             </li>
           ))}
         </ul>

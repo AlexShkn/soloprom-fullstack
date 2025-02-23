@@ -36,8 +36,8 @@ export default async function Home() {
     <TransitionWrapper>
       <PageWrapper>
         <Hero />
-        <CategoryProductsSlider />
         <SubHero />
+        <CategoryProductsSlider />
         <FavoriteTabs initialData={formattedProducts} />
         <About />
         <Benefits />

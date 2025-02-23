@@ -19,13 +19,13 @@ export async function POST(request: Request) {
     }
     const data = await response.json()
     return NextResponse.json({
-      message: 'Message sent successfully',
+      message: 'Сообщение успешно отправлено',
       data: data,
     })
   } catch (error) {
-    console.error('Error sending message to Telegram:', error)
+    console.error('Ошибка отправки сообщения в Telegram:', error)
     return NextResponse.json(
-      { message: 'Error sending message to telegram' },
+      { message: 'Ошибка отправки сообщения в Telegram' },
       { status: 500 },
     )
   }

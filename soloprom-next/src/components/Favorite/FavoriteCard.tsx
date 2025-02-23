@@ -78,9 +78,9 @@ export const FavoriteCard: React.FC<FavoriteCardProps> = ({ product }) => {
   }
 
   return (
-    <div className="mdl:flex-row mds:p-2.5 flex flex-col items-center gap-5 py-2.5 [&:not(:last-child)]:border-b [&:not(:last-child)]:border-grayColor">
+    <div className="flex flex-col items-center gap-5 py-2.5 mds:p-2.5 mdl:flex-row [&:not(:last-child)]:border-b [&:not(:last-child)]:border-grayColor">
       <div className="flex flex-auto items-center">
-        <div className="mds:h-36 mds:w-36 mr-5 h-24 w-24">
+        <div className="mr-5 h-24 w-24 mds:h-36 mds:w-36">
           <Link href={product.url} className="cart__item-link">
             <Image
               src={
@@ -114,13 +114,13 @@ export const FavoriteCard: React.FC<FavoriteCardProps> = ({ product }) => {
         </div>
       </div>
 
-      <div className="mdl:flex-col mds:flex-row mdl:gap-5 flex items-center gap-2.5 xs:gap-10">
+      <div className="flex items-center gap-2.5 xs:gap-10 mds:flex-row mdl:flex-col mdl:gap-5">
         <div className="flex w-full items-center justify-between gap-2.5 border-b border-dashed border-gray-400">
           <div className="text-lg font-medium">
             <span>{getDigFormat(price)}₽</span>
           </div>
 
-          <div className="mdl:order-none mdl:flex-row order-2 flex items-center gap-5 md:flex-col">
+          <div className="order-2 flex items-center gap-5 mdl:order-none mdl:flex-row md:flex-col">
             <button
               onClick={() => removeFavoriteProduct(productId, variant)}
               className="group"
@@ -137,8 +137,12 @@ export const FavoriteCard: React.FC<FavoriteCardProps> = ({ product }) => {
           type="button"
           className={`button cart__item-order-button relative gap-2.5 px-5 py-2.5 font-bold ${cartIsLoad && 'load'} ${cartIsAdded && 'added'}`}
         >
-          <span className="ttall invisible absolute inline-flex h-full w-full items-center justify-center rounded bg-hoverBlue opacity-0 transition-all">
-            <img className="h-7 w-7" src="img/icons/availability.svg" alt="" />
+          <span className="ttall rounded-custom invisible absolute inline-flex h-full w-full items-center justify-center bg-hoverBlue opacity-0 transition-all">
+            <img
+              className="h-7 w-7"
+              src="/img/icons/availability-w.svg"
+              alt=""
+            />
           </span>
           <svg className="icon h-7 w-7 fill-white">
             <use xlinkHref="img/sprite.svg#cart"></use>

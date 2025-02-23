@@ -85,19 +85,19 @@ export const ProductsPageOffers: React.FC<Props> = ({ cardData }) => {
           Object.keys(sizesData).map((variant) => (
             <li
               key={variant}
-              className="border-1 flex items-center justify-between gap-5 border-b border-grayColor p-1 py-2.5"
+              className="border-1 flex flex-col items-end gap-2 border-b border-grayColor p-1 py-2.5 mds:gap-5 md:flex-row md:items-center md:justify-between"
             >
-              <div className="flex flex-auto items-center justify-between gap-2.5">
-                <div className="flex flex-auto items-center">
+              <div className="flex w-full flex-auto items-center justify-between gap-2.5">
+                <div className="flex flex-auto flex-col mds:flex-row mds:items-center">
                   <div className="border-1 border-r border-grayColor px-2.5 py-1.5">
                     {name}
                   </div>
-                  <div className="border-1 border-bottom border-grayColor px-2.5">
+                  <div className="border-1 border-bottom whitespace-nowrap border-grayColor px-2.5">
                     {variant}
                   </div>
                 </div>
 
-                <div className="border-1 border-b border-dashed border-grayColor font-medium">
+                <div className="border-1 whitespace-nowrap border-b border-dashed border-grayColor font-medium">
                   {categoryName === 'oils'
                     ? 'В наличии'
                     : stock
@@ -105,7 +105,7 @@ export const ProductsPageOffers: React.FC<Props> = ({ cardData }) => {
                       : delivery}
                 </div>
 
-                <div className="text-lg font-bold">
+                <div className="whitespace-nowrap text-lg font-bold">
                   {getDigFormat(sizesData[variant])} ₽
                 </div>
               </div>
@@ -121,7 +121,7 @@ export const ProductsPageOffers: React.FC<Props> = ({ cardData }) => {
                   checkProductInCart(variant) && 'added'
                 }`}
               >
-                <span className="tall invisible absolute inline-flex h-full w-full items-center justify-center gap-2.5 rounded bg-hoverBlue opacity-0 transition-all">
+                <span className="tall rounded-custom transition-color invisible absolute inline-flex h-full w-full items-center justify-center gap-2.5 bg-hoverBlue opacity-0">
                   <img
                     src="/img/icons/availability.svg"
                     className="h-7 w-7"

@@ -44,7 +44,9 @@ export async function generateStaticParams() {
   }
   const products = response as cardDataProps[]
   if (products.some((product) => !product.productId)) {
-    console.log('Some products missing productId, skipping')
+    console.log(
+      'В некоторых продуктах отсутствует идентификатор продукта, пропускается',
+    )
     return []
   }
   return products.map((product: cardDataProps) => ({

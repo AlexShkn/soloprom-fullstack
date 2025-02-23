@@ -51,7 +51,7 @@ export const SharedModal = () => {
               className="w-full rounded border px-2 py-2"
             />
             <button
-              className="rounded bg-blue-500 px-3 py-2 text-white hover:bg-blue-600"
+              className="rounded-custom bg-blue-500 px-3 py-2 text-white hover:bg-blue-600"
               onClick={() => copyToClipboard(`${CLIENT_URL}/${id}`)}
             >
               Копировать

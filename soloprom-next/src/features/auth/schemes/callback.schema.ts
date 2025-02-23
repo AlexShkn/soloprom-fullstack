@@ -14,6 +14,7 @@ export const CallbackSchema = z.object({
     ),
   email: z.string().optional(),
   address: z.string().optional(),
+  message: z.string().optional(),
 })
 
 export type TypeCallbackSchema = z.infer<typeof CallbackSchema>

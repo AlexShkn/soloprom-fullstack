@@ -8,7 +8,7 @@ import { transformJson } from '@/components/CategoryPageHero/SidePanel/SidePanel
 import { cardDataProps, FilterData } from '@/types/products.types'
 import useFilterStore from '@/store/filterStore'
 import pagesDataRaw from '@/data/products/pagesData.json'
-import { useSearchParams, useRouter } from 'next/navigation'
+import { useSearchParams } from 'next/navigation'
 import { FilterList } from './FilterList'
 import { Button } from '@/components/ui'
 import { declension } from '@/components/Cart/CartResult'
@@ -28,6 +28,7 @@ interface Props {
   setCheckedValues: React.Dispatch<
     React.SetStateAction<Record<string, string[]>>
   >
+  handleResetFilters: () => void
 }
 
 interface dtoTypes {
@@ -51,24 +52,38 @@ const CatalogFilters: React.FC<Props> = ({
   setFilterOpen,
   setCheckedValues,
   checkedValues,
+  handleResetFilters,
 }) => {
   const searchParams = useSearchParams()
-  const router = useRouter()
-  const { filters, setFilters, resetFilters, hasFilters } = useFilterStore()
+  const {
+    filters,
+    setFilters,
+    hasFilters,
+    totalProductsCount,
+    setDataIsLoading,
+    priceRange,
+    setPriceRange,
+  } = useFilterStore()
+  const [initialLoad, setInitialLoad] = useState(true)
+
   const [internalFilters, setInternalFilters] = useState<
     Record<string, string[] | number>
   >(filters || {})
-  const [currentFilters, setCurrentFilters] = useState({})
-  const [priceRange, setPriceRange] = useState({
-    min: categoryInitialList.prices?.min || 0,
-    max: categoryInitialList.prices?.max || 0,
-  })
-
   const accordionRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
-    console.log(filters)
-    setCurrentFilters(filters)
+    if (initialLoad) {
+      setPriceRange({
+        min: categoryInitialList.prices?.min,
+        max: categoryInitialList.prices?.max,
+      })
+
+      setInitialLoad(false)
+    }
+  }, [])
+
+  useEffect(() => {
+    setDataIsLoading(true)
     setInternalFilters(filters)
   }, [filters])
 
@@ -157,30 +172,25 @@ const CatalogFilters: React.FC<Props> = ({
     [handleFilterChange, internalFilters, setFilters, onFiltersChange],
   )
 
-  const handleResetFilters = () => {
-    setPriceRange({
-      min: categoryInitialList.prices?.min || 0,
-      max: categoryInitialList.prices?.max || 0,
-    })
-    setCheckedValues({})
-    router.push(window.location.pathname, { scroll: false })
-    resetFilters()
-  }
+  if (initialLoad) {
+    const urlFilters = searchParams.get('filters')
 
-  const urlFilters = searchParams.get('filters')
-  let parsedMinPrice: number | undefined
-  let parsedMaxPrice: number | undefined
+    if (urlFilters) {
+      try {
+        const parsedFilters = JSON.parse(urlFilters) as Record<
+          string,
+          string[] | number
+        >
 
-  if (urlFilters) {
-    try {
-      const parsedFilters = JSON.parse(urlFilters) as Record<
-        string,
-        string[] | number
-      >
-      parsedMinPrice = parsedFilters.minPrice as number
-      parsedMaxPrice = parsedFilters.maxPrice as number
-    } catch (error) {
-      console.error('Error parsing filters from URL:', error)
+        setPriceRange({
+          min: parsedFilters.minPrice as number,
+          max: parsedFilters.maxPrice as number,
+        })
+
+        setInitialLoad(false)
+      } catch (error) {
+        console.error('Ошибка при разборе фильтров по URL-адресу:', error)
+      }
     }
   }
 
@@ -550,9 +560,9 @@ const CatalogFilters: React.FC<Props> = ({
             className="button flex-auto gap-1.5 py-2.5"
           >
             Показать
-            {products.length > 0 && (
+            {totalProductsCount > 0 && (
               <span>
-                {products.length} {productWord}
+                {totalProductsCount} {productWord}
               </span>
             )}
           </Button>

@@ -42,7 +42,7 @@ function delay(ms) {
 async function processAllData() {
   const tbodyes = document.querySelectorAll('tbody');
   if (!tbodyes || tbodyes.length === 0) {
-    console.error('No tbody elements found.');
+    console.error('Никаких элементов tbody обнаружено не было.');
     return;
   }
 
@@ -51,8 +51,10 @@ async function processAllData() {
   for (const row of tbodyes) {
     const tds = row.querySelectorAll('td');
     if (!tds || tds.length === 0) {
-      console.warn('No td elements found in this tbody, skipping.');
-      continue; // Skip to the next tbody if no tds are found
+      console.warn(
+        'В этом tbody не найдено ни одного элемента td, пропускается.',
+      );
+      continue;
     }
 
     const preResult = {};
@@ -120,7 +122,7 @@ async function processAllData() {
 
 async function processSingleProduct(td, preResult) {
   if (!td) {
-    console.warn('No td element provided to processSingleProduct.');
+    console.warn('Элемент td осутствует для processSingleProduct.');
     return;
   }
 
@@ -132,7 +134,7 @@ async function processSingleProduct(td, preResult) {
   const close = document.querySelector('.el-overlay-dialog');
 
   if (!windBody || !close) {
-    console.warn('Modal elements not found.');
+    console.warn('Modal не найден.');
     return;
   }
 

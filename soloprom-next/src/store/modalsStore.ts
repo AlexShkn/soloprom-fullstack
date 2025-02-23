@@ -17,9 +17,11 @@ interface ShareTypes {
 }
 
 interface ModalsState {
+  showMessage: boolean
   callbackIsOpen: boolean
   fastOrderProduct: FastOrderTypes
   shareModal: ShareTypes
+  modalMessageStateChange: (isOpen: boolean) => void
   modalCallbackStateChange: (isOpen: boolean) => void
   setShareModal: (productId: string, isOpen: boolean) => void
   setFastOrderProduct: (product: FastOrderTypes) => void
@@ -39,6 +41,7 @@ export const useModalsStore = create<ModalsState>((set, get) => ({
     productId: '',
     isOpen: false,
   },
+  showMessage: false,
   callbackIsOpen: false,
   fastOrderProduct: initialFastOrderProduct,
 
@@ -52,6 +55,11 @@ export const useModalsStore = create<ModalsState>((set, get) => ({
         },
       }),
     ),
+
+  modalMessageStateChange: (isOpen) => {
+    set({ showMessage: isOpen })
+  },
+
   modalCallbackStateChange: (isOpen) => {
     set({ callbackIsOpen: isOpen })
     scrollStatusChange(isOpen)

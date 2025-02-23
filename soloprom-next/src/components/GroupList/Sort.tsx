@@ -25,7 +25,7 @@ const getCurrentSort = (value: string) => {
 
 export const Sort: React.FC<Props> = ({ onSortChange, initialSort }) => {
   const [dropIsOpen, setDropIsOpen] = useState(false)
-  const { sort, setSort } = useFilterStore()
+  const { sort, setSort, setDataIsLoading } = useFilterStore()
 
   const dropRef = useRef(null)
 
@@ -43,6 +43,7 @@ export const Sort: React.FC<Props> = ({ onSortChange, initialSort }) => {
 
   const sortHandler = useCallback(
     (value: string) => {
+      setDataIsLoading(true)
       setSort(value)
       setDropIsOpen(false)
 
@@ -52,7 +53,6 @@ export const Sort: React.FC<Props> = ({ onSortChange, initialSort }) => {
       } else if (value === 'Убыванию цены') {
         sort = 'defaultPrice:desc'
       }
-
       onSortChange(sort)
     },
     [onSortChange],
@@ -73,7 +73,7 @@ export const Sort: React.FC<Props> = ({ onSortChange, initialSort }) => {
           onClick={() => setDropIsOpen((prev) => !prev)}
           type="button"
           className={
-            'relative z-10 flex w-full items-center justify-between gap-2 rounded bg-gray-100 px-5 py-2 text-left text-sm leading-4 md:text-base'
+            'relative z-10 flex w-full items-center justify-between gap-2 rounded-custom bg-gray-100 px-5 py-2 text-left text-sm leading-4 md:text-base'
           }
         >
           {getCurrentSort(sort)}
@@ -84,21 +84,22 @@ export const Sort: React.FC<Props> = ({ onSortChange, initialSort }) => {
           />
         </button>
         {dropIsOpen && (
-          <ul className="absolute left-0 top-[101%] w-full rounded bg-white py-2 shadow-custom">
+          <div className="absolute left-0 top-[101%] w-full flex-col rounded-xl bg-white py-2 shadow-custom">
             {sortList.map((item, index) => (
-              <li
+              <button
+                type="button"
                 onClick={() => sortHandler(item)}
                 key={index}
-                className={`cursor-pointer px-5 py-3 text-sm md:text-base ${
+                className={`w-full cursor-pointer px-5 py-3 text-sm md:text-base ${
                   item === getCurrentSort(sort)
                     ? 'bg-accentBlue text-white'
                     : ''
                 }`}
               >
                 {item}
-              </li>
+              </button>
             ))}
-          </ul>
+          </div>
         )}
       </div>
     </div>

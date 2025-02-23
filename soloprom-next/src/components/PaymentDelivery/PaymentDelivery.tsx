@@ -16,7 +16,7 @@ export const PaymentDelivery: React.FC<HeaderProps> = ({ level }) => {
         </HeadingTag>
 
         <div className="grid grid-cols-1 gap-7 md:grid-cols-2">
-          <div className="payment-delivery__payment rounded bg-white px-5 py-7 shadow-custom xs:px-7 xs:py-10 lg:p-10">
+          <div className="payment-delivery__payment rounded-custom bg-white px-5 py-7 shadow-custom xs:px-7 xs:py-10 lg:p-10">
             <div className="mb-7 flex items-center gap-4 text-2xl font-bold">
               <Image
                 src="/img/icons/payment.svg"
@@ -50,7 +50,7 @@ export const PaymentDelivery: React.FC<HeaderProps> = ({ level }) => {
               </ul>
             </div>
           </div>
-          <div className="payment-delivery__payment rounded bg-white px-5 py-7 shadow-custom xs:px-7 xs:py-10 lg:p-10">
+          <div className="payment-delivery__payment rounded-custom bg-white px-5 py-7 shadow-custom xs:px-7 xs:py-10 lg:p-10">
             <div className="mb-7 flex items-center gap-4 text-2xl font-bold">
               <Image
                 src="/img/icons/delivery.svg"

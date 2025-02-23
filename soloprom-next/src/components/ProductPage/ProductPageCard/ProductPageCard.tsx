@@ -42,7 +42,7 @@ export const ProductPageCard: React.FC<ProductsCardPropTypes> = ({
     <div className="product-page-card border-1 mb-7 border-b border-accentBlue">
       <div className="product-page-card__title mb-7 font-bold">{name}</div>
       <div className="product-page-card__wrapper">
-        <div className="relative flex flex-col gap-5 md:flex-row">
+        <div className="relative flex flex-col gap-5 lg:flex-row">
           <div className="relative flex justify-center gap-2 pt-10">
             {rating > 1 && (
               <div className="absolute right-2.5 top-2.5 z-10 flex justify-end text-2xl font-bold text-accentBlue">
@@ -76,13 +76,13 @@ export const ProductPageCard: React.FC<ProductsCardPropTypes> = ({
                   '/img/catalog/not-found.jpg'
                 }
                 alt=""
-                width={288}
-                height={288}
+                width={240}
+                height={240}
               />
             </div>
           </div>
 
-          <div className="flex flex-col gap-5">
+          <div className="flex w-full flex-col gap-5">
             <ProductPageCardDescription cardData={cardData} />
             <ProductsPageOffers cardData={cardData} />
           </div>

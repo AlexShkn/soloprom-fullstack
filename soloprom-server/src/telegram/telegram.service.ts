@@ -39,8 +39,8 @@ export class TelegramService {
     if (formData.email) {
       message += `<b>Почта:</b> ${formData.email}\n`;
     }
-    if (formData.question) {
-      message += `<b>Сообщение:</b> ${formData.question}\n`;
+    if (formData.message) {
+      message += `<b>Сообщение:</b> ${formData.message}\n`;
     }
 
     // Данные из формы заказа (корзины)
@@ -62,9 +62,9 @@ export class TelegramService {
       }
     }
 
-    if (formData.fastOrder) {
-      const fastState = formData.fastOrder;
+    const fastState = formData.fastOrder;
 
+    if (fastState.productId) {
       message += `\n\n`;
       message += `<b>Быстрый заказ:</b>\n`;
       message += `<b>------------------</b>\n`;
@@ -81,23 +81,26 @@ export class TelegramService {
       message += `\n\n`;
       message += `<b>Заказ:</b>\n`;
 
-      cartState.forEach((product: productType) => {
+      if (cartState?.length) {
+        cartState.forEach((product: productType) => {
+          message += `<b>------------------</b>\n`;
+          message += `<b>${product.name}</b>\n`;
+          message += `<b>Id Товара:</b> ${product.productId}\n`;
+          message += `<b>Размер:</b> ${product.variant}\n`;
+          message += `<b>Тип:</b> ${product.productType}\n`;
+
+          message += `<b>Ссылка на товар:</b> ${this.ALLOWED_ORIGIN}/products/${product.productId}\n`;
+          message += `<b>Цена за 1 шт:</b> ${product.price}\n`;
+
+          if (product.count > 1) {
+            message += `<b>В заказе:</b> ${product.count}\n`;
+            message += `<b>Сумма:</b> ${product.price * product.count}\n`;
+          }
+        });
+
         message += `<b>------------------</b>\n`;
-        message += `<b>${product.name}</b>\n`;
-        message += `<b>Id Товара:</b> ${product.productId}\n`;
-        message += `<b>Размер:</b> ${product.variant}\n`;
-        message += `<b>Тип:</b> ${product.productType}\n`;
-        message += `<b>Ссылка на товар:</b> ${this.ALLOWED_ORIGIN}/products/${product.productId}\n`;
-        message += `<b>Цена за 1 шт:</b> ${product.price}\n`;
-
-        if (product.count > 1) {
-          message += `<b>В заказе:</b> ${product.count}\n`;
-          message += `<b>Сумма:</b> ${product.price * product.count}\n`;
-        }
-      });
-
-      message += `<b>------------------</b>\n`;
-      message += `<b>Итого:</b> ${formData.totalAmount}\n`;
+        message += `<b>Итого:</b> ${formData.totalAmount}\n`;
+      }
     }
 
     try {

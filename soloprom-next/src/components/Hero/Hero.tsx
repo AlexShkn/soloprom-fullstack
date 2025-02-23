@@ -24,9 +24,9 @@ const Hero = () => {
   }, [isReady])
 
   return (
-    <section className="hero bg-sectionWhite py-[50px]">
+    <section className="hero bg-sectionWhite py-7">
       <div className="hero__hero-container">
-        <div className="hero__body relative grid gap-5 overflow-hidden">
+        <div className="hero__body relative grid gap-2 overflow-hidden">
           <HeroMainSlider isReady={isReady} />
           <HeroVerticalSlider isReady={isReady} />
         </div>

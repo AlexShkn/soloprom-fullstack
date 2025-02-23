@@ -18,13 +18,13 @@ const HeaderBody = () => {
           alt=""
         />
         <div className="header__logo-text flex flex-col">
-          <span className="mds:text-2xl text-xl font-bold leading-9 text-darkBlue xl:text-[28px]">
+          <span className="text-xl font-bold leading-9 text-darkBlue mds:text-2xl xl:text-[28px]">
             СОЛО
             <b className="mt-[-5px] inline-block rounded bg-accentBlue px-1 leading-8 text-white">
               PROM
             </b>
           </span>
-          <span className="mds:max-w-36 max-w-32 pl-[5px] text-[9px] leading-3 text-[#3b3b3b] xl:max-w-[170px] xl:text-[11px]">
+          <span className="max-w-32 pl-[5px] text-[9px] leading-3 text-[#3b3b3b] mds:max-w-36 xl:max-w-[170px] xl:text-[11px]">
             Интернет-магазин запчастей для спецтехники
           </span>
         </div>
@@ -55,11 +55,11 @@ const HeaderBody = () => {
           </div>
         </div>
 
-        <div className="mdl:gap-4 mdl:flex-row lg-gap-0 flex items-center gap-5 xs:flex-col md:flex-col md:gap-2.5 xl:flex-row">
+        <div className="lg-gap-0 flex items-center gap-5 xs:flex-col mdl:flex-row mdl:gap-4 md:flex-col md:gap-2.5 xl:flex-row">
           <div className="md:order-1 lg:order-none">
             <a
               href="https://wa.me/79036569393"
-              className="flex min-w-[140px] items-center gap-1 rounded bg-greenColor px-1 py-1 text-center text-ss font-medium text-white md:p-2.5"
+              className="flex min-w-[140px] items-center gap-1 rounded-lg bg-greenColor px-1 py-1 text-center text-ss font-medium text-white md:p-2.5"
             >
               <svg className="icon h-7 w-7 fill-white">
                 <use xlinkHref="/img/sprite.svg#footer-wp"></use>

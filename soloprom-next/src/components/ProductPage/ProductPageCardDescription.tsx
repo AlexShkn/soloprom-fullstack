@@ -1,11 +1,12 @@
 'use client'
-import React, { useRef, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import Image from 'next/image'
 import { useClickOutside } from '@/hooks/useClickOutside'
 import { getAdaptiveValue } from '@/utils/getAdaptiveValue'
 import { AdaptiveValues } from '@/utils/getAdaptiveValue'
 import { ProductsCardPropTypes } from '@/types/products.types'
 import { useCartStore } from '@/store/cartStore'
+import { useModalsStore } from '@/store/modalsStore'
 
 interface DescriptionTypes extends ProductsCardPropTypes {
   // variantValue: string
@@ -50,29 +51,56 @@ export const ProductPageCardDescription: React.FC<DescriptionTypes> = ({
   const {
     productId,
     categoryName,
+    name,
+    url,
+    img,
     productType,
     brandName,
     country,
-    sizes,
     load_index,
-    volumes,
     viscosity,
     container,
     voltage,
     plates,
+    defaultPrice,
+    sizes,
+    volumes,
   } = cardData
-  const [dropOpen, setDropOpen] = useState(false)
-  const dropRef = useRef(null)
-  const { cartState } = useCartStore()
+  const [variantValue, setVariantValue] = useState('')
 
-  // const selectedVariant = (value: string) => {
-  //   setVariantValue(value)
-  //   setDropOpen(false)
-  // }
+  const {
+    modalMessageStateChange,
+    modalCallbackStateChange,
+    setFastOrderProduct,
+  } = useModalsStore()
 
-  // useClickOutside(dropRef, () => {
-  //   setDropOpen(false)
-  // })
+  const sizesData = sizes || volumes
+
+  useEffect(() => {
+    let defaultSize: string | undefined = undefined
+    if (sizesData) {
+      defaultSize = Object.keys(sizesData)?.[0]
+      setVariantValue(defaultSize || '')
+    }
+  }, [])
+
+  const showMessageWindow = () => {
+    modalMessageStateChange(true)
+    modalCallbackStateChange(true)
+  }
+
+  const fastOrderHandle = () => {
+    setFastOrderProduct({
+      productId,
+      name,
+      variant: variantValue,
+      price: defaultPrice,
+      url,
+      img,
+    })
+    modalCallbackStateChange(true)
+  }
+
   return (
     <div className="flex flex-col">
       <div className="border-1 mb-5 flex items-center justify-between border-b border-grayColor pt-6">
@@ -84,13 +112,21 @@ export const ProductPageCardDescription: React.FC<DescriptionTypes> = ({
           alt=""
         />
         <button
+          onClick={() => showMessageWindow()}
           type="button"
           className="inline-flex items-center gap-2.5 transition-colors hover:text-hoverBlue"
         >
-          <img src="/img/icons/question.svg" alt="" />
+          <img src="/img/icons/question.svg" alt="задайте свой вопрос" />
           Задать вопрос
         </button>
       </div>
+      <button
+        type="button"
+        onClick={() => fastOrderHandle()}
+        className={`my-5 ml-auto font-medium text-[#dd3824] underline`}
+      >
+        Купить в 1 клик
+      </button>
       <div className="min-w-64">
         <div className="mb-1 flex items-center rounded bg-grayColor px-5 py-2.5 text-2xl font-medium shadow-sm">
           <span>Основная информация</span>

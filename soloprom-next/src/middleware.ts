@@ -66,7 +66,7 @@ const checkSession = async (request: NextRequest) => {
     const { isValid } = await response.json()
     return isValid
   } catch (error) {
-    console.log('error check session', error)
+    console.log('ошибка проверки session', error)
     return false
   }
 }

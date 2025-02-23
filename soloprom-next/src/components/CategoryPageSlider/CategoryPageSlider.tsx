@@ -40,14 +40,14 @@ export const CategoryPageSlider: React.FC<Props> = ({ category }) => {
           setProductsCounts(result as SubcategoryCount)
         } else {
           console.error(
-            'Invalid data format received from getProductsCounts:',
+            'Неверный формат данных, полученных из getProductsCounts:',
             result,
           )
         }
 
         console.log(result)
       } catch (error) {
-        console.error('Failed to fetch product counts:', error)
+        console.error('Не удалось получить количество продуктов:', error)
       }
     }
 
@@ -121,7 +121,7 @@ export const CategoryPageSlider: React.FC<Props> = ({ category }) => {
                   {categoryList.map((item) => (
                     <SwiperSlide
                       key={item.href}
-                      className="swiper-slide page-category-slider__category-link relative flex min-w-48 select-none flex-col items-center justify-center rounded px-2.5 py-5 text-center shadow-custom transition-all"
+                      className="swiper-slide page-category-slider__category-link rounded-custom relative flex min-w-48 select-none flex-col items-center justify-center px-2.5 py-5 text-center shadow-custom transition-all"
                     >
                       <Link href={item.href} className="blok h-full w-full">
                         <div className="flex flex-col items-center justify-center">

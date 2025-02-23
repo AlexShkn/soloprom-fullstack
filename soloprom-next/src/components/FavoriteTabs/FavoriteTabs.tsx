@@ -30,7 +30,7 @@ export const FavoriteTabs: React.FC<FavoriteTabsProps> = ({ initialData }) => {
                   setCurrantTab(caption.type as 'tires' | 'battery' | 'oils')
                 }
                 key={caption.type}
-                className={`favorite-tabs__caption border-1 cursor-pointer rounded border border-[#d1d1d1] px-5 py-4 text-center font-medium ${
+                className={`favorite-tabs__caption border-1 rounded-custom cursor-pointer border border-[#d1d1d1] px-5 py-4 text-center font-medium ${
                   caption.type === currantTab ? 'bg-hoverBlue text-white' : ''
                 }`}
               >

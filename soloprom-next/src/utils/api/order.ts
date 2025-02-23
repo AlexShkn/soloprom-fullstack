@@ -20,7 +20,7 @@ export const getOrdersByUserId = async (
     const response = await api.get<OrderTypes[]>(`order/${userId}`)
     return response
   } catch (error) {
-    console.error('Error fetching orders:', error)
+    console.error('Ошибка при получении заказов:', error)
     return []
   }
 }
@@ -32,7 +32,7 @@ export const createOrder = async (
     const response = await api.post<OrderTypes>('order', orderDto)
     return response
   } catch (error) {
-    console.error('Error creating order:', error)
+    console.error('Ошибка при создании заказа:', error)
     return null
   }
 }
@@ -45,7 +45,7 @@ export const updateOrderStatus = async ({
     const response = await api.patch<OrderTypes>(`order/${id}/${status}`)
     return response
   } catch (error) {
-    console.error('Error updating order status:', error)
+    console.error('Ошибка при обновлении статуса заказа:', error)
     return null
   }
 }

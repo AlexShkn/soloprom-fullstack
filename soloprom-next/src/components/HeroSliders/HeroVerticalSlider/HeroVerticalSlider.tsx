@@ -46,7 +46,7 @@ const HeroVerticalSlider: React.FC<HeroTypes> = ({ isReady }) => {
           modules={[Pagination, Autoplay]}
           grabCursor={true}
           watchSlidesProgress={true}
-          spaceBetween={20}
+          spaceBetween={8}
           pagination={{
             el: '.hero-vertical-slider__pagination',
             clickable: true,
@@ -54,10 +54,10 @@ const HeroVerticalSlider: React.FC<HeroTypes> = ({ isReady }) => {
           loop={true}
           speed={800}
           effect={'fade'}
-          autoplay={{
-            delay: 3000,
-            disableOnInteraction: false,
-          }}
+          // autoplay={{
+          //   delay: 3000,
+          //   disableOnInteraction: false,
+          // }}
           breakpoints={{
             320: {
               direction: 'horizontal',
@@ -72,7 +72,7 @@ const HeroVerticalSlider: React.FC<HeroTypes> = ({ isReady }) => {
             992.98: {
               direction: 'vertical',
               slidesPerView: 2,
-              spaceBetween: 20,
+              spaceBetween: 8,
             },
           }}
         >
@@ -103,7 +103,7 @@ const HeroVerticalSlider: React.FC<HeroTypes> = ({ isReady }) => {
                   </div>
                   <div className="leading-5 text-white">{slide.subtitle}</div>
                 </div>
-                <div className="absolute bottom-0 left-0 z-10 inline-flex h-14 w-14 items-center justify-center bg-accentBlue transition-colors hover:bg-hoverBlue">
+                <div className="rounded-tr-custom absolute bottom-0 left-0 z-10 inline-flex h-14 w-14 items-center justify-center bg-accentBlue transition-colors hover:bg-hoverBlue">
                   <svg className="icon h-5 w-5 rotate-[-90deg] fill-white">
                     <use xlinkHref="/img/sprite-default.svg#arrow-drop"></use>
                   </svg>
