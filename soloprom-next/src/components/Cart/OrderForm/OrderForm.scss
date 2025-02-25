@@ -95,23 +95,6 @@
           top 0.25s ease;
       }
     }
-    .radio__body {
-      line-height: 1.4;
-      transition: font-weight 0.25s ease;
-      font-weight: bold;
-      color: #333;
-      background: #fff;
-      background-size: 200% 100%;
-      background-position: 100% 0;
-      padding: 15px;
-      padding-left: 52px;
-      border-radius: 10px;
-      box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
-      transition:
-        box-shadow 0.25s ease,
-        background 1s ease,
-        color 0.25s ease;
-    }
   }
 
   // .cart-result-form__checkbox
@@ -120,22 +103,12 @@
     position: relative;
     display: inline-block;
     cursor: pointer;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
     user-select: none;
     width: 130px;
     height: 105px;
 
     @media (any-hover: hover) {
       &:hover {
-        input ~ .cart-result-form__checkbox-checkmark {
-        }
-
-        input:checked ~ .cart-result-form__checkbox-checkmark {
-          // background-color: variables.$hoverAccentColor;
-        }
-
         .cart-result-form__checkbox-body {
           box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
         }
@@ -148,10 +121,6 @@
       cursor: pointer;
       height: 0;
       width: 0;
-
-      &:checked ~ .cart-result-form__checkbox-checkmark {
-        // background-color: variables.$hoverAccentColor;
-      }
 
       &:checked ~ .cart-result-form__checkbox-checkmark:after {
         opacity: 1;

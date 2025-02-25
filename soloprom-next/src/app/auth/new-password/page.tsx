@@ -1,9 +1,24 @@
-import type { Metadata } from 'next'
 import { Suspense } from 'react'
 import { NewPasswordForm } from '@/features/auth/components'
 
-export const metadata: Metadata = {
-  title: 'Новый пароль',
+export const metadata = {
+  title: 'Новый пароль для пользователя',
+  description: 'Подтверждение нового пароля аккаунта пользователя soloprom.ru',
+  openGraph: {
+    title: 'Запчасти для специальной и сельскохозяйственной техники',
+    siteName:
+      'ООО «Соло» - запчасти для сельскохозяйственной и специальной техники',
+    description:
+      'Тяговые аккумуляторы, промышленные шины, колесные опоры из наличия и на заказ',
+    images: [
+      {
+        url: 'https://soloprom.ru/preview.jpg',
+        alt: 'Реквизиты',
+      },
+    ],
+    url: 'https://soloprom.ru',
+  },
+  alternates: { canonical: 'https://soloprom.ru/auth/new-password' },
 }
 
 export default function NewPasswordPage() {

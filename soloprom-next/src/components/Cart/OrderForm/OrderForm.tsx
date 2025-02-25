@@ -256,7 +256,9 @@ export const OrderForm: React.FC = () => {
                         onChange={() => form.setValue('personType', 'Физ.лицо')}
                       />
                       <div className="radio__checkmark"></div>
-                      <div className="radio__body">Физ.лицо</div>
+                      <div className="radio__body bg-200-100 bg-100-0 rounded-custom bg-white p-3 pl-14 font-bold shadow-[2px_2px_5px_rgba(0,0,0,0.2)] transition-all duration-1000 ease-in-out hover:text-blue-500">
+                        Физ.лицо
+                      </div>
                     </label>
                     <label className="cart-result-form__radio radio">
                       <input
@@ -267,7 +269,9 @@ export const OrderForm: React.FC = () => {
                         onChange={() => form.setValue('personType', 'Юр.лицо')}
                       />
                       <div className="radio__checkmark"></div>
-                      <div className="radio__body">Юр.лицо</div>
+                      <div className="radio__body bg-200-100 bg-100-0 rounded-custom bg-white p-3 pl-14 font-bold shadow-[2px_2px_5px_rgba(0,0,0,0.2)] transition-all duration-1000 ease-in-out hover:text-blue-500">
+                        Юр.лицо
+                      </div>
                     </label>
                   </>
                 )}
@@ -307,7 +311,7 @@ export const OrderForm: React.FC = () => {
                             }}
                           />
                           <div className="cart-result-form__checkbox-checkmark"></div>
-                          <div className="cart-result-form__checkbox-body duration-250 transition-color duration-250 hover:bg-lefty overflow-hidden rounded-lg bg-white bg-gradient-to-r from-white to-white bg-[size:200%_100%] bg-right pl-7 font-bold shadow-md duration-1000 ease-in-out hover:shadow-lg">
+                          <div className="cart-result-form__checkbox-body duration-250 transition-color duration-250 hover:bg-lefty overflow-hidden rounded-custom bg-white bg-gradient-to-r from-white to-white bg-[size:200%_100%] bg-right pl-7 font-bold shadow-md duration-1000 ease-in-out hover:shadow-lg">
                             <img src="/img/icons/company/cdek.png" alt="" />
                           </div>
                         </label>
@@ -335,7 +339,7 @@ export const OrderForm: React.FC = () => {
                             }}
                           />
                           <div className="cart-result-form__checkbox-checkmark"></div>
-                          <div className="cart-result-form__checkbox-body duration-250 transition-color duration-250 hover:bg-lefty overflow-hidden rounded-lg bg-white bg-gradient-to-r from-white to-white bg-[size:200%_100%] bg-right pl-7 font-bold shadow-md duration-1000 ease-in-out hover:shadow-lg">
+                          <div className="cart-result-form__checkbox-body duration-250 transition-color duration-250 hover:bg-lefty overflow-hidden rounded-custom bg-white bg-gradient-to-r from-white to-white bg-[size:200%_100%] bg-right pl-7 font-bold shadow-md duration-1000 ease-in-out hover:shadow-lg">
                             <img
                               src="/img/icons/company/delovie-linii.png"
                               alt=""
@@ -366,7 +370,7 @@ export const OrderForm: React.FC = () => {
                             }}
                           />
                           <div className="cart-result-form__checkbox-checkmark"></div>
-                          <div className="cart-result-form__checkbox-body duration-250 transition-color duration-250 hover:bg-lefty overflow-hidden rounded-lg bg-white bg-gradient-to-r from-white to-white bg-[size:200%_100%] bg-right pl-7 font-bold shadow-md duration-1000 ease-in-out hover:shadow-lg">
+                          <div className="cart-result-form__checkbox-body duration-250 transition-color duration-250 hover:bg-lefty overflow-hidden rounded-custom bg-white bg-gradient-to-r from-white to-white bg-[size:200%_100%] bg-right pl-7 font-bold shadow-md duration-1000 ease-in-out hover:shadow-lg">
                             <img src="/img/icons/company/pek.png" alt="" />
                           </div>
                         </label>
@@ -394,7 +398,7 @@ export const OrderForm: React.FC = () => {
                             }}
                           />
                           <div className="cart-result-form__checkbox-checkmark"></div>
-                          <div className="cart-result-form__checkbox-body duration-250 transition-color duration-250 hover:bg-lefty overflow-hidden rounded-lg bg-white bg-gradient-to-r from-white to-white bg-[size:200%_100%] bg-right pl-7 font-bold shadow-md duration-1000 ease-in-out hover:shadow-lg">
+                          <div className="cart-result-form__checkbox-body duration-250 transition-color duration-250 hover:bg-lefty overflow-hidden rounded-custom bg-white bg-gradient-to-r from-white to-white bg-[size:200%_100%] bg-right pl-7 font-bold shadow-md duration-1000 ease-in-out hover:shadow-lg">
                             <img src="/img/icons/company/energiya.png" alt="" />
                           </div>
                         </label>
@@ -422,7 +426,7 @@ export const OrderForm: React.FC = () => {
                             }}
                           />
                           <div className="cart-result-form__checkbox-checkmark"></div>
-                          <div className="cart-result-form__checkbox-body duration-250 transition-color duration-250 hover:bg-lefty overflow-hidden rounded-lg bg-white bg-gradient-to-r from-white to-white bg-[size:200%_100%] bg-right pl-7 font-bold shadow-md duration-1000 ease-in-out hover:shadow-lg">
+                          <div className="cart-result-form__checkbox-body duration-250 transition-color duration-250 hover:bg-lefty overflow-hidden rounded-custom bg-white bg-gradient-to-r from-white to-white bg-[size:200%_100%] bg-right pl-7 font-bold shadow-md duration-1000 ease-in-out hover:shadow-lg">
                             <img src="/img/icons/company/other.png" alt="" />
                           </div>
                         </label>

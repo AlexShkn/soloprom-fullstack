@@ -1,6 +1,7 @@
 import ClientProvider from '@/providers/ClientProvider'
 
 import '../styles/styles.scss'
+import { Analytics } from '@/components/Analytics'
 
 export default function RootLayout({
   children,
@@ -10,7 +11,10 @@ export default function RootLayout({
   return (
     <html lang="ru">
       <body>
-        <ClientProvider>{children}</ClientProvider>
+        <ClientProvider>
+          <Analytics />
+          {children}
+        </ClientProvider>
       </body>
     </html>
   )

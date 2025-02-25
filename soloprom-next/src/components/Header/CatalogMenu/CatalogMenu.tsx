@@ -176,7 +176,7 @@ const CatalogMenu = () => {
   return (
     <div
       ref={menuRef}
-      className="catalog-menu scroll-bar fixed left-0 top-0 z-20 h-full min-h-[65vh] w-full overscroll-contain rounded bg-white shadow-[0_4px_30px_0_rgba(0,0,0,0.1)] lg:absolute lg:top-[85px] lg:h-auto"
+      className="catalog-menu scroll-bar fixed left-0 top-0 z-20 h-full min-h-[65vh] w-full max-w-[1390px] overscroll-contain rounded bg-white shadow-[0_4px_30px_0_rgba(0,0,0,0.1)] lg:absolute lg:top-[85px] lg:h-auto"
     >
       <div className="tb:min-h-[100vh] h-full min-h-[65vh]">
         <CloseButton
@@ -190,7 +190,7 @@ const CatalogMenu = () => {
             <Link
               onClick={() => catalogMenuStateChange(false, false)}
               href="/catalog"
-              className="rounded-custom flex max-w-48 items-center justify-between gap-2.5 bg-accentBlue px-2.5 py-4 text-sm font-medium sm:mb-2.5 sm:max-w-max md:text-base"
+              className="flex max-w-48 items-center justify-between gap-2.5 rounded-custom bg-accentBlue px-2.5 py-4 text-sm font-medium sm:mb-2.5 sm:max-w-max md:text-base"
             >
               <span className="flex items-center gap-2.5 text-white">
                 <img
