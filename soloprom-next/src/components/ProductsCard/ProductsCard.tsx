@@ -183,17 +183,28 @@ export const ProductsCard: React.FC<ProductsCardPropTypes> = ({
   return (
     <div className="h-full">
       <div
-        className={`product-card relative flex h-full ${mod !== 'row' && 'flex-col'} ${mod === 'row' && 'gap-5'} rounded-custom bg-white p-4 shadow-custom`}
+        className={`product-card relative flex h-full ${mod !== 'row' && 'flex-col'} ${mod === 'row' && 'justify-between gap-5'} rounded-custom bg-white p-4 shadow-custom`}
       >
         {regalia.length > 0 && (
           <RegaliaList regalia={regalia} discount={discount} />
         )}
 
-        <div className="group">
+        <div
+          className={`group ${mod === 'row' && 'flex flex-1 items-center gap-2.5'}`}
+        >
           <Link
             href={url || '/'}
-            className={`${mod !== 'row' ? 'mb-2.5' : 'items-center'} flex justify-center`}
+            className={`relative ${mod !== 'row' ? 'mb-2.5' : 'items-center'} flex justify-center`}
           >
+            {brandName && img && (
+              <Image
+                className={`absolute left-0 inline-block w-[50px] object-contain ${regalia.length && '-bottom-1'} ${mod === 'row' && 'bottom-0'}`}
+                src={`/img/brands/${brandName}.webp`}
+                width={50}
+                height={20}
+                alt={brandName}
+              />
+            )}
             <Image
               className="inline-block h-[120px] object-contain"
               src={

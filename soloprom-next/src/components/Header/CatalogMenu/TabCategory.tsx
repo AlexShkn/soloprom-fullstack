@@ -39,8 +39,8 @@ const TabCategory: React.FC<CategoryTab> = ({
 
   return (
     <div
-      className={`catalog-menu__category-body scroll-bar invisible hidden max-h-[calc(100vh-70px)] grid-cols-1 overflow-y-auto border-b border-grayColor p-2.5 pr-2.5 opacity-0 transition-all lg:grid-cols-2 lg:gap-5 lg:p-0 ${
-        categoryId === currentTab && 'active'
+      className={`catalog-menu__category-body scroll-bar max-h-[calc(100vh-70px)] grid-cols-1 overflow-y-auto border-b border-grayColor p-2.5 pr-2.5 transition-all lg:grid-cols-2 lg:gap-5 lg:p-0 ${
+        categoryId === currentTab ? 'fadeIn grid' : 'invisible hidden opacity-0'
       }`}
     >
       <ul className="flex h-auto flex-col items-start justify-start gap-x-5 gap-y-1 bg-white pl-4 sm:bg-none">

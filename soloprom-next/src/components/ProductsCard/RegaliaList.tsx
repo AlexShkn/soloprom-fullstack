@@ -1,5 +1,6 @@
 'use client'
 import React from 'react'
+import Image from 'next/image'
 
 interface RegaliaProps {
   regalia: string[]
@@ -25,12 +26,11 @@ export const RegaliaList: React.FC<RegaliaProps> = ({ regalia, discount }) => {
       {regalia.map((item) => {
         const regaliaItem = regaliaSettings.find((r) => r.icon === item)
         return (
-          <li
-            key={item}
-            className="feature-item mds:h-9 mds:w-9 group relative h-9 w-9"
-          >
-            <img
+          <li key={item} className="feature-item group relative h-8 w-8">
+            <Image
               className="relative z-[6] h-full w-full"
+              width={32}
+              height={32}
               src={`/img/icons/${item}.svg`}
               alt={`${item} icon`}
             />

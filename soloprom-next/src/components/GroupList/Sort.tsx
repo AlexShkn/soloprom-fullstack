@@ -2,12 +2,13 @@
 import React, { useRef, useState, useCallback, useEffect } from 'react'
 import { ChevronRight } from 'lucide-react'
 import { useClickOutside } from '@/hooks/useClickOutside'
-import useFilterStore from '@/store/filterStore'
-import { getCurrentWindowSize } from '@/supports'
 
 interface Props {
   onSortChange: (sort: string) => void
   initialSort?: string
+  sort: string
+  setSort: (sort: string) => void
+  setDataIsLoading: (status: boolean) => void
 }
 
 const sortList = ['По умолчанию', 'Возрастанию цены', 'Убыванию цены']
@@ -23,9 +24,14 @@ const getCurrentSort = (value: string) => {
   return sort
 }
 
-export const Sort: React.FC<Props> = ({ onSortChange, initialSort }) => {
+export const Sort: React.FC<Props> = ({
+  onSortChange,
+  initialSort,
+  sort,
+  setSort,
+  setDataIsLoading,
+}) => {
   const [dropIsOpen, setDropIsOpen] = useState(false)
-  const { sort, setSort, setDataIsLoading } = useFilterStore()
 
   const dropRef = useRef(null)
 
@@ -43,6 +49,8 @@ export const Sort: React.FC<Props> = ({ onSortChange, initialSort }) => {
 
   const sortHandler = useCallback(
     (value: string) => {
+      console.log('trued')
+
       setDataIsLoading(true)
       setSort(value)
       setDropIsOpen(false)
@@ -90,7 +98,7 @@ export const Sort: React.FC<Props> = ({ onSortChange, initialSort }) => {
                 type="button"
                 onClick={() => sortHandler(item)}
                 key={index}
-                className={`w-full cursor-pointer px-5 py-3 text-sm md:text-base ${
+                className={`w-full cursor-pointer px-5 py-1 text-sm md:text-base ${
                   item === getCurrentSort(sort)
                     ? 'bg-accentBlue text-white'
                     : ''

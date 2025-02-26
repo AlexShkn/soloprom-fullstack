@@ -9,7 +9,7 @@ import { ContactsMap } from '@/components/ContactsMap/ContactsMap'
 import PageWrapper from './PageWrapper'
 import { FavoriteTabs } from '@/components/FavoriteTabs/FavoriteTabs'
 import { getPopularProducts } from '@/utils/api/products'
-import { cardDataProps, FavoriteList } from '@/types/products.types'
+import { CardDataProps, FavoriteList } from '@/types/products.types'
 import TransitionWrapper from '@/providers/TransitionWrapper'
 
 export const metadata = {
@@ -38,13 +38,13 @@ export default async function Home() {
 
   const formattedProducts: FavoriteList = {
     tires: response.filter(
-      (product: cardDataProps) => product.categoryName === 'tires',
+      (product: CardDataProps) => product.categoryName === 'tires',
     ),
     battery: response.filter(
-      (product: cardDataProps) => product.categoryName === 'battery',
+      (product: CardDataProps) => product.categoryName === 'battery',
     ),
     oils: response.filter(
-      (product: cardDataProps) => product.categoryName === 'oils',
+      (product: CardDataProps) => product.categoryName === 'oils',
     ),
   }
   return (

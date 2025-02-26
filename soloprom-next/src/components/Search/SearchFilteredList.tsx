@@ -1,23 +1,16 @@
 'use client'
 import React, { useState } from 'react'
 import { ProductsCard } from '@/components/ProductsCard/ProductsCard'
-import { CardDataProps } from '@/types/products.types'
-import { Pagination } from './Pagination'
 import Skeleton from 'react-loading-skeleton'
 import 'react-loading-skeleton/dist/skeleton.css'
-import { Sort } from './Sort'
-import { ViewSetting } from './ViewSetting'
-import { DynamicPagination } from './DynamicPagination'
+import { Sort } from '../GroupList/Sort'
+import { ViewSetting } from '../GroupList/ViewSetting'
 
-import useFilterStore from '@/store/filterStore'
+import useSearchStore from '@/store/searchStore'
 import { Button } from '../ui'
 
 interface Props {
-  data: CardDataProps[]
-  currentPage: number
-  totalPages: number
   handleResetFilters: () => void
-  onChangePage: (newPage: number) => void
   onSortChange: (sort: string) => void
   hasFilters: boolean
   filterOpen: boolean
@@ -28,14 +21,9 @@ interface Props {
   checkedValues: Record<string, string[]>
 }
 
-export const FilteredList: React.FC<Props> = ({
-  data,
-  currentPage,
-  totalPages,
-  onChangePage,
+export const SearchFilteredList: React.FC<Props> = ({
   onSortChange,
   hasFilters,
-  filterOpen,
   setFilterOpen,
   setCheckedValues,
   checkedValues,
@@ -43,15 +31,14 @@ export const FilteredList: React.FC<Props> = ({
 }) => {
   const [viewMode, setViewMode] = useState('grid')
   const {
+    foundProducts,
     filters,
     setFilters,
     dataIsLoading,
-    setDynamicCurrentPage,
-    dynamicCurrentPage,
     sort,
     setSort,
     setDataIsLoading,
-  } = useFilterStore()
+  } = useSearchStore()
 
   const filterKeysToIgnore = ['minPrice', 'maxPrice']
 
@@ -161,7 +148,7 @@ export const FilteredList: React.FC<Props> = ({
                 height={viewMode === 'grid' ? '320px' : '177px'}
               />
             ))
-          : data.map((item) => (
+          : foundProducts.map((item) => (
               <ProductsCard
                 key={item.productId}
                 cardData={item}
@@ -170,7 +157,7 @@ export const FilteredList: React.FC<Props> = ({
             ))}
       </ul>
 
-      {!dataIsLoading && !data.length && (
+      {!dataIsLoading && !foundProducts.length && (
         <div className="py-10 text-center text-2xl font-bold">
           Нет подходящих товаров
           <Button
@@ -182,21 +169,6 @@ export const FilteredList: React.FC<Props> = ({
             Сбросить фильтры
           </Button>
         </div>
-      )}
-
-      {totalPages > 1 && !dataIsLoading && !hasFilters && (
-        <Pagination
-          currentPage={currentPage}
-          onChangePage={onChangePage}
-          totalPages={totalPages}
-        />
-      )}
-      {totalPages > 1 && !dataIsLoading && hasFilters && (
-        <DynamicPagination
-          currentPage={dynamicCurrentPage}
-          setDynamicCurrentPage={setDynamicCurrentPage}
-          totalPages={totalPages}
-        />
       )}
     </div>
   )

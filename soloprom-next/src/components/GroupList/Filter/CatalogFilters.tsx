@@ -5,7 +5,7 @@ import { FilterCheckbox } from './FilterCheckbox'
 import { FilterInterval } from './FilterInterval'
 import { FilterItem } from './FilterItem'
 import { transformJson } from '@/components/CategoryPageHero/SidePanel/SidePanel'
-import { cardDataProps, FilterData } from '@/types/products.types'
+import { CardDataProps, FilterData } from '@/types/products.types'
 import useFilterStore from '@/store/filterStore'
 import pagesDataRaw from '@/data/products/pagesData.json'
 import { useSearchParams } from 'next/navigation'
@@ -16,7 +16,7 @@ import { declension } from '@/components/Cart/CartResult'
 const transformData = transformJson(pagesDataRaw)
 
 interface Props {
-  products: cardDataProps[]
+  products: CardDataProps[]
   productsType: string
   categoryName: string
   currentPage: number
@@ -88,8 +88,8 @@ const CatalogFilters: React.FC<Props> = ({
   }, [filters])
 
   const categoryData = transformData[productsType]
-  const groups = categoryData.group
-  const subCategories = categoryData.subcategories
+  const groups = categoryData?.group
+  const subCategories = categoryData?.subcategories
 
   const handleFilterChange = useCallback(
     (
@@ -202,7 +202,7 @@ const CatalogFilters: React.FC<Props> = ({
 
   return (
     <div
-      className={`filter-wrapper fixed left-0 top-0 h-full w-full bg-white pl-2.5 pt-14 md:relative md:block md:p-0 ${
+      className={`filter-wrapper fixed left-0 top-0 h-full w-full bg-white pl-2.5 pt-20 md:relative md:block md:p-0 ${
         filterOpen ? 'z-50 block' : 'hidden'
       }`}
     >

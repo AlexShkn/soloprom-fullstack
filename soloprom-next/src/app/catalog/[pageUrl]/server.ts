@@ -1,5 +1,5 @@
 import {
-  cardDataProps,
+  CardDataProps,
   FilterData,
   PageDataTypes,
 } from '@/types/products.types'
@@ -30,10 +30,11 @@ export async function findPagesData(
 }
 
 export function generateFilterData(
-  categoryInitialList: cardDataProps[] | null,
+  categoryInitialList: CardDataProps[] | null,
 ): FilterData {
   if (!categoryInitialList || categoryInitialList.length === 0) {
     return {
+      categoryes: [],
       brands: [],
       types: [],
       prices: null,
@@ -49,6 +50,7 @@ export function generateFilterData(
     }
   }
 
+  let allCategoryes: string[] = []
   let allTypes: string[] = []
   let allBrands: string[] = []
   let minPrice = Infinity
@@ -64,6 +66,10 @@ export function generateFilterData(
   let allRadiuses: (string | null)[] = []
 
   categoryInitialList.forEach((item) => {
+    // Category
+    if (item.categoryName) {
+      allCategoryes.push(item.categoryName)
+    }
     // Brands
     if (item.brandName) {
       allBrands.push(item.brandName)
@@ -127,6 +133,7 @@ export function generateFilterData(
     }
   })
 
+  const uniqueCategoryes = [...new Set(allCategoryes)]
   const uniqueTypes = [...new Set(allTypes)]
   const uniqueBrands = [...new Set(allBrands)]
   const uniqueSizes = [
@@ -190,5 +197,6 @@ export function generateFilterData(
     models: parserModels,
     countries: uniqueCountries,
     radiuses: parserRadiuses,
+    categoryes: uniqueCategoryes,
   }
 }

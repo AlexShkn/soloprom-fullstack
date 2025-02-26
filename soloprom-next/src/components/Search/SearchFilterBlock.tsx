@@ -1,69 +1,62 @@
 'use client'
-import React, { useCallback, useEffect, useMemo, useState, useRef } from 'react'
+import React, { useCallback, useEffect, useState, useRef } from 'react'
 import { useRouter, useSearchParams } from 'next/navigation'
 import { CardDataProps, FilterData } from '@/types/products.types'
-import { FilteredList } from '@/components/GroupList/FilteredList'
-import CatalogFilters from '../Filter/CatalogFilters'
-import useFilterStore from '@/store/filterStore'
+import { SearchFilteredList } from './SearchFilteredList'
+import SearchFilters from './SearchFilters'
 import { useDebounce } from '@/hooks/useDebounce'
-import './ProductsFilterBlock.scss'
 import { api } from '@/utils/fetch/instance.api'
+import useSearchStore from '@/store/searchStore'
+import { generateFilterData } from '@/app/catalog/[pageUrl]/server'
+
+import '../GroupList/ProductsFilterBlock/ProductsFilterBlock.scss'
+
 export const BASE_URL = `${process.env.NEXT_PUBLIC_SERVER_URL}/products`
 
 interface Props {
-  categoryName: string
-  productsType: string
-  currentPage: number
-  onChangePage: (newPage: number) => void
   initialProducts: CardDataProps[] | null
-  categoryData: FilterData
-  totalCount: number
+  searchValue: string
 }
 
-export const ProductsFilterBlock: React.FC<Props> = ({
-  categoryName,
-  productsType,
-  currentPage,
-  onChangePage,
+export const SearchFilterBlock: React.FC<Props> = ({
   initialProducts,
-  categoryData,
-  totalCount,
+  searchValue,
 }) => {
   const router = useRouter()
   const searchParams = useSearchParams()
-  const groupListRef = useRef<HTMLElement | null>(null)
   const fetchControllerRef = useRef<AbortController | null>(null)
-  const [products, setProducts] = useState(initialProducts || [])
   const [initialLoad, setInitialLoad] = useState(true)
   const [filterOpen, setFilterOpen] = useState(false)
   const [checkedValues, setCheckedValues] = useState<Record<string, string[]>>(
     {},
   )
+  const [filtersData, setFiltersData] = useState<any>({})
+
   const {
-    filteredPage,
     setFilteredPage,
     filters,
     setFilters,
     sort,
     setSort,
     setTotalProductsCount,
-    totalProductsCount,
     hasFilters,
     setHasFilters,
-    dynamicCurrentPage,
-    setDynamicCurrentPage,
     setDataIsLoading,
     setPriceRange,
     resetFilters,
-  } = useFilterStore()
+    setFoundProducts,
+    foundProducts,
+  } = useSearchStore()
 
   const debouncedFilters = useDebounce(filters, 500)
   const debouncedSort = useDebounce(sort, 500)
 
-  const totalPages = useMemo(
-    () => Math.ceil(totalProductsCount / 12),
-    [totalProductsCount],
-  )
+  useEffect(() => {
+    const filterData: FilterData = generateFilterData(initialProducts)
+    console.log(filterData)
+
+    setFiltersData(filterData)
+  }, [searchValue, initialProducts])
 
   const fetchData = useCallback(async () => {
     if (fetchControllerRef.current) {
@@ -75,14 +68,13 @@ export const ProductsFilterBlock: React.FC<Props> = ({
 
     try {
       const params = {
-        categoryName,
-        page: dynamicCurrentPage,
-        limit: 12,
+        limit: 100,
         filters:
           Object.keys(debouncedFilters).length > 0
             ? JSON.stringify(debouncedFilters)
             : null,
         sort: debouncedSort,
+        search: searchValue,
       }
 
       const response = await api.get<{
@@ -92,26 +84,25 @@ export const ProductsFilterBlock: React.FC<Props> = ({
         params: params as any,
         signal: controller.signal,
       })
+      console.log(response.products)
 
-      setProducts(response.products)
+      setFoundProducts(response.products)
       setTotalProductsCount(response.totalCount)
+      console.log(foundProducts.length)
     } catch (err) {
       if (err instanceof Error && err.name !== 'AbortError') {
         console.error('Ошибка получения продуктов:', err)
       }
     } finally {
-      setFilteredPage(categoryName)
       setTimeout(() => {
         setDataIsLoading(false)
       }, 500)
       fetchControllerRef.current = null
     }
   }, [
-    categoryName,
-    dynamicCurrentPage,
     debouncedFilters,
     debouncedSort,
-    setProducts,
+    setFoundProducts,
     setTotalProductsCount,
     setDataIsLoading,
     setFilteredPage,
@@ -126,37 +117,18 @@ export const ProductsFilterBlock: React.FC<Props> = ({
     if (debouncedSort) {
       params.set('sort', debouncedSort)
     }
-
-    if (dynamicCurrentPage > 1) {
-      params.set('page', String(dynamicCurrentPage))
+    if (searchValue) {
+      params.set('search', searchValue)
     }
+
+    console.log(params.toString())
 
     const newUrl = `?${params.toString()}`
 
     if (newUrl.length > 1) {
       router.push(newUrl, { scroll: false })
     }
-  }, [debouncedFilters, debouncedSort, dynamicCurrentPage, router])
-
-  useEffect(() => {
-    if (
-      !initialLoad &&
-      groupListRef.current &&
-      filteredPage &&
-      categoryName === filteredPage
-    ) {
-      groupListRef.current.scrollIntoView({
-        behavior: 'smooth',
-        block: 'start',
-      })
-    }
-  }, [dynamicCurrentPage, initialLoad])
-
-  useEffect(() => {
-    if (filteredPage && categoryName !== filteredPage) {
-      resetFilters()
-    }
-  }, [categoryName, filteredPage])
+  }, [debouncedFilters, debouncedSort, router])
 
   useEffect(() => {
     if (initialLoad) {
@@ -183,19 +155,12 @@ export const ProductsFilterBlock: React.FC<Props> = ({
           setSort(urlSort)
         }
 
-        if (urlPage) {
-          const parsedPage = parseInt(urlPage, 10)
-          if (!isNaN(parsedPage)) {
-            setDynamicCurrentPage(parsedPage)
-          }
-        }
-
         setHasFilters(true)
       } else {
         setTimeout(() => {
           setDataIsLoading(false)
         }, 500)
-        setTotalProductsCount(totalCount)
+        setTotalProductsCount(foundProducts.length)
       }
 
       setInitialLoad(false)
@@ -204,54 +169,47 @@ export const ProductsFilterBlock: React.FC<Props> = ({
     searchParams,
     setFilters,
     setSort,
-    initialProducts,
-    totalCount,
-    setProducts,
+    foundProducts,
+    setFoundProducts,
     setTotalProductsCount,
-    setDynamicCurrentPage,
     setHasFilters,
   ])
 
   useEffect(() => {
     if (!initialLoad) {
       updateUrl()
-      setProducts([])
+      setFoundProducts([])
       fetchData()
     }
-  }, [debouncedFilters, debouncedSort, dynamicCurrentPage, updateUrl])
+  }, [debouncedFilters, debouncedSort, updateUrl])
 
   const handleResetFilters = () => {
     setPriceRange({
-      min: categoryData.prices?.min,
-      max: categoryData.prices?.max,
+      min: filtersData.prices?.min,
+      max: filtersData.prices?.max,
     })
     setCheckedValues({})
-    router.push(window.location.pathname, { scroll: false })
+    router.push(`${window.location.pathname}?searchValue=${searchValue}`, {
+      scroll: false,
+    })
     resetFilters()
   }
 
   return (
-    <section className="group-list section-offset" ref={groupListRef}>
+    <section className="group-list section-offset">
       <div className="page-container">
         <div className="grid grid-cols-1 md:grid-cols-[220px,1fr] lg:grid-cols-[240px,1fr]">
-          <CatalogFilters
-            products={products}
-            productsType={productsType}
-            categoryName={categoryName}
+          <SearchFilters
+            products={foundProducts}
             onFiltersChange={setFilters}
-            categoryInitialList={categoryData}
-            currentPage={currentPage}
+            categoryInitialList={filtersData}
             filterOpen={filterOpen}
             setFilterOpen={setFilterOpen}
             setCheckedValues={setCheckedValues}
             checkedValues={checkedValues}
             handleResetFilters={handleResetFilters}
           />
-          <FilteredList
-            data={products}
-            currentPage={currentPage}
-            totalPages={totalPages}
-            onChangePage={onChangePage}
+          <SearchFilteredList
             onSortChange={setSort}
             hasFilters={hasFilters}
             filterOpen={filterOpen}

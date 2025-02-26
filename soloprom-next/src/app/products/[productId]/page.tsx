@@ -2,7 +2,7 @@ import { Metadata } from 'next'
 import { Callback } from '@/components/Callback/Callback'
 import BreadCrumbs from '@/components/BreadCrumbs/BreadCrumbs'
 import PageWrapper from '@/app/PageWrapper'
-import { cardDataProps } from '@/types/products.types'
+import { CardDataProps } from '@/types/products.types'
 import { ProductPageCard } from '@/components/ProductPage/ProductPageCard/ProductPageCard'
 import { ProductPageTabs } from '@/components/ProductPage/ProductPageTabs'
 import { ProductPageBenefits } from '@/components/ProductPage/ProductPageBenefits'
@@ -10,7 +10,7 @@ import { getProductById, getAllProducts } from '@/utils/api/products'
 
 type WordsAdapt = {
   category: {
-    [key in cardDataProps['categoryName']]: string
+    [key in CardDataProps['categoryName']]: string
   }
 }
 
@@ -42,14 +42,14 @@ export async function generateStaticParams() {
     )
     return []
   }
-  const products = response as cardDataProps[]
+  const products = response as CardDataProps[]
   if (products.some((product) => !product.productId)) {
     console.log(
       'В некоторых продуктах отсутствует идентификатор продукта, пропускается',
     )
     return []
   }
-  return products.map((product: cardDataProps) => ({
+  return products.map((product: CardDataProps) => ({
     productId: String(product.productId),
   }))
 }

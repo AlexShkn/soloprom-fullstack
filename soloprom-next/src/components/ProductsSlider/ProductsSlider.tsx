@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from 'react'
 
 import { getPopularProducts } from '@/utils/api/products'
-import { cardDataProps } from '@/types/products.types'
+import { CardDataProps } from '@/types/products.types'
 
 import { ProductListSlider } from '../ProductListSlider/ProductListSlider'
 
@@ -24,7 +24,7 @@ export const ProductsSlider: React.FC<Props> = ({ title, categoryName }) => {
         const response = await getPopularProducts()
 
         const formattedProducts = response.filter(
-          (product: cardDataProps) => product.categoryName === categoryName,
+          (product: CardDataProps) => product.categoryName === categoryName,
         )
 
         setFavoriteData(formattedProducts)

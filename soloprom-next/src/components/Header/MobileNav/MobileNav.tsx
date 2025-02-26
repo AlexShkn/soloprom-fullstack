@@ -18,7 +18,7 @@ const MobileNav = (props: Props) => {
 
   return (
     <div className="mobile-nav fixed bottom-0 left-0 grid w-full grid-cols-5 items-center justify-around gap-1 rounded border-t border-grayColor bg-white px-[5px] py-[2px] text-sm font-medium mds:static mds:flex mds:justify-end mds:border-none">
-      <div className="mobile-nav__item border-1 relative inline-flex h-[50px] cursor-pointer justify-center rounded-lg border bg-white transition-colors mds:h-11 mds:border-accentBlue mds:bg-accentBlue mds:bg-none lg:h-[50px]">
+      <div className="mobile-nav__item border-1 relative inline-flex h-[50px] cursor-pointer justify-center rounded-lg border bg-white transition-colors mds:h-11 mds:border-accentBlue mds:bg-accentBlue mds:bg-none lg:h-12">
         <a
           href=" /catalog"
           className="relative flex flex-col items-center gap-1 rounded p-2.5 px-2.5 text-center text-[10px] font-medium xs:py-1 mds:justify-center mds:text-ss lg:flex-row lg:justify-start lg:text-base"
@@ -31,7 +31,7 @@ const MobileNav = (props: Props) => {
           <span>Каталог</span>
         </a>
       </div>
-      <div className="mobile-nav__item border-1 relative inline-flex h-[50px] cursor-pointer justify-center rounded-lg border bg-white transition-colors mds:h-11 mds:border-accentBlue mds:bg-accentBlue mds:bg-none lg:h-[50px]">
+      <div className="mobile-nav__item border-1 relative inline-flex h-[50px] cursor-pointer justify-center rounded-lg border bg-white transition-colors mds:h-11 mds:border-accentBlue mds:bg-accentBlue mds:bg-none lg:h-12">
         <Link
           href=" /compare"
           className="relative flex flex-col items-center gap-1 rounded p-2.5 px-2.5 text-center text-[10px] font-medium xs:py-1 mds:justify-center mds:text-ss lg:flex-row lg:justify-start lg:text-base"
@@ -47,7 +47,7 @@ const MobileNav = (props: Props) => {
           <span>Сравнение</span>
         </Link>
       </div>
-      <div className="mobile-nav__item border-1 relative inline-flex h-[50px] cursor-pointer justify-center rounded-lg border bg-white transition-colors mds:h-11 mds:border-accentBlue mds:bg-accentBlue mds:bg-none lg:h-[50px]">
+      <div className="mobile-nav__item border-1 relative inline-flex h-[50px] cursor-pointer justify-center rounded-lg border bg-white transition-colors mds:h-11 mds:border-accentBlue mds:bg-accentBlue mds:bg-none lg:h-12">
         <Link
           href=" /favorite"
           className="relative flex flex-col items-center gap-1 rounded p-2.5 px-2.5 text-center text-[10px] font-medium xs:py-1 mds:justify-center mds:text-ss lg:flex-row lg:justify-start lg:text-base"
@@ -63,7 +63,7 @@ const MobileNav = (props: Props) => {
           <span>Избранное</span>
         </Link>
       </div>
-      <div className="mobile-nav__item border-1 relative inline-flex h-[50px] cursor-pointer justify-center rounded-lg border bg-white transition-colors mds:h-11 mds:border-accentBlue mds:bg-accentBlue mds:bg-none lg:h-[50px]">
+      <div className="mobile-nav__item border-1 relative inline-flex h-[50px] cursor-pointer justify-center rounded-lg border bg-white transition-colors mds:h-11 mds:border-accentBlue mds:bg-accentBlue mds:bg-none lg:h-12">
         <Link
           href="/cart"
           className="relative flex flex-col items-center gap-1 rounded p-2.5 px-2.5 text-center text-[10px] font-medium xs:py-1 mds:justify-center mds:text-ss lg:flex-row lg:justify-start lg:text-base"
@@ -80,7 +80,7 @@ const MobileNav = (props: Props) => {
         </Link>
       </div>
 
-      <div className="mobile-nav__item border-1 relative inline-flex h-[50px] cursor-pointer justify-center rounded-lg border bg-white transition-colors mds:h-11 mds:border-accentBlue mds:bg-accentBlue mds:bg-none lg:h-[50px]">
+      <div className="mobile-nav__item border-1 relative inline-flex h-[50px] cursor-pointer justify-center rounded-lg border bg-white transition-colors mds:h-11 mds:border-accentBlue mds:bg-accentBlue mds:bg-none lg:h-12">
         <button
           onClick={() => setIsOpen((prev) => !prev)}
           className={`relative flex flex-col items-center gap-1 rounded p-2.5 px-2.5 text-center text-[10px] font-medium xs:py-1 mds:justify-center mds:text-ss lg:flex-row lg:justify-start lg:text-base ${isOpen && 'active'}`}

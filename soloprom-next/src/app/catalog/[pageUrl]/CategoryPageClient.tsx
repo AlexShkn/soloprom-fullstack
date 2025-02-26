@@ -13,7 +13,7 @@ import PageWrapper from '@/app/PageWrapper'
 import { Loading } from '@/components/ui'
 import {
   FilterData,
-  cardDataProps,
+  CardDataProps,
   PageDataTypes,
 } from '@/types/products.types'
 import { CategoryPageSlider } from '@/components/CategoryPageSlider/CategoryPageSlider'
@@ -21,7 +21,7 @@ import { CategoryPageSlider } from '@/components/CategoryPageSlider/CategoryPage
 interface CategoryPageClientProps {
   pageData: PageDataTypes
   currentPage: number
-  initialProducts: cardDataProps[] | null
+  initialProducts: CardDataProps[] | null
   categoryData: FilterData
   totalCount: number
 }

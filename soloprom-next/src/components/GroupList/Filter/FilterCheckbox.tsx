@@ -81,8 +81,8 @@ export const FilterCheckbox: React.FC<Props> = ({
     <div className="space-y-2">
       <div className="font-semibold">{title}</div>
       <div className="space-y-1">
-        {visibleOptions.map((option, index) => (
-          <div key={index} className="flex items-center space-x-2">
+        {visibleOptions.map((option) => (
+          <div key={option.value} className="flex items-center space-x-2">
             <Checkbox
               id={option.value}
               checked={isOptionChecked(option.value)}
@@ -90,7 +90,10 @@ export const FilterCheckbox: React.FC<Props> = ({
                 handleCheckboxChange(option.value, checked)
               }
             />
-            <label htmlFor={option.value} className="text-sm">
+            <label
+              htmlFor={option.value}
+              className="cursor-pointer text-sm hover:text-accentBlue"
+            >
               {option.label}
             </label>
           </div>

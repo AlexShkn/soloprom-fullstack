@@ -1,10 +1,9 @@
-import { Callback } from '@/components/Callback/Callback'
-import { Favorite } from '@/components/Favorite/Favorite'
+import { SearchPageBlock } from '@/components/Search/SearchPageBlock'
 import PageWrapper from '../PageWrapper'
 
 export const metadata = {
-  title: 'Избранные товары',
-  description: 'Избранные товары пользователя soloprom.ru',
+  title: 'Поиск товаров',
+  description: 'Поиск по каталогу товаров soloprom.ru',
   openGraph: {
     title: 'Запчасти для специальной и сельскохозяйственной техники',
     siteName:
@@ -19,14 +18,13 @@ export const metadata = {
     ],
     url: 'https://soloprom.ru',
   },
-  alternates: { canonical: 'https://soloprom.ru/favorite' },
+  alternates: { canonical: 'https://soloprom.ru/search' },
 }
 
 export default function FavoritePage() {
   return (
     <PageWrapper>
-      <Favorite />
-      <Callback />
+      <SearchPageBlock />
     </PageWrapper>
   )
 }

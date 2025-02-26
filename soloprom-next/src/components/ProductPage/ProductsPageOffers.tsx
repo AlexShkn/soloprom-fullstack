@@ -1,11 +1,11 @@
 'use client'
 import { getDigFormat } from '@/supports'
-import { cardDataProps } from '@/types/products.types'
+import { CardDataProps } from '@/types/products.types'
 import { useCartStore } from '@/store/cartStore'
 import React, { useEffect, useState } from 'react'
 
 interface Props {
-  cardData: cardDataProps
+  cardData: CardDataProps
 }
 
 export const ProductsPageOffers: React.FC<Props> = ({ cardData }) => {
@@ -121,7 +121,7 @@ export const ProductsPageOffers: React.FC<Props> = ({ cardData }) => {
                   checkProductInCart(variant) && 'added'
                 }`}
               >
-                <span className="tall rounded-custom transition-color invisible absolute inline-flex h-full w-full items-center justify-center gap-2.5 bg-hoverBlue opacity-0">
+                <span className="tall transition-color invisible absolute inline-flex h-full w-full items-center justify-center gap-2.5 rounded-custom bg-hoverBlue opacity-0">
                   <img
                     src="/img/icons/availability.svg"
                     className="h-7 w-7"

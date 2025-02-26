@@ -1,13 +1,13 @@
 'use client'
 import React from 'react'
-import { cardDataProps } from '@/types/products.types'
+import { CardDataProps } from '@/types/products.types'
 import './ProductListSlider.scss'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { Navigation } from 'swiper/modules'
 import { ProductsCard } from '../ProductsCard/ProductsCard'
 
 interface Props {
-  listData: cardDataProps[]
+  listData: CardDataProps[]
 }
 
 export const ProductListSlider: React.FC<Props> = ({ listData }) => {
@@ -58,7 +58,7 @@ export const ProductListSlider: React.FC<Props> = ({ listData }) => {
           prevEl: '.product-list-slider__slider-button--prev',
         }}
       >
-        {listData.map((item: cardDataProps) => (
+        {listData.map((item: CardDataProps) => (
           <SwiperSlide
             key={item.productId}
             className="product-list-slider__item opacity-0 transition-opacity duration-300 ease-in"

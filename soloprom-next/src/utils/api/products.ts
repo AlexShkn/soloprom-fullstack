@@ -1,5 +1,5 @@
 import { api } from '@/utils/fetch/instance.api'
-import { cardDataProps } from '@/types/products.types'
+import { CardDataProps } from '@/types/products.types'
 
 interface ProductsRequest {
   categoryName?: string
@@ -11,7 +11,7 @@ interface ProductsRequest {
 }
 
 export interface fetchProductsProps {
-  products: cardDataProps[]
+  products: CardDataProps[]
   totalCount: number
   currentPage: number
   totalPages: number
@@ -119,9 +119,9 @@ export async function getProductsByCategory(category: string) {
 
 export async function getProductsBySubcategory(
   subcategory: string,
-): Promise<{ data: cardDataProps[]; count: number } | null> {
+): Promise<{ data: CardDataProps[]; count: number } | null> {
   try {
-    const response = await api.get<{ data: cardDataProps[]; count: number }>(
+    const response = await api.get<{ data: CardDataProps[]; count: number }>(
       `products/subcategory/${subcategory}`,
     )
 
@@ -134,9 +134,9 @@ export async function getProductsBySubcategory(
 
 export async function getProductsByGroup(
   group: string,
-): Promise<{ data: cardDataProps[]; count: number } | null> {
+): Promise<{ data: CardDataProps[]; count: number } | null> {
   try {
-    const response = await api.get<{ data: cardDataProps[]; count: number }>(
+    const response = await api.get<{ data: CardDataProps[]; count: number }>(
       `products/group/${group}`,
     )
     return response

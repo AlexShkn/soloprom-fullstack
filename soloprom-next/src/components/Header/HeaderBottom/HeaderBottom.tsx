@@ -44,12 +44,12 @@ const HeaderBottom = () => {
         <div
           className={`header-bottom__panel grid items-center justify-between gap-5 ${headerFixed && 'page-container'} ${catalogIsOpen && 'fixed-panel'}`}
         >
-          <div className="flex h-11 w-full items-center gap-1 mds:w-auto md:gap-4 lg:h-auto lg:gap-7">
+          <div className="flex h-11 w-full items-center gap-1 bg-white mds:w-auto md:gap-4 lg:h-auto lg:gap-7">
             <div className="relative">
               <button
                 onClick={menuStatusChange}
                 type="button"
-                className={`button header-bottom__catalog-button mds:rounded-custom min-w-11 rounded py-[12px] font-bold lg:px-8 lg:py-3 lg:text-lg ${
+                className={`button header-bottom__catalog-button min-w-11 rounded py-[12px] font-bold mds:rounded-custom lg:px-8 lg:py-3 lg:text-lg ${
                   catalogIsOpen && 'open'
                 }`}
               >

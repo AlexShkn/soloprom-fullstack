@@ -1,4 +1,4 @@
-export interface cardDataProps {
+export interface CardDataProps {
   productId: string
   url: string
   categoryName: string
@@ -29,7 +29,7 @@ export interface cardDataProps {
 }
 
 export interface ProductsCardPropTypes {
-  cardData: cardDataProps
+  cardData: CardDataProps
   mod?: string
 }
 export interface FilterData {
@@ -45,6 +45,7 @@ export interface FilterData {
   models: string[]
   countries: string[]
   radiuses: string[]
+  categoryes: string[]
 }
 
 export interface PageDataTypes {
@@ -62,9 +63,9 @@ export interface PageDataTypes {
 }
 
 export interface FavoriteList {
-  tires: cardDataProps[]
-  battery: cardDataProps[]
-  oils: cardDataProps[]
+  tires: CardDataProps[]
+  battery: CardDataProps[]
+  oils: CardDataProps[]
 }
 export interface FavoriteProduct {
   productId: string

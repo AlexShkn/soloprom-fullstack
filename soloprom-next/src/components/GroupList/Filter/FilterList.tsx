@@ -2,7 +2,7 @@
 import { ChevronDown, ChevronUp } from 'lucide-react'
 import React, { useState } from 'react'
 
-interface GroupItemType {
+export interface GroupItemType {
   title: string
   url: string
 }

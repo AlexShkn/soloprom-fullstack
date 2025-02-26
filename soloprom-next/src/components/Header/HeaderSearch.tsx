@@ -1,20 +1,27 @@
 import React, { useEffect, useState, useRef } from 'react'
 import Image from 'next/image'
 import { searchProducts } from '@/utils/api/products'
-import { DebouncedFunction } from '@/supports/debounce'
-import { debounce } from '@/supports/debounce'
+import { DebouncedFunction, debounce } from '@/supports/debounce'
+import { XIcon } from 'lucide-react'
 
-import { cardDataProps } from '@/types/products.types'
+import { CardDataProps } from '@/types/products.types'
 import Link from 'next/link'
 import { useClickOutside } from '@/hooks/useClickOutside'
 import { useCatalogMenuStore } from '@/store/catalogMenuStore'
+import { useRouter } from 'next/navigation'
+import useSearchStore from '@/store/searchStore'
 
 const HeaderSearch = () => {
   const { catalogMenuStateChange, catalogIsOpen } = useCatalogMenuStore()
+  const { setFoundProducts } = useSearchStore()
   const [searchValue, setSearchValue] = useState<string>('')
-  const [products, setProducts] = useState<cardDataProps[]>([])
+  const [products, setProducts] = useState<CardDataProps[]>([])
   const [isLoading, setIsLoading] = useState<boolean>(true)
+  const [dropStatus, setDropStatus] = useState<boolean>(false)
+
   const dropRef = useRef(null)
+
+  const router = useRouter()
 
   useClickOutside(dropRef, () => {
     if (searchValue) {
@@ -31,7 +38,7 @@ const HeaderSearch = () => {
     try {
       setIsLoading(true)
       const response = await searchProducts('name', name)
-      const data: cardDataProps[] = await response
+      const data: CardDataProps[] = await response
       setProducts(data)
     } catch (error) {
       console.error('Во время поиска произошла ошибка:', error)
@@ -55,44 +62,81 @@ const HeaderSearch = () => {
     setSearchValue('')
     setProducts([])
     setIsLoading(true)
+    setDropStatus(false)
+  }
+
+  const inputFieldValue = (value: string) => {
+    if (!dropStatus) {
+      setDropStatus(true)
+    }
+
+    setSearchValue(value)
+  }
+
+  const goToSearch = (value: string) => {
+    setFoundProducts(products)
+    setDropStatus(false)
+    router.push(`/search?search=${encodeURIComponent(value)}`)
+  }
+
+  const handleKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
+    if (event.key === 'Enter' && searchValue) {
+      event.preventDefault() // Prevent form submission if inside a form
+      goToSearch(searchValue)
+    }
   }
 
   return (
     <div
       ref={dropRef}
-      className="header-bottom__catalog-field relative flex max-w-[600px] flex-auto items-center rounded-custom bg-[#f4f5fa]"
+      className={`header-bottom__catalog-field flex transition-all ${searchValue && dropStatus ? 'fixed left-0 top-0 z-50 w-full md:relative md:max-w-[650px]' : 'relative rounded-custom bg-[#f4f5fa] md:max-w-[450px]'} flex-auto items-center`}
     >
-      <div className="relative h-full w-full">
-        <input
-          type="text"
-          name="search-product"
-          id="search-product-input"
-          value={searchValue}
-          onChange={(e) => setSearchValue(e.target.value)}
-          onFocus={() => catalogIsOpen && catalogMenuStateChange(false)}
-          placeholder="Поиск по наименованию и размеру"
-          className="h-full w-full rounded-bl-custom rounded-tl-custom bg-[#f4f5fa] px-5 py-[13px] placeholder:text-sm placeholder:text-[#c2c5da] lg:px-8 lg:py-4"
-        />
-      </div>
-      <button
-        type="button"
-        id="search-product-btn"
-        onClick={resetSearch}
-        className="button h-full rounded-custom p-[12px] text-sm mdl:px-5 mdl:py-[14px] lg:h-auto lg:px-8 lg:py-[13px] lg:text-base"
+      <div
+        onClick={() => resetSearch()}
+        className={`fixed left-0 top-0 h-screen w-full cursor-pointer transition-all ${searchValue && dropStatus ? 'bg-white md:bg-[rgba(31,31,32,0.22)]' : 'invisible opacity-0'}`}
+      ></div>
+      <div
+        className={`z-10 flex w-full items-center rounded-custom ${searchValue && dropStatus && 'rounded-none bg-white py-2 md:rounded-custom md:py-0'}`}
       >
-        <span className="hidden mdl:inline-block">
-          {' '}
-          {searchValue ? 'Сбросить' : 'Найти'}{' '}
-        </span>
-        <svg className="icon h-5 w-5 fill-white mdl:hidden">
-          <use xlinkHref="/img/sprite.svg#search"></use>
-        </svg>
-      </button>
+        <div className="relative h-full w-full">
+          <input
+            type="text"
+            name="search-product"
+            id="search-product-input"
+            value={searchValue}
+            onChange={(e) => inputFieldValue(e.target.value)}
+            onKeyDown={handleKeyDown}
+            onFocus={() => catalogIsOpen && catalogMenuStateChange(false)}
+            placeholder="Поиск по наименованию"
+            className={`h-full w-full rounded-bl-custom rounded-tl-custom ${searchValue && dropStatus ? 'bg-white' : 'bg-[#f4f5fa]'} px-5 py-[13px] placeholder:text-sm placeholder:text-[#c2c5da] lg:px-8 lg:py-4`}
+          />
+        </div>
+        <button
+          type="button"
+          onClick={resetSearch}
+          className={`mr-1 flex h-full items-center justify-center p-2 text-sm transition-all lg:h-auto ${!searchValue && 'invisible opacity-0'}`}
+        >
+          <XIcon className={'h-5 w-5 stroke-darkBlue'} />
+        </button>
+        <button
+          type="button"
+          onClick={() => goToSearch(searchValue)}
+          className="button mr-1 h-full rounded-custom p-[12px] text-sm mdl:px-5 mdl:py-[14px] md:mr-0 lg:h-auto lg:px-4 lg:py-4 lg:text-base"
+        >
+          <span className="hidden text-sm font-medium mdl:inline-block">
+            Найти
+          </span>
 
-      {searchValue && (
+          <svg className="icon h-5 w-5 fill-white mdl:hidden">
+            <use xlinkHref="/img/sprite.svg#search"></use>
+          </svg>
+        </button>
+      </div>
+
+      {searchValue && dropStatus && (
         <div className="absolute left-0 top-[100%] mt-1 w-full overflow-hidden">
           <ul
-            className={`header-bottom__catalog-search-list scroll-bar flex h-full max-h-[50vh] min-h-[50vh] w-full flex-col overflow-y-auto overflow-x-hidden rounded bg-white shadow-custom ${isLoading && 'load'}`}
+            className={`header-bottom__catalog-search-list scroll-bar flex max-h-[calc(100vh-70px)] w-full flex-col overflow-y-auto overflow-x-hidden overscroll-contain rounded bg-white pb-2.5 shadow-custom md:max-h-[50vh] md:min-h-[50vh] ${isLoading && 'load'}`}
           >
             {searchValue && products.length
               ? products.map((item) => (
