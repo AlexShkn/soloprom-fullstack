@@ -11,8 +11,6 @@ import { generateFilterData } from '@/app/catalog/[pageUrl]/server'
 
 import '../GroupList/ProductsFilterBlock/ProductsFilterBlock.scss'
 
-export const BASE_URL = `${process.env.NEXT_PUBLIC_SERVER_URL}/products`
-
 interface Props {
   initialProducts: CardDataProps[] | null
   searchValue: string
@@ -53,7 +51,6 @@ export const SearchFilterBlock: React.FC<Props> = ({
 
   useEffect(() => {
     const filterData: FilterData = generateFilterData(initialProducts)
-    console.log(filterData)
 
     setFiltersData(filterData)
   }, [searchValue, initialProducts])
@@ -68,7 +65,7 @@ export const SearchFilterBlock: React.FC<Props> = ({
 
     try {
       const params = {
-        limit: 100,
+        limit: 1000,
         filters:
           Object.keys(debouncedFilters).length > 0
             ? JSON.stringify(debouncedFilters)
@@ -84,11 +81,9 @@ export const SearchFilterBlock: React.FC<Props> = ({
         params: params as any,
         signal: controller.signal,
       })
-      console.log(response.products)
 
       setFoundProducts(response.products)
       setTotalProductsCount(response.totalCount)
-      console.log(foundProducts.length)
     } catch (err) {
       if (err instanceof Error && err.name !== 'AbortError') {
         console.error('Ошибка получения продуктов:', err)
@@ -120,8 +115,6 @@ export const SearchFilterBlock: React.FC<Props> = ({
     if (searchValue) {
       params.set('search', searchValue)
     }
-
-    console.log(params.toString())
 
     const newUrl = `?${params.toString()}`
 

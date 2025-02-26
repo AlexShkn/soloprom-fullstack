@@ -4,15 +4,20 @@ import React, { useEffect, useState, useCallback } from 'react'
 import { searchProducts } from '@/utils/api/products'
 import { SearchFilterBlock } from './SearchFilterBlock'
 import useSearchStore from '@/store/searchStore'
-import { CardDataProps } from '@/types/products.types'
+import { Loading } from '../ui'
 
 export const SearchPageBlock = () => {
   const searchParams = useSearchParams()
   const initialSearchValue = searchParams.get('search') || ''
   const [searchValue, setSearchValue] = useState(initialSearchValue)
-  const [initProducts, setInitProducts] = useState<CardDataProps[]>([])
 
-  const { foundProducts, setFoundProducts, setDataIsLoading } = useSearchStore()
+  const {
+    initProducts,
+    foundProducts,
+    setFoundProducts,
+    setDataIsLoading,
+    setInitProducts,
+  } = useSearchStore()
 
   const fetchData = useCallback(
     async (searchTerm: string) => {
@@ -34,7 +39,7 @@ export const SearchPageBlock = () => {
         setDataIsLoading(false)
       }
     },
-    [setFoundProducts],
+    [searchValue],
   )
 
   useEffect(() => {
@@ -56,10 +61,14 @@ export const SearchPageBlock = () => {
         </h1>
         <div className=""> Найдено: {foundProducts.length}</div>
       </div>
-      <SearchFilterBlock
-        initialProducts={initProducts}
-        searchValue={searchValue}
-      />
+      {initProducts.length ? (
+        <SearchFilterBlock
+          initialProducts={initProducts}
+          searchValue={searchValue}
+        />
+      ) : (
+        <Loading />
+      )}
     </div>
   )
 }

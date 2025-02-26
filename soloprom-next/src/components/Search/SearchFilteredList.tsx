@@ -1,5 +1,5 @@
 'use client'
-import React, { useState } from 'react'
+import React, { useState, useRef, useCallback, useEffect } from 'react'
 import { ProductsCard } from '@/components/ProductsCard/ProductsCard'
 import Skeleton from 'react-loading-skeleton'
 import 'react-loading-skeleton/dist/skeleton.css'
@@ -21,6 +21,8 @@ interface Props {
   checkedValues: Record<string, string[]>
 }
 
+const ITEMS_PER_PAGE = 12
+
 export const SearchFilteredList: React.FC<Props> = ({
   onSortChange,
   hasFilters,
@@ -39,6 +41,11 @@ export const SearchFilteredList: React.FC<Props> = ({
     setSort,
     setDataIsLoading,
   } = useSearchStore()
+
+  const [visibleProducts, setVisibleProducts] = useState<any[]>([])
+  const [isLoadingMore, setIsLoadingMore] = useState(false)
+  const containerRef = useRef<HTMLUListElement>(null)
+  const observerRef = useRef<IntersectionObserver | null>(null)
 
   const filterKeysToIgnore = ['minPrice', 'maxPrice']
 
@@ -90,6 +97,55 @@ export const SearchFilteredList: React.FC<Props> = ({
       }
     }
   }
+
+  const loadMoreProducts = useCallback(() => {
+    if (isLoadingMore || visibleProducts.length >= foundProducts.length) return
+
+    setIsLoadingMore(true)
+    setTimeout(() => {
+      const nextProducts = foundProducts.slice(
+        visibleProducts.length,
+        visibleProducts.length + ITEMS_PER_PAGE,
+      )
+      setVisibleProducts((prevProducts) => [...prevProducts, ...nextProducts])
+      setIsLoadingMore(false)
+    }, 300)
+  }, [visibleProducts, foundProducts, isLoadingMore])
+
+  useEffect(() => {
+    setVisibleProducts(foundProducts.slice(0, ITEMS_PER_PAGE))
+  }, [foundProducts])
+
+  useEffect(() => {
+    const currentContainer = containerRef.current
+
+    if (!currentContainer) return
+
+    observerRef.current = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting && !isLoadingMore) {
+            loadMoreProducts()
+          }
+        })
+      },
+      {
+        root: null,
+        rootMargin: '20px',
+        threshold: 0.5,
+      },
+    )
+
+    if (currentContainer) {
+      observerRef.current.observe(currentContainer)
+    }
+
+    return () => {
+      if (observerRef.current) {
+        observerRef.current.disconnect()
+      }
+    }
+  }, [loadMoreProducts, foundProducts, isLoadingMore])
 
   return (
     <div className="filter-catalog">
@@ -148,14 +204,24 @@ export const SearchFilteredList: React.FC<Props> = ({
                 height={viewMode === 'grid' ? '320px' : '177px'}
               />
             ))
-          : foundProducts.map((item) => (
+          : visibleProducts.map((item) => (
               <ProductsCard
                 key={item.productId}
                 cardData={item}
                 mod={viewMode}
               />
             ))}
+        {isLoadingMore &&
+          Array.from({ length: ITEMS_PER_PAGE }).map((_, index) => (
+            <Skeleton
+              key={`loading-${index}`}
+              width={'100%'}
+              style={{ borderRadius: '2.25rem' }}
+              height={viewMode === 'grid' ? '320px' : '177px'}
+            />
+          ))}
       </ul>
+      <ul ref={containerRef} className="trigger"></ul>
 
       {!dataIsLoading && !foundProducts.length && (
         <div className="py-10 text-center text-2xl font-bold">

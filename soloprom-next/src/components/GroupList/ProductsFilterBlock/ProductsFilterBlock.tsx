@@ -8,7 +8,6 @@ import useFilterStore from '@/store/filterStore'
 import { useDebounce } from '@/hooks/useDebounce'
 import './ProductsFilterBlock.scss'
 import { api } from '@/utils/fetch/instance.api'
-export const BASE_URL = `${process.env.NEXT_PUBLIC_SERVER_URL}/products`
 
 interface Props {
   categoryName: string

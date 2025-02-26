@@ -2,6 +2,7 @@ import { CardDataProps } from '@/types/products.types'
 import { create } from 'zustand'
 
 interface FilterState {
+  initProducts: CardDataProps[]
   foundProducts: CardDataProps[]
   filters: Record<string, string[] | number>
   sort: string
@@ -12,6 +13,7 @@ interface FilterState {
   filterComplete: boolean
   filteredPage: string
   priceRange: { min: number | undefined; max: number | undefined }
+  setInitProducts: (initProducts: CardDataProps[]) => void
   setFoundProducts: (searchProducts: CardDataProps[]) => void
   setFilters: (filters: Record<string, string[] | number>) => void
   setFilteredPage: (filteredPage: string) => void
@@ -29,6 +31,7 @@ interface FilterState {
 }
 
 const useSearchStore = create<FilterState>((set) => ({
+  initProducts: [],
   foundProducts: [],
   filters: {},
   filteredPage: '',
@@ -40,6 +43,7 @@ const useSearchStore = create<FilterState>((set) => ({
   hasFilters: false,
   priceRange: { min: undefined, max: undefined },
 
+  setInitProducts: (initProducts) => set({ initProducts }),
   setFoundProducts: (foundProducts) => set({ foundProducts }),
   setFilteredPage: (filteredPage) => set({ filteredPage }),
   setFilters: (filters) =>

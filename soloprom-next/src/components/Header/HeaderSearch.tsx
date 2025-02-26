@@ -13,14 +13,13 @@ import useSearchStore from '@/store/searchStore'
 
 const HeaderSearch = () => {
   const { catalogMenuStateChange, catalogIsOpen } = useCatalogMenuStore()
-  const { setFoundProducts } = useSearchStore()
+  const { setFoundProducts, setInitProducts } = useSearchStore()
   const [searchValue, setSearchValue] = useState<string>('')
   const [products, setProducts] = useState<CardDataProps[]>([])
   const [isLoading, setIsLoading] = useState<boolean>(true)
   const [dropStatus, setDropStatus] = useState<boolean>(false)
 
   const dropRef = useRef(null)
-
   const router = useRouter()
 
   useClickOutside(dropRef, () => {
@@ -74,6 +73,7 @@ const HeaderSearch = () => {
   }
 
   const goToSearch = (value: string) => {
+    setInitProducts(products)
     setFoundProducts(products)
     setDropStatus(false)
     router.push(`/search?search=${encodeURIComponent(value)}`)
