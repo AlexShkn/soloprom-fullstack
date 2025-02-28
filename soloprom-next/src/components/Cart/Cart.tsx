@@ -1,6 +1,5 @@
 'use client'
-import React, { useEffect, useState } from 'react'
-import Link from 'next/link'
+import React, { useEffect, useState, useCallback } from 'react'
 
 import { Loading } from '../ui'
 import { useCartStore } from '@/store/cartStore'
@@ -12,6 +11,7 @@ import { OrderForm } from './OrderForm/OrderForm'
 import { CartProductList } from './CartProductList'
 
 import './Cart.scss'
+import { CartHeader } from './CartHeader'
 
 export const Cart: React.FC = () => {
   const [formIsOpen, setFormIsOpen] = useState(false)
@@ -19,30 +19,23 @@ export const Cart: React.FC = () => {
 
   const { cartState, totalAmount } = useCartStore()
 
+  const handleOpenForm = useCallback(() => {
+    setFormIsOpen(true)
+  }, [])
+
   useEffect(() => {
-    setTimeout(() => {
+    const timer = setTimeout(() => {
       setIsLoading(false)
     }, 500)
+
+    return () => clearTimeout(timer)
   }, [cartState])
 
   return (
     <>
       <div className="cart inner-container">
         <BreadCrumbs />
-        <div className="mb-10 flex items-center justify-between">
-          <h1 className="text-[clamp(1.375rem,0.7816rem+1.978vw,2.5rem)] font-bold">
-            Корзина
-          </h1>
-          <Link
-            href="/"
-            className="mds:text-base mds:gap-2.5 group inline-flex items-center gap-1 text-sm transition-colors hover:text-hoverBlue"
-          >
-            <svg className="mds:h-5 mds:w-5 h-4 w-4 fill-darkBlue transition-colors group-hover:fill-hoverBlue">
-              <use xlinkHref="/img/sprite.svg#back-arrow"></use>
-            </svg>
-            Вернуться к покупкам
-          </Link>
-        </div>
+        <CartHeader title="Корзина" />
       </div>
 
       {isLoading ? (
@@ -60,7 +53,7 @@ export const Cart: React.FC = () => {
 
             {!formIsOpen && (
               <button
-                onClick={() => setFormIsOpen(true)}
+                onClick={handleOpenForm}
                 type="button"
                 className="button px-7 py-4 text-lg"
               >

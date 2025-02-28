@@ -93,7 +93,7 @@ const HeroVerticalSlider: React.FC<HeroTypes> = ({ isReady }) => {
                   src={slide.img}
                   priority
                   width={546}
-                  height={240}
+                  height={246}
                   alt={slide.alt}
                 />
 
@@ -103,7 +103,7 @@ const HeroVerticalSlider: React.FC<HeroTypes> = ({ isReady }) => {
                   </div>
                   <div className="leading-5 text-white">{slide.subtitle}</div>
                 </div>
-                <div className="rounded-tr-custom absolute bottom-0 left-0 z-10 inline-flex h-14 w-14 items-center justify-center bg-accentBlue transition-colors hover:bg-hoverBlue">
+                <div className="absolute bottom-0 left-0 z-10 inline-flex h-14 w-14 items-center justify-center rounded-tr-custom bg-accentBlue transition-colors hover:bg-hoverBlue">
                   <svg className="icon h-5 w-5 rotate-[-90deg] fill-white">
                     <use xlinkHref="/img/sprite-default.svg#arrow-drop"></use>
                   </svg>

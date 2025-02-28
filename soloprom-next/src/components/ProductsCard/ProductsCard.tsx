@@ -198,10 +198,10 @@ export const ProductsCard: React.FC<ProductsCardPropTypes> = ({
           >
             {brandName && img && (
               <Image
-                className={`absolute left-0 inline-block w-[50px] object-contain ${regalia.length && '-bottom-1'} ${mod === 'row' && 'bottom-0'}`}
+                className={`absolute left-0 inline-block h-7 w-12 object-contain ${regalia.length && '-bottom-1'} ${mod === 'row' && 'bottom-0'}`}
                 src={`/img/brands/${brandName}.webp`}
-                width={50}
-                height={20}
+                width={48}
+                height={28}
                 alt={brandName}
               />
             )}

@@ -82,6 +82,8 @@ export const SearchFilterBlock: React.FC<Props> = ({
         signal: controller.signal,
       })
 
+      console.log('PRODUCTS LOAD', response.products)
+
       setFoundProducts(response.products)
       setTotalProductsCount(response.totalCount)
     } catch (err) {

@@ -10,6 +10,7 @@ import { useClickOutside } from '@/hooks/useClickOutside'
 import { useCatalogMenuStore } from '@/store/catalogMenuStore'
 import { useRouter } from 'next/navigation'
 import useSearchStore from '@/store/searchStore'
+import clsx from 'clsx'
 
 const HeaderSearch = () => {
   const { catalogMenuStateChange, catalogIsOpen } = useCatalogMenuStore()
@@ -77,12 +78,15 @@ const HeaderSearch = () => {
     setFoundProducts(products)
     setDropStatus(false)
     router.push(`/search?search=${encodeURIComponent(value)}`)
+
+    setSearchValue('')
   }
 
   const handleKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
     if (event.key === 'Enter' && searchValue) {
-      event.preventDefault() // Prevent form submission if inside a form
+      event.preventDefault()
       goToSearch(searchValue)
+      setSearchValue('')
     }
   }
 
@@ -91,10 +95,16 @@ const HeaderSearch = () => {
       ref={dropRef}
       className={`header-bottom__catalog-field flex transition-all ${searchValue && dropStatus ? 'fixed left-0 top-0 z-50 w-full md:relative md:max-w-[650px]' : 'relative rounded-custom bg-[#f4f5fa] md:max-w-[450px]'} flex-auto items-center`}
     >
-      <div
+      <button
         onClick={() => resetSearch()}
-        className={`fixed left-0 top-0 h-screen w-full cursor-pointer transition-all ${searchValue && dropStatus ? 'bg-white md:bg-[rgba(31,31,32,0.22)]' : 'invisible opacity-0'}`}
-      ></div>
+        className={clsx(
+          'fixed left-0 top-0 h-screen w-full cursor-pointer transition-all',
+          {
+            'bg-white md:bg-[rgba(31,31,32,0.22)]': searchValue && dropStatus,
+            'invisible opacity-0': !searchValue && !dropStatus,
+          },
+        )}
+      ></button>
       <div
         className={`z-10 flex w-full items-center rounded-custom ${searchValue && dropStatus && 'rounded-none bg-white py-2 md:rounded-custom md:py-0'}`}
       >
@@ -108,7 +118,13 @@ const HeaderSearch = () => {
             onKeyDown={handleKeyDown}
             onFocus={() => catalogIsOpen && catalogMenuStateChange(false)}
             placeholder="Поиск по наименованию"
-            className={`h-full w-full rounded-bl-custom rounded-tl-custom ${searchValue && dropStatus ? 'bg-white' : 'bg-[#f4f5fa]'} px-5 py-[13px] placeholder:text-sm placeholder:text-[#c2c5da] lg:px-8 lg:py-4`}
+            className={clsx(
+              'h-full w-full rounded-bl-custom rounded-tl-custom px-5 py-[13px] placeholder:text-sm placeholder:text-[#c2c5da] lg:px-8 lg:py-4',
+              {
+                'bg-white': searchValue && dropStatus,
+                'bg-[#f4f5fa]': searchValue || !dropStatus,
+              },
+            )}
           />
         </div>
         <button

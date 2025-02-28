@@ -254,7 +254,7 @@ const SearchFilters: React.FC<Props> = ({
             <FilterList
               initial={true}
               maxHeight={'200'}
-              title={'Категория товара'}
+              title={'Каталог'}
               items={categoryList || []}
             />
             {categoryInitialList.prices &&
