@@ -41,6 +41,7 @@ export const SearchFilteredList: React.FC<Props> = ({
     setSort,
     setDataIsLoading,
   } = useSearchStore()
+  console.log('render SearchFilteredList')
 
   const [visibleProducts, setVisibleProducts] = useState<any[]>([])
   const [isLoadingMore, setIsLoadingMore] = useState(false)

@@ -29,9 +29,7 @@ export const SearchFilterBlock: React.FC<Props> = ({
     {},
   )
   const [filtersData, setFiltersData] = useState<any>({})
-
   const {
-    setFilteredPage,
     filters,
     setFilters,
     sort,
@@ -53,7 +51,7 @@ export const SearchFilterBlock: React.FC<Props> = ({
     const filterData: FilterData = generateFilterData(initialProducts)
 
     setFiltersData(filterData)
-  }, [searchValue, initialProducts])
+  }, [initialProducts])
 
   const fetchData = useCallback(async () => {
     if (fetchControllerRef.current) {
@@ -82,8 +80,6 @@ export const SearchFilterBlock: React.FC<Props> = ({
         signal: controller.signal,
       })
 
-      console.log('PRODUCTS LOAD', response.products)
-
       setFoundProducts(response.products)
       setTotalProductsCount(response.totalCount)
     } catch (err) {
@@ -96,14 +92,7 @@ export const SearchFilterBlock: React.FC<Props> = ({
       }, 500)
       fetchControllerRef.current = null
     }
-  }, [
-    debouncedFilters,
-    debouncedSort,
-    setFoundProducts,
-    setTotalProductsCount,
-    setDataIsLoading,
-    setFilteredPage,
-  ])
+  }, [debouncedFilters, debouncedSort])
 
   const updateUrl = useCallback(() => {
     const params = new URLSearchParams()
@@ -173,7 +162,7 @@ export const SearchFilterBlock: React.FC<Props> = ({
   useEffect(() => {
     if (!initialLoad) {
       updateUrl()
-      setFoundProducts([])
+      // setFoundProducts([])
       fetchData()
     }
   }, [debouncedFilters, debouncedSort, updateUrl])
@@ -195,8 +184,6 @@ export const SearchFilterBlock: React.FC<Props> = ({
       <div className="page-container">
         <div className="grid grid-cols-1 md:grid-cols-[220px,1fr] lg:grid-cols-[240px,1fr]">
           <SearchFilters
-            products={foundProducts}
-            onFiltersChange={setFilters}
             categoryInitialList={filtersData}
             filterOpen={filterOpen}
             setFilterOpen={setFilterOpen}

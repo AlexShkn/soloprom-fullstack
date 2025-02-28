@@ -16,8 +16,6 @@ import { Button } from '@/components/ui'
 import { declension } from '@/components/Cart/CartResult'
 
 interface Props {
-  products: CardDataProps[]
-  onFiltersChange: (filters: Record<string, string[] | number>) => void
   categoryInitialList: FilterData
   filterOpen: boolean
   setFilterOpen: (status: boolean) => void
@@ -26,16 +24,6 @@ interface Props {
     React.SetStateAction<Record<string, string[]>>
   >
   handleResetFilters: () => void
-}
-
-interface dtoTypes {
-  [key: string]: string
-}
-
-const dto: dtoTypes = {
-  tires: 'шин',
-  battery: 'аккумуляторов',
-  oils: 'масел',
 }
 
 interface PagesDataRaw {
@@ -48,8 +36,6 @@ interface PagesDataRaw {
 const pagesDataRaw: PagesDataRaw = pagesDataRawRaw as PagesDataRaw
 
 const SearchFilters: React.FC<Props> = ({
-  products,
-  onFiltersChange,
   categoryInitialList,
   filterOpen,
   setFilterOpen,
@@ -57,8 +43,8 @@ const SearchFilters: React.FC<Props> = ({
   checkedValues,
   handleResetFilters,
 }) => {
-  const searchParams = useSearchParams()
   const {
+    foundProducts,
     filters,
     setFilters,
     hasFilters,
@@ -71,6 +57,12 @@ const SearchFilters: React.FC<Props> = ({
   } = useSearchStore()
   const [initialLoad, setInitialLoad] = useState(true)
   const [categoryList, setCategoryList] = useState<GroupItemType[]>([])
+
+  const productWord = declension(foundProducts.length, [
+    'товар',
+    'товара',
+    'товаров',
+  ])
 
   const [internalFilters, setInternalFilters] = useState<
     Record<string, string[] | number>
@@ -161,9 +153,8 @@ const SearchFilters: React.FC<Props> = ({
 
       setInternalFilters(newFilters)
       setFilters(newFilters)
-      onFiltersChange(newFilters)
     },
-    [setFilters, internalFilters, onFiltersChange],
+    [setFilters, internalFilters],
   )
 
   const handlePriceChange = useCallback(
@@ -184,39 +175,10 @@ const SearchFilters: React.FC<Props> = ({
       if (hasChanged) {
         setInternalFilters(newFilters)
         setFilters(newFilters)
-        onFiltersChange(newFilters)
       }
     },
-    [handleFilterChange, internalFilters, setFilters, onFiltersChange],
+    [handleFilterChange, internalFilters, setFilters],
   )
-
-  if (initialLoad) {
-    const urlFilters = searchParams.get('filters')
-
-    if (urlFilters) {
-      try {
-        const parsedFilters = JSON.parse(urlFilters) as Record<
-          string,
-          string[] | number
-        >
-
-        setPriceRange({
-          min: parsedFilters.minPrice as number,
-          max: parsedFilters.maxPrice as number,
-        })
-
-        setInitialLoad(false)
-      } catch (error) {
-        console.error('Ошибка при разборе фильтров по URL-адресу:', error)
-      }
-    }
-  }
-
-  const productWord = declension(products.length, [
-    'товар',
-    'товара',
-    'товаров',
-  ])
 
   return (
     <div

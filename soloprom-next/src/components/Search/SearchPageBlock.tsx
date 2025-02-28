@@ -30,7 +30,6 @@ export const SearchPageBlock = () => {
 
     try {
       const data = await searchProducts('name', searchTerm)
-      console.log('DATA LOAD', data)
       setInitProducts(data)
       setFoundProducts(data)
     } catch (error) {
@@ -44,9 +43,10 @@ export const SearchPageBlock = () => {
   useEffect(() => {
     if (initialSearchValue) {
       setSearchValue(initialSearchValue)
+
       fetchData(initialSearchValue)
     }
-  }, [initialSearchValue, fetchData])
+  }, [initialSearchValue])
 
   let content
 

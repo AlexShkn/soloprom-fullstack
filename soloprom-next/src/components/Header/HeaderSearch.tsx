@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from 'react'
+import React, { useEffect, useState, useRef, useCallback } from 'react'
 import Image from 'next/image'
 import { searchProducts } from '@/utils/api/products'
 import { DebouncedFunction, debounce } from '@/supports/debounce'
@@ -29,34 +29,35 @@ const HeaderSearch = () => {
     }
   })
 
-  const searchProductsForValue = async (name: string): Promise<void> => {
-    if (name.trim() === '') {
-      setProducts([])
-      return
-    }
+  const searchProductsForValue = useCallback(
+    async (name: string): Promise<void> => {
+      if (name.trim() === '' && setProducts.length) {
+        setProducts([])
+        return
+      }
 
-    try {
-      setIsLoading(true)
-      const response = await searchProducts('name', name)
-      const data: CardDataProps[] = await response
-      setProducts(data)
-    } catch (error) {
-      console.error('Во время поиска произошла ошибка:', error)
-      setProducts([])
-    } finally {
-      setIsLoading(false)
-    }
-  }
-
-  const debouncedSearch: DebouncedFunction<(value: string) => Promise<void>> =
-    debounce((value) => searchProductsForValue(value), 300)
+      try {
+        setIsLoading(true)
+        const response = await searchProducts('name', name)
+        const data: CardDataProps[] = await response
+        setProducts(data)
+      } catch (error) {
+        console.error('Во время поиска произошла ошибка:', error)
+        setProducts([])
+      } finally {
+        setIsLoading(false)
+      }
+    },
+    [setProducts, setIsLoading],
+  )
 
   useEffect(() => {
-    debouncedSearch(searchValue)
-    return () => {
-      debouncedSearch.cancel && debouncedSearch.cancel()
-    }
-  }, [searchValue])
+    const delayDebounceFn = setTimeout(() => {
+      searchProductsForValue(searchValue)
+    }, 300)
+
+    return () => clearTimeout(delayDebounceFn)
+  }, [searchValue, searchProductsForValue])
 
   const resetSearch = () => {
     setSearchValue('')
