@@ -70,7 +70,7 @@ model ProductDescr {
 model PopularProduct {
   id        String   @id @default(uuid())
   productId String   @unique
-  product   Product  @relation(fields: [productId], references: [productId], name: "PopularRelation") // Название связи
+  product   Product  @relation(fields: [productId], references: [productId], name: "PopularRelation")
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }
@@ -99,7 +99,7 @@ model SubCategory {
 model Model {
   id         String    @id @default(uuid())
   name       String    @unique
-  categoryId String // Связь с категорией
+  categoryId String
   Category   Category  @relation(fields: [categoryId], references: [id])
   products   Product[] @relation("ProductModels")
   createdAt  DateTime  @default(now())
@@ -109,7 +109,7 @@ model Model {
 model Group {
   id         String    @id @default(uuid())
   name       String    @unique
-  categoryId String // Связь с категорией
+  categoryId String
   Category   Category  @relation(fields: [categoryId], references: [id])
   products   Product[] @relation("ProductGroups")
   createdAt  DateTime  @default(now())
@@ -123,6 +123,17 @@ model Brand {
   products   Product[]
   createdAt  DateTime  @default(now())
   updatedAt  DateTime  @updatedAt
+}
+
+model PagesSearch {
+  id          String   @id @default(uuid())
+  type        String
+  img         String
+  url         String
+  title       String
+  description String
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
 }
 
 model Account {

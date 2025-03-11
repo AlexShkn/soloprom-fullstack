@@ -92,4 +92,8 @@ export class ProductsController {
   async search(@Query('name') name: string) {
     return this.productService.searchProducts(name);
   }
+  @Get('search/pages')
+  async searchPages(@Query('value') value: string) {
+    return this.productService.searchPages(value);
+  }
 }

@@ -14,13 +14,10 @@ const Hero = () => {
   const [isReady, setIsReady] = useState(false)
 
   useEffect(() => {
-    const initSlider = () => {
-      setTimeout(() => {
-        setIsReady(true)
-      }, 500)
-    }
-
-    initSlider()
+    const timer = setTimeout(() => {
+      setIsReady(true)
+    }, 500)
+    return () => clearTimeout(timer)
   }, [isReady])
 
   return (

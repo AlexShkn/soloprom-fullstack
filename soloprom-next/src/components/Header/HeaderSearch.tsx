@@ -1,7 +1,6 @@
 import React, { useEffect, useState, useRef, useCallback } from 'react'
 import Image from 'next/image'
-import { searchProducts } from '@/utils/api/products'
-import { DebouncedFunction, debounce } from '@/supports/debounce'
+import { searchPages, searchProducts } from '@/utils/api/products'
 import { XIcon } from 'lucide-react'
 
 import { CardDataProps } from '@/types/products.types'
@@ -12,11 +11,22 @@ import { useRouter } from 'next/navigation'
 import useSearchStore from '@/store/searchStore'
 import clsx from 'clsx'
 
+import pagesSearchData from '../../data/pages-search.json'
+
+interface PageItem {
+  url: string
+  img: string
+  title: string
+  type: string
+  description: string
+}
+
 const HeaderSearch = () => {
   const { catalogMenuStateChange, catalogIsOpen } = useCatalogMenuStore()
   const { setFoundProducts, setInitProducts } = useSearchStore()
   const [searchValue, setSearchValue] = useState<string>('')
   const [products, setProducts] = useState<CardDataProps[]>([])
+  const [pages, setPages] = useState<PageItem[]>([])
   const [isLoading, setIsLoading] = useState<boolean>(true)
   const [dropStatus, setDropStatus] = useState<boolean>(false)
 
@@ -38,9 +48,12 @@ const HeaderSearch = () => {
 
       try {
         setIsLoading(true)
-        const response = await searchProducts('name', name)
-        const data: CardDataProps[] = await response
-        setProducts(data)
+        const productsResponse = await searchProducts('name', name)
+        const pagesResponse = await searchPages('value', name)
+        const productsData: CardDataProps[] = await productsResponse
+
+        setProducts(productsData)
+        setPages(pagesResponse)
       } catch (error) {
         console.error('Во время поиска произошла ошибка:', error)
         setProducts([])
@@ -152,14 +165,42 @@ const HeaderSearch = () => {
 
       {searchValue && dropStatus && (
         <div className="absolute left-0 top-[100%] mt-1 w-full overflow-hidden">
+          {pages.length > 0 && (
+            <ul className="scroll-bar mb-1 flex max-h-28 w-full flex-wrap items-center gap-1 overflow-y-auto rounded-sm bg-white p-2">
+              {pages.map((link) => (
+                <li
+                  key={link.url}
+                  className="w-auto overflow-hidden rounded-custom border border-gray-500"
+                >
+                  <Link
+                    href={link.url}
+                    className="flex items-center gap-2.5 whitespace-nowrap bg-white px-2.5 py-1 text-ss hover:text-accentBlue"
+                  >
+                    <Image
+                      src={`${link.img}.webp`}
+                      width={20}
+                      height={20}
+                      className="h-5 w-5"
+                      alt=""
+                    />
+                    <div className="flex flex-col gap-1 leading-none">
+                      <span className="text-gray-400">{link.type}</span>
+                      <span className="font-medium">{link.title}</span>
+                    </div>
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          )}
+
           <ul
-            className={`header-bottom__catalog-search-list scroll-bar flex max-h-[calc(100vh-70px)] w-full flex-col overflow-y-auto overflow-x-hidden overscroll-contain rounded bg-white pb-2.5 shadow-custom md:max-h-[50vh] md:min-h-[50vh] ${isLoading && 'load'}`}
+            className={`scroll-bar flex max-h-[calc(100vh-70px)] w-full flex-col overflow-y-auto overflow-x-hidden overscroll-contain rounded bg-white pb-2.5 shadow-custom md:max-h-[50vh] md:min-h-[50vh] ${isLoading && 'load'}`}
           >
             {searchValue && products.length
               ? products.map((item) => (
                   <li
                     key={item.productId}
-                    className="header-bottom__catalog-search-item link-hover w-full transition-all even:bg-[#e0e0e0]"
+                    className="header-bottom__catalog-search-item link-hover w-full transition-all even:bg-gray-100"
                   >
                     <Link
                       href={item.url}

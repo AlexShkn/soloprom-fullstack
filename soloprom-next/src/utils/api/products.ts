@@ -87,6 +87,12 @@ export async function searchProducts(field: string, value: string) {
   })
   return response
 }
+export async function searchPages(field: string, value: string) {
+  const response = await api.get<any>(`products/search/pages`, {
+    params: { [field]: value },
+  })
+  return response
+}
 
 export async function getProductById(id: string) {
   try {

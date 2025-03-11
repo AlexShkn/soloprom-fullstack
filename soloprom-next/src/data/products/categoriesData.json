@@ -46,7 +46,6 @@
         "img": "/img/catalog/category/tires/bandazhnie-shini.webp",
         "title": "Бандажные"
       },
-
       {
         "type": "group",
 
@@ -89,7 +88,6 @@
       },
       {
         "type": "group",
-
         "id": "shini-dlya-teleskopicheskih-pogruzchikov",
         "href": "/catalog/shini-dlya-teleskopicheskih-pogruzchikov",
         "img": "/img/catalog/category/tires/teleskopicheskii-pogruzchik.webp",
@@ -97,7 +95,6 @@
       },
       {
         "type": "group",
-
         "id": "shini-dlya-sochlenennih-samosvalov",
         "href": "/catalog/shini-dlya-sochlenennih-samosvalov",
         "img": "/img/catalog/category/tires/sochlenenni-samosval.webp",
@@ -105,16 +102,13 @@
       },
       {
         "type": "group",
-
         "id": "shini-dlya-portov-i-terminalov",
         "href": "/catalog/shini-dlya-portov-i-terminalov",
         "img": "/img/catalog/category/tires/richstaker.webp",
         "title": "Для портов и терминалов"
       },
-
       {
         "type": "group",
-
         "id": "shini-dlya-kolesnih-ekskavatorov",
         "href": "/catalog/shini-dlya-kolesnih-ekskavatorov",
         "img": "/img/catalog/category/tires/kolesnii-ekskavator.webp",

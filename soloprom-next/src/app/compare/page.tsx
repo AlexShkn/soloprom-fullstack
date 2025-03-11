@@ -123,7 +123,7 @@ const ComparePage = () => {
                           >
                             <Link
                               href={`/products/${product.productId}`}
-                              className="link-hover"
+                              className="link-hover font-bold"
                             >
                               {product.name}
                             </Link>

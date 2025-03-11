@@ -66,13 +66,10 @@ export const CategoryProductsSlider: React.FC<Props> = ({ className }) => {
   }, [])
 
   useEffect(() => {
-    const initSlider = () => {
-      setTimeout(() => {
-        setIsReady(true)
-      }, 500)
-    }
-
-    initSlider()
+    const timer = setTimeout(() => {
+      setIsReady(true)
+    }, 500)
+    return () => clearTimeout(timer)
   }, [isReady])
 
   return (
@@ -131,7 +128,7 @@ export const CategoryProductsSlider: React.FC<Props> = ({ className }) => {
                   {category.items.map((item) => (
                     <SwiperSlide
                       key={item.href}
-                      className="swiper-slide catalog-products__category-link rounded-custom relative flex select-none flex-col items-center justify-center px-2.5 py-5 text-center shadow-custom transition-all"
+                      className="swiper-slide catalog-products__category-link relative flex select-none flex-col items-center justify-center rounded-custom px-2.5 py-5 text-center shadow-custom transition-all"
                     >
                       <Link href={item.href} className="blok h-full w-full">
                         <div className="flex flex-col items-center justify-center">

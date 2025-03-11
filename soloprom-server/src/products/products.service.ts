@@ -77,8 +77,8 @@ export class ProductsService {
             if (key === 'sizes' || key === 'volumes') {
               const sizesConditions = filterValue.map((size) => ({
                 [key]: {
-                  path: [size], // Используем путь к ключу в JSON-объекте
-                  not: null, // Проверяем, что ключ существует
+                  path: [size],
+                  not: null,
                 },
               }));
 
@@ -503,7 +503,7 @@ export class ProductsService {
             productId: id,
           },
           data: {
-            sizes: updatedSizes, // Сохраняем обновленные размеры
+            sizes: updatedSizes,
             defaultPrice: price,
             stock: stock,
           },
@@ -566,6 +566,26 @@ export class ProductsService {
           {
             descr: {
               contains: name,
+              mode: 'insensitive',
+            },
+          },
+        ],
+      },
+    });
+  }
+  async searchPages(value: string) {
+    return prisma.pagesSearch.findMany({
+      where: {
+        OR: [
+          {
+            description: {
+              contains: value,
+              mode: 'insensitive',
+            },
+          },
+          {
+            title: {
+              contains: value,
               mode: 'insensitive',
             },
           },

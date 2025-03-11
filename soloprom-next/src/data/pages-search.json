@@ -1,0 +1,212 @@
+[
+  {
+    "type": "Шины",
+    "img": "/img/category/tyres",
+    "url": "/catalog/tires",
+    "title": "Для специальной техники",
+    "description": "шины специальные спецшины"
+  },
+  {
+    "type": "Шины",
+    "url": "/catalog/shini-pnevmatichesckie",
+    "img": "/img/catalog/category/tires/pnevmatichesckie-shini",
+    "title": "Пневматические",
+    "description": "Пневматические легковые летние зимние легковых"
+  },
+  {
+    "type": "Шины",
+    "url": "/catalog/shini-celnolitie",
+    "img": "/img/catalog/category/tires/shini-celnolitite",
+    "title": "Цельнолитые",
+    "description": "для погрузчиков"
+  },
+  {
+    "type": "Шины",
+    "url": "/catalog/shini-legkovie",
+    "img": "/img/catalog/category/tires/legkovie",
+    "title": "Легковые",
+    "description": ""
+  },
+  {
+    "type": "Шины",
+    "url": "/catalog/shini-dlya-vilochnih-pogruzchikov",
+    "img": "/img/catalog/category/tires/vilochnii-pogruzchik",
+    "title": "Для вилочных погрузчиков",
+    "description": ""
+  },
+  {
+    "type": "Шины",
+    "url": "/catalog/shini-dlya-minipogruzchikov",
+    "img": "/img/catalog/category/tires/shini-dlya-mini-pogruzchikov",
+    "title": "Для минипогрузчиков",
+    "description": ""
+  },
+  {
+    "type": "Шины",
+    "url": "/catalog/shini-bandazhnie",
+    "img": "/img/catalog/category/tires/bandazhnie-shini",
+    "title": "Бандажные",
+    "description": ""
+  },
+  {
+    "type": "Шины",
+    "url": "/catalog/shini-dlya-greiderov",
+    "img": "/img/catalog/category/tires/greider",
+    "title": "Для грейдеров",
+    "description": ""
+  },
+  {
+    "type": "Шины",
+    "url": "/catalog/shini-dlya-zhestkoramnih-samosvalov",
+    "img": "/img/catalog/category/tires/zhestkoramnii-samosval",
+    "title": "Для жесткорамных самосвалов",
+    "description": ""
+  },
+  {
+    "type": "Шины",
+    "url": "/catalog/shini-dlya-frontalnih-pogruzchikov",
+    "img": "/img/catalog/category/tires/frontalnii-pogruzchik",
+    "title": "Для фронтальных погрузчиков",
+    "description": ""
+  },
+  {
+    "type": "Шины",
+    "url": "/catalog/shini-dlya-ekskavator-pogruzchikov",
+    "img": "/img/catalog/category/tires/dlya-ekskavator-pogruzchikov",
+    "title": "Для экскаватор - погрузчиков",
+    "description": ""
+  },
+  {
+    "type": "Шины",
+    "url": "/catalog/shini-dlya-selhoztehniki",
+    "img": "/img/catalog/category/tires/selhoztechnika",
+    "title": "Для сельхоз техники",
+    "description": ""
+  },
+  {
+    "type": "Шины",
+    "url": "/catalog/shini-dlya-teleskopicheskih-pogruzchikov",
+    "img": "/img/catalog/category/tires/teleskopicheskii-pogruzchik",
+    "title": "Для телескопических погрузчиков",
+    "description": ""
+  },
+  {
+    "type": "Шины",
+    "url": "/catalog/shini-dlya-sochlenennih-samosvalov",
+    "img": "/img/catalog/category/tires/sochlenenni-samosval",
+    "title": "Для сочлененных самосвалов",
+    "description": ""
+  },
+  {
+    "type": "Шины",
+    "url": "/catalog/shini-dlya-portov-i-terminalov",
+    "img": "/img/catalog/category/tires/richstaker",
+    "title": "Для портов и терминалов",
+    "description": ""
+  },
+  {
+    "type": "Шины",
+    "url": "/catalog/shini-dlya-kolesnih-ekskavatorov",
+    "img": "/img/catalog/category/tires/kolesnii-ekskavator",
+    "title": "Для колесных экскаваторов",
+    "description": ""
+  },
+  {
+    "type": "Шины",
+    "url": "/catalog/shini-dlya-asfaltoukladchikov-i-katkov",
+    "img": "/img/catalog/category/tires/asphaltoukladchik",
+    "title": "Для асфальтоукладчиков и катков",
+    "description": ""
+  },
+  {
+    "type": "Акб",
+    "url": "/catalog/accumulyatori-tyagovie",
+    "img": "/img/catalog/category/battery/tyagovie",
+    "title": "Тяговые аккумуляторы",
+    "description": ""
+  },
+  {
+    "type": "Акб",
+    "url": "/catalog/accumulyatori-dlya-pogruzchikov",
+    "img": "/img/catalog/category/battery/akb-dlya-pogruzchijov",
+    "title": "Аккумуляторы для погрузчиков",
+    "description": ""
+  },
+  {
+    "type": "Акб",
+    "url": "/catalog/accumulyatori-dlya-polomoechnih-mashin",
+    "img": "/img/catalog/category/battery/akb-dlya-polomoechnih-mashin",
+    "title": "Аккумуляторы для поломоечных машин",
+    "description": ""
+  },
+  {
+    "type": "Акб",
+    "url": "/catalog/accumulyatori-dlya-richtrakov",
+    "img": "/img/catalog/category/battery/akumulyator-dlya-richtrakov",
+    "title": "Аккумуляторы для ричтраков",
+    "description": ""
+  },
+  {
+    "type": "Акб",
+    "url": "/catalog/accumulyatori-polutyagovie",
+    "img": "/img/catalog/category/battery/polutyagovie-akkumulyatori",
+    "title": "Полутяговые аккумуляторы",
+    "description": ""
+  },
+  {
+    "type": "Акб",
+    "url": "/catalog/accumulyatori-dlya-electrotelezhek",
+    "img": "/img/catalog/category/battery/akkumulyatori-dlya-elektrotelezhek",
+    "title": "Аккумуляторы для электротележек",
+    "description": ""
+  },
+  {
+    "type": "Акб",
+    "url": "/catalog/accumulyatori-dlya-shtabelerov",
+    "img": "/img/catalog/category/battery/akkumulyatori-dlya-shtabelerov",
+    "title": "Аккумуляторы для штабелеров",
+    "description": ""
+  },
+  {
+    "type": "Акб",
+    "url": "/catalog/accumulyatori-dlya-palletoperevozchikov",
+    "img": "/img/catalog/category/battery/akkumelyator-dlya-palletoperevozchikov",
+    "title": "Аккумуляторы для паллетоперевозчиков",
+    "description": ""
+  },
+  {
+    "type": "Масла",
+    "url": "/catalog/masla-motornie",
+    "img": "/img/catalog/category/oils/motornoe-maslo",
+    "title": "Моторные масла",
+    "description": ""
+  },
+  {
+    "type": "Масла",
+    "url": "/catalog/masla-transmissionnie",
+    "img": "/img/catalog/category/oils/maslo-transmissionnoe",
+    "title": "Трансмиссионные масла",
+    "description": ""
+  },
+  {
+    "type": "Масла",
+    "url": "/catalog/masla-gidravlicheskie",
+    "img": "/img/catalog/category/oils/gidravlicheskoe-maslo",
+    "title": "Гидравлические масла",
+    "description": ""
+  },
+  {
+    "type": "Масла",
+    "url": "/catalog/masla-industrialnie",
+    "img": "/img/catalog/category/oils/industrialnoe-maslo",
+    "title": "Индустриальные масла",
+    "description": ""
+  },
+  {
+    "type": "Масла",
+    "url": "/catalog/antifreezi",
+    "img": "/img/catalog/category/oils/antifreeez",
+    "title": "Охлаждающие жидкости",
+    "description": ""
+  }
+]
