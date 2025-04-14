@@ -5,7 +5,6 @@ import { useFavoriteStore } from '@/store/favoriteStore'
 import BreadCrumbs from '@/components/BreadCrumbs/BreadCrumbs'
 import { FavoriteCard } from './FavoriteCard'
 
-import '../Cart/Cart.scss'
 import { CartHeader } from '../Cart/CartHeader'
 
 export const Favorite: React.FC = () => {

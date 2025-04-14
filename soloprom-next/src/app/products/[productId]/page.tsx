@@ -3,7 +3,7 @@ import { Callback } from '@/components/Callback/Callback'
 import BreadCrumbs from '@/components/BreadCrumbs/BreadCrumbs'
 import PageWrapper from '@/app/PageWrapper'
 import { CardDataProps } from '@/types/products.types'
-import { ProductPageCard } from '@/components/ProductPage/ProductPageCard/ProductPageCard'
+import { ProductPageCard } from '@/components/ProductPage/ProductPageCard'
 import { ProductPageTabs } from '@/components/ProductPage/ProductPageTabs'
 import { ProductPageBenefits } from '@/components/ProductPage/ProductPageBenefits'
 import { getProductById, getAllProducts } from '@/utils/api/products'
@@ -28,30 +28,51 @@ export type Params = {
 export type ParamsPromise = Promise<Params>
 
 export async function generateStaticParams() {
-  const response = await getAllProducts()
+  const productsList = await getAllProducts()
 
-  if (!response || response.status !== 200) {
-    console.log(
-      `API request failed with status: ${response?.status}, returning empty array for static params`,
-    )
+  console.log(productsList.length)
+
+  if (!productsList.length) {
+    console.log(`Массив товаров пуст`)
     return []
   }
-  if (!response || !Array.isArray(response)) {
+
+  if (!productsList || !Array.isArray(productsList)) {
     console.log(
       'Данные ответа не являются массивом и возвращают пустой массив для статических параметров',
     )
     return []
   }
-  const products = response as CardDataProps[]
-  if (products.some((product) => !product.productId)) {
+
+  if (productsList.some((product) => !product.productId)) {
     console.log(
       'В некоторых продуктах отсутствует идентификатор продукта, пропускается',
     )
     return []
   }
-  return products.map((product: CardDataProps) => ({
+  return productsList.map((product: CardDataProps) => ({
     productId: String(product.productId),
   }))
+}
+
+interface MetaTypes {
+  name: string
+  categoryName: 'oils' | 'tires' | 'battery' // Enforce allowed category names
+  productType: string
+  models: string[]
+  defaultPrice: number
+}
+
+const productsTypes = {
+  oils: 'Масло',
+  tires: 'Шина специальная',
+  battery: 'Аккумулятор',
+}
+
+const getProductMetaData = (product: MetaTypes): string => {
+  const { name, categoryName, productType, models, defaultPrice } = product
+
+  return `${name} ${productsTypes[categoryName]} ${productType.toLowerCase()} ${models.length ? `для ${models[0]}` : ''} за ${defaultPrice} руб. купить в СОЛОПРОМ. +7 (903) 656-93-93`
 }
 
 export async function generateMetadata({
@@ -62,8 +83,6 @@ export async function generateMetadata({
   const { productId } = await params
   const product = await getProductById(productId)
 
-  console.log(`${product.productId}: `, product.productType)
-
   if (!product) {
     return {
       title: 'Страница товара не найдена',
@@ -72,15 +91,15 @@ export async function generateMetadata({
   }
 
   return {
-    title: `${wordsAdapt.category[product.categoryName]} ${product.productType.toLowerCase()} ${product.name}`,
-    description: product.description || 'Описание товара отсутствует',
+    title: `${wordsAdapt.category[product.categoryName]} ${product.productType.toLowerCase()} ${product.name} купить в Солопром`,
+    description: getProductMetaData(product) || 'Описание товара отсутствует',
     openGraph: {
-      title: `${product.name} `,
-      description: product.description || 'Описание товара отсутствует',
+      title: `Купить ${product.name} `,
+      description: getProductMetaData(product) || 'Описание товара отсутствует',
       url: `https://soloprom.ru/products/${product.productId}`,
       images: [
         {
-          url: `https://soloprom.ru/products/${product.productId}/category.png`,
+          url: `https://soloprom.ru/img/catalog/${product.img || 'not-found'}.webp`,
           alt: `${product.title} Категория`,
         },
       ],

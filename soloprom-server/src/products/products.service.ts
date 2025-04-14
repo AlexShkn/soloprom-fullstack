@@ -427,7 +427,7 @@ export class ProductsService {
     });
 
     if (!model) {
-      throw new Error(`Group with name "${modelName}" not found`);
+      throw new Error(`Group with model "${modelName}" not found`);
     }
 
     return model.products;

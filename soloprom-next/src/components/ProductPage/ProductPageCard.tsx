@@ -2,14 +2,13 @@
 import React, { useEffect, useState } from 'react'
 import Image from 'next/image'
 import { ProductsCardPropTypes } from '@/types/products.types'
-import './ProductPageCard.scss'
-import { ProductPageCardDescription } from '../ProductPageCardDescription'
-import { ProductPagePriceBlock } from '../ProductPagePriceBlock'
+import { ProductPageCardDescription } from './ProductPageCardDescription'
+import { ProductPagePriceBlock } from './ProductPagePriceBlock'
 import { RegaliaList } from '@/components/ProductsCard/RegaliaList'
 
 import { useCartStore } from '@/store/cartStore'
 import { useModalsStore } from '@/store/modalsStore'
-import { ProductsPageOffers } from '../ProductsPageOffers'
+import { ProductsPageOffers } from './ProductsPageOffers'
 
 export const ProductPageCard: React.FC<ProductsCardPropTypes> = ({
   cardData,
@@ -40,7 +39,9 @@ export const ProductPageCard: React.FC<ProductsCardPropTypes> = ({
 
   return (
     <div className="product-page-card border-1 mb-7 border-b border-accentBlue">
-      <div className="product-page-card__title mb-7 font-bold">{name}</div>
+      <div className="mb-7 text-[clamp(1.5rem,1.3022rem+0.6593vw,1.875rem)] font-bold">
+        {name}
+      </div>
       <div className="product-page-card__wrapper">
         <div className="relative flex flex-col gap-5 lg:flex-row">
           <div className="relative flex justify-center gap-2 pt-10">

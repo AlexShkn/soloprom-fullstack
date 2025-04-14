@@ -22,11 +22,10 @@ import { useLogoutMutation } from '../hooks'
 export function UserButton() {
   const { logout, isLoadingLogout } = useLogoutMutation()
 
-  const { userState, changeAuthStatus } = useAuthStore((state) => state)
+  const { userState, changeAuthStatus } = useAuthStore()
 
   const handleLogout = () => {
     logout()
-    changeAuthStatus(false)
   }
 
   if (!userState) return null
@@ -47,7 +46,7 @@ export function UserButton() {
 
       <DropdownMenuContent className="w-40 bg-white" align="end">
         <Link
-          href={'/dashboard/settings'}
+          href={'/profile'}
           className="link-hover flex items-center px-2 py-1.5"
         >
           <LuMenu className="mr-2 size-4" />

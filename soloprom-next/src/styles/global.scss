@@ -238,6 +238,48 @@
   }
 }
 
+.added {
+  span {
+    visibility: visible;
+    opacity: 1;
+    z-index: 1;
+  }
+}
+
+.cart {
+  // .cart__item-count
+
+  &__item-count {
+    &:disabled {
+      cursor: default;
+      background-color: #d3d3d3;
+
+      svg {
+        fill: #9f9f9f;
+      }
+    }
+
+    svg {
+      width: 12px;
+      height: 12px;
+      fill: variables.$accentColor;
+      transition: fill variables.$transition;
+    }
+
+    @media (any-hover: hover) {
+      &:hover {
+        &:not(:disabled) {
+          color: #fff;
+          background-color: variables.$hoverAccentColor;
+          svg {
+            fill: #fff;
+          }
+        }
+      }
+    }
+  }
+}
+
 .flex-0-auto {
   flex: 0 0 auto;
 }

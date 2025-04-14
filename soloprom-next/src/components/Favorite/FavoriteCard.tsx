@@ -135,9 +135,9 @@ export const FavoriteCard: React.FC<FavoriteCardProps> = ({ product }) => {
         <button
           onClick={handleAddToCart}
           type="button"
-          className={`button cart__item-order-button relative gap-2.5 px-5 py-2.5 font-bold ${cartIsLoad && 'load'} ${cartIsAdded && 'added'}`}
+          className={`button relative gap-2.5 px-5 py-2.5 font-bold ${cartIsLoad && 'load'} ${cartIsAdded && 'added'}`}
         >
-          <span className="ttall rounded-custom invisible absolute inline-flex h-full w-full items-center justify-center bg-hoverBlue opacity-0 transition-all">
+          <span className="ttall invisible absolute inline-flex h-full w-full items-center justify-center rounded-custom bg-hoverBlue opacity-0 transition-all">
             <img
               className="h-7 w-7"
               src="/img/icons/availability-w.svg"

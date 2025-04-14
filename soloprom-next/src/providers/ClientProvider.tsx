@@ -6,9 +6,9 @@ import AuthStatusProvider from './AuthStatusProvider'
 
 export default function ClientProvider({
   children,
-}: {
+}: Readonly<{
   children: React.ReactNode
-}) {
+}>) {
   return (
     <>
       <TanstackQueryProvider>

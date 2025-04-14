@@ -77,7 +77,7 @@ export async function getPopularProducts() {
 }
 
 export async function getAllProducts() {
-  const response = await api.get<any>(`products`)
+  const response = await api.get<CardDataProps[]>(`products`)
   return response
 }
 

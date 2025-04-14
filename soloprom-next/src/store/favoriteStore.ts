@@ -1,6 +1,6 @@
 import { create } from 'zustand'
 
-export interface FavoriteProductTypes {
+export interface ProductsCardPropTypes {
   productId: string
   storeId: string
   name: string
@@ -13,9 +13,11 @@ export interface FavoriteProductTypes {
 }
 
 interface FavoriteState {
-  favoriteState: FavoriteProductTypes[]
-  setFavorite: (products: FavoriteProductTypes[]) => void
-  addProductToFavorite: (product: Omit<FavoriteProductTypes, 'storeId'>) => void
+  favoriteState: ProductsCardPropTypes[]
+  setFavorite: (products: ProductsCardPropTypes[]) => void
+  addProductToFavorite: (
+    product: Omit<ProductsCardPropTypes, 'storeId'>,
+  ) => void
   removeFavoriteProduct: (productId: string, variant: string) => void
   clearFavorite: () => void
 }

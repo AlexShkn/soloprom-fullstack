@@ -1,6 +1,6 @@
 // styles.scss
 
-@use './mixins'; // Заменили @import на @use
+@use './mixins';
 
 @include mixins.font('Roboto', 'Roboto-Regular', 400, 'normal');
 @include mixins.font('Roboto', 'Roboto-Medium', 500, 'normal');

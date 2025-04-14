@@ -46,6 +46,7 @@ interface forcedListTypes {
 const dictionary: Dictionary = {
   'payment-delivery': 'Оплата и доставка',
   requisites: 'Реквизиты',
+  profile: 'Личный кабинет',
   catalog: 'Каталог',
   cart: 'Корзина',
   favorite: 'Избранное',

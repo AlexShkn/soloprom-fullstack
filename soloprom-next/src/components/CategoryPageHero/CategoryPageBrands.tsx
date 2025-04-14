@@ -50,7 +50,7 @@ export const CategoryPageBrands: React.FC<Props> = ({ brandsList }) => {
       {brandsList.map((brand) => (
         <SwiperSlide key={brand} className="category-hero__brands-item">
           <Image
-            src={`/img/category/brands/battery/${brand}.jpg`}
+            src={`/img/category/brands/battery/${brand.toLowerCase()}.jpg`}
             alt={brand}
             width={120}
             height={120}

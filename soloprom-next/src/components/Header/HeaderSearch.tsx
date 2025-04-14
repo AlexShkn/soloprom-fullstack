@@ -210,7 +210,7 @@ const HeaderSearch = () => {
                         className="inline-block h-7 object-contain"
                         src={
                           (item.img && `/img/catalog/${item.img}.webp`) ||
-                          `/img/brands/${item.brandName}.webp`
+                          `/img/brands/${item.brandName.toLowerCase()}.webp`
                         }
                         width={28}
                         height={28}

@@ -10,7 +10,6 @@ import { OrderForm } from './OrderForm/OrderForm'
 
 import { CartProductList } from './CartProductList'
 
-import './Cart.scss'
 import { CartHeader } from './CartHeader'
 
 export const Cart: React.FC = () => {

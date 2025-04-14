@@ -88,85 +88,86 @@ export const OrderList: React.FC<OrderListProps> = ({ user }) => {
 
   return (
     <div className="w-full space-y-6">
-      <h1 className="mb-5 text-2xl font-bold">История заказов</h1>
       {orders.length > 0 ? (
         <div className="overflow-x-auto rounded-lg border border-gray-200 shadow-md">
           <table className="w-full table-auto border-collapse text-left">
-            <thead className="bg-gray-100 text-gray-700">
+            <thead className="bg-accentBlue text-white">
               <tr>
                 <th className="px-4 py-2">Номер заказа</th>
                 <th className="px-4 py-2">Создан</th>
                 <th className="px-4 py-2">Статус</th>
                 <th className="px-4 py-2">Сумма</th>
-                <th className="px-4 py-2">Товары</th>
               </tr>
             </thead>
             <tbody>
               {orders.map((order, rowIndex) => {
                 const products = JSON.parse(order.products)
                 return (
-                  <tr
-                    key={order.id}
-                    className={`border-t ${
-                      rowIndex % 2 === 0
-                        ? 'bg-gray-50'
-                        : 'bg-darkBlue text-white'
-                    }`}
-                  >
-                    <td className="px-4 py-2 font-medium">{order.id}</td>
-                    <td className="px-4 py-2 font-medium">
-                      {formatDateTime(order.createdAt)}
-                    </td>
-                    <td className="px-4 py-2">
-                      <div className="flex items-center space-x-2 whitespace-nowrap">
-                        {orderDto[order.status]?.icon}
-                        <span
-                          className={`${orderDto[order.status]?.color} font-medium`}
-                        >
-                          {orderDto[order.status]?.label}
-                        </span>
-                      </div>
-                    </td>
-                    <td className="whitespace-nowrap px-4 py-2 font-medium">
-                      {getDigFormat(order.totalAmount)} ₽
-                    </td>
-                    <td className="px-4 py-2">
-                      <ul className="space-y-1">
-                        {products.map(
-                          (product: CartProductTypes, index: number) => (
-                            <li
-                              key={index}
-                              className={`link-hover border-1 flex items-center justify-between border-b border-gray-200 p-2`}
-                            >
-                              <Link
-                                href={`/products/${product.productId}`}
-                                className="flex items-center gap-2.5"
+                  <React.Fragment key={order.id}>
+                    <tr className={`border-t bg-darkBlue text-white`}>
+                      <td className="px-4 py-2 font-medium">{order.id}</td>
+                      <td className="px-4 py-2 font-medium">
+                        {formatDateTime(order.createdAt)}
+                      </td>
+                      <td className="px-4 py-2">
+                        <div className="flex items-center space-x-2 whitespace-nowrap">
+                          {orderDto[order.status]?.icon}
+                          <span
+                            className={`${orderDto[order.status]?.color} font-medium`}
+                          >
+                            {orderDto[order.status]?.label}
+                          </span>
+                        </div>
+                      </td>
+                      <td className="whitespace-nowrap px-4 py-2 font-medium">
+                        {getDigFormat(order.totalAmount)} ₽
+                      </td>
+                    </tr>
+                    <tr className={`bg-gray-5 border-t`}>
+                      <td colSpan={4} className="px-4 py-2">
+                        <ul className="space-y-1">
+                          {products.map(
+                            (product: CartProductTypes, index: number) => (
+                              <li
+                                key={product.productId}
+                                className={`link-hover border-1 flex items-center justify-between border-b border-gray-200 p-2`}
                               >
-                                <img
-                                  src={`/img/catalog/${product.img}.webp`}
-                                  alt=""
-                                  width={30}
-                                  height={30}
-                                />
-                                <span className="min-w-36">{product.name}</span>
-                                <span
-                                  className={'whitespace-nowrap font-medium'}
+                                <Link
+                                  href={`/products/${product.productId}`}
+                                  className="flex items-center gap-2.5 text-sm"
                                 >
-                                  {product.variant}
-                                </span>
-                                <span className="whitespace-nowrap">
-                                  x {product.count}
-                                </span>
-                                <span className="whitespace-nowrap">
-                                  - {getDigFormat(product.price)} ₽
-                                </span>
-                              </Link>
-                            </li>
-                          ),
-                        )}
-                      </ul>
-                    </td>
-                  </tr>
+                                  <Image
+                                    src={
+                                      (product.img &&
+                                        `/img/catalog/${product.img}.webp`) ||
+                                      '/img/catalog/not-found.webp'
+                                    }
+                                    alt=""
+                                    width={30}
+                                    height={30}
+                                  />
+                                  <span className="min-w-36">
+                                    {product.name}
+                                  </span>
+                                  <span
+                                    className={'whitespace-nowrap font-medium'}
+                                  >
+                                    {product.variant}
+                                  </span>
+                                  <span className="whitespace-nowrap">
+                                    x {product.count}
+                                  </span>
+                                  <span className="whitespace-nowrap">
+                                    - {getDigFormat(product.price)} ₽
+                                  </span>
+                                </Link>
+                              </li>
+                            ),
+                          )}
+                        </ul>
+                      </td>
+                    </tr>
+                  </React.Fragment>
                 )
               })}
             </tbody>

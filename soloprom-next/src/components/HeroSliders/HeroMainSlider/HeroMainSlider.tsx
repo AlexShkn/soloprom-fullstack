@@ -52,10 +52,10 @@ const HeroMainSlider: React.FC<HeroTypes> = ({ isReady }) => {
           loop={true}
           speed={800}
           effect={'fade'}
-          // autoplay={{
-          //   delay: 5000,
-          //   disableOnInteraction: false,
-          // }}
+          autoplay={{
+            delay: 5000,
+            disableOnInteraction: false,
+          }}
           pagination={{
             el: '.hero-main-slider__pagination',
             clickable: true,
@@ -86,14 +86,14 @@ const HeroMainSlider: React.FC<HeroTypes> = ({ isReady }) => {
                   </div>
 
                   {slide.subtitle && (
-                    <div className="hero__subtitle max-w-[500] font-medium leading-5 text-white">
+                    <div className="hero__subtitle max-w-[500px] font-medium leading-5 text-white">
                       {slide.subtitle}
                     </div>
                   )}
 
                   <Link
                     href={slide.link}
-                    className="button rounded-custom relative z-10 w-full max-w-[300] p-5 font-bold uppercase"
+                    className="button relative z-10 rounded-custom p-5 font-bold uppercase"
                   >
                     {slide.btnText}
                   </Link>

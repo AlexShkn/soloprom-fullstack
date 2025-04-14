@@ -6,9 +6,9 @@ import { useEffect } from 'react'
 
 export default function AuthStatusProvider({
   children,
-}: {
+}: Readonly<{
   children: React.ReactNode
-}) {
+}>) {
   const { user, isLoading } = useProfile()
 
   const { changeAuthStatus, setUserLoading, setUserData } = useAuthStore()

@@ -6,7 +6,7 @@ export default async function middleware(request: NextRequest) {
 
   const isAuthPage = url.includes('/auth')
   const isProductsPage = url === `${new URL(url).origin}/products`
-  const isDashboardPage = url.includes('/dashboard')
+  const isDashboardPage = url.includes('/profile')
 
   if (isProductsPage) {
     const catalogUrl = new URL('/catalog', request.url)
@@ -17,7 +17,7 @@ export default async function middleware(request: NextRequest) {
     if (session) {
       const isValidSession = await checkSession(request)
       if (isValidSession) {
-        const dashboardUrl = new URL('/dashboard/settings', request.url)
+        const dashboardUrl = new URL('/profile', request.url)
         return NextResponse.redirect(dashboardUrl)
       }
     }
@@ -38,7 +38,7 @@ export default async function middleware(request: NextRequest) {
 }
 
 export const config = {
-  matcher: ['/auth/:path*', '/dashboard/:path*', '/products'],
+  matcher: ['/auth/:path*', '/profile', '/products'],
 }
 
 const checkSession = async (request: NextRequest) => {

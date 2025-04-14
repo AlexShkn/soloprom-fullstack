@@ -50,6 +50,9 @@ export const OrderForm: React.FC = () => {
 
   const onSubmit = async (values: TypeOrderSchema) => {
     setIsSubmitting(true)
+
+    console.log(cartState)
+
     try {
       const telegramResponse = await fetch('/api/routes/sendTelegram', {
         method: 'POST',
@@ -75,6 +78,7 @@ export const OrderForm: React.FC = () => {
         }
 
         const createdOrder = await createOrder(orderData)
+        console.log(createdOrder)
 
         if (!createdOrder) {
           await fetch('/api/routes/sendTelegram', {

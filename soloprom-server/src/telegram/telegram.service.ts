@@ -64,7 +64,7 @@ export class TelegramService {
 
     const fastState = formData.fastOrder;
 
-    if (fastState.productId) {
+    if (fastState?.productId) {
       message += `\n\n`;
       message += `<b>Быстрый заказ:</b>\n`;
       message += `<b>------------------</b>\n`;

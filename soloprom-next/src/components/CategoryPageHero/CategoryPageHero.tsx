@@ -34,7 +34,7 @@ export const CategoryPageHero: React.FC<Props> = ({
       <div className="relative flex h-full w-full items-center justify-end overflow-hidden rounded px-5 py-5 shadow-custom before:absolute before:inset-0 before:z-[1] before:h-full before:w-full before:bg-[linear-gradient(100deg,rgba(0,0,0,0.1)_0%,#ebebeb_55.9%,#f8f8f8_100%)]">
         <Image
           className="absolute inset-0 h-full w-[60%] object-cover"
-          src={`${categoryImage}.webp`}
+          src={`${categoryImage.toLowerCase()}.webp`}
           alt={categoryAlt}
           width={983}
           height={0}

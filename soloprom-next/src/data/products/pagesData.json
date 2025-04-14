@@ -10,17 +10,7 @@
     "url": "tires",
     "crumb": "Шины для спецтехники"
   },
-  "shini-specialnie": {
-    "category": "tires",
-    "pageType": "brands",
-    "headGroupTitle": "Шины специальные",
-    "title": "Шины специальные",
-    "description": "Специальные шины для любой техники. Большой выбор пневматических, цельнолитых и бандажных шин для погрузчиков, штабелеров, электро-тележек и другой специальной техники. Заказ и из наличия. Доставляем любой удобной транспортной компанией.",
-    "img": "/img/category/tyres",
-    "alt": "",
-    "url": "shini-specialnie",
-    "crumb": "Шины специальные"
-  },
+
   "shini-apollo": {
     "category": "tires",
     "pageType": "brands",
@@ -374,26 +364,7 @@
     "url": "accumulyatori-dlya-pogruzchikov",
     "crumb": "Аккумуляторы для погрузчиков"
   },
-  "accumulyatori-dlya-vilochnih-pogruzchikov": {
-    "category": "battery",
-    "pageType": "group",
-    "title": "Аккумуляторы для вилочных погрузчиков",
-    "description": "Широкий выбор аккумуляторных батарей для вилочных погрузчиков elhim enpower",
-    "img": "/img/category/accumulyatori-dlya-pogruzchikov",
-    "alt": "",
-    "url": "accumulyatori-dlya-vilochnih-pogruzchikov",
-    "crumb": "Аккумуляторы для вилочных погрузчиков"
-  },
-  "dlya-electropogruzchikov": {
-    "category": "battery",
-    "pageType": "group",
-    "title": "Аккумуляторы для электропогрузчиков",
-    "description": "Широкий выбор аккумуляторных батарей для электропогрузчиков elhim enpower",
-    "img": "/img/category/accumulyatori-dlya-pogruzchikov",
-    "alt": "",
-    "url": "dlya-electropogruzchikov",
-    "crumb": "Аккумуляторы для электропогрузчиков"
-  },
+
   "accumulyatori-dlya-polomoechnih-mashin": {
     "category": "battery",
     "pageType": "group",
@@ -704,16 +675,5 @@
     "alt": "охлождающая жидкость g energy",
     "url": "antifreezi",
     "crumb": "Антифризы"
-  },
-
-  "masla-g-enegry": {
-    "category": "oils",
-    "pageType": "brands",
-    "title": "Масла g-energy",
-    "description": "Масла g-energy для специальной техики. Большой выбор моторных масел g-energy для специальной техники. Заказ и из наличия. Доставляем любой удобной транспортной компанией.",
-    "img": "/img/category/oils/engine-oils",
-    "alt": "Масла и антифиры g-energy",
-    "url": "masla-g-enegry",
-    "crumb": "Масла g-energy"
   }
 }

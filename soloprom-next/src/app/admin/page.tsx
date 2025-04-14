@@ -1,11 +1,8 @@
-import { SearchPageBlock } from '@/components/Search/SearchPageBlock'
 import PageWrapper from '../PageWrapper'
-import { Loading } from '@/components/ui'
-import React, { Suspense } from 'react'
 
 export const metadata = {
-  title: 'Поиск товаров',
-  description: 'Поиск по каталогу товаров soloprom.ru',
+  title: 'Панель администратора',
+  description: '',
   openGraph: {
     title: 'Запчасти для специальной и сельскохозяйственной техники',
     siteName:
@@ -20,15 +17,13 @@ export const metadata = {
     ],
     url: 'https://soloprom.ru',
   },
-  alternates: { canonical: 'https://soloprom.ru/search' },
+  alternates: { canonical: 'https://soloprom.ru/admin' },
 }
 
-export default function FavoritePage() {
+export default function AdminPage() {
   return (
     <PageWrapper>
-      <Suspense fallback={<Loading />}>
-        <SearchPageBlock />
-      </Suspense>
+      <div className="">Админ</div>
     </PageWrapper>
   )
 }
