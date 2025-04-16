@@ -1,3 +1,5 @@
+// ProductsCard.tsx
+
 'use client'
 import React, { useEffect, useState } from 'react'
 import Image from 'next/image'
@@ -61,6 +63,7 @@ export const ProductsCard: React.FC<ProductsCardPropTypes> = ({
     delivery,
     rating,
     brandName,
+    descr,
   } = cardData
 
   const sizesData = sizes || volumes
@@ -180,8 +183,48 @@ export const ProductsCard: React.FC<ProductsCardPropTypes> = ({
     modalCallbackStateChange(true)
   }
 
+  const schemaMarkup = {
+    '@context': 'https://schema.org/',
+    '@type': 'Product',
+    name: name,
+    image: `${process.env.NEXT_PUBLIC_CLIENT_URL}/img/catalog/${img}.webp`,
+    description: descr || 'Описание отсутствует',
+    brand: {
+      '@type': 'Brand',
+      name: brandName,
+    },
+    sku: productId,
+    mpn: productId,
+    offers: {
+      '@type': 'Offer',
+      url: `${process.env.NEXT_PUBLIC_CLIENT_URL}${url}`,
+      priceCurrency: 'RUB',
+      price: sizesData?.[variantValue] ?? defaultPrice,
+      availability: stock
+        ? 'https://schema.org/InStock'
+        : 'https://schema.org/OutOfStock',
+      itemCondition: 'https://schema.org/NewCondition',
+    },
+    review: rating
+      ? {
+          '@type': 'Review',
+          reviewRating: {
+            '@type': 'Rating',
+            ratingValue: rating,
+            bestRating: '5',
+          },
+          name: 'Product Review',
+          author: { '@type': 'Person', name: 'Покупатель' },
+        }
+      : undefined,
+  }
+
   return (
     <div className="h-full">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaMarkup) }}
+      />
       <div
         className={`product-card relative flex h-full ${mod !== 'row' && 'flex-col'} ${mod === 'row' && 'justify-between gap-5'} rounded-custom bg-white p-4 shadow-custom`}
       >
@@ -317,7 +360,7 @@ export const ProductsCard: React.FC<ProductsCardPropTypes> = ({
                           ? handleRemoveFromCompare
                           : handleAddToCompare
                       }
-                      className={`product-card__favorite ${mod === 'grid' && 'absolute right-2 top-20'} ${compareIsAdded && 'added'}`}
+                      className={`product-card__favorite ${mod === 'grid' ? 'absolute right-2 top-20' : 'relative'} ${compareIsAdded && 'added'}`}
                     >
                       <svg className="icon h-7 w-7 fill-accentBlue transition-colors">
                         <use xlinkHref="/img/sprite.svg#scales" />
@@ -339,7 +382,7 @@ export const ProductsCard: React.FC<ProductsCardPropTypes> = ({
                           ? handleRemoveFromFavorites
                           : handleAddToFavorites
                       }
-                      className={`product-card__favorite ${mod === 'grid' && 'absolute right-[10px] top-12'} ${favoriteIsAdded && 'added'}`}
+                      className={`product-card__favorite ${mod === 'grid' ? 'absolute right-2.5 top-12' : 'relative'} ${favoriteIsAdded && 'added'}`}
                     >
                       <svg className="icon h-6 w-6 fill-accentBlue transition-colors">
                         <use xlinkHref="/img/sprite.svg#bookmark" />

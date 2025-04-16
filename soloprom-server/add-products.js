@@ -172,7 +172,7 @@ async function loadDataFromFile(filePath) {
     const fileContent = await fs.readFile(filePath, 'utf-8');
     return JSON.parse(fileContent);
   } catch (error) {
-    console.error('Ошибка при чтении файла:', error);
+    console.error(`Ошибка при чтении файла: ${filePath}`, error);
     process.exit(1);
   }
 }
@@ -180,7 +180,7 @@ async function loadDataFromFile(filePath) {
 async function sendProductsBatch(productsBatch) {
   try {
     const data = {
-      categories: CATEGORIES, // Используем статические категории
+      categories: CATEGORIES,
       products: productsBatch,
     };
 
@@ -202,7 +202,7 @@ async function sendProductsBatch(productsBatch) {
 
 async function main() {
   const data = await loadDataFromFile(DATA_FILE);
-  const products = data; // Файл содержит только массив продуктов
+  const products = data;
 
   if (!Array.isArray(products)) {
     console.error('В файле нет массива продуктов');

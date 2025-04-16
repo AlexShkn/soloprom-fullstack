@@ -184,10 +184,10 @@ const CatalogMenu = () => {
           iconClass="w-7 h-7 fill-darkBlue cursor-pointer"
         />
 
-        <div className="catalog-menu__body relative grid h-full min-h-screen grid-cols-1 justify-between gap-2.5 overflow-y-auto sm:grid-cols-2 md:grid-cols-[40%,calc(60%-20px)] lg:grid-cols-[30%,calc(70%-20px)] 2xl:min-h-[65vh] 2xl:grid-cols-[25%,calc(75%-20px)]">
+        <nav className="catalog-menu__body relative grid h-full min-h-screen grid-cols-1 justify-between gap-2.5 overflow-y-auto sm:grid-cols-2 md:grid-cols-[40%,calc(60%-20px)] lg:grid-cols-[30%,calc(70%-20px)] 2xl:min-h-[65vh] 2xl:grid-cols-[25%,calc(75%-20px)]">
           <div className="border-1 flex h-full flex-col items-start gap-2.5 border border-grayColor bg-[#dfefff] px-5 pb-5 pt-20 lg:bg-none lg:pb-7 lg:pt-10 xl:px-7 xl:pb-7 xl:pt-10">
             <Link
-              onClick={() => catalogMenuStateChange(false, false)}
+              onClick={() => catalogMenuStateChange(false, isTablet)}
               href="/catalog"
               className="flex max-w-48 items-center justify-between gap-2.5 rounded-custom bg-accentBlue px-2.5 py-4 text-sm font-medium sm:mb-2.5 sm:max-w-max md:text-base"
             >
@@ -208,20 +208,20 @@ const CatalogMenu = () => {
               <div
                 key={category.id}
                 onClick={() => setCatalogTab(category.id)}
-                className={`rounded-tr-4 rounded-br-4 flex w-full cursor-pointer items-center gap-2.5 bg-white pl-2.5 font-medium ${
+                className={`flex w-full cursor-pointer items-center gap-2.5 rounded-custom bg-white pl-2.5 font-medium ${
                   currentTab === category.id
                     ? 'active border-b border-hoverBlue bg-white shadow-custom outline-none'
                     : `${is650 && currentTab && 'hidden'}`
                 }`}
               >
                 <img
-                  className="inline-block h-6 w-6 object-cover mds:h-9 mds:w-9 sm:h-[70px] sm:w-[70px]"
+                  className="inline-block h-6 w-6 object-cover mds:h-9 mds:w-9 sm:h-12 sm:w-12"
                   src={`/img/catalog-link/${category.id}.png`}
                   alt={category.alt}
                 />
                 <span className="flex-auto">{category.title}</span>
                 <div
-                  className={`${currentTab === category.id && 'bg-hoverBlue'} rounded-tr-4 rounded-br-4 relative z-[1] inline-flex h-full items-center justify-center bg-accentBlue px-2.5 py-5 sm:px-2.5 sm:py-6`}
+                  className={`${currentTab === category.id && 'bg-hoverBlue'} relative z-[1] inline-flex h-full items-center justify-center rounded-br-sm rounded-tr-sm bg-accentBlue px-2.5 py-5 sm:px-2.5 sm:py-6`}
                 >
                   <svg
                     className={`icon h-5 w-5 fill-white ${currentTab === category.id ? 'rotate-[90deg] sm:rotate-[-90deg]' : 'rotate-[-90deg]'}`}
@@ -311,7 +311,7 @@ const CatalogMenu = () => {
               </a>
             </div>
           </div>
-        </div>
+        </nav>
       </div>
     </div>
   )

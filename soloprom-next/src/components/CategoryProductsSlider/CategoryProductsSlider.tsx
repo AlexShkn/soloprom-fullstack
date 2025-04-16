@@ -73,13 +73,13 @@ export const CategoryProductsSlider: React.FC<Props> = ({ className }) => {
   }, [isReady])
 
   return (
-    <div className={`catalog-products pb-[20px] pt-10 ${className || ''}`}>
+    <section className={`catalog-products pb-5 pt-2.5 ${className}`}>
       <div className="catalog-products__container">
         {Object.entries(categoriesData).map(([key, category]) => (
           <div className="catalog-products__category" key={key}>
-            <div className="catalog-products__category-title relative inline-flex items-center gap-2.5 font-bold">
+            <h2 className="catalog-products__category-title relative inline-flex items-center gap-2.5 font-bold">
               {category.title}
-            </div>
+            </h2>
             <div className="catalog-products__category-slider relative overflow-hidden p-5">
               {isReady ? (
                 <Swiper
@@ -166,6 +166,6 @@ export const CategoryProductsSlider: React.FC<Props> = ({ className }) => {
           </div>
         ))}
       </div>
-    </div>
+    </section>
   )
 }

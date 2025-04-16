@@ -67,15 +67,15 @@ export const CatalogMain: React.FC<Props> = ({ className }) => {
               </svg>
               {categoryData.title}
             </div>
-            <div className="grid grid-cols-1 xs:gap-2.5 mds:grid-cols-2 mds:gap-5 md:grid-cols-3 lg:grid-cols-4">
+            <div className="grid grid-cols-1 xs:gap-2.5 mds:grid-cols-2 mds:gap-5 md:grid-cols-3 lg:grid-cols-5">
               {categoryData.items.map((item) => (
                 <Link
                   href={item.href}
-                  className="rounded-custom flex flex-col items-center px-2.5 py-5 text-center shadow-custom hover:bg-accentBlue hover:text-white mds:p-5"
+                  className="flex flex-col items-center rounded-custom px-2.5 py-5 text-center shadow-custom hover:bg-accentBlue hover:text-white mds:p-5"
                   key={item.href}
                 >
                   <Image
-                    className="mb-4 block aspect-square max-h-32 max-w-32 object-contain mds:max-h-48 mds:max-w-48"
+                    className="mb-4 block aspect-square max-h-32 max-w-32 object-contain"
                     src={item.img}
                     width={200}
                     height={200}

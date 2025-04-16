@@ -46,20 +46,20 @@ export const SharedModal = () => {
           <div className="mb-4 flex items-center gap-2">
             <input
               type="text"
-              value={`${CLIENT_URL}/${id}`}
+              value={`${CLIENT_URL}/products/${id}`}
               readOnly
               className="w-full rounded border px-2 py-2"
             />
             <button
               className="rounded-custom bg-blue-500 px-3 py-2 text-white hover:bg-blue-600"
-              onClick={() => copyToClipboard(`${CLIENT_URL}/${id}`)}
+              onClick={() => copyToClipboard(`${CLIENT_URL}/products/${id}`)}
             >
               Копировать
             </button>
           </div>
           <div className="flex items-center justify-center gap-4">
             <a
-              href={`https://vk.com/share.php?url=${encodeURIComponent(`${CLIENT_URL}/${id}`)}`}
+              href={`https://vk.com/share.php?url=${encodeURIComponent(`${CLIENT_URL}/products/${id}`)}`}
               target="_blank"
               rel="noopener noreferrer"
               className="text-blue-700"
@@ -72,7 +72,7 @@ export const SharedModal = () => {
               />
             </a>
             <a
-              href={`https://api.whatsapp.com/send?text=${encodeURIComponent(`${CLIENT_URL}/${id}`)}`}
+              href={`https://api.whatsapp.com/send?text=${encodeURIComponent(`${CLIENT_URL}/products/${id}`)}`}
               target="_blank"
               rel="noopener noreferrer"
               className="text-green-700"
@@ -85,7 +85,7 @@ export const SharedModal = () => {
               />
             </a>
             <a
-              href={`https://t.me/share/url?url=${encodeURIComponent(`${CLIENT_URL}/${id}`)}`}
+              href={`https://t.me/share/url?url=${encodeURIComponent(`${CLIENT_URL}/products/${id}`)}`}
               target="_blank"
               rel="noopener noreferrer"
               className="text-blue-500"

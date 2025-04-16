@@ -7,7 +7,7 @@ import { useModalsStore } from '@/store/modalsStore'
 const HeaderBody = () => {
   const { modalCallbackStateChange } = useModalsStore()
   return (
-    <div className="header-body flex flex-col items-center justify-between gap-4 py-4 xs:flex-row xs:gap-0 lg:py-7">
+    <div className="header-body flex flex-col justify-between gap-4 py-4 xs:flex-row xs:items-center xs:gap-0 lg:py-7">
       <Link
         href="/"
         className="header__logo flex-0-auto z-[2] mr-10 inline-flex items-center font-bold xs:mr-6"

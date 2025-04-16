@@ -1,30 +1,41 @@
 [
   {
-    "id": "4820(PTE20N",
-    "code": "20000063225",
-    "name": "АКБ 48В/20Ач (PTE 20N",
-    "price": 32500,
-    "option": "NL 24/10/2024",
-    "stock": 3,
+    "id": "Noblelift12V65A260*164*168(ECL15B)#920600100103",
+    "code": "20000059389",
+    "name": "АКБ Noblelift 12V 65Aч 260*164*168 мм  (ECL15B) #920600100103",
+    "price": 18300,
+    "option": "ПП",
+    "stock": 2,
     "sizes": {
-      "LiFePO4)": 45000
+      "": 18300
     }
   },
   {
-    "id": "Noblelift12V100Ah330*171*215",
+    "id": "Noblelift12100330*171*215#920600100081",
+    "code": "20000063422",
+    "name": "АКБ Noblelift 12В 100Ач 330*171*215 мм #920600100081",
+    "price": 26000,
+    "option": "NL 18/03/2025",
+    "stock": 18,
+    "sizes": {
+      "": 26000
+    }
+  },
+  {
+    "id": "Noblelift12V100Ah330*171*215(PSE15LC)#920600100081",
     "code": "20000045589",
-    "name": "АКБ Noblelift 12V 100Ah 330*171*215",
-    "price": 27000,
-    "option": "сн. с Пол-я машина NOBLELIFT NB530",
-    "stock": 4,
+    "name": "АКБ Noblelift 12V 100Ah 330*171*215 мм (PSE15L-C) #920600100081",
+    "price": 24500,
+    "option": "ПП",
+    "stock": 1,
     "sizes": {
       "": 24500
     }
   },
   {
-    "id": "LT56548V565Ah",
+    "id": "LT48V565Ah",
     "code": "20000049134",
-    "name": "АКБ кислотная LT 565 48V 565Ah",
+    "name": "АКБ LT 48V 565Ah",
     "price": 490500,
     "option": "ПП",
     "stock": 4,
@@ -33,25 +44,36 @@
     }
   },
   {
-    "id": "Torch48V5PzS600Ah",
+    "id": "EKT24V175AhLiion",
+    "code": "20000054021",
+    "name": "АКБ EKT 24V 175Ah Li-ion",
+    "price": 197409,
+    "option": "55466",
+    "stock": 1,
+    "sizes": {
+      "621x209x625": 197409
+    }
+  },
+  {
+    "id": "Torch48V5Pzs600Ah",
     "code": "20000056105",
-    "name": "АКБ Torch 48V 5PzS 600Ah",
-    "price": 360000,
+    "name": "АКБ Torch 48V 5 Pzs 600Ah",
+    "price": 350000,
     "option": "ПП",
     "stock": 8,
     "sizes": {
-      "835x634x784": 281750
+      "835x634x784": 350000
     }
   },
   {
     "id": "Union24V3PzB300Ah",
     "code": "20000062849",
     "name": "АКБ Union 24V 3 PzB 300Ah",
-    "price": 116906,
+    "price": 114490,
     "option": "сухой",
     "stock": 6,
     "sizes": {
-      "752x172x657": 129414,
+      "752x172x657": 126739,
       "653x194x671": 138145
     }
   },
@@ -67,55 +89,54 @@
     }
   },
   {
-    "id": "Union24V2PzS250Ah",
-    "code": "20000032208",
-    "name": "АКБ Union 24V 2PzS 250Ah",
-    "price": 101776,
-    "option": "сухой",
-    "stock": 2,
+    "id": "Noblelift48V20AhLiion(PTE20NPro",
+    "code": "20000040224",
+    "name": "АКБ Noblelift 48V 20Ah Li-ion (см. характеристику PTE20N Pro",
+    "price": 44000,
+    "option": "Россия-607 (для PTE20N)",
+    "stock": 49,
     "sizes": {
-      "621x209x625": 101776
+      "PTE20Q": 44000
     }
   },
   {
-    "id": "Noblelift80560(FE4P3035N)(3045632)(1016688760)",
-    "code": "20000067201",
-    "name": "АКБ Noblelift 80В 560Ач (FE4P30-35N) (304563-2) (1016х688х760)",
-    "price": 600000,
-    "option": "",
+    "id": "Union48V620Ah",
+    "code": "20000067322",
+    "name": "АКБ Union 48V 620Ah",
+    "price": 373095,
+    "option": "залитый",
     "stock": 1,
     "sizes": {
-      "": 600000
+      "1220x352x782": 373095
     }
   },
   {
-    "id": "Union48V4PzS620Ah",
-    "code": "20000067322",
-    "name": "АКБ Union 48V 4 PzS 620Ah",
-    "price": 380970,
-    "option": "залитый",
-    "stock": 5,
-    "sizes": {
-      "1220x352x782": 380970,
-      "1216x355x772": 380970,
-      "1030x440x767": 409000
-    }
-  },
-  {
-    "id": "Union2x40VBU240Ah",
-    "code": "20000020993",
-    "name": "АКБ Union 2x40V BU 240Ah",
-    "price": 322985,
-    "option": "Залитые и заряженные / 03.24",
+    "id": "Union48V5PzS775Ah",
+    "code": "20000035897",
+    "name": "АКБ Union 48V 5 PzS 775Ah",
+    "price": 417549,
+    "option": "сухой",
     "stock": 4,
     "sizes": {
-      "874x678x460": 322985
+      "1220x424x782": 417549,
+      "1216x428x772": 417549
     }
   },
   {
-    "id": "EnSol24V288AhLiion",
+    "id": "Union2x40V3PzS240Ah",
+    "code": "20000020993",
+    "name": "АКБ Union 2x40V 3 PzS 240Ah",
+    "price": 313188,
+    "option": "03.24",
+    "stock": 2,
+    "sizes": {
+      "874x678x460": 313188
+    }
+  },
+  {
+    "id": "LiionEnSol24V288Ah",
     "code": "20000047553",
-    "name": "АКБ EnSol 24V 288Ah Li-ion",
+    "name": "АКБ Li-ion EnSol 24V 288Ah",
     "price": 419820,
     "option": "08.24",
     "stock": 6,
@@ -124,9 +145,9 @@
     }
   },
   {
-    "id": "EnSol72V432AhLiion",
+    "id": "LiionEnSol72V432Ah",
     "code": "20000047554",
-    "name": "АКБ EnSol 72V 432Ah Li-ion",
+    "name": "АКБ Li-ion EnSol 72V 432Ah",
     "price": 1156907,
     "option": "10.22",
     "stock": 2,
@@ -135,9 +156,9 @@
     }
   },
   {
-    "id": "LT47072V470Ah",
+    "id": "LT72V470Ah",
     "code": "20000048777",
-    "name": "АКБ LT 470 72V 470Ah",
+    "name": "АКБ LT 72V 470Ah",
     "price": 835791,
     "option": "01.24",
     "stock": 1,
@@ -146,9 +167,9 @@
     }
   },
   {
-    "id": "EnSol24V277AhLiion",
+    "id": "LiionEnSol24V277Ah",
     "code": "20000048809",
-    "name": "АКБ EnSol 24V 277Ah Li-ion",
+    "name": "АКБ Li-ion EnSol 24V 277Ah",
     "price": 405508,
     "option": "10.22",
     "stock": 2,
@@ -157,9 +178,9 @@
     }
   },
   {
-    "id": "LT51048V510Ah",
+    "id": "LT48V510Ah",
     "code": "20000050816",
-    "name": "АКБ LT 510 48V 510Ah",
+    "name": "АКБ LT 48V 510Ah",
     "price": 564136,
     "option": "",
     "stock": 1,
@@ -168,20 +189,20 @@
     }
   },
   {
-    "id": "Hawker24V3PzB300Ahperfectplus",
+    "id": "Hawker24V3PzB300Ah",
     "code": "20000051417",
-    "name": "АКБ Hawker 24V 3 PzB 300Ah perfect plus",
+    "name": "АКБ Hawker 24V 3 PzB 300Ah",
     "price": 156548,
     "option": "14.03.2024 / склад",
     "stock": 1,
     "sizes": {
-      "727x200x690": 156548
+      "perfect": 156548
     }
   },
   {
-    "id": "Nexsys24V2NXS220",
+    "id": "Nexsys24V2NXS220Ah",
     "code": "20000051900",
-    "name": "АКБ Nexsys 24V 2 NXS 220",
+    "name": "АКБ Nexsys 24V 2 NXS 220Ah",
     "price": 71792,
     "option": "09.2024",
     "stock": 1,
@@ -190,42 +211,42 @@
     }
   },
   {
-    "id": "Noblelift24V465Ah800*218*786(OPL25)",
+    "id": "Noblelift24V3PzS465Ah800*218*786(OPL25",
     "code": "20000061482",
-    "name": "АКБ Noblelift 24V 465Ah 800*218*786 (для OPL25)",
+    "name": "АКБ Noblelift 24V 3 PzS 465Ah 800*218*786 мм (OPL25",
     "price": 160000,
-    "option": "NL 13/12/2024 (для OPL25). без системы акваматик",
-    "stock": 3,
-    "sizes": {
-      "": 160000
-    }
-  },
-  {
-    "id": "TRF48V400Ah",
-    "code": "20000063764",
-    "name": "АКБ TRF 48V 400Ah",
-    "price": 320000,
-    "option": "",
-    "stock": 3,
-    "sizes": {
-      "835x526x741": 320000
-    }
-  },
-  {
-    "id": "Nexsys24V2NXSB200",
-    "code": "20000040000",
-    "name": "АКБ Nexsys 24V 2 NXSB 200",
-    "price": 391999,
-    "option": "заряжен 05.24",
+    "option": "ПП",
     "stock": 1,
     "sizes": {
-      "660x145x690": 391999
+      "T30N": 160000
     }
   },
   {
-    "id": "AdvancedEnergy24V200AhLiion",
+    "id": "Hawker48V5PzS775",
+    "code": "20000033831",
+    "name": "АКБ Hawker 48V 5 PzS 775Ач",
+    "price": 675963,
+    "option": "50601",
+    "stock": 1,
+    "sizes": {
+      "1220x424x782": 675963
+    }
+  },
+  {
+    "id": "Nexsys24V2NXSB200Ah",
+    "code": "20000040000",
+    "name": "АКБ Nexsys 24V 2 NXSB 200Ah",
+    "price": 370000,
+    "option": "заряжен 04.25",
+    "stock": 1,
+    "sizes": {
+      "660x145x690": 370000
+    }
+  },
+  {
+    "id": "LiionAdvancedEnergy24V200Ah",
     "code": "20000066618",
-    "name": "АКБ Advanced Energy 24V 200Ah Li-ion",
+    "name": "АКБ Li-ion Advanced Energy 24V 200Ah",
     "price": 249317,
     "option": "склад",
     "stock": 1,
@@ -234,31 +255,34 @@
     }
   },
   {
-    "id": "Tianneng48V560Ah",
+    "id": "LiionAdvancedEnergy48V400Ah",
+    "code": "20000061209",
+    "name": "АКБ Li-ion Advanced Energy 48V 400Ah",
+    "price": 913025,
+    "option": "Россия-558",
+    "stock": 3,
+    "sizes": {
+      "1216x428x756": 913025,
+      "835x525x741": 786620,
+      "810x735x540": 700000
+    }
+  },
+  {
+    "id": "Tianneng48V4Pzs560Ah",
     "code": "20000065767",
-    "name": "АКБ Tianneng 48V 560Ah",
+    "name": "АКБ Tianneng 48V 4 Pzs 560Ah",
     "price": 450000,
     "option": "05.24",
-    "stock": 1,
+    "stock": 25,
     "sizes": {
-      "980x538x670": 450000
+      "980x538x670": 450000,
+      "1216x355x772": 360000
     }
   },
   {
-    "id": "AdvancedEnergy48V400AhLiion",
-    "code": "20000066615",
-    "name": "АКБ Advanced Energy 48V 400Ah Li-ion",
-    "price": 786620,
-    "option": "ПП 11.24",
-    "stock": 1,
-    "sizes": {
-      "835x525x741": 786620
-    }
-  },
-  {
-    "id": "Torch48V6PzS720Ah",
+    "id": "Torch48V6Pzs720Ah",
     "code": "20000063536",
-    "name": "АКБ Torch 48V 6 PzS 720Ah",
+    "name": "АКБ Torch 48V 6 Pzs 720Ah",
     "price": 420000,
     "option": "TRF ET20S-4Z2",
     "stock": 1,
@@ -267,25 +291,25 @@
     }
   },
   {
-    "id": "Tianneng80V4PzS400Ah",
-    "code": "20000065258",
-    "name": "АКБ Tianneng 80V 4 PzS 400Ah",
-    "price": 350000,
-    "option": "TRF E30-4J2H-S",
+    "id": "Hawker24V3PzB225Ah",
+    "code": "20000067166",
+    "name": "АКБ Hawker 24V 3 PzB 225Ah",
+    "price": 211676,
+    "option": "56902",
     "stock": 1,
     "sizes": {
-      "1028x711x741": 350000
+      "760x170x675": 211676
     }
   },
   {
-    "id": "Tianneng48V4PzS560Ah",
-    "code": "20000067282",
-    "name": "АКБ Tianneng 48V 4 PzS 560Ah",
-    "price": 365000,
-    "option": "ПП с акваматиком",
-    "stock": 2,
+    "id": "Union24V6PzS750Ah",
+    "code": "20000067341",
+    "name": "АКБ Union 24V 6 PzS 750Ah",
+    "price": 244872,
+    "option": "57552",
+    "stock": 1,
     "sizes": {
-      "1216x355x772": 360000
+      "820x375x625": 244872
     }
   },
   {
@@ -294,128 +318,149 @@
     "name": "АКБ Chilwee 6-EVF-80A",
     "price": 23000,
     "option": "2",
-    "stock": 3,
+    "stock": 4,
     "sizes": {
       "259x168x211": 25000
     }
   },
   {
-    "id": "Union48V7PzS560Ah",
-    "code": "20000030326",
-    "name": "АКБ Union 48V 7PzS 560Ah",
-    "price": 352413,
-    "option": "залитый",
-    "stock": 2,
-    "sizes": {
-      "1030x780x495": 352413,
-      "905x815x479": 352413
-    }
-  },
-  {
-    "id": "Tianneng24V4PzS400Ah",
+    "id": "Tianneng24V4Pzs400Ah",
     "code": "20000067330",
-    "name": "АКБ Tianneng 24V 4 PzS 400Ah",
+    "name": "АКБ Tianneng 24V 4 Pzs 400Ah",
     "price": 110000,
-    "option": "сн с PS15RM  серийный № 30231200999",
-    "stock": 3,
+    "option": "ПП",
+    "stock": 1,
     "sizes": {
       "830x273x625": 110000
     }
   },
   {
-    "id": "Tianneng24V3PzS465Ah",
-    "code": "20000067116",
-    "name": "АКБ Tianneng 24V 3 PzS 465Ah",
-    "price": 125000,
-    "option": "мск сн.40230300026 NL",
+    "id": "LiionAdvancedEnergy48V432Ah",
+    "code": "20000051119",
+    "name": "АКБ Li-ion Advanced Energy 48V 432Ah",
+    "price": 1166704,
+    "option": "Россия-558",
     "stock": 1,
     "sizes": {
-      "800x218x786": 125000
+      "1220x424x782": 1166704
     }
   },
   {
-    "id": "EKT36V175AhLiion",
+    "id": "Noblelift24V150AhLiion620*215*630(PT20L)#920600100053",
+    "code": "20000051606",
+    "name": "АКБ Noblelift 24V 150Ah Li-ion 620*215*630 мм (PT20L) #920600100053",
+    "price": 191600,
+    "option": "Россия-607",
+    "stock": 1,
+    "sizes": {
+      "": 191600
+    }
+  },
+  {
+    "id": "LiionEKT36V175Ah560*610*389",
     "code": "20000063767",
-    "name": "АКБ EKT 36V 175Ah Li-ion",
-    "price": 181869,
+    "name": "АКБ Li-ion EKT 36V 175Ah 560*610*389 мм",
+    "price": 171707,
     "option": "Магнит",
     "stock": 3,
     "sizes": {
-      "560x610x389": 181869
+      "": 171707
     }
   },
   {
-    "id": "Union48V5PzS775Ah",
-    "code": "20000060851",
-    "name": "АКБ Union 48V 5 PzS 775Ah",
-    "price": 426362,
-    "option": "сухой",
-    "stock": 3,
+    "id": "Union48V7PzS560Ah",
+    "code": "20000057349",
+    "name": "АКБ Union 48V 7 PzS 560Ah",
+    "price": 345128,
+    "option": "залитый",
+    "stock": 1,
     "sizes": {
-      "1216x428x772": 426362
+      "905x815x479": 345128
     }
   },
   {
-    "id": "Union48V5PzS400Ah",
-    "code": "20000032290",
-    "name": "АКБ Union 48V 5PzS 400Ah",
-    "price": 242064,
-    "option": "сухой",
-    "stock": 4,
+    "id": "Union48V4PzS620Ah",
+    "code": "20000058730",
+    "name": "АКБ Union 48V 4 PzS 620Ah",
+    "price": 373095,
+    "option": "залитый",
+    "stock": 2,
     "sizes": {
-      "965x605x465": 268407,
-      "815x740x555": 335034
+      "1216x355x772": 373095,
+      "1030x440x767": 409000
     }
   },
   {
     "id": "Union48V5PzS625Ah",
     "code": "20000034888",
     "name": "АКБ Union 48V 5 PzS 625Ah",
-    "price": 389788,
+    "price": 381731,
     "option": "залитый",
     "stock": 2,
     "sizes": {
-      "1027x526x625": 389788,
-      "1030x700x780": 477341
+      "1027x526x625": 381731,
+      "1030x700x780": 462862
     }
   },
   {
-    "id": "Union48V6PzS750Ah",
-    "code": "20000039116",
-    "name": "АКБ Union 48V 6 PzS 750Ah",
-    "price": 422236,
-    "option": "сухой",
-    "stock": 1,
+    "id": "12V75AhChallengerEVG1275",
+    "code": "20000067926",
+    "name": "АКБ 12V 75Ah Challenger EVG12-75",
+    "price": 16650,
+    "option": "Россия-540",
+    "stock": 2,
     "sizes": {
-      "827x735x625": 422236
+      "GEL": 16650
     }
   },
   {
-    "id": "Tianneng48V7PzB700Ah",
+    "id": "Tianneng48V700Ah",
     "code": "20000054685",
-    "name": "АКБ Tianneng 48V 7 PzB 700Ah",
+    "name": "АКБ Tianneng 48V 700Ah",
     "price": 400000,
     "option": "04.24",
-    "stock": 2,
+    "stock": 1,
     "sizes": {
       "980x538x760": 400000
     }
   },
   {
-    "id": "Liion2450(PTE15Q2a)#510837010003",
+    "id": "TRF48V480Ah",
+    "code": "20000067975",
+    "name": "АКБ TRF 48V 480Ah",
+    "price": 249000,
+    "option": "TRF E15-4J2H-M",
+    "stock": 1,
+    "sizes": {
+      "835x526x741": 249000
+    }
+  },
+  {
+    "id": "Noblelift2450Liion(PTE15Q2a)#510837010003",
     "code": "20000067989",
-    "name": "АКБ Li-ion 24/50Ач (PTE15Q2-a) #510837010003",
+    "name": "АКБ Noblelift 24 50Ач Li-ion (PTE15Q2-a) #510837010003",
     "price": 45000,
     "option": "Россия-607",
-    "stock": 19,
+    "stock": 15,
     "sizes": {
       "": 45000
     }
   },
   {
-    "id": "Nexsys48V4NXS500",
+    "id": "Sunlight24V2PzB150Ah",
+    "code": "20000045650",
+    "name": "АКБ Sunlight 24V 2 PzB 150Ah",
+    "price": 109205,
+    "option": "58599",
+    "stock": 1,
+    "sizes": {
+      "650x145x590": 109205
+    }
+  },
+  {
+    "id": "Nexsys48V4NXS500Ah",
     "code": "20000047744",
-    "name": "АКБ Nexsys 48V 4 NXS 500",
+    "name": "АКБ Nexsys 48V 4 NXS 500Ah",
     "price": 226600,
     "option": "ППП 12.24",
     "stock": 1,
@@ -424,9 +469,31 @@
     }
   },
   {
-    "id": "Noblelift48V600Ah",
+    "id": "LiionEKT24V525Ah",
+    "code": "20000068061",
+    "name": "АКБ Li-ion EKT 24V 525Ah",
+    "price": 291901,
+    "option": "под склад",
+    "stock": 1,
+    "sizes": {
+      "827x324x625": 291901
+    }
+  },
+  {
+    "id": "LiionAdvancedEnergy24V206Ah",
+    "code": "20000059060",
+    "name": "АКБ Li-ion Advanced Energy 24V 206Ah",
+    "price": 235519,
+    "option": "Россия-558",
+    "stock": 2,
+    "sizes": {
+      "624x212x627": 235519
+    }
+  },
+  {
+    "id": "Noblelift48V6PzB600Ah",
     "code": "20000060398",
-    "name": "АКБ Noblelift 48V 600Ah",
+    "name": "АКБ Noblelift 48V 6 PzB 600Ah",
     "price": 450000,
     "option": "04.24",
     "stock": 1,
@@ -435,42 +502,21 @@
     }
   },
   {
-    "id": "Torch48V400Ah",
-    "code": "20000062069",
-    "name": "АКБ Torch 48V  400Ah",
-    "price": 370800,
-    "option": "ПП",
-    "stock": 1,
+    "id": "LiionEKT24V270Ah",
+    "code": "20000058918",
+    "name": "АКБ Li-ion EKT 24V 270Ah",
+    "price": 309514,
+    "option": "Rema 160 - Rema 80 RVI",
+    "stock": 2,
     "sizes": {
-      "835x526x741": 370800
+      "621x281x625": 309514,
+      "582x210x776": 245460
     }
   },
   {
-    "id": "Nexsys24V3NXS375",
-    "code": "20000036781",
-    "name": "АКБ Nexsys 24V 3 NXS 375",
-    "price": 458190,
-    "option": "03.24",
-    "stock": 1,
-    "sizes": {
-      "621x281x625": 458190
-    }
-  },
-  {
-    "id": "Tianneng48V6PzB560Ah",
-    "code": "20000050248",
-    "name": "АКБ Tianneng 48V 6 PzB 560Ah",
-    "price": 450000,
-    "option": "ПП",
-    "stock": 22,
-    "sizes": {
-      "980x538x670": 450000
-    }
-  },
-  {
-    "id": "Noblelift80V500Ah1016*688*760(FE4P3035N)",
+    "id": "Noblelift80V5PzB500Ah1016*688*760(FE4P3035N)",
     "code": "20000061134",
-    "name": "АКБ Noblelift 80V 500Ah 1016*688*760 (для FE4P30-35N)",
+    "name": "АКБ Noblelift 80V 5 PzB 500Ah 1016*688*760 мм (FE4P30-35N)",
     "price": 600000,
     "option": "ПП",
     "stock": 2,
@@ -490,25 +536,37 @@
     }
   },
   {
-    "id": "BAH48V400Ah980*611*495",
-    "code": "20000020951",
-    "name": "АКБ BAH 48V 400Ah 980*611*495",
-    "price": 253799,
-    "option": "ПП",
-    "stock": 1,
+    "id": "Noblelift24V40AhLiion(PTE15Q(NobleliftRus0)",
+    "code": "20000055176",
+    "name": "АКБ Noblelift 24V/40Ah Li-ion (PTE15Q(характеристика  Noblelift Rus 0)",
+    "price": 36000,
+    "option": "Россия-607 (для PTE15N Pro)",
+    "stock": 4,
     "sizes": {
-      "": 253799
+      "PTE15N": 36000
     }
   },
   {
-    "id": "Tianneng24V270Ah",
+    "id": "Tianneng24V3PzB270Ah",
     "code": "20000028210",
-    "name": "АКБ Tianneng 24V 270Ah",
+    "name": "АКБ Tianneng 24V 3PzB 270Ah",
     "price": 110000,
-    "option": "",
-    "stock": 30,
+    "option": "сн. с PS16L 30231100342",
+    "stock": 19,
     "sizes": {
-      "размер": 110000
+      "752x172x657": 110000
+    }
+  },
+  {
+    "id": "LiionEKT48V405Ah",
+    "code": "20000054816",
+    "name": "АКБ Li-ion EKT 48V 405Ah",
+    "price": 654202,
+    "option": "EKT",
+    "stock": 2,
+    "sizes": {
+      "1030x780x495": 654202,
+      "990x545x609": 738583
     }
   },
   {
@@ -516,49 +574,104 @@
     "code": "20000060802",
     "name": "АКБ Noblelift 48V 420Ah",
     "price": 280000,
-    "option": "Мск 07.10.2024",
-    "stock": 5,
+    "option": "ПП",
+    "stock": 1,
     "sizes": {
       "": 280000
     }
   },
   {
-    "id": "EKT24V30ALiion",
-    "code": "20000061070",
-    "name": "Устройство зарядное EKT 24V 30A Li-ion",
-    "price": 10742,
-    "option": "58593",
-    "stock": 1,
+    "id": "Noblelift48V50AhLiion(ECL15N)#920600100122",
+    "code": "20000055977",
+    "name": "АКБ Noblelift 48V 50Ah Li-ion (для ECL15N) #920600100122",
+    "price": 109000,
+    "option": "Россия-607",
+    "stock": 7,
     "sizes": {
-      "": 10742
+      "": 109000
+    }
+  },
+  {
+    "id": "Noblelift24V20AhLiion(PTE15QB)#509937010009",
+    "code": "20000068505",
+    "name": "АКБ Noblelift 24V 20Ah Li-ion (PTE15Q-B) #509937010009",
+    "price": 25750,
+    "option": "Россия-607",
+    "stock": 3,
+    "sizes": {
+      "": 25750
     }
   },
   {
     "id": "Trojan12V150Ah329181274",
     "code": "20000069031",
     "name": "АКБ Trojan 12V 150Ah 329х181х274 мм",
-    "price": 37252,
+    "price": 36122,
     "option": "снят с SC14H SE сер.90230900040",
     "stock": 18,
     "sizes": {
-      "": 37252
+      "": 36122
     }
   },
   {
-    "id": "Tianneng48V4PzS600Ah",
+    "id": "Chilwee6EVF110A332*146*219",
+    "code": "20000069036",
+    "name": "АКБ Chilwee 6-EVF-110A 332*146*219 мм",
+    "price": 31200,
+    "option": "Россия-540",
+    "stock": 2,
+    "sizes": {
+      "": 28000
+    }
+  },
+  {
+    "id": "EKT256V60AhLiion",
+    "code": "20000069040",
+    "name": "АКБ EKT 25.6V 60Ah Li-ion",
+    "price": 112182,
+    "option": "EKT",
+    "stock": 2,
+    "sizes": {
+      "290x205x230": 112182
+    }
+  },
+  {
+    "id": "Tianneng48V600Ah",
     "code": "20000069284",
-    "name": "АКБ Tianneng 48V 4 PzS 600Ah",
-    "price": 247776,
+    "name": "АКБ Tianneng 48V 600Ah",
+    "price": 240261,
     "option": "сн. с RT16Pro 35230200149",
     "stock": 1,
     "sizes": {
-      "1216x355x754": 247776
+      "1216x355x754": 240261
     }
   },
   {
-    "id": "Noblelift12150SPN15370170290",
+    "id": "EKT512V205AhLiion",
+    "code": "20000069415",
+    "name": "АКБ EKT 51.2V 205Ah Li-ion",
+    "price": 318229,
+    "option": "EKT",
+    "stock": 2,
+    "sizes": {
+      "756x361x640": 318229
+    }
+  },
+  {
+    "id": "LiionEKT24V450Ah",
+    "code": "20000069419",
+    "name": "АКБ Li-ion EKT 24V 450Ah",
+    "price": 329676,
+    "option": "EKT",
+    "stock": 2,
+    "sizes": {
+      "620x350x780": 329676
+    }
+  },
+  {
+    "id": "Noblelift12V150Ah370*170*290(SPN10SPN15)",
     "code": "20000065718",
-    "name": "АКБ Noblelift 12в/150ач для SPN15 370х170х290 мм",
+    "name": "АКБ Noblelift 12V 150Ah 370*170*290 мм (SPN10/SPN15)",
     "price": 35500,
     "option": "ПП",
     "stock": 3,
@@ -567,69 +680,69 @@
     }
   },
   {
-    "id": "Yellow24V4PzB220Ah",
-    "code": "20000069653",
-    "name": "АКБ Yellow 24V 4 PzB 220Ah",
-    "price": 123232,
-    "option": "ПП",
+    "id": "Tianeng80V230Ah",
+    "code": "20000069656",
+    "name": "АКБ Tianeng 80V 230Ah",
+    "price": 199274,
+    "option": "кзн E15-3i4K L97101539R0015177",
     "stock": 1,
     "sizes": {
-      "654x254x440": 123232
+      "835x526x783": 199274
     }
   },
   {
-    "id": "Union48V6PzS480Ah",
-    "code": "20000029577",
-    "name": "АКБ Union 48V 6PzS 480Ah",
-    "price": 292264,
-    "option": "сухие",
+    "id": "Union48V4PzS500Ah",
+    "code": "20000054610",
+    "name": "АКБ Union 48V 4 PzS 500Ah",
+    "price": 329804,
+    "option": "залитый",
     "stock": 1,
     "sizes": {
-      "965x605x465": 292264
+      "970x519x655": 329804
     }
   },
   {
-    "id": "EKT48V300AhLiion",
-    "code": "20000058037",
-    "name": "АКБ EKT 48V 300Ah Li-ion",
-    "price": 694687,
-    "option": "",
+    "id": "Noblelift24V375Ah790*210*625(PT25PC)",
+    "code": "20000055485",
+    "name": "АКБ Noblelift 24V 375Ah 790*210*625 мм (PT25P-C)",
+    "price": 144000,
+    "option": "Россия-607",
     "stock": 2,
     "sizes": {
-      "980x538x670": 694687
+      "": 144000
     }
   },
   {
-    "id": "EKT()24V270AhLiion",
-    "code": "20000060552",
-    "name": "АКБ EKT (с подогревом) 24V 270Ah Li-ion",
-    "price": 330687,
-    "option": "Frost, тест",
+    "id": "LiionAdvancedEnergy48V500Ah",
+    "code": "20000058520",
+    "name": "АКБ Li-ion Advanced Energy 48V 500Ah",
+    "price": 885019,
+    "option": "Россия-558",
     "stock": 1,
     "sizes": {
-      "620x355x625": 330687
+      "835x634x784": 885019
     }
   },
   {
-    "id": "EKT48V405AhLiion",
-    "code": "20000061832",
-    "name": "АКБ EKT 48V 405Ah Li-ion",
-    "price": 761688,
-    "option": "Тест Нестле",
-    "stock": 1,
-    "sizes": {
-      "990x545x609": 761688
-    }
-  },
-  {
-    "id": "Tianneng24V350Ah",
+    "id": "Tianneng24V3Pzs350Ah",
     "code": "20000042845",
-    "name": "АКБ Tianneng 24V 350Ah",
+    "name": "АКБ Tianneng 24V 3 Pzs 350Ah",
     "price": 110000,
     "option": "сн PT20H 20240204899",
-    "stock": 5,
+    "stock": 3,
     "sizes": {
       "624x284x627": 110000
+    }
+  },
+  {
+    "id": "LiionEKT48V450Ah",
+    "code": "20000059750",
+    "name": "АКБ Li-ion EKT 48V 450Ah",
+    "price": 909343,
+    "option": "EKT",
+    "stock": 1,
+    "sizes": {
+      "1218x428x754": 909343
     }
   },
   {
@@ -644,20 +757,9 @@
     }
   },
   {
-    "id": "RuTrike12V55Ah230*150*185",
-    "code": "20000050783",
-    "name": "АКБ RuTrike 12V 55Ah 230*150*185",
-    "price": 15000,
-    "option": "",
-    "stock": 2,
-    "sizes": {
-      "": 15000
-    }
-  },
-  {
     "id": "Union24V4PzB300Ah",
     "code": "20000053955",
-    "name": "АКБ Union 24V 4PzB 300Ah",
+    "name": "АКБ Union 24V 4 PzB 300Ah",
     "price": 157000,
     "option": "залитый и заряженный 06.24",
     "stock": 2,
@@ -668,40 +770,40 @@
   {
     "id": "Union24V3PzS375Ah",
     "code": "20000061488",
-    "name": "АКБ Union 24V 3PzS 375Ah",
-    "price": 190722,
+    "name": "АКБ Union 24V 3 PzS 375Ah",
+    "price": 184936,
     "option": "REMA 80A, 49576",
     "stock": 1,
     "sizes": {
-      "790x210x625": 190722
+      "790x210x625": 184936
     }
   },
   {
     "id": "Union48V3PzS375Ah",
     "code": "20000063645",
     "name": "АКБ Union 48V 3 PzS 375Ah",
-    "price": 301479,
+    "price": 292334,
     "option": "52135",
     "stock": 2,
     "sizes": {
-      "965x405x715": 301479
+      "965x405x715": 292334
     }
   },
   {
-    "id": "Union48V4PzS420Ah",
+    "id": "Union48V4Pzs420Ah",
     "code": "20000065456",
-    "name": "АКБ Union 48V 4PzS 420Ah",
-    "price": 327468,
+    "name": "АКБ Union 48V 4 Pzs 420Ah",
+    "price": 317535,
     "option": "54545",
     "stock": 1,
     "sizes": {
-      "972x455x700": 327468
+      "972x455x700": 317535
     }
   },
   {
-    "id": "LiionNoblelift48V12A#920600100099",
+    "id": "Noblelift4812ALiion(PTE15C)#920600100099",
     "code": "20000070414",
-    "name": "АКБ Li-ion Noblelift 48V 12A #920600100099",
+    "name": "АКБ Noblelift 48В 12Aч Li-ion ( PTE15-C) #920600100099",
     "price": 18000,
     "option": "ПП",
     "stock": 1,
@@ -710,20 +812,20 @@
     }
   },
   {
-    "id": "Liion2450(PTE15Q2A)",
+    "id": "Noblelift2450Liion(PTE15Q2A)#510837010003",
     "code": "20000070540",
-    "name": "АКБ Li-ion 24в/50Ач (PTE15Q2-A)",
+    "name": "АКБ Noblelift 24В 50Ач Li-ion (PTE15Q2-A) #510837010003",
     "price": 41200,
     "option": "ПП",
-    "stock": 15,
+    "stock": 12,
     "sizes": {
       "": 41200
     }
   },
   {
-    "id": "24V40Ah(PTE15NPro)",
+    "id": "Noblelift2440Liion(PTE15NPro)#920600100434",
     "code": "20000070552",
-    "name": "АКБ литиевая 24V 40Ah (PTE15N Pro)",
+    "name": "АКБ Noblelift 24В 40Ач Li-ion (PTE15N Pro) #920600100434",
     "price": 38500,
     "option": "ПП",
     "stock": 30,
@@ -732,53 +834,42 @@
     }
   },
   {
-    "id": "24210(PSB12",
-    "code": "20000033832",
-    "name": "Аккумуляторная батарея 24В/210Ач (PSB12",
-    "price": 110000,
-    "option": "ПП для PSB12",
-    "stock": 2,
-    "sizes": {
-      "790x212x462)": 110000
-    }
-  },
-  {
-    "id": "4820",
+    "id": "Noblelift4820Liion(PTE20Q2A)#510937010001",
     "code": "20000070565",
-    "name": "Литий-ионная АКБ 48В/20Ач",
+    "name": "АКБ Noblelift 48В 20Ач Li-ion (PTE20Q2-A) #510937010001",
     "price": 39900,
     "option": "NL 20.12.2024",
     "stock": 15,
     "sizes": {
-      "PTE20Q2-A": 39900
+      "": 39900
     }
   },
   {
-    "id": "Noblelift24V165Ah",
+    "id": "Noblelift24V165Ah650*146*590(PT16L)",
     "code": "20000046525",
-    "name": "АКБ Noblelift 24V 165Ah",
+    "name": "АКБ Noblelift 24V 165Ah 650*146*590 мм (PT16L)",
     "price": 65000,
     "option": "Проверка 10.23",
     "stock": 1,
     "sizes": {
-      "залитая": 65000
+      "": 65000
     }
   },
   {
-    "id": "Tianneng80V4PzS420Ah",
-    "code": "20000070757",
-    "name": "АКБ Tianneng 80V 4 PzS 420Ah",
-    "price": 363854,
-    "option": "Снят с E30-3i4K",
-    "stock": 2,
+    "id": "Noblelift4820Liion(PTE20N)#508537010000",
+    "code": "20000068354",
+    "name": "АКБ Noblelift 48В/20Ач Li-ion (PTE20N) #508537010000",
+    "price": 45000,
+    "option": "Россия-607",
+    "stock": 17,
     "sizes": {
-      "1025x750x780": 363854
+      "": 45000
     }
   },
   {
-    "id": "HawkerZeMaRail12V450AGM195*135*330",
+    "id": "HawkerZeMaRail12V450AhAGM195*135*330",
     "code": "20000051781",
-    "name": "АКБ Hawker ZeMaRail 12V 450 AGM размеры 195*135*330 мм",
+    "name": "АКБ Hawker ZeMaRail 12V 450Ah AGM 195*135*330 мм",
     "price": 9900,
     "option": "",
     "stock": 6,
@@ -787,31 +878,31 @@
     }
   },
   {
-    "id": "Tianneng48V5PzS700Ah",
-    "code": "20000057924",
-    "name": "АКБ Tianneng 48V 5 PzS 700Ah",
-    "price": 337864,
-    "option": "сн №35240200331  RT20ProH",
+    "id": "Union48V5PzS400Ah",
+    "code": "20000036687",
+    "name": "АКБ Union 48V 5 PzS 400Ah",
+    "price": 324871,
+    "option": "",
     "stock": 1,
     "sizes": {
-      "1028x710x769": 337864
+      "815x740x555": 324871
     }
   },
   {
-    "id": "1280SpaceAsia85CaCa(110D26L)260*173*22020",
-    "code": "20000071098",
-    "name": "АКБ 12В 80Ач Space Asia 85 Ач о.п Ca/Ca (110D26L) 260*173*220 мм 20",
-    "price": 19000,
-    "option": "",
-    "stock": 2,
+    "id": "EKT80V450AhLiion",
+    "code": "20000064155",
+    "name": "АКБ EKT 80V 450Ah Li-ion",
+    "price": 986168,
+    "option": "53052",
+    "stock": 1,
     "sizes": {
-      "3": 19000
+      "1028x711x741": 986168
     }
   },
   {
-    "id": "Tianneng24V315Ah790*210*590",
+    "id": "Tianneng24V3Pzs315Ah790*210*590(560)",
     "code": "20000055955",
-    "name": "АКБ Tianneng 24V 315Ah 790*210*590",
+    "name": "АКБ Tianneng 24V 3 Pzs 315Ah 790*210*590 мм (высота элемента 560 мм)",
     "price": 110000,
     "option": "сн PT25P-C   20230600182",
     "stock": 4,
@@ -820,25 +911,179 @@
     }
   },
   {
-    "id": "Noblelift48V360Ah",
-    "code": "20000071268",
-    "name": "АКБ Noblelift 48V 360Ah",
-    "price": 230000,
-    "option": "сн.мск.4CL36190",
-    "stock": 2,
-    "sizes": {
-      "995x520x720": 230000
-    }
-  },
-  {
-    "id": "HawkerZeMaRail12V170AGM561*125*317",
+    "id": "HawkerZeMaRail12V170AhAGM561*125*317",
     "code": "20000054008",
-    "name": "АКБ Hawker ZeMaRail 12V 170 AGM 561*125*317 мм",
+    "name": "АКБ Hawker ZeMaRail 12V 170Ah AGM 561*125*317 мм",
     "price": 13000,
     "option": "",
     "stock": 1,
     "sizes": {
       "": 13000
+    }
+  },
+  {
+    "id": "LiionEKT48V300Ah",
+    "code": "20000060496",
+    "name": "АКБ Li-ion EKT 48V 300Ah",
+    "price": 550903,
+    "option": "EKT",
+    "stock": 1,
+    "sizes": {
+      "815x740x475": 550903
+    }
+  },
+  {
+    "id": "Union48V5Pzs400Ah",
+    "code": "20000071463",
+    "name": "АКБ Union 48V 5 Pzs 400Ah",
+    "price": 262859,
+    "option": "залитый",
+    "stock": 1,
+    "sizes": {
+      "975x615x495": 262859
+    }
+  },
+  {
+    "id": "TimbergT062006V200Ah244*190*27531",
+    "code": "20000055920",
+    "name": "АКБ Timberg T06200 6V 200 Ah 244*190*275 мм 31 кг",
+    "price": 24400,
+    "option": "Россия-540",
+    "stock": 4,
+    "sizes": {
+      "": 24400
+    }
+  },
+  {
+    "id": "SPACE110Ah",
+    "code": "20000047362",
+    "name": "АКБ SPACE 110 Ah обратная полярность",
+    "price": 11856,
+    "option": "Россия-614",
+    "stock": 5,
+    "sizes": {
+      "Ca/Ca": 11856
+    }
+  },
+  {
+    "id": "50B19L44370A(187x127x227)",
+    "code": "20000059072",
+    "name": "АКБ Медведь 50B19L 44 Ач 370A о.п. (187x127x227)",
+    "price": 4200,
+    "option": "Россия-614",
+    "stock": 1,
+    "sizes": {
+      "": 4200
+    }
+  },
+  {
+    "id": "UNO6190N1901200513*223*217",
+    "code": "00000034252",
+    "name": "АКБ UNO 6СТ-190N 190Ач 1200А пп конус 513*223*217",
+    "price": 11500,
+    "option": "Россия-614",
+    "stock": 3,
+    "sizes": {
+      "": 15500
+    }
+  },
+  {
+    "id": "Uno140513*189*217",
+    "code": "20000066102",
+    "name": "АКБ Uno 140 Ач обратная полярность 513*189*217 мм",
+    "price": 13190,
+    "option": "Россия-614",
+    "stock": 6,
+    "sizes": {
+      "": 12633
+    }
+  },
+  {
+    "id": "Uno77276*175*190",
+    "code": "20000066878",
+    "name": "АКБ Uno 77 Ач обратная полярность 276*175*190",
+    "price": 6276,
+    "option": "Россия-614",
+    "stock": 5,
+    "sizes": {
+      "": 6276
+    }
+  },
+  {
+    "id": "HQ110AhL5",
+    "code": "20000068069",
+    "name": "АКБ Медведь HQ 110 Ah прямая полярность L5",
+    "price": 12000,
+    "option": "Россия-614",
+    "stock": 1,
+    "sizes": {
+      "353x190x175": 12000
+    }
+  },
+  {
+    "id": "Tornado77276*175*190",
+    "code": "20000068072",
+    "name": "АКБ Tornado 77 Ач обратная полярность 276*175*190",
+    "price": 6500,
+    "option": "Россия-614",
+    "stock": 1,
+    "sizes": {
+      "": 6500
+    }
+  },
+  {
+    "id": "100L5",
+    "code": "20000069185",
+    "name": "АКБ ТЮМЕНЬ СТАНДАРТ 100Ач обратная полярность L5",
+    "price": 10015,
+    "option": "Россия-614",
+    "stock": 2,
+    "sizes": {
+      "352x190x175": 10015
+    }
+  },
+  {
+    "id": "120hHQ311000",
+    "code": "20000071734",
+    "name": "АКБ 120 Аh Медведь HQ 31-1000 конус",
+    "price": 13448,
+    "option": "Россия-614",
+    "stock": 3,
+    "sizes": {
+      "": 13448
+    }
+  },
+  {
+    "id": "Uno100",
+    "code": "20000071735",
+    "name": "АКБ Uno 100 Ач обратная полярность",
+    "price": 7925,
+    "option": "Россия-614",
+    "stock": 5,
+    "sizes": {
+      "": 7925
+    }
+  },
+  {
+    "id": "SpaceAsia110Ah",
+    "code": "20000071737",
+    "name": "АКБ Space Asia 110Ah прямая полярность",
+    "price": 11483,
+    "option": "Россия-614",
+    "stock": 5,
+    "sizes": {
+      "": 11483
+    }
+  },
+  {
+    "id": "SpaceAsia80CaCa(105D26L)",
+    "code": "20000071738",
+    "name": "АКБ Space Asia 80 Ач обратная полярность Ca/Ca (105D26L)",
+    "price": 8531,
+    "option": "Россия-614",
+    "stock": 3,
+    "sizes": {
+      "": 8531
     }
   }
 ]

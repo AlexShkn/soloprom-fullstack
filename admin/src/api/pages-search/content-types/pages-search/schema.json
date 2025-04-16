@@ -1,0 +1,36 @@
+{
+  "kind": "collectionType",
+  "collectionName": "pages_searches",
+  "info": {
+    "singularName": "pages-search",
+    "pluralName": "pages-searches",
+    "displayName": "PagesSearch"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "type": {
+      "type": "string"
+    },
+    "img": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": false
+    },
+    "url": {
+      "type": "string"
+    },
+    "title": {
+      "type": "string"
+    },
+    "description": {
+      "type": "string"
+    }
+  }
+}

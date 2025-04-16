@@ -13,6 +13,9 @@ interface FilterState {
   filterComplete: boolean
   filteredPage: string
   priceRange: { min: number | undefined; max: number | undefined }
+  viewMode: string
+
+  setViewMode: (mode: string) => void
   setInitProducts: (initProducts: CardDataProps[]) => void
   setFoundProducts: (searchProducts: CardDataProps[]) => void
   setFilters: (filters: Record<string, string[] | number>) => void
@@ -42,7 +45,9 @@ const useSearchStore = create<FilterState>((set) => ({
   filterComplete: false,
   hasFilters: false,
   priceRange: { min: undefined, max: undefined },
+  viewMode: 'grid',
 
+  setViewMode: (viewMode) => set({ viewMode }),
   setInitProducts: (initProducts) => set({ initProducts }),
   setFoundProducts: (foundProducts) => set({ foundProducts }),
   setFilteredPage: (filteredPage) => set({ filteredPage }),

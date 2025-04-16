@@ -41,10 +41,10 @@ export async function generateMetadata({
     openGraph: {
       title: title,
       description: description,
-      url: `https://soloprom.ru${canonicalUrl}`,
+      url: `${process.env.NEXT_PUBLIC_CLIENT_URL}${canonicalUrl}`,
       images: [
         {
-          url: `https://soloprom.ru/catalog/${categoryData.name}/category.png`,
+          url: `${process.env.NEXT_PUBLIC_CLIENT_URL}/catalog/${categoryData.name}/category.png`,
           alt: categoryData.title || 'Категория',
         },
       ],

@@ -7,15 +7,15 @@ import { Callback } from '@/components/Callback/Callback'
 import { PaymentDelivery } from '@/components/PaymentDelivery/PaymentDelivery'
 import { ContactsMap } from '@/components/ContactsMap/ContactsMap'
 import PageWrapper from './PageWrapper'
+import TransitionWrapper from '@/providers/TransitionWrapper'
 import { FavoriteTabs } from '@/components/FavoriteTabs/FavoriteTabs'
 import { getPopularProducts } from '@/utils/api/products'
 import { CardDataProps, FavoriteList } from '@/types/products.types'
-import TransitionWrapper from '@/providers/TransitionWrapper'
 
 export const metadata = {
-  title: 'Аккумуляторы, шины и масла для специальной техники',
+  title: 'Интернет магазин аккумуляторов, шин и масел для специальной техники',
   description:
-    'Запчасти для погрузчиков, экскаваторов и другой специальной техники. Аккумуляторы и шины, колеса и колесные опоры. Toyota, Komatsu, Jungheinrich и др. Доставка по всей России. Опт и розница',
+    'Запчасти для погрузчиков, экскаваторов и другой специальной техники. Аккумуляторы, шины, колеса и колесные опоры. Toyota, Komatsu, Jungheinrich и др. Доставка по всей России. Опт и розница',
   openGraph: {
     title: 'Запчасти для специальной и сельскохозяйственной техники',
     siteName:
@@ -24,13 +24,13 @@ export const metadata = {
       'Тяговые аккумуляторы, промышленные шины, колесные опоры из наличия и на заказ',
     images: [
       {
-        url: 'https://soloprom.ru/preview.jpg',
+        url: `${process.env.NEXT_PUBLIC_CLIENT_URL}/preview.jpg`,
         alt: 'Главная страница',
       },
     ],
-    url: 'https://soloprom.ru',
+    url: `${process.env.NEXT_PUBLIC_CLIENT_URL}`,
   },
-  alternates: { canonical: 'https://soloprom.ru' },
+  alternates: { canonical: `${process.env.NEXT_PUBLIC_CLIENT_URL}` },
 }
 
 export default async function Home() {

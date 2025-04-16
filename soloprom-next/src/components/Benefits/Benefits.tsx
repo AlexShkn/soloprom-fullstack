@@ -4,6 +4,84 @@ import Image from 'next/image'
 
 import './Benefits.scss'
 
+interface BenefitItem {
+  imageSrc: string
+  altText: string
+  iconHref: string
+  title: string
+  text: string
+}
+
+const benefitItems: BenefitItem[] = [
+  {
+    imageSrc: '/img/benefits/zp.png',
+    altText: 'Широкий ассортимент в наличии',
+    iconHref: '/img/sprite.svg#stock',
+    title: 'Широкий ассортимент в наличии',
+    text: 'Более 500 наименований на складе',
+  },
+  {
+    imageSrc: '/img/benefits/delivery.png',
+    altText: 'Отправка в любой регион России и страны СНГ',
+    iconHref: '/img/sprite.svg#delivery',
+    title: 'Отправка в любой регион России и страны СНГ',
+    text: 'Бесплатная доставка до транспортной компании',
+  },
+  {
+    imageSrc: '/img/benefits/search.png',
+    altText: 'Поиск и поставка запчастей под заказ',
+    iconHref: '/img/sprite.svg#search',
+    title: 'Поиск и поставка запчастей под заказ',
+    text: 'Оригинальные детали и их аналоги',
+  },
+  {
+    imageSrc: '/img/benefits/experience.png',
+    altText: 'Большой опыт в сфере',
+    iconHref: '/img/sprite.svg#experience',
+    title: 'Большой опыт в сфере',
+    text: '10 лет успешной работы',
+  },
+  {
+    imageSrc: '/img/benefits/contact.png',
+    altText: 'Прямые контракты с производителями',
+    iconHref: '/img/sprite.svg#contact',
+    title: 'Прямые контракты с производителями',
+    text: 'Запасные части отличного качества в кратчайшие сроки',
+  },
+  {
+    imageSrc: '/img/benefits/price.png',
+    altText: 'Гибкие цены',
+    iconHref: '/img/sprite.svg#price',
+    title: 'Гибкие цены',
+    text: 'Индивидуальный ценовой подход',
+  },
+]
+
+const BenefitItemComponent = ({ item }: { item: BenefitItem }) => {
+  return (
+    <li className="benefits__item relative min-h-56 overflow-hidden rounded-custom bg-accentBlue p-7">
+      <Image
+        className="absolute -right-2.5 top-0 h-full w-52 object-cover transition-transform"
+        src={item.imageSrc}
+        alt={item.altText}
+        width={200}
+        height={220}
+        priority
+      />
+
+      <svg className="icon mb-2.5 h-12 w-12 fill-grayColor">
+        <use xlinkHref={item.iconHref}></use>
+      </svg>
+      <h3 className="benefits__item-title relative z-[1] mb-2.5 max-w-64 text-xl font-bold leading-5 text-white">
+        {item.title}
+      </h3>
+      <p className="benefits__item-text relative z-[1] max-w-72 leading-5 text-white">
+        {item.text}
+      </p>
+    </li>
+  )
+}
+
 export const Benefits = () => {
   return (
     <section className="benefits section-offset bg-sectionWhite">
@@ -11,119 +89,9 @@ export const Benefits = () => {
         <h2 className="section-title">Преимущества</h2>
 
         <ul className="benefits__list grid grid-cols-3 gap-3">
-          <li className="benefits__item relative min-h-[220px] overflow-hidden rounded-custom bg-accentBlue p-7">
-            <Image
-              className="absolute -right-2.5 top-0 h-full w-[200px] object-cover transition-transform"
-              src="/img/benefits/zp.png"
-              alt=""
-              width={200}
-              height={220}
-            />
-            <svg className="icon mb-2.5 h-[50px] w-[50px] fill-grayColor">
-              <use xlinkHref="/img/sprite.svg#stock"></use>
-            </svg>
-            <h3 className="benefits__item-title relative z-[1] mb-2.5 max-w-[250px] text-xl font-bold leading-5 text-white">
-              Широкий ассортимент в наличии
-            </h3>
-            <p className="benefits__item-text relative z-[1] leading-5 text-white">
-              Более 500 наименований на складе
-            </p>
-          </li>
-          <li className="benefits__item relative min-h-[220px] overflow-hidden rounded-custom bg-accentBlue p-7">
-            <Image
-              className="absolute -right-2.5 top-0 h-full w-[200px] object-cover transition-transform"
-              src="/img/benefits/delivery.png"
-              alt=""
-              width={200}
-              height={220}
-            />
-
-            <svg className="icon mb-2.5 h-[50px] w-[50px] fill-grayColor">
-              <use xlinkHref="/img/sprite.svg#delivery"></use>
-            </svg>
-            <h3 className="benefits__item-title relative z-[1] mb-2.5 max-w-[250px] text-xl font-bold leading-5 text-white">
-              Отправка в любой регион России и страны СНГ
-            </h3>
-            <p className="benefits__item-text relative z-[1] leading-5 text-white">
-              Бесплатная доставка до транспортной компании
-            </p>
-          </li>
-          <li className="benefits__item relative min-h-[220px] overflow-hidden rounded-custom bg-accentBlue p-7">
-            <Image
-              className="absolute -right-2.5 top-0 h-full w-[200px] object-cover"
-              src="/img/benefits/search.png"
-              alt=""
-              width={200}
-              height={220}
-            />
-
-            <svg className="icon mb-2.5 h-[50px] w-[50px] fill-grayColor">
-              <use xlinkHref="/img/sprite.svg#search"></use>
-            </svg>
-            <h3 className="benefits__item-title relative z-[1] mb-2.5 max-w-[250px] text-xl font-bold leading-5 text-white">
-              Поиск и поставка запчастей под заказ
-            </h3>
-            <p className="benefits__item-text relative z-[1] leading-5 text-white">
-              Оригинальные детали и их аналоги
-            </p>
-          </li>
-          <li className="benefits__item relative min-h-[220px] overflow-hidden rounded-custom bg-accentBlue p-7">
-            <Image
-              className="absolute -right-2.5 top-0 h-full w-[200px] object-cover transition-transform"
-              src="/img/benefits/experience.png"
-              alt=""
-              width={200}
-              height={220}
-            />
-
-            <svg className="icon mb-2.5 h-[50px] w-[50px] fill-grayColor">
-              <use xlinkHref="/img/sprite.svg#experience"></use>
-            </svg>
-            <h3 className="benefits__item-title relative z-[1] mb-2.5 max-w-[250px] text-xl font-bold leading-5 text-white">
-              Большой опыт в сфере
-            </h3>
-            <p className="benefits__item-text relative z-[1] leading-5 text-white">
-              10 лет успешной работы
-            </p>
-          </li>
-          <li className="benefits__item relative min-h-[220px] overflow-hidden rounded-custom bg-accentBlue p-7">
-            <Image
-              className="absolute -right-2.5 top-0 h-full w-[200px] object-cover transition-transform"
-              src="/img/benefits/contact.png"
-              alt=""
-              width={200}
-              height={220}
-            />
-
-            <svg className="icon mb-2.5 h-[50px] w-[50px] fill-grayColor">
-              <use xlinkHref="/img/sprite.svg#contact"></use>
-            </svg>
-            <h3 className="benefits__item-title relative z-[1] mb-2.5 max-w-[250px] text-xl font-bold leading-5 text-white">
-              Прямые контракты с производителями
-            </h3>
-            <p className="benefits__item-text relative z-[1] leading-5 text-white">
-              Запасные части хорошего качества в кратчайшие сроки
-            </p>
-          </li>
-          <li className="benefits__item relative min-h-[220px] overflow-hidden rounded-custom bg-accentBlue p-7">
-            <Image
-              className="absolute -right-2.5 top-0 h-full w-[200px] object-cover transition-transform"
-              src="/img/benefits/price.png"
-              alt=""
-              width={200}
-              height={220}
-            />
-
-            <svg className="icon mb-2.5 h-[50px] w-[50px] fill-grayColor">
-              <use xlinkHref="/img/sprite.svg#price"></use>
-            </svg>
-            <h3 className="benefits__item-title relative z-[1] mb-2.5 max-w-[250px] text-xl font-bold leading-5 text-white">
-              Гибкие цены
-            </h3>
-            <p className="benefits__item-text relative z-[1] leading-5 text-white">
-              Индивидуальный ценовой подход
-            </p>
-          </li>
+          {benefitItems.map((item, index) => (
+            <BenefitItemComponent key={index} item={item} />
+          ))}
         </ul>
       </div>
     </section>

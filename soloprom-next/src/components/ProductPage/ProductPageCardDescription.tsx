@@ -7,15 +7,19 @@ import { AdaptiveValues } from '@/utils/getAdaptiveValue'
 import { ProductsCardPropTypes } from '@/types/products.types'
 import { useCartStore } from '@/store/cartStore'
 import { useModalsStore } from '@/store/modalsStore'
+import Link from 'next/link'
 
 interface DescriptionTypes extends ProductsCardPropTypes {
   // variantValue: string
   // setVariantValue: (value: string) => void
 }
 
+type CatalogKeys = 'tires' | 'battery' | 'oils'
+
 const wordAdaptive: AdaptiveValues<{
   sizes: { tires: string; battery: string }
   types: { tires: string; battery: string; oils: string }
+  catalogs: { tires: string; battery: string; oils: string }
 }> = {
   sizes: {
     tires: 'Размерность',
@@ -25,6 +29,11 @@ const wordAdaptive: AdaptiveValues<{
     tires: 'Тип шины',
     battery: 'Тип аккумулятора',
     oils: 'Тип жидкости',
+  },
+  catalogs: {
+    tires: 'shini',
+    battery: 'accumulyatori',
+    oils: 'maslo',
   },
 }
 
@@ -89,28 +98,34 @@ export const ProductPageCardDescription: React.FC<DescriptionTypes> = ({
     modalCallbackStateChange(true)
   }
 
-  const fastOrderHandle = () => {
-    setFastOrderProduct({
-      productId,
-      name,
-      variant: variantValue,
-      price: defaultPrice,
-      url,
-      img,
-    })
-    modalCallbackStateChange(true)
-  }
+  const catalogValue = (
+    Object.keys(wordAdaptive.catalogs) as (keyof typeof wordAdaptive.catalogs)[]
+  ).includes(categoryName as keyof typeof wordAdaptive.catalogs)
+    ? wordAdaptive.catalogs[categoryName as keyof typeof wordAdaptive.catalogs]
+    : undefined
 
   return (
     <div className="flex flex-col">
-      <div className="border-1 mb-5 flex items-center justify-between border-b border-grayColor pt-6">
-        <Image
-          src={`/img/catalog/brands-logo/${brandName.toLowerCase()}.jpg`}
-          width={144}
-          height={48}
-          className="h-12 w-36 object-contain text-left"
-          alt=""
-        />
+      <div className="border-1 mb-5 flex items-center justify-between pt-6">
+        <div className="flex flex-col items-center gap-1 mds:flex-row mds:gap-3">
+          <Image
+            src={`/img/catalog/brands-logo/${brandName.toLowerCase()}.webp`}
+            width={96}
+            height={40}
+            className="h-10 w-24 object-contain text-left"
+            alt=""
+          />
+          <Link
+            href={`/catalog/${catalogValue}-${brandName.toLowerCase()}`}
+            className="link-hover flex items-center gap-1 rounded-custom bg-darkBlue px-4 py-1 text-white"
+          >
+            <svg className="icon h-5 w-5 fill-white">
+              <use xlinkHref={`/img/sprite.svg#catalog-${categoryName}`}></use>
+            </svg>
+            Каталог {brandName}
+          </Link>
+        </div>
+
         <button
           onClick={() => showMessageWindow()}
           type="button"
@@ -120,15 +135,9 @@ export const ProductPageCardDescription: React.FC<DescriptionTypes> = ({
           Задать вопрос
         </button>
       </div>
-      <button
-        type="button"
-        onClick={() => fastOrderHandle()}
-        className={`my-5 ml-auto font-medium text-[#dd3824] underline`}
-      >
-        Купить в 1 клик
-      </button>
+
       <div className="min-w-64">
-        <div className="mb-1 flex items-center rounded bg-grayColor px-5 py-2.5 text-2xl font-medium shadow-sm">
+        <div className="mb-2.5 flex items-center border-b border-b-gray-400 pb-2.5 text-xl shadow-sm">
           <span>Основная информация</span>
         </div>
 

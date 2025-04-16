@@ -3,10 +3,10 @@ import { cn } from '@/utils/clsx'
 function Skeleton({
   className,
   ...props
-}: React.HTMLAttributes<HTMLDivElement>) {
+}: Readonly<React.HTMLAttributes<HTMLDivElement>>) {
   return (
     <div
-      className={cn('bg-muted animate-pulse rounded-md', className)}
+      className={cn('animate-pulse rounded-md bg-muted', className)}
       {...props}
     />
   )

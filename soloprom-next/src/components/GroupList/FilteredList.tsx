@@ -41,7 +41,6 @@ export const FilteredList: React.FC<Props> = ({
   checkedValues,
   handleResetFilters,
 }) => {
-  const [viewMode, setViewMode] = useState('grid')
   const {
     filters,
     setFilters,
@@ -51,6 +50,8 @@ export const FilteredList: React.FC<Props> = ({
     sort,
     setSort,
     setDataIsLoading,
+    viewMode,
+    setViewMode,
   } = useFilterStore()
 
   const filterKeysToIgnore = ['minPrice', 'maxPrice']

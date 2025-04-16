@@ -83,7 +83,7 @@ const ModalCallback: React.FC<ModalProps> = ({ fastOrderProduct }) => {
         toast.error('Ошибка при отправке формы.')
       }
     } catch (error) {
-      toast.error('Ошибка при отправке формы.')
+      toast.error(`Ошибка при отправке формы. ${error}`)
     } finally {
       setIsSubmitting(false)
       modalCallbackStateChange(false)

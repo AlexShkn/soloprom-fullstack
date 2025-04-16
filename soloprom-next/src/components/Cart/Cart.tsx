@@ -12,23 +12,32 @@ import { CartProductList } from './CartProductList'
 
 import { CartHeader } from './CartHeader'
 
+const CartEmptyState = () => (
+  <div className="page-container flex justify-center py-10 text-2xl font-medium">
+    Корзина пуста
+  </div>
+)
+
 export const Cart: React.FC = () => {
   const [formIsOpen, setFormIsOpen] = useState(false)
   const [isLoading, setIsLoading] = useState(true)
 
   const { cartState, totalAmount } = useCartStore()
 
-  const handleOpenForm = useCallback(() => {
-    setFormIsOpen(true)
-  }, [])
+  const handleOpenForm = useCallback(() => setFormIsOpen(true), [])
 
   useEffect(() => {
-    const timer = setTimeout(() => {
-      setIsLoading(false)
-    }, 500)
-
+    const timer = setTimeout(() => setIsLoading(false), 500)
     return () => clearTimeout(timer)
   }, [cartState])
+
+  if (isLoading) {
+    return (
+      <div className="flex h-80 w-full items-center justify-center">
+        <Loading size={10} />
+      </div>
+    )
+  }
 
   return (
     <>
@@ -37,11 +46,9 @@ export const Cart: React.FC = () => {
         <CartHeader title="Корзина" />
       </div>
 
-      {isLoading ? (
-        <Loading />
-      ) : cartState.length > 0 ? (
+      {cartState.length > 0 ? (
         <>
-          <div className="cart inner-container">
+          <div className="cart inner-container mb-12">
             <CartProductList cartState={cartState} />
           </div>
           <div className="cart__container flex flex-col items-center">
@@ -64,9 +71,7 @@ export const Cart: React.FC = () => {
           </div>
         </>
       ) : (
-        <div className="page-container flex justify-center py-10 text-2xl font-medium">
-          Корзина пуста
-        </div>
+        <CartEmptyState />
       )}
     </>
   )

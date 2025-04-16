@@ -1,32 +1,10 @@
 @use '@/styles/variables.scss';
 
-.page .hero {
-  @media (max-width: 991.98px) {
-    padding: 0 0 50px;
-  }
-
-  @media (max-width: 479.98px) {
-    padding: 0;
-  }
-}
-
 .hero {
-  // .hero__body
-
-  .hero__body {
-    grid-template-columns: calc(60% - 10px) calc(40% - 10px);
-
-    @media (max-width: 991.98px) {
-      grid-template-columns: 1fr;
-      gap: 5px;
-    }
-  }
-
   // .hero__card
 
   &__card {
     &--link {
-      transition: transform 0.3s ease 0s;
       @media (any-hover: hover) {
         &:hover {
           .hero__card-link {
@@ -38,29 +16,6 @@
           }
         }
       }
-
-      @media (max-width: 1399.98px) {
-        border-radius: 0;
-      }
     }
-  }
-
-  // .hero__title
-
-  &__title {
-    font-size: clamp(1.625rem, 1.1635rem + 1.5385vw, 2.5rem);
-  }
-
-  // .hero__subtitle
-
-  &__subtitle {
-    font-size: clamp(1rem, 0.8022rem + 0.6593vw, 1.375rem);
-    margin-bottom: clamp(1.25rem, 0.261rem + 3.2967vw, 3.125rem);
-  }
-
-  // .hero__card-title
-
-  &__card-title {
-    font-size: clamp(1.5rem, 1.3022rem + 0.6593vw, 1.875rem);
   }
 }

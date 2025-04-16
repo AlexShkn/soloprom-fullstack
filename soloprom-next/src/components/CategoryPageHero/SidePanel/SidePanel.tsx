@@ -172,7 +172,7 @@ export const SidePanel: React.FC<SidePanelProps> = ({ pageData }) => {
   const headBrand = brands && brands[0]?.headGroupTitle
 
   return (
-    <div className="scroll-bar z-30 order-2 max-h-[526px] flex-shrink-0 flex-grow-0 overflow-y-auto overflow-x-hidden overscroll-contain rounded bg-white p-4 shadow-custom md:order-none md:px-2.5 lg:w-auto">
+    <div className="scroll-bar z-30 order-2 hidden max-h-[326px] flex-shrink-0 flex-grow-0 overflow-y-auto overflow-x-hidden overscroll-contain rounded bg-white p-4 shadow-custom mds:flex mds:max-h-[526px] md:order-none md:px-2.5 lg:w-auto">
       <ul>
         {headGroup && (
           <li
@@ -189,17 +189,17 @@ export const SidePanel: React.FC<SidePanelProps> = ({ pageData }) => {
               </svg>
             </div>
 
-            <ul className="side-panel__drop-list pointer-events-none invisible z-20 hidden min-h-max w-full select-none flex-col rounded bg-white py-2.5 opacity-0 shadow-custom transition-all md:absolute md:left-[330px] md:top-0 md:w-[calc(100%-340px)] md:gap-2.5 md:p-7">
+            <ul className="side-panel__drop-list pointer-events-none invisible z-20 hidden min-h-max w-full select-none flex-wrap rounded bg-white py-2.5 opacity-0 shadow-custom transition-all md:absolute md:left-[330px] md:top-0 md:w-[calc(100%-340px)] md:gap-2.5 md:p-7">
               {model?.map((brand) => (
                 <li
                   key={brand.url}
-                  className="side-panel__drop-item md:border-1 h-auto px-2.5 transition-colors md:rounded md:border-accentBlue md:bg-none [&:nth-child(2n)]:bg-[#f2f2f2]"
+                  className="side-panel__drop-item md:border-1 h-auto px-2.5 transition-colors md:rounded md:border-accentBlue md:bg-none"
                 >
                   <Link
                     href={`/catalog/${brand.url}`}
                     className="inline-flex h-full w-full items-center justify-center px-2.5 py-2 text-center font-medium transition-colors"
                   >
-                    {brand.title}
+                    {brand.crumb}
                   </Link>
                 </li>
               ))}
@@ -231,7 +231,7 @@ export const SidePanel: React.FC<SidePanelProps> = ({ pageData }) => {
                     href={`/catalog/${brand.url}`}
                     className="inline-flex h-full w-full items-center justify-center px-2.5 py-2 text-center font-medium transition-colors"
                   >
-                    {brand.title}
+                    {brand.crumb}
                   </Link>
                 </li>
               ))}
@@ -245,7 +245,7 @@ export const SidePanel: React.FC<SidePanelProps> = ({ pageData }) => {
                 href={`/catalog/${link.url}`}
                 className="side-panel__item-link link-hover relative z-[1] flex cursor-pointer items-center justify-between rounded p-2.5 text-sm lg:py-2.5 lg:pl-4"
               >
-                {link.title}
+                {link.crumb}
               </Link>
             </li>
           ))}
@@ -256,7 +256,7 @@ export const SidePanel: React.FC<SidePanelProps> = ({ pageData }) => {
                 href={`/catalog/${link.url}`}
                 className="side-panel__item-link link-hover relative z-[1] flex cursor-pointer items-center justify-between rounded p-2.5 text-sm lg:py-2.5 lg:pl-4"
               >
-                {link.title}
+                {link.crumb}
               </Link>
             </li>
           ))}

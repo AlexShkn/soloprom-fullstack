@@ -10,6 +10,7 @@ import useSearchStore from '@/store/searchStore'
 import { generateFilterData } from '@/app/catalog/[pageUrl]/server'
 
 import '../GroupList/ProductsFilterBlock/ProductsFilterBlock.scss'
+import { scrollStatusChange } from '@/utils/scrollStatusChange'
 
 interface Props {
   initialProducts: CardDataProps[] | null
@@ -179,6 +180,11 @@ export const SearchFilterBlock: React.FC<Props> = ({
     resetFilters()
   }
 
+  const handlerFilterPopup = (status: boolean) => {
+    setFilterOpen(status)
+    scrollStatusChange(status)
+  }
+
   return (
     <section className="group-list section-offset">
       <div className="page-container">
@@ -186,7 +192,7 @@ export const SearchFilterBlock: React.FC<Props> = ({
           <SearchFilters
             categoryInitialList={filtersData}
             filterOpen={filterOpen}
-            setFilterOpen={setFilterOpen}
+            setFilterOpen={handlerFilterPopup}
             setCheckedValues={setCheckedValues}
             checkedValues={checkedValues}
             handleResetFilters={handleResetFilters}
@@ -195,7 +201,7 @@ export const SearchFilterBlock: React.FC<Props> = ({
             onSortChange={setSort}
             hasFilters={hasFilters}
             filterOpen={filterOpen}
-            setFilterOpen={setFilterOpen}
+            setFilterOpen={handlerFilterPopup}
             setCheckedValues={setCheckedValues}
             checkedValues={checkedValues}
             handleResetFilters={handleResetFilters}

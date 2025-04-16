@@ -5,6 +5,15 @@
 
   &__favorite {
     &.added {
+      &::before {
+        content: '';
+        position: absolute;
+        right: -5px;
+        bottom: 1px;
+        background: url('/img/icons/cheked.svg') center / cover no-repeat;
+        width: 15px;
+        height: 14px;
+      }
       svg {
         fill: variables.$warnColor;
       }

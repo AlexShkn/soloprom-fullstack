@@ -12,6 +12,7 @@ import CategoryPageClient from '../CategoryPageClient'
 export type Params = {
   pageUrl: string
   page: string
+  categoryName: string
 }
 
 export type ParamsPromise = Promise<Params>
@@ -19,6 +20,8 @@ export type ParamsPromise = Promise<Params>
 interface CatalogPageProps {
   params: ParamsPromise
 }
+
+const BASE_URI = process.env.NEXT_PUBLIC_CLIENT_URL as string
 
 export async function generateStaticParams() {
   const params: Params[] = []
@@ -45,7 +48,12 @@ export async function generateStaticParams() {
 
       for (let currentPage = 2; currentPage <= totalPages; currentPage++) {
         // Начинаем со 2 страницы
-        params.push({ pageUrl, page: currentPage.toString() })
+        const param = {
+          pageUrl,
+          page: currentPage.toString(),
+          categoryName: pageData.name,
+        }
+        params.push(param)
       }
     }
   }
@@ -57,10 +65,13 @@ export async function generateMetadata({
 }: {
   params: ParamsPromise
 }): Promise<Metadata> {
-  const { pageUrl, page } = await params
+  const { pageUrl, page, categoryName } = await params
   const categoryData = pagesData[pageUrl]
 
   const currentPage = parseInt(page || '1', 10)
+
+  const totalCount = await getTotalProductCount(categoryName)
+  const totalPages = Math.ceil(totalCount / 10)
 
   if (!categoryData) {
     return {
@@ -75,21 +86,51 @@ export async function generateMetadata({
 
   const canonicalUrl = `/catalog/${pageUrl}/${currentPage}`
 
+  const prevPage =
+    currentPage > 1 ? `/catalog/${pageUrl}/${currentPage - 1}` : undefined
+  const nextPage =
+    currentPage < totalPages
+      ? `/catalog/${pageUrl}/${currentPage + 1}`
+      : undefined
+
+  const alternates: {
+    canonical: string
+    prev?: { url: string; relativeUrl: boolean }
+    next?: { url: string; relativeUrl: boolean }
+  } = {
+    canonical: canonicalUrl,
+  }
+
+  if (prevPage) {
+    alternates.prev = {
+      url: prevPage,
+      relativeUrl: true,
+    }
+  }
+
+  if (nextPage) {
+    alternates.next = {
+      url: nextPage,
+      relativeUrl: true,
+    }
+  }
+
   return {
     title: title,
     description: description,
     openGraph: {
       title: title,
       description: description,
-      url: `https://soloprom.ru${canonicalUrl}`,
+      url: `${BASE_URI}${canonicalUrl}`,
       images: [
         {
-          url: `https://soloprom.ru/catalog/${categoryData.name}/category.png`,
+          url: `${BASE_URI}/catalog/${categoryData.name}/category.png`,
           alt: categoryData.title || 'Категория',
         },
       ],
     },
-    alternates: { canonical: canonicalUrl },
+    alternates: alternates,
+    metadataBase: new URL(BASE_URI),
   }
 }
 
@@ -109,7 +150,7 @@ const CatalogPaginationPage: React.FC<CatalogPageProps> = async ({
   }
 
   const initialProducts = await fetchProducts({
-    categoryName: pageData.subUrl ? pageData.subUrl : pageData.name,
+    categoryName: pageData.subUrl ?? pageData.name,
     page: currentPage,
     limit: 12,
   })

@@ -1,0 +1,45 @@
+{
+  "kind": "collectionType",
+  "collectionName": "product_descrs",
+  "info": {
+    "singularName": "product-descr",
+    "pluralName": "product-descrs",
+    "displayName": "Product Descr",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "productId": {
+      "type": "string",
+      "required": true,
+      "unique": true
+    },
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "text": {
+      "type": "text"
+    },
+    "options": {
+      "type": "json"
+    },
+    "models": {
+      "type": "json"
+    },
+    "reviews": {
+      "type": "json"
+    },
+    "rating": {
+      "type": "decimal",
+      "default": 0
+    },
+    "product": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::product.product"
+    }
+  }
+}

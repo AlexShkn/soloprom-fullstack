@@ -43,7 +43,7 @@ export async function getProductsAnyCategories(type: string, name: string) {
 
     return response
   } catch (error) {
-    console.error('Ошибка получения', error)
+    console.error(`Ошибка получения ${type} ${name}`, error)
     return null
   }
 }
@@ -66,7 +66,7 @@ export const fetchProducts = async (
 
     return response
   } catch (error) {
-    console.error('Ошибка получения продуктов', error)
+    console.error('Ошибка получения продуктов по фильтрам', error)
     return null
   }
 }
@@ -99,7 +99,7 @@ export async function getProductById(id: string) {
     const response = await api.get<any>(`products/${id}`)
     return response
   } catch (error) {
-    console.error('Ошибка получения продукта:', error)
+    console.error(`Ошибка получения продукта: ${id}`, error)
     return []
   }
 }
@@ -113,7 +113,7 @@ export async function getProducts(p0: {
     const response = await api.get<any>('products', { params: p0 })
     return response
   } catch (error) {
-    console.error('Ошибка получения продуктов:', error)
+    console.error(`Ошибка получения продуктов: ${p0.categoryName}`, error)
     return []
   }
 }
@@ -133,7 +133,7 @@ export async function getProductsBySubcategory(
 
     return response
   } catch (error) {
-    console.error('Ошибка получения продуктов:', error)
+    console.error(`Ошибка получения продуктов: ${subcategory}`, error)
     return null
   }
 }
@@ -147,7 +147,7 @@ export async function getProductsByGroup(
     )
     return response
   } catch (error) {
-    console.error('Ошибка получения продуктов:', error)
+    console.error(`Ошибка получения продуктов: ${group}`, error)
     return null
   }
 }

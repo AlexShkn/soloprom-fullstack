@@ -8,9 +8,12 @@ interface FilterState {
   hasFilters: boolean
   dataIsLoading: boolean
   filteredPage: string
-  priceRange: { min: number | undefined; max: number | undefined } // Added priceRange
+  priceRange: { min: number | undefined; max: number | undefined }
+  viewMode: string
+
   setFilters: (filters: Record<string, string[] | number>) => void
   setFilteredPage: (filteredPage: string) => void
+  setViewMode: (mode: string) => void
   setSort: (sort: string) => void
   setDataIsLoading: (status: boolean) => void
   setDynamicCurrentPage: (page: number) => void
@@ -32,7 +35,9 @@ const useFilterStore = create<FilterState>((set) => ({
   dataIsLoading: true,
   hasFilters: false,
   priceRange: { min: undefined, max: undefined },
+  viewMode: 'grid',
 
+  setViewMode: (viewMode) => set({ viewMode }),
   setFilteredPage: (filteredPage) => set({ filteredPage }),
   setFilters: (filters) =>
     set({ filters, dynamicCurrentPage: 1, hasFilters: true }),

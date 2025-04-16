@@ -1,0 +1,7 @@
+/**
+ * product-descr router
+ */
+
+import { factories } from '@strapi/strapi';
+
+export default factories.createCoreRouter('api::product-descr.product-descr');

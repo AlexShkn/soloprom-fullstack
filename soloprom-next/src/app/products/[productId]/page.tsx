@@ -96,10 +96,10 @@ export async function generateMetadata({
     openGraph: {
       title: `Купить ${product.name} `,
       description: getProductMetaData(product) || 'Описание товара отсутствует',
-      url: `https://soloprom.ru/products/${product.productId}`,
+      url: `${process.env.NEXT_PUBLIC_CLIENT_URL}/products/${product.productId}`,
       images: [
         {
-          url: `https://soloprom.ru/img/catalog/${product.img || 'not-found'}.webp`,
+          url: `${process.env.NEXT_PUBLIC_CLIENT_URL}/img/catalog/${product.img || 'not-found'}.webp`,
           alt: `${product.title} Категория`,
         },
       ],
@@ -134,7 +134,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
       />
 
       <section className="product-page">
-        <div className="product-page__container">
+        <div className="page-container">
           <ProductPageCard cardData={productData} />
           <ProductPageTabs productDescr={productData.productDescr} />
           <ProductPageBenefits />

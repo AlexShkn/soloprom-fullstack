@@ -22,8 +22,6 @@ interface Props {
   productDescr?: ProductDescription
 }
 
-type CurrentTabType = number
-
 const DescriptionTab = React.memo(({ text }: { text: string }) => (
   <div className="text-base">{text}</div>
 ))
@@ -174,7 +172,7 @@ const DeliveryTab = React.memo(() => (
 ))
 
 export const ProductPageTabs: React.FC<Props> = ({ productDescr }) => {
-  const [currentTab, setCurrentTab] = useState<CurrentTabType>(0)
+  const [currentTab, setCurrentTab] = useState<number>(0)
 
   const {
     models = [],
@@ -195,7 +193,7 @@ export const ProductPageTabs: React.FC<Props> = ({ productDescr }) => {
     [reviews?.length],
   )
 
-  const handleTabClick = useCallback((index: CurrentTabType) => {
+  const handleTabClick = useCallback((index: number) => {
     setCurrentTab(index)
   }, [])
 

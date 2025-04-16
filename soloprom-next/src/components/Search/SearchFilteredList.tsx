@@ -31,7 +31,6 @@ export const SearchFilteredList: React.FC<Props> = ({
   checkedValues,
   handleResetFilters,
 }) => {
-  const [viewMode, setViewMode] = useState('grid')
   const {
     foundProducts,
     filters,
@@ -40,8 +39,9 @@ export const SearchFilteredList: React.FC<Props> = ({
     sort,
     setSort,
     setDataIsLoading,
+    viewMode,
+    setViewMode,
   } = useSearchStore()
-  console.log('render SearchFilteredList')
 
   const [visibleProducts, setVisibleProducts] = useState<any[]>([])
   const [isLoadingMore, setIsLoadingMore] = useState(false)

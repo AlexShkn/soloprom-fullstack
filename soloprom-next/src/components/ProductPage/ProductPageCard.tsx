@@ -9,6 +9,7 @@ import { RegaliaList } from '@/components/ProductsCard/RegaliaList'
 import { useCartStore } from '@/store/cartStore'
 import { useModalsStore } from '@/store/modalsStore'
 import { ProductsPageOffers } from './ProductsPageOffers'
+import { ProductPageSideBlock } from './ProductPageSideBlock'
 
 export const ProductPageCard: React.FC<ProductsCardPropTypes> = ({
   cardData,
@@ -26,9 +27,12 @@ export const ProductPageCard: React.FC<ProductsCardPropTypes> = ({
     discount,
     productType,
     rating,
+    stock,
   } = cardData
 
   const sizesData = sizes || volumes
+  const sizesIsLength = sizesData && Object.keys(sizesData).length > 1
+
   let defaultSize: string | undefined = undefined
 
   useEffect(() => {
@@ -42,23 +46,28 @@ export const ProductPageCard: React.FC<ProductsCardPropTypes> = ({
       <div className="mb-7 text-[clamp(1.5rem,1.3022rem+0.6593vw,1.875rem)] font-bold">
         {name}
       </div>
-      <div className="product-page-card__wrapper">
-        <div className="relative flex flex-col gap-5 lg:flex-row">
-          <div className="relative flex justify-center gap-2 pt-10">
-            {rating > 1 && (
-              <div className="absolute right-2.5 top-2.5 z-10 flex justify-end text-2xl font-bold text-accentBlue">
-                {rating}
-                <img
-                  className="mb-1 h-4 w-5"
-                  src="/img/icons/star.svg"
-                  alt=""
-                />
-              </div>
-            )}
-            {regalia.length > 0 && (
-              <RegaliaList regalia={regalia} discount={discount} />
-            )}
-            {/* <ul className="flex flex-col items-center gap-2">
+      <div className={`product-page-card__wrapper mb-5`}>
+        <div className="relative mb-5 grid items-start lg:grid-cols-[1fr,350px] lg:gap-10">
+          <div
+            className={`relative mb-5 flex max-w-[900px] flex-col gap-5 lg:flex-row ${!sizesIsLength && 'items-start'}`}
+          >
+            <div
+              className={`relative justify-center gap-2 pt-10 ${!sizesIsLength ? 'inline-flex' : 'flex'}`}
+            >
+              {rating > 1 && (
+                <div className="absolute right-2.5 top-2.5 z-10 flex justify-end text-2xl font-bold text-accentBlue">
+                  {rating}
+                  <img
+                    className="mb-1 h-4 w-5"
+                    src="/img/icons/star.svg"
+                    alt=""
+                  />
+                </div>
+              )}
+              {regalia.length > 0 && (
+                <RegaliaList regalia={regalia} discount={discount} />
+              )}
+              {/* <ul className="flex flex-col items-center gap-2">
               <li className="border-1 cursor-pointer border border-accentBlue p-1">
                 <Image
                   className="product-page-card__image object-contain"
@@ -69,25 +78,31 @@ export const ProductPageCard: React.FC<ProductsCardPropTypes> = ({
                 />
               </li>
             </ul> */}
-            <div className="relative flex flex-auto justify-center">
-              <Image
-                className="product-page-card__image aspect-square h-60 w-60 object-contain xl:h-72 xl:w-72"
-                src={
-                  (img && `/img/catalog/${img}.webp`) ||
-                  '/img/catalog/not-found.jpg'
-                }
-                alt=""
-                width={240}
-                height={240}
-              />
+              <div
+                className={`relative flex flex-auto ${!sizesIsLength ? '' : 'justify-center'}`}
+              >
+                <Image
+                  className="product-page-card__image aspect-square h-60 w-60 object-contain xl:h-72 xl:w-72"
+                  src={
+                    (img && `/img/catalog/${img}.webp`) ||
+                    `/img/catalog/image-null/${categoryName}.webp`
+                  }
+                  alt=""
+                  width={240}
+                  height={240}
+                />
+              </div>
+            </div>
+
+            <div className="flex w-full flex-col gap-5">
+              <ProductPageCardDescription cardData={cardData} />
             </div>
           </div>
 
-          <div className="flex w-full flex-col gap-5">
-            <ProductPageCardDescription cardData={cardData} />
-            <ProductsPageOffers cardData={cardData} />
-          </div>
+          <ProductPageSideBlock cardData={cardData} />
         </div>
+
+        {sizesIsLength && <ProductsPageOffers cardData={cardData} />}
       </div>
       <div
         itemScope
@@ -102,14 +117,14 @@ export const ProductPageCard: React.FC<ProductsCardPropTypes> = ({
 
         <link
           itemProp="image"
-          href={`https://soloprom.ru/img/catalog/${img}.jpg`}
+          href={`${process.env.NEXT_PUBLIC_CLIENT_URL}/img/catalog/${img}.jpg`}
         />
 
         <div itemProp="offers" itemScope itemType="http://schema.org/Offer" />
         <meta itemProp="price" content={defaultPrice.toString()} />
         <link
           itemProp="url"
-          href={`https://soloprom.ru/products/${productId}`}
+          href={`${process.env.NEXT_PUBLIC_CLIENT_URL}/products/${productId}`}
         />
         <meta itemProp="priceCurrency" content="RUR" />
         <link itemProp="availability" href="https://schema.org/InStock" />

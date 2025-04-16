@@ -15,7 +15,7 @@ export const HeaderTop: React.FC = () => {
   const { isAuth, userState, isLoading } = useAuthStore()
 
   return (
-    <div className="header-top bg-darkBlue py-2.5 text-white">
+    <div className="header-top relative z-20 bg-darkBlue py-2.5 text-white">
       <div className="header-top__container flex items-center justify-between">
         <LocateBlock />
         <div className="flex items-center gap-7">

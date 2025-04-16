@@ -16,7 +16,7 @@ const mainSliderData = [
   {
     title: 'Запчасти для спецтехники',
     subtitle:
-      'Широкий ассортимент аккумуляторов, шин и запчастей для специальной техники',
+      'Широкий ассортимент аккумуляторов, шин и масел для специальной техники',
     img: '/img/hero/main/trucks-new.webp',
     link: '/catalog',
     btnText: 'ПЕРЕЙТИ В КАТАЛОГ',
@@ -31,8 +31,8 @@ const mainSliderData = [
     alt: '',
   },
   {
-    title: 'Подбор тяговых акб по характеристикам, типу и бренду техники',
-    subtitle: '',
+    title: 'Подбор тяговых акб',
+    subtitle: 'по характеристикам, типу и бренду техники',
     img: '/img/hero/main/contracts.webp',
     link: '/catalog/battery',
     btnText: 'Подобрать',
@@ -70,23 +70,23 @@ const HeroMainSlider: React.FC<HeroTypes> = ({ isReady }) => {
           }}
         >
           {mainSliderData.map((slide, index) => (
-            <SwiperSlide key={index} className="hero-main-slider__slide">
-              <div className="hero__card duration-600 relative flex h-full items-center justify-center overflow-hidden rounded px-7 pb-[75px] pt-[50px] transition-colors ease-in-out before:absolute before:inset-0 before:z-[1] before:h-full before:w-full before:bg-black before:bg-opacity-60">
+            <SwiperSlide key={slide.title} className="hero-main-slider__slide">
+              <div className="hero__card duration-600 relative flex h-full items-center overflow-hidden rounded px-8 pb-[25px] pt-[20px] transition-colors ease-in-out before:absolute before:inset-0 before:z-[1] before:h-full before:w-full before:bg-black before:bg-opacity-60 mds:px-20">
                 <Image
                   className="duration-600 absolute inset-0 block h-full w-full transform object-cover transition ease-in-out"
                   src={slide.img}
                   alt={slide.alt}
                   priority
                   width={824}
-                  height={500}
+                  height={300}
                 />
                 <div className="relative z-[2]">
-                  <div className="hero__title mb-5 font-bold text-white">
+                  <div className="mb-5 text-[clamp(1.625rem,1.1635rem+1.5385vw,2.5rem)] font-bold leading-tight text-white">
                     {slide.title}
                   </div>
 
                   {slide.subtitle && (
-                    <div className="hero__subtitle max-w-[500px] font-medium leading-5 text-white">
+                    <div className="mb-8 max-w-[500px] text-lg leading-tight text-white">
                       {slide.subtitle}
                     </div>
                   )}
@@ -102,7 +102,7 @@ const HeroMainSlider: React.FC<HeroTypes> = ({ isReady }) => {
             </SwiperSlide>
           ))}
 
-          <div className="hero-main-slider__pagination absolute bottom-2.5 right-[50%] z-[8] flex items-center gap-2.5 md:right-5 lg:bottom-7 lg:translate-x-[-50%]"></div>
+          <div className="hero-main-slider__pagination absolute bottom-2.5 right-5 z-[8] flex items-center gap-2.5 lg:bottom-7 lg:translate-x-[-50%]"></div>
         </Swiper>
       ) : (
         <Skeleton count={1} width={'100%'} height={'300px'} />

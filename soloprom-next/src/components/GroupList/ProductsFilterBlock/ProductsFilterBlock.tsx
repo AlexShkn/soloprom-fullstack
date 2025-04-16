@@ -8,6 +8,7 @@ import useFilterStore from '@/store/filterStore'
 import { useDebounce } from '@/hooks/useDebounce'
 import './ProductsFilterBlock.scss'
 import { api } from '@/utils/fetch/instance.api'
+import { scrollStatusChange } from '@/utils/scrollStatusChange'
 
 interface Props {
   categoryName: string
@@ -229,6 +230,11 @@ export const ProductsFilterBlock: React.FC<Props> = ({
     resetFilters()
   }
 
+  const handlerFilterPopup = (status: boolean) => {
+    setFilterOpen(status)
+    scrollStatusChange(status)
+  }
+
   return (
     <section className="group-list section-offset" ref={groupListRef}>
       <div className="page-container">
@@ -241,7 +247,7 @@ export const ProductsFilterBlock: React.FC<Props> = ({
             categoryInitialList={categoryData}
             currentPage={currentPage}
             filterOpen={filterOpen}
-            setFilterOpen={setFilterOpen}
+            setFilterOpen={handlerFilterPopup}
             setCheckedValues={setCheckedValues}
             checkedValues={checkedValues}
             handleResetFilters={handleResetFilters}
@@ -254,7 +260,7 @@ export const ProductsFilterBlock: React.FC<Props> = ({
             onSortChange={setSort}
             hasFilters={hasFilters}
             filterOpen={filterOpen}
-            setFilterOpen={setFilterOpen}
+            setFilterOpen={handlerFilterPopup}
             setCheckedValues={setCheckedValues}
             checkedValues={checkedValues}
             handleResetFilters={handleResetFilters}

@@ -11,8 +11,6 @@ import { useRouter } from 'next/navigation'
 import useSearchStore from '@/store/searchStore'
 import clsx from 'clsx'
 
-import pagesSearchData from '../../data/pages-search.json'
-
 interface PageItem {
   url: string
   img: string
@@ -120,8 +118,11 @@ const HeaderSearch = () => {
         )}
       ></button>
       <div
-        className={`z-10 flex w-full items-center rounded-custom ${searchValue && dropStatus && 'rounded-none bg-white py-2 md:rounded-custom md:py-0'}`}
+        className={`relative z-10 flex w-full items-center rounded-custom ${searchValue && dropStatus && 'rounded-none bg-white py-2 md:rounded-custom md:py-0'}`}
       >
+        {/* <span className="absolute bottom-[calc(100%+2px)] right-0 text-sm font-medium text-darkBlue">
+          Расширенный поиск
+        </span> */}
         <div className="relative h-full w-full">
           <input
             type="text"

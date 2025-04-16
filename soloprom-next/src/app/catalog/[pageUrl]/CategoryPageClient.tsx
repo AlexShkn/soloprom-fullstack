@@ -57,7 +57,7 @@ const CategoryPageClient: React.FC<CategoryPageClientProps> = ({
         <HeroBlock>
           <SidePanel pageData={pageData} />
           <CategoryPageHero
-            categoryTitle={pageData.title}
+            categoryTitle={pageData.crumb}
             categoryImage={pageData.img}
             categoryAlt={pageData.alt}
           />

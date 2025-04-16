@@ -58,7 +58,7 @@ export interface PageDataTypes {
   alt: string
   url: string
   subUrl?: string
-  crumb?: string
+  crumb: string
   headGroupTitle?: string
 }
 

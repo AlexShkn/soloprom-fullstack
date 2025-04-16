@@ -35,9 +35,6 @@ const ComparePage = () => {
     keyof typeof comparedItems
   >
 
-  console.log(comparedItems)
-  console.log(categories)
-
   const handleDelete = (
     category: string,
     productId: string,
@@ -51,117 +48,126 @@ const ComparePage = () => {
       <PageWrapper>
         <div className="page-container mx-auto py-10">
           <h1 className="mb-5 text-2xl font-bold">Сравнение товаров</h1>
-          {categories.map((category) => {
-            if (comparedItems[category].length === 0) {
-              return null
-            }
-            return (
-              <div key={category} className="mb-8 rounded bg-slate-200 p-8">
-                <div className="overflow-x-auto">
-                  <Table>
-                    <TableHeader>
-                      <TableRow>
-                        <TableHead className="min-w-[200px] bg-accentBlue text-lg text-white">
-                          {dictionary.category[category]}
-                        </TableHead>
-                        {comparedItems[category].map((product) => (
-                          <TableHead
-                            key={`${product.productId}-${product.variant}`}
-                            className="text-center"
-                          >
-                            <button
-                              onClick={() =>
-                                handleDelete(
-                                  category,
-                                  product.productId,
-                                  product.variant,
-                                )
-                              }
-                              className="ml-auto h-full w-full text-darkBlue hover:bg-darkBlue hover:text-red-700"
-                            >
-                              Удалить
-                            </button>
-                          </TableHead>
-                        ))}
-                      </TableRow>
-                    </TableHeader>
-                    <TableBody>
-                      <TableRow>
-                        <TableCell className="w-[200px] bg-darkBlue text-lg font-medium text-white">
-                          Фото
-                        </TableCell>
-                        {comparedItems[category].map((product) => (
-                          <TableCell
-                            key={`${product.productId}-${product.variant}`}
-                            className="text-center"
-                          >
-                            <Link href={`/products/${product.productId}`}>
-                              <Image
-                                className="inline-block h-[120px] object-contain"
-                                src={
-                                  (product.img &&
-                                    `/img/catalog/${product.img}.webp`) ||
-                                  '/img/catalog/not-found.webp'
-                                }
-                                width={120}
-                                height={120}
-                                alt={product.name}
-                              />
-                            </Link>
-                          </TableCell>
-                        ))}
-                      </TableRow>
 
-                      <TableRow>
-                        <TableCell className="w-[200px] bg-darkBlue text-lg font-medium text-white">
-                          Название
-                        </TableCell>
-                        {comparedItems[category].map((product) => (
-                          <TableCell
-                            key={`${product.productId}-${product.variant}`}
-                            className="min-w-48 text-center"
-                          >
-                            <Link
-                              href={`/products/${product.productId}`}
-                              className="link-hover font-bold"
+          {comparedItems.battery.length ||
+          comparedItems.tires.length ||
+          comparedItems.oils.length ? (
+            categories.map((category) => {
+              if (comparedItems[category].length === 0) {
+                return null
+              }
+              return (
+                <div key={category} className="mb-8 rounded bg-slate-200 p-8">
+                  <div className="overflow-x-auto">
+                    <Table>
+                      <TableHeader>
+                        <TableRow>
+                          <TableHead className="min-w-52 bg-accentBlue text-lg text-white">
+                            {dictionary.category[category]}
+                          </TableHead>
+                          {comparedItems[category].map((product) => (
+                            <TableHead
+                              key={`${product.productId}-${product.variant}`}
+                              className="text-center"
                             >
-                              {product.name}
-                            </Link>
+                              <button
+                                onClick={() =>
+                                  handleDelete(
+                                    category,
+                                    product.productId,
+                                    product.variant,
+                                  )
+                                }
+                                className="ml-auto h-full w-full text-darkBlue hover:bg-darkBlue hover:text-red-700"
+                              >
+                                Удалить
+                              </button>
+                            </TableHead>
+                          ))}
+                        </TableRow>
+                      </TableHeader>
+                      <TableBody>
+                        <TableRow>
+                          <TableCell className="w-52 bg-darkBlue text-lg font-medium text-white">
+                            Фото
                           </TableCell>
-                        ))}
-                      </TableRow>
-                      <TableRow>
-                        <TableCell className="w-[200px] bg-darkBlue text-lg font-medium text-white">
-                          {dictionary.sizes[category]}
-                        </TableCell>
-                        {comparedItems[category].map((product) => (
-                          <TableCell
-                            key={`${product.productId}-${product.variant}`}
-                            className="text-center font-medium"
-                          >
-                            {product.variant}
+                          {comparedItems[category].map((product) => (
+                            <TableCell
+                              key={`${product.productId}-${product.variant}`}
+                              className="text-center"
+                            >
+                              <Link href={`/products/${product.productId}`}>
+                                <Image
+                                  className="inline-block h-[120px] object-contain"
+                                  src={
+                                    (product.img &&
+                                      `/img/catalog/${product.img}.webp`) ||
+                                    '/img/catalog/not-found.webp'
+                                  }
+                                  width={120}
+                                  height={120}
+                                  alt={product.name}
+                                />
+                              </Link>
+                            </TableCell>
+                          ))}
+                        </TableRow>
+
+                        <TableRow>
+                          <TableCell className="w-52 bg-darkBlue text-lg font-medium text-white">
+                            Название
                           </TableCell>
-                        ))}
-                      </TableRow>
-                      <TableRow>
-                        <TableCell className="w-[200px] bg-darkBlue text-lg font-medium text-white">
-                          Цена
-                        </TableCell>
-                        {comparedItems[category].map((product) => (
-                          <TableCell
-                            key={`${product.productId}-${product.variant}`}
-                            className="text-center font-medium"
-                          >
-                            {getDigFormat(product.price)} ₽
+                          {comparedItems[category].map((product) => (
+                            <TableCell
+                              key={`${product.productId}-${product.variant}`}
+                              className="min-w-48 text-center"
+                            >
+                              <Link
+                                href={`/products/${product.productId}`}
+                                className="link-hover font-bold"
+                              >
+                                {product.name}
+                              </Link>
+                            </TableCell>
+                          ))}
+                        </TableRow>
+                        <TableRow>
+                          <TableCell className="w-52 bg-darkBlue text-lg font-medium text-white">
+                            {dictionary.sizes[category]}
                           </TableCell>
-                        ))}
-                      </TableRow>
-                    </TableBody>
-                  </Table>
+                          {comparedItems[category].map((product) => (
+                            <TableCell
+                              key={`${product.productId}-${product.variant}`}
+                              className="text-center font-medium"
+                            >
+                              {product.variant}
+                            </TableCell>
+                          ))}
+                        </TableRow>
+                        <TableRow>
+                          <TableCell className="w-52 bg-darkBlue text-lg font-medium text-white">
+                            Цена
+                          </TableCell>
+                          {comparedItems[category].map((product) => (
+                            <TableCell
+                              key={`${product.productId}-${product.variant}`}
+                              className="text-center font-medium"
+                            >
+                              {getDigFormat(product.price)} ₽
+                            </TableCell>
+                          ))}
+                        </TableRow>
+                      </TableBody>
+                    </Table>
+                  </div>
                 </div>
-              </div>
-            )
-          })}
+              )
+            })
+          ) : (
+            <div className="page-container flex justify-center py-10 text-2xl font-medium">
+              Список пуст
+            </div>
+          )}
         </div>
       </PageWrapper>
     </TransitionWrapper>

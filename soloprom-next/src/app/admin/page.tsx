@@ -11,13 +11,13 @@ export const metadata = {
       'Тяговые аккумуляторы, промышленные шины, колесные опоры из наличия и на заказ',
     images: [
       {
-        url: 'https://soloprom.ru/preview.jpg',
+        url: `${process.env.NEXT_PUBLIC_CLIENT_URL}/preview.jpg`,
         alt: 'Реквизиты',
       },
     ],
-    url: 'https://soloprom.ru',
+    url: `${process.env.NEXT_PUBLIC_CLIENT_URL}`,
   },
-  alternates: { canonical: 'https://soloprom.ru/admin' },
+  alternates: { canonical: `${process.env.NEXT_PUBLIC_CLIENT_URL}/admin` },
 }
 
 export default function AdminPage() {

@@ -1,0 +1,143 @@
+{
+  "kind": "collectionType",
+  "collectionName": "products",
+  "info": {
+    "singularName": "product",
+    "pluralName": "products",
+    "displayName": "Product",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "productId": {
+      "type": "string",
+      "required": true,
+      "unique": true
+    },
+    "isPopular": {
+      "type": "boolean",
+      "default": false
+    },
+    "discount": {
+      "type": "decimal"
+    },
+    "stock": {
+      "type": "decimal",
+      "default": 0
+    },
+    "rating": {
+      "type": "decimal",
+      "default": 0
+    },
+    "categoryName": {
+      "type": "string",
+      "required": true
+    },
+    "subcategoryName": {
+      "type": "string",
+      "required": true
+    },
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "descr": {
+      "type": "text"
+    },
+    "url": {
+      "type": "string"
+    },
+    "img": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "brandName": {
+      "type": "string"
+    },
+    "country": {
+      "type": "string"
+    },
+    "plates": {
+      "type": "string"
+    },
+    "container": {
+      "type": "string"
+    },
+    "voltage": {
+      "type": "string"
+    },
+    "viscosity": {
+      "type": "string"
+    },
+    "load_index": {
+      "type": "string"
+    },
+    "defaultPrice": {
+      "type": "decimal",
+      "required": true
+    },
+    "delivery": {
+      "type": "string"
+    },
+    "sizes": {
+      "type": "json"
+    },
+    "volumes": {
+      "type": "json"
+    },
+    "models": {
+      "type": "json"
+    },
+    "regalia": {
+      "type": "json"
+    },
+    "size": {
+      "type": "string"
+    },
+    "productType": {
+      "type": "string",
+      "required": true
+    },
+    "categoryId": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::category.category"
+    },
+    "brand": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::brand.brand"
+    },
+    "group": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::group.group",
+      "mappedBy": "product"
+    },
+    "model": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::model.model",
+      "mappedBy": "product"
+    },
+    "popular_product": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::popular-product.popular-product"
+    },
+    "product_descr": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::product-descr.product-descr"
+    }
+  }
+}

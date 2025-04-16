@@ -78,9 +78,9 @@ export const FavoriteCard: React.FC<FavoriteCardProps> = ({ product }) => {
   }
 
   return (
-    <div className="flex flex-col items-center gap-5 py-2.5 mds:p-2.5 mdl:flex-row [&:not(:last-child)]:border-b [&:not(:last-child)]:border-grayColor">
+    <div className="flex flex-col gap-5 py-2.5 mds:p-2.5 mdl:flex-row mdl:items-center [&:not(:last-child)]:border-b [&:not(:last-child)]:border-grayColor">
       <div className="flex flex-auto items-center">
-        <div className="mr-5 h-24 w-24 mds:h-36 mds:w-36">
+        <div className="mds:h-30 mds:w-30 mr-5 h-20 w-20">
           <Link href={product.url} className="cart__item-link">
             <Image
               src={
@@ -96,10 +96,10 @@ export const FavoriteCard: React.FC<FavoriteCardProps> = ({ product }) => {
           </Link>
         </div>
 
-        <div className="flex flex-col gap-2.5">
+        <div className="flex flex-col gap-1">
           <Link
             href={product.url}
-            className="cart__item-title link-hover text-lg font-medium leading-5"
+            className="cart__item-title link-hover font-medium leading-5"
           >
             <b>{product.name}</b>
           </Link>
