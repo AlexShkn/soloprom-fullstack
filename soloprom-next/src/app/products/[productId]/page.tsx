@@ -7,6 +7,7 @@ import { ProductPageCard } from '@/components/ProductPage/ProductPageCard'
 import { ProductPageTabs } from '@/components/ProductPage/ProductPageTabs'
 import { ProductPageBenefits } from '@/components/ProductPage/ProductPageBenefits'
 import { getProductById, getAllProducts } from '@/utils/api/products'
+import { SubHero } from '@/components/SubHero/SubHero'
 
 type WordsAdapt = {
   category: {
@@ -104,7 +105,9 @@ export async function generateMetadata({
         },
       ],
     },
-    alternates: { canonical: `/products/${product.productId}` },
+    alternates: {
+      canonical: `${process.env.NEXT_PUBLIC_CLIENT_URL}/products/${product.productId}`,
+    },
   }
 }
 
@@ -129,15 +132,13 @@ export default async function ProductPage({ params }: ProductPageProps) {
       <BreadCrumbs
         category={productData.categoryName}
         subcategory={productData.subcategoryName}
-        name={productData.name}
-        url={`/products/${productData.productId}`}
       />
 
       <section className="product-page">
         <div className="page-container">
           <ProductPageCard cardData={productData} />
           <ProductPageTabs productDescr={productData.productDescr} />
-          <ProductPageBenefits />
+          <SubHero />
         </div>
       </section>
 

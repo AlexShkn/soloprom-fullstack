@@ -1,22 +1,21 @@
 'use client'
 import React, { Suspense } from 'react'
-import { useRouter } from 'next/navigation'
 import { HeroBlock } from '@/components/CategoryPageHero/HeroBlock'
 import { CategoryPageHero } from '@/components/CategoryPageHero/CategoryPageHero'
 import { SidePanel } from '@/components/CategoryPageHero/SidePanel/SidePanel'
-import { ProductsFilterBlock } from '@/components/GroupList/ProductsFilterBlock/ProductsFilterBlock'
+import { ProductsFilterBlock } from '@/components/GroupList/ProductsFilterBlock'
 import PageArticle from '@/components/PageArticle/PageArticle'
-import { ProductsSlider } from '@/components/ProductsSlider/ProductsSlider'
 import { Callback } from '@/components/Callback/Callback'
 import BreadCrumbs from '@/components/BreadCrumbs/BreadCrumbs'
 import PageWrapper from '@/app/PageWrapper'
-import { Loading } from '@/components/ui'
 import {
   FilterData,
   CardDataProps,
   PageDataTypes,
 } from '@/types/products.types'
 import { CategoryPageSlider } from '@/components/CategoryPageSlider/CategoryPageSlider'
+import { Loading } from '@/components/ui'
+import CategoryPageParams from './CategoryPageParams'
 
 interface CategoryPageClientProps {
   pageData: PageDataTypes
@@ -33,18 +32,6 @@ const CategoryPageClient: React.FC<CategoryPageClientProps> = ({
   totalCount,
   categoryData,
 }) => {
-  const router = useRouter()
-
-  const handlePageChange = (newPage: number) => {
-    const newPath = `/catalog/${pageData.name}`
-
-    if (newPage > 1) {
-      router.push(`${newPath}/${newPage}`)
-    } else {
-      router.push(newPath)
-    }
-  }
-
   return (
     <PageWrapper>
       <BreadCrumbs
@@ -64,21 +51,22 @@ const CategoryPageClient: React.FC<CategoryPageClientProps> = ({
         </HeroBlock>
       ) : (
         <h1 className="page-container mb-5 text-2xl font-medium">
-          {pageData.title} — страница {currentPage}
+          {pageData.crumb} — страница {currentPage}
         </h1>
       )}
 
       <Suspense fallback={<Loading />}>
-        <ProductsFilterBlock
-          productsType={pageData.category}
-          categoryName={pageData.subUrl ? pageData.subUrl : pageData.name}
-          currentPage={currentPage}
-          onChangePage={handlePageChange}
-          initialProducts={initialProducts}
-          categoryData={categoryData}
-          totalCount={totalCount}
-        />
+        <CategoryPageParams totalCount={totalCount} />
       </Suspense>
+
+      <ProductsFilterBlock
+        productsType={pageData.category}
+        categoryName={pageData.subUrl ?? pageData.name}
+        currentPage={currentPage}
+        pageName={pageData.name}
+        initialProducts={initialProducts}
+        categoryData={categoryData}
+      />
       <PageArticle category={pageData.category} articleName={pageData.name} />
       <CategoryPageSlider category={pageData.category} />
       <Callback />

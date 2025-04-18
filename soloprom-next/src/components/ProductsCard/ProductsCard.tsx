@@ -228,7 +228,7 @@ export const ProductsCard: React.FC<ProductsCardPropTypes> = ({
       <div
         className={`product-card relative flex h-full ${mod !== 'row' && 'flex-col'} ${mod === 'row' && 'justify-between gap-5'} rounded-custom bg-white p-4 shadow-custom`}
       >
-        {regalia.length > 0 && (
+        {((regalia && regalia.length) || discount) && (
           <RegaliaList regalia={regalia} discount={discount} />
         )}
 
@@ -241,7 +241,7 @@ export const ProductsCard: React.FC<ProductsCardPropTypes> = ({
           >
             {brandName && img && (
               <Image
-                className={`absolute left-0 inline-block h-7 w-12 object-contain ${regalia.length && '-bottom-1'} ${mod === 'row' && 'bottom-0'}`}
+                className={`absolute left-0 inline-block h-7 w-12 object-contain ${(regalia.length || discount) && '-bottom-1'} ${mod === 'row' && 'bottom-0'}`}
                 src={`/img/brands/${brandName.toLowerCase()}.webp`}
                 width={48}
                 height={28}
@@ -294,7 +294,7 @@ export const ProductsCard: React.FC<ProductsCardPropTypes> = ({
               type="button"
               className={`ml-auto font-medium text-[#dd3824] underline ${mod === 'grid' && 'text-[14px]'}`}
             >
-              Купить в 1 клик
+              Быстрый заказ
             </button>
           </div>
           {volumes && (

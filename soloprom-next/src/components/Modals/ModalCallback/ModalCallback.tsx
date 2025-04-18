@@ -103,7 +103,7 @@ const ModalCallback: React.FC<ModalProps> = ({ fastOrderProduct }) => {
 
           <div className="modal-callback__body">
             <div className="mb-7">
-              <div className="modal-callback__title mb-2.5 text-center font-medium leading-10 text-black">
+              <div className="mb-2.5 text-center text-[clamp(1.625rem,1.2953rem+1.0989vw,2.25rem)] font-medium leading-10 text-black">
                 Оставьте свои контактные данные
               </div>
               <div className="text-center text-sm leading-5 text-[#313131] mds:text-base">

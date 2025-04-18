@@ -17,12 +17,12 @@ export const PriceBlock: React.FC<PriceProps> = ({ discount, price, mod }) => {
     <div className={`mt-2.5 flex items-center justify-between gap-2.5`}>
       <div
         data-price
-        className={`relative flex flex-col items-end font-bold ${discount ? 'text-accentBlue' : 'text-[#272b2c]'} ${mod ? 'text-lg' : 'text-2xl'} `}
+        className={`relative flex font-bold ${discount ? 'text-accentBlue' : 'text-[#272b2c]'} ${mod ? 'flex-col items-end text-lg' : 'flex-row-reverse items-center gap-2 text-2xl'} `}
       >
         {formattedDiscountPrice && (
           <>
             <b
-              className={`leading-1 whitespace-nowrap font-medium text-[#ff6666] line-through ${mod ? 'text-sm' : '-mb-1 mt-1 text-xl'}`}
+              className={`leading-1 whitespace-nowrap font-medium text-[#a7a0a0] line-through ${mod ? 'text-sm' : 'text-lg'}`}
             >
               {`${getDigFormat(formattedDiscountPrice)} ₽`}
             </b>

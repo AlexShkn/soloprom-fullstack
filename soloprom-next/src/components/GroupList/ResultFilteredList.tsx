@@ -1,16 +1,18 @@
 'use client'
-import React, { useState } from 'react'
+import React from 'react'
 import { ProductsCard } from '@/components/ProductsCard/ProductsCard'
 import { CardDataProps } from '@/types/products.types'
 import { Pagination } from './Pagination'
-import Skeleton from 'react-loading-skeleton'
-import 'react-loading-skeleton/dist/skeleton.css'
 import { Sort } from './Sort'
 import { ViewSetting } from './ViewSetting'
 import { DynamicPagination } from './DynamicPagination'
+import { Button } from '../ui'
+
+import Skeleton from 'react-loading-skeleton'
+import 'react-loading-skeleton/dist/skeleton.css'
 
 import useFilterStore from '@/store/filterStore'
-import { Button } from '../ui'
+import clsx from 'clsx'
 
 interface Props {
   data: CardDataProps[]
@@ -28,7 +30,7 @@ interface Props {
   checkedValues: Record<string, string[]>
 }
 
-export const FilteredList: React.FC<Props> = ({
+export const ResultFilteredList: React.FC<Props> = ({
   data,
   currentPage,
   totalPages,
@@ -52,6 +54,7 @@ export const FilteredList: React.FC<Props> = ({
     setDataIsLoading,
     viewMode,
     setViewMode,
+    initialLoad,
   } = useFilterStore()
 
   const filterKeysToIgnore = ['minPrice', 'maxPrice']
@@ -151,9 +154,15 @@ export const FilteredList: React.FC<Props> = ({
       </ul>
 
       <ul
-        className={`catalog-list catalog-list--${viewMode} grid grid-cols-4 gap-5 overflow-hidden px-5 py-2.5`}
+        className={clsx(
+          'grid grid-cols-1 gap-2.5 overflow-hidden px-1 mdl:px-5 mdl:py-2.5 lg:gap-5',
+          {
+            'grid-cols-1 pb-4 pt-2.5 mds:grid-cols-2 mds:p-2.5 xl:grid-cols-3 2xl:grid-cols-4':
+              viewMode === 'grid',
+          },
+        )}
       >
-        {dataIsLoading
+        {dataIsLoading && !initialLoad
           ? Array.from({ length: 12 }).map((_, index) => (
               <Skeleton
                 key={index}

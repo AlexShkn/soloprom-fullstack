@@ -11,6 +11,7 @@ import {
   ShoppingCart,
   ListOrdered,
   LucideIcon,
+  LogOut,
 } from 'lucide-react'
 import { Loading } from '@/components/ui'
 import { ProfileContent } from './ProfileContent'
@@ -88,6 +89,13 @@ export const ProfileDashboard = () => {
               </li>
             ))}
           </ul>
+          <button
+            onClick={() => logout()}
+            className="flex cursor-pointer items-center gap-2 rounded px-4 py-2.5 transition-colors hover:bg-gray-200 hover:text-accentBlue"
+          >
+            <LogOut className="h-4 w-4" />
+            Выйти
+          </button>
         </div>
 
         {/* Main Content Area */}

@@ -1,38 +1,11 @@
 @use '@/styles/variables.scss';
 
 .cart-result-form {
-  // .cart-result-form__wrapper
-
-  .cart-result-form__wrapper {
-    @media (max-width: 767.98px) {
-      grid-template-columns: 1fr;
-    }
-  }
-
-  // .cart-result-form__person
-
-  .cart-result-form__person {
-    @media (max-width: 374.98px) {
-      grid-template-columns: 1fr;
-    }
-  }
-
   // .cart-result-form__radio
 
   &__radio {
-    position: relative;
-    display: block;
-    cursor: pointer;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-
     @media (any-hover: hover) {
       &:hover {
-        input ~ .radio__checkmark {
-        }
-
         input:checked ~ .radio__checkmark {
           background-color: variables.$hoverAccentColor;
         }
@@ -44,12 +17,6 @@
     }
 
     input {
-      position: absolute;
-      opacity: 0;
-      cursor: pointer;
-      height: 0;
-      width: 0;
-
       &:checked ~ .radio__checkmark {
         // background-color: variables.$hoverAccentColor;
       }
@@ -67,14 +34,6 @@
     }
 
     .radio__checkmark {
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      left: 15px;
-      height: 22px;
-      width: 22px;
-      transition: background-color 0.25s ease;
-      border-radius: 4px;
       box-shadow:
         inset 2px 2px 4px rgba(0, 0, 0, 0.1),
         inset -2px -2px 4px rgba(255, 255, 255, 0.4);
@@ -100,13 +59,6 @@
   // .cart-result-form__checkbox
 
   &__checkbox {
-    position: relative;
-    display: inline-block;
-    cursor: pointer;
-    user-select: none;
-    width: 130px;
-    height: 105px;
-
     @media (any-hover: hover) {
       &:hover {
         .cart-result-form__checkbox-body {
@@ -116,12 +68,6 @@
     }
 
     input {
-      position: absolute;
-      opacity: 0;
-      cursor: pointer;
-      height: 0;
-      width: 0;
-
       &:checked ~ .cart-result-form__checkbox-checkmark:after {
         opacity: 1;
         top: -3px;
@@ -132,27 +78,14 @@
         box-shadow: 5px 5px 10px rgba(0, 125, 251, 0.4);
       }
     }
-
-    @media (max-width: 479.98px) {
-      width: 105px;
-      height: 75px;
-    }
   }
 
   // .cart-result-form__checkbox-checkmark
 
   &__checkbox-checkmark {
-    position: absolute;
-    top: 10px;
-    left: 10px;
-    height: 22px;
-    width: 22px;
-    transition: background-color 0.25s ease;
-    border-radius: 4px;
     box-shadow:
       inset 2px 2px 4px rgba(0, 0, 0, 0.1),
       inset -2px -2px 4px rgba(255, 255, 255, 0.4);
-    background-color: #fff;
 
     &:after {
       content: '';
@@ -168,16 +101,6 @@
       transition:
         opacity 0.25s ease,
         top 0.25s ease;
-    }
-  }
-
-  // .cart-result-form__checkbox-body
-
-  &__checkbox-body {
-    img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
     }
   }
 }

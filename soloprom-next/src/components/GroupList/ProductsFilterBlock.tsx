@@ -1,40 +1,36 @@
 'use client'
 import React, { useCallback, useEffect, useMemo, useState, useRef } from 'react'
-import { useRouter, useSearchParams } from 'next/navigation'
+import { useRouter } from 'next/navigation'
 import { CardDataProps, FilterData } from '@/types/products.types'
-import { FilteredList } from '@/components/GroupList/FilteredList'
-import CatalogFilters from '../Filter/CatalogFilters'
+import { ResultFilteredList } from '@/components/GroupList/ResultFilteredList'
+import CatalogFilters from './Filter/CatalogFilters'
 import useFilterStore from '@/store/filterStore'
 import { useDebounce } from '@/hooks/useDebounce'
-import './ProductsFilterBlock.scss'
-import { api } from '@/utils/fetch/instance.api'
 import { scrollStatusChange } from '@/utils/scrollStatusChange'
+
+import { api } from '@/utils/fetch/instance.api'
 
 interface Props {
   categoryName: string
   productsType: string
   currentPage: number
-  onChangePage: (newPage: number) => void
   initialProducts: CardDataProps[] | null
   categoryData: FilterData
-  totalCount: number
+  pageName: string
 }
 
 export const ProductsFilterBlock: React.FC<Props> = ({
   categoryName,
   productsType,
   currentPage,
-  onChangePage,
   initialProducts,
   categoryData,
-  totalCount,
+  pageName,
 }) => {
   const router = useRouter()
-  const searchParams = useSearchParams()
   const groupListRef = useRef<HTMLElement | null>(null)
   const fetchControllerRef = useRef<AbortController | null>(null)
   const [products, setProducts] = useState(initialProducts || [])
-  const [initialLoad, setInitialLoad] = useState(true)
   const [filterOpen, setFilterOpen] = useState(false)
   const [checkedValues, setCheckedValues] = useState<Record<string, string[]>>(
     {},
@@ -49,12 +45,11 @@ export const ProductsFilterBlock: React.FC<Props> = ({
     setTotalProductsCount,
     totalProductsCount,
     hasFilters,
-    setHasFilters,
     dynamicCurrentPage,
-    setDynamicCurrentPage,
     setDataIsLoading,
     setPriceRange,
     resetFilters,
+    initialLoad,
   } = useFilterStore()
 
   const debouncedFilters = useDebounce(filters, 500)
@@ -159,60 +154,6 @@ export const ProductsFilterBlock: React.FC<Props> = ({
   }, [categoryName, filteredPage])
 
   useEffect(() => {
-    if (initialLoad) {
-      const urlFilters = searchParams.get('filters')
-      const urlSort = searchParams.get('sort')
-      const urlPage = searchParams.get('page')
-
-      if (urlFilters || urlSort || urlPage) {
-        if (urlFilters) {
-          try {
-            const parsedFilters = JSON.parse(urlFilters)
-
-            setFilters(parsedFilters)
-            setHasFilters(true)
-          } catch (err) {
-            console.error(
-              'Не удалось проанализировать фильтры по URL-адресу:',
-              err,
-            )
-          }
-        }
-
-        if (urlSort) {
-          setSort(urlSort)
-        }
-
-        if (urlPage) {
-          const parsedPage = parseInt(urlPage, 10)
-          if (!isNaN(parsedPage)) {
-            setDynamicCurrentPage(parsedPage)
-          }
-        }
-
-        setHasFilters(true)
-      } else {
-        setTimeout(() => {
-          setDataIsLoading(false)
-        }, 500)
-        setTotalProductsCount(totalCount)
-      }
-
-      setInitialLoad(false)
-    }
-  }, [
-    searchParams,
-    setFilters,
-    setSort,
-    initialProducts,
-    totalCount,
-    setProducts,
-    setTotalProductsCount,
-    setDynamicCurrentPage,
-    setHasFilters,
-  ])
-
-  useEffect(() => {
     if (!initialLoad) {
       updateUrl()
       setProducts([])
@@ -235,6 +176,16 @@ export const ProductsFilterBlock: React.FC<Props> = ({
     scrollStatusChange(status)
   }
 
+  const handlePageChange = (newPage: number) => {
+    const newPath = `/catalog/${pageName}`
+
+    if (newPage > 1) {
+      router.push(`${newPath}/${newPage}`)
+    } else {
+      router.push(newPath)
+    }
+  }
+
   return (
     <section className="group-list section-offset" ref={groupListRef}>
       <div className="page-container">
@@ -252,11 +203,11 @@ export const ProductsFilterBlock: React.FC<Props> = ({
             checkedValues={checkedValues}
             handleResetFilters={handleResetFilters}
           />
-          <FilteredList
+          <ResultFilteredList
             data={products}
             currentPage={currentPage}
             totalPages={totalPages}
-            onChangePage={onChangePage}
+            onChangePage={handlePageChange}
             onSortChange={setSort}
             hasFilters={hasFilters}
             filterOpen={filterOpen}

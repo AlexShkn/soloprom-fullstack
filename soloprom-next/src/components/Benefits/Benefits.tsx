@@ -2,8 +2,6 @@
 import React from 'react'
 import Image from 'next/image'
 
-import './Benefits.scss'
-
 interface BenefitItem {
   imageSrc: string
   altText: string
@@ -59,7 +57,7 @@ const benefitItems: BenefitItem[] = [
 
 const BenefitItemComponent = ({ item }: { item: BenefitItem }) => {
   return (
-    <li className="benefits__item relative min-h-56 overflow-hidden rounded-custom bg-accentBlue p-7">
+    <li className="relative min-h-56 overflow-hidden rounded-custom bg-accentBlue p-7 before:absolute before:inset-0 before:h-full before:w-full before:bg-gradient-to-r before:from-[rgba(1,71,141,0.2)_40%] before:to-[rgba(0,0,0,0)_65%]">
       <Image
         className="absolute -right-2.5 top-0 h-full w-52 object-cover transition-transform"
         src={item.imageSrc}
@@ -72,10 +70,10 @@ const BenefitItemComponent = ({ item }: { item: BenefitItem }) => {
       <svg className="icon mb-2.5 h-12 w-12 fill-grayColor">
         <use xlinkHref={item.iconHref}></use>
       </svg>
-      <h3 className="benefits__item-title relative z-[1] mb-2.5 max-w-64 text-xl font-bold leading-5 text-white">
+      <h3 className="relative z-[1] mb-2.5 max-w-64 text-lg font-bold leading-5 text-white xs:text-xl">
         {item.title}
       </h3>
-      <p className="benefits__item-text relative z-[1] max-w-72 leading-5 text-white">
+      <p className="relative z-[1] max-w-72 text-sm leading-3 text-white xs:text-base">
         {item.text}
       </p>
     </li>
@@ -88,7 +86,7 @@ export const Benefits = () => {
       <div className="benefits__container">
         <h2 className="section-title">Преимущества</h2>
 
-        <ul className="benefits__list grid grid-cols-3 gap-3">
+        <ul className="benefits__list grid grid-cols-1 gap-3 md:grid-cols-2 lg:grid-cols-3">
           {benefitItems.map((item, index) => (
             <BenefitItemComponent key={index} item={item} />
           ))}

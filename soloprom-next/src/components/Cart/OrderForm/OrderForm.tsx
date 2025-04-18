@@ -1,5 +1,5 @@
 'use client'
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useCallback } from 'react'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useForm } from 'react-hook-form'
 import { toast } from 'sonner'
@@ -21,11 +21,27 @@ import './OrderForm.scss'
 import { useCartStore } from '@/store/cartStore'
 import { useAuthStore } from '@/store/authStore'
 
+// Constants for delivery methods
+const DELIVERY_METHODS = [
+  { value: 'СДЭК', label: 'СДЭК', icon: '/img/icons/company/cdek.png' },
+  {
+    value: 'Деловые линии',
+    label: 'Деловые линии',
+    icon: '/img/icons/company/delovie-linii.png',
+  },
+  { value: 'ПЭК', label: 'ПЭК', icon: '/img/icons/company/pek.png' },
+  {
+    value: 'Энергия',
+    label: 'Энергия',
+    icon: '/img/icons/company/energiya.png',
+  },
+  { value: 'Другая', label: 'Другая', icon: '/img/icons/company/other.png' },
+]
+
 export const OrderForm: React.FC = () => {
   const [isSubmitting, setIsSubmitting] = useState(false)
 
   const { cartState, totalAmount, clearCart } = useCartStore()
-
   const { isAuth, userState } = useAuthStore()
 
   const form = useForm<TypeOrderSchema>({
@@ -46,68 +62,149 @@ export const OrderForm: React.FC = () => {
     if (isAuth && userState) {
       form.setValue('email', userState.email)
     }
-  }, [isAuth, userState])
+  }, [isAuth, userState, form.setValue])
 
-  const onSubmit = async (values: TypeOrderSchema) => {
-    setIsSubmitting(true)
+  const onSubmit = useCallback(
+    async (values: TypeOrderSchema) => {
+      setIsSubmitting(true)
 
-    console.log(cartState)
+      try {
+        const telegramResponse = await fetch('/api/routes/sendTelegram', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ totalAmount, cartState, ...values }),
+        })
 
-    try {
-      const telegramResponse = await fetch('/api/routes/sendTelegram', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ totalAmount, cartState, ...values }),
-      })
-
-      if (!telegramResponse.ok) {
-        toast.error('Ошибка при отправке формы.')
-        return
-      }
-
-      toast.success('Форма успешно отправлена')
-
-      if (isAuth) {
-        const orderData = {
-          userId: userState.id,
-          products: cartState,
-          totalAmount: totalAmount,
-          status: 'PROCESSING',
-        }
-
-        const createdOrder = await createOrder(orderData)
-        console.log(createdOrder)
-
-        if (!createdOrder) {
-          await fetch('/api/routes/sendTelegram', {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-              message: 'Ошибка при создании заказа в базе данных',
-              orderData,
-            }),
-          })
-
+        if (!telegramResponse.ok) {
+          toast.error('Ошибка при отправке формы.')
           return
         }
 
+        toast.success('Форма успешно отправлена')
+
+        if (isAuth) {
+          const orderData = {
+            userId: userState.id,
+            products: cartState,
+            totalAmount: totalAmount,
+            status: 'PROCESSING',
+          }
+
+          const createdOrder = await createOrder(orderData)
+
+          if (!createdOrder) {
+            await fetch('/api/routes/sendTelegram', {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json',
+              },
+              body: JSON.stringify({
+                message: 'Ошибка при создании заказа в базе данных',
+                orderData,
+              }),
+            })
+            toast.error(
+              'Ошибка при создании заказа в базе данных. Обратитесь к администратору.',
+            ) // Notify the user of the error.
+            return
+          }
+
+          toast.success('Заказ успешно создан!')
+        }
+
         form.reset()
         clearCart()
-        toast.success('Заказ успешно создан!')
-      } else {
-        form.reset()
-        clearCart()
+      } catch (error) {
+        console.error('Form submission error:', error)
+        toast.error('Ошибка при отправке формы.')
+      } finally {
+        setIsSubmitting(false)
       }
-    } catch (error) {
-      toast.error('Ошибка при отправке формы.')
-    } finally {
-      setIsSubmitting(false)
-    }
-  }
+    },
+    [isAuth, userState?.id, cartState, totalAmount, form, clearCart],
+  )
+
+  // Reusable Input Component
+  const InputField = ({ name, placeholder, autoComplete, type }: any) => (
+    <FormField
+      control={form.control}
+      name={name}
+      render={({ field }) => (
+        <FormItem>
+          <FormControl>
+            <Input
+              placeholder={placeholder}
+              autoComplete={autoComplete}
+              type={type}
+              className="h-14"
+              {...field}
+            />
+          </FormControl>
+          <FormLabel>
+            <FormMessage />
+          </FormLabel>
+          {name === 'name' || name === 'phone' ? (
+            <img
+              src="/img/icons/st.svg"
+              alt=""
+              className="form-field-control__star"
+            />
+          ) : null}
+        </FormItem>
+      )}
+    />
+  )
+
+  // Reusable Radio Button Component
+  const RadioButton = ({ value, label }: any) => (
+    <label className="cart-result-form__radio radio relative block cursor-pointer select-none">
+      <input
+        className="absolute h-0 w-0 cursor-pointer opacity-0"
+        type="radio"
+        value={value}
+        checked={form.watch('personType') === value}
+        onChange={() => form.setValue('personType', value)}
+      />
+      <div className="radio__checkmark absolute left-4 top-[50%] h-[22px] w-[22px] translate-y-[-50%] rounded transition-colors"></div>
+      <div className="radio__body bg-200-100 bg-100-0 rounded-custom bg-white p-3 pl-14 font-bold shadow-[2px_2px_5px_rgba(0,0,0,0.2)] transition-all duration-1000 ease-in-out hover:text-blue-500">
+        {label}
+      </div>
+    </label>
+  )
+
+  const DeliveryMethodCheckbox = ({ method }: any) => (
+    <li>
+      <label className="cart-result-form__checkbox relative inline-block h-[75px] w-[105px] cursor-pointer select-none mds:h-[105px] mds:w-32">
+        <input
+          type="checkbox"
+          className="absolute h-0 w-0 cursor-pointer opacity-0"
+          value={method.value}
+          checked={form.watch('deliveryMethods')?.includes(method.value)}
+          onChange={() => {
+            const currentValues = form.watch('deliveryMethods') || []
+            if (currentValues.includes(method.value)) {
+              form.setValue(
+                'deliveryMethods',
+                currentValues.filter((item: string) => item !== method.value),
+              )
+            } else {
+              form.setValue('deliveryMethods', [...currentValues, method.value])
+            }
+          }}
+        />
+        <div className="cart-result-form__checkbox-checkmark absolute left-2.5 top-2.5 h-[22] w-[22] rounded bg-white transition-colors"></div>
+        <div className="cart-result-form__checkbox-body duration-250 transition-color duration-250 hover:bg-lefty overflow-hidden rounded-custom bg-white bg-gradient-to-r from-white to-white bg-[size:200%_100%] bg-right pl-7 font-bold shadow-md duration-1000 ease-in-out hover:shadow-lg">
+          <img
+            className="h-full w-full object-cover"
+            src={method.icon}
+            alt={method.label}
+          />
+        </div>
+      </label>
+    </li>
+  )
 
   return (
     <Form {...form}>
@@ -115,171 +212,40 @@ export const OrderForm: React.FC = () => {
         onSubmit={form.handleSubmit(onSubmit)}
         className="cart-result-form mt-5 flex w-full flex-col justify-center rounded p-5 shadow-custom"
       >
-        <div className="cart-result-form__wrapper mb-7 grid w-full grid-cols-2 gap-7">
+        <div className="mb-7 grid w-full grid-cols-1 gap-7 md:grid-cols-2">
           <div className="mb-6 flex flex-col gap-6">
-            <FormField
-              control={form.control}
+            <InputField
               name="family"
-              render={({ field }) => (
-                <FormItem>
-                  <FormControl>
-                    <Input
-                      placeholder="Фамилия"
-                      autoComplete="family-name"
-                      className="h-14"
-                      {...field}
-                    />
-                  </FormControl>
-                  <FormLabel>
-                    <FormMessage />
-                  </FormLabel>
-                </FormItem>
-              )}
+              placeholder="Фамилия"
+              autoComplete="family-name"
             />
-            <FormField
-              control={form.control}
+            <InputField
               name="name"
-              render={({ field }) => (
-                <FormItem>
-                  <FormControl>
-                    <Input
-                      placeholder="Имя"
-                      autoComplete="given-name"
-                      className="h-14"
-                      {...field}
-                    />
-                  </FormControl>
-                  <FormLabel>
-                    <FormMessage />
-                  </FormLabel>
-                  <img
-                    src="/img/icons/st.svg"
-                    alt=""
-                    className="form-field-control__star"
-                  />
-                </FormItem>
-              )}
+              placeholder="Имя"
+              autoComplete="given-name"
             />
-            <FormField
-              control={form.control}
+            <InputField
               name="patronymic"
-              render={({ field }) => (
-                <FormItem>
-                  <FormControl>
-                    <Input
-                      placeholder="Отчество"
-                      autoComplete="additional-name"
-                      className="h-14"
-                      {...field}
-                    />
-                  </FormControl>
-                  <FormLabel>
-                    <FormMessage />
-                  </FormLabel>
-                </FormItem>
-              )}
+              placeholder="Отчество"
+              autoComplete="additional-name"
             />
-            <FormField
-              control={form.control}
+            <InputField
               name="phone"
-              render={({ field }) => (
-                <FormItem>
-                  <FormControl>
-                    <Input
-                      data-form-phone
-                      placeholder="+7 (999) 999-99-99"
-                      type="tel"
-                      autoComplete="tel"
-                      className="h-14"
-                      {...field}
-                    />
-                  </FormControl>
-                  <FormLabel>
-                    <FormMessage />
-                  </FormLabel>
-                  <img
-                    src="/img/icons/st.svg"
-                    alt=""
-                    className="form-field-control__star"
-                  />
-                </FormItem>
-              )}
+              placeholder="+7 (999) 999-99-99"
+              type="tel"
+              autoComplete="tel"
             />
-            <FormField
-              control={form.control}
-              name="email"
-              render={({ field }) => (
-                <FormItem>
-                  <FormControl>
-                    <Input
-                      type="email"
-                      placeholder="Почта"
-                      {...field}
-                      className="h-14"
-                    />
-                  </FormControl>
-                  <FormLabel>
-                    <FormMessage />
-                  </FormLabel>
-                </FormItem>
-              )}
-            />
-            <FormField
-              control={form.control}
+            <InputField name="email" placeholder="Почта" type="email" />
+            <InputField
               name="address"
-              render={({ field }) => (
-                <FormItem>
-                  <FormControl>
-                    <Input
-                      placeholder="Адрес доставки"
-                      autoComplete="shipping address"
-                      className="h-14"
-                      {...field}
-                    />
-                  </FormControl>
-                  <FormLabel>
-                    <FormMessage />
-                  </FormLabel>
-                </FormItem>
-              )}
+              placeholder="Адрес доставки"
+              autoComplete="shipping address"
             />
           </div>
           <div className="flex flex-col gap-5">
-            <div className="cart-result-form__person grid grid-cols-2 gap-2.5">
-              <FormField
-                control={form.control}
-                name="personType"
-                render={({ field }) => (
-                  <>
-                    <label className="cart-result-form__radio radio">
-                      <input
-                        type="radio"
-                        {...field}
-                        value="Физ.лицо"
-                        checked={field.value === 'Физ.лицо'}
-                        onChange={() => form.setValue('personType', 'Физ.лицо')}
-                      />
-                      <div className="radio__checkmark"></div>
-                      <div className="radio__body bg-200-100 bg-100-0 rounded-custom bg-white p-3 pl-14 font-bold shadow-[2px_2px_5px_rgba(0,0,0,0.2)] transition-all duration-1000 ease-in-out hover:text-blue-500">
-                        Физ.лицо
-                      </div>
-                    </label>
-                    <label className="cart-result-form__radio radio">
-                      <input
-                        type="radio"
-                        {...field}
-                        value="Юр.лицо"
-                        checked={field.value === 'Юр.лицо'}
-                        onChange={() => form.setValue('personType', 'Юр.лицо')}
-                      />
-                      <div className="radio__checkmark"></div>
-                      <div className="radio__body bg-200-100 bg-100-0 rounded-custom bg-white p-3 pl-14 font-bold shadow-[2px_2px_5px_rgba(0,0,0,0.2)] transition-all duration-1000 ease-in-out hover:text-blue-500">
-                        Юр.лицо
-                      </div>
-                    </label>
-                  </>
-                )}
-              />
+            <div className="cart-result-form__person grid grid-cols-1 gap-2.5 xs:grid-cols-2">
+              <RadioButton value="Физ.лицо" label="Физ.лицо" />
+              <RadioButton value="Юр.лицо" label="Юр.лицо" />
             </div>
 
             <div>
@@ -287,157 +253,9 @@ export const OrderForm: React.FC = () => {
                 Транспортные компании:
               </div>
               <ul className="flex flex-wrap gap-5">
-                <FormField
-                  control={form.control}
-                  name="deliveryMethods"
-                  render={({ field }) => (
-                    <>
-                      <li>
-                        <label className="cart-result-form__checkbox">
-                          <input
-                            type="checkbox"
-                            value="СДЭК"
-                            checked={field.value?.includes('СДЭК')}
-                            onChange={() => {
-                              if (field.value?.includes('СДЭК')) {
-                                form.setValue(
-                                  'deliveryMethods',
-                                  field.value?.filter(
-                                    (item: string) => item !== 'СДЭК',
-                                  ) || [],
-                                )
-                              } else {
-                                form.setValue('deliveryMethods', [
-                                  ...(field.value || []),
-                                  'СДЭК',
-                                ])
-                              }
-                            }}
-                          />
-                          <div className="cart-result-form__checkbox-checkmark"></div>
-                          <div className="cart-result-form__checkbox-body duration-250 transition-color duration-250 hover:bg-lefty overflow-hidden rounded-custom bg-white bg-gradient-to-r from-white to-white bg-[size:200%_100%] bg-right pl-7 font-bold shadow-md duration-1000 ease-in-out hover:shadow-lg">
-                            <img src="/img/icons/company/cdek.png" alt="" />
-                          </div>
-                        </label>
-                      </li>
-                      <li>
-                        <label className="cart-result-form__checkbox">
-                          <input
-                            type="checkbox"
-                            value="Деловые линии"
-                            checked={field.value?.includes('Деловые линии')}
-                            onChange={() => {
-                              if (field.value?.includes('Деловые линии')) {
-                                form.setValue(
-                                  'deliveryMethods',
-                                  field.value?.filter(
-                                    (item: string) => item !== 'Деловые линии',
-                                  ) || [],
-                                )
-                              } else {
-                                form.setValue('deliveryMethods', [
-                                  ...(field.value || []),
-                                  'Деловые линии',
-                                ])
-                              }
-                            }}
-                          />
-                          <div className="cart-result-form__checkbox-checkmark"></div>
-                          <div className="cart-result-form__checkbox-body duration-250 transition-color duration-250 hover:bg-lefty overflow-hidden rounded-custom bg-white bg-gradient-to-r from-white to-white bg-[size:200%_100%] bg-right pl-7 font-bold shadow-md duration-1000 ease-in-out hover:shadow-lg">
-                            <img
-                              src="/img/icons/company/delovie-linii.png"
-                              alt=""
-                            />
-                          </div>
-                        </label>
-                      </li>
-                      <li>
-                        <label className="cart-result-form__checkbox">
-                          <input
-                            type="checkbox"
-                            value="ПЭК"
-                            checked={field.value?.includes('ПЭК')}
-                            onChange={() => {
-                              if (field.value?.includes('ПЭК')) {
-                                form.setValue(
-                                  'deliveryMethods',
-                                  field.value?.filter(
-                                    (item: string) => item !== 'ПЭК',
-                                  ) || [],
-                                )
-                              } else {
-                                form.setValue('deliveryMethods', [
-                                  ...(field.value || []),
-                                  'ПЭК',
-                                ])
-                              }
-                            }}
-                          />
-                          <div className="cart-result-form__checkbox-checkmark"></div>
-                          <div className="cart-result-form__checkbox-body duration-250 transition-color duration-250 hover:bg-lefty overflow-hidden rounded-custom bg-white bg-gradient-to-r from-white to-white bg-[size:200%_100%] bg-right pl-7 font-bold shadow-md duration-1000 ease-in-out hover:shadow-lg">
-                            <img src="/img/icons/company/pek.png" alt="" />
-                          </div>
-                        </label>
-                      </li>
-                      <li>
-                        <label className="cart-result-form__checkbox">
-                          <input
-                            type="checkbox"
-                            value="Энергия"
-                            checked={field.value?.includes('Энергия')}
-                            onChange={() => {
-                              if (field.value?.includes('Энергия')) {
-                                form.setValue(
-                                  'deliveryMethods',
-                                  field.value?.filter(
-                                    (item: string) => item !== 'Энергия',
-                                  ) || [],
-                                )
-                              } else {
-                                form.setValue('deliveryMethods', [
-                                  ...(field.value || []),
-                                  'Энергия',
-                                ])
-                              }
-                            }}
-                          />
-                          <div className="cart-result-form__checkbox-checkmark"></div>
-                          <div className="cart-result-form__checkbox-body duration-250 transition-color duration-250 hover:bg-lefty overflow-hidden rounded-custom bg-white bg-gradient-to-r from-white to-white bg-[size:200%_100%] bg-right pl-7 font-bold shadow-md duration-1000 ease-in-out hover:shadow-lg">
-                            <img src="/img/icons/company/energiya.png" alt="" />
-                          </div>
-                        </label>
-                      </li>
-                      <li>
-                        <label className="cart-result-form__checkbox">
-                          <input
-                            type="checkbox"
-                            value="Другая"
-                            checked={field.value?.includes('Другая')}
-                            onChange={() => {
-                              if (field.value?.includes('Другая')) {
-                                form.setValue(
-                                  'deliveryMethods',
-                                  field.value?.filter(
-                                    (item: string) => item !== 'Другая',
-                                  ) || [],
-                                )
-                              } else {
-                                form.setValue('deliveryMethods', [
-                                  ...(field.value || []),
-                                  'Другая',
-                                ])
-                              }
-                            }}
-                          />
-                          <div className="cart-result-form__checkbox-checkmark"></div>
-                          <div className="cart-result-form__checkbox-body duration-250 transition-color duration-250 hover:bg-lefty overflow-hidden rounded-custom bg-white bg-gradient-to-r from-white to-white bg-[size:200%_100%] bg-right pl-7 font-bold shadow-md duration-1000 ease-in-out hover:shadow-lg">
-                            <img src="/img/icons/company/other.png" alt="" />
-                          </div>
-                        </label>
-                      </li>
-                    </>
-                  )}
-                />
+                {DELIVERY_METHODS.map((method) => (
+                  <DeliveryMethodCheckbox key={method.value} method={method} />
+                ))}
               </ul>
             </div>
           </div>

@@ -10,28 +10,20 @@ import { HeroCategoryStaticSlide } from '../HeroSliders/HeroCategoryBlock/HeroCa
 
 export interface HeroTypes {
   isReady: boolean
+  isClient: boolean
 }
 
 const Hero = () => {
-  const [isReady, setIsReady] = useState(false)
   const isTablet = useMediaQuery('(max-width: 991.98px)')
-
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setIsReady(true)
-    }, 500)
-    return () => clearTimeout(timer)
-  }, [isReady])
 
   return (
     <section className="hero bg-sectionWhite mds:pb-12 2xl:py-7">
-      <div className="mx-auto flex flex-col gap-1 lg:gap-2 2xl:max-w-[1390px] 2xl:px-5">
-        <div className="relative grid grid-cols-1 justify-between gap-1 overflow-hidden lg:grid-cols-[calc(60%-10px)40%] lg:gap-2">
-          <HeroMainSlider isReady={isReady} />
-
-          {!isTablet && <HeroCategoryStaticSlide isReady={isReady} />}
+      <div className="mx-auto flex flex-col gap-1 2xl:max-w-[1390px] 2xl:px-5">
+        <div className="relative grid grid-cols-1 justify-between gap-1 overflow-hidden lg:grid-cols-[calc(60%-4px)40%]">
+          <HeroMainSlider />
+          {!isTablet && <HeroCategoryStaticSlide />}
         </div>
-        <HeroCategoryBlock isReady={isReady} />
+        <HeroCategoryBlock />
       </div>
     </section>
   )

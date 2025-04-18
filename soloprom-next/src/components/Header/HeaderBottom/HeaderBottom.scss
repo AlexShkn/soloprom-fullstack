@@ -4,11 +4,7 @@
   // .header-bottom__panel
 
   .header-bottom__panel {
-    grid-template-columns: 1fr auto;
-
     @media (max-width: 649.98px) {
-      width: 100%;
-
       &.fixed-panel {
         position: fixed;
         top: 0;
@@ -18,10 +14,6 @@
         background-color: #fff;
         z-index: 999999;
       }
-    }
-
-    @media (max-width: 479.98px) {
-      grid-template-columns: 1fr;
     }
   }
 

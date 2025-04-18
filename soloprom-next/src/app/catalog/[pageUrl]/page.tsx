@@ -49,7 +49,9 @@ export async function generateMetadata({
         },
       ],
     },
-    alternates: { canonical: canonicalUrl },
+    alternates: {
+      canonical: `${process.env.NEXT_PUBLIC_CLIENT_URL}${canonicalUrl}`,
+    },
   }
 }
 
@@ -90,7 +92,7 @@ const CatalogPage: React.FC<CatalogPageProps> = async ({ params }) => {
   const currentPage = 1
 
   const initialProducts = await fetchProducts({
-    categoryName: pageData.subUrl ? pageData.subUrl : pageData.name,
+    categoryName: pageData.subUrl ?? pageData.name,
     page: currentPage,
     limit: 12,
   })

@@ -106,7 +106,7 @@ export const ProductPageCardDescription: React.FC<DescriptionTypes> = ({
 
   return (
     <div className="flex flex-col">
-      <div className="border-1 mb-5 flex items-center justify-between pt-6">
+      <div className="border-1 mb-5 flex flex-wrap items-center justify-between gap-y-2 pt-6">
         <div className="flex flex-col items-center gap-1 mds:flex-row mds:gap-3">
           <Image
             src={`/img/catalog/brands-logo/${brandName.toLowerCase()}.webp`}
@@ -145,7 +145,9 @@ export const ProductPageCardDescription: React.FC<DescriptionTypes> = ({
           getAdaptiveValue(wordAdaptive, 'types', categoryName) || 'Тип',
           productType,
         )}
-
+        {sizesData &&
+          Object.keys(sizesData).length < 2 &&
+          renderDescriptionItem('Размер', variantValue)}
         {load_index && renderDescriptionItem('Индекс нагрузки', load_index)}
         {container && renderDescriptionItem('Емкость', container, 'Ah')}
         {voltage && renderDescriptionItem('Напряжение', voltage, 'V')}

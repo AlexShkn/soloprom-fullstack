@@ -7,11 +7,11 @@ import { FilterItem } from './FilterItem'
 import { transformJson } from '@/components/CategoryPageHero/SidePanel/SidePanel'
 import { CardDataProps, FilterData } from '@/types/products.types'
 import useFilterStore from '@/store/filterStore'
-import pagesDataRaw from '@/data/products/pagesData.json'
-import { useSearchParams } from 'next/navigation'
 import { FilterList } from './FilterList'
 import { Button } from '@/components/ui'
 import { declension } from '@/components/Cart/CartResult'
+
+import pagesDataRaw from '@/data/products/pagesData.json'
 
 const transformData = transformJson(pagesDataRaw)
 
@@ -31,11 +31,11 @@ interface Props {
   handleResetFilters: () => void
 }
 
-interface dtoTypes {
+interface DtoTypes {
   [key: string]: string
 }
 
-const dto: dtoTypes = {
+const dto: DtoTypes = {
   tires: 'шин',
   battery: 'аккумуляторов',
   oils: 'масел',
@@ -54,7 +54,6 @@ const CatalogFilters: React.FC<Props> = ({
   checkedValues,
   handleResetFilters,
 }) => {
-  const searchParams = useSearchParams()
   const {
     filters,
     setFilters,
@@ -172,28 +171,6 @@ const CatalogFilters: React.FC<Props> = ({
     [handleFilterChange, internalFilters, setFilters, onFiltersChange],
   )
 
-  if (initialLoad) {
-    const urlFilters = searchParams.get('filters')
-
-    if (urlFilters) {
-      try {
-        const parsedFilters = JSON.parse(urlFilters) as Record<
-          string,
-          string[] | number
-        >
-
-        setPriceRange({
-          min: parsedFilters.minPrice as number,
-          max: parsedFilters.maxPrice as number,
-        })
-
-        setInitialLoad(false)
-      } catch (error) {
-        console.error('Ошибка при разборе фильтров по URL-адресу:', error)
-      }
-    }
-  }
-
   const productWord = declension(products.length, [
     'товар',
     'товара',
@@ -238,7 +215,7 @@ const CatalogFilters: React.FC<Props> = ({
             <FilterList
               initial={true}
               maxHeight={'200'}
-              title={categoryData.title}
+              title={categoryData.crumb}
               items={groups && groups.length ? groups : subCategories || []}
             />
           )}

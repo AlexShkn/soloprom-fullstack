@@ -5,6 +5,7 @@ import React, { useState } from 'react'
 export interface GroupItemType {
   title: string
   url: string
+  crumb: string
 }
 
 export const FilterList: React.FC<{
@@ -38,7 +39,7 @@ export const FilterList: React.FC<{
               href={`/catalog/${item.url}`}
               className="block text-sm hover:underline"
             >
-              {item.title}
+              {item.crumb}
             </a>
           ))}
         </div>

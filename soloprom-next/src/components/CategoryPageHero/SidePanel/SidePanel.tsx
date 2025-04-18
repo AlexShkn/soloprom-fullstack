@@ -22,6 +22,7 @@ export type OutputCategory = {
   category: string
   headGroupTitle?: string
   url: string
+  crumb: string
 
   subcategories?: Array<{
     title: string
@@ -94,6 +95,7 @@ export function transformJson(inputData: InputDataType): {
         img: item.img,
         alt: item.alt,
         url: item.url,
+        crumb: item.crumb,
         pageType: item.pageType,
         category: item.category,
         subcategories: [],

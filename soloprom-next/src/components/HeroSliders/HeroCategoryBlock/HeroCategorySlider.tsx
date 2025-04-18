@@ -51,7 +51,7 @@ export const HeroCategorySlider: React.FC<Props> = ({ data }) => {
         <SwiperSlide key={slide.title} className="hero-vertical-slider__slide">
           <Link
             href={slide.link}
-            className="hero__card hero__card--link btn-glare relative flex h-full justify-center overflow-hidden px-7 pb-[25px] pt-[30px] transition-transform duration-300 ease-in before:absolute before:inset-0 before:z-[1] before:h-full before:w-full before:bg-black before:bg-opacity-60 2xl:rounded"
+            className="hero__card hero__card--link btn-glare relative flex h-full justify-center overflow-hidden px-7 pb-[25px] pt-[30px] transition-transform duration-300 ease-in before:absolute before:inset-0 before:z-[1] before:h-full before:w-full before:bg-black before:bg-opacity-60 2xl:rounded-2xl"
           >
             <div className="border">
               <span></span>

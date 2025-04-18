@@ -34,6 +34,7 @@ export default {
         sectionWhite: '#f8fafc',
         grayColor: '#e5e5e5',
         greenColor: '#25d366',
+        darkGreenColor: '#177c19',
         redColor: '#ef4444',
         successColor: '#23cc71',
         card: {

@@ -1,6 +1,7 @@
 'use client'
+import { Input } from '@/components/ui'
 import { Checkbox } from '@/components/ui/checkbox'
-import { ChevronDown, ChevronUp } from 'lucide-react'
+import { ChevronDown, ChevronUp, Search } from 'lucide-react'
 import React, { useState, useCallback, useEffect } from 'react'
 
 interface Option {
@@ -34,6 +35,7 @@ export const FilterCheckbox: React.FC<Props> = ({
   filterName,
 }) => {
   const [showAll, setShowAll] = useState(false)
+  const [searchTerm, setSearchTerm] = useState('')
 
   const visibleOptions = showAll ? options : options.slice(0, 5)
 
@@ -77,11 +79,30 @@ export const FilterCheckbox: React.FC<Props> = ({
     [checkedValues, filterName],
   )
 
+  const filteredOptions =
+    showAll && searchTerm
+      ? options.filter((option) =>
+          option.label.toLowerCase().includes(searchTerm.toLowerCase()),
+        )
+      : visibleOptions
+
   return (
     <div className="space-y-2">
       <div className="font-semibold">{title}</div>
+      {shouldShowMoreButton && showAll && (
+        <div className="relative flex items-center gap-1 pr-2">
+          <Search className="absolute left-2 top-3 h-4 w-4 stroke-[#989797]" />
+          <Input
+            type="text"
+            placeholder="Поиск..."
+            className="block w-full rounded-custom bg-[#f3f4f6] px-3 py-2 pl-8 text-sm placeholder:text-[#989797] focus:text-sm"
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+          />
+        </div>
+      )}
       <div className="space-y-1">
-        {visibleOptions.map((option) => (
+        {filteredOptions.map((option) => (
           <div key={option.value} className="flex items-center space-x-2">
             <Checkbox
               id={option.value}

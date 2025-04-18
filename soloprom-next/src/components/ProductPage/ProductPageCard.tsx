@@ -67,22 +67,12 @@ export const ProductPageCard: React.FC<ProductsCardPropTypes> = ({
               {regalia.length > 0 && (
                 <RegaliaList regalia={regalia} discount={discount} />
               )}
-              {/* <ul className="flex flex-col items-center gap-2">
-              <li className="border-1 cursor-pointer border border-accentBlue p-1">
-                <Image
-                  className="product-page-card__image object-contain"
-                  src={`/img/catalog/${img}.webp`}
-                  alt=""
-                  width={80}
-                  height={80}
-                />
-              </li>
-            </ul> */}
+
               <div
                 className={`relative flex flex-auto ${!sizesIsLength ? '' : 'justify-center'}`}
               >
                 <Image
-                  className="product-page-card__image aspect-square h-60 w-60 object-contain xl:h-72 xl:w-72"
+                  className="product-page-card__image aspect-square h-60 w-60 object-contain xl:h-56 xl:w-56"
                   src={
                     (img && `/img/catalog/${img}.webp`) ||
                     `/img/catalog/image-null/${categoryName}.webp`
@@ -96,13 +86,12 @@ export const ProductPageCard: React.FC<ProductsCardPropTypes> = ({
 
             <div className="flex w-full flex-col gap-5">
               <ProductPageCardDescription cardData={cardData} />
+              {sizesIsLength && <ProductsPageOffers cardData={cardData} />}
             </div>
           </div>
 
           <ProductPageSideBlock cardData={cardData} />
         </div>
-
-        {sizesIsLength && <ProductsPageOffers cardData={cardData} />}
       </div>
       <div
         itemScope

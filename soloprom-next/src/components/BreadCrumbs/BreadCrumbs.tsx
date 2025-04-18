@@ -156,7 +156,7 @@ const BreadCrumbs: React.FC<forcedListTypes> = ({
                 </span>
               )}
 
-              {url !== category && (
+              {url !== category && name && (
                 <span className="flex items-center">
                   <ChevronRight className="mx-1 h-4 w-4 text-gray-500" />
                   <Link

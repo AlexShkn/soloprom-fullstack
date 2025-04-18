@@ -42,7 +42,7 @@ const HeaderBottom = () => {
     >
       <div ref={headerRef} className={`header-bottom__wrapper relative`}>
         <div
-          className={`header-bottom__panel grid items-center justify-between gap-5 ${headerFixed && 'page-container'} ${catalogIsOpen && 'fixed-panel'}`}
+          className={`header-bottom__panel grid w-full grid-cols-1 items-center justify-between gap-5 mds:grid-cols-[1fr,auto] sm:w-auto ${headerFixed && 'page-container'} ${catalogIsOpen && 'fixed-panel'}`}
         >
           <div className="flex h-11 w-full items-center gap-1 bg-white mds:w-auto md:gap-4 lg:h-auto lg:gap-7">
             <div className="relative">

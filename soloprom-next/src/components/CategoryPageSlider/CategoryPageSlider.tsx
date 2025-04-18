@@ -67,7 +67,7 @@ export const CategoryPageSlider: React.FC<Props> = ({ category }) => {
     <div className={`page-category-slider pt-10`}>
       <div className="page-container">
         <div className="page-category-slider__category">
-          <div className="page-category-slider__category-title relative inline-flex items-center gap-2.5 font-bold">
+          <div className="relative mb-[clamp(0.9375rem,0.443rem+1.6484vw,1.875rem)] inline-flex items-center gap-2.5 text-[clamp(1.25rem,1.0522rem+0.6593vw,1.625rem)] font-bold">
             Другие категории
           </div>
           <div className="page-category-slider relative overflow-hidden p-5">

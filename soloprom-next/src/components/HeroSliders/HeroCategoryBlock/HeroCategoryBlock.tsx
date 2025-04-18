@@ -1,13 +1,10 @@
 import React from 'react'
-import Skeleton from 'react-loading-skeleton'
-import 'react-loading-skeleton/dist/skeleton.css'
 
-import './HeroCategorySlider.scss'
-
-import { HeroTypes } from '@/components/Hero/Hero'
 import { useMediaQuery } from '@/hooks/useMediaQuery'
 import { HeroCategorySlider } from './HeroCategorySlider'
 import { HeroCategoryBlocks } from './HeroCategoryBlocks'
+
+import './HeroCategorySlider.scss'
 
 const categoriesData = [
   {
@@ -36,38 +33,31 @@ const categoriesData = [
   },
 ]
 
-const HeroCategoryBlock: React.FC<HeroTypes> = ({ isReady }) => {
+const HeroCategoryBlock = () => {
   const isTablet = useMediaQuery('(max-width: 991.98px)')
 
   const filteredData = Array.from(categoriesData).filter(
     (category) => category.title !== 'Шины для спецтехники',
   )
 
-  const skeletonStyle = {
-    width: '100%',
-    height: '200px',
-  }
+  // const skeletonStyle = {
+  //   width: '100%',
+  //   height: '200px',
+  // }
 
-  const skeletonContainerStyle = {
-    width: '100%',
-    display: 'grid',
-    gridTemplateColumns: 'repeat(2, 1fr)',
-    gap: '10px',
-  }
+  // const skeletonContainerStyle = {
+  //   width: '100%',
+  //   display: 'grid',
+  //   gridTemplateColumns: 'repeat(2, 1fr)',
+  //   gap: '10px',
+  // }
 
   return (
     <>
-      {isReady ? (
-        !isTablet ? (
-          <HeroCategoryBlocks data={filteredData} />
-        ) : (
-          <HeroCategorySlider data={categoriesData} />
-        )
+      {!isTablet ? (
+        <HeroCategoryBlocks data={filteredData} />
       ) : (
-        <div style={skeletonContainerStyle}>
-          <Skeleton style={skeletonStyle} />
-          <Skeleton style={skeletonStyle} />
-        </div>
+        <HeroCategorySlider data={categoriesData} />
       )}
     </>
   )

@@ -73,14 +73,14 @@ export const CategoryProductsSlider: React.FC<Props> = ({ className }) => {
   }, [isReady])
 
   return (
-    <section className={`catalog-products pb-5 pt-2.5 ${className}`}>
+    <section className={`catalog-products pb-5 pt-12 mds:pt-2.5 ${className}`}>
       <div className="catalog-products__container">
         {Object.entries(categoriesData).map(([key, category]) => (
-          <div className="catalog-products__category" key={key}>
-            <h2 className="catalog-products__category-title relative inline-flex items-center gap-2.5 font-bold">
+          <div key={key}>
+            <h2 className="relative mb-[clamp(0.9375rem,0.443rem+1.6484vw,1.875rem)] inline-flex items-center gap-2.5 text-[clamp(1.25rem,1.0522rem+0.6593vw,1.625rem)] font-bold">
               {category.title}
             </h2>
-            <div className="catalog-products__category-slider relative overflow-hidden p-5">
+            <div className="catalog-products__category-slider relative overflow-hidden px-2.5 py-5 mds:p-5">
               {isReady ? (
                 <Swiper
                   modules={[Scrollbar, Grid]}
@@ -128,22 +128,22 @@ export const CategoryProductsSlider: React.FC<Props> = ({ className }) => {
                   {category.items.map((item) => (
                     <SwiperSlide
                       key={item.href}
-                      className="swiper-slide catalog-products__category-link relative flex select-none flex-col items-center justify-center rounded-custom px-2.5 py-5 text-center shadow-custom transition-all"
+                      className="swiper-slide category-link relative flex select-none flex-col items-center justify-center rounded-custom px-2.5 py-5 text-center shadow-custom transition-all"
                     >
                       <Link href={item.href} className="blok h-full w-full">
                         <div className="flex flex-col items-center justify-center">
                           <Image
-                            className="catalog-products__category-link-image mb-4 block h-[110px] w-[110px] object-contain"
+                            className="mb-4 block h-20 w-20 object-contain mds:h-[110px] mds:w-[110px]"
                             src={item.img}
                             alt={item.title}
                             width={110}
                             height={110}
                           />
                           <div className="catalog-products__category-body">
-                            <div className="catalog-products__category-link-title mb-4 text-lg font-bold leading-5 transition-colors">
+                            <div className="title mb-4 text-sm font-bold transition-colors mds:text-base md:text-lg">
                               {item.title}
                             </div>
-                            <div className="text-sm text-[#b7b7b7]">
+                            <div className="text text-sm text-[#b7b7b7]">
                               {productsCounts[item.id]} товар
                               {productsCounts[item.id] === 1
                                 ? ''

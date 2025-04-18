@@ -91,6 +91,12 @@ export const ProductPageSideBlock: React.FC<Props> = ({ cardData }) => {
     })
     modalCallbackStateChange(true)
   }
+
+  const formattedDiscountPrice =
+    discount && defaultPrice
+      ? `${getDigFormat(Math.floor(defaultPrice * (1 + discount / 100)))}`
+      : ''
+
   return (
     <div className="w-full rounded-custom bg-white px-5 py-7 shadow-custom lg:relative lg:w-full lg:max-w-[350px]">
       <button
@@ -105,13 +111,32 @@ export const ProductPageSideBlock: React.FC<Props> = ({ cardData }) => {
       {variantSize && (
         <div className="flex h-full flex-col items-start">
           <div className="mb-10">
-            <div className="mb-2 text-2xl font-medium text-darkBlue">
-              Цена:{' '}
-              <span className="text-accentBlue">
-                {getDigFormat(defaultPrice)} ₽
-              </span>{' '}
+            <div className={`my-2.5 flex items-center justify-between gap-2.5`}>
+              <div
+                className={`relative flex font-bold ${discount ? 'text-accentBlue' : 'text-[#272b2c]'} flex-row-reverse items-center gap-2 text-2xl`}
+              >
+                {formattedDiscountPrice && (
+                  <>
+                    <b
+                      className={`leading-1 whitespace-nowrap text-lg font-medium text-[#a7a0a0] line-through`}
+                    >
+                      {`${getDigFormat(formattedDiscountPrice)} ₽`}
+                    </b>
+                    <span className={`whitespace-nowrap text-2xl`}>
+                      {`${getDigFormat(defaultPrice)} ₽`}{' '}
+                    </span>
+                  </>
+                )}
+                {!formattedDiscountPrice && (
+                  <span>
+                    {defaultPrice > 0
+                      ? `${getDigFormat(defaultPrice)} ₽`
+                      : 'По запросу'}{' '}
+                  </span>
+                )}
+              </div>
             </div>
-            <span className="rounded-custom bg-[#177c19] px-4 py-1 text-white">
+            <span className="bg-darkGreenColor rounded-custom px-4 py-1 text-white">
               В наличии{stock > 1 ? `: ${stock} шт` : ''}
             </span>
           </div>
@@ -122,7 +147,7 @@ export const ProductPageSideBlock: React.FC<Props> = ({ cardData }) => {
               onClick={() => fastOrderHandle()}
               className={`my-5 font-medium text-[#dd3824] underline`}
             >
-              Купить в 1 клик
+              Быстрый заказ
             </button>
             <button
               onClick={() =>
@@ -131,7 +156,7 @@ export const ProductPageSideBlock: React.FC<Props> = ({ cardData }) => {
                   : handleAddToCart(variantSize)
               }
               disabled={cartIsLoad}
-              className={`button product-page-card__button-cart relative w-full gap-2.5 p-2.5 font-bold ${
+              className={`button relative w-full gap-2.5 p-2.5 font-bold ${
                 checkProductInCart(variantSize) && 'added'
               }`}
             >
@@ -146,7 +171,7 @@ export const ProductPageSideBlock: React.FC<Props> = ({ cardData }) => {
               <svg className="icon h-6 w-6 fill-white">
                 <use xlinkHref="/img/sprite.svg#cart"></use>
               </svg>
-              Добавить
+              В корзину
             </button>
           </div>
         </div>

@@ -9,7 +9,7 @@ interface FavoriteTabsProps {
 
 export const productTypes = [
   { name: 'Шины', type: 'tires' },
-  { name: 'Аккумуляторы', type: 'battery' },
+  { name: 'АКБ', type: 'battery' },
   { name: 'Масла', type: 'oils' },
 ]
 
@@ -30,10 +30,17 @@ export const FavoriteTabs: React.FC<FavoriteTabsProps> = ({ initialData }) => {
                   setCurrantTab(caption.type as 'tires' | 'battery' | 'oils')
                 }
                 key={caption.type}
-                className={`favorite-tabs__caption border-1 rounded-custom cursor-pointer border border-[#d1d1d1] px-5 py-4 text-center font-medium ${
+                className={`border-1 flex cursor-pointer items-center gap-2 rounded-custom border border-[#d1d1d1] px-5 py-4 text-center font-medium ${
                   caption.type === currantTab ? 'bg-hoverBlue text-white' : ''
                 }`}
               >
+                <svg
+                  className={`h-5 w-5 ${caption.type === currantTab ? 'fill-white' : 'fill-darkBlue'}`}
+                >
+                  <use
+                    xlinkHref={`/img/sprite.svg#catalog-${caption.type}`}
+                  ></use>
+                </svg>
                 {caption.name}
               </div>
             ))}
