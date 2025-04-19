@@ -3,10 +3,13 @@ import React, { useEffect, useState } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 
-import { OrderTypes } from '@/components/Cart/types/order'
 import { getOrdersByUserId } from '@/utils/api/order'
-import { Loading } from '@/components/ui'
+import { formatDateTime } from '@/utils/formatDateTime'
+
+import { Button, Loading } from '@/components/ui'
 import { IUser } from '@/features/auth/types'
+import Skeleton from 'react-loading-skeleton'
+import 'react-loading-skeleton/dist/skeleton.css'
 
 import { CartProductTypes } from '@/store/cartStore'
 import { getDigFormat } from '@/supports'
@@ -42,18 +45,6 @@ const orderDto: Record<
   },
 }
 
-function formatDateTime(dateString: string): string {
-  const date = new Date(dateString)
-
-  const day: string = String(date.getDate()).padStart(2, '0')
-  const month: string = String(date.getMonth() + 1).padStart(2, '0')
-  const year: number = date.getFullYear()
-  const hours: string = String(date.getHours()).padStart(2, '0')
-  const minutes: string = String(date.getMinutes()).padStart(2, '0')
-
-  return `${day}/${month}/${year} ${hours}:${minutes}`
-}
-
 export const OrderList: React.FC<OrderListProps> = ({ user }) => {
   const [orders, setOrders] = useState<any[]>([])
   const [loading, setLoading] = useState(true)
@@ -61,7 +52,13 @@ export const OrderList: React.FC<OrderListProps> = ({ user }) => {
 
   useEffect(() => {
     const fetchOrders = async () => {
+      const delay = (ms: number) => new Promise((res) => setTimeout(res, ms))
+
       try {
+        setLoading(true)
+
+        await delay(500)
+
         const orders = await getOrdersByUserId(user.id)
 
         const result = orders.map((order) => ({
@@ -80,7 +77,12 @@ export const OrderList: React.FC<OrderListProps> = ({ user }) => {
   }, [user])
 
   if (loading) {
-    return <Loading />
+    return (
+      <div className="relative">
+        <Loading classNames="absolute ttall z-20" />
+        <Skeleton count={1} width={'100%'} height={'300px'} />
+      </div>
+    )
   }
   if (error) {
     return <div className="text-red-500">Ошибка: {error}</div>
@@ -104,7 +106,7 @@ export const OrderList: React.FC<OrderListProps> = ({ user }) => {
                 const products = JSON.parse(order.products)
                 return (
                   <React.Fragment key={order.id}>
-                    <tr className={`border-t bg-darkBlue text-white`}>
+                    <tr className={`border-t bg-grayColor text-darkBlue`}>
                       <td className="px-4 py-2 font-medium">{order.id}</td>
                       <td className="px-4 py-2 font-medium">
                         {formatDateTime(order.createdAt)}
@@ -174,8 +176,16 @@ export const OrderList: React.FC<OrderListProps> = ({ user }) => {
           </table>
         </div>
       ) : (
-        <div className="text-center text-gray-500">
-          У вас нет заказов. Сделайте покупку, чтобы увидеть историю заказов.
+        <div className="flex flex-col items-start gap-6 text-center text-gray-500">
+          <p className="mx-auto">
+            У вас нет заказов. Сделайте покупку, чтобы увидеть историю заказов.
+          </p>
+          <Link
+            href={'/catalog'}
+            className="button button--accent mx-auto w-auto px-4 py-1"
+          >
+            За покупками
+          </Link>
         </div>
       )}
     </div>

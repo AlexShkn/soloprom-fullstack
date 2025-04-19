@@ -14,42 +14,42 @@ const benefitItems: BenefitItem[] = [
   {
     imageSrc: '/img/benefits/zp.png',
     altText: 'Широкий ассортимент в наличии',
-    iconHref: '/img/sprite.svg#stock',
+    iconHref: '/img/icons/benefits/stock.svg',
     title: 'Широкий ассортимент в наличии',
     text: 'Более 500 наименований на складе',
   },
   {
     imageSrc: '/img/benefits/delivery.png',
     altText: 'Отправка в любой регион России и страны СНГ',
-    iconHref: '/img/sprite.svg#delivery',
+    iconHref: '/img/icons/benefits/delivery.svg',
     title: 'Отправка в любой регион России и страны СНГ',
     text: 'Бесплатная доставка до транспортной компании',
   },
   {
     imageSrc: '/img/benefits/search.png',
     altText: 'Поиск и поставка запчастей под заказ',
-    iconHref: '/img/sprite.svg#search',
+    iconHref: '/img/icons/benefits/b-search.svg',
     title: 'Поиск и поставка запчастей под заказ',
     text: 'Оригинальные детали и их аналоги',
   },
   {
     imageSrc: '/img/benefits/experience.png',
     altText: 'Большой опыт в сфере',
-    iconHref: '/img/sprite.svg#experience',
+    iconHref: '/img/icons/benefits/experience.svg',
     title: 'Большой опыт в сфере',
     text: '10 лет успешной работы',
   },
   {
     imageSrc: '/img/benefits/contact.png',
     altText: 'Прямые контракты с производителями',
-    iconHref: '/img/sprite.svg#contact',
+    iconHref: '/img/icons/benefits/contact.svg',
     title: 'Прямые контракты с производителями',
     text: 'Запасные части отличного качества в кратчайшие сроки',
   },
   {
     imageSrc: '/img/benefits/price.png',
     altText: 'Гибкие цены',
-    iconHref: '/img/sprite.svg#price',
+    iconHref: '/img/icons/benefits/price.svg',
     title: 'Гибкие цены',
     text: 'Индивидуальный ценовой подход',
   },
@@ -67,9 +67,7 @@ const BenefitItemComponent = ({ item }: { item: BenefitItem }) => {
         priority
       />
 
-      <svg className="icon mb-2.5 h-12 w-12 fill-grayColor">
-        <use xlinkHref={item.iconHref}></use>
-      </svg>
+      <img src={item.iconHref} className="mb-2.5 h-12 w-12" alt="" />
       <h3 className="relative z-[1] mb-2.5 max-w-64 text-lg font-bold leading-5 text-white xs:text-xl">
         {item.title}
       </h3>

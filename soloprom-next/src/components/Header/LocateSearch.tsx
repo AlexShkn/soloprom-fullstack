@@ -1,10 +1,10 @@
 import React, { useRef, useState, useCallback, useEffect } from 'react'
-import { fetchCities } from '@/store/thunks/locateThunk'
-
 import { LocateSearchTypes } from './LocateBlock'
 import CloseButton from '@/components/ui/CloseButton'
 import { useScrollCloseableWindow } from '@/hooks/useScrollCloseableWindow'
 import { useLocateStore } from '@/store/locateStore'
+import { Loading } from '../ui'
+import { Origami } from 'lucide-react'
 
 const defaultCities = [
   { city: 'Воронеж', oblast: '' },
@@ -28,36 +28,13 @@ const LocateSearch: React.FC<LocateSearchTypes> = ({
 }) => {
   const [searchQuery, setSearchQuery] = useState('')
   const [isLoad, setIsLoad] = useState(false)
-  const [filteredCities, setFilteredCities] = useState<any[]>([])
-  const [dataFetched, setDataFetched] = useState(false)
-  const { setSelectedCity, cities } = useLocateStore()
-
-  const debounceRef = useRef<NodeJS.Timeout>()
+  const [filteredCities, setFilteredCities] = useState<any[]>(defaultCities)
+  const [isInitialLoad, setIsInitialLoad] = useState(true)
+  const { setSelectedCity, cities, fetchCitiesData, loading } = useLocateStore()
   const windowRef = useRef<HTMLDivElement>(null)
-
-  const debouncedSearchCities = useCallback(() => {
-    clearTimeout(debounceRef.current)
-    debounceRef.current = setTimeout(() => {
-      const searchTerm = searchQuery.toLowerCase()
-      const searchData = dataFetched ? cities : defaultCities
-
-      if (searchTerm.trim() === '') {
-        setFilteredCities(searchData)
-      } else {
-        const filtered = searchData.filter(
-          (item: any) =>
-            item.city
-              .toLowerCase()
-              .match(new RegExp(`^${searchTerm.toLowerCase()}`)) !== null,
-        )
-        setFilteredCities(filtered)
-      }
-      setIsLoad(false)
-    }, 300)
-  }, [searchQuery, cities, dataFetched])
+  const debounceRef = useRef<NodeJS.Timeout | null>(null)
 
   const handleSearchInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setIsLoad(true)
     setSearchQuery(e.target.value)
   }
 
@@ -69,17 +46,47 @@ const LocateSearch: React.FC<LocateSearchTypes> = ({
     setSearchWindowOpen(false)
   }
 
-  useEffect(() => {
-    if (!cities.length && searchQuery.trim() !== '') {
-      fetchCities().then(() => setDataFetched(true))
-    } else if (searchQuery.trim() !== '') {
-      setDataFetched(true)
-    }
-  }, [searchQuery, dataFetched])
+  const filterCities = useCallback((searchTerm: string, cityList: any[]) => {
+    const searchTermLower = searchTerm.toLowerCase()
+    return cityList.filter((item: any) =>
+      item.city.toLowerCase().startsWith(searchTermLower),
+    )
+  }, [])
 
   useEffect(() => {
-    debouncedSearchCities()
-  }, [debouncedSearchCities])
+    if (searchQuery.trim() === '') {
+      setFilteredCities(defaultCities)
+      setIsInitialLoad(true)
+      return
+    }
+
+    setIsLoad(true) // Start loading
+    if (debounceRef.current) {
+      clearTimeout(debounceRef.current)
+    }
+
+    debounceRef.current = setTimeout(() => {
+      if (cities.length === 0) {
+        fetchCitiesData().then(() => {
+          setIsInitialLoad(false)
+        })
+      }
+
+      if (!isInitialLoad && cities.length > 0) {
+        setFilteredCities(filterCities(searchQuery, cities))
+      } else {
+        setFilteredCities(filterCities(searchQuery, defaultCities))
+      }
+
+      setIsLoad(false) // End loading
+    }, 300) // Debounce delay of 300ms
+
+    return () => {
+      if (debounceRef.current) {
+        clearTimeout(debounceRef.current) // Cleanup timeout
+      }
+    }
+  }, [searchQuery, cities, fetchCitiesData, filterCities, isInitialLoad])
 
   useScrollCloseableWindow({
     isOpen: searchWindowOpen,
@@ -94,7 +101,7 @@ const LocateSearch: React.FC<LocateSearchTypes> = ({
   return (
     <div
       ref={windowRef}
-      className="mds:w-auto absolute left-0 top-[25px] w-[calc(100vw-40px)] min-w-[280px] overflow-hidden rounded bg-white px-5 py-6 shadow-custom"
+      className="absolute left-0 top-[25px] w-[calc(100vw-40px)] min-w-[280px] overflow-hidden rounded bg-white px-5 py-6 shadow-custom mds:w-auto"
     >
       <CloseButton
         onClick={closeLocateWindows}
@@ -105,7 +112,7 @@ const LocateSearch: React.FC<LocateSearchTypes> = ({
       </div>
       <div className="overflow-hidden">
         <div className="relative mb-4">
-          <svg className="icon absolute left-2.5 top-[50%] h-5 w-5 translate-y-[-50%]">
+          <svg className="icon absolute left-2.5 top-[50%] h-5 w-5 translate-y-[-50%] stroke-[#c2c5da]">
             <use xlinkHref="/img/sprite.svg#search"></use>
           </svg>
           <input
@@ -118,17 +125,26 @@ const LocateSearch: React.FC<LocateSearchTypes> = ({
           />
         </div>
         <ul
-          className={`scroll-bar flex h-full max-h-[250px] flex-col gap-1 overflow-y-auto overflow-x-hidden ${isLoad && 'load'}`}
+          className={`scroll-bar flex h-full max-h-[250px] min-h-24 flex-col gap-1 overflow-y-auto overflow-x-hidden overscroll-contain`}
         >
-          {filteredCities.map((city: any, index) => (
-            <li
-              key={index}
-              onClick={() => selectLocateCity(city)}
-              className="header-top__locate-item link-hover cursor-pointer py-1 text-sm font-medium text-darkBlue"
-            >
-              {city.city}
-            </li>
-          ))}
+          {isLoad ? (
+            <Loading classNames="text-accentBlue" spinClasses="h-8 w-8" />
+          ) : Object.keys(filteredCities).length ? (
+            filteredCities.map((city: any, index) => (
+              <li
+                key={index}
+                onClick={() => selectLocateCity(city)}
+                className="header-top__locate-item link-hover cursor-pointer py-1 text-sm font-medium text-darkBlue"
+              >
+                {city.city}
+              </li>
+            ))
+          ) : (
+            <div className="flex flex-col items-center gap-2 py-6 text-center font-medium text-darkBlue">
+              <Origami className="h-6 w-6 stroke-darkBlue" />
+              Нет города
+            </div>
+          )}
         </ul>
       </div>
     </div>

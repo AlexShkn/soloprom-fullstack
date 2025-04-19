@@ -26,14 +26,18 @@ export const HeaderTop: React.FC = () => {
           ) : (
             <Link
               href={'/auth/login'}
-              className="header-top__auth-button -margin-2.5 group relative inline-flex items-center justify-center rounded-[50%] text-center transition-colors"
+              className="header-top__auth-button group relative inline-flex items-center justify-center rounded-[50%] text-center transition-colors"
             >
               {!isLoading && !isAuth ? (
-                <div className="flex flex-col items-center justify-center text-[11px] leading-none transition-colors group-hover:text-accentBlue">
-                  <svg className="icon h-4 w-4 fill-white transition-colors group-hover:fill-accentBlue">
-                    <use xlinkHref="/img/sprite.svg#lc"></use>
-                  </svg>
-                  Вход
+                <div className="flex flex-col gap-[2px]">
+                  <div className="flex flex-col items-center justify-center rounded-full border border-white bg-white p-1 text-[10px] transition-colors group-hover:border-darkGreenColor">
+                    <svg className="icon fill-accentColor h-3 w-3 transition-colors group-hover:fill-darkGreenColor">
+                      <use xlinkHref="/img/sprite.svg#lc"></use>
+                    </svg>
+                  </div>
+                  <span className="text-[10px] leading-none transition-colors group-hover:text-darkGreenColor">
+                    Вход
+                  </span>
                 </div>
               ) : (
                 <Loading classNames="absolute right-[-5px] h-8 w-8" />

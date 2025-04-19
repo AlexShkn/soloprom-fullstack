@@ -1,5 +1,5 @@
 import { create } from 'zustand'
-import { CityTypes, fetchCities } from '@/store/thunks/locateThunk'
+import { CityTypes, fetchCities } from './thunks/locateThunk'
 
 interface CityState {
   cities: CityTypes[]
@@ -10,7 +10,7 @@ interface CityState {
   fetchCitiesData: () => Promise<void>
 }
 
-export const useLocateStore = create<CityState>((set, get) => ({
+export const useLocateStore = create<CityState>((set) => ({
   cities: [],
   selectedCity: '',
   loading: false,

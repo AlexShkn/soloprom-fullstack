@@ -52,6 +52,8 @@ export const ProductsFilterBlock: React.FC<Props> = ({
     initialLoad,
   } = useFilterStore()
 
+  console.log(initialProducts)
+
   const debouncedFilters = useDebounce(filters, 500)
   const debouncedSort = useDebounce(sort, 500)
 

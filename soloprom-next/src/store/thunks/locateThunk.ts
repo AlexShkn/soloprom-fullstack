@@ -1,6 +1,6 @@
 export interface CityTypes {
   id: number
-  name: string
+  city: string
   oblast: string
 }
 

@@ -610,7 +610,90 @@
     "subUrl": "JAC",
     "crumb": "Jac"
   },
-
+  "accumulyatori-elhim": {
+    "category": "battery",
+    "pageType": "brands",
+    "name": "elhim",
+    "title": "Купить аккумуляторы Elhim",
+    "description": "Купить тяговые аккумуляторные батареи Elhim Iskra Тюмень для погрузочной и специальной техники. Большой выбор кислото свинцовых батарей для погрузчиков, штабелеров, электро-тележек и другой специальной техники. Заказ и из наличия. Доставляем любой удобной транспортной компанией.",
+    "img": "/img/category/battery",
+    "alt": "аккумуляторы Elhim",
+    "url": "accumulyatori-elhim",
+    "subUrl": "Elhim",
+    "crumb": "АКБ Elhim"
+  },
+  "accumulyatori-union": {
+    "category": "battery",
+    "pageType": "brands",
+    "name": "union",
+    "title": "Купить аккумуляторы Union",
+    "description": "Купить тяговые аккумуляторные батареи Union для погрузочной и специальной техники. Большой выбор кислото свинцовых батарей для погрузчиков, штабелеров, электро-тележек и другой специальной техники. Заказ и из наличия. Доставляем любой удобной транспортной компанией.",
+    "img": "/img/category/battery",
+    "alt": "аккумуляторы Union",
+    "url": "accumulyatori-union",
+    "subUrl": "Union",
+    "crumb": "АКБ Union"
+  },
+  "accumulyatori-tianneng": {
+    "category": "battery",
+    "pageType": "brands",
+    "name": "union",
+    "title": "Купить аккумуляторы Tianneng",
+    "description": "Купить тяговые аккумуляторные батареи Tianneng для погрузочной и специальной техники. Большой выбор кислото свинцовых батарей для погрузчиков, штабелеров, электро-тележек и другой специальной техники. Заказ и из наличия. Доставляем любой удобной транспортной компанией.",
+    "img": "/img/category/battery",
+    "alt": "аккумуляторы Tianneng",
+    "url": "accumulyatori-tianneng",
+    "subUrl": "Tianneng",
+    "crumb": "АКБ Tianneng"
+  },
+  "accumulyatori-nexsys": {
+    "category": "battery",
+    "pageType": "brands",
+    "name": "nexsys",
+    "title": "Купить аккумуляторы Nexsys",
+    "description": "Купить тяговые аккумуляторные батареи Nexsys для погрузочной и специальной техники. Большой выбор кислото свинцовых батарей для погрузчиков, штабелеров, электро-тележек и другой специальной техники. Заказ и из наличия. Доставляем любой удобной транспортной компанией.",
+    "img": "/img/category/battery",
+    "alt": "аккумуляторы Nexsys",
+    "url": "accumulyatori-nexsys",
+    "subUrl": "Nexsys",
+    "crumb": "АКБ Nexsys"
+  },
+  "accumulyatori-chilwee": {
+    "category": "battery",
+    "pageType": "brands",
+    "name": "Chilwee",
+    "title": "Купить аккумуляторы Chilwee",
+    "description": "Купить тяговые аккумуляторные батареи Chilwee для погрузочной и специальной техники. Большой выбор кислото свинцовых батарей для погрузчиков, штабелеров, электро-тележек и другой специальной техники. Заказ и из наличия. Доставляем любой удобной транспортной компанией.",
+    "img": "/img/category/battery",
+    "alt": "аккумуляторы Chilwee",
+    "url": "accumulyatori-chilwee",
+    "subUrl": "Chilwee",
+    "crumb": "АКБ Chilwee"
+  },
+  "accumulyatori-noblelift": {
+    "category": "battery",
+    "pageType": "brands",
+    "name": "noblelift",
+    "title": "Купить аккумуляторы Noblelift",
+    "description": "Купить тяговые аккумуляторные батареи Noblelift для погрузочной и специальной техники. Большой выбор кислото свинцовых батарей для погрузчиков, штабелеров, электро-тележек и другой специальной техники. Заказ и из наличия. Доставляем любой удобной транспортной компанией.",
+    "img": "/img/category/battery",
+    "alt": "аккумуляторы Noblelift",
+    "url": "accumulyatori-noblelift",
+    "subUrl": "Noblelift",
+    "crumb": "АКБ Noblelift"
+  },
+  "accumulyatori-enpower": {
+    "category": "battery",
+    "pageType": "brands",
+    "name": "enpower",
+    "title": "Купить аккумуляторы EnPower",
+    "description": "Купить тяговые аккумуляторные батареи EnPower для погрузочной и специальной техники. Большой выбор кислото свинцовых батарей для погрузчиков, штабелеров, электро-тележек и другой специальной техники. Заказ и из наличия. Доставляем любой удобной транспортной компанией.",
+    "img": "/img/category/battery",
+    "alt": "аккумуляторы EnPower",
+    "url": "accumulyatori-enpower",
+    "subUrl": "EnPower",
+    "crumb": "Ксилотные АКБ EnPower"
+  },
   "oils": {
     "crumb": "Масла и антифризы G-energy",
     "url": "oils",

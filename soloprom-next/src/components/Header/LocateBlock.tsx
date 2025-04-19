@@ -5,6 +5,7 @@ import LocateSearch from './LocateSearch'
 import { useClickOutside } from '@/hooks/useClickOutside'
 import { getCityFromIP } from '@/utils/getCityFromIP'
 import { useLocateStore } from '@/store/locateStore'
+import { Navigation } from 'lucide-react'
 
 interface Props {
   className?: string
@@ -62,15 +63,13 @@ export const LocateBlock: React.FC<Props> = ({ className }) => {
   return (
     <div ref={windowRef} className="relative z-10 mr-7">
       <div className="header-top__locate-button flex items-center gap-1 text-sm font-medium text-white">
-        <svg className="icon h-5 w-5 fill-white">
-          <use xlinkHref="/img/sprite.svg#locate"></use>
-        </svg>
-        Ваш город:
+        <span>Ваш город:</span>
         <button
           onClick={() => setSearchWindowOpen((prev) => !prev)}
           type="button"
-          className="relative transition-colors before:absolute before:bottom-[-1px] before:left-0 before:h-[1px] before:w-full before:bg-white before:transition-colors hover:text-accentBlue before:hover:bg-accentBlue"
+          className="relative flex items-center gap-1 transition-colors before:absolute before:bottom-[-1px] before:left-0 before:h-[1px] before:w-full before:bg-white before:transition-colors hover:text-greenColor before:hover:bg-greenColor"
         >
+          <Navigation className="h-3.5 w-3.5" />
           {!locateCity ? 'Выбрать' : locateCity || 'Выбрать'}
         </button>
       </div>

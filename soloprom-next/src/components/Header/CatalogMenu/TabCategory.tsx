@@ -37,11 +37,19 @@ const brandsList: BrandsList = {
     domain: 'shini',
   },
   battery: {
-    brands: [],
+    brands: [
+      'enpower',
+      'union',
+      'elhim',
+      'noblelift',
+      'chilwee',
+      'tianneng',
+      'nexsys',
+    ],
     domain: 'accumulyatori',
   },
   oils: {
-    brands: ['g-energy'],
+    brands: [],
     domain: 'maslo',
   },
 }
@@ -128,8 +136,9 @@ const TabCategory: React.FC<CategoryTab> = ({
               >
                 <Image
                   src={`/img/catalog/brands-logo/${brand}.webp`}
+                  className="h-auto w-auto object-contain"
                   width={100}
-                  height={50}
+                  height={40}
                   alt={brand}
                 />
               </Link>

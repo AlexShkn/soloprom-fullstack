@@ -70,6 +70,8 @@ const CatalogFilters: React.FC<Props> = ({
   >(filters || {})
   const accordionRef = useRef<HTMLDivElement>(null)
 
+  console.log(categoryInitialList)
+
   useEffect(() => {
     if (initialLoad) {
       setPriceRange({

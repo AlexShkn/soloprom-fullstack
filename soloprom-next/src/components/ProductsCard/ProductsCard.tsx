@@ -385,7 +385,7 @@ export const ProductsCard: React.FC<ProductsCardPropTypes> = ({
                       className={`product-card__favorite ${mod === 'grid' ? 'absolute right-2.5 top-12' : 'relative'} ${favoriteIsAdded && 'added'}`}
                     >
                       <svg className="icon h-6 w-6 fill-accentBlue transition-colors">
-                        <use xlinkHref="/img/sprite.svg#bookmark" />
+                        <use xlinkHref="/img/sprite.svg#heart" />
                       </svg>
                     </button>
                   </TooltipTrigger>

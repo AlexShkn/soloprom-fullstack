@@ -11,7 +11,7 @@ export function useUpdateProfileMutation() {
     mutationKey: ['update profile'],
     mutationFn: (data: TypeSettingsSchema) => userService.updateProfile(data),
     onSuccess() {
-      toast.success('Профиль успешно обновлён')
+      toast.success('Профиль успешно обновлен')
     },
     onError(error) {
       toastMessageHandler(error)

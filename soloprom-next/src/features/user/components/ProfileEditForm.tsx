@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect } from 'react'
+import { useState, useEffect } from 'react'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useForm } from 'react-hook-form'
 
@@ -13,11 +13,17 @@ import {
   FormLabel,
   FormMessage,
   Input,
+  Card,
+  CardContent,
+  CardFooter,
+  FormDescription,
+  Switch,
 } from '@/components/ui'
 
 import { SettingsSchema, TypeSettingsSchema } from '../schemes'
 import { useUpdateProfileMutation } from '../hooks/useUpdateProfileMutation'
 import { IUser } from '@/features/auth/types'
+import { SquarePen, UserRound } from 'lucide-react'
 
 interface Props {
   user: IUser
@@ -25,6 +31,7 @@ interface Props {
 
 export const ProfileEditForm: React.FC<Props> = ({ user }) => {
   const { update, isLoadingUpdate } = useUpdateProfileMutation()
+  const [isEditing, setIsEditing] = useState(false)
 
   const form = useForm<TypeSettingsSchema>({
     resolver: zodResolver(SettingsSchema),
@@ -47,73 +54,137 @@ export const ProfileEditForm: React.FC<Props> = ({ user }) => {
 
   const onSubmit = (values: TypeSettingsSchema) => {
     update(values)
+    setIsEditing(false)
   }
+
+  const handleEditClick = () => {
+    setIsEditing(true)
+  }
+
+  const handleCancelClick = () => {
+    setIsEditing(false)
+    form.reset({
+      name: user.displayName || '',
+      email: user.email || '',
+      isTwoFactorEnabled: user.isTwoFactorEnabled || false,
+    })
+  }
+
   return (
-    <Form {...form}>
-      <form
-        onSubmit={form.handleSubmit(onSubmit)}
-        className="grid gap-2 space-y-2"
-      >
-        <FormField
-          control={form.control}
-          name="name"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Имя</FormLabel>
-              <FormControl>
-                <Input
-                  placeholder="Иван"
-                  disabled={isLoadingUpdate}
-                  {...field}
-                />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-        <FormField
-          control={form.control}
-          name="email"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Почта</FormLabel>
-              <FormControl>
-                <Input
-                  placeholder="ivan@example.com"
-                  disabled={isLoadingUpdate}
-                  type="email"
-                  {...field}
-                />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-        {/* <FormField
-				control={form.control}
-				name="isTwoFactorEnabled"
-				render={({ field }) => (
-					<FormItem className="shadow- flex flex-row items-center justify-between rounded-lg border p-3">
-						<div className="space-y-0.5">
-							<FormLabel>Двухфакторная аутентификация</FormLabel>
-							<FormDescription>
-								Включите двухфакторную аутентификацию для вашей учетной
-								записи
-							</FormDescription>
-						</div>
-						<FormControl>
-							<Switch
-								checked={field.value}
-								onCheckedChange={field.onChange}
-							/>
-						</FormControl>
-					</FormItem>
-				)}
-			/> */}
-        <Button type="submit" disabled={isLoadingUpdate}>
-          Сохранить
-        </Button>
-      </form>
-    </Form>
+    <Card className="flex flex-col items-start">
+      <CardContent>
+        {!isEditing ? (
+          <div>
+            <div className="flex w-full items-center gap-2">
+              <div className="flex items-center gap-1">
+                <span className="font-medium">Имя:</span>
+              </div>
+              {user.displayName || 'Не указано'}
+            </div>
+            <div className="flex items-center gap-1">
+              <div className="font-medium">Почта:</div>{' '}
+              {user.email || 'Не указано'}
+            </div>
+            <div className="flex items-center gap-1">
+              <div className="font-medium">Двухфакторная аутентификация:</div>
+              {user.isTwoFactorEnabled ? (
+                <span className="font-medium text-darkGreenColor">
+                  Включена
+                </span>
+              ) : (
+                'Отключена'
+              )}
+            </div>
+          </div>
+        ) : (
+          <Form {...form}>
+            <form
+              onSubmit={form.handleSubmit(onSubmit)}
+              className="grid gap-2 space-y-2"
+            >
+              <FormField
+                control={form.control}
+                name="name"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Имя</FormLabel>
+                    <FormControl>
+                      <Input
+                        placeholder="Иван"
+                        disabled={isLoadingUpdate}
+                        {...field}
+                      />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+              <FormField
+                control={form.control}
+                name="email"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Почта</FormLabel>
+                    <FormControl>
+                      <Input
+                        placeholder="ivan@example.com"
+                        disabled={isLoadingUpdate}
+                        type="email"
+                        {...field}
+                      />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+              <FormField
+                control={form.control}
+                name="isTwoFactorEnabled"
+                render={({ field }) => (
+                  <FormItem className="shadow- flex flex-row items-center justify-between gap-2 rounded-lg border p-3">
+                    <div className="space-y-0.5">
+                      <FormLabel>Двухфакторная аутентификация</FormLabel>
+                      <FormDescription>
+                        Включите двухфакторную аутентификацию для вашей учетной
+                        записи
+                      </FormDescription>
+                    </div>
+                    <FormControl>
+                      <Switch
+                        checked={field.value}
+                        onCheckedChange={field.onChange}
+                      />
+                    </FormControl>
+                  </FormItem>
+                )}
+              />
+              <div className="flex justify-between">
+                <Button type="submit" disabled={isLoadingUpdate}>
+                  Сохранить
+                </Button>
+                <Button
+                  type="button"
+                  variant="ghost"
+                  onClick={handleCancelClick}
+                >
+                  Отмена
+                </Button>
+              </div>
+            </form>
+          </Form>
+        )}
+      </CardContent>
+      <CardFooter className="flex w-full justify-end">
+        {!isEditing && (
+          <Button
+            onClick={handleEditClick}
+            className="flex w-auto items-center gap-1"
+          >
+            <SquarePen className="h-4 w-4" />
+            Редактировать
+          </Button>
+        )}
+      </CardFooter>
+    </Card>
   )
 }

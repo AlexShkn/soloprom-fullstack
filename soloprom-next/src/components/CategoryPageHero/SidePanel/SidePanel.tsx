@@ -1,10 +1,11 @@
 'use client'
-import React, { useState } from 'react'
+import React, { useState, useRef } from 'react'
 import Link from 'next/link'
 
 import './SidePanel.scss'
 import { PageDataTypes } from '@/types/products.types'
 import pagesDataRaw from '@/data/products/pagesData.json'
+import { useClickOutside } from '@/hooks/useClickOutside'
 
 interface SidePanelProps {
   pageData: PageDataTypes
@@ -161,6 +162,7 @@ export const SidePanel: React.FC<SidePanelProps> = ({ pageData }) => {
   const [isHoverGroup, setIsHoverGroup] = useState(false)
   const [isHoverBrand, setIsHoverBrand] = useState(false)
   const [activeItem, setActiveItem] = useState('')
+  const dropRef = useRef(null)
 
   const transformData = transformJson(pagesDataRaw)
 
@@ -173,9 +175,15 @@ export const SidePanel: React.FC<SidePanelProps> = ({ pageData }) => {
   const headGroup = groups && groups[0]?.headGroupTitle
   const headBrand = brands && brands[0]?.headGroupTitle
 
+  useClickOutside(dropRef, () => {
+    if (activeItem) {
+      setActiveItem('')
+    }
+  })
+
   return (
     <div className="scroll-bar z-30 order-2 hidden max-h-[326px] flex-shrink-0 flex-grow-0 overflow-y-auto overflow-x-hidden overscroll-contain rounded bg-white p-4 shadow-custom mds:flex mds:max-h-[526px] md:order-none md:px-2.5 lg:w-auto">
-      <ul>
+      <ul ref={dropRef} className="w-full">
         {headGroup && (
           <li
             onClick={() =>
@@ -186,20 +194,20 @@ export const SidePanel: React.FC<SidePanelProps> = ({ pageData }) => {
             <div className="side-panel__item-link link-hover relative z-[1] flex cursor-pointer items-center justify-between rounded p-2.5 text-sm lg:py-2.5 lg:pl-4">
               <span className="side-panel__item-bridge absolute left-[50%] top-0 hidden h-full w-full"></span>
               {headGroup}
-              <svg className="icon h-5 w-5 min-w-5 fill-accentBlue transition-colors md:rotate-[-90deg]">
+              <svg className="icon h-4 w-4 min-w-4 fill-accentBlue transition-colors md:rotate-[-90deg]">
                 <use xlinkHref="/img/sprite-default.svg#arrow-drop"></use>
               </svg>
             </div>
 
-            <ul className="side-panel__drop-list pointer-events-none invisible z-20 hidden min-h-max w-full select-none flex-wrap rounded bg-white py-2.5 opacity-0 shadow-custom transition-all md:absolute md:left-[330px] md:top-0 md:w-[calc(100%-340px)] md:gap-2.5 md:p-7">
+            <ul className="side-panel__drop-list pointer-events-none invisible z-20 hidden min-h-max w-full select-none flex-wrap gap-2.5 rounded bg-white py-2.5 opacity-0 shadow-custom transition-all md:absolute md:left-[330px] md:top-0 md:w-[calc(100%-340px)] md:p-7">
               {model?.map((brand) => (
                 <li
                   key={brand.url}
-                  className="side-panel__drop-item md:border-1 h-auto px-2.5 transition-colors md:rounded md:border-accentBlue md:bg-none"
+                  className="side-panel__drop-item md:border-1 h-auto rounded bg-grayColor transition-colors md:border-accentBlue md:bg-none"
                 >
                   <Link
                     href={`/catalog/${brand.url}`}
-                    className="inline-flex h-full w-full items-center justify-center px-2.5 py-2 text-center font-medium transition-colors"
+                    className="inline-flex h-full w-full items-center justify-center px-5 py-2 text-center font-medium transition-colors"
                   >
                     {brand.crumb}
                   </Link>
@@ -213,12 +221,12 @@ export const SidePanel: React.FC<SidePanelProps> = ({ pageData }) => {
             onClick={() =>
               setActiveItem((prev) => (prev !== 'headBrand' ? 'headBrand' : ''))
             }
-            className={`side-panel__item ${(isHoverBrand || activeItem === 'headBrand') && 'current'}`}
+            className={`side-panel__item w-full ${(isHoverBrand || activeItem === 'headBrand') && 'current'}`}
           >
             <div className="side-panel__item-link link-hover relative z-[1] flex cursor-pointer items-center justify-between rounded p-2.5 text-sm lg:py-2.5 lg:pl-4">
               <span className="side-panel__item-bridge absolute left-[50%] top-0 hidden h-full w-full"></span>
               {headBrand}
-              <svg className="icon h-5 w-5 min-w-5 fill-accentBlue transition-colors md:rotate-[-90deg]">
+              <svg className="icon h-4 w-4 min-w-4 fill-accentBlue transition-colors md:rotate-[-90deg]">
                 <use xlinkHref="/img/sprite-default.svg#arrow-drop"></use>
               </svg>
             </div>

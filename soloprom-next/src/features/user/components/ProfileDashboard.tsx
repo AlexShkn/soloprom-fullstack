@@ -6,12 +6,13 @@ import { useLogoutMutation } from '../hooks/useLogoutMutation'
 import { useAuthStore } from '@/store/authStore'
 
 import {
-  Home,
+  UserCog,
   Heart,
   ShoppingCart,
   ListOrdered,
   LucideIcon,
   LogOut,
+  MessagesSquare,
 } from 'lucide-react'
 import { Loading } from '@/components/ui'
 import { ProfileContent } from './ProfileContent'
@@ -28,10 +29,11 @@ interface Tab {
 }
 
 const tabs: Tab[] = [
-  { id: 'profile', label: 'Профиль', icon: Home },
+  { id: 'profile', label: 'Профиль', icon: UserCog },
   { id: 'favorites', label: 'Избранное', icon: Heart },
   { id: 'cart', label: 'Корзина', icon: ShoppingCart },
   { id: 'orders', label: 'Заказы', icon: ListOrdered },
+  { id: 'reviews', label: 'Мои отзывы', icon: MessagesSquare },
 ]
 
 export const ProfileDashboard = () => {

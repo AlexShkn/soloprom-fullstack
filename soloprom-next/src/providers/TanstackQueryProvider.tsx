@@ -5,7 +5,7 @@ import { type PropsWithChildren, useState } from 'react'
 
 export function TanstackQueryProvider({
   children,
-}: PropsWithChildren<unknown>) {
+}: Readonly<PropsWithChildren<unknown>>) {
   const [client] = useState(
     new QueryClient({
       defaultOptions: {

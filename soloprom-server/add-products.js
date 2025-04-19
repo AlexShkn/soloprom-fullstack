@@ -1,56 +1,10 @@
 const fs = require('fs').promises;
 const axios = require('axios');
 
-const BATCH_SIZE = 50; // Размер пакета продуктов для каждого запроса
-const API_URL = 'http://localhost:3001/products/load'; // Замените на URL вашего API
-const DATA_FILE = './data/all.json'; // Путь к файлу с данными
+const BATCH_SIZE = 50;
+const API_URL = 'http://localhost:3001/products/load';
+const DATA_FILE = './data/all.json';
 
-// {
-//   "name": "shini-dlya-vilochnih-pogruzchikov"
-// }
-// {
-//   "name": "shini-dlya-selhoztehniki"
-// }
-// {
-//   "name": "shini-dlya-ekskavator-pogruzchikov"
-// }
-// {
-//   "name": "shini-dlya-minipogruzchikov"
-// }
-// {
-//   "name": "shini-dlya-frontalnih-pogruzchikov"
-// }
-// {
-//   "name": "shini-dlya-asfaltoukladchikov-i-katkov"
-// }
-// {
-//   "name": "shini-dlya-greiderov"
-// }
-// {
-//   "name": "shini-dlya-portov-i-terminalov"
-// }
-// {
-//   "name": "shini-dlya-zhestkoramnih-samosvalov"
-// }
-// {
-//   "name": "shini-dlya-sochlenennih-samosvalov"
-// }
-// {
-//   "name": "shini-legkovie-letnie"
-// }
-// {
-//   "name": "accumulyatori-dlya-pogruzchikov"
-// }
-// {
-//   "name": "accumulyatori-dlya-shtabelerov"
-// }
-// {
-//   "name": "accumulyatori-dlya-richtrakov"
-// }
-
-//EmraldGRECKSTERIND0118x7818PR
-
-// Статические категории (должны быть определены здесь)
 const CATEGORIES = [
   {
     name: 'tires',

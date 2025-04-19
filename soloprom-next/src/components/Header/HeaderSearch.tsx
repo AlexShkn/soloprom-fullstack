@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useRef, useCallback } from 'react'
 import Image from 'next/image'
 import { searchPages, searchProducts } from '@/utils/api/products'
-import { XIcon } from 'lucide-react'
+import { Search, XIcon } from 'lucide-react'
 
 import { CardDataProps } from '@/types/products.types'
 import Link from 'next/link'
@@ -123,7 +123,8 @@ const HeaderSearch = () => {
         {/* <span className="absolute bottom-[calc(100%+2px)] right-0 text-sm font-medium text-darkBlue">
           Расширенный поиск
         </span> */}
-        <div className="relative h-full w-full">
+        <div className="relative h-full w-full pl-3">
+          <Search className="absolute left-4 top-[50%] h-4 w-4 translate-y-[-50%] stroke-[#c2c5da]" />
           <input
             type="text"
             name="search-product"

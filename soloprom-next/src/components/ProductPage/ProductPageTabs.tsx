@@ -23,13 +23,19 @@ interface Props {
 }
 
 const DescriptionTab = React.memo(({ text }: { text: string }) => (
-  <div className="text-base">{text}</div>
+  <div className="">
+    {text ? (
+      <div className="text-base">{text}</div>
+    ) : (
+      <div className="my-12 text-center text-3xl font-bold">Нет описания</div>
+    )}
+  </div>
 ))
 
 const CharacteristicsTab = React.memo(
   ({ options }: { options: [string, string][] | undefined }) => (
     <div className="text-base">
-      {options && options?.length ? (
+      {options?.length ? (
         <table className="w-full border-collapse text-left text-sm text-gray-500">
           <thead className="border-b border-gray-900/60 bg-gray-50 text-xs uppercase text-gray-700">
             <tr>
@@ -197,6 +203,15 @@ export const ProductPageTabs: React.FC<Props> = ({ productDescr }) => {
     setCurrentTab(index)
   }, [])
 
+  const handleKeyDown = useCallback(
+    (index: number, event: React.KeyboardEvent) => {
+      if (event.key === 'Enter' || event.key === ' ') {
+        handleTabClick(index)
+      }
+    },
+    [handleTabClick],
+  )
+
   const renderTabContent = () => {
     switch (currentTab) {
       case 0:
@@ -213,20 +228,24 @@ export const ProductPageTabs: React.FC<Props> = ({ productDescr }) => {
         return null
     }
   }
+
   return (
     <div className="mb-7">
       <div className="mb-10">
         <div className="border-1 scroll-bar-row scroll-bar-row--mini flex items-center gap-5 overflow-x-auto overflow-y-hidden border-b border-grayColor">
           {captions.map((caption, index) => (
-            <div
+            <button
               key={caption}
               className={`font-lg relative cursor-pointer whitespace-nowrap px-1 py-5 text-xl md:px-4 md:py-5 md:font-medium ${
-                index === currentTab && 'text-accentBlue'
+                index === currentTab ? 'text-accentBlue' : ''
               }`}
               onClick={() => handleTabClick(index)}
+              onKeyDown={(event) => handleKeyDown(index, event)}
+              type="button"
+              tabIndex={0}
             >
               {caption}
-            </div>
+            </button>
           ))}
         </div>
       </div>

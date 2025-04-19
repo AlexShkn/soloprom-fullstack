@@ -1,6 +1,6 @@
 'use client'
 import React, { useRef, useState, useCallback, useEffect } from 'react'
-import { ChevronRight } from 'lucide-react'
+import { ArrowDownUp, ChevronRight } from 'lucide-react'
 import { useClickOutside } from '@/hooks/useClickOutside'
 
 interface Props {
@@ -69,10 +69,7 @@ export const Sort: React.FC<Props> = ({
   return (
     <div className="flex w-full items-center gap-2.5">
       <div className="">
-        <svg className="icon block h-5 w-5 rotate-[90deg] fill-darkBlue transition-colors hover:fill-accentBlue md:hidden">
-          <use xlinkHref="/img/sprite.svg#sort" />
-        </svg>
-
+        <ArrowDownUp className="icon block h-5 w-5 rotate-90 stroke-darkBlue transition-colors hover:fill-accentBlue md:hidden" />
         <span className="hidden md:block">Сортировать по:</span>
       </div>
 

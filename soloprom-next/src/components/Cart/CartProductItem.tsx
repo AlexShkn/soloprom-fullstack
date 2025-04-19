@@ -5,6 +5,7 @@ import Image from 'next/image'
 
 import { getDigFormat } from '@/supports'
 import { useCartStore, CartProductTypes } from '@/store/cartStore'
+import { Minus, Plus, Trash2 } from 'lucide-react'
 
 interface CartProductItemProps {
   product: CartProductTypes
@@ -72,9 +73,7 @@ export const CartProductItem: React.FC<CartProductItemProps> = ({
             type="button"
             className="cart__item-count border-1-[#d4d4d4] inline-flex h-[30px] w-[30px] items-center justify-center rounded-custom bg-[#f5f5f5] transition-colors"
           >
-            <svg className="icon">
-              <use xlinkHref="/img/sprite.svg#minus"></use>
-            </svg>
+            <Minus />
           </button>
           <div className="text-lg">{product.count}</div>
           <button
@@ -84,9 +83,7 @@ export const CartProductItem: React.FC<CartProductItemProps> = ({
             type="button"
             className="cart__item-count border-1-[#d4d4d4] inline-flex h-[30px] w-[30px] items-center justify-center rounded-custom border bg-[#f5f5f5] transition-colors"
           >
-            <svg className="icon">
-              <use xlinkHref="/img/sprite.svg#plus"></use>
-            </svg>
+            <Plus />
           </button>
         </div>
         <div className="order-2 flex flex-row items-center gap-5 mdl:order-none mdl:items-end md:items-center">
@@ -103,9 +100,7 @@ export const CartProductItem: React.FC<CartProductItemProps> = ({
               }
               className="group"
             >
-              <svg className="icon h-6 w-6 fill-darkBlue transition-colors group-hover:fill-hoverBlue">
-                <use xlinkHref="/img/sprite.svg#remove"></use>
-              </svg>
+              <Trash2 className="icon h-5 w-5 stroke-darkBlue transition-colors group-hover:fill-hoverBlue" />
             </button>
           </div>
         </div>

@@ -15,7 +15,7 @@ export const CallbackPanel: React.FC<Props> = ({ className }) => {
     >
       <a
         href="https://t.me/+79036569393"
-        className="rounded-custom inline-flex items-center gap-1 bg-hoverBlue p-[5px] text-sm font-medium text-white"
+        className="inline-flex items-center gap-1 rounded-custom bg-hoverBlue p-[5px] text-sm font-medium text-white"
       >
         <svg className="icon h-7 w-7 fill-white">
           <use xlinkHref="/img/sprite.svg#footer-tg"></use>
@@ -23,7 +23,7 @@ export const CallbackPanel: React.FC<Props> = ({ className }) => {
       </a>
       <a
         href="https://wa.me/79036569393"
-        className="rounded-custom inline-flex items-center gap-1 bg-greenColor p-[5px] text-sm font-medium text-white"
+        className="inline-flex items-center gap-1 rounded-custom bg-greenColor p-[5px] text-sm font-medium text-white"
       >
         <svg className="icon h-7 w-7 fill-white">
           <use xlinkHref="/img/sprite.svg#footer-wp"></use>
@@ -32,9 +32,9 @@ export const CallbackPanel: React.FC<Props> = ({ className }) => {
       <button
         onClick={() => modalCallbackStateChange(true)}
         type="button"
-        className="rounded-custom inline-flex items-center gap-1 bg-accentBlue px-2.5 py-[5px] text-sm font-medium text-white transition-colors hover:bg-hoverBlue"
+        className="inline-flex items-center gap-1 rounded-custom bg-accentBlue px-2.5 py-[7px] text-sm font-medium text-white transition-colors hover:bg-hoverBlue"
       >
-        <svg className="icon h-7 w-7 fill-white">
+        <svg className="icon h-6 w-6 fill-white">
           <use xlinkHref="/img/sprite.svg#mail"></use>
         </svg>
         <span>онлайн-заявка</span>

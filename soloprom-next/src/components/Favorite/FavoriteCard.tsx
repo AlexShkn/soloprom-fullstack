@@ -9,6 +9,7 @@ import { useCartStore } from '@/store/cartStore'
 import { useFavoriteStore } from '@/store/favoriteStore'
 
 import { FavoriteProduct } from '@/types/products.types'
+import { Trash2 } from 'lucide-react'
 
 interface FavoriteCardProps {
   product: FavoriteProduct
@@ -125,9 +126,7 @@ export const FavoriteCard: React.FC<FavoriteCardProps> = ({ product }) => {
               onClick={() => removeFavoriteProduct(productId, variant)}
               className="group"
             >
-              <svg className="icon h-6 w-6 fill-darkBlue transition-colors group-hover:fill-hoverBlue">
-                <use xlinkHref="/img/sprite.svg#remove"></use>
-              </svg>
+              <Trash2 className="icon h-5 w-5 stroke-darkBlue transition-colors group-hover:fill-hoverBlue" />
             </button>
           </div>
         </div>
@@ -135,9 +134,9 @@ export const FavoriteCard: React.FC<FavoriteCardProps> = ({ product }) => {
         <button
           onClick={handleAddToCart}
           type="button"
-          className={`button relative gap-2.5 px-5 py-2.5 font-bold ${cartIsLoad && 'load'} ${cartIsAdded && 'added'}`}
+          className={`button relative gap-2.5 px-5 py-2.5 font-bold ${cartIsLoad && 'load'} ${cartIsAdded && 'added bg-greenColor'}`}
         >
-          <span className="ttall invisible absolute inline-flex h-full w-full items-center justify-center rounded-custom bg-hoverBlue opacity-0 transition-all">
+          <span className="ttall invisible absolute inline-flex h-full w-full items-center justify-center rounded-custom bg-greenColor opacity-0 transition-all">
             <img
               className="h-7 w-7"
               src="/img/icons/availability-w.svg"
