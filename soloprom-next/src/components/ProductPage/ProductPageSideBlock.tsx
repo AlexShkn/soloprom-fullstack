@@ -92,10 +92,14 @@ export const ProductPageSideBlock: React.FC<Props> = ({ cardData }) => {
     modalCallbackStateChange(true)
   }
 
-  const formattedDiscountPrice =
-    discount && defaultPrice
-      ? `${getDigFormat(Math.floor(defaultPrice * (1 + discount / 100)))}`
-      : ''
+  const cost =
+    (sizesData && variantSize && sizesData[variantSize]) || defaultPrice
+
+  const formattedDiscountPrice = () => {
+    if (!discount || !cost) return defaultPrice
+
+    return getDigFormat(Math.floor(cost * (1 + discount / 100)))
+  }
 
   return (
     <div className="w-full rounded-custom bg-white px-5 py-7 shadow-custom lg:relative lg:w-full lg:max-w-[350px]">
@@ -115,28 +119,28 @@ export const ProductPageSideBlock: React.FC<Props> = ({ cardData }) => {
               <div
                 className={`relative flex font-bold ${discount ? 'text-accentBlue' : 'text-[#272b2c]'} flex-row-reverse items-center gap-2 text-2xl`}
               >
-                {formattedDiscountPrice && (
+                {discount && (
                   <>
                     <b
                       className={`leading-1 whitespace-nowrap text-lg font-medium text-[#a7a0a0] line-through`}
                     >
-                      {`${getDigFormat(formattedDiscountPrice)} ₽`}
+                      {`${formattedDiscountPrice()} ₽`}
                     </b>
                     <span className={`whitespace-nowrap text-2xl`}>
-                      {`${getDigFormat(defaultPrice)} ₽`}{' '}
+                      {`${getDigFormat(cost)} ₽`}
                     </span>
                   </>
                 )}
-                {!formattedDiscountPrice && (
+                {!discount && (
                   <span>
                     {defaultPrice > 0
-                      ? `${getDigFormat(defaultPrice)} ₽`
-                      : 'По запросу'}{' '}
+                      ? `${getDigFormat(cost)} ₽`
+                      : 'По запросу'}
                   </span>
                 )}
               </div>
             </div>
-            <span className="bg-darkGreenColor rounded-custom px-4 py-1 text-white">
+            <span className="rounded-custom bg-darkGreenColor px-4 py-1 text-white">
               В наличии{stock > 1 ? `: ${stock} шт` : ''}
             </span>
           </div>

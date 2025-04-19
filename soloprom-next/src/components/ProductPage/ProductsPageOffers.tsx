@@ -96,11 +96,6 @@ export const ProductsPageOffers: React.FC<Props> = ({ cardData }) => {
     setCartIsLoad(false)
   }
 
-  const formattedDiscountPrice =
-    discount && defaultPrice
-      ? `${getDigFormat(Math.floor(defaultPrice * (1 + discount / 100)))}`
-      : ''
-
   const showMoreRows = () => {
     setLoadingMore(true)
     setTimeout(() => {
@@ -111,6 +106,13 @@ export const ProductsPageOffers: React.FC<Props> = ({ cardData }) => {
 
   const sizesArray = sizesData ? Object.keys(sizesData) : []
   const remainingOffers = sizesArray.length - visibleRows
+
+  const formattedDiscountPrice = () => {
+    const cost = (sizesData && sizesData[sizesArray[0]]) || defaultPrice
+    if (!discount || !cost) return
+
+    return getDigFormat(Math.floor(cost * (1 + discount / 100)))
+  }
 
   return (
     <div className="w-full overflow-hidden">
@@ -139,7 +141,7 @@ export const ProductsPageOffers: React.FC<Props> = ({ cardData }) => {
                 <td className="whitespace-nowrap p-2 text-center font-bold">
                   {variant}
                 </td>
-                <td className="text-darkGreenColor whitespace-nowrap p-2 text-center font-medium">
+                <td className="whitespace-nowrap p-2 text-center font-medium text-darkGreenColor">
                   {categoryName === 'oils'
                     ? 'В наличии'
                     : stock
@@ -150,25 +152,27 @@ export const ProductsPageOffers: React.FC<Props> = ({ cardData }) => {
                   <div
                     className={`relative flex ${discount ? 'text-accentBlue' : 'text-[#272b2c]'} items-end justify-end gap-2`}
                   >
-                    {formattedDiscountPrice && (
+                    {discount && (
                       <>
                         <span
                           className={`whitespace-nowrap text-xl font-medium`}
                         >
-                          {`${getDigFormat(defaultPrice)} ₽`}{' '}
+                          {sizesData
+                            ? getDigFormat(sizesData[variant])
+                            : getDigFormat(defaultPrice)}
                         </span>
                         <b
                           className={`leading-1 whitespace-nowrap font-medium text-[#a7a0a0] line-through`}
                         >
-                          {`${getDigFormat(formattedDiscountPrice)} ₽`}
+                          {`${formattedDiscountPrice()} ₽`}
                         </b>
                       </>
                     )}
-                    {!formattedDiscountPrice && (
+                    {!discount && (
                       <span className="text-lg font-medium">
                         {defaultPrice > 0
-                          ? `${getDigFormat(defaultPrice)} ₽`
-                          : 'По запросу'}{' '}
+                          ? `${sizesData ? getDigFormat(sizesData[variant]) : getDigFormat(defaultPrice)} ₽`
+                          : 'По запросу'}
                       </span>
                     )}
                   </div>

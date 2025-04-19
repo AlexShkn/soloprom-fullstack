@@ -67,7 +67,7 @@ export const SizesRow: React.FC<Props> = ({
               {Object.keys(sizes).map((itemSize, index) => (
                 <li
                   key={itemSize}
-                  className={`product-card-dropdown__item transition-colors hover:bg-accentBlue hover:text-white ${itemSize === variantValue ? 'bg-[#cfcfcf]' : ''}`}
+                  className={`product-card-dropdown__item transition-colors hover:bg-accentBlue hover:text-white ${itemSize === variantValue ? 'bg-accentBlue text-white' : ''}`}
                   onClick={() => selectedVariant(itemSize)}
                 >
                   <input
@@ -75,7 +75,6 @@ export const SizesRow: React.FC<Props> = ({
                     type="radio"
                     value={itemSize}
                     name={productId + itemSize}
-                    defaultChecked={index === 0}
                   />
                   <label
                     className={

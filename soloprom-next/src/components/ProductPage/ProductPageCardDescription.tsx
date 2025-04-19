@@ -8,6 +8,7 @@ import { ProductsCardPropTypes } from '@/types/products.types'
 import { useCartStore } from '@/store/cartStore'
 import { useModalsStore } from '@/store/modalsStore'
 import Link from 'next/link'
+import { CircleHelp } from 'lucide-react'
 
 interface DescriptionTypes extends ProductsCardPropTypes {
   // variantValue: string
@@ -129,9 +130,9 @@ export const ProductPageCardDescription: React.FC<DescriptionTypes> = ({
         <button
           onClick={() => showMessageWindow()}
           type="button"
-          className="inline-flex items-center gap-2.5 transition-colors hover:text-hoverBlue"
+          className="group inline-flex items-center gap-2 transition-colors hover:text-hoverBlue"
         >
-          <img src="/img/icons/question.svg" alt="задайте свой вопрос" />
+          <CircleHelp className="h-5 w-5 stroke-darkBlue group-hover:stroke-accentBlue" />
           Задать вопрос
         </button>
       </div>
