@@ -8,6 +8,11 @@ interface AuthState {
   changeAuthStatus: (isAuth: boolean) => void
   setUserData: (userData: IUser) => void
   setUserLoading: (isLoading: boolean) => void
+  updateUserProfile: (values: {
+    name?: string
+    email?: string
+    isTwoFactorEnabled?: boolean
+  }) => void
 }
 
 const initialUserState: IUser = {
@@ -40,5 +45,17 @@ export const useAuthStore = create<AuthState>((set) => ({
 
   setUserLoading: (isLoading) => {
     set({ isLoading })
+  },
+
+  updateUserProfile: (values) => {
+    set((state) => ({
+      userState: {
+        ...state.userState,
+        displayName: values.name ?? state.userState.displayName,
+        email: values.email ?? state.userState.email,
+        isTwoFactorEnabled:
+          values.isTwoFactorEnabled ?? state.userState.isTwoFactorEnabled,
+      },
+    }))
   },
 }))

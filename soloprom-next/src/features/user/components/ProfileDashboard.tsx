@@ -40,7 +40,7 @@ export const ProfileDashboard = () => {
   const [activeTab, setActiveTab] = useState<string>('profile')
   const { user, isLoading } = useProfile()
   const { logout, isLoadingLogout } = useLogoutMutation()
-  const { userState, changeAuthStatus } = useAuthStore((state) => state)
+  const { userState, changeAuthStatus } = useAuthStore()
   const { setCart } = useCartStore()
   const { setFavorite } = useFavoriteStore()
   const { setComparedItems } = useCompareStore()
@@ -74,7 +74,7 @@ export const ProfileDashboard = () => {
     <div className="container mx-auto min-h-96 py-10">
       <div className="flex flex-col gap-4 md:flex-row">
         {/* Sidebar (Tab Buttons) */}
-        <div className="min-w-64 max-w-80 rounded-md bg-gray-100 px-1 py-2.5 shadow-custom md:w-64">
+        <div className="flex min-w-64 max-w-80 flex-col justify-between rounded-md bg-gray-100 px-1 py-2.5 shadow-custom md:w-64">
           <ul className="divide-y divide-gray-200">
             {tabs.map((tab) => (
               <li
@@ -93,7 +93,7 @@ export const ProfileDashboard = () => {
           </ul>
           <button
             onClick={() => logout()}
-            className="flex cursor-pointer items-center gap-2 rounded px-4 py-2.5 transition-colors hover:bg-gray-200 hover:text-accentBlue"
+            className="mt-7 flex cursor-pointer items-center gap-2 rounded px-4 py-2.5 text-grayColor transition-colors hover:bg-gray-200 hover:text-accentBlue"
           >
             <LogOut className="h-4 w-4" />
             Выйти

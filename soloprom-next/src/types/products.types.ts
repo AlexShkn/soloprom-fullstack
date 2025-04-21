@@ -4,6 +4,7 @@ export interface CardDataProps {
   categoryName: string
   name: string
   descr: string
+  images: string[]
   img: string
   groups: string[]
   delivery: string

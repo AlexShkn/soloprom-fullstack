@@ -4,6 +4,13 @@
   // .catalog-products__category-slider
 
   .catalog-products__category-slider {
+    .swiper {
+      overflow: hidden;
+      padding-left: 10px;
+      padding-right: 10px;
+      padding-top: 15px;
+      padding-bottom: 15px;
+    }
     .swiper-scrollbar-drag {
       height: 5px;
       background-color: variables.$accentColor;
@@ -24,6 +31,12 @@
       .swiper-slide {
         height: auto !important;
       }
+    }
+
+    .category-slider__prev.swiper-button-disabled,
+    .category-slider__next.swiper-button-disabled {
+      visibility: hidden;
+      opacity: 0;
     }
   }
 

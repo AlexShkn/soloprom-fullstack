@@ -8,6 +8,7 @@ import { ProductPageTabs } from '@/components/ProductPage/ProductPageTabs'
 import { ProductPageBenefits } from '@/components/ProductPage/ProductPageBenefits'
 import { getProductById, getAllProducts } from '@/utils/api/products'
 import { SubHero } from '@/components/SubHero/SubHero'
+import { getReviewsByProductId, getReviewsByUserId } from '@/utils/api/reviews'
 
 type WordsAdapt = {
   category: {
@@ -118,6 +119,7 @@ interface ProductPageProps {
 export default async function ProductPage({ params }: ProductPageProps) {
   const { productId } = await params
   const productData = await getProductById(productId)
+  const reviewData = await getReviewsByProductId(productId)
 
   if (!productData) {
     return (
@@ -137,7 +139,11 @@ export default async function ProductPage({ params }: ProductPageProps) {
       <section className="product-page">
         <div className="page-container">
           <ProductPageCard cardData={productData} />
-          <ProductPageTabs productDescr={productData.productDescr} />
+          <ProductPageTabs
+            productDescr={productData.productDescr}
+            reviewData={reviewData}
+            productId={productId}
+          />
           <SubHero />
         </div>
       </section>

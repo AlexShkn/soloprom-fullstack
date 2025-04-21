@@ -10,13 +10,6 @@ interface ProductDescriptionData {
   productId: string;
   name: string;
   text: string;
-  reviews?: {
-    name: string;
-    positive: string;
-    negative: string;
-    comment: string;
-    rating: number;
-  }[];
   models?: string[];
   options: [string, string][];
 }
@@ -107,7 +100,6 @@ async function bootstrap() {
         await productDescrService.updateProductDescr(descrData.productId, {
           text: descrData.text,
           models: descrData.models || [],
-          reviews: descrData.reviews || [],
           options: options,
         });
         // console.log(`Описание для продукта: ${key} обновлено`);
@@ -118,7 +110,6 @@ async function bootstrap() {
           name: descrData.name,
           text: descrData.text,
           models: descrData.models || [],
-          reviews: descrData.reviews || [],
           options: options,
         });
         // console.log(`Описание для продукта: ${key} добавлено`);

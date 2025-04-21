@@ -1,6 +1,6 @@
-import { SearchPageBlock } from '@/components/Search/SearchPageBlock'
 import PageWrapper from '../PageWrapper'
 import { Loading } from '@/components/ui'
+import { SearchPageBlock } from '@/features/search/components/SearchPageBlock'
 import React, { Suspense } from 'react'
 
 export const metadata = {

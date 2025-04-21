@@ -19,6 +19,7 @@ model Product {
   descr           String?
   url             String?
   img             String?
+  images          Json?
   brandName       String?
   country         String?
   plates          String?
@@ -38,6 +39,7 @@ model Product {
   size          String?
   productType   String
   productDescr  ProductDescr?   @relation(name: "ProductToDescr")
+  reviews       Review[]
 
   Category    Category    @relation(fields: [categoryName], references: [name])
   SubCategory SubCategory @relation(fields: [subcategoryName], references: [name])
@@ -60,7 +62,6 @@ model ProductDescr {
   text      String?
   options   Json?
   models    Json?
-  reviews   Json?    @default("[]")
   rating    Float    @default(0.0)
   product   Product  @relation(fields: [productId], references: [productId], name: "ProductToDescr")
   createdAt DateTime @default(now())
@@ -185,6 +186,7 @@ model User {
 
   accounts Account[]
   orders   Order[]
+  reviews  Review[]
 
   createdAt DateTime @default(now()) @map("created_at")
   updatedAt DateTime @updatedAt @map("updated_at")
@@ -205,6 +207,26 @@ model Order {
   updatedAt DateTime @updatedAt @map("updated_at")
 
   @@map("orders")
+}
+
+model Review {
+  id         String @id @default(uuid())
+  productId  String
+  userId     String
+  userName   String
+  estimation Float
+
+  negative String?
+  positive String?
+  comment  String?
+
+  product   Product  @relation(fields: [productId], references: [productId])
+  user      User     @relation(fields: [userId], references: [id])
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([productId])
+  @@index([userId])
 }
 
 enum UserRole {

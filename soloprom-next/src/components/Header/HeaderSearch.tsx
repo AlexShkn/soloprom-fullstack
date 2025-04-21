@@ -11,7 +11,7 @@ import { useRouter } from 'next/navigation'
 import useSearchStore from '@/store/searchStore'
 import clsx from 'clsx'
 
-interface PageItem {
+export interface PageItem {
   url: string
   img: string
   title: string
@@ -21,7 +21,7 @@ interface PageItem {
 
 const HeaderSearch = () => {
   const { catalogMenuStateChange, catalogIsOpen } = useCatalogMenuStore()
-  const { setFoundProducts, setInitProducts } = useSearchStore()
+  const { setFoundProducts, setInitProducts, setInitPages } = useSearchStore()
   const [searchValue, setSearchValue] = useState<string>('')
   const [products, setProducts] = useState<CardDataProps[]>([])
   const [pages, setPages] = useState<PageItem[]>([])
@@ -46,7 +46,7 @@ const HeaderSearch = () => {
 
       try {
         setIsLoading(true)
-        const productsResponse = await searchProducts('name', name)
+        const productsResponse = await searchProducts(['name', 'descr'], name)
         const pagesResponse = await searchPages('value', name)
         const productsData: CardDataProps[] = await productsResponse
 
@@ -87,6 +87,7 @@ const HeaderSearch = () => {
 
   const goToSearch = (value: string) => {
     setInitProducts(products)
+    setInitPages(pages)
     setFoundProducts(products)
     setDropStatus(false)
     router.push(`/search?search=${encodeURIComponent(value)}`)

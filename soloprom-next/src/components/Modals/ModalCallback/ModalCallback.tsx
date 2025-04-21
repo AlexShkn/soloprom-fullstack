@@ -102,7 +102,7 @@ const ModalCallback: React.FC<ModalProps> = ({ fastOrderProduct }) => {
           {isMobileHeight && <CloseButton classNames={'modal__close'} />}
 
           <div className="modal-callback__body">
-            <div className="mb-7">
+            {/* <div className="mb-7">
               <div className="mb-2.5 text-center text-[clamp(1.625rem,1.2953rem+1.0989vw,2.25rem)] font-medium leading-10 text-black">
                 Оставьте свои контактные данные
               </div>
@@ -110,7 +110,7 @@ const ModalCallback: React.FC<ModalProps> = ({ fastOrderProduct }) => {
                 Наш менеджер свяжется с вами в течении 5 минут и ответит на все
                 вопросы
               </div>
-            </div>
+            </div> */}
             <Form {...form}>
               <form onSubmit={form.handleSubmit(onSubmit)}>
                 <div className="mb-6 flex flex-col gap-6">

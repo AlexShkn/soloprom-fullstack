@@ -1,7 +1,9 @@
+import { PageItem } from '@/components/Header/HeaderSearch'
 import { CardDataProps } from '@/types/products.types'
 import { create } from 'zustand'
 
 interface FilterState {
+  initPages: PageItem[]
   initProducts: CardDataProps[]
   foundProducts: CardDataProps[]
   filters: Record<string, string[] | number>
@@ -17,6 +19,7 @@ interface FilterState {
 
   setViewMode: (mode: string) => void
   setInitProducts: (initProducts: CardDataProps[]) => void
+  setInitPages: (initPages: PageItem[]) => void
   setFoundProducts: (searchProducts: CardDataProps[]) => void
   setFilters: (filters: Record<string, string[] | number>) => void
   setFilteredPage: (filteredPage: string) => void
@@ -35,6 +38,7 @@ interface FilterState {
 
 const useSearchStore = create<FilterState>((set) => ({
   initProducts: [],
+  initPages: [],
   foundProducts: [],
   filters: {},
   filteredPage: '',
@@ -49,6 +53,7 @@ const useSearchStore = create<FilterState>((set) => ({
 
   setViewMode: (viewMode) => set({ viewMode }),
   setInitProducts: (initProducts) => set({ initProducts }),
+  setInitPages: (initPages) => set({ initPages }),
   setFoundProducts: (foundProducts) => set({ foundProducts }),
   setFilteredPage: (filteredPage) => set({ filteredPage }),
   setFilters: (filters) =>

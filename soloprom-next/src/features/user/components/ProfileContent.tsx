@@ -7,6 +7,7 @@ import { IUser } from '@/features/auth/types'
 import { ProfileEditForm } from './ProfileEditForm'
 import { ProfileFavorite } from './ProfileFavorite'
 import { ProfileCart } from './ProfileCart'
+import { ProfileReviews } from './ProfileReviews'
 
 interface ProfileContentProps {
   tabId: string
@@ -54,6 +55,15 @@ export const ProfileContent: React.FC<ProfileContentProps> = ({
             <CardTitle>История заказов</CardTitle>
           </CardHeader>
           {!isLoading && user && <OrderList user={user} />}
+        </>
+      )
+    case 'reviews':
+      return (
+        <>
+          <CardHeader className="flex flex-row items-center justify-between">
+            <CardTitle>Ваши отзывы</CardTitle>
+          </CardHeader>
+          {!isLoading && user && <ProfileReviews user={user} />}
         </>
       )
     default:

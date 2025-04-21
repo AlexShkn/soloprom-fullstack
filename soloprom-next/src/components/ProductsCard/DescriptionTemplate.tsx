@@ -43,6 +43,7 @@ export const DescriptionTemplate: React.FC<DescriptionTypes> = ({
     country,
     sizes,
     load_index,
+    images,
     volumes,
     viscosity,
     container,

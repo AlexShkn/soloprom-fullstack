@@ -89,9 +89,14 @@ export class ProductsController {
   //====================================================================
 
   @Get('search/product')
-  async search(@Query('name') name: string) {
-    return this.productService.searchProducts(name);
+  async search(
+    @Query('fields') fieldsString: string,
+    @Query('value') value: string,
+  ) {
+    const fields = fieldsString.split(',');
+    return this.productService.searchProducts(fields, value);
   }
+
   @Get('search/pages')
   async searchPages(@Query('value') value: string) {
     return this.productService.searchPages(value);

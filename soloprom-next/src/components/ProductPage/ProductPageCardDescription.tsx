@@ -68,6 +68,7 @@ export const ProductPageCardDescription: React.FC<DescriptionTypes> = ({
     brandName,
     country,
     load_index,
+    images,
     viscosity,
     container,
     voltage,

@@ -1,5 +1,7 @@
 'use client'
+import { ReviewsTypes } from '@/utils/api/reviews'
 import React, { useState, useCallback, useMemo } from 'react'
+import { ReviewsTab } from './Tabs/Reviews/ReviewsTab'
 
 type Review = {
   name: string
@@ -9,7 +11,8 @@ type Review = {
   comment: string
 }
 
-type ProductDescription = {
+export type ProductDescription = {
+  productId: string
   name: string
   text: string
   reviews?: Review[]
@@ -20,6 +23,8 @@ type ProductDescription = {
 
 interface Props {
   productDescr?: ProductDescription
+  reviewData: ReviewsTypes[]
+  productId: string
 }
 
 const DescriptionTab = React.memo(({ text }: { text: string }) => (
@@ -88,75 +93,6 @@ const CompatibilityTab = React.memo(
   ),
 )
 
-const ReviewsTab = React.memo(
-  ({
-    productDescr,
-    reviews,
-  }: {
-    productDescr?: ProductDescription
-    reviews: Review[] | undefined
-  }) => (
-    <div className="product-page-tabs__reviews">
-      {reviews && reviews?.length > 0 ? (
-        <>
-          <h2 className="mb-7 text-xl font-bold lg:text-3xl">
-            {productDescr?.name || 'Имя продукта'}
-          </h2>
-          <ul className="product-page-tabs__reviews-list">
-            {reviews.map((review, index) => (
-              <li key={index} className="mb-6 rounded bg-[#fafafa] p-4 md:p-7">
-                <div className="border-1 mb-5 flex items-center justify-between gap-7 border-b border-[#f1eff2] pb-4">
-                  <div className="flex items-center">
-                    <div className="mr-2.5 flex h-10 w-10 items-center rounded-br-full bg-[#d9dde7] pb-1 pl-1">
-                      <img
-                        className="h-6 w-6"
-                        src="/img/icons/profile.svg"
-                        alt=""
-                      />
-                    </div>
-                    <div className="text-lg font-medium">{review.name}</div>
-                  </div>
-                  <div className="flex items-center gap-1 md:gap-2.5">
-                    {Array.from({ length: 5 }).map((_, starIndex) => (
-                      <img
-                        key={starIndex}
-                        src="/img/icons/star.svg"
-                        className="h-5 w-5"
-                        alt=""
-                        style={{
-                          opacity: starIndex + 1 <= review.rating ? 1 : 0.3,
-                        }}
-                      />
-                    ))}
-
-                    <span className="font-medium">{review.rating}</span>
-                  </div>
-                </div>
-                <div className="product-page-tabs__reviews-body">
-                  <div className="mb-5">
-                    <div className="mb-4 text-lg font-medium">Достоинства</div>
-                    <div className="text-base">{review.positive}</div>
-                  </div>
-                  <div className="mb-5">
-                    <div className="mb-4 text-lg font-medium">Недостатки</div>
-                    <div className="text-base">{review.negative}</div>
-                  </div>
-                  <div className="mb-5">
-                    <div className="mb-4 text-lg font-medium">Комментарий</div>
-                    <div className="text-base">{review.comment}</div>
-                  </div>
-                </div>
-              </li>
-            ))}
-          </ul>
-        </>
-      ) : (
-        <div className="my-12 text-center text-3xl font-bold">Нет отзывов</div>
-      )}
-    </div>
-  ),
-)
-
 const DeliveryTab = React.memo(() => (
   <div className="product-page-tabs__delivery">
     <div className="mb-5">
@@ -177,7 +113,11 @@ const DeliveryTab = React.memo(() => (
   </div>
 ))
 
-export const ProductPageTabs: React.FC<Props> = ({ productDescr }) => {
+export const ProductPageTabs: React.FC<Props> = ({
+  productDescr,
+  reviewData,
+  productId,
+}) => {
   const [currentTab, setCurrentTab] = useState<number>(0)
 
   const {
@@ -193,10 +133,10 @@ export const ProductPageTabs: React.FC<Props> = ({ productDescr }) => {
       'Описание товара',
       'Характеристики',
       'Совместимость',
-      `Отзывы (${(reviews || []).length})`,
+      `Отзывы (${(reviewData || []).length})`,
       'Доставка',
     ],
-    [reviews?.length],
+    [reviewData?.length],
   )
 
   const handleTabClick = useCallback((index: number) => {
@@ -221,7 +161,13 @@ export const ProductPageTabs: React.FC<Props> = ({ productDescr }) => {
       case 2:
         return <CompatibilityTab models={models} />
       case 3:
-        return <ReviewsTab productDescr={productDescr} reviews={reviews} />
+        return (
+          <ReviewsTab
+            productDescr={productDescr}
+            reviews={reviewData}
+            productId={productId}
+          />
+        )
       case 4:
         return <DeliveryTab />
       default:

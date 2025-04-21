@@ -20,6 +20,7 @@ import { PrismaModule } from './prisma/prisma.module';
 import { TelegramModule } from './telegram/telegram.module';
 import { OrderModule } from './order/order.module';
 import { StatisticsModule } from './statistics/statistics.module';
+import { ReviewsModule } from './reviews/reviews.module';
 
 @Module({
   imports: [
@@ -31,6 +32,7 @@ import { StatisticsModule } from './statistics/statistics.module';
     }),
     ScheduleModule.forRoot(),
     PrismaModule,
+    ReviewsModule,
     CrawlerModule,
     TasksModule,
     ProductDescrModule,

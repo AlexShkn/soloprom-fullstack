@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from 'react'
 import { Swiper, SwiperSlide } from 'swiper/react'
-import { Scrollbar, Grid } from 'swiper/modules'
+import { Scrollbar, Grid, Navigation } from 'swiper/modules'
 import Link from 'next/link'
 import Image from 'next/image'
 import Skeleton from 'react-loading-skeleton'
@@ -80,10 +80,10 @@ export const CategoryProductsSlider: React.FC<Props> = ({ className }) => {
             <h2 className="relative mb-[clamp(0.9375rem,0.443rem+1.6484vw,1.875rem)] inline-flex items-center gap-2.5 text-[clamp(1.25rem,1.0522rem+0.6593vw,1.625rem)] font-bold">
               {category.title}
             </h2>
-            <div className="catalog-products__category-slider relative overflow-hidden px-2.5 py-5 mds:p-5">
+            <div className="catalog-products__category-slider relative overflow-hidden px-2.5 py-1 mds:p-1">
               {isReady ? (
                 <Swiper
-                  modules={[Scrollbar, Grid]}
+                  modules={[Scrollbar, Grid, Navigation]}
                   grabCursor={true}
                   followFinger={true}
                   watchSlidesProgress={true}
@@ -121,8 +121,12 @@ export const CategoryProductsSlider: React.FC<Props> = ({ className }) => {
                       slidesPerView: 4,
                     },
                     1200: {
-                      slidesPerView: 5,
+                      slidesPerView: 6,
                     },
+                  }}
+                  navigation={{
+                    nextEl: '.category-slider__next',
+                    prevEl: '.category-slider__prev',
                   }}
                 >
                   {category.items.map((item) => (
@@ -133,14 +137,14 @@ export const CategoryProductsSlider: React.FC<Props> = ({ className }) => {
                       <Link href={item.href} className="blok h-full w-full">
                         <div className="flex flex-col items-center justify-center">
                           <Image
-                            className="mb-4 block h-20 w-20 object-contain mds:h-[110px] mds:w-[110px]"
+                            className="mb-2 block h-20 w-20 object-contain mds:h-[80px] mds:w-[80px]"
                             src={item.img}
                             alt={item.title}
-                            width={110}
-                            height={110}
+                            width={80}
+                            height={80}
                           />
                           <div className="catalog-products__category-body">
-                            <div className="title mb-4 text-sm font-bold transition-colors mds:text-base md:text-lg">
+                            <div className="title mb-4 text-[14px] font-bold leading-5 transition-colors mds:text-[16px]">
                               {item.title}
                             </div>
                             <div className="text text-sm text-[#b7b7b7]">
@@ -157,6 +161,24 @@ export const CategoryProductsSlider: React.FC<Props> = ({ className }) => {
                       </Link>
                     </SwiperSlide>
                   ))}
+                  <div className="absolute left-[5px] right-[5px] top-[43%] translate-y-[-50%]">
+                    <button
+                      type="button"
+                      className="category-slider__prev absolute left-[5px] -m-2.5 inline-flex h-10 w-10 items-center justify-center rounded-[50%] bg-accentBlue p-2.5 text-center transition-all hover:bg-hoverBlue"
+                    >
+                      <svg className="icon pointer-events-none h-4 w-4 rotate-[90deg] select-none fill-white transition-colors">
+                        <use xlinkHref="/img/sprite-default.svg#arrow-drop"></use>
+                      </svg>
+                    </button>
+                    <button
+                      type="button"
+                      className="category-slider__next absolute right-[5px] -m-2.5 inline-flex h-10 w-10 items-center justify-center rounded-[50%] bg-accentBlue p-2.5 text-center transition-all hover:bg-hoverBlue"
+                    >
+                      <svg className="icon pointer-events-none h-4 w-4 rotate-[-90deg] select-none fill-white transition-colors">
+                        <use xlinkHref="/img/sprite-default.svg#arrow-drop"></use>
+                      </svg>
+                    </button>
+                  </div>
                   <div className="service-packages__scrollbar swiper-scrollbar"></div>
                 </Swiper>
               ) : (

@@ -221,7 +221,6 @@ export class ProductsService {
   }
 
   async loadCategoriesProductsAndGroups(data: any) {
-    // Карты для кэширования идентификаторов категорий, подкатегорий и групп
     const categoriesMap = new Map();
     const subcategoriesMap = new Map();
     const groupsMap = new Map();
@@ -308,6 +307,23 @@ export class ProductsService {
         );
       }
 
+      const reviews = await prisma.review.findMany({
+        where: {
+          productId: product.productId,
+        },
+        orderBy: {
+          createdAt: 'desc',
+        },
+      });
+
+      let finalRating = 0;
+
+      if (reviews && reviews.length > 0) {
+        finalRating = Math.round(
+          reviews.reduce((sum, review) => sum + review.estimation, 0) /
+            reviews.length,
+        );
+      }
       // Формируем данные продукта
       const productData = {
         productId: product.productId,
@@ -319,6 +335,7 @@ export class ProductsService {
         defaultPrice: product.defaultPrice || 0,
         url: product.url || null,
         descr: product.descr || null,
+        images: product.images || [],
         img: product.img || null,
         delivery: product.delivery || null,
         sizes: product.sizes || null,
@@ -337,6 +354,7 @@ export class ProductsService {
         productType: product.productType || null,
         groupsList: product.groupsList || [],
         viscosity: product.viscosity || null,
+        rating: finalRating,
       };
 
       // Создаём или обновляем продукт
@@ -553,26 +571,39 @@ export class ProductsService {
     return popularProductsRecords.map((record) => record.product);
   }
 
-  async searchProducts(name: string) {
-    return prisma.product.findMany({
-      where: {
-        OR: [
-          {
-            name: {
-              contains: name,
-              mode: 'insensitive',
-            },
-          },
-          {
-            descr: {
-              contains: name,
-              mode: 'insensitive',
-            },
-          },
-        ],
+  async searchProducts(fields: string[], value: string) {
+    const allowedFields = [
+      'name',
+      'descr',
+      '/* Add other allowed fields here */',
+    ];
+    const validatedFields = fields.filter((field) =>
+      allowedFields.includes(field),
+    );
+
+    if (validatedFields.length === 0) {
+      return [];
+    }
+
+    const orConditions = validatedFields.map((field) => ({
+      [field]: {
+        contains: value,
+        mode: 'insensitive',
       },
-    });
+    }));
+
+    try {
+      return await prisma.product.findMany({
+        where: {
+          OR: orConditions,
+        },
+      });
+    } catch (error) {
+      console.error('Error searching products:', error);
+      throw error;
+    }
   }
+
   async searchPages(value: string) {
     return prisma.pagesSearch.findMany({
       where: {

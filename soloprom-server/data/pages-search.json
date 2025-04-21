@@ -1,0 +1,212 @@
+[
+  {
+    "type": "Шины",
+    "img": "/img/catalog/category/tires/shini-celnolitite",
+    "url": "/catalog/shini-celnolitie",
+    "title": "Цельнолитые",
+    "description": "для погрузчиков"
+  },
+  {
+    "type": "Масла",
+    "img": "/img/catalog/category/oils/maslo-transmissionnoe",
+    "url": "/catalog/masla-transmissionnie",
+    "title": "Трансмиссионные масла",
+    "description": ""
+  },
+  {
+    "type": "Масла",
+    "img": "/img/catalog/category/oils/gidravlicheskoe-maslo",
+    "url": "/catalog/masla-gidravlicheskie",
+    "title": "Гидравлические масла",
+    "description": ""
+  },
+  {
+    "type": "Масла",
+    "img": "/img/catalog/category/oils/antifreeez",
+    "url": "/catalog/antifreezi",
+    "title": "Охлаждающие жидкости",
+    "description": "антифриз"
+  },
+  {
+    "type": "Масла",
+    "img": "/img/catalog/category/oils/industrialnoe-maslo",
+    "url": "/catalog/masla-industrialnie",
+    "title": "Индустриальные масла",
+    "description": "промышленные станков"
+  },
+  {
+    "type": "Акб",
+    "img": "/img/catalog/category/battery/akb-dlya-pogruzchijov",
+    "url": "/catalog/accumulyatori-dlya-pogruzchikov",
+    "title": "Аккумуляторы для погрузчиков",
+    "description": "кара"
+  },
+  {
+    "type": "Шины",
+    "img": "/img/catalog/category/tires/vilochnii-pogruzchik",
+    "url": "/catalog/shini-dlya-vilochnih-pogruzchikov",
+    "title": "Для вилочных погрузчиков",
+    "description": "кара"
+  },
+  {
+    "type": "Масла",
+    "img": "/img/catalog/category/oils/motornoe-maslo",
+    "url": "/catalog/masla-motornie",
+    "title": "Моторные масла",
+    "description": "двигателя"
+  },
+  {
+    "type": "Шины",
+    "img": "/img/catalog/category/tires/legkovie",
+    "url": "/catalog/shini-legkovie",
+    "title": "Легковые",
+    "description": "летние зимние шины шина"
+  },
+  {
+    "type": "Шины",
+    "img": "/img/catalog/category/tires/asphaltoukladchik",
+    "url": "/catalog/shini-dlya-asfaltoukladchikov-i-katkov",
+    "title": "Для асфальтоукладчиков и катков",
+    "description": "шины шина"
+  },
+  {
+    "type": "Шины",
+    "img": "/img/category/tyres",
+    "url": "/catalog/tires",
+    "title": "Для специальной техники",
+    "description": "шины шина специальные спецшины"
+  },
+  {
+    "type": "Шины",
+    "img": "/img/catalog/category/tires/kolesnii-ekskavator",
+    "url": "/catalog/shini-dlya-kolesnih-ekskavatorov",
+    "title": "Для колесных экскаваторов",
+    "description": "шины шина"
+  },
+  {
+    "type": "Шины",
+    "img": "/img/catalog/category/tires/selhoztechnika",
+    "url": "/catalog/shini-dlya-selhoztehniki",
+    "title": "Для сельхоз техники",
+    "description": "шины шина"
+  },
+  {
+    "type": "Шины",
+    "img": "/img/catalog/category/tires/pnevmatichesckie-shini",
+    "url": "/catalog/shini-pnevmatichesckie",
+    "title": "Пневматические",
+    "description": "Пневматические легковые летние зимние легковых шины шина"
+  },
+  {
+    "type": "Шины",
+    "img": "/img/catalog/category/tires/sochlenenni-samosval",
+    "url": "/catalog/shini-dlya-sochlenennih-samosvalov",
+    "title": "Для сочлененных самосвалов",
+    "description": "шины шина"
+  },
+  {
+    "type": "Шины",
+    "img": "/img/catalog/category/tires/bandazhnie-shini",
+    "url": "/catalog/shini-bandazhnie",
+    "title": "Бандажные",
+    "description": "шины шина"
+  },
+  {
+    "type": "Шины",
+    "img": "/img/catalog/category/tires/richstaker",
+    "url": "/catalog/shini-dlya-portov-i-terminalov",
+    "title": "Для портов и терминалов",
+    "description": "шины шина"
+  },
+  {
+    "type": "Шины",
+    "img": "/img/catalog/category/tires/frontalnii-pogruzchik",
+    "url": "/catalog/shini-dlya-frontalnih-pogruzchikov",
+    "title": "Для фронтальных погрузчиков",
+    "description": "шины шина"
+  },
+  {
+    "type": "Шины",
+    "img": "/img/catalog/category/tires/greider",
+    "url": "/catalog/shini-dlya-greiderov",
+    "title": "Для грейдеров",
+    "description": "шины шина"
+  },
+  {
+    "type": "Шины",
+    "img": "/img/catalog/category/tires/teleskopicheskii-pogruzchik",
+    "url": "/catalog/shini-dlya-teleskopicheskih-pogruzchikov",
+    "title": "Для телескопических погрузчиков",
+    "description": "шины шина"
+  },
+  {
+    "type": "Акб",
+    "img": "/img/catalog/category/battery/akumulyator-dlya-richtrakov",
+    "url": "/catalog/accumulyatori-dlya-richtrakov",
+    "title": "Аккумуляторы для ричтраков",
+    "description": "акб"
+  },
+  {
+    "type": "Шины",
+    "img": "/img/catalog/category/tires/dlya-ekskavator-pogruzchikov",
+    "url": "/catalog/shini-dlya-ekskavator-pogruzchikov",
+    "title": "Для экскаватор - погрузчиков",
+    "description": "шины шина"
+  },
+  {
+    "type": "Шины",
+    "img": "/img/catalog/category/tires/zhestkoramnii-samosval",
+    "url": "/catalog/shini-dlya-zhestkoramnih-samosvalov",
+    "title": "Для жесткорамных самосвалов",
+    "description": "жесткорамный шины шина"
+  },
+  {
+    "type": "Шины",
+    "img": "/img/catalog/category/tires/shini-dlya-mini-pogruzchikov",
+    "url": "/catalog/shini-dlya-minipogruzchikov",
+    "title": "Для минипогрузчиков",
+    "description": "бобкэт bobcat шины шина"
+  },
+  {
+    "type": "Акб",
+    "img": "/img/catalog/category/battery/akkumulyatori-dlya-shtabelerov",
+    "url": "/catalog/accumulyatori-dlya-shtabelerov",
+    "title": "Аккумуляторы для штабелеров",
+    "description": "акб"
+  },
+  {
+    "type": "Акб",
+    "img": "/img/catalog/category/battery/akb-dlya-polomoechnih-mashin",
+    "url": "/catalog/accumulyatori-dlya-polomoechnih-mashin",
+    "title": "Аккумуляторы для поломоечных машин",
+    "description": "акб"
+  },
+  {
+    "type": "Акб",
+    "img": "/img/catalog/category/battery/tyagovie",
+    "url": "/catalog/accumulyatori-tyagovie",
+    "title": "Тяговые аккумуляторы",
+    "description": "акб"
+  },
+  {
+    "type": "Акб",
+    "img": "/img/catalog/category/battery/akkumelyator-dlya-palletoperevozchikov",
+    "url": "/catalog/accumulyatori-dlya-palletoperevozchikov",
+    "title": "Аккумуляторы для паллетоперевозчиков",
+    "description": "акб"
+  },
+  {
+    "type": "Акб",
+    "img": "/img/catalog/category/battery/akkumulyatori-dlya-elektrotelezhek",
+    "url": "/catalog/accumulyatori-dlya-electrotelezhek",
+    "title": "Аккумуляторы для электротележек",
+    "description": "акб"
+  },
+  {
+    "type": "Акб",
+    "img": "/img/catalog/category/battery/polutyagovie-akkumulyatori",
+    "url": "/catalog/accumulyatori-polutyagovie",
+    "title": "Полутяговые аккумуляторы",
+    "description": "акб"
+  }
+]

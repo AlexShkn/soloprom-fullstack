@@ -11,6 +11,18 @@
     "crumb": "Шины для спецтехники"
   },
 
+  "cameri": {
+    "category": "tires",
+    "pageType": "subcategory",
+    "name": "cameri",
+    "title": "Купить камеры для шин спецтехники",
+    "description": "Большой выбор камер шин для погрузчиков, штабелеров, электро-тележек и другой специальной техники. Заказ и из наличия. Доставляем любой удобной транспортной компанией.",
+    "img": "/img/category/tyres",
+    "alt": "специальные камеры",
+    "url": "cameri",
+    "crumb": "Камеры для спецтехники"
+  },
+
   "shini-apollo": {
     "category": "tires",
     "pageType": "brands",
@@ -198,6 +210,16 @@
     "url": "shini-legkovie",
     "crumb": "Шины легковые"
   },
+  "shini-legkovie-letnie": {
+    "category": "tires",
+    "pageType": "group",
+    "title": "Купить легковые летние шины",
+    "description": "Современные легковые шины. Большой выбор пневматических шин. Заказ и из наличия. Доставляем любой удобной транспортной компанией.",
+    "img": "/img/category/shini-legkovie",
+    "alt": "легковые шины",
+    "url": "shini-legkovie-letnie",
+    "crumb": "Шины легковые летние"
+  },
   "shini-bandazhnie": {
     "category": "tires",
     "pageType": "subcategory",
@@ -215,6 +237,16 @@
     "alt": "Шины для мини-погрузчиков",
     "url": "shini-dlya-minipogruzchikov",
     "crumb": "Шины для мини-погрузчиков",
+    "category": "tires",
+    "pageType": "group"
+  },
+  "shini-dlya-vilochnih-pogruzchikov": {
+    "title": "Купить шины для вилочных погрузчиков",
+    "description": "Шины для  вилочных погрузчиков. Большой выбор пневматических, цельнолитых и бандажных шин для для мини-погрузчиков, штабелеров, электро-тележек и другой специальной техники. Заказ и из наличия. Доставляем любой удобной транспортной компанией.",
+    "img": "/img/category/mini-loader",
+    "alt": "Шины для  вилочных погрузчиков",
+    "url": "shini-dlya-vilochnih-pogruzchikov",
+    "crumb": "Шины для вилочных погрузчиков",
     "category": "tires",
     "pageType": "group"
   },
@@ -400,6 +432,16 @@
     "alt": "",
     "url": "accumulyatori-dlya-shtabelerov",
     "crumb": "Аккумуляторы для штабелеров"
+  },
+  "accumulyatori-dlya-palletoperevozchikov": {
+    "category": "battery",
+    "pageType": "group",
+    "title": "Купить аккумуляторы для паллетоперевозчика",
+    "description": "Аккумуляторы для паллетоперевозчиков. Покупка из наличия и на заказ. Доставка любой удобной транспортной компанией. Тел. +7 (903) 656-93-93",
+    "img": "/img/category/perezochik-pallet",
+    "alt": "",
+    "url": "accumulyatori-dlya-palletoperevozchikov",
+    "crumb": "Аккумуляторы для паллетоперевозчиков"
   },
   "accumulyatori-dlya-pogruzchikov-still": {
     "category": "battery",

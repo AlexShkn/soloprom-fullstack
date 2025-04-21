@@ -24,14 +24,17 @@ import { SettingsSchema, TypeSettingsSchema } from '../schemes'
 import { useUpdateProfileMutation } from '../hooks/useUpdateProfileMutation'
 import { IUser } from '@/features/auth/types'
 import { SquarePen, UserRound } from 'lucide-react'
+import { useAuthStore } from '@/store/authStore'
 
 interface Props {
   user: IUser
 }
 
-export const ProfileEditForm: React.FC<Props> = ({ user }) => {
+export const ProfileEditForm: React.FC<Props> = () => {
   const { update, isLoadingUpdate } = useUpdateProfileMutation()
   const [isEditing, setIsEditing] = useState(false)
+
+  const { userState, updateUserProfile } = useAuthStore()
 
   const form = useForm<TypeSettingsSchema>({
     resolver: zodResolver(SettingsSchema),
@@ -43,17 +46,18 @@ export const ProfileEditForm: React.FC<Props> = ({ user }) => {
   })
 
   useEffect(() => {
-    if (user) {
+    if (userState) {
       form.reset({
-        name: user.displayName || '',
-        email: user.email || '',
-        isTwoFactorEnabled: user.isTwoFactorEnabled || false,
+        name: userState.displayName || '',
+        email: userState.email || '',
+        isTwoFactorEnabled: userState.isTwoFactorEnabled || false,
       })
     }
-  }, [user, form.reset])
+  }, [userState, form.reset])
 
   const onSubmit = (values: TypeSettingsSchema) => {
     update(values)
+    updateUserProfile(values)
     setIsEditing(false)
   }
 
@@ -64,9 +68,9 @@ export const ProfileEditForm: React.FC<Props> = ({ user }) => {
   const handleCancelClick = () => {
     setIsEditing(false)
     form.reset({
-      name: user.displayName || '',
-      email: user.email || '',
-      isTwoFactorEnabled: user.isTwoFactorEnabled || false,
+      name: userState.displayName || '',
+      email: userState.email || '',
+      isTwoFactorEnabled: userState.isTwoFactorEnabled || false,
     })
   }
 
@@ -79,15 +83,15 @@ export const ProfileEditForm: React.FC<Props> = ({ user }) => {
               <div className="flex items-center gap-1">
                 <span className="font-medium">Имя:</span>
               </div>
-              {user.displayName || 'Не указано'}
+              {userState.displayName || 'Не указано'}
             </div>
             <div className="flex items-center gap-1">
               <div className="font-medium">Почта:</div>{' '}
-              {user.email || 'Не указано'}
+              {userState.email || 'Не указано'}
             </div>
             <div className="flex items-center gap-1">
               <div className="font-medium">Двухфакторная аутентификация:</div>
-              {user.isTwoFactorEnabled ? (
+              {userState.isTwoFactorEnabled ? (
                 <span className="font-medium text-darkGreenColor">
                   Включена
                 </span>
@@ -119,7 +123,7 @@ export const ProfileEditForm: React.FC<Props> = ({ user }) => {
                   </FormItem>
                 )}
               />
-              <FormField
+              {/* <FormField
                 control={form.control}
                 name="email"
                 render={({ field }) => (
@@ -136,7 +140,7 @@ export const ProfileEditForm: React.FC<Props> = ({ user }) => {
                     <FormMessage />
                   </FormItem>
                 )}
-              />
+              /> */}
               <FormField
                 control={form.control}
                 name="isTwoFactorEnabled"

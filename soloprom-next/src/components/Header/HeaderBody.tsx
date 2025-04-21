@@ -2,6 +2,7 @@
 import React from 'react'
 
 import Link from 'next/link'
+import Image from 'next/image'
 import { useModalsStore } from '@/store/modalsStore'
 
 const HeaderBody = () => {
@@ -12,9 +13,11 @@ const HeaderBody = () => {
         href="/"
         className="header__logo flex-0-auto z-[2] mr-10 inline-flex items-center font-bold xs:mr-6"
       >
-        <img
-          src="/img/logo-icons.svg"
-          className="mr-2.5 h-10 w-10 xl:h-[50px] xl:w-[50px]"
+        <Image
+          src="/img/logo.webp"
+          width={40}
+          height={40}
+          className="h-10 w-10 object-contain xl:h-12 xl:w-12"
           alt=""
         />
         <div className="header__logo-text flex flex-col">

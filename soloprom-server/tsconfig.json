@@ -27,6 +27,11 @@
       "@prisma/__generated__/*": ["prisma/__generated__/*"]
     }
   },
-  "include": ["src/**/*", "add-products.js"],
+  "include": [
+    "src/**/*",
+    "add-products.js",
+    "update-images.js",
+    "image-downloader.ts"
+  ],
   "exclude": ["node_modules", "dist"]
 }
