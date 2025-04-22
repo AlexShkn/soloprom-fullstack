@@ -572,11 +572,7 @@ export class ProductsService {
   }
 
   async searchProducts(fields: string[], value: string) {
-    const allowedFields = [
-      'name',
-      'descr',
-      '/* Add other allowed fields here */',
-    ];
+    const allowedFields = ['name', 'descr'];
     const validatedFields = fields.filter((field) =>
       allowedFields.includes(field),
     );

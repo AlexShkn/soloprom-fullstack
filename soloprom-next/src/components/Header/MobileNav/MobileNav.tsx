@@ -17,11 +17,11 @@ const MobileNav = (props: Props) => {
   const { totalComparedItemsCount } = useCompareStore()
 
   return (
-    <div className="mobile-nav fixed bottom-0 left-0 grid w-full grid-cols-5 items-center justify-around gap-1 rounded border-t border-grayColor bg-white px-[5px] py-[2px] text-sm font-medium mds:static mds:flex mds:justify-end mds:border-none">
-      <div className="mobile-nav__item border-1 relative inline-flex h-[50px] cursor-pointer justify-center rounded-lg border bg-white transition-colors mds:h-11 mds:border-accentBlue mds:bg-accentBlue mds:bg-none lg:h-12">
+    <div className="mobile-nav fixed bottom-0 left-0 grid w-full grid-cols-5 items-center justify-around gap-1 rounded border-t border-grayColor bg-white px-[5px] py-[2px] text-sm font-medium md:static md:flex md:justify-end md:border-none">
+      <div className="mobile-nav__item border-1 relative inline-flex h-[50px] cursor-pointer justify-center rounded-lg border bg-white transition-colors md:h-11 md:border-accentBlue md:bg-accentBlue md:bg-none lg:h-12">
         <a
           href=" /catalog"
-          className="relative flex flex-col items-center gap-1 rounded p-2.5 px-2.5 text-center text-[10px] font-medium xs:py-1 mds:justify-center mds:text-ss lg:flex-row lg:justify-start lg:text-base"
+          className="relative flex flex-col items-center gap-1 rounded p-2.5 px-2.5 text-center text-[10px] font-medium xs:py-1 md:justify-center md:text-ss lg:flex-row lg:justify-start lg:text-base"
         >
           <div className="mobile-nav__item-icon relative px-[5px]">
             <svg className="icon h-6 w-6 fill-white transition-colors">
@@ -31,10 +31,10 @@ const MobileNav = (props: Props) => {
           <span>Каталог</span>
         </a>
       </div>
-      <div className="mobile-nav__item border-1 relative inline-flex h-[50px] cursor-pointer justify-center rounded-lg border bg-white transition-colors mds:h-11 mds:border-accentBlue mds:bg-accentBlue mds:bg-none lg:h-12">
+      <div className="mobile-nav__item border-1 relative inline-flex h-[50px] cursor-pointer justify-center rounded-lg border bg-white transition-colors md:h-11 md:border-accentBlue md:bg-accentBlue md:bg-none lg:h-12">
         <Link
           href=" /compare"
-          className="relative flex flex-col items-center gap-1 rounded p-2.5 px-2.5 text-center text-[10px] font-medium xs:py-1 mds:justify-center mds:text-ss lg:flex-row lg:justify-start lg:text-base"
+          className="relative flex flex-col items-center gap-1 rounded p-2.5 px-2.5 text-center text-[10px] font-medium xs:py-1 md:justify-center md:text-ss lg:flex-row lg:justify-start lg:text-base"
         >
           <div
             data-compare-count={totalComparedItemsCount}
@@ -47,10 +47,10 @@ const MobileNav = (props: Props) => {
           <span>Сравнение</span>
         </Link>
       </div>
-      <div className="mobile-nav__item border-1 relative inline-flex h-[50px] cursor-pointer justify-center rounded-lg border bg-white transition-colors mds:h-11 mds:border-accentBlue mds:bg-accentBlue mds:bg-none lg:h-12">
+      <div className="mobile-nav__item border-1 relative inline-flex h-[50px] cursor-pointer justify-center rounded-lg border bg-white transition-colors md:h-11 md:border-accentBlue md:bg-accentBlue md:bg-none lg:h-12">
         <Link
           href=" /favorite"
-          className="relative flex flex-col items-center gap-1 rounded p-2.5 px-2.5 text-center text-[10px] font-medium xs:py-1 mds:justify-center mds:text-ss lg:flex-row lg:justify-start lg:text-base"
+          className="relative flex flex-col items-center gap-1 rounded p-2.5 px-2.5 text-center text-[10px] font-medium xs:py-1 md:justify-center md:text-ss lg:flex-row lg:justify-start lg:text-base"
         >
           <div
             data-favorite-count={favoriteState.length}
@@ -63,10 +63,10 @@ const MobileNav = (props: Props) => {
           <span>Избранное</span>
         </Link>
       </div>
-      <div className="mobile-nav__item border-1 relative inline-flex h-[50px] cursor-pointer justify-center rounded-lg border bg-white transition-colors mds:h-11 mds:border-accentBlue mds:bg-accentBlue mds:bg-none lg:h-12">
+      <div className="mobile-nav__item border-1 relative inline-flex h-[50px] cursor-pointer justify-center rounded-lg border bg-white transition-colors md:h-11 md:border-accentBlue md:bg-accentBlue md:bg-none lg:h-12">
         <Link
           href="/cart"
-          className="relative flex flex-col items-center gap-1 rounded p-2.5 px-2.5 text-center text-[10px] font-medium xs:py-1 mds:justify-center mds:text-ss lg:flex-row lg:justify-start lg:text-base"
+          className="relative flex flex-col items-center gap-1 rounded p-2.5 px-2.5 text-center text-[10px] font-medium xs:py-1 md:justify-center md:text-ss lg:flex-row lg:justify-start lg:text-base"
         >
           <div
             data-cart-count={cartState.length}
@@ -80,10 +80,10 @@ const MobileNav = (props: Props) => {
         </Link>
       </div>
 
-      <div className="mobile-nav__item border-1 relative inline-flex h-[50px] cursor-pointer justify-center rounded-lg border bg-white transition-colors mds:h-11 mds:border-accentBlue mds:bg-accentBlue mds:bg-none lg:h-12">
+      <div className="mobile-nav__item border-1 relative inline-flex h-[50px] cursor-pointer justify-center rounded-lg border bg-white transition-colors md:h-11 md:border-accentBlue md:bg-accentBlue md:bg-none lg:h-12">
         <button
           onClick={() => setIsOpen((prev) => !prev)}
-          className={`relative flex flex-col items-center gap-1 rounded p-2.5 px-2.5 text-center text-[10px] font-medium xs:py-1 mds:justify-center mds:text-ss lg:flex-row lg:justify-start lg:text-base ${isOpen && 'active'}`}
+          className={`relative flex flex-col items-center gap-1 rounded p-2.5 px-2.5 text-center text-[10px] font-medium xs:py-1 md:justify-center md:text-ss lg:flex-row lg:justify-start lg:text-base ${isOpen && 'active'}`}
         >
           <span className="mobile-nav__item-icon relative px-[5px]">
             <svg className="icon h-6 w-6 fill-white transition-colors">
@@ -94,7 +94,7 @@ const MobileNav = (props: Props) => {
         </button>
 
         <ul
-          className={`mobile-nav__callback-list -r-4 invisible absolute bottom-[calc(100%+10px)] z-10 translate-x-[100px] flex-col gap-2.5 rounded bg-white opacity-0 shadow-custom transition-all mds:hidden ${isOpen && 'show'}`}
+          className={`mobile-nav__callback-list -r-4 invisible absolute bottom-[calc(100%+10px)] z-10 translate-x-[100px] flex-col gap-2.5 rounded bg-white opacity-0 shadow-custom transition-all md:hidden ${isOpen && 'show'}`}
         >
           <li className="rounded p-[5px] shadow-custom">
             <button

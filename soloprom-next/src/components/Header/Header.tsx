@@ -1,23 +1,24 @@
 'use client'
-import React, { useEffect } from 'react'
+import React, { useEffect, useCallback } from 'react'
 
 import { getStateFromLocalStorage } from '@/utils/localStorage/getStateFromLocalStorage'
+import { getCompareLocalStorage } from '@/utils/localStorage/getCompareLocalStorage'
 
 import { HeaderTop } from './HeaderTop'
 import HeaderBody from './HeaderBody'
-import HeaderBottom from './HeaderBottom/HeaderBottom'
 
 import { useCartStore } from '@/store/cartStore'
 import { useFavoriteStore } from '@/store/favoriteStore'
 import { useCompareStore } from '@/store/compareStore'
-import { getCompareLocalStorage } from '@/utils/localStorage/getCompareLocalStorage'
+import { HeaderLinks } from './HeaderLinks'
 
 export const Header: React.FC = () => {
   const { setCart } = useCartStore()
   const { setFavorite } = useFavoriteStore()
   const { setComparedItems } = useCompareStore()
 
-  useEffect(() => {
+  // Using useCallback to memoize the effect's dependency array
+  const initializeState = useCallback(() => {
     if (typeof window !== 'undefined' && window.localStorage) {
       const initialCart = getStateFromLocalStorage('cart')
       const initialFavorite = getStateFromLocalStorage('favorite')
@@ -27,16 +28,20 @@ export const Header: React.FC = () => {
       setCart(initialCart)
       setFavorite(initialFavorite)
     }
-  }, [])
+  }, [setCart, setFavorite, setComparedItems])
+
+  useEffect(() => {
+    initializeState()
+  }, [initializeState]) // initializeState is now the stable dependency
 
   return (
-    <header className="header relative w-full bg-white transition-all">
-      <div className="relative z-[31] bg-white pb-7 shadow-custom">
+    <header className="header relative w-full bg-darkBlue transition-all">
+      <div className="relative z-[31] bg-white shadow-sm">
         <HeaderTop />
         <div className="header__container">
           <HeaderBody />
-          <HeaderBottom />
         </div>
+        <HeaderLinks />
       </div>
     </header>
   )

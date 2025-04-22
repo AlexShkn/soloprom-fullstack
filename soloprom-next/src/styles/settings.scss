@@ -40,6 +40,16 @@ body._lock {
     padding: 0 15px;
   }
 }
+
+.mobile-container {
+  max-width: variables.$maxWidthContainer + px;
+  margin: 0 auto;
+  padding: 0 variables.$containerPadding + px;
+
+  @media (max-width: 767.98px) {
+    padding: 0 10px;
+  }
+}
 [class*='__inner-container'],
 .inner-container {
   max-width: 1000px;

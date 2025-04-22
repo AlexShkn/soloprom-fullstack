@@ -8,6 +8,7 @@ import 'react-loading-skeleton/dist/skeleton.css'
 import { Sort } from '@/components/GroupList/Sort'
 import { ViewSetting } from '@/components/GroupList/ViewSetting'
 import { Button } from '@/components/ui'
+import clsx from 'clsx'
 
 interface Props {
   handleResetFilters: () => void
@@ -194,7 +195,13 @@ export const SearchFilteredList: React.FC<Props> = ({
       </ul>
 
       <ul
-        className={`catalog-list catalog-list--${viewMode} grid grid-cols-4 gap-5 overflow-hidden px-5 py-2.5`}
+        className={clsx(
+          'grid grid-cols-1 gap-2.5 overflow-hidden px-1 mdl:px-5 mdl:py-2.5 lg:gap-5',
+          {
+            'grid-cols-1 pb-4 pt-2.5 mds:grid-cols-2 mds:p-2.5 xl:grid-cols-3 2xl:grid-cols-4':
+              viewMode === 'grid',
+          },
+        )}
       >
         {dataIsLoading
           ? Array.from({ length: 12 }).map((_, index) => (

@@ -186,26 +186,24 @@ export const SearchFilterBlock: React.FC<Props> = ({
 
   return (
     <section className="group-list section-offset">
-      <div className="page-container">
-        <div className="grid grid-cols-1 md:grid-cols-[220px,1fr] lg:grid-cols-[240px,1fr]">
-          <SearchFilters
-            categoryInitialList={filtersData}
-            filterOpen={filterOpen}
-            setFilterOpen={handlerFilterPopup}
-            setCheckedValues={setCheckedValues}
-            checkedValues={checkedValues}
-            handleResetFilters={handleResetFilters}
-          />
-          <SearchFilteredList
-            onSortChange={setSort}
-            hasFilters={hasFilters}
-            filterOpen={filterOpen}
-            setFilterOpen={handlerFilterPopup}
-            setCheckedValues={setCheckedValues}
-            checkedValues={checkedValues}
-            handleResetFilters={handleResetFilters}
-          />
-        </div>
+      <div className="grid grid-cols-1 md:grid-cols-[220px,1fr] lg:grid-cols-[240px,1fr]">
+        <SearchFilters
+          categoryInitialList={filtersData}
+          filterOpen={filterOpen}
+          setFilterOpen={handlerFilterPopup}
+          setCheckedValues={setCheckedValues}
+          checkedValues={checkedValues}
+          handleResetFilters={handleResetFilters}
+        />
+        <SearchFilteredList
+          onSortChange={setSort}
+          hasFilters={hasFilters}
+          filterOpen={filterOpen}
+          setFilterOpen={handlerFilterPopup}
+          setCheckedValues={setCheckedValues}
+          checkedValues={checkedValues}
+          handleResetFilters={handleResetFilters}
+        />
       </div>
     </section>
   )

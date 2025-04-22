@@ -10,6 +10,8 @@ import { useCatalogMenuStore } from '@/store/catalogMenuStore'
 import { useRouter } from 'next/navigation'
 import useSearchStore from '@/store/searchStore'
 import clsx from 'clsx'
+import { useMediaQuery } from '@/hooks/useMediaQuery'
+import { scrollStatusChange } from '@/utils/scrollStatusChange'
 
 export interface PageItem {
   url: string
@@ -30,6 +32,9 @@ const HeaderSearch = () => {
 
   const dropRef = useRef(null)
   const router = useRouter()
+
+  const is650 = useMediaQuery('(max-width: 650px)')
+  const isMobile = useMediaQuery('(max-width: 767.98px)')
 
   useClickOutside(dropRef, () => {
     if (searchValue) {
@@ -75,11 +80,18 @@ const HeaderSearch = () => {
     setProducts([])
     setIsLoading(true)
     setDropStatus(false)
+    if (isMobile) {
+      scrollStatusChange(false)
+    }
   }
 
   const inputFieldValue = (value: string) => {
     if (!dropStatus) {
       setDropStatus(true)
+
+      if (isMobile) {
+        scrollStatusChange(true)
+      }
     }
 
     setSearchValue(value)
@@ -106,7 +118,7 @@ const HeaderSearch = () => {
   return (
     <div
       ref={dropRef}
-      className={`header-bottom__catalog-field flex transition-all ${searchValue && dropStatus ? 'fixed left-0 top-0 z-50 w-full md:relative md:max-w-[650px]' : 'relative rounded-custom bg-[#f4f5fa] md:max-w-[450px]'} flex-auto items-center`}
+      className={`flex transition-all ${searchValue && dropStatus ? 'fixed left-0 top-0 z-50 w-full md:relative md:max-w-[650px]' : 'relative rounded-custom bg-[#f4f5fa] md:max-w-[550px]'} flex-auto items-center`}
     >
       <button
         onClick={() => resetSearch()}
@@ -133,10 +145,12 @@ const HeaderSearch = () => {
             value={searchValue}
             onChange={(e) => inputFieldValue(e.target.value)}
             onKeyDown={handleKeyDown}
-            onFocus={() => catalogIsOpen && catalogMenuStateChange(false)}
+            onFocus={() =>
+              !is650 && catalogIsOpen && catalogMenuStateChange(false)
+            }
             placeholder="Поиск по наименованию"
             className={clsx(
-              'h-full w-full rounded-bl-custom rounded-tl-custom px-5 py-[13px] placeholder:text-sm placeholder:text-[#c2c5da] lg:px-8 lg:py-4',
+              'h-full w-full rounded-bl-custom rounded-tl-custom py-[13px] pl-7 pr-5 placeholder:text-sm placeholder:text-[#c2c5da] md:px-5 lg:px-8 lg:py-4',
               {
                 'bg-white': searchValue && dropStatus,
                 'bg-[#f4f5fa]': searchValue || !dropStatus,
@@ -154,7 +168,7 @@ const HeaderSearch = () => {
         <button
           type="button"
           onClick={() => goToSearch(searchValue)}
-          className="button mr-1 h-full rounded-custom p-[12px] text-sm mdl:px-5 mdl:py-[14px] md:mr-0 lg:h-auto lg:px-4 lg:py-4 lg:text-base"
+          className="button h-full rounded-custom p-[12px] text-sm mdl:px-5 mdl:py-[14px] md:mr-0 lg:h-auto lg:px-4 lg:py-4 lg:text-base"
         >
           <span className="hidden text-sm font-medium mdl:inline-block">
             Найти
@@ -207,6 +221,7 @@ const HeaderSearch = () => {
                   >
                     <Link
                       href={item.url}
+                      onClick={resetSearch}
                       className="inline-flex w-full items-center gap-2.5 px-4 py-2 hover:bg-hoverBlue hover:text-white"
                     >
                       <Image

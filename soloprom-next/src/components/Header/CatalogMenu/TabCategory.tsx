@@ -4,6 +4,7 @@ import Image from 'next/image'
 import { CategoryProduct } from './CatalogMenu'
 import { useCatalogMenuStore } from '@/store/catalogMenuStore'
 import { useMediaQuery } from '@/hooks/useMediaQuery'
+import { scrollStatusChange } from '@/utils/scrollStatusChange'
 
 interface CategoryTab {
   categoryItems: CategoryProduct[]
@@ -84,13 +85,18 @@ const TabCategory: React.FC<CategoryTab> = ({
 
   const currentBrands = brandsList[categoryId]?.brands || []
 
+  const handelMenuClose = () => {
+    catalogMenuStateChange(false, isTablet)
+    scrollStatusChange(false)
+  }
+
   return (
     <div
-      className={`catalog-menu__category-body scroll-bar max-h-[calc(100vh-70px)] overflow-y-auto border-b border-grayColor p-2.5 pr-2.5 transition-all lg:p-0 ${
+      className={`catalog-menu__category-body scroll-bar max-h-[calc(100vh-70px)] overflow-y-auto overscroll-contain p-2.5 pr-2.5 transition-all lg:p-0 ${
         categoryId === currentTab ? 'fadeIn grid' : 'invisible hidden opacity-0'
       }`}
     >
-      <div className="mb-5 grid grid-cols-1 lg:grid-cols-2 lg:gap-5">
+      <div className="mb-2.5 grid grid-cols-1 border-b border-grayColor pb-2.5 lg:grid-cols-2 lg:gap-5">
         <ul className="flex h-auto flex-col items-start justify-start gap-x-5 gap-y-1 bg-white pl-4 sm:bg-none">
           {firstPart.map((item, index) => (
             <li
@@ -99,7 +105,7 @@ const TabCategory: React.FC<CategoryTab> = ({
             >
               <Link
                 href={item.href}
-                onClick={() => catalogMenuStateChange(false, isTablet)}
+                onClick={handelMenuClose}
                 className="link-hover inline-flex w-full items-center rounded bg-white py-2.5 pl-2.5 pr-1 font-medium leading-5 underline lg:pr-[5px]"
               >
                 {item.title}
@@ -116,7 +122,7 @@ const TabCategory: React.FC<CategoryTab> = ({
               >
                 <Link
                   href={item.href}
-                  onClick={() => catalogMenuStateChange(false, isTablet)}
+                  onClick={handelMenuClose}
                   className="link-hover inline-flex w-full items-center rounded bg-white py-2.5 pl-2.5 pr-1 font-medium leading-5 underline lg:pr-[5px]"
                 >
                   {item.title}
@@ -132,7 +138,7 @@ const TabCategory: React.FC<CategoryTab> = ({
             <li key={brand}>
               <Link
                 href={`/catalog/${brandsList[categoryId].domain}-${brand}`}
-                onClick={() => catalogMenuStateChange(false, isTablet)}
+                onClick={handelMenuClose}
               >
                 <Image
                   src={`/img/catalog/brands-logo/${brand}.webp`}

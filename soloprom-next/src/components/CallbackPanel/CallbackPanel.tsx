@@ -11,7 +11,7 @@ export const CallbackPanel: React.FC<Props> = ({ className }) => {
 
   return (
     <div
-      className={`fixed bottom-2.5 right-2 z-[11] hidden items-center gap-2 transition-transform mds:inline-flex ${callbackIsOpen && 'right-6'}`}
+      className={`fixed bottom-2.5 right-2 z-[11] hidden items-center gap-2 transition-transform md:inline-flex ${callbackIsOpen && 'right-6'}`}
     >
       <a
         href="https://t.me/+79036569393"

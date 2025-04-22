@@ -8,15 +8,7 @@ const pipeline = promisify(require('stream').pipeline);
 // Define types for your JSON data
 interface ProductDescription {
   productId: string;
-  name: string;
-  text: string;
-  models: string[];
-  options: string[];
-}
-
-interface ProductList {
-  productId: string;
-  img: string;
+  img: string | null;
 }
 
 interface Tire {
@@ -109,7 +101,7 @@ async function main() {
 
   try {
     // Load JSON data
-    const productDescriptions: ProductList[] = JSON.parse(
+    let productDescriptions: ProductDescription[] = JSON.parse(
       fs.readFileSync('./data/all.json', 'utf-8'),
     );
     const tires: Tire[] = JSON.parse(
@@ -120,59 +112,69 @@ async function main() {
       const tireId = tire.id;
 
       // Find matching product description
-      const matchingProduct = productDescriptions.find(
-        (product) => tireId.includes(product.productId) && product.img === null,
+      const matchingProductIndex = productDescriptions.findIndex((product) =>
+        tireId.includes(product.productId),
       );
 
-      if (!matchingProduct) {
-        notFoundInProductDescriptions.push(tireId);
-      }
-    }
+      if (matchingProductIndex !== -1) {
+        const matchingProduct = productDescriptions[matchingProductIndex];
 
-    for (const product of productDescriptions) {
-      const productId = product.productId;
+        if (matchingProduct.img === null || matchingProduct.img === '') {
+          // Download the image
+          const imageUrl = tire.img;
+          const fileName = `${tireId}`;
+          const filePath = path.join(imagesDir, fileName);
 
-      // Find matching tire
-      const matchingTire = tires.find((tire) => tire.id.includes(productId));
+          logger.log(`Начинаем загрузку для ${fileName} из ${imageUrl}`);
+          try {
+            await downloadImageWithRetry(imageUrl, filePath); // Use the retry function
+            logger.log(`Загрузка изображения прошла успешно для ${fileName}`);
+            downloadedCount++;
 
-      if (matchingTire && matchingTire.img) {
-        const imageUrl = matchingTire.img;
-        const fileExtension = path.extname(imageUrl).split('?')[0];
-        const fileName = `${productId}${fileExtension}`;
-        const filePath = path.join(imagesDir, fileName);
-
-        logger.log(`Начинаем загрузку для ${fileName} из ${imageUrl}`);
-        try {
-          await downloadImageWithRetry(imageUrl, filePath); // Use the retry function
-          logger.log(`Загрузка изображения прошла успешно для ${fileName}`);
-          downloadedCount++;
-        } catch (error) {
-          logger.error(`Не удалось скачать изображение ${fileName}:`, error);
-          failedDownloads.push(fileName);
+            // Update the img property in the productDescriptions array
+            const imageName = `tires/${tireId}`; // Create "tires/tireId" path
+            productDescriptions[matchingProductIndex].img = imageName;
+          } catch (error) {
+            logger.error(`Не удалось скачать изображение ${fileName}:`, error);
+            failedDownloads.push(fileName);
+          }
+        } else {
+          logger.log(
+            `Изображение для productId: ${tireId} уже существует, пропуск загрузки`,
+          );
         }
       } else {
-        logger.warn(`Не найдено изображение для productId: ${productId}`);
+        notFoundInProductDescriptions.push(tireId);
+        logger.warn(`Не найдено соответствие для tireId: ${tireId}`);
       }
     }
 
     logger.log('Процесс загрузки изображений завершен.');
     logger.log(`Всего скачано изображений: ${downloadedCount}`);
 
-    // if (notFoundInProductDescriptions.length > 0) {
-    //   logger.warn(
-    //     `Не найдено соответствий в productDescription.json для следующих элементов из output-tires.json:`,
-    //   );
-    //   notFoundInProductDescriptions.forEach((id) => logger.warn(`- ${id}`));
-    //   logger.warn(
-    //     `Всего элементов не найдено: ${notFoundInProductDescriptions.length}`,
-    //   );
-    // }
+    if (notFoundInProductDescriptions.length > 0) {
+      logger.warn(
+        `Не найдено соответствий в productDescription.json для следующих элементов из output-tires.json:`,
+      );
+      notFoundInProductDescriptions.forEach((id) => logger.warn(`- ${id}`));
+      logger.warn(
+        `Всего элементов не найдено: ${notFoundInProductDescriptions.length}`,
+      );
+    }
 
     if (failedDownloads.length > 0) {
       logger.error('Не удалось скачать следующие изображения:');
       failedDownloads.forEach((fileName) => logger.error(`- ${fileName}`));
       logger.error(`Всего не удалось скачать: ${failedDownloads.length}`);
     }
+
+    // Create all-new-images.json
+    const newJsonFilePath = './data/all-new-images.json';
+    fs.writeFileSync(
+      newJsonFilePath,
+      JSON.stringify(productDescriptions, null, 2),
+    ); // Use 2 spaces for indentation
+    logger.log(`Создан файл: ${newJsonFilePath}`);
   } catch (error) {
     logger.error('Произошла ошибка:', error);
   }

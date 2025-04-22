@@ -31,13 +31,13 @@ const HeaderMenu = () => {
         </svg>
       </div>
       <ul
-        className={`header-top__menu-list mds:w-auto mds:top-[23px] invisible absolute left-0 top-12 z-10 flex w-screen min-w-36 flex-col items-center justify-center bg-white px-2.5 text-black opacity-0 shadow-custom transition-all sm:visible sm:static sm:flex-row sm:gap-4 sm:rounded sm:bg-transparent sm:text-white sm:opacity-100 sm:shadow-none ${isOpenMenu && 'showing'}`}
+        className={`invisible absolute left-0 top-12 z-10 flex w-screen min-w-36 flex-col items-center justify-center bg-white px-2.5 text-black opacity-0 shadow-custom transition-all mds:top-[23px] mds:w-auto sm:visible sm:static sm:flex-row sm:gap-4 sm:rounded sm:bg-transparent sm:text-white sm:opacity-100 sm:shadow-none ${isOpenMenu && 'showing'}`}
       >
         {menuList.map((link, index) => (
           <li key={index} className="w-full whitespace-nowrap sm:w-auto">
             <Link
               href={link.href}
-              className="link-hover inline-block w-full py-2.5 text-center text-lg sm:w-auto sm:p-0 sm:text-left sm:text-sm md:text-base"
+              className="link-hover inline-block w-full py-2.5 text-center text-lg sm:w-auto sm:p-0 sm:text-left sm:text-sm"
             >
               {link.title}
             </Link>

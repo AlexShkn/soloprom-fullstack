@@ -61,9 +61,9 @@ export const LocateBlock: React.FC<Props> = ({ className }) => {
   }, [])
 
   return (
-    <div ref={windowRef} className="relative z-10 mr-7">
+    <div ref={windowRef} className="relative z-10">
       <div className="header-top__locate-button flex items-center gap-1 text-sm font-medium text-white">
-        <span>Ваш город:</span>
+        <span className="whitespace-nowrap">Ваш город:</span>
         <button
           onClick={() => setSearchWindowOpen((prev) => !prev)}
           type="button"

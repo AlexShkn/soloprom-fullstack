@@ -1,5 +1,5 @@
 'use client'
-import React, { useRef } from 'react'
+import React, { useEffect, useRef } from 'react'
 
 import { useScrollHeader } from '@/hooks/useScrollHeader'
 import { useMediaQuery } from '@/hooks/useMediaQuery'
@@ -28,9 +28,15 @@ const HeaderBottom = () => {
 
   useClickOutside(headerRef, () => {
     if (catalogIsOpen) {
+      console.log(catalogIsOpen)
+
       catalogMenuStateChange(false, isTablet)
     }
   })
+
+  useEffect(() => {
+    console.log(catalogIsOpen)
+  }, [catalogIsOpen])
 
   const menuStatusChange = () => {
     catalogMenuStateChange(!catalogIsOpen, isTablet)
@@ -38,13 +44,13 @@ const HeaderBottom = () => {
 
   return (
     <div
-      className={`header-bottom relative ${headerFixed && 'header_fixed'} ${(callbackIsOpen || shareModal.isOpen) && 'compensate'}`}
+      className={`header-bottom w-full ${headerFixed && 'header_fixed'} ${(callbackIsOpen || shareModal.isOpen) && 'compensate'}`}
     >
-      <div ref={headerRef} className={`header-bottom__wrapper relative`}>
+      <div ref={headerRef} className={`header-bottom__wrapper`}>
         <div
-          className={`header-bottom__panel grid w-full grid-cols-1 items-center justify-between gap-5 mds:grid-cols-[1fr,auto] sm:w-auto ${headerFixed && 'page-container'} ${catalogIsOpen && 'fixed-panel'}`}
+          className={`header-bottom__panel grid w-full grid-cols-1 items-center justify-between gap-5 md:w-auto md:grid-cols-[1fr,auto] ${headerFixed && 'page-container'} ${catalogIsOpen && 'fixed-panel'}`}
         >
-          <div className="flex h-11 w-full items-center gap-1 bg-white mds:w-auto md:gap-4 lg:h-auto lg:gap-7">
+          <div className="flex h-11 w-full items-center gap-1 bg-white md:w-auto md:gap-4 lg:h-auto lg:gap-7">
             <div className="relative">
               <button
                 onClick={menuStatusChange}

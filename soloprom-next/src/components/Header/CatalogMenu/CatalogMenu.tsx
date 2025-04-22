@@ -154,6 +154,7 @@ const CatalogMenu = () => {
 
   useEffect(() => {
     if (!is650) setCurrentTab('battery')
+    if (is650) setCurrentTab('')
   }, [is650, setCurrentTab])
 
   const setCatalogTab = (tabName: string) => {
@@ -208,20 +209,28 @@ const CatalogMenu = () => {
               <div
                 key={category.id}
                 onClick={() => setCatalogTab(category.id)}
-                className={`flex w-full cursor-pointer items-center gap-2.5 rounded-custom bg-white pl-2.5 font-medium ${
+                className={`flex w-full cursor-pointer rounded-bl-custom rounded-br-sm rounded-tl-custom rounded-tr-sm bg-white ${
                   currentTab === category.id
-                    ? 'active border-b border-hoverBlue bg-white shadow-custom outline-none'
+                    ? 'active'
                     : `${is650 && currentTab && 'hidden'}`
                 }`}
               >
-                <img
-                  className="inline-block h-6 w-6 object-cover mds:h-9 mds:w-9 sm:h-12 sm:w-12"
-                  src={`/img/catalog-link/${category.id}.png`}
-                  alt={category.alt}
-                />
-                <span className="flex-auto">{category.title}</span>
                 <div
-                  className={`${currentTab === category.id && 'bg-hoverBlue'} relative z-[1] inline-flex h-full items-center justify-center rounded-br-sm rounded-tr-sm bg-accentBlue px-2.5 py-5 sm:px-2.5 sm:py-6`}
+                  className={`flex flex-1 items-center gap-2.5 rounded-bl-custom rounded-tl-custom pl-2.5 pr-2.5 font-medium ${
+                    currentTab === category.id &&
+                    'bg-white shadow-custom outline outline-1 outline-hoverBlue'
+                  }`}
+                >
+                  <img
+                    className="inline-block h-6 w-6 object-cover mds:h-9 mds:w-9 sm:h-12 sm:w-12"
+                    src={`/img/catalog-link/${category.id}.png`}
+                    alt={category.alt}
+                  />
+                  <span className="flex-auto">{category.title}</span>
+                </div>
+
+                <div
+                  className={`${currentTab === category.id && 'bg-hoverBlue'} relative z-[1] inline-flex h-full items-center justify-center rounded-br-sm rounded-tr-sm bg-accentBlue px-2.5 py-5 outline outline-1 outline-hoverBlue sm:px-2.5 sm:py-6`}
                 >
                   <svg
                     className={`icon h-5 w-5 fill-white ${currentTab === category.id ? 'rotate-[90deg] sm:rotate-[-90deg]' : 'rotate-[-90deg]'}`}

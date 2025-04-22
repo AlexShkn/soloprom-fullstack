@@ -4,7 +4,7 @@
   // .mobile-nav__item
 
   .mobile-nav__item {
-    @media (min-width: 479.98px) {
+    @media (min-width: 767.98px) {
       &:first-child,
       // &:nth-child(2),
       &:last-child {
@@ -44,13 +44,13 @@
       }
     }
 
-    @media (min-width: 479.98px) {
+    @media (min-width: 767.98px) {
       span {
         display: none;
       }
     }
 
-    @media (max-width: 479.98px) {
+    @media (max-width: 767.98px) {
       &::after {
         display: none;
       }
@@ -90,7 +90,7 @@
       margin-right: 0;
     }
 
-    @media (max-width: 479.98px) {
+    @media (max-width: 767.98px) {
       svg {
         fill: variables.$mainColor;
       }
