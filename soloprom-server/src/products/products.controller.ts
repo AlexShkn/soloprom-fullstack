@@ -1,4 +1,12 @@
-import { Controller, Get, Param, Body, Post, Query } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Param,
+  Body,
+  Post,
+  Query,
+  ParseIntPipe,
+} from '@nestjs/common';
 import { ProductsService } from './products.service';
 
 @Controller('products')
@@ -88,13 +96,31 @@ export class ProductsController {
 
   //====================================================================
 
-  @Get('search/product')
-  async search(
+  @Get('search/product-all')
+  async searchAllProducts(
     @Query('fields') fieldsString: string,
     @Query('value') value: string,
   ) {
     const fields = fieldsString.split(',');
-    return this.productService.searchProducts(fields, value);
+    return this.productService.searchAllProducts(fields, value);
+  }
+
+  @Get('search/product')
+  async search(
+    @Query('fields') fieldsString: string,
+    @Query('value') value: string,
+    @Query('page', ParseIntPipe) page: number = 1,
+    @Query('limit', ParseIntPipe) limit: number = 20,
+  ) {
+    const fields = fieldsString.split(',');
+    const { items, total } = await this.productService.searchProducts(
+      fields,
+      value,
+      page,
+      limit,
+    );
+
+    return { items, total };
   }
 
   @Get('search/pages')

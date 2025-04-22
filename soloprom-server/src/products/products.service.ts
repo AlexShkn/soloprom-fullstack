@@ -571,7 +571,7 @@ export class ProductsService {
     return popularProductsRecords.map((record) => record.product);
   }
 
-  async searchProducts(fields: string[], value: string) {
+  async searchAllProducts(fields: string[], value: string) {
     const allowedFields = ['name', 'descr'];
     const validatedFields = fields.filter((field) =>
       allowedFields.includes(field),
@@ -594,6 +594,53 @@ export class ProductsService {
           OR: orConditions,
         },
       });
+    } catch (error) {
+      console.error('Error searching products:', error);
+      throw error;
+    }
+  }
+
+  async searchProducts(
+    fields: string[],
+    value: string,
+    page: number,
+    limit: number,
+  ) {
+    const allowedFields = ['name', 'descr'];
+    const validatedFields = fields.filter((field) =>
+      allowedFields.includes(field),
+    );
+
+    if (validatedFields.length === 0) {
+      return { items: [], total: 0 };
+    }
+
+    const skip = (page - 1) * limit;
+
+    const orConditions = validatedFields.map((field) => ({
+      [field]: {
+        contains: value,
+        mode: 'insensitive',
+      },
+    }));
+
+    try {
+      const [items, total] = await Promise.all([
+        prisma.product.findMany({
+          where: {
+            OR: orConditions,
+          },
+          skip,
+          take: limit,
+        }),
+        prisma.product.count({
+          where: {
+            OR: orConditions,
+          },
+        }),
+      ]);
+
+      return { items, total };
     } catch (error) {
       console.error('Error searching products:', error);
       throw error;

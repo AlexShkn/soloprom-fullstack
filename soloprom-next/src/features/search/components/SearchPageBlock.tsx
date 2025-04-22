@@ -1,7 +1,7 @@
 'use client'
 import { useSearchParams } from 'next/navigation'
 import React, { useEffect, useState, useCallback } from 'react'
-import { searchPages, searchProducts } from '@/utils/api/products'
+import { searchPages, searchAllProducts } from '@/utils/api/products'
 import { SearchFilterBlock } from './SearchFilterBlock'
 import useSearchStore from '@/store/searchStore'
 import { Loading } from '@/components/ui'
@@ -33,7 +33,7 @@ export const SearchPageBlock = () => {
     setDataIsLoading(true)
 
     try {
-      const data = await searchProducts(['name', 'descr'], searchTerm)
+      const data = await searchAllProducts(['name', 'descr'], searchTerm)
       const pages = await searchPages('value', searchTerm)
       setInitProducts(data)
       setFoundProducts(data)
@@ -48,6 +48,8 @@ export const SearchPageBlock = () => {
 
   useEffect(() => {
     if (initialSearchValue) {
+      console.log(initialSearchValue)
+
       setSearchValue(initialSearchValue)
 
       fetchData(initialSearchValue)

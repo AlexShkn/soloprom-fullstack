@@ -28,15 +28,9 @@ const HeaderBottom = () => {
 
   useClickOutside(headerRef, () => {
     if (catalogIsOpen) {
-      console.log(catalogIsOpen)
-
       catalogMenuStateChange(false, isTablet)
     }
   })
-
-  useEffect(() => {
-    console.log(catalogIsOpen)
-  }, [catalogIsOpen])
 
   const menuStatusChange = () => {
     catalogMenuStateChange(!catalogIsOpen, isTablet)

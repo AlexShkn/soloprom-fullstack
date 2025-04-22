@@ -81,9 +81,21 @@ export async function getAllProducts() {
   return response
 }
 
-export async function searchProducts(fields: string[], value: string) {
-  const response = await api.get<any>('products/search/product', {
+export async function searchAllProducts(fields: string[], value: string) {
+  const response = await api.get<any>('products/search/product-all', {
     params: { fields: fields.join(','), value },
+  })
+  return response
+}
+
+export async function searchProducts(
+  fields: string[],
+  value: string,
+  page: number = 1,
+  limit: number = 20,
+) {
+  const response = await api.get<any>('products/search/product', {
+    params: { fields: fields.join(','), value, page, limit },
   })
   return response
 }

@@ -12,6 +12,7 @@ import useSearchStore from '@/store/searchStore'
 import clsx from 'clsx'
 import { useMediaQuery } from '@/hooks/useMediaQuery'
 import { scrollStatusChange } from '@/utils/scrollStatusChange'
+import { Button } from '../ui'
 
 export interface PageItem {
   url: string
@@ -21,6 +22,8 @@ export interface PageItem {
   description: string
 }
 
+const ITEMS_PER_PAGE = 20
+
 const HeaderSearch = () => {
   const { catalogMenuStateChange, catalogIsOpen } = useCatalogMenuStore()
   const { setFoundProducts, setInitProducts, setInitPages } = useSearchStore()
@@ -29,6 +32,12 @@ const HeaderSearch = () => {
   const [pages, setPages] = useState<PageItem[]>([])
   const [isLoading, setIsLoading] = useState<boolean>(true)
   const [dropStatus, setDropStatus] = useState<boolean>(false)
+  const [page, setPage] = useState<number>(1)
+  const [hasMore, setHasMore] = useState<boolean>(false)
+  const [allProductsLoaded, setAllProductsLoaded] = useState<CardDataProps[]>(
+    [],
+  )
+  const [totalCount, setTotalCount] = useState<number>(0)
 
   const dropRef = useRef(null)
   const router = useRouter()
@@ -43,7 +52,7 @@ const HeaderSearch = () => {
   })
 
   const searchProductsForValue = useCallback(
-    async (name: string): Promise<void> => {
+    async (name: string, currentPage: number = 1): Promise<void> => {
       if (name.trim() === '' && setProducts.length) {
         setProducts([])
         return
@@ -51,35 +60,65 @@ const HeaderSearch = () => {
 
       try {
         setIsLoading(true)
-        const productsResponse = await searchProducts(['name', 'descr'], name)
+        const productsResponse = await searchProducts(
+          ['name', 'descr'],
+          name,
+          currentPage,
+          ITEMS_PER_PAGE,
+        )
         const pagesResponse = await searchPages('value', name)
-        const productsData: CardDataProps[] = await productsResponse
 
-        setProducts(productsData)
+        const productsData: CardDataProps[] = await productsResponse.items
+
+        setTotalCount(productsResponse.total)
+
+        setProducts(
+          currentPage === 1 ? productsData : [...products, ...productsData],
+        )
         setPages(pagesResponse)
+        setHasMore(products.length + productsData.length < totalCount)
+        setAllProductsLoaded(
+          currentPage === 1
+            ? productsData
+            : [...allProductsLoaded, ...productsData],
+        )
       } catch (error) {
         console.error('Во время поиска произошла ошибка:', error)
         setProducts([])
+        setHasMore(false)
       } finally {
         setIsLoading(false)
       }
     },
-    [setProducts, setIsLoading],
+    [setProducts, setIsLoading, products, allProductsLoaded],
   )
 
   useEffect(() => {
     const delayDebounceFn = setTimeout(() => {
-      searchProductsForValue(searchValue)
+      setPage(1)
+      setProducts([])
+      setAllProductsLoaded([])
+      searchProductsForValue(searchValue, 1)
     }, 300)
 
     return () => clearTimeout(delayDebounceFn)
-  }, [searchValue, searchProductsForValue])
+  }, [searchValue])
+
+  const loadMore = () => {
+    const nextPage = page + 1
+    setPage(nextPage)
+    searchProductsForValue(searchValue, nextPage)
+  }
 
   const resetSearch = () => {
     setSearchValue('')
     setProducts([])
     setIsLoading(true)
     setDropStatus(false)
+    setPage(1)
+    setHasMore(false)
+    setAllProductsLoaded([])
+
     if (isMobile) {
       scrollStatusChange(false)
     }
@@ -98,9 +137,9 @@ const HeaderSearch = () => {
   }
 
   const goToSearch = (value: string) => {
-    setInitProducts(products)
+    setInitProducts(allProductsLoaded)
     setInitPages(pages)
-    setFoundProducts(products)
+    setFoundProducts(allProductsLoaded)
     setDropStatus(false)
     router.push(`/search?search=${encodeURIComponent(value)}`)
 
@@ -211,7 +250,7 @@ const HeaderSearch = () => {
           )}
 
           <ul
-            className={`scroll-bar flex max-h-[calc(100vh-70px)] w-full flex-col overflow-y-auto overflow-x-hidden overscroll-contain rounded bg-white pb-2.5 shadow-custom md:max-h-[50vh] md:min-h-[50vh] ${isLoading && 'load'}`}
+            className={`scroll-bar relative flex max-h-[calc(100vh-70px)] w-full flex-col items-center overflow-y-auto overflow-x-hidden overscroll-contain rounded bg-white shadow-custom md:max-h-[50vh] md:min-h-[50vh] ${isLoading && 'load'}`}
           >
             {searchValue && products.length
               ? products.map((item) => (
@@ -238,11 +277,22 @@ const HeaderSearch = () => {
                     </Link>
                   </li>
                 ))
-              : !isLoading && (
+              : !isLoading &&
+                !products.length && (
                   <li className="block h-full w-full p-5 text-center">
                     Ничего не найдено
                   </li>
                 )}
+
+            {hasMore && totalCount - allProductsLoaded.length ? (
+              <li className="mt-4 flex min-w-56 justify-center pb-2">
+                <Button onClick={loadMore}>
+                  Показать еще {totalCount - allProductsLoaded.length}
+                </Button>
+              </li>
+            ) : (
+              ''
+            )}
           </ul>
         </div>
       )}

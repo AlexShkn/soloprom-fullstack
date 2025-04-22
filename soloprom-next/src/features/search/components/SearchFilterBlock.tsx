@@ -47,8 +47,22 @@ export const SearchFilterBlock: React.FC<Props> = ({
   const debouncedFilters = useDebounce(filters, 500)
   const debouncedSort = useDebounce(sort, 500)
 
+  const handleResetFilters = () => {
+    setPriceRange({
+      min: filtersData.prices?.min,
+      max: filtersData.prices?.max,
+    })
+    setCheckedValues({})
+    router.push(`${window.location.pathname}?searchValue=${searchValue}`, {
+      scroll: false,
+    })
+    resetFilters()
+  }
+
   useEffect(() => {
     const filterData: FilterData = generateFilterData(initialProducts)
+
+    handleResetFilters()
 
     setFiltersData(filterData)
   }, [initialProducts])
@@ -166,18 +180,6 @@ export const SearchFilterBlock: React.FC<Props> = ({
       fetchData()
     }
   }, [debouncedFilters, debouncedSort, updateUrl])
-
-  const handleResetFilters = () => {
-    setPriceRange({
-      min: filtersData.prices?.min,
-      max: filtersData.prices?.max,
-    })
-    setCheckedValues({})
-    router.push(`${window.location.pathname}?searchValue=${searchValue}`, {
-      scroll: false,
-    })
-    resetFilters()
-  }
 
   const handlerFilterPopup = (status: boolean) => {
     setFilterOpen(status)
