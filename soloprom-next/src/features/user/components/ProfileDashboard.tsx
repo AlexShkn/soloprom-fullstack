@@ -67,7 +67,13 @@ export const ProfileDashboard = () => {
     }
   }, [])
 
-  if (isLoading) return <Loading classNames="mt-[50px] pt-[50px] pb-[50px]" />
+  if (isLoading)
+    return (
+      <Loading
+        classNames="mt-[50px] pt-[50px] pb-[50px] text-accentBlue"
+        spinClasses="w-10 h-10"
+      />
+    )
   if (!user) return null
 
   return (

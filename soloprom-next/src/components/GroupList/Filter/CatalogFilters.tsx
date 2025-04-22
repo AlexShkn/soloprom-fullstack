@@ -20,7 +20,6 @@ interface Props {
   productsType: string
   categoryName: string
   currentPage: number
-  onFiltersChange: (filters: Record<string, string[] | number>) => void
   categoryInitialList: FilterData
   filterOpen: boolean
   setFilterOpen: (status: boolean) => void
@@ -45,7 +44,6 @@ const CatalogFilters: React.FC<Props> = ({
   products,
   productsType,
   categoryName,
-  onFiltersChange,
   currentPage,
   categoryInitialList,
   filterOpen,
@@ -65,27 +63,38 @@ const CatalogFilters: React.FC<Props> = ({
   } = useFilterStore()
   const [initialLoad, setInitialLoad] = useState(true)
 
+  console.count('render CatalogFilters')
+
   const [internalFilters, setInternalFilters] = useState<
     Record<string, string[] | number>
   >(filters || {})
   const accordionRef = useRef<HTMLDivElement>(null)
 
-  console.log(categoryInitialList)
+  // useEffect(() => {
+  //   if (initialLoad) {
+  //     setPriceRange({
+  //       min: categoryInitialList.prices?.min,
+  //       max: categoryInitialList.prices?.max,
+  //     })
+
+  //     setInitialLoad(false)
+  //   }
+  // }, [])
 
   useEffect(() => {
-    if (initialLoad) {
-      setPriceRange({
-        min: categoryInitialList.prices?.min,
-        max: categoryInitialList.prices?.max,
-      })
+    if (Object.keys(filters).length) {
+      setDataIsLoading(true)
+      setInternalFilters(filters)
 
-      setInitialLoad(false)
+      if (initialLoad && (filters.minPrice || filters.maxPrice)) {
+        setPriceRange({
+          min: Number(filters.minPrice) || categoryInitialList.prices?.min,
+          max: Number(filters.maxPrice) || categoryInitialList.prices?.max,
+        })
+
+        setInitialLoad(false)
+      }
     }
-  }, [])
-
-  useEffect(() => {
-    setDataIsLoading(true)
-    setInternalFilters(filters)
   }, [filters])
 
   const categoryData = transformData[productsType]
@@ -141,17 +150,17 @@ const CatalogFilters: React.FC<Props> = ({
           delete newFilters[name]
         }
       }
-
       setInternalFilters(newFilters)
       setFilters(newFilters)
-      onFiltersChange(newFilters)
     },
-    [setFilters, internalFilters, onFiltersChange],
+
+    [setFilters, internalFilters],
   )
 
   const handlePriceChange = useCallback(
     (min: number, max: number) => {
       const newFilters = { ...internalFilters }
+
       setPriceRange({ min, max })
 
       let hasChanged = false
@@ -167,10 +176,9 @@ const CatalogFilters: React.FC<Props> = ({
       if (hasChanged) {
         setInternalFilters(newFilters)
         setFilters(newFilters)
-        onFiltersChange(newFilters)
       }
     },
-    [handleFilterChange, internalFilters, setFilters, onFiltersChange],
+    [handleFilterChange, internalFilters, setFilters],
   )
 
   const productWord = declension(products.length, [

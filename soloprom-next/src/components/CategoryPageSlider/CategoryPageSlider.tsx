@@ -6,8 +6,10 @@ import Image from 'next/image'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { Scrollbar } from 'swiper/modules'
 
-import { SubcategoryCount } from '../CategoryProductsSlider/CategoryProductsSlider'
-import { CategoryData } from '../CategoryProductsSlider/CategoryProductsSlider'
+import {
+  SubcategoryCount,
+  CategoryData,
+} from '../CategoryProductsSlider/CategoryProductsSlider'
 
 import initialCategoriesData from '../../data/products/categoriesData.json'
 import { getProductsCounts } from '@/utils/api/products'
@@ -44,8 +46,6 @@ export const CategoryPageSlider: React.FC<Props> = ({ category }) => {
             result,
           )
         }
-
-        console.log(result)
       } catch (error) {
         console.error('Не удалось получить количество продуктов:', error)
       }

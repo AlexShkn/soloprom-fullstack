@@ -40,9 +40,11 @@ export const ProfileReviews: React.FC<ReviewsProps> = ({ user }) => {
 
   if (loading) {
     return (
-      <div className="relative">
-        <Loading classNames="absolute ttall z-20" />
-        <Skeleton count={1} width={'100%'} height={'300px'} />
+      <div className="relative h-80">
+        <Loading
+          classNames="absolute ttall z-20 text-accentBlue"
+          spinClasses="w-10 h-10"
+        />
       </div>
     )
   }

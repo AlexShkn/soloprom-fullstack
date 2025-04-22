@@ -1,6 +1,4 @@
 'use client'
-import { getCurrentWindowSize } from '@/supports'
-import React, { useEffect, useLayoutEffect, useState } from 'react'
 
 interface Props {
   currentPage: number
@@ -76,7 +74,7 @@ export const Pagination: React.FC<Props> = ({
             ) : (
               <div
                 key={index}
-                className={`rounded-custom flex h-11 w-11 items-center justify-center text-lg font-bold ${
+                className={`flex h-11 w-11 items-center justify-center rounded-custom text-lg font-bold ${
                   currentPage === page
                     ? 'bg-accentBlue text-white'
                     : 'link-hover'

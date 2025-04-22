@@ -107,7 +107,7 @@ const CatalogPage: React.FC<CatalogPageProps> = async ({ params }) => {
     pageData.pageType,
     interUrl,
   )
-  console.log(categoryData)
+  // console.log(categoryData)
 
   if (!initialProducts) {
     return <div>Ошибка получения списка продуктов страницы</div>

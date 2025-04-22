@@ -20,10 +20,12 @@ export interface CategoryItem {
   img: string
   title: string
   type: string
+  short: string
 }
 export interface CategoryData {
   icon: string
   title: string
+  abbreviated: string
   items: CategoryItem[]
 }
 export interface CategoriesData {

@@ -39,7 +39,6 @@ export const ProductsFilterBlock: React.FC<Props> = ({
     filteredPage,
     setFilteredPage,
     filters,
-    setFilters,
     sort,
     setSort,
     setTotalProductsCount,
@@ -52,7 +51,7 @@ export const ProductsFilterBlock: React.FC<Props> = ({
     initialLoad,
   } = useFilterStore()
 
-  console.log(initialProducts)
+  console.count('render ProductsFilterBlock')
 
   const debouncedFilters = useDebounce(filters, 500)
   const debouncedSort = useDebounce(sort, 500)
@@ -66,6 +65,8 @@ export const ProductsFilterBlock: React.FC<Props> = ({
     if (fetchControllerRef.current) {
       fetchControllerRef.current.abort()
     }
+
+    console.log('CAAAAAALLLLLLLL fetchData')
 
     const controller = new AbortController()
     fetchControllerRef.current = controller
@@ -115,6 +116,8 @@ export const ProductsFilterBlock: React.FC<Props> = ({
   ])
 
   const updateUrl = useCallback(() => {
+    console.log('CAAAAAALLLLLLLL updateUrl')
+
     const params = new URLSearchParams()
     if (Object.keys(debouncedFilters).length > 0) {
       params.set('filters', JSON.stringify(debouncedFilters))
@@ -130,9 +133,12 @@ export const ProductsFilterBlock: React.FC<Props> = ({
 
     const newUrl = `?${params.toString()}`
 
-    if (newUrl.length > 1) {
-      router.push(newUrl, { scroll: false })
-    }
+    console.log(newUrl)
+    router.push(newUrl, { scroll: false })
+
+    // if (newUrl.length > 1) {
+    //   router.push(newUrl, { scroll: false })
+    // }
   }, [debouncedFilters, debouncedSort, dynamicCurrentPage, router])
 
   useEffect(() => {
@@ -142,6 +148,8 @@ export const ProductsFilterBlock: React.FC<Props> = ({
       filteredPage &&
       categoryName === filteredPage
     ) {
+      console.log('scrolllllllllllll')
+
       groupListRef.current.scrollIntoView({
         behavior: 'smooth',
         block: 'start',
@@ -151,12 +159,16 @@ export const ProductsFilterBlock: React.FC<Props> = ({
 
   useEffect(() => {
     if (filteredPage && categoryName !== filteredPage) {
+      console.log('resetFilters')
+
       resetFilters()
     }
   }, [categoryName, filteredPage])
 
   useEffect(() => {
-    if (!initialLoad) {
+    if (!initialLoad && hasFilters) {
+      console.log('CAAAAAALLLLLLLL')
+
       updateUrl()
       setProducts([])
       fetchData()
@@ -196,7 +208,6 @@ export const ProductsFilterBlock: React.FC<Props> = ({
             products={products}
             productsType={productsType}
             categoryName={categoryName}
-            onFiltersChange={setFilters}
             categoryInitialList={categoryData}
             currentPage={currentPage}
             filterOpen={filterOpen}

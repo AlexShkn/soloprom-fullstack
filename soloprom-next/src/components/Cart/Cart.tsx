@@ -34,7 +34,7 @@ export const Cart: React.FC = () => {
   if (isLoading) {
     return (
       <div className="flex h-80 w-full items-center justify-center">
-        <Loading size={10} />
+        <Loading spinClasses="w-10 h-10" classNames="text-accentBlue" />
       </div>
     )
   }

@@ -1,3 +1,9 @@
+interface Group {
+  name: string
+}
+
+type GroupsList = Group[]
+
 export interface CardDataProps {
   productId: string
   url: string
@@ -27,6 +33,7 @@ export interface CardDataProps {
   isPopular?: boolean
   stock: number
   rating: number
+  groupsList: GroupsList
 }
 
 export interface ProductsCardPropTypes {

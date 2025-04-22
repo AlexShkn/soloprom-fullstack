@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useEffect } from 'react'
+import React, { useEffect, useLayoutEffect } from 'react'
 import { useSearchParams } from 'next/navigation'
 import useFilterStore from '@/store/filterStore'
 
@@ -25,7 +25,7 @@ const CategoryPageParams: React.FC<Props> = ({ totalCount }) => {
     initialLoad,
   } = useFilterStore()
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     if (initialLoad) {
       if (urlFilters || urlSort || urlPage) {
         if (urlFilters) {
@@ -54,9 +54,7 @@ const CategoryPageParams: React.FC<Props> = ({ totalCount }) => {
 
         setHasFilters(true)
       } else {
-        setTimeout(() => {
-          setDataIsLoading(false)
-        }, 500)
+        setDataIsLoading(false)
         setTotalProductsCount(totalCount)
       }
 

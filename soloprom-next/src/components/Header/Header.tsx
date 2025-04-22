@@ -22,7 +22,6 @@ export const Header: React.FC = () => {
       const initialCart = getStateFromLocalStorage('cart')
       const initialFavorite = getStateFromLocalStorage('favorite')
       const initialCompare = getCompareLocalStorage('comparedItems')
-      console.log('set')
 
       setComparedItems(initialCompare)
       setCart(initialCart)

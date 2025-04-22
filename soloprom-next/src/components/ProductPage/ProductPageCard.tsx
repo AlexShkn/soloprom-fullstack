@@ -1,11 +1,15 @@
 'use client'
 import React, { useEffect, useState } from 'react'
+import Link from 'next/link'
 import Image from 'next/image'
 import { ProductsCardPropTypes } from '@/types/products.types'
 import { ProductPageCardDescription } from './ProductPageCardDescription'
 import { RegaliaList } from '@/components/ProductsCard/RegaliaList'
 import { ProductsPageOffers } from './ProductsPageOffers'
 import { ProductPageSideBlock } from './ProductPageSideBlock'
+import initialCategoriesData from '../../data/products/categoriesData.json'
+import { CategoriesData } from '../CategoryProductsSlider/CategoryProductsSlider'
+const categoriesData = initialCategoriesData as CategoriesData
 
 export const ProductPageCard: React.FC<ProductsCardPropTypes> = ({
   cardData,
@@ -25,6 +29,8 @@ export const ProductPageCard: React.FC<ProductsCardPropTypes> = ({
     productType,
     rating,
     stock,
+    groups,
+    groupsList,
   } = cardData
 
   const [mainImage, setMainImage] = useState(img)
@@ -45,6 +51,39 @@ export const ProductPageCard: React.FC<ProductsCardPropTypes> = ({
       <div className="mb-7 text-[clamp(1.5rem,1.3022rem+0.6593vw,1.875rem)] font-bold">
         {name}
       </div>
+      <ul className="flex flex-wrap items-center gap-2">
+        {groupsList.map((group) => {
+          const item = categoriesData[categoryName].items.find(
+            (el) => el.id === group.name,
+          )
+
+          return item ? (
+            <li key={group.name}>
+              <Link
+                href={item.href}
+                className="inline-flex items-center gap-2 rounded-custom bg-accentBlue px-2.5 py-1 text-ss font-medium text-white"
+              >
+                <Image
+                  src={item.img}
+                  alt=""
+                  width={32}
+                  height={32}
+                  className="h-8 w-8"
+                />
+                <div className="flex flex-col gap-1 leading-none">
+                  <span className="text-[10px] text-gray-300">
+                    {categoriesData[categoryName].abbreviated}
+                  </span>
+                  <span className="font-medium">{item.short}</span>
+                </div>
+              </Link>
+            </li>
+          ) : (
+            ''
+          )
+        })}
+      </ul>
+
       <div className={`product-page-card__wrapper mb-5`}>
         <div className="relative mb-5 grid items-start lg:grid-cols-[1fr,350px] lg:gap-10">
           <div

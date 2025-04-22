@@ -51,8 +51,6 @@ export const FilterCheckbox: React.FC<Props> = ({
     (value: string, checked: boolean | 'indeterminate') => {
       const isChecked = checked === true
 
-      console.log(isChecked)
-
       setCheckedValues((prev) => {
         const currentValues = prev[filterName] || []
         let newValues
@@ -108,7 +106,9 @@ export const FilterCheckbox: React.FC<Props> = ({
           <div key={option.value} className="flex items-center space-x-2">
             <Checkbox
               id={option.value}
-              checked={isOptionChecked(option.value)}
+              checked={
+                initialChecked?.length ? isOptionChecked(option.value) : false
+              }
               onCheckedChange={(checked) =>
                 handleCheckboxChange(option.value, checked)
               }

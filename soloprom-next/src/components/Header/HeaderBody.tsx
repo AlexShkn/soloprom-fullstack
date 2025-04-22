@@ -19,6 +19,7 @@ const HeaderBody = () => {
           height={40}
           className="h-10 w-10 object-contain xl:h-12 xl:w-12"
           alt=""
+          priority
         />
         <div className="header__logo-text flex flex-col">
           <span className="text-xl font-bold leading-9 text-darkBlue mds:text-2xl xl:text-[28px]">
