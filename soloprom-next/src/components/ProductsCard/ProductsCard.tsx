@@ -19,11 +19,11 @@ import { DescriptionTemplate } from './DescriptionTemplate'
 import { PriceBlock } from './PriceBlock'
 import { RegaliaList } from './RegaliaList'
 
-import { useCartStore } from '@/store/cartStore'
-import { useFavoriteStore } from '@/store/favoriteStore'
-import { useModalsStore } from '@/store/modalsStore'
+import { useCartStore } from '@/store/useCartStore'
+import { useFavoriteStore } from '@/store/useFavoriteStore'
+import { useModalsStore } from '@/store/useModalsStore'
 import { RatingDisplay } from './RatingDisplay'
-import { useCompareStore } from '@/store/compareStore'
+import { useCompareStore } from '@/store/useCompareStore'
 
 export const ProductsCard: React.FC<ProductsCardPropTypes> = ({
   cardData,

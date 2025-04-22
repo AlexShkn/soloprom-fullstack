@@ -4,7 +4,7 @@ import LocateConfirm from './LocateConfirm'
 import LocateSearch from './LocateSearch'
 import { useClickOutside } from '@/hooks/useClickOutside'
 import { getCityFromIP } from '@/utils/getCityFromIP'
-import { useLocateStore } from '@/store/locateStore'
+import { useLocateStore } from '@/store/useLocateStore'
 import { Navigation } from 'lucide-react'
 
 interface Props {

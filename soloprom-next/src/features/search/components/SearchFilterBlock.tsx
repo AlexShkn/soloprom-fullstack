@@ -6,7 +6,7 @@ import { SearchFilteredList } from './SearchFilteredList'
 import SearchFilters from './SearchFilters'
 import { useDebounce } from '@/hooks/useDebounce'
 import { api } from '@/utils/fetch/instance.api'
-import useSearchStore from '@/store/searchStore'
+import useSearchStore from '@/store/useSearchStore'
 import { generateFilterData } from '@/app/catalog/[pageUrl]/server'
 
 import { scrollStatusChange } from '@/utils/scrollStatusChange'

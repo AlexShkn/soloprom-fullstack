@@ -4,7 +4,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 
 import { getDigFormat } from '@/supports'
-import { useCartStore, CartProductTypes } from '@/store/cartStore'
+import { useCartStore, CartProductTypes } from '@/store/useCartStore'
 import { Minus, Plus, Trash2 } from 'lucide-react'
 
 interface CartProductItemProps {

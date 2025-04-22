@@ -1,4 +1,4 @@
-import { CartProductTypes } from '@/store/cartStore'
+import { CartProductTypes } from '@/store/useCartStore'
 
 export const getStateFromLocalStorage = (
   itemName: string,

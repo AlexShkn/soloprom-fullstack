@@ -5,8 +5,8 @@ import Image from 'next/image'
 
 import { getDigFormat } from '@/supports'
 
-import { useCartStore } from '@/store/cartStore'
-import { useFavoriteStore } from '@/store/favoriteStore'
+import { useCartStore } from '@/store/useCartStore'
+import { useFavoriteStore } from '@/store/useFavoriteStore'
 
 import { FavoriteProduct } from '@/types/products.types'
 import { Trash2 } from 'lucide-react'

@@ -4,7 +4,7 @@ import { useRouter } from 'next/navigation'
 import { CardDataProps, FilterData } from '@/types/products.types'
 import { ResultFilteredList } from '@/components/GroupList/ResultFilteredList'
 import CatalogFilters from './Filter/CatalogFilters'
-import useFilterStore from '@/store/filterStore'
+import useFilterStore from '@/store/useFilterStore'
 import { useDebounce } from '@/hooks/useDebounce'
 import { scrollStatusChange } from '@/utils/scrollStatusChange'
 

@@ -4,7 +4,7 @@ import { toast } from 'sonner'
 
 import { authService } from '@/features/auth/services'
 import { toastMessageHandler } from '@/utils/toast-message-handler'
-import { useAuthStore } from '@/store/authStore'
+import { useAuthStore } from '@/store/useAuthStore'
 
 export function useLogoutMutation() {
   const queryClient = useQueryClient()

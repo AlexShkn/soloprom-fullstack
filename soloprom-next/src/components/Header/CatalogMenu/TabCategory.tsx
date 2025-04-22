@@ -2,7 +2,7 @@ import React from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import { CategoryProduct } from './CatalogMenu'
-import { useCatalogMenuStore } from '@/store/catalogMenuStore'
+import { useCatalogMenuStore } from '@/store/useCatalogMenuStore'
 import { useMediaQuery } from '@/hooks/useMediaQuery'
 import { scrollStatusChange } from '@/utils/scrollStatusChange'
 

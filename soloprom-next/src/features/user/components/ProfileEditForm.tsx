@@ -24,7 +24,7 @@ import { SettingsSchema, TypeSettingsSchema } from '../schemes'
 import { useUpdateProfileMutation } from '../hooks/useUpdateProfileMutation'
 import { IUser } from '@/features/auth/types'
 import { SquarePen, UserRound } from 'lucide-react'
-import { useAuthStore } from '@/store/authStore'
+import { useAuthStore } from '@/store/useAuthStore'
 
 interface Props {
   user: IUser

@@ -1,6 +1,6 @@
 'use client'
 import { FavoriteCard } from '@/components/Favorite/FavoriteCard'
-import { useFavoriteStore } from '@/store/favoriteStore'
+import { useFavoriteStore } from '@/store/useFavoriteStore'
 import React from 'react'
 
 interface Props {

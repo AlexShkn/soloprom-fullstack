@@ -10,7 +10,7 @@ interface ProductsRequest {
   search?: string
 }
 
-export interface fetchProductsProps {
+export interface FetchProductsProps {
   products: CardDataProps[]
   totalCount: number
   currentPage: number
@@ -39,7 +39,7 @@ export async function getProductsCounts() {
 
 export async function getProductsAnyCategories(type: string, name: string) {
   try {
-    const response = await api.get<any>(`products/${type}/${name}`) // Указать тип данных если известен.
+    const response = await api.get<any>(`products/${type}/${name}`)
 
     return response
   } catch (error) {
@@ -50,11 +50,11 @@ export async function getProductsAnyCategories(type: string, name: string) {
 
 export const fetchProducts = async (
   params: ProductsRequest,
-): Promise<fetchProductsProps | null> => {
+): Promise<FetchProductsProps | null> => {
   try {
     const { filters, ...otherParams } = params
 
-    const response = await api.get<fetchProductsProps>(
+    const response = await api.get<FetchProductsProps>(
       `products/get-products`,
       {
         params: {
@@ -123,7 +123,7 @@ export async function getProducts(p0: {
   limit: number
 }) {
   try {
-    const response = await api.get<any>('products', { params: p0 })
+    const response = await api.get<CardDataProps[]>('products', { params: p0 })
     return response
   } catch (error) {
     console.error(`Ошибка получения продуктов: ${p0.categoryName}`, error)
@@ -132,7 +132,9 @@ export async function getProducts(p0: {
 }
 
 export async function getProductsByCategory(category: string) {
-  const response = await api.get<any>(`products/category/${category}`)
+  const response = await api.get<CardDataProps[]>(
+    `products/category/${category}`,
+  )
   return response
 }
 

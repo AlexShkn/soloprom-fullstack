@@ -1,6 +1,6 @@
 'use client'
 import React from 'react'
-import { useCompareStore } from '@/store/compareStore'
+import { useCompareStore } from '@/store/useCompareStore'
 import Image from 'next/image'
 import {
   Table,

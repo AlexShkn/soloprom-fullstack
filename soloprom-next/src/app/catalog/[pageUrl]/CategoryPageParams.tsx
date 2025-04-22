@@ -2,7 +2,7 @@
 
 import React, { useEffect, useLayoutEffect } from 'react'
 import { useSearchParams } from 'next/navigation'
-import useFilterStore from '@/store/filterStore'
+import useFilterStore from '@/store/useFilterStore'
 
 interface Props {
   totalCount: number

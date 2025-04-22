@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react'
 import Image from 'next/image'
 import { getAdaptiveValue, AdaptiveValues } from '@/utils/getAdaptiveValue'
 import { ProductsCardPropTypes } from '@/types/products.types'
-import { useModalsStore } from '@/store/modalsStore'
+import { useModalsStore } from '@/store/useModalsStore'
 import Link from 'next/link'
 import { CircleHelp } from 'lucide-react'
 

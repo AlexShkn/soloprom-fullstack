@@ -54,7 +54,6 @@ export class ProductsController {
   async getProductsByCategory(@Param('name') name: string) {
     return this.productService.getProductsByCategory(name);
   }
-
   @Get('subcategory/:name')
   async getProductsBySubCategory(@Param('name') name: string) {
     return this.productService.getProductsBySubCategory(name);
@@ -63,7 +62,6 @@ export class ProductsController {
   async getProductsBySubBrand(@Param('name') name: string) {
     return this.productService.getProductsBySubBrand(name);
   }
-
   @Get('model/:name')
   async getProductsByModel(@Param('name') name: string) {
     return this.productService.getProductsByModel(name);

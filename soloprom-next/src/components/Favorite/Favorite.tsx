@@ -1,6 +1,6 @@
 'use client'
 import React, { useMemo } from 'react'
-import { useFavoriteStore } from '@/store/favoriteStore'
+import { useFavoriteStore } from '@/store/useFavoriteStore'
 
 import BreadCrumbs from '@/components/BreadCrumbs/BreadCrumbs'
 import { FavoriteCard } from './FavoriteCard'

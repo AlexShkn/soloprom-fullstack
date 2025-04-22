@@ -2,7 +2,7 @@ import React, { useRef, useState, useCallback, useEffect } from 'react'
 import { LocateSearchTypes } from './LocateBlock'
 import CloseButton from '@/components/ui/CloseButton'
 import { useScrollCloseableWindow } from '@/hooks/useScrollCloseableWindow'
-import { useLocateStore } from '@/store/locateStore'
+import { useLocateStore } from '@/store/useLocateStore'
 import { Loading } from '../ui'
 import { Origami } from 'lucide-react'
 

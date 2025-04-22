@@ -1,7 +1,7 @@
 'use client'
 import React, { useState, useEffect, useCallback, useRef } from 'react'
 import { Accordion } from '@/components/ui/accordion'
-import useSearchStore from '@/store/searchStore'
+import useSearchStore from '@/store/useSearchStore'
 import pagesDataRawRaw from '@/data/products/pagesData.json'
 import Skeleton from 'react-loading-skeleton'
 import 'react-loading-skeleton/dist/skeleton.css'

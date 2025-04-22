@@ -1,6 +1,6 @@
 import { OrderTypes } from '@/components/Cart/types/order'
 import { api } from '@/utils/fetch/instance.api'
-import { CartProductTypes } from '@/store/cartStore'
+import { CartProductTypes } from '@/store/useCartStore'
 
 interface OrderDto {
   userId: string

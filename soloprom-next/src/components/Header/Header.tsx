@@ -7,9 +7,9 @@ import { getCompareLocalStorage } from '@/utils/localStorage/getCompareLocalStor
 import { HeaderTop } from './HeaderTop'
 import HeaderBody from './HeaderBody'
 
-import { useCartStore } from '@/store/cartStore'
-import { useFavoriteStore } from '@/store/favoriteStore'
-import { useCompareStore } from '@/store/compareStore'
+import { useCartStore } from '@/store/useCartStore'
+import { useFavoriteStore } from '@/store/useFavoriteStore'
+import { useCompareStore } from '@/store/useCompareStore'
 import { HeaderLinks } from './HeaderLinks'
 
 export const Header: React.FC = () => {

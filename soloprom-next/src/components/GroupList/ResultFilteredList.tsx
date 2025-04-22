@@ -11,7 +11,7 @@ import { Button } from '../ui'
 import Skeleton from 'react-loading-skeleton'
 import 'react-loading-skeleton/dist/skeleton.css'
 
-import useFilterStore from '@/store/filterStore'
+import useFilterStore from '@/store/useFilterStore'
 import clsx from 'clsx'
 
 interface Props {

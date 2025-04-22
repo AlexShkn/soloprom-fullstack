@@ -2,10 +2,10 @@ import React, { useState } from 'react'
 
 import './MobileNav.scss'
 import Link from 'next/link'
-import { useCartStore } from '@/store/cartStore'
-import { useFavoriteStore } from '@/store/favoriteStore'
-import { useCompareStore } from '@/store/compareStore'
-import { useModalsStore } from '@/store/modalsStore'
+import { useCartStore } from '@/store/useCartStore'
+import { useFavoriteStore } from '@/store/useFavoriteStore'
+import { useCompareStore } from '@/store/useCompareStore'
+import { useModalsStore } from '@/store/useModalsStore'
 
 type Props = {}
 

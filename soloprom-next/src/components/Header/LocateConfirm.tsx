@@ -1,7 +1,7 @@
 import React from 'react'
 import CloseButton from '@/components/ui/CloseButton'
 import { LocateSearchTypes } from './LocateBlock'
-import { useLocateStore } from '@/store/locateStore'
+import { useLocateStore } from '@/store/useLocateStore'
 
 type LocateConfirmTypes = LocateSearchTypes & {
   city: string

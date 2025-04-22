@@ -2,7 +2,7 @@
 import React from 'react'
 
 import { CartProductItem } from './CartProductItem'
-import { CartProductTypes } from '@/store/cartStore'
+import { CartProductTypes } from '@/store/useCartStore'
 
 interface CartProductListProps {
   cartState: CartProductTypes[]

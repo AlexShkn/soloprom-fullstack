@@ -1,6 +1,6 @@
 'use client'
 import { CartProductItem } from '@/components/Cart/CartProductItem'
-import { useCartStore } from '@/store/cartStore'
+import { useCartStore } from '@/store/useCartStore'
 import Link from 'next/link'
 import React from 'react'
 

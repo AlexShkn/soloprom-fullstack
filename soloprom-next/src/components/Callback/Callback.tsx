@@ -1,7 +1,7 @@
 'use client'
 import Image from 'next/image'
 
-import { useModalsStore } from '@/store/modalsStore'
+import { useModalsStore } from '@/store/useModalsStore'
 
 export const Callback = () => {
   const { modalCallbackStateChange } = useModalsStore()
@@ -90,7 +90,7 @@ export const Callback = () => {
               </li>
             </ul>
           </div>
-          <div className="rounded-custom relative flex flex-col justify-center bg-accentBlue px-5 py-9 text-center shadow-custom before:absolute before:inset-0 before:z-[1] before:h-full before:w-full before:bg-black before:bg-opacity-30 xs:px-7 xs:py-12 before:mdl:hidden lg:p-5">
+          <div className="relative flex flex-col justify-center rounded-custom bg-accentBlue px-5 py-9 text-center shadow-custom before:absolute before:inset-0 before:z-[1] before:h-full before:w-full before:bg-black before:bg-opacity-30 xs:px-7 xs:py-12 before:mdl:hidden lg:p-5">
             <div className="relative z-[2] mdl:max-w-[70%] lg:max-w-[60%]">
               <div className="mb-5 text-xl font-bold leading-5 text-white">
                 Нужна помощь в выборе запчастей?

@@ -2,7 +2,7 @@
 import React, { useEffect, useState, useCallback } from 'react'
 
 import { Loading } from '../ui'
-import { useCartStore } from '@/store/cartStore'
+import { useCartStore } from '@/store/useCartStore'
 
 import BreadCrumbs from '@/components/BreadCrumbs/BreadCrumbs'
 import { CartResult } from '@/components/Cart/CartResult'

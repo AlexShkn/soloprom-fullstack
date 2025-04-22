@@ -7,7 +7,7 @@ import { toastMessageHandler } from '@/utils/toast-message-handler'
 
 import { TypeLoginSchema } from '../../features/auth/schemes'
 import { authService } from '../../features/auth/services'
-import { useAuthStore } from '@/store/authStore'
+import { useAuthStore } from '@/store/useAuthStore'
 
 export function useLoginMutation(
   setIsShowFactor: Dispatch<SetStateAction<boolean>>,

@@ -4,7 +4,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 
 import './Footer.scss'
-import { useModalsStore } from '@/store/modalsStore'
+import { useModalsStore } from '@/store/useModalsStore'
 
 const catalogList = [
   { title: 'Каталог запчастей', link: '/catalog' },
@@ -156,7 +156,7 @@ const Footer = () => {
                   {socialList.map((link, index) => (
                     <li
                       key={index}
-                      className={`footer__social-item footer__social-item--${link.id} rounded-custom inline-flex h-10 w-10 items-center justify-center overflow-hidden opacity-50 transition-colors`}
+                      className={`footer__social-item footer__social-item--${link.id} inline-flex h-10 w-10 items-center justify-center overflow-hidden rounded-custom opacity-50 transition-colors`}
                     >
                       <a
                         href={link.href}

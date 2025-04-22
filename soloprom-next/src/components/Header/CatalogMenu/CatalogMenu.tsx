@@ -8,7 +8,7 @@ import { useMediaQuery } from '@/hooks/useMediaQuery'
 import CloseButton from '@/components/ui/CloseButton'
 
 import TabCategory from './TabCategory'
-import { useCatalogMenuStore } from '@/store/catalogMenuStore'
+import { useCatalogMenuStore } from '@/store/useCatalogMenuStore'
 
 export interface CategoryTab {
   id: string

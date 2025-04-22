@@ -1,7 +1,7 @@
 'use client'
 import React, { useState, useRef, useCallback, useEffect } from 'react'
 import { ProductsCard } from '@/components/ProductsCard/ProductsCard'
-import useSearchStore from '@/store/searchStore'
+import useSearchStore from '@/store/useSearchStore'
 
 import Skeleton from 'react-loading-skeleton'
 import 'react-loading-skeleton/dist/skeleton.css'

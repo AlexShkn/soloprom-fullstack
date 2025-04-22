@@ -185,7 +185,6 @@ export class ProductsService {
 
     return category.products;
   }
-
   async getProductsBySubCategory(subcategoryName: string) {
     const subcategory = await prisma.subCategory.findUnique({
       where: { name: subcategoryName },
@@ -218,6 +217,41 @@ export class ProductsService {
     }
 
     return brand.products;
+  }
+
+  async getProductsByModel(modelName: string) {
+    const model = await prisma.model.findFirst({
+      where: {
+        name: {
+          equals: modelName,
+          mode: 'insensitive',
+        },
+      },
+      include: {
+        products: true,
+      },
+    });
+
+    if (!model) {
+      throw new Error(`Group with model "${modelName}" not found`);
+    }
+
+    return model.products;
+  }
+
+  async getProductsByGroup(groupName: string) {
+    const group = await prisma.group.findUnique({
+      where: { name: groupName },
+      include: {
+        products: true,
+      },
+    });
+
+    if (!group) {
+      throw new Error(`Group with name "${groupName}" not found`);
+    }
+
+    return group.products;
   }
 
   async loadCategoriesProductsAndGroups(data: any) {
@@ -429,41 +463,6 @@ export class ProductsService {
     return {
       message: 'Категории, подкатегории, группы и продукты успешно загружены!',
     };
-  }
-
-  async getProductsByModel(modelName: string) {
-    const model = await prisma.model.findFirst({
-      where: {
-        name: {
-          equals: modelName,
-          mode: 'insensitive',
-        },
-      },
-      include: {
-        products: true,
-      },
-    });
-
-    if (!model) {
-      throw new Error(`Group with model "${modelName}" not found`);
-    }
-
-    return model.products;
-  }
-
-  async getProductsByGroup(groupName: string) {
-    const group = await prisma.group.findUnique({
-      where: { name: groupName },
-      include: {
-        products: true,
-      },
-    });
-
-    if (!group) {
-      throw new Error(`Group with name "${groupName}" not found`);
-    }
-
-    return group.products;
   }
 
   async syncPopularProducts() {

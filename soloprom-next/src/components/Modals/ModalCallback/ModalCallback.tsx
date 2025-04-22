@@ -24,9 +24,9 @@ import {
   Input,
 } from '@/components/ui'
 import './ModalCallback.scss'
-import { FastOrderTypes, useModalsStore } from '@/store/modalsStore'
+import { FastOrderTypes, useModalsStore } from '@/store/useModalsStore'
 import { getDigFormat } from '@/supports'
-import { useLocateStore } from '@/store/locateStore'
+import { useLocateStore } from '@/store/useLocateStore'
 import Image from 'next/image'
 import { Textarea } from '@/components/ui/textarea'
 

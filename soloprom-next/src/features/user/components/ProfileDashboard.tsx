@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
 import { useProfile } from '@/hooks/useProfile'
 import { useLogoutMutation } from '../hooks/useLogoutMutation'
-import { useAuthStore } from '@/store/authStore'
+import { useAuthStore } from '@/store/useAuthStore'
 
 import {
   UserCog,
@@ -16,9 +16,9 @@ import {
 } from 'lucide-react'
 import { Loading } from '@/components/ui'
 import { ProfileContent } from './ProfileContent'
-import { useCompareStore } from '@/store/compareStore'
-import { useFavoriteStore } from '@/store/favoriteStore'
-import { useCartStore } from '@/store/cartStore'
+import { useCompareStore } from '@/store/useCompareStore'
+import { useFavoriteStore } from '@/store/useFavoriteStore'
+import { useCartStore } from '@/store/useCartStore'
 import { getStateFromLocalStorage } from '@/utils/localStorage/getStateFromLocalStorage'
 import { getCompareLocalStorage } from '@/utils/localStorage/getCompareLocalStorage'
 

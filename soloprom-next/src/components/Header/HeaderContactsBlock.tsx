@@ -1,6 +1,6 @@
 'use client'
 import React from 'react'
-import { useModalsStore } from '@/store/modalsStore'
+import { useModalsStore } from '@/store/useModalsStore'
 
 interface Props {
   className?: string

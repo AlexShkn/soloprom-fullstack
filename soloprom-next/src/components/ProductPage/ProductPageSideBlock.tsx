@@ -1,9 +1,9 @@
 'use client'
 import { getDigFormat } from '@/supports'
 import { CardDataProps } from '@/types/products.types'
-import { useCartStore } from '@/store/cartStore'
+import { useCartStore } from '@/store/useCartStore'
 import React, { useEffect, useState } from 'react'
-import { useModalsStore } from '@/store/modalsStore'
+import { useModalsStore } from '@/store/useModalsStore'
 
 interface Props {
   cardData: CardDataProps
