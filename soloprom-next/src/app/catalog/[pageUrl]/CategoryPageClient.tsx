@@ -17,6 +17,7 @@ import { CategoryPageSlider } from '@/components/CategoryPageSlider/CategoryPage
 import { Loading } from '@/components/ui'
 import CategoryPageParams from './CategoryPageParams'
 import useFilterStore from '@/store/useFilterStore'
+import { PageBenefits } from '@/components/PageBenefits/PageBenefits'
 
 interface CategoryPageClientProps {
   pageData: PageDataTypes
@@ -77,7 +78,8 @@ const CategoryPageClient: React.FC<CategoryPageClientProps> = ({
         categoryData={categoryData}
         totalCount={totalCount}
       />
-      <PageArticle category={pageData.category} articleName={pageData.name} />
+      <PageBenefits />
+      {/* <PageArticle category={pageData.category} articleName={pageData.name} /> */}
       <CategoryPageSlider category={pageData.category} />
       <Callback />
     </PageWrapper>

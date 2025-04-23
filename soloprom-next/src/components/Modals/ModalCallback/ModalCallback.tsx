@@ -29,6 +29,7 @@ import { getDigFormat } from '@/supports'
 import { useLocateStore } from '@/store/useLocateStore'
 import Image from 'next/image'
 import { Textarea } from '@/components/ui/textarea'
+import { ModalCloseButton } from '../ModalCloseButton'
 
 interface ModalProps {
   fastOrderProduct: FastOrderTypes
@@ -93,17 +94,17 @@ const ModalCallback: React.FC<ModalProps> = ({ fastOrderProduct }) => {
 
   return (
     <div className={`modal-callback modal fade show z-[99999]`}>
-      {!isMobileHeight && <CloseButton classNames={'modal__close'} />}
+      {!isMobileHeight && <ModalCloseButton />}
       <div
         ref={modalRef}
-        className="modal-callback__dialog modal__dialog relative mx-auto my-2.5 w-full sm:mb-5 sm:mt-[50px] sm:max-w-[560px]"
+        className="modal-callback__dialog modal__dialog relative mx-auto my-2.5 w-full sm:mb-5 sm:mt-[20px] sm:max-w-[560px]"
       >
         <div className="modal__content relative overflow-hidden rounded-custom bg-white px-4 py-10 xs:px-6 mds:px-11 mds:py-10">
-          {isMobileHeight && <CloseButton classNames={'modal__close'} />}
+          {isMobileHeight && <ModalCloseButton />}
 
           <div className="modal-callback__body">
             <div className="mb-7">
-              <div className="mb-2.5 text-center text-[clamp(1.625rem,1.2953rem+1.0989vw,2.25rem)] font-medium leading-10 text-black">
+              <div className="mb-2.5 text-center text-[30px] font-medium leading-8 text-black">
                 Оставьте свои контактные данные
               </div>
               <div className="text-center text-sm leading-5 text-[#313131] mds:text-base">
