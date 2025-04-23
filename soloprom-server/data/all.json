@@ -6340,7 +6340,7 @@
     "name": "APOLLO AIT 416 Премиум 16.9-24 14PR",
     "descr": "APOLLO AIT 416 Премиум 16.9-24 14PR",
     "url": "/products/APOLLOAIT4161692414PR",
-    "img": "tires/APOLLOAIT4161692414PR",
+    "img": null,
     "defaultPrice": 51603,
     "delivery": "2-3 дня",
     "sizes": {
@@ -26079,7 +26079,7 @@
     "defaultPrice": 13438,
     "delivery": "2-3 дня",
     "sizes": {
-      "": 13438
+      "10PR": 13438
     },
     "volumes": null,
     "isPopular": false,

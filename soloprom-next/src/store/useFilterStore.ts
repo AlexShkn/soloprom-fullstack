@@ -1,6 +1,7 @@
 import { create } from 'zustand'
 
 interface FilterState {
+  totalPages: number
   initialLoad: boolean
   filters: Record<string, string[] | number>
   sort: string
@@ -19,6 +20,7 @@ interface FilterState {
   setInitialLoad: (status: boolean) => void
   setDataIsLoading: (status: boolean) => void
   setDynamicCurrentPage: (page: number) => void
+  setTotalPages: (count: number) => void
   setTotalProductsCount: (count: number) => void
   setHasFilters: (hasFilters: boolean) => void
   resetFilters: () => void
@@ -29,6 +31,7 @@ interface FilterState {
 }
 
 const useFilterStore = create<FilterState>((set) => ({
+  totalPages: 0,
   initialLoad: true,
   filters: {},
   filteredPage: '',
@@ -49,6 +52,8 @@ const useFilterStore = create<FilterState>((set) => ({
   setSort: (sort) => set({ sort, hasFilters: true }),
   setDynamicCurrentPage: (page) =>
     set({ dynamicCurrentPage: page, dataIsLoading: true }),
+
+  setTotalPages: (count) => set({ totalPages: Math.ceil(count / 12) }),
   setTotalProductsCount: (count) => set({ totalProductsCount: count }),
   setHasFilters: (hasFilters) => set({ hasFilters }),
 

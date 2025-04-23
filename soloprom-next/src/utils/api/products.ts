@@ -1,5 +1,6 @@
 import { api } from '@/utils/fetch/instance.api'
 import { CardDataProps } from '@/types/products.types'
+import { unstable_noStore as noStore } from 'next/cache'
 
 interface ProductsRequest {
   categoryName?: string
@@ -22,6 +23,7 @@ export async function getTotalProductCount(categoryName: string) {
     `products/get-products`,
     {
       params: { categoryName, limit: 1 },
+      // cache: 'no-store',
     },
   )
   return response.totalCount
@@ -60,6 +62,7 @@ export const fetchProducts = async (
         params: {
           ...otherParams,
           filters: filters ? JSON.stringify(filters) : undefined,
+          // cache: 'no-store',
         },
       },
     )
@@ -108,15 +111,16 @@ export async function searchPages(field: string, value: string) {
 }
 
 export async function getProductById(id: string) {
+  noStore()
+
   try {
     const response = await api.get<any>(`products/${id}`)
     return response
   } catch (error) {
     console.error(`Ошибка получения продукта: ${id}`, error)
-    return []
+    throw error
   }
 }
-
 export async function getProducts(p0: {
   categoryName: string
   page: number

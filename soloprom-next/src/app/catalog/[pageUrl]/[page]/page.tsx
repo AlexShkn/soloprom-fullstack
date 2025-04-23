@@ -22,10 +22,10 @@ interface CatalogPageProps {
 }
 
 const BASE_URI = process.env.NEXT_PUBLIC_CLIENT_URL as string
+const limit = 12 // Количество товаров на странице
 
 export async function generateStaticParams() {
   const params: Params[] = []
-  const limit = 10 // Количество товаров на странице
 
   for (const pageItem in pagesData) {
     const pageData = pagesData[pageItem]
@@ -44,6 +44,7 @@ export async function generateStaticParams() {
       pageData.pageType === 'model'
     ) {
       const totalCount = await getTotalProductCount(pageData.name)
+
       const totalPages = Math.ceil(totalCount / limit)
 
       for (let currentPage = 2; currentPage <= totalPages; currentPage++) {
@@ -71,7 +72,7 @@ export async function generateMetadata({
   const currentPage = parseInt(page || '1', 10)
 
   const totalCount = await getTotalProductCount(categoryName)
-  const totalPages = Math.ceil(totalCount / 10)
+  const totalPages = Math.ceil(totalCount / limit)
 
   if (!categoryData) {
     return {
@@ -152,7 +153,7 @@ const CatalogPaginationPage: React.FC<CatalogPageProps> = async ({
   const initialProducts = await fetchProducts({
     categoryName: pageData.subUrl ?? pageData.name,
     page: currentPage,
-    limit: 12,
+    limit: limit,
   })
 
   const interUrl =

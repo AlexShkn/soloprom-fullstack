@@ -17,6 +17,7 @@ interface Props {
   initialProducts: CardDataProps[] | null
   categoryData: FilterData
   pageName: string
+  totalCount: number
 }
 
 export const ProductsFilterBlock: React.FC<Props> = ({
@@ -26,6 +27,7 @@ export const ProductsFilterBlock: React.FC<Props> = ({
   initialProducts,
   categoryData,
   pageName,
+  totalCount,
 }) => {
   const router = useRouter()
   const groupListRef = useRef<HTMLElement | null>(null)
@@ -44,29 +46,23 @@ export const ProductsFilterBlock: React.FC<Props> = ({
     setTotalProductsCount,
     totalProductsCount,
     hasFilters,
+    setHasFilters,
     dynamicCurrentPage,
     setDataIsLoading,
     setPriceRange,
     resetFilters,
     initialLoad,
+    totalPages,
+    setTotalPages,
   } = useFilterStore()
-
-  console.count('render ProductsFilterBlock')
 
   const debouncedFilters = useDebounce(filters, 500)
   const debouncedSort = useDebounce(sort, 500)
-
-  const totalPages = useMemo(
-    () => Math.ceil(totalProductsCount / 12),
-    [totalProductsCount],
-  )
 
   const fetchData = useCallback(async () => {
     if (fetchControllerRef.current) {
       fetchControllerRef.current.abort()
     }
-
-    console.log('CAAAAAALLLLLLLL fetchData')
 
     const controller = new AbortController()
     fetchControllerRef.current = controller
@@ -92,7 +88,9 @@ export const ProductsFilterBlock: React.FC<Props> = ({
       })
 
       setProducts(response.products)
+
       setTotalProductsCount(response.totalCount)
+      setTotalPages(response.totalCount)
     } catch (err) {
       if (err instanceof Error && err.name !== 'AbortError') {
         console.error('Ошибка получения продуктов:', err)
@@ -116,8 +114,6 @@ export const ProductsFilterBlock: React.FC<Props> = ({
   ])
 
   const updateUrl = useCallback(() => {
-    console.log('CAAAAAALLLLLLLL updateUrl')
-
     const params = new URLSearchParams()
     if (Object.keys(debouncedFilters).length > 0) {
       params.set('filters', JSON.stringify(debouncedFilters))
@@ -133,7 +129,6 @@ export const ProductsFilterBlock: React.FC<Props> = ({
 
     const newUrl = `?${params.toString()}`
 
-    console.log(newUrl)
     router.push(newUrl, { scroll: false })
 
     // if (newUrl.length > 1) {
@@ -148,8 +143,6 @@ export const ProductsFilterBlock: React.FC<Props> = ({
       filteredPage &&
       categoryName === filteredPage
     ) {
-      console.log('scrolllllllllllll')
-
       groupListRef.current.scrollIntoView({
         behavior: 'smooth',
         block: 'start',
@@ -159,16 +152,12 @@ export const ProductsFilterBlock: React.FC<Props> = ({
 
   useEffect(() => {
     if (filteredPage && categoryName !== filteredPage) {
-      console.log('resetFilters')
-
       resetFilters()
     }
   }, [categoryName, filteredPage])
 
   useEffect(() => {
-    if (!initialLoad && hasFilters) {
-      console.log('CAAAAAALLLLLLLL')
-
+    if (!initialLoad) {
       updateUrl()
       setProducts([])
       fetchData()
@@ -176,6 +165,7 @@ export const ProductsFilterBlock: React.FC<Props> = ({
   }, [debouncedFilters, debouncedSort, dynamicCurrentPage, updateUrl])
 
   const handleResetFilters = () => {
+    setHasFilters(false)
     setPriceRange({
       min: categoryData.prices?.min,
       max: categoryData.prices?.max,

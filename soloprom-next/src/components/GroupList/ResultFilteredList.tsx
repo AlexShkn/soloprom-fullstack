@@ -55,6 +55,7 @@ export const ResultFilteredList: React.FC<Props> = ({
     viewMode,
     setViewMode,
     initialLoad,
+    setHasFilters,
   } = useFilterStore()
 
   const filterKeysToIgnore = ['minPrice', 'maxPrice']
@@ -90,22 +91,18 @@ export const ResultFilteredList: React.FC<Props> = ({
       (value) => value !== filterValue,
     )
 
+    const newFilters = { ...filters }
+    const newCheckedValues = { ...checkedValues }
     if (updatedFilterValues.length === 0) {
-      const { [filterName]: removed, ...remainingFilters } = filters
-      setFilters(remainingFilters)
-
-      const { [filterName]: removedChecked, ...remainingChecked } =
-        checkedValues
-      setCheckedValues(remainingChecked)
+      delete newFilters[filterName]
+      delete newCheckedValues[filterName]
     } else {
-      setFilters({ ...filters, [filterName]: updatedFilterValues })
-      if (checkedValues[filterName]) {
-        setCheckedValues({
-          ...checkedValues,
-          [filterName]: updatedFilterValues,
-        })
-      }
+      newFilters[filterName] = updatedFilterValues
+      newCheckedValues[filterName] = updatedFilterValues
     }
+
+    setFilters(newFilters)
+    setCheckedValues(newCheckedValues)
   }
 
   return (

@@ -60,10 +60,9 @@ const CatalogFilters: React.FC<Props> = ({
     setDataIsLoading,
     priceRange,
     setPriceRange,
+    setHasFilters,
   } = useFilterStore()
   const [initialLoad, setInitialLoad] = useState(true)
-
-  console.count('render CatalogFilters')
 
   const [internalFilters, setInternalFilters] = useState<
     Record<string, string[] | number>
@@ -82,8 +81,9 @@ const CatalogFilters: React.FC<Props> = ({
   // }, [])
 
   useEffect(() => {
+    setDataIsLoading(true)
+
     if (Object.keys(filters).length) {
-      setDataIsLoading(true)
       setInternalFilters(filters)
 
       if (initialLoad && (filters.minPrice || filters.maxPrice)) {
@@ -94,6 +94,8 @@ const CatalogFilters: React.FC<Props> = ({
 
         setInitialLoad(false)
       }
+    } else {
+      setHasFilters(false)
     }
   }, [filters])
 

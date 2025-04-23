@@ -1,5 +1,5 @@
 'use client'
-import React, { Suspense } from 'react'
+import React, { Suspense, useEffect } from 'react'
 import { HeroBlock } from '@/components/CategoryPageHero/HeroBlock'
 import { CategoryPageHero } from '@/components/CategoryPageHero/CategoryPageHero'
 import { SidePanel } from '@/components/CategoryPageHero/SidePanel/SidePanel'
@@ -16,6 +16,7 @@ import {
 import { CategoryPageSlider } from '@/components/CategoryPageSlider/CategoryPageSlider'
 import { Loading } from '@/components/ui'
 import CategoryPageParams from './CategoryPageParams'
+import useFilterStore from '@/store/useFilterStore'
 
 interface CategoryPageClientProps {
   pageData: PageDataTypes
@@ -32,6 +33,14 @@ const CategoryPageClient: React.FC<CategoryPageClientProps> = ({
   totalCount,
   categoryData,
 }) => {
+  const { setTotalPages, setTotalProductsCount } = useFilterStore()
+
+  useEffect(() => {
+    console.log(totalCount)
+    setTotalProductsCount(totalCount)
+    setTotalPages(totalCount)
+  }, [])
+
   return (
     <PageWrapper>
       <BreadCrumbs
@@ -56,7 +65,7 @@ const CategoryPageClient: React.FC<CategoryPageClientProps> = ({
       )}
 
       <Suspense fallback={<Loading />}>
-        <CategoryPageParams totalCount={totalCount} />
+        <CategoryPageParams />
       </Suspense>
 
       <ProductsFilterBlock
@@ -66,6 +75,7 @@ const CategoryPageClient: React.FC<CategoryPageClientProps> = ({
         pageName={pageData.name}
         initialProducts={initialProducts}
         categoryData={categoryData}
+        totalCount={totalCount}
       />
       <PageArticle category={pageData.category} articleName={pageData.name} />
       <CategoryPageSlider category={pageData.category} />

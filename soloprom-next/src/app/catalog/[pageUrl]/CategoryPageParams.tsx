@@ -4,11 +4,9 @@ import React, { useEffect, useLayoutEffect } from 'react'
 import { useSearchParams } from 'next/navigation'
 import useFilterStore from '@/store/useFilterStore'
 
-interface Props {
-  totalCount: number
-}
+interface Props {}
 
-const CategoryPageParams: React.FC<Props> = ({ totalCount }) => {
+const CategoryPageParams: React.FC<Props> = () => {
   const searchParams = useSearchParams()
   const urlFilters = searchParams.get('filters')
   const urlSort = searchParams.get('sort')
@@ -20,12 +18,11 @@ const CategoryPageParams: React.FC<Props> = ({ totalCount }) => {
     setDynamicCurrentPage,
     setHasFilters,
     setDataIsLoading,
-    setTotalProductsCount,
     setInitialLoad,
     initialLoad,
   } = useFilterStore()
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     if (initialLoad) {
       if (urlFilters || urlSort || urlPage) {
         if (urlFilters) {
@@ -55,7 +52,6 @@ const CategoryPageParams: React.FC<Props> = ({ totalCount }) => {
         setHasFilters(true)
       } else {
         setDataIsLoading(false)
-        setTotalProductsCount(totalCount)
       }
 
       setInitialLoad(false)

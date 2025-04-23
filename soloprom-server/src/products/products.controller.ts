@@ -22,7 +22,7 @@ export class ProductsController {
   async getProducts(
     @Query('categoryName') categoryName: string,
     @Query('page') page: string = '1',
-    @Query('limit') limit: string = '10',
+    @Query('limit') limit: string = '12',
     @Query('sort') sort?: string,
     @Query('filters') filters?: string,
     @Query('search') search?: string,

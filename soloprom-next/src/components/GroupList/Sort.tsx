@@ -49,8 +49,6 @@ export const Sort: React.FC<Props> = ({
 
   const sortHandler = useCallback(
     (value: string) => {
-      console.log('trued')
-
       setDataIsLoading(true)
       setSort(value)
       setDropIsOpen(false)
