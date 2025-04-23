@@ -2,6 +2,7 @@
 import { ReviewsTypes } from '@/utils/api/reviews'
 import React, { useState, useCallback, useMemo } from 'react'
 import { ReviewsTab } from './Tabs/Reviews/ReviewsTab'
+import { ProductDescription } from '@/types/products.types'
 
 type Review = {
   name: string
@@ -9,16 +10,6 @@ type Review = {
   positive: string
   negative: string
   comment: string
-}
-
-export type ProductDescription = {
-  productId: string
-  name: string
-  text: string
-  reviews?: Review[]
-  rating?: string
-  models?: string[]
-  options?: [string, string][]
 }
 
 interface Props {
@@ -120,13 +111,7 @@ export const ProductPageTabs: React.FC<Props> = ({
 }) => {
   const [currentTab, setCurrentTab] = useState<number>(0)
 
-  const {
-    models = [],
-    reviews = [],
-    options = [],
-    text = '',
-    name = '',
-  } = productDescr || {}
+  const { models = [], options = [], text = '', name = '' } = productDescr || {}
 
   const captions = useMemo(
     () => [

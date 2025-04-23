@@ -4,10 +4,20 @@ interface Group {
 
 type GroupsList = Group[]
 
+export interface ProductDescription {
+  productId: string
+  name: string
+  text: string
+  rating?: string
+  models?: string[]
+  options?: [string, string][]
+}
+
 export interface CardDataProps {
   productId: string
   url: string
   categoryName: string
+  subcategoryName: string
   name: string
   descr: string
   images: string[]
@@ -33,6 +43,16 @@ export interface CardDataProps {
   isPopular?: boolean
   stock: number
   rating: number
+  groupsList: GroupsList
+}
+
+export interface ProductDetailsResponse extends CardDataProps {
+  id: string
+  categoryId: string
+  subcategoryId: string
+  createdAt: string
+  updatedAt: string
+  productDescr: ProductDescription
   groupsList: GroupsList
 }
 

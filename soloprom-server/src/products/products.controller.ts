@@ -77,7 +77,6 @@ export class ProductsController {
     return this.productService.syncPopularProducts();
   }
 
-  // Получение популярных товаров
   @Get('popular/get')
   async getPopularProducts() {
     return this.productService.getPopularProducts();
@@ -91,7 +90,6 @@ export class ProductsController {
   ) {
     return this.productService.updateProduct(productId, updateData);
   }
-
   //====================================================================
 
   @Get('search/product-all')
@@ -124,5 +122,14 @@ export class ProductsController {
   @Get('search/pages')
   async searchPages(@Query('value') value: string) {
     return this.productService.searchPages(value);
+  }
+
+  @Get('recommended/:productId')
+  async getRecommendedProducts(
+    @Param('productId') productId: string,
+    @Query('limit', ParseIntPipe) limit: number = 5,
+  ) {
+    console.log(productId);
+    return this.productService.getRandomRecommendedProducts(productId, limit);
   }
 }

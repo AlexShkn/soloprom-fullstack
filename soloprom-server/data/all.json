@@ -18708,42 +18708,7 @@
     "viscosity": null,
     "images": []
   },
-  {
-    "name": "DUNLOP PL 7.00-12 стандарт",
-    "descr": "DUNLOP PL 7.00-12 стандарт",
-    "url": "/products/DUNLOPPL70012",
-    "img": "tires/DUNLOPPL70012",
-    "defaultPrice": 48791,
-    "delivery": "2-3 дня",
-    "sizes": {
-      "7.00-12": 48791
-    },
-    "volumes": null,
-    "isPopular": false,
-    "size": "12",
-    "discount": null,
-    "models": [],
-    "regalia": ["new"],
-    "productId": "DUNLOPPL70012",
-    "categoryName": "tires",
-    "subcategoryName": "shini-celnolitie",
-    "container": null,
-    "country": "Япония",
-    "load_index": null,
-    "plates": null,
-    "productType": "Цельнолитая",
-    "voltage": null,
-    "stock": 0,
-    "brandName": "DUNLOP",
-    "rating": 0,
-    "groupsList": [
-      {
-        "name": "shini-dlya-vilochnih-pogruzchikov"
-      }
-    ],
-    "viscosity": null,
-    "images": []
-  },
+
   {
     "name": "Emrald GRECKSTER GOLD 7.00-12 стандарт",
     "descr": "Emrald GRECKSTER GOLD 7.00-12 стандарт",

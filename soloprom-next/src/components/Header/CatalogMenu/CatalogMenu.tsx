@@ -10,6 +10,8 @@ import CloseButton from '@/components/ui/CloseButton'
 import TabCategory from './TabCategory'
 import { useCatalogMenuStore } from '@/store/useCatalogMenuStore'
 
+import productListData from '../../../data/catalogMenu.json'
+
 export interface CategoryTab {
   id: string
   alt: string
@@ -21,127 +23,17 @@ export interface CategoryProduct {
   title: string
 }
 
+interface ProductsList {
+  [key: string]: CategoryProduct[]
+}
+
+const productsList: ProductsList = productListData
+
 const categoryList: CategoryTab[] = [
   { id: 'battery', alt: 'купить тяговый акб', title: 'Аккумуляторы' },
   { id: 'tires', alt: 'шина для погрузчика', title: 'Шины' },
   { id: 'oils', alt: 'моторные масла', title: 'Масла и антифризы' },
 ]
-
-const productsList: Record<string, CategoryProduct[]> = {
-  battery: [
-    { href: '/catalog/battery', title: 'Аккумуляторы' },
-    {
-      href: '/catalog/accumulyatori-tyagovie',
-      title: 'Тяговые аккумуляторы',
-    },
-    {
-      href: '/catalog/accumulyatori-polutyagovie',
-      title: 'Полутяговые аккумуляторы',
-    },
-    {
-      href: '/catalog/accumulyatori-dlya-pogruzchikov',
-      title: 'Аккумуляторы для погрузчиков',
-    },
-    {
-      href: '/catalog/accumulyatori-dlya-electrotelezhek',
-      title: 'Аккумуляторы для электротележек',
-    },
-    {
-      href: '/catalog/accumulyatori-dlya-polomoechnih-mashin',
-      title: 'Аккумуляторы для поломоечных машин',
-    },
-    {
-      href: '/catalog/accumulyatori-dlya-shtabelerov',
-      title: 'Аккумуляторы для штабелеров',
-    },
-    {
-      href: '/catalog/accumulyatori-dlya-richtrakov',
-      title: 'Аккумуляторы для ричтраков',
-    },
-    {
-      href: '/catalog/accumulyatori-dlya-polletoperevozchikov',
-      title: 'Аккумуляторы для паллетоперевозчика',
-    },
-  ],
-  tires: [
-    { href: '/catalog/tires', title: 'Шины для спецтехники' },
-    {
-      href: '/catalog/shini-celnolitie',
-      title: 'Шины цельнолитые (суперэластик)',
-    },
-    {
-      href: '/catalog/shini-pnevmatichesckie',
-      title: 'Шины пневматические',
-    },
-    { href: '/catalog/shini-legkovie', title: 'Шины легковые' },
-    { href: '/catalog/shini-bandazhnie', title: 'Бандажные шины' },
-    {
-      href: '/catalog/shini-dlya-vilochnih-pogruzchikov',
-      title: 'Шины для вилочных погрузчиков',
-    },
-    {
-      href: '/catalog/shini-dlya-minipogruzchikov',
-      title: 'Шины для минипогрузчиков',
-    },
-    {
-      href: '/catalog/shini-dlya-ekskavator-pogruzchikov',
-      title: 'Шины для экскаватор - погрузчиков',
-    },
-    {
-      href: '/catalog/shini-dlya-frontalnih-pogruzchikov',
-      title: 'Шины для фронтальных погрузчиков',
-    },
-    {
-      href: '/catalog/shini-dlya-greiderov',
-      title: 'Шины для грейдеров',
-    },
-    {
-      href: '/catalog/shini-dlya-selhoztehniki',
-      title: 'Шины для сельхозтехники',
-    },
-    {
-      href: '/catalog/shini-dlya-kolesnih-ekskavatorov',
-      title: 'Шина для колесных экскаваторов',
-    },
-    {
-      href: '/catalog/shini-dlya-sochlenennih-samosvalov',
-      title: 'Шины для сочлененных самосвалов',
-    },
-    {
-      href: '/catalog/shini-dlya-teleskopicheskih-pogruzchikov',
-      title: 'Шины для телескопических погрузчиков',
-    },
-    {
-      href: '/catalog/shini-dlya-portov-i-terminalov',
-      title: 'Шины для портов и терминалов',
-    },
-    {
-      href: '/catalog/shini-dlya-asfaltoukladchikov-i-katkov',
-      title: 'Шины для асфальтоукладчиков и катков',
-    },
-    {
-      href: '/catalog/shini-dlya-zhestkoramnih-samosvalov',
-      title: 'Шины для жесткорамных самосвалов',
-    },
-  ],
-  oils: [
-    { href: '/catalog/oils', title: 'Масла' },
-    { href: '/catalog/masla-motornie', title: 'Моторные масла' },
-    {
-      href: '/catalog/masla-transmissionnie',
-      title: 'Масла трансмиссионные',
-    },
-    {
-      href: '/catalog/masla-gidravlichecskie',
-      title: 'Масла гидравлические',
-    },
-    {
-      href: '/catalog/masla-industrialnie',
-      title: 'Масла индустриальные',
-    },
-    { href: '/catalog/antifreezi', title: 'Охлаждающие жидкости' },
-  ],
-}
 
 const CatalogMenu = () => {
   const [currentTab, setCurrentTab] = useState('')
@@ -184,7 +76,6 @@ const CatalogMenu = () => {
           classNames="hidden sm:block catalog-menu__close absolute top-[5px] right-[5px] -margin-1 z-10"
           iconClass="w-7 h-7 fill-darkBlue cursor-pointer"
         />
-
         <nav className="catalog-menu__body relative grid h-full min-h-screen grid-cols-1 justify-between gap-2.5 overflow-y-auto sm:grid-cols-2 md:grid-cols-[40%,calc(60%-20px)] lg:grid-cols-[30%,calc(70%-20px)] 2xl:min-h-[65vh] 2xl:grid-cols-[25%,calc(75%-20px)]">
           <div className="border-1 flex h-full flex-col items-start gap-2.5 border border-grayColor bg-[#dfefff] px-5 pb-5 pt-20 lg:bg-none lg:pb-7 lg:pt-10 xl:px-7 xl:pb-7 xl:pt-10">
             <Link

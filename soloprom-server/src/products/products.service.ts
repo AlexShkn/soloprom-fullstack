@@ -1,5 +1,5 @@
-import { Injectable } from '@nestjs/common';
-import { Prisma, PrismaClient } from '@prisma/client';
+import { Injectable, NotFoundException } from '@nestjs/common';
+import { PrismaClient, Product } from '@prisma/client';
 import { ProductDto } from '@/scrape/crawler/dto/product.dto';
 import { ProductDescrService } from '@/product-descr/product-descr.service';
 
@@ -81,7 +81,6 @@ export class ProductsService {
                   not: null,
                 },
               }));
-
               where.AND = [...(where.AND || []), { OR: sizesConditions }];
             } else if (key === 'models') {
               where.AND = [
@@ -665,5 +664,69 @@ export class ProductsService {
         ],
       },
     });
+  }
+
+  async getRandomRecommendedProducts(
+    productId: string,
+    limit: number = 5,
+  ): Promise<Product[]> {
+    limit = Math.min(limit, 10);
+
+    const product = await prisma.product.findUnique({
+      where: { productId: productId },
+    });
+
+    if (!product) {
+      throw new NotFoundException(`Product with ID "${productId}" not found`);
+    }
+
+    const { categoryName, subcategoryName, groupsList } = product;
+
+    const where: any = {
+      productId: { not: productId },
+      categoryName: categoryName,
+      subcategoryName: subcategoryName,
+    };
+
+    const totalProducts = await prisma.product.count({ where });
+
+    if (totalProducts <= limit) {
+      return prisma.product.findMany({ where, take: limit });
+    }
+
+    if (groupsList && Array.isArray(groupsList) && groupsList.length > 0) {
+      const productsWithGroups = await prisma.product.findMany({
+        where: {
+          AND: [
+            {
+              productId: { not: productId },
+              categoryName: categoryName,
+              subcategoryName: subcategoryName,
+            },
+            {
+              OR: groupsList.map((group: any) => ({
+                groups: {
+                  some: {
+                    name: group.name,
+                  },
+                },
+              })),
+            },
+          ],
+        },
+        take: limit,
+      });
+      return productsWithGroups;
+    } else {
+      const skip = Math.max(
+        0,
+        Math.floor(Math.random() * (totalProducts - limit)),
+      );
+      return prisma.product.findMany({
+        where,
+        take: limit,
+        skip: skip,
+      });
+    }
   }
 }

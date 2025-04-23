@@ -1,5 +1,5 @@
 import { api } from '@/utils/fetch/instance.api'
-import { CardDataProps } from '@/types/products.types'
+import { CardDataProps, ProductDetailsResponse } from '@/types/products.types'
 import { unstable_noStore as noStore } from 'next/cache'
 
 interface ProductsRequest {
@@ -114,13 +114,25 @@ export async function getProductById(id: string) {
   noStore()
 
   try {
-    const response = await api.get<any>(`products/${id}`)
+    const response = await api.get<ProductDetailsResponse>(`products/${id}`)
     return response
   } catch (error) {
     console.error(`Ошибка получения продукта: ${id}`, error)
     throw error
   }
 }
+
+export async function getRecommendProducts(id: string, limit: number) {
+  try {
+    const response = await api.get<CardDataProps[]>(
+      `products/recommended/${id}?limit=${limit}`,
+    )
+    return response
+  } catch (error) {
+    console.error(`Ошибка получения продуктов: ${id}`, error)
+  }
+}
+
 export async function getProducts(p0: {
   categoryName: string
   page: number

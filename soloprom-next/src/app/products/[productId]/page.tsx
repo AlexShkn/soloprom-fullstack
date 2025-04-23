@@ -1,14 +1,13 @@
 import { Metadata } from 'next'
-import { Callback } from '@/components/Callback/Callback'
-import BreadCrumbs from '@/components/BreadCrumbs/BreadCrumbs'
-import PageWrapper from '@/app/PageWrapper'
-import { CardDataProps } from '@/types/products.types'
-import { ProductPageCard } from '@/components/ProductPage/ProductPageCard'
-import { ProductPageTabs } from '@/components/ProductPage/ProductPageTabs'
-import { ProductPageBenefits } from '@/components/ProductPage/ProductPageBenefits'
-import { getProductById, getAllProducts } from '@/utils/api/products'
-import { SubHero } from '@/components/SubHero/SubHero'
+import { CardDataProps, ProductDetailsResponse } from '@/types/products.types'
+
+import {
+  getProductById,
+  getAllProducts,
+  getRecommendProducts,
+} from '@/utils/api/products'
 import { getReviewsByProductId, getReviewsByUserId } from '@/utils/api/reviews'
+import { ProductPageClient } from './ProductPageClient'
 
 type WordsAdapt = {
   category: {
@@ -31,8 +30,6 @@ export type ParamsPromise = Promise<Params>
 
 export async function generateStaticParams() {
   const productsList = await getAllProducts()
-
-  console.log(productsList.length)
 
   if (!productsList.length) {
     console.log(`Массив товаров пуст`)
@@ -71,10 +68,10 @@ const productsTypes = {
   battery: 'Аккумулятор',
 }
 
-const getProductMetaData = (product: MetaTypes): string => {
+const getProductMetaData = (product: ProductDetailsResponse): string => {
   const { name, categoryName, productType, models, defaultPrice } = product
 
-  return `${name} ${productsTypes[categoryName]} ${productType.toLowerCase()} ${models.length ? `для ${models[0]}` : ''} за ${defaultPrice} руб. купить в СОЛОПРОМ. +7 (903) 656-93-93`
+  return `${name} ${categoryName === 'oils' || categoryName === 'tires' || (categoryName === 'battery' && productsTypes[categoryName])} ${productType.toLowerCase()} ${models?.length ? `для ${models[0]}` : ''} за ${defaultPrice} руб. купить в СОЛОПРОМ. +7 (903) 656-93-93`
 }
 
 export async function generateMetadata({
@@ -102,7 +99,7 @@ export async function generateMetadata({
       images: [
         {
           url: `${process.env.NEXT_PUBLIC_CLIENT_URL}/img/catalog/${product.img || 'not-found'}.webp`,
-          alt: `${product.title} Категория`,
+          alt: `${product.name} Категория`,
         },
       ],
     },
@@ -120,6 +117,8 @@ export default async function ProductPage({ params }: ProductPageProps) {
   const { productId } = await params
   const productData = await getProductById(productId)
   const reviewData = await getReviewsByProductId(productId)
+  const recommendList = await getRecommendProducts(productId, 10)
+  console.log(productData)
 
   if (!productData) {
     return (
@@ -130,25 +129,11 @@ export default async function ProductPage({ params }: ProductPageProps) {
   }
 
   return (
-    <PageWrapper>
-      <BreadCrumbs
-        category={productData.categoryName}
-        subcategory={productData.subcategoryName}
-      />
-
-      <section className="product-page">
-        <div className="page-container">
-          <ProductPageCard cardData={productData} />
-          <ProductPageTabs
-            productDescr={productData.productDescr}
-            reviewData={reviewData}
-            productId={productId}
-          />
-          <SubHero />
-        </div>
-      </section>
-
-      <Callback />
-    </PageWrapper>
+    <ProductPageClient
+      productData={productData}
+      reviewData={reviewData}
+      productId={productId}
+      recommendList={recommendList || []}
+    />
   )
 }

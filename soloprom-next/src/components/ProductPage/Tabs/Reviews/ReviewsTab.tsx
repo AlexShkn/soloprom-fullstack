@@ -1,16 +1,15 @@
 'use client'
 import { createReview, ReviewsTypes } from '@/utils/api/reviews'
 import React, { useState } from 'react'
-import { ProductDescription } from '../../ProductPageTabs'
 import { formatDateTime } from '@/utils/formatDateTime'
 import { useAuthStore } from '@/store/useAuthStore'
 import { useMutation, useQueryClient } from '@tanstack/react-query'
 import { toast } from 'sonner'
-import { Button, Input, Label } from '@/components/ui'
-import { api } from '@/utils/fetch/instance.api'
+import { Button, Label } from '@/components/ui'
 import { Slider } from '@/components/ui/slider'
 import { Textarea } from '@/components/ui/textarea'
 import { RatingDisplay } from '@/components/ProductsCard/RatingDisplay'
+import { ProductDescription } from '@/types/products.types'
 
 export const ReviewsTab = ({
   productDescr,
@@ -28,7 +27,7 @@ export const ReviewsTab = ({
   const [comment, setComment] = useState('')
   const [isSubmit, setIsSubmit] = useState(false)
   const queryClient = useQueryClient()
-  const [reviews, setReviews] = useState(initialReviews) // Using state for local reviews
+  const [reviews, setReviews] = useState(initialReviews)
 
   const createReviewMutation = useMutation({
     mutationFn: async () => {

@@ -8,9 +8,10 @@ import { ProductsCard } from '../ProductsCard/ProductsCard'
 
 interface Props {
   listData: CardDataProps[]
+  mod?: string
 }
 
-export const ProductListSlider: React.FC<Props> = ({ listData }) => {
+export const ProductListSlider: React.FC<Props> = ({ listData, mod }) => {
   return (
     <>
       <Swiper
@@ -63,7 +64,7 @@ export const ProductListSlider: React.FC<Props> = ({ listData }) => {
             key={item.productId}
             className="product-list-slider__item opacity-0 transition-opacity duration-300 ease-in"
           >
-            <ProductsCard cardData={item} />
+            <ProductsCard cardData={item} mod={mod} />
           </SwiperSlide>
         ))}
 
@@ -87,9 +88,9 @@ export const ProductListSlider: React.FC<Props> = ({ listData }) => {
         </div>
       </Swiper>
       <p className="product-list-slider__footnote relative pl-2.5 text-sm leading-5">
-        Мы стараемся держать цены на товары в актуальном состоянии, но лучше
-        актуальную информацию получать у наших менеджеров онлайн, в мессенджерах
-        или по телефону.
+        Цены на товары могут меняться, поэтому для получения самой свежей
+        информации рекомендуем обратиться к нашим менеджерам онлайн, в
+        мессенджерах или по телефону.
       </p>
     </>
   )
