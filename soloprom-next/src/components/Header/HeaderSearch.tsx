@@ -1,6 +1,10 @@
 import React, { useEffect, useState, useRef, useCallback } from 'react'
 import Image from 'next/image'
-import { searchPages, searchProducts } from '@/utils/api/products'
+import {
+  searchPages,
+  SearchPagesTypes,
+  searchProducts,
+} from '@/utils/api/products'
 import { Search, XIcon } from 'lucide-react'
 
 import { CardDataProps } from '@/types/products.types'
@@ -14,14 +18,6 @@ import { useMediaQuery } from '@/hooks/useMediaQuery'
 import { scrollStatusChange } from '@/utils/scrollStatusChange'
 import { Button } from '../ui'
 
-export interface PageItem {
-  url: string
-  img: string
-  title: string
-  type: string
-  description: string
-}
-
 const ITEMS_PER_PAGE = 20
 
 const HeaderSearch = () => {
@@ -29,7 +25,7 @@ const HeaderSearch = () => {
   const { setFoundProducts, setInitProducts, setInitPages } = useSearchStore()
   const [searchValue, setSearchValue] = useState<string>('')
   const [products, setProducts] = useState<CardDataProps[]>([])
-  const [pages, setPages] = useState<PageItem[]>([])
+  const [pages, setPages] = useState<SearchPagesTypes[]>([])
   const [isLoading, setIsLoading] = useState<boolean>(true)
   const [dropStatus, setDropStatus] = useState<boolean>(false)
   const [page, setPage] = useState<number>(1)
@@ -68,7 +64,7 @@ const HeaderSearch = () => {
         )
         const pagesResponse = await searchPages('value', name)
 
-        const productsData: CardDataProps[] = await productsResponse.items
+        const productsData: CardDataProps[] = productsResponse.items
 
         setTotalCount(productsResponse.total)
 

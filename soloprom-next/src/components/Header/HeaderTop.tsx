@@ -8,7 +8,7 @@ import Link from 'next/link'
 
 import { Loading } from '@/components/ui'
 import { UserButton } from '@/features/user/components/UserButton'
-import { LocateBlock } from './LocateBlock'
+import { LocateBlock } from './Locate/LocateBlock'
 import { useAuthStore } from '@/store/useAuthStore'
 
 export const HeaderTop: React.FC = () => {

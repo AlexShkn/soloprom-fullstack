@@ -1,9 +1,9 @@
-import { PageItem } from '@/components/Header/HeaderSearch'
 import { CardDataProps } from '@/types/products.types'
+import { SearchPagesTypes } from '@/utils/api/products'
 import { create } from 'zustand'
 
 interface FilterState {
-  initPages: PageItem[]
+  initPages: SearchPagesTypes[]
   initProducts: CardDataProps[]
   foundProducts: CardDataProps[]
   filters: Record<string, string[] | number>
@@ -19,7 +19,7 @@ interface FilterState {
 
   setViewMode: (mode: string) => void
   setInitProducts: (initProducts: CardDataProps[]) => void
-  setInitPages: (initPages: PageItem[]) => void
+  setInitPages: (initPages: SearchPagesTypes[]) => void
   setFoundProducts: (searchProducts: CardDataProps[]) => void
   setFilters: (filters: Record<string, string[] | number>) => void
   setFilteredPage: (filteredPage: string) => void

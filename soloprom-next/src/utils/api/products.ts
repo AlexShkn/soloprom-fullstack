@@ -18,6 +18,19 @@ export interface FetchProductsProps {
   totalPages: number
 }
 
+interface SearchProductsTypes {
+  items: CardDataProps[]
+  total: number
+}
+
+export interface SearchPagesTypes {
+  url: string
+  img: string
+  title: string
+  type: string
+  description: string
+}
+
 export async function getTotalProductCount(categoryName: string) {
   const response = await api.get<{ totalCount: number }>(
     `products/get-products`,
@@ -41,7 +54,7 @@ export async function getProductsCounts() {
 
 export async function getProductsAnyCategories(type: string, name: string) {
   try {
-    const response = await api.get<any>(`products/${type}/${name}`)
+    const response = await api.get<CardDataProps[]>(`products/${type}/${name}`)
 
     return response
   } catch (error) {
@@ -75,7 +88,7 @@ export const fetchProducts = async (
 }
 
 export async function getPopularProducts() {
-  const response = await api.get<any>(`products/popular/get`)
+  const response = await api.get<CardDataProps[]>(`products/popular/get`)
   return response
 }
 
@@ -85,9 +98,12 @@ export async function getAllProducts() {
 }
 
 export async function searchAllProducts(fields: string[], value: string) {
-  const response = await api.get<any>('products/search/product-all', {
-    params: { fields: fields.join(','), value },
-  })
+  const response = await api.get<CardDataProps[]>(
+    'products/search/product-all',
+    {
+      params: { fields: fields.join(','), value },
+    },
+  )
   return response
 }
 
@@ -97,14 +113,17 @@ export async function searchProducts(
   page: number = 1,
   limit: number = 20,
 ) {
-  const response = await api.get<any>('products/search/product', {
-    params: { fields: fields.join(','), value, page, limit },
-  })
+  const response = await api.get<SearchProductsTypes>(
+    'products/search/product',
+    {
+      params: { fields: fields.join(','), value, page, limit },
+    },
+  )
   return response
 }
 
 export async function searchPages(field: string, value: string) {
-  const response = await api.get<any>(`products/search/pages`, {
+  const response = await api.get<SearchPagesTypes[]>(`products/search/pages`, {
     params: { [field]: value },
   })
   return response

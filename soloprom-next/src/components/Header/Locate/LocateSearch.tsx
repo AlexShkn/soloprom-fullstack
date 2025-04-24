@@ -3,22 +3,26 @@ import { LocateSearchTypes } from './LocateBlock'
 import CloseButton from '@/components/ui/CloseButton'
 import { useScrollCloseableWindow } from '@/hooks/useScrollCloseableWindow'
 import { useLocateStore } from '@/store/useLocateStore'
-import { Loading } from '../ui'
+import { Loading } from '../../ui'
 import { Origami } from 'lucide-react'
 
 const defaultCities = [
-  { city: 'Воронеж', oblast: '' },
-  { city: 'Москва', oblast: '' },
-  { city: 'Санкт-Петербург', oblast: '' },
-  { city: 'Краснодар', oblast: '' },
-  { city: 'Брянск', oblast: '' },
-  { city: 'Краснодар', oblast: '' },
-  { city: 'Волгоград', oblast: '' },
-  { city: 'Липецк', oblast: '' },
-  { city: 'Донецк', oblast: '' },
-  { city: 'Луганск', oblast: '' },
-  { city: 'Ростов на дону', oblast: '' },
+  { city: 'Воронеж' },
+  { city: 'Москва' },
+  { city: 'Санкт-Петербург' },
+  { city: 'Краснодар' },
+  { city: 'Брянск' },
+  { city: 'Краснодар' },
+  { city: 'Волгоград' },
+  { city: 'Липецк' },
+  { city: 'Донецк' },
+  { city: 'Луганск' },
+  { city: 'Ростов на дону' },
 ]
+
+export interface CityType {
+  city: string
+}
 
 const LocateSearch: React.FC<LocateSearchTypes> = ({
   setSearchWindowOpen,
@@ -28,7 +32,8 @@ const LocateSearch: React.FC<LocateSearchTypes> = ({
 }) => {
   const [searchQuery, setSearchQuery] = useState('')
   const [isLoad, setIsLoad] = useState(false)
-  const [filteredCities, setFilteredCities] = useState<any[]>(defaultCities)
+  const [filteredCities, setFilteredCities] =
+    useState<CityType[]>(defaultCities)
   const [isInitialLoad, setIsInitialLoad] = useState(true)
   const { setSelectedCity, cities, fetchCitiesData, loading } = useLocateStore()
   const windowRef = useRef<HTMLDivElement>(null)
@@ -38,7 +43,7 @@ const LocateSearch: React.FC<LocateSearchTypes> = ({
     setSearchQuery(e.target.value)
   }
 
-  const selectLocateCity = (city: { city: string; oblast: string }) => {
+  const selectLocateCity = (city: { city: string }) => {
     setLocateCity(city.city)
     setSelectedCity(city.city)
     localStorage.setItem('selectedLocate', city.city)
@@ -60,7 +65,7 @@ const LocateSearch: React.FC<LocateSearchTypes> = ({
       return
     }
 
-    setIsLoad(true) // Start loading
+    setIsLoad(true)
     if (debounceRef.current) {
       clearTimeout(debounceRef.current)
     }
@@ -78,12 +83,12 @@ const LocateSearch: React.FC<LocateSearchTypes> = ({
         setFilteredCities(filterCities(searchQuery, defaultCities))
       }
 
-      setIsLoad(false) // End loading
-    }, 300) // Debounce delay of 300ms
+      setIsLoad(false)
+    }, 300)
 
     return () => {
       if (debounceRef.current) {
-        clearTimeout(debounceRef.current) // Cleanup timeout
+        clearTimeout(debounceRef.current)
       }
     }
   }, [searchQuery, cities, fetchCitiesData, filterCities, isInitialLoad])
@@ -129,8 +134,8 @@ const LocateSearch: React.FC<LocateSearchTypes> = ({
         >
           {isLoad ? (
             <Loading classNames="text-accentBlue" spinClasses="h-8 w-8" />
-          ) : Object.keys(filteredCities).length ? (
-            filteredCities.map((city: any, index) => (
+          ) : (
+            filteredCities.map((city: CityType, index) => (
               <li
                 key={index}
                 onClick={() => selectLocateCity(city)}
@@ -139,11 +144,14 @@ const LocateSearch: React.FC<LocateSearchTypes> = ({
                 {city.city}
               </li>
             ))
-          ) : (
-            <div className="flex flex-col items-center gap-2 py-6 text-center font-medium text-darkBlue">
+          )}
+          {!isLoad && !filterCities.length ? (
+            <li className="flex flex-col items-center gap-2 py-6 text-center font-medium text-darkBlue">
               <Origami className="h-6 w-6 stroke-darkBlue" />
               Нет города
-            </div>
+            </li>
+          ) : (
+            ''
           )}
         </ul>
       </div>
