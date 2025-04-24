@@ -1,5 +1,5 @@
 import React from 'react'
-import CloseButton from '@/ui/CloseButton'
+import CloseButton from '@/components/ui/CloseButton'
 import { useLocateStore } from '@/store/useLocateStore'
 import { LocateSearchTypes } from './LocateBlock'
 import { CityType } from '@/api/cities'

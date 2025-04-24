@@ -9,7 +9,7 @@ import {
   TooltipContent,
   TooltipProvider,
   TooltipTrigger,
-} from '@/ui/tooltip'
+} from '@/components/ui/tooltip'
 
 import { ArrowLeft } from 'lucide-react'
 

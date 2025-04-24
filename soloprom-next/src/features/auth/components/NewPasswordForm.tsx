@@ -16,7 +16,7 @@ import {
   FormLabel,
   FormMessage,
   Input,
-} from '@/ui'
+} from '@/components/ui'
 
 import { useNewPasswordMutation } from '@/hooks/auth/useNewPasswordMutation'
 import { NewPasswordSchema, TypeNewPasswordSchema } from '../schemes'

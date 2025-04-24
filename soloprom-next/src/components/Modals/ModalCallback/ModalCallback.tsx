@@ -12,7 +12,7 @@ import {
   CallbackSchema,
 } from '@/features/auth/schemes/callback.schema'
 
-import CloseButton from '@/ui/CloseButton'
+import CloseButton from '@/components/ui/CloseButton'
 import {
   Button,
   Form,
@@ -22,13 +22,13 @@ import {
   FormLabel,
   FormMessage,
   Input,
-} from '@/ui'
+} from '@/components/ui'
 import './ModalCallback.scss'
 import { FastOrderTypes, useModalsStore } from '@/store/useModalsStore'
 import { getDigFormat } from '@/supports'
 import { useLocateStore } from '@/store/useLocateStore'
 import Image from 'next/image'
-import { Textarea } from '@/ui/textarea'
+import { Textarea } from '@/components/ui/textarea'
 import { ModalCloseButton } from '../ModalCloseButton'
 
 interface ModalProps {

@@ -3,7 +3,7 @@
 import { useMutation } from '@tanstack/react-query'
 import { useRouter } from 'next/navigation'
 
-import { Button } from '@/ui'
+import { Button } from '@/components/ui'
 import { authService } from '../services'
 
 export function AuthSocial() {

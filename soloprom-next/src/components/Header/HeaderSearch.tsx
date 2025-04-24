@@ -16,7 +16,7 @@ import useSearchStore from '@/store/useSearchStore'
 import clsx from 'clsx'
 import { useMediaQuery } from '@/hooks/useMediaQuery'
 import { scrollStatusChange } from '@/utils/scrollStatusChange'
-import { Button } from '../../ui'
+import { Button } from '../ui'
 
 const ITEMS_PER_PAGE = 20
 

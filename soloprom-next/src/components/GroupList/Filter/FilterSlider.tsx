@@ -1,6 +1,6 @@
 'use client'
-import { Input } from '@/ui'
-import { RangeSlider } from '@/ui/RangeSlider'
+import { Input } from '@/components/ui'
+import { RangeSlider } from '@/components/ui/RangeSlider'
 import React, { useState } from 'react'
 
 interface Props {

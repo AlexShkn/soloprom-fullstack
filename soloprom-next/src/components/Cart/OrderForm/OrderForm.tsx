@@ -6,7 +6,7 @@ import { toast } from 'sonner'
 import { TypeOrderSchema, OrderSchema } from '@/features/auth/schemes'
 import { createOrder } from '../../../api/order'
 
-import { Button } from '@/ui'
+import { Button } from '@/components/ui'
 
 import './OrderForm.scss'
 import { useCartStore } from '@/store/useCartStore'

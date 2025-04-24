@@ -1,7 +1,7 @@
 'use client'
 import { useModalsStore } from '@/store/useModalsStore'
 import React from 'react'
-import { Button } from '../../ui'
+import { Button } from '../ui'
 
 interface Props {
   className?: string

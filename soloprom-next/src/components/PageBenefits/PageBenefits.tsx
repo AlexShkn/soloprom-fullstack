@@ -9,7 +9,7 @@ import {
   CheckCircle,
 } from 'lucide-react' // Временные иконки
 import { cn } from '@/lib/utils'
-import { Button } from '../../ui'
+import { Button } from '../ui'
 import { useModalsStore } from '@/store/useModalsStore'
 
 export const PageBenefits = () => {

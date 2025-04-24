@@ -7,7 +7,7 @@ import Skeleton from 'react-loading-skeleton'
 import 'react-loading-skeleton/dist/skeleton.css'
 import { Sort } from '@/components/GroupList/Sort'
 import { ViewSetting } from '@/components/GroupList/ViewSetting'
-import { Button } from '@/ui'
+import { Button } from '@/components/ui'
 import clsx from 'clsx'
 
 interface Props {

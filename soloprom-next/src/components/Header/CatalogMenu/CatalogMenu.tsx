@@ -5,7 +5,7 @@ import Link from 'next/link'
 
 import { useMediaQuery } from '@/hooks/useMediaQuery'
 
-import CloseButton from '@/ui/CloseButton'
+import CloseButton from '@/components/ui/CloseButton'
 
 import TabCategory from './TabCategory'
 import { useCatalogMenuStore } from '@/store/useCatalogMenuStore'

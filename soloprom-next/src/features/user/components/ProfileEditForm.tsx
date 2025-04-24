@@ -18,7 +18,7 @@ import {
   CardFooter,
   FormDescription,
   Switch,
-} from '@/ui'
+} from '@/components/ui'
 
 import { SettingsSchema, TypeSettingsSchema } from '../schemes'
 import { useUpdateProfileMutation } from '../hooks/useUpdateProfileMutation'

@@ -4,7 +4,7 @@ import {
   InputOTPGroup,
   InputOTPSlot,
   InputOTPSeparator,
-} from '@/ui/input-otp'
+} from '@/components/ui/input-otp'
 import { ControllerRenderProps } from 'react-hook-form'
 
 interface InputOTPHookFormProps {

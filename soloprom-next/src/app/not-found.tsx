@@ -6,7 +6,7 @@ import TransitionWrapper from '@/providers/TransitionWrapper'
 
 import { Home, Search } from 'lucide-react' // Импортируем иконки
 import Image from 'next/image'
-import { Button } from '@/ui'
+import { Button } from '@/components/ui'
 
 export default function NotFound() {
   const [mounted, setMounted] = useState(false) // Добавляем useState для отслеживания монтирования

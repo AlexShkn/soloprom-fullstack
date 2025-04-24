@@ -4,7 +4,7 @@ import React, { useEffect, useState, useCallback } from 'react'
 import { searchPages, searchAllProducts } from '../../../api/products'
 import { SearchFilterBlock } from './SearchFilterBlock'
 import useSearchStore from '@/store/useSearchStore'
-import { Loading } from '@/ui'
+import { Loading } from '@/components/ui'
 import Link from 'next/link'
 import Image from 'next/image'
 

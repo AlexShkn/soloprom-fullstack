@@ -14,7 +14,7 @@ const mainSliderData = [
       'Широкий ассортимент аккумуляторов, шин и масел для специальной техники',
     img: '/img/hero/main/trucks-new.webp',
     link: '/catalog',
-    btnText: 'ПЕРЕЙТИ В КАТАЛОГ',
+    btnText: 'Перейти в каталог',
     alt: '',
   },
   {
@@ -86,7 +86,7 @@ const HeroMainSlider = () => {
 
               <Link
                 href={slide.link}
-                className="button relative z-10 rounded-custom p-5 font-bold uppercase"
+                className="button relative z-10 rounded-custom p-5 font-bold leading-none"
               >
                 {slide.btnText}
               </Link>

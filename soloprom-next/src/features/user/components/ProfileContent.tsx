@@ -1,7 +1,7 @@
 'use client'
 import React from 'react'
 
-import { CardHeader, CardTitle } from '@/ui'
+import { CardHeader, CardTitle } from '@/components/ui'
 import { OrderList } from './OrderList'
 import { IUser } from '@/features/auth/types'
 import { ProfileEditForm } from './ProfileEditForm'

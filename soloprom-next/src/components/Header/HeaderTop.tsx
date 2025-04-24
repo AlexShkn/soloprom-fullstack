@@ -6,7 +6,7 @@ import HeaderMenu from './HeaderMenu'
 
 import Link from 'next/link'
 
-import { Loading } from '@/ui'
+import { Loading } from '@/components/ui'
 import { UserButton } from '@/features/user/components/UserButton'
 import { LocateBlock } from './Locate/LocateBlock'
 import { useAuthStore } from '@/store/useAuthStore'

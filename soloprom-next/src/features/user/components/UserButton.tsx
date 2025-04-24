@@ -15,7 +15,7 @@ import {
   DropdownMenuTrigger,
   Loading,
   Skeleton,
-} from '@/ui'
+} from '@/components/ui'
 
 import { useLogoutMutation } from '../hooks'
 
@@ -47,18 +47,20 @@ export function UserButton() {
       <DropdownMenuContent className="w-40 bg-white" align="end">
         <Link
           href={'/profile'}
-          className="link-hover flex items-center px-2 py-1.5"
+          className="flex items-center px-2 py-1.5 transition-colors hover:text-accentBlue"
         >
           <LuMenu className="mr-2 size-4" />
           Кабинет
         </Link>
         <DropdownMenuItem
-          className="link-hover cursor-pointer"
+          className="cursor-pointer px-2 py-1.5"
           disabled={isLoadingLogout}
           onClick={handleLogout}
         >
-          <LuLogOut className="mr-2 size-4" />
-          Выйти
+          <span className="flex items-center transition-colors hover:text-accentBlue">
+            <LuLogOut className="mr-2 size-4" />
+            Выйти
+          </span>
         </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>

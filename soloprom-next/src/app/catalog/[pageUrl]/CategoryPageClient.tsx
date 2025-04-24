@@ -14,7 +14,7 @@ import {
   PageDataTypes,
 } from '@/types/products.types'
 import { CategoryPageSlider } from '@/components/CategoryPageSlider/CategoryPageSlider'
-import { Loading } from '@/ui'
+import { Loading } from '@/components/ui'
 import CategoryPageParams from './CategoryPageParams'
 import useFilterStore from '@/store/useFilterStore'
 import { PageBenefits } from '@/components/PageBenefits/PageBenefits'

@@ -30,8 +30,8 @@ export const FavoriteTabs: React.FC<FavoriteTabsProps> = ({ initialData }) => {
                   setCurrantTab(caption.type as 'tires' | 'battery' | 'oils')
                 }
                 key={caption.type}
-                className={`border-1 flex cursor-pointer items-center gap-2 rounded-custom border border-[#d1d1d1] px-5 py-4 text-center font-medium ${
-                  caption.type === currantTab ? 'bg-hoverBlue text-white' : ''
+                className={`border-1 flex cursor-pointer items-center gap-2 rounded-custom border border-[#d1d1d1] px-5 py-4 text-center font-medium leading-none ${
+                  caption.type === currantTab ? 'bg-accentBlue text-white' : ''
                 }`}
               >
                 <svg

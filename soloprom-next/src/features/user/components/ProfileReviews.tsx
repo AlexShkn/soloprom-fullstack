@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from 'react'
 import Link from 'next/link'
 import { formatDateTime } from '@/utils/formatDateTime'
-import { Loading } from '@/ui'
+import { Loading } from '@/components/ui'
 import { IUser } from '@/features/auth/types'
 import Skeleton from 'react-loading-skeleton'
 import 'react-loading-skeleton/dist/skeleton.css'

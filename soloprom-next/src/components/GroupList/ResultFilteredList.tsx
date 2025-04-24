@@ -6,7 +6,7 @@ import { Pagination } from './Pagination'
 import { Sort } from './Sort'
 import { ViewSetting } from './ViewSetting'
 import { DynamicPagination } from './DynamicPagination'
-import { Button } from '../../ui'
+import { Button } from '../ui'
 
 import Skeleton from 'react-loading-skeleton'
 import 'react-loading-skeleton/dist/skeleton.css'

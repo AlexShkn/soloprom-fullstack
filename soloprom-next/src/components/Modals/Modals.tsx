@@ -5,7 +5,7 @@ import ModalCallback from './ModalCallback/ModalCallback'
 import { useModalsStore } from '@/store/useModalsStore'
 
 import './Modals.scss'
-import { SharedModal } from '../../ui/SharedModal'
+import { SharedModal } from '../ui/SharedModal'
 
 const Modals = () => {
   const { shareModal, callbackIsOpen, fastOrderProduct } = useModalsStore()
