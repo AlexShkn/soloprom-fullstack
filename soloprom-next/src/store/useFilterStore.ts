@@ -38,7 +38,7 @@ const useFilterStore = create<FilterState>((set) => ({
   sort: '',
   dynamicCurrentPage: 1,
   totalProductsCount: 0,
-  dataIsLoading: true,
+  dataIsLoading: false,
   hasFilters: false,
   priceRange: { min: undefined, max: undefined },
   viewMode: 'grid',

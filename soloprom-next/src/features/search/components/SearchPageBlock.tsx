@@ -11,7 +11,7 @@ import Image from 'next/image'
 export const SearchPageBlock = () => {
   const searchParams = useSearchParams()
   const initialSearchValue = searchParams.get('search') ?? ''
-  const [searchValue, setSearchValue] = useState(initialSearchValue)
+  const [searchValue, setSearchValue] = useState('')
   const [isLoading, setIsLoading] = useState(true)
 
   const {
@@ -25,6 +25,8 @@ export const SearchPageBlock = () => {
   } = useSearchStore()
 
   const fetchData = useCallback(async (searchTerm: string) => {
+    console.log('fetch', searchTerm)
+
     if (!searchTerm) {
       setFoundProducts([])
       return
@@ -48,13 +50,10 @@ export const SearchPageBlock = () => {
 
   useEffect(() => {
     if (initialSearchValue) {
-      console.log(initialSearchValue)
-
-      setSearchValue(initialSearchValue)
-
       fetchData(initialSearchValue)
+      setSearchValue(initialSearchValue)
     }
-  }, [initialSearchValue])
+  }, [])
 
   let content
 
@@ -77,7 +76,7 @@ export const SearchPageBlock = () => {
 
   return (
     <div className="page-container pt-10">
-      {initialSearchValue ? (
+      {searchValue ? (
         <>
           <div className="mb-10">
             <h1 className="text-2xl">
