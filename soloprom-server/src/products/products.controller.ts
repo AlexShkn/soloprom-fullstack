@@ -6,8 +6,13 @@ import {
   Post,
   Query,
   ParseIntPipe,
+  BadRequestException,
 } from '@nestjs/common';
 import { ProductsService } from './products.service';
+
+interface ProductIdDto {
+  ids: string[];
+}
 
 @Controller('products')
 export class ProductsController {
@@ -48,6 +53,14 @@ export class ProductsController {
   @Get(':productId')
   async getProductById(@Param('productId') productId: string) {
     return this.productService.getProductById(productId);
+  }
+
+  @Post('view')
+  async getViewProductsById(@Body() body: ProductIdDto) {
+    const productIds = body.ids;
+
+    console.log(productIds);
+    return this.productService.getViewProductsById(productIds);
   }
 
   @Get('category/:name')

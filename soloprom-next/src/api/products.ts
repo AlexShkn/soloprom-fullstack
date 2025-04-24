@@ -141,6 +141,20 @@ export async function getProductById(id: string) {
   }
 }
 
+export const getViewProductsByIds = async (
+  ids: string[],
+): Promise<CardDataProps[]> => {
+  try {
+    const response = await api.post<CardDataProps[]>('products/view', {
+      ids: ids,
+    })
+    return response
+  } catch (error) {
+    console.error('Ошибка при создании заказа:', error)
+    return []
+  }
+}
+
 export async function getRecommendProducts(id: string, limit: number) {
   try {
     const response = await api.get<CardDataProps[]>(

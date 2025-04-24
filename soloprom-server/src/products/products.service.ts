@@ -170,6 +170,36 @@ export class ProductsService {
     };
   }
 
+  async getViewProductsById(idArray: string[]) {
+    try {
+      console.log(idArray);
+      const products = await Promise.all(
+        idArray.map(async (id) => {
+          try {
+            const product = await prisma.product.findUnique({
+              where: { productId: id },
+            });
+
+            console.log(product);
+            return product;
+          } catch (error) {
+            console.error(`Error fetching product with ID ${id}:`, error);
+            return null;
+          }
+        }),
+      );
+
+      const filteredProducts = products.filter((product) => product !== null);
+
+      return filteredProducts;
+    } catch (error) {
+      console.error('Error in getViewProductsById:', error);
+      return [];
+    } finally {
+      await prisma.$disconnect();
+    }
+  }
+
   async getProductsByCategory(categoryName: string) {
     const category = await prisma.category.findUnique({
       where: { name: categoryName },
