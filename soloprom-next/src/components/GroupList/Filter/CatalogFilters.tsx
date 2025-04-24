@@ -81,7 +81,9 @@ const CatalogFilters: React.FC<Props> = ({
   // }, [])
 
   useEffect(() => {
-    setDataIsLoading(true)
+    if (hasFilters) {
+      setDataIsLoading(true)
+    }
 
     if (Object.keys(filters).length) {
       setInternalFilters(filters)

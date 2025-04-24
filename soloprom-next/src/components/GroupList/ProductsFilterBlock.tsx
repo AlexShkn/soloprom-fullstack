@@ -60,6 +60,8 @@ export const ProductsFilterBlock: React.FC<Props> = ({
   const debouncedSort = useDebounce(sort, 500)
 
   const fetchData = useCallback(async () => {
+    console.log('fetch')
+
     if (fetchControllerRef.current) {
       fetchControllerRef.current.abort()
     }
@@ -157,7 +159,7 @@ export const ProductsFilterBlock: React.FC<Props> = ({
   }, [categoryName, filteredPage])
 
   useEffect(() => {
-    if (!initialLoad) {
+    if (!initialLoad && hasFilters) {
       updateUrl()
       setProducts([])
       fetchData()
