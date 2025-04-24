@@ -5,8 +5,8 @@ import {
   getProductById,
   getAllProducts,
   getRecommendProducts,
-} from '@/utils/api/products'
-import { getReviewsByProductId, getReviewsByUserId } from '@/utils/api/reviews'
+} from '../../../api/products'
+import { getReviewsByProductId, getReviewsByUserId } from '../../../api/reviews'
 import { ProductPageClient } from './ProductPageClient'
 
 type WordsAdapt = {

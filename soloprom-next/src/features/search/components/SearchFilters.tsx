@@ -1,12 +1,12 @@
 'use client'
 import React, { useState, useEffect, useCallback, useRef } from 'react'
-import { Accordion } from '@/components/ui/accordion'
+import { Accordion } from '@/ui/accordion'
 import useSearchStore from '@/store/useSearchStore'
 import pagesDataRawRaw from '@/data/products/pagesData.json'
 import Skeleton from 'react-loading-skeleton'
 import 'react-loading-skeleton/dist/skeleton.css'
 
-import { Button } from '@/components/ui'
+import { Button } from '@/ui'
 import { declension } from '@/components/Cart/CartResult'
 import { FilterData } from '@/types/products.types'
 import {

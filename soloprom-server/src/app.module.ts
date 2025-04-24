@@ -21,6 +21,7 @@ import { TelegramModule } from './telegram/telegram.module';
 import { OrderModule } from './order/order.module';
 import { StatisticsModule } from './statistics/statistics.module';
 import { ReviewsModule } from './reviews/reviews.module';
+import { CitiesModule } from './cities/cities.module';
 
 @Module({
   imports: [
@@ -46,6 +47,7 @@ import { ReviewsModule } from './reviews/reviews.module';
     TelegramModule,
     OrderModule,
     StatisticsModule,
+    CitiesModule,
   ],
   controllers: [],
   providers: [ScraperJob],

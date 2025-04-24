@@ -9,7 +9,7 @@ import { ContactsMap } from '@/components/ContactsMap/ContactsMap'
 import PageWrapper from './PageWrapper'
 import TransitionWrapper from '@/providers/TransitionWrapper'
 import { FavoriteTabs } from '@/components/FavoriteTabs/FavoriteTabs'
-import { getPopularProducts } from '@/utils/api/products'
+import { getPopularProducts } from '../api/products'
 import { CardDataProps, FavoriteList } from '@/types/products.types'
 
 export const metadata = {

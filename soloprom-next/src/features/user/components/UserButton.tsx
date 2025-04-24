@@ -15,7 +15,7 @@ import {
   DropdownMenuTrigger,
   Loading,
   Skeleton,
-} from '@/components/ui'
+} from '@/ui'
 
 import { useLogoutMutation } from '../hooks'
 

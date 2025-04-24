@@ -4,7 +4,7 @@ import {
   fetchProducts,
   getProductsAnyCategories,
   getTotalProductCount,
-} from '@/utils/api/products'
+} from '../../../../api/products'
 import { redirect } from 'next/navigation'
 import { FilterData } from '@/types/products.types'
 import CategoryPageClient from '../CategoryPageClient'

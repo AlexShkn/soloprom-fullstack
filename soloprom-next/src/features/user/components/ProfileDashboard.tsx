@@ -14,7 +14,7 @@ import {
   LogOut,
   MessagesSquare,
 } from 'lucide-react'
-import { Loading } from '@/components/ui'
+import { Loading } from '@/ui'
 import { ProfileContent } from './ProfileContent'
 import { useCompareStore } from '@/store/useCompareStore'
 import { useFavoriteStore } from '@/store/useFavoriteStore'

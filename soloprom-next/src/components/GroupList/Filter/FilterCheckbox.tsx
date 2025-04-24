@@ -1,6 +1,6 @@
 'use client'
-import { Input } from '@/components/ui'
-import { Checkbox } from '@/components/ui/checkbox'
+import { Input } from '@/ui'
+import { Checkbox } from '@/ui/checkbox'
 import { ChevronDown, ChevronUp, Search } from 'lucide-react'
 import React, { useState, useCallback, useEffect } from 'react'
 

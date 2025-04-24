@@ -16,7 +16,7 @@ import {
   FormLabel,
   FormMessage,
   Input,
-} from '@/components/ui'
+} from '@/ui'
 
 import { useResetPasswordMutation } from '@/hooks/auth/useResetPasswordMutation'
 import { ResetPasswordSchema, TypeResetPasswordSchema } from '../schemes'

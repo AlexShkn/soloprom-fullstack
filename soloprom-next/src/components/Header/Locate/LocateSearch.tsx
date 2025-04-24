@@ -1,28 +1,26 @@
-import React, { useRef, useState, useCallback, useEffect } from 'react'
+import React, { useRef, useState, useEffect } from 'react'
 import { LocateSearchTypes } from './LocateBlock'
-import CloseButton from '@/components/ui/CloseButton'
+import CloseButton from '@/ui/CloseButton'
 import { useScrollCloseableWindow } from '@/hooks/useScrollCloseableWindow'
 import { useLocateStore } from '@/store/useLocateStore'
-import { Loading } from '../../ui'
+import { Input, Loading } from '../../../ui'
 import { Origami } from 'lucide-react'
+import { CityType, getCityForName } from '@/api/cities'
+import { useDebounce } from '@/hooks/useDebounce'
 
 const defaultCities = [
-  { city: 'Воронеж' },
-  { city: 'Москва' },
-  { city: 'Санкт-Петербург' },
-  { city: 'Краснодар' },
-  { city: 'Брянск' },
-  { city: 'Краснодар' },
-  { city: 'Волгоград' },
-  { city: 'Липецк' },
-  { city: 'Донецк' },
-  { city: 'Луганск' },
-  { city: 'Ростов на дону' },
+  { name: 'Воронеж' },
+  { name: 'Москва' },
+  { name: 'Санкт-Петербург' },
+  { name: 'Краснодар' },
+  { name: 'Брянск' },
+  { name: 'Краснодар' },
+  { name: 'Волгоград' },
+  { name: 'Ростов на дону' },
+  { name: 'Липецк' },
+  { name: 'Донецк' },
+  { name: 'Луганск' },
 ]
-
-export interface CityType {
-  city: string
-}
 
 const LocateSearch: React.FC<LocateSearchTypes> = ({
   setSearchWindowOpen,
@@ -30,68 +28,47 @@ const LocateSearch: React.FC<LocateSearchTypes> = ({
   setIsConfirm,
   searchWindowOpen,
 }) => {
-  const [searchQuery, setSearchQuery] = useState('')
-  const [isLoad, setIsLoad] = useState(false)
-  const [filteredCities, setFilteredCities] =
-    useState<CityType[]>(defaultCities)
-  const [isInitialLoad, setIsInitialLoad] = useState(true)
-  const { setSelectedCity, cities, fetchCitiesData, loading } = useLocateStore()
+  const [searchValue, setSearchValue] = useState('')
+  const [citiesList, setCitiesList] = useState<CityType[]>(defaultCities)
+  const [dataIsLoading, setDataIsLoading] = useState(false)
+
+  const { setSelectedCity } = useLocateStore()
+
   const windowRef = useRef<HTMLDivElement>(null)
-  const debounceRef = useRef<NodeJS.Timeout | null>(null)
 
-  const handleSearchInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setSearchQuery(e.target.value)
+  const debouncedSearchValue = useDebounce(searchValue, 500)
+
+  const fetchCities = async (searchValue: string) => {
+    setDataIsLoading(true)
+
+    const cities = await getCityForName(searchValue)
+    console.log(cities)
+
+    try {
+      setCitiesList(cities)
+      setDataIsLoading(false)
+    } catch (error) {
+      console.error('Не удалось получить список городов:', error)
+    }
   }
-
-  const selectLocateCity = (city: { city: string }) => {
-    setLocateCity(city.city)
-    setSelectedCity(city.city)
-    localStorage.setItem('selectedLocate', city.city)
-    setIsConfirm(false)
-    setSearchWindowOpen(false)
-  }
-
-  const filterCities = useCallback((searchTerm: string, cityList: any[]) => {
-    const searchTermLower = searchTerm.toLowerCase()
-    return cityList.filter((item: any) =>
-      item.city.toLowerCase().startsWith(searchTermLower),
-    )
-  }, [])
 
   useEffect(() => {
-    if (searchQuery.trim() === '') {
-      setFilteredCities(defaultCities)
-      setIsInitialLoad(true)
+    if (debouncedSearchValue.trim() === '') {
+      setCitiesList(defaultCities)
+      setDataIsLoading(false)
       return
     }
 
-    setIsLoad(true)
-    if (debounceRef.current) {
-      clearTimeout(debounceRef.current)
-    }
+    fetchCities(debouncedSearchValue)
+  }, [debouncedSearchValue])
 
-    debounceRef.current = setTimeout(() => {
-      if (cities.length === 0) {
-        fetchCitiesData().then(() => {
-          setIsInitialLoad(false)
-        })
-      }
-
-      if (!isInitialLoad && cities.length > 0) {
-        setFilteredCities(filterCities(searchQuery, cities))
-      } else {
-        setFilteredCities(filterCities(searchQuery, defaultCities))
-      }
-
-      setIsLoad(false)
-    }, 300)
-
-    return () => {
-      if (debounceRef.current) {
-        clearTimeout(debounceRef.current)
-      }
-    }
-  }, [searchQuery, cities, fetchCitiesData, filterCities, isInitialLoad])
+  const selectLocateCity = (city: { name: string }) => {
+    setLocateCity(city.name)
+    setSelectedCity(city.name)
+    localStorage.setItem('selectedLocate', city.name)
+    setIsConfirm(false)
+    setSearchWindowOpen(false)
+  }
 
   useScrollCloseableWindow({
     isOpen: searchWindowOpen,
@@ -101,6 +78,14 @@ const LocateSearch: React.FC<LocateSearchTypes> = ({
   const closeLocateWindows = () => {
     setIsConfirm(false)
     setSearchWindowOpen(false)
+  }
+
+  const handleSearchInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setSearchValue(e.target.value)
+
+    if (searchValue && !dataIsLoading) {
+      setDataIsLoading(true)
+    }
   }
 
   return (
@@ -120,32 +105,32 @@ const LocateSearch: React.FC<LocateSearchTypes> = ({
           <svg className="icon absolute left-2.5 top-[50%] h-5 w-5 translate-y-[-50%] stroke-[#c2c5da]">
             <use xlinkHref="/img/sprite.svg#search"></use>
           </svg>
-          <input
+          <Input
             onChange={handleSearchInputChange}
-            type="text"
+            type="search"
             name="city-search"
             placeholder="Ваш город"
             autoComplete="off"
-            className="h-full w-full rounded bg-[#f4f5fa] py-4 pl-10 pr-8 text-black placeholder:text-sm placeholder:text-[#c2c5da] focus:outline focus:outline-1 focus:outline-darkBlue"
+            className="h-full w-full rounded bg-[#f4f5fa] py-4 pl-10 pr-8 text-black placeholder:text-sm placeholder:text-[#c2c5da]"
           />
         </div>
         <ul
           className={`scroll-bar flex h-full max-h-[250px] min-h-24 flex-col gap-1 overflow-y-auto overflow-x-hidden overscroll-contain`}
         >
-          {isLoad ? (
+          {dataIsLoading ? (
             <Loading classNames="text-accentBlue" spinClasses="h-8 w-8" />
           ) : (
-            filteredCities.map((city: CityType, index) => (
+            citiesList.map((city: CityType, index) => (
               <li
                 key={index}
                 onClick={() => selectLocateCity(city)}
                 className="header-top__locate-item link-hover cursor-pointer py-1 text-sm font-medium text-darkBlue"
               >
-                {city.city}
+                {city.name}
               </li>
             ))
           )}
-          {!isLoad && !filterCities.length ? (
+          {!dataIsLoading && !citiesList.length ? (
             <li className="flex flex-col items-center gap-2 py-6 text-center font-medium text-darkBlue">
               <Origami className="h-6 w-6 stroke-darkBlue" />
               Нет города

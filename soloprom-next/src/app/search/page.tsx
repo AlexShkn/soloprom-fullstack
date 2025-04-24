@@ -1,5 +1,5 @@
 import PageWrapper from '../PageWrapper'
-import { Loading } from '@/components/ui'
+import { Loading } from '@/ui'
 import { SearchPageBlock } from '@/features/search/components/SearchPageBlock'
 import React, { Suspense } from 'react'
 

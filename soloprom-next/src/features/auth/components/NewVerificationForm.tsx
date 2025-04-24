@@ -3,7 +3,7 @@
 import { useSearchParams } from 'next/navigation'
 import { useEffect, Suspense } from 'react'
 
-import { Loading } from '@/components/ui'
+import { Loading } from '@/ui'
 import { useVerificationMutation } from '@/hooks/auth/useVerificationMutation'
 import { AuthWrapper } from './AuthWrapper'
 

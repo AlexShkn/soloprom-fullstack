@@ -9,7 +9,7 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-} from '@/components/ui'
+} from '@/ui'
 
 import { AuthSocial } from './AuthSocial'
 import { LogoLink } from './LogoLink'

@@ -1,6 +1,6 @@
 'use client'
 import React, { useState, useEffect, useCallback, useRef } from 'react'
-import { Accordion } from '@/components/ui/accordion'
+import { Accordion } from '@/ui/accordion'
 import { FilterCheckbox } from './FilterCheckbox'
 import { FilterInterval } from './FilterInterval'
 import { FilterItem } from './FilterItem'
@@ -8,7 +8,7 @@ import { transformJson } from '@/components/CategoryPageHero/SidePanel/SidePanel
 import { CardDataProps, FilterData } from '@/types/products.types'
 import useFilterStore from '@/store/useFilterStore'
 import { FilterList } from './FilterList'
-import { Button } from '@/components/ui'
+import { Button } from '@/ui'
 import { declension } from '@/components/Cart/CartResult'
 
 import pagesDataRaw from '@/data/products/pagesData.json'

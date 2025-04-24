@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 
-import { getProductsCounts } from '@/utils/api/products'
+import { getProductsCounts } from '../../api/products'
 import { SubcategoryCount } from '../CategoryProductsSlider/CategoryProductsSlider'
 import initialCategoriesData from '../../data/products/categoriesData.json'
 

@@ -11,7 +11,7 @@ import { Callback } from '@/components/Callback/Callback'
 import BreadCrumbs from '@/components/BreadCrumbs/BreadCrumbs'
 import { SubHero } from '@/components/SubHero/SubHero'
 
-import { ReviewsTypes } from '@/utils/api/reviews'
+import { ReviewsTypes } from '../../../api/reviews'
 
 interface Props {
   productData: ProductDetailsResponse

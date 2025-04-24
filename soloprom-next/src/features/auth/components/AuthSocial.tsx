@@ -3,7 +3,7 @@
 import { useMutation } from '@tanstack/react-query'
 import { useRouter } from 'next/navigation'
 
-import { Button } from '@/components/ui'
+import { Button } from '@/ui'
 import { authService } from '../services'
 
 export function AuthSocial() {
@@ -95,7 +95,7 @@ export function AuthSocial() {
           <span className="w-full border-t" />
         </div>
         <div className="relative flex justify-center text-xs uppercase">
-          <span className="text-muted-foreground bg-background px-2">Или</span>
+          <span className="bg-background px-2 text-muted-foreground">Или</span>
         </div>
       </div>
     </>

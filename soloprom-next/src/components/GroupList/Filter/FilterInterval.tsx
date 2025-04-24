@@ -1,7 +1,7 @@
 'use client'
 
-import { Input } from '@/components/ui'
-import { DoubleSlider } from '@/components/ui/DoubleSlider'
+import { Input } from '@/ui'
+import { DoubleSlider } from '@/ui/DoubleSlider'
 import React, { useState, useEffect, useCallback, useRef } from 'react'
 
 export const FilterInterval: React.FC<{

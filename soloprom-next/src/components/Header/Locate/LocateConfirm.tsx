@@ -1,13 +1,13 @@
 import React from 'react'
-import CloseButton from '@/components/ui/CloseButton'
+import CloseButton from '@/ui/CloseButton'
 import { useLocateStore } from '@/store/useLocateStore'
 import { LocateSearchTypes } from './LocateBlock'
-import { CityType } from './LocateSearch'
+import { CityType } from '@/api/cities'
 
 type LocateConfirmTypes = LocateSearchTypes & CityType
 
 const LocateConfirm: React.FC<LocateConfirmTypes> = ({
-  city,
+  name,
   setIsConfirm,
   setLocateCity,
   setSearchWindowOpen,
@@ -19,9 +19,9 @@ const LocateConfirm: React.FC<LocateConfirmTypes> = ({
     setIsConfirm(!answer)
 
     if (answer) {
-      setLocateCity(city)
-      setSelectedCity(city)
-      localStorage.setItem('selectedLocate', city)
+      setLocateCity(name)
+      setSelectedCity(name)
+      localStorage.setItem('selectedLocate', name)
     } else {
       setSearchWindowOpen(true)
     }
@@ -34,7 +34,7 @@ const LocateConfirm: React.FC<LocateConfirmTypes> = ({
         onClick={() => setIsConfirm(false)}
       />
       <div className="mb-5 text-center text-lg text-darkBlue">
-        Ваш город - <b>{city}</b>?
+        Ваш город - <b>{name}</b>?
       </div>
       <div className="flex items-center justify-center gap-5">
         <button

@@ -1,7 +1,7 @@
 import { Metadata } from 'next'
 import CategoryPageClient from './CategoryPageClient'
 import { findPagesData, generateFilterData, pagesData } from './server'
-import { fetchProducts, getProductsAnyCategories } from '@/utils/api/products'
+import { fetchProducts, getProductsAnyCategories } from '../../../api/products'
 import { FilterData } from '@/types/products.types'
 
 export type Params = {

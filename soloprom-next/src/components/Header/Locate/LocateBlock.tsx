@@ -37,12 +37,18 @@ export const LocateBlock: React.FC<Props> = ({ className }) => {
       if (!localStorage.getItem('selectedLocate')) {
         try {
           const response = await fetch('https://ipinfo.io/json')
+
           if (!response.ok) {
             throw new Error(`HTTP error! status: ${response.status}`)
           }
           const data = await response.json()
+
+          console.log(data)
+
           const ip = data.ip as string
           const city = await getCityFromIP(ip)
+
+          console.log(city)
 
           setLocating(city)
         } catch (error) {
@@ -84,7 +90,7 @@ export const LocateBlock: React.FC<Props> = ({ className }) => {
       )}
       {isConfirm && locating && !searchWindowOpen && (
         <LocateConfirm
-          city={locating}
+          name={locating}
           setLocateCity={setLocateCity}
           setIsConfirm={setIsConfirm}
           setSearchWindowOpen={setSearchWindowOpen}

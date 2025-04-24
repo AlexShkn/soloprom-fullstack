@@ -1,7 +1,7 @@
 'use client'
 import React, { useEffect, useState } from 'react'
 
-import { getPopularProducts } from '@/utils/api/products'
+import { getPopularProducts } from '../../api/products'
 import { CardDataProps } from '@/types/products.types'
 
 import { ProductListSlider } from '../ProductListSlider/ProductListSlider'
@@ -14,7 +14,7 @@ interface Props {
 export const ProductsSlider: React.FC<Props> = ({ title, categoryName }) => {
   const [isReady, setIsReady] = useState(false)
 
-  const [favoriteData, setFavoriteData] = useState([])
+  const [favoriteData, setFavoriteData] = useState<CardDataProps[]>([])
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {

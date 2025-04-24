@@ -3,7 +3,7 @@ import React from 'react'
 import { ConfirmFields } from './ConfirmFields'
 import { ControllerRenderProps } from 'react-hook-form'
 import InputOTPHookForm from './InputOTPHookForm'
-import { Button } from '@/components/ui'
+import { Button } from '@/ui'
 
 interface Props {
   emailAddress: string

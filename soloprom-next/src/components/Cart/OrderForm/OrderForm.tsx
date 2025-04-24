@@ -4,9 +4,9 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import { useForm, FormProvider } from 'react-hook-form'
 import { toast } from 'sonner'
 import { TypeOrderSchema, OrderSchema } from '@/features/auth/schemes'
-import { createOrder } from '@/utils/api/order'
+import { createOrder } from '../../../api/order'
 
-import { Button } from '@/components/ui'
+import { Button } from '@/ui'
 
 import './OrderForm.scss'
 import { useCartStore } from '@/store/useCartStore'

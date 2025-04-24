@@ -16,7 +16,7 @@ import {
   FormLabel,
   FormMessage,
   Input,
-} from '@/components/ui'
+} from '@/ui'
 
 import { useLoginMutation } from '@/hooks/auth/useLoginMutation'
 import { LoginSchema, TypeLoginSchema } from '../schemes'

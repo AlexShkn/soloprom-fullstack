@@ -3,7 +3,7 @@ import { getDigFormat } from '@/supports'
 import { CardDataProps } from '@/types/products.types'
 import { useCartStore } from '@/store/useCartStore'
 import React, { useEffect, useState } from 'react'
-import { Button, Loading } from '../ui'
+import { Button, Loading } from '../../ui'
 
 interface Props {
   cardData: CardDataProps

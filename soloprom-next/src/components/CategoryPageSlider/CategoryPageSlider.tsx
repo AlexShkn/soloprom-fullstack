@@ -12,7 +12,7 @@ import {
 } from '../CategoryProductsSlider/CategoryProductsSlider'
 
 import initialCategoriesData from '../../data/products/categoriesData.json'
-import { getProductsCounts } from '@/utils/api/products'
+import { getProductsCounts } from '../../api/products'
 
 import Skeleton from 'react-loading-skeleton'
 import 'react-loading-skeleton/dist/skeleton.css'

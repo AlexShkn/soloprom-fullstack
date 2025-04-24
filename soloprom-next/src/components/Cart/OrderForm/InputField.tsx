@@ -10,7 +10,7 @@ import {
   FormLabel,
   FormMessage,
   Input,
-} from '@/components/ui'
+} from '@/ui'
 import { TypeOrderSchema } from '@/features/auth/schemes'
 
 interface InputFieldProps {

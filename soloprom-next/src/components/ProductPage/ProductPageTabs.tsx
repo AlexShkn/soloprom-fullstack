@@ -1,5 +1,5 @@
 'use client'
-import { ReviewsTypes } from '@/utils/api/reviews'
+import { ReviewsTypes } from '../../api/reviews'
 import React, { useState, useCallback, useMemo } from 'react'
 import { ReviewsTab } from './Tabs/Reviews/ReviewsTab'
 import { ProductDescription } from '@/types/products.types'

@@ -1,5 +1,5 @@
 import { CardDataProps } from '@/types/products.types'
-import { SearchPagesTypes } from '@/utils/api/products'
+import { SearchPagesTypes } from '../api/products'
 import { create } from 'zustand'
 
 interface FilterState {

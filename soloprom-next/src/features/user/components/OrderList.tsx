@@ -3,10 +3,10 @@ import React, { useEffect, useState } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 
-import { getOrdersByUserId } from '@/utils/api/order'
+import { getOrdersByUserId } from '../../../api/order'
 import { formatDateTime } from '@/utils/formatDateTime'
 
-import { Button, Loading } from '@/components/ui'
+import { Button, Loading } from '@/ui'
 import { IUser } from '@/features/auth/types'
 import Skeleton from 'react-loading-skeleton'
 import 'react-loading-skeleton/dist/skeleton.css'

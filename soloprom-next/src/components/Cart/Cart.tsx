@@ -1,7 +1,7 @@
 'use client'
 import React, { useEffect, useState, useCallback } from 'react'
 
-import { Loading } from '../ui'
+import { Loading } from '../../ui'
 import { useCartStore } from '@/store/useCartStore'
 
 import BreadCrumbs from '@/components/BreadCrumbs/BreadCrumbs'

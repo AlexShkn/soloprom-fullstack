@@ -1,4 +1,4 @@
-import { api } from '../fetch/instance.api'
+import { api } from '../utils/fetch/instance.api'
 
 export interface ReviewsTypes {
   userId: string

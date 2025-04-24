@@ -2,7 +2,7 @@
 
 import React, { Suspense, useMemo } from 'react'
 import './PageArticle.scss'
-import { Loading } from '../ui'
+import { Loading } from '../../ui'
 
 interface Props {
   articleName: string

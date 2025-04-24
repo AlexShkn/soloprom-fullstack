@@ -16,7 +16,7 @@ import {
   FormLabel,
   FormMessage,
   Input,
-} from '@/components/ui'
+} from '@/ui'
 
 import { useRegisterMutation } from '@/hooks/auth/useRegisterMutation'
 import { useConfirmRegistrationMutation } from '@/hooks/auth/useConfirmRegistrationMutation'

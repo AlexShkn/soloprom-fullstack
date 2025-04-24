@@ -1,10 +1,10 @@
 'use client'
 import { useSearchParams } from 'next/navigation'
 import React, { useEffect, useState, useCallback } from 'react'
-import { searchPages, searchAllProducts } from '@/utils/api/products'
+import { searchPages, searchAllProducts } from '../../../api/products'
 import { SearchFilterBlock } from './SearchFilterBlock'
 import useSearchStore from '@/store/useSearchStore'
-import { Loading } from '@/components/ui'
+import { Loading } from '@/ui'
 import Link from 'next/link'
 import Image from 'next/image'
 

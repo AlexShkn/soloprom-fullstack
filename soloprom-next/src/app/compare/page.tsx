@@ -10,7 +10,7 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from '@/components/ui/table'
+} from '@/ui/table'
 import TransitionWrapper from '@/providers/TransitionWrapper'
 import PageWrapper from '../PageWrapper'
 import { getDigFormat } from '@/supports'
