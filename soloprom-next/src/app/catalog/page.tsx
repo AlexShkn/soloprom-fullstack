@@ -1,6 +1,6 @@
-import { Callback } from '@/components/Callback/Callback'
-import { CatalogMain } from '@/components/CatalogMain/CatalogMain'
-import BreadCrumbs from '@/components/BreadCrumbs/BreadCrumbs'
+import { Callback } from '@/components/Callback'
+import { CatalogMain } from '@/components/CatalogMain'
+import BreadCrumbs from '@/components/BreadCrumbs'
 import PageWrapper from '../PageWrapper'
 
 export const metadata = {

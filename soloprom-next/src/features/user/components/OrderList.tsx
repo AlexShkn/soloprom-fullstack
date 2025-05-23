@@ -156,7 +156,7 @@ export const OrderList: React.FC<OrderListProps> = ({ user }) => {
                                   <span
                                     className={'whitespace-nowrap font-medium'}
                                   >
-                                    {product.variant}
+                                    {product.size}
                                   </span>
                                   <span className="whitespace-nowrap">
                                     x {product.count}

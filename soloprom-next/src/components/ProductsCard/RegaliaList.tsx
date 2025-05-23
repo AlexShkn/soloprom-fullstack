@@ -25,10 +25,8 @@ export const RegaliaList: React.FC<RegaliaProps> = ({ regalia, discount }) => {
     <ul className="absolute left-2.5 top-4 z-[5] flex flex-col items-center gap-1">
       {discount && (
         <li className="feature-item group relative h-8 w-8">
-          <Image
+          <img
             className="relative z-[6] h-full w-full"
-            width={32}
-            height={32}
             src={`/img/icons/discount.svg`}
             alt={`discount icon`}
           />
@@ -41,10 +39,8 @@ export const RegaliaList: React.FC<RegaliaProps> = ({ regalia, discount }) => {
         const regaliaItem = regaliaSettings.find((r) => r.icon === item)
         return (
           <li key={item} className="feature-item group relative h-8 w-8">
-            <Image
+            <img
               className="relative z-[6] h-full w-full"
-              width={32}
-              height={32}
               src={`/img/icons/${item}.svg`}
               alt={`${item} icon`}
             />

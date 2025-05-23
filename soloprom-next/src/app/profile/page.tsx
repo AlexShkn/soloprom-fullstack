@@ -1,7 +1,7 @@
 import AuthWrapper from '@/app/AuthWrapper'
 import TransitionWrapper from '@/providers/TransitionWrapper'
 import { ProfileDashboard } from '@/features/user/components/ProfileDashboard'
-import BreadCrumbs from '@/components/BreadCrumbs/BreadCrumbs'
+import BreadCrumbs from '@/components/BreadCrumbs'
 
 export const metadata = {
   title: 'Профиль пользователя',

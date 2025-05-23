@@ -4,15 +4,16 @@ import { Star } from 'lucide-react'
 
 interface Props {
   className?: string
+  rating: number
 }
 
-export const RatingDisplay: React.FC<{ rating: number }> = ({ rating }) => {
+export const RatingDisplay: React.FC<Props> = ({ rating, className }) => {
   const fullStars = Math.floor(rating)
   const hasHalfStar = rating % 1 !== 0
   const emptyStars = 5 - fullStars - (hasHalfStar ? 1 : 0)
 
   return (
-    <div className="flex items-center gap-1">
+    <div className={`flex items-center gap-1 ${className}`}>
       {Array.from({ length: fullStars }, (_, i) => (
         <Star
           key={`full-${i}`}
@@ -31,8 +32,6 @@ export const RatingDisplay: React.FC<{ rating: number }> = ({ rating }) => {
           className="h-[14px] w-[14px] fill-gray-300 text-gray-300"
         />
       ))}
-
-      {/* <span className="text-sm font-medium text-gray-500">{rating}</span> */}
     </div>
   )
 }

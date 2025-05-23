@@ -185,7 +185,7 @@ const HeaderSearch = () => {
             }
             placeholder="Поиск по наименованию"
             className={clsx(
-              'h-full w-full rounded-bl-custom rounded-tl-custom py-[13px] pl-7 pr-5 placeholder:text-sm placeholder:text-[#c2c5da] md:px-5 lg:px-8 lg:py-4',
+              'h-full w-full rounded-bl-custom rounded-tl-custom py-[13px] pl-7 pr-5 placeholder:text-sm placeholder:text-[#c2c5da] md:px-5 lg:px-8 lg:py-3',
               {
                 'bg-white': searchValue && dropStatus,
                 'bg-[#f4f5fa]': searchValue || !dropStatus,
@@ -200,19 +200,19 @@ const HeaderSearch = () => {
         >
           <XIcon className={'h-5 w-5 stroke-darkBlue'} />
         </button>
-        <button
+
+        <Button
           type="button"
+          aria-label="Перейти на страницу поиска"
           onClick={() => goToSearch(searchValue)}
-          className="button h-full rounded-custom p-[12px] text-sm mdl:px-5 mdl:py-[14px] md:mr-0 lg:h-auto lg:px-4 lg:py-4 lg:text-base"
+          className="-mr-1 h-full w-auto p-[12px] mdl:px-5 mdl:py-[14px] lg:h-auto lg:px-4 lg:py-4 lg:text-base"
         >
           <span className="hidden text-sm font-medium mdl:inline-block">
             Найти
           </span>
 
-          <svg className="icon h-5 w-5 fill-white mdl:hidden">
-            <use xlinkHref="/img/sprite.svg#search"></use>
-          </svg>
-        </button>
+          <Search className="icon h-5 w-5 mdl:hidden" />
+        </Button>
       </div>
 
       {searchValue && dropStatus && (
@@ -246,7 +246,7 @@ const HeaderSearch = () => {
           )}
 
           <ul
-            className={`scroll-bar relative flex max-h-[calc(100vh-70px)] w-full flex-col items-center overflow-y-auto overflow-x-hidden overscroll-contain rounded bg-white shadow-custom md:max-h-[50vh] md:min-h-[50vh] ${isLoading && 'load'}`}
+            className={`scroll-bar relative flex ${pages.length ? 'big-size-list' : 'min-size-list'} w-full flex-col items-center overflow-y-auto overflow-x-hidden overscroll-contain rounded bg-white shadow-custom md:max-h-[50vh] md:min-h-[50vh] ${isLoading && 'load'}`}
           >
             {searchValue && products.length
               ? products.map((item) => (

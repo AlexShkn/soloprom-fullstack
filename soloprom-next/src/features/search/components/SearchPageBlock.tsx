@@ -25,8 +25,6 @@ export const SearchPageBlock = () => {
   } = useSearchStore()
 
   const fetchData = useCallback(async (searchTerm: string) => {
-    console.log('fetch', searchTerm)
-
     if (!searchTerm) {
       setFoundProducts([])
       return

@@ -1,6 +1,8 @@
 import React from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
+import Head from 'next/head' // Import Head
+
 import { CategoryProduct } from './CatalogMenu'
 import { useCatalogMenuStore } from '@/store/useCatalogMenuStore'
 import { useMediaQuery } from '@/hooks/useMediaQuery'
@@ -90,12 +92,31 @@ const TabCategory: React.FC<CategoryTab> = ({
     scrollStatusChange(false)
   }
 
+  const productSchema = categoryItems.map((item) => ({
+    '@context': 'https://schema.org',
+    '@type': 'Product',
+    name: item.title,
+    url: item.href,
+    category: categoryId,
+    description: `Купить ${item.title} в интернет-магазине Солопром`,
+  }))
+
   return (
     <div
-      className={`catalog-menu__category-body scroll-bar max-h-[calc(100vh-70px)] overflow-y-auto overscroll-contain p-2.5 pr-2.5 transition-all lg:p-0 ${
+      className={`catalog-menu__category-body scroll-bar overflow-y-auto overscroll-contain p-2.5 pr-2.5 transition-all md:max-h-[calc(100vh-70px)] lg:p-0 ${
         categoryId === currentTab ? 'fadeIn grid' : 'invisible hidden opacity-0'
       }`}
     >
+      <Head>
+        {productSchema.map((schema, index) => (
+          <script
+            key={index}
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+          />
+        ))}
+      </Head>
+
       <div className="mb-2.5 grid grid-cols-1 border-b border-grayColor pb-2.5 lg:grid-cols-2 lg:gap-5">
         <ul className="flex h-auto flex-col items-start justify-start gap-x-5 gap-y-1 bg-white pl-4 sm:bg-none">
           {firstPart.map((item, index) => (

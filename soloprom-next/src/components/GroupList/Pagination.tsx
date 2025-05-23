@@ -2,35 +2,38 @@
 
 interface Props {
   currentPage: number
+  totalCount: number
   totalPages: number
+  pageProductCount: number
   onChangePage: (newPage: number) => void
 }
 
 export const Pagination: React.FC<Props> = ({
   currentPage,
   onChangePage,
+  pageProductCount,
+  totalCount,
   totalPages,
 }) => {
   const generatePageNumbers = () => {
     const pages = []
-    if (totalPages <= 5) {
-      // Reduced limit for mobile
+    if (totalPages <= 3) {
       for (let i = 1; i <= totalPages; i++) {
         pages.push(i)
       }
     } else {
-      if (currentPage <= 3) {
-        // Adjusted logic for mobile
-        for (let i = 1; i <= 3; i++) {
+      if (currentPage <= 2) {
+        for (let i = 1; i <= Math.min(3, totalPages); i++) {
           pages.push(i)
         }
-        pages.push('...')
-        pages.push(totalPages)
-      } else if (currentPage >= totalPages - 2) {
-        // Adjusted logic for mobile
+        if (totalPages > 3) {
+          pages.push('...')
+          pages.push(totalPages)
+        }
+      } else if (currentPage >= totalPages - 1) {
         pages.push(1)
         pages.push('...')
-        for (let i = totalPages - 2; i <= totalPages; i++) {
+        for (let i = Math.max(1, totalPages - 2); i <= totalPages; i++) {
           pages.push(i)
         }
       } else {
@@ -47,9 +50,11 @@ export const Pagination: React.FC<Props> = ({
   }
 
   const pageNumbers = generatePageNumbers()
+
+  const prevProductsCount = pageProductCount * currentPage
   return (
-    <div className="my-5 flex flex-col items-center">
-      <div className="flex items-center justify-center">
+    <div className="relative my-5 flex flex-col items-center">
+      <div className="mb-2 flex items-center justify-center lg:mb-0">
         {currentPage > 1 && (
           <button
             className="flex h-10 w-10 items-center justify-center rounded text-lg font-bold"
@@ -101,6 +106,12 @@ export const Pagination: React.FC<Props> = ({
             </svg>
           </button>
         )}
+      </div>
+
+      <div className="text-center font-medium lg:absolute lg:bottom-2 lg:right-0">
+        Показано{' '}
+        {prevProductsCount > totalCount ? totalCount : prevProductsCount} из{' '}
+        {totalCount}
       </div>
     </div>
   )

@@ -1,5 +1,4 @@
 import {
-  ConflictException,
   Injectable,
   InternalServerErrorException,
   NotFoundException,
@@ -11,8 +10,8 @@ import { AuthMethod, User } from '@prisma/client';
 import { verify } from 'argon2';
 import { Request, Response } from 'express';
 
-import { PrismaService } from '@/prisma/prisma.service';
-import { UserService } from '@/user/user.service';
+import { PrismaService } from '../prisma/prisma.service';
+import { UserService } from '../user/user.service';
 
 import { LoginDto } from './dto/login.dto';
 import { RegisterDto } from './dto/register.dto';
@@ -185,7 +184,7 @@ export class AuthService {
 
   public async logout(req: Request, res: Response): Promise<void> {
     return new Promise((resolve, reject) => {
-      req.session.destroy((err) => {
+      req.session.destroy(async (err) => {
         if (err) {
           return reject(
             new InternalServerErrorException(
@@ -193,6 +192,7 @@ export class AuthService {
             ),
           );
         }
+
         res.clearCookie(this.configService.getOrThrow<string>('SESSION_NAME'));
         resolve();
       });
@@ -201,7 +201,7 @@ export class AuthService {
 
   public async saveSession(req: Request, user: User) {
     return new Promise((resolve, reject) => {
-      req.session.userId = user.id;
+      (req.session as any).userId = user.id;
 
       req.session.save((err) => {
         if (err) {

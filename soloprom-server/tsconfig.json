@@ -9,6 +9,7 @@
     "target": "ES2021",
     "sourceMap": true,
     "outDir": "./dist",
+    // "rootDir": "./src",
     "baseUrl": "./src",
     "incremental": true,
     "resolveJsonModule": true,
@@ -22,16 +23,9 @@
     "jsx": "react",
     "moduleResolution": "node",
     "paths": {
-      "@/*": ["./*"],
-      "@prisma/__generated__": ["prisma/__generated__"],
-      "@prisma/__generated__/*": ["prisma/__generated__/*"]
+      "@/*": ["./*"]
     }
   },
-  "include": [
-    "src/**/*",
-    "add-products.js",
-    "update-images.js",
-    "image-downloader.ts"
-  ],
+  "include": ["src/**/*"],
   "exclude": ["node_modules", "dist"]
 }

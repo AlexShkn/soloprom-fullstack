@@ -10,9 +10,13 @@ export function toastMessageHandler(error: Error) {
         description: errorMessage.slice(firstDotIndex + 1),
       })
     } else {
-      toast.error(errorMessage)
+      toast.error(errorMessage, {
+        className: 'sonar-warn',
+      })
     }
   } else {
-    toast.error('Ошибка со стороны сервера')
+    toast.error('Ошибка со стороны сервера', {
+      className: 'sonar-warn',
+    })
   }
 }

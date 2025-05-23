@@ -5,33 +5,29 @@ import Image from 'next/image'
 
 import { getDigFormat } from '@/supports'
 import { useCartStore, CartProductTypes } from '@/store/useCartStore'
-import { Minus, Plus, Trash2 } from 'lucide-react'
+import { Trash2 } from 'lucide-react'
+import { sizeNameAdaptive, typeNameAdaptive } from '@/supports/adaptiveDto'
+import { CartCountButtons } from './CartCountButtons'
+import { formattedDiscountPrice } from '@/utils/formattedDiscountPrice'
 
 interface CartProductItemProps {
   product: CartProductTypes
 }
 
-const sizeNameAdaptive: { [key: string]: string } = {
-  tires: 'Размер',
-  battery: 'ДхШхВ, мм',
-  oils: 'Объём',
-}
-const typeNameAdaptive: { [key: string]: string } = {
-  tires: 'Тип шины',
-  battery: 'Тип аккумулятора',
-  oils: 'Тип жидкости',
-}
-
 export const CartProductItem: React.FC<CartProductItemProps> = ({
   product,
 }) => {
-  const { decreaseProductCount, increaseProductCount, removeCartProduct } =
-    useCartStore()
+  const { removeCartProduct } = useCartStore()
+  const discountPrice = formattedDiscountPrice(
+    product.price,
+    product.discount,
+    product.count,
+  )
 
   return (
     <div
-      key={product.productId + product.variant}
-      className="flex flex-col gap-5 py-2.5 mds:p-2.5 mdl:flex-row mdl:items-center [&:not(:last-child)]:border-b [&:not(:last-child)]:border-grayColor"
+      key={product.productId}
+      className="flex flex-col gap-5 rounded-md py-2.5 shadow-full mds:p-2.5 mdl:flex-row mdl:items-center [&:not(:last-child)]:border-b [&:not(:last-child)]:border-grayColor"
     >
       <div className="flex flex-auto items-center">
         <div className="mds:h-30 mds:w-30 mr-5 h-20 w-20">
@@ -44,7 +40,7 @@ export const CartProductItem: React.FC<CartProductItemProps> = ({
             className="h-full w-full object-contain"
             width={150}
             height={150}
-            alt=""
+            alt={product.name}
           />
         </div>
 
@@ -55,7 +51,7 @@ export const CartProductItem: React.FC<CartProductItemProps> = ({
             </Link>
           </div>
           <div>
-            {sizeNameAdaptive[product.categoryName]}: <b>{product.variant}</b>
+            {sizeNameAdaptive[product.categoryName]}: <b>{product.size}</b>
           </div>
           <div>
             {typeNameAdaptive[product.categoryName]}:{' '}
@@ -63,44 +59,30 @@ export const CartProductItem: React.FC<CartProductItemProps> = ({
           </div>
         </div>
       </div>
-      <div className="flex flex-row items-center justify-end gap-2.5 xs:gap-5 mdl:flex-col mdl:gap-5 md:flex-row">
-        <div className="order-2 flex items-center gap-2.5 mds:order-none">
-          <button
-            onClick={() =>
-              decreaseProductCount(product.productId, product.variant)
-            }
-            disabled={product.count === 1}
-            type="button"
-            className="cart__item-count border-1-[#d4d4d4] inline-flex h-[30px] w-[30px] items-center justify-center rounded-custom bg-[#f5f5f5] transition-colors"
-          >
-            <Minus />
-          </button>
-          <div className="text-lg">{product.count}</div>
-          <button
-            onClick={() =>
-              increaseProductCount(product.productId, product.variant)
-            }
-            type="button"
-            className="cart__item-count border-1-[#d4d4d4] inline-flex h-[30px] w-[30px] items-center justify-center rounded-custom border bg-[#f5f5f5] transition-colors"
-          >
-            <Plus />
-          </button>
-        </div>
+      <div className="flex flex-row items-center justify-end gap-2.5 pr-3 xs:gap-5 mdl:flex-col mdl:gap-5 md:pr-0 lg:flex-row">
+        <CartCountButtons productId={product.productId} count={product.count} />
         <div className="order-2 flex flex-row items-center gap-5 mdl:order-none mdl:items-end md:items-center">
           <div className="order-2 whitespace-nowrap text-xl md:order-none">
-            <span className="text-lg font-medium">
-              {getDigFormat(product.price * product.count)}₽
-            </span>
+            <div className="relative font-medium">
+              {discountPrice ? (
+                <span className="absolute bottom-full right-0 text-base leading-none text-[#a7a0a0] line-through">
+                  {discountPrice}
+                </span>
+              ) : (
+                ''
+              )}
+              <span className={`text-lg ${discountPrice && 'text-redColor'}`}>
+                {getDigFormat(product.price * product.count)}₽
+              </span>
+            </div>
           </div>
 
           <div className="order-2 flex items-center gap-5 mdl:order-none mdl:flex-row md:flex-col">
             <button
-              onClick={() =>
-                removeCartProduct(product.productId, product.variant)
-              }
-              className="group"
+              onClick={() => removeCartProduct(product.productId)}
+              className="text-darkBlue hover:text-accentBlue"
             >
-              <Trash2 className="icon h-5 w-5 stroke-darkBlue transition-colors group-hover:fill-hoverBlue" />
+              <Trash2 className="icon h-5 w-5 transition-colors" />
             </button>
           </div>
         </div>

@@ -1,0 +1,97 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!-- created with www.mysitemapgenerator.com -->
+<!DOCTYPE yml_catalog SYSTEM "shops.dtd">
+<yml_catalog date="2025-05-05 12:35">
+	<shop>
+		<name>
+			Soloprom
+		</name>
+		<company>
+			СОЛОПРОМ
+		</company>
+		<url>
+			https://soloprom.ru/
+		</url>
+		<currencies>
+			<currency id="RUB" rate="1" />
+		</currencies>
+		<categories>
+			<category id="2229656180">
+				Каталог
+			</category>
+			<category id="145824018" parentId="2229656180">
+				Шины для спецтехники
+			</category>
+			<category id="3963419845" parentId="145824018">
+				Шины пневматические
+			</category>
+			<category id="3668160926" parentId="145824018">
+				Шины цельнолитые
+			</category>
+			<category id="1352486809" parentId="145824018">
+				Шины легковые
+			</category>
+			<category id="1378897408" parentId="145824018">
+				Шины бандажные
+			</category>
+			<category id="2238822025" parentId="145824018">
+				Камеры для спецтехники
+			</category>
+			<category id="3408898165" parentId="2229656180">
+				Аккумуляторы
+			</category>
+			<category id="1583590430" parentId="3408898165">
+				Тяговые аккумуляторы
+			</category>
+			<category id="1258420381" parentId="3408898165">
+				Полутяговые аккумуляторы
+			</category>
+			<category id="1629133871" parentId="2229656180">
+				Мала и антифризы
+			</category>
+			<category id="3242451713" parentId="1629133871">
+				Гидравлическое масло G-energy
+			</category>
+			<category id="2686196840" parentId="1629133871">
+				Антифризы G-energy
+			</category>
+			<category id="1367818059" parentId="1629133871">
+				Моторное масло G-energy
+			</category>
+			<category id="2141612659" parentId="1629133871">
+				Трансмиссионное масло G-energy
+			</category>
+		</categories>
+		<offers>
+			<offer id="2020200883" available="true">
+				<url>
+					https://soloprom.ru/products/EmraldGRECKSTER500810PRIND04
+				</url>
+				<price>
+					4287
+				</price>
+				<currencyId>
+					RUB
+				</currencyId>
+				<categoryId>
+					3963419845
+				</categoryId>
+				<picture>
+					https://soloprom.ru/img/catalog/tires/EmraldGRECKSTER500810PRIND04.jpg
+				</picture>
+				<delivery>
+					true
+				</delivery>
+				<name>
+					Emrald GRECKSTER 5.00-8 10PR IND04
+				</name>
+				<min-quantity>
+					2
+				</min-quantity>
+				<description>
+					Emrald GRECKSTER 5.00-8 10PR IND04
+				</description>
+			</offer>
+		</offers>
+	</shop>
+</yml_catalog>

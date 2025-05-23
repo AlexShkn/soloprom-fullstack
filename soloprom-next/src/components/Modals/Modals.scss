@@ -23,29 +23,6 @@
   background-color: rgba(0, 0, 0, 0.8);
   will-change: transform, visibility, opacity;
 
-  &.show {
-    .modal__dialog {
-      @media (min-width: 767.98px) {
-        animation: show 0.3s;
-      }
-
-      @keyframes show {
-        0% {
-          transform: translateY(-200px) translateX(-300px) scale(0.8);
-          opacity: 0;
-        }
-
-        100% {
-          transform: translateY(0) translateX(0) scale(1);
-          opacity: 1;
-        }
-      }
-    }
-    .modal__content {
-      transform: translate(0);
-    }
-  }
-
   &__dialog {
     display: grid;
     grid-column: 2;
@@ -56,44 +33,6 @@
   &__content {
     position: relative;
     width: 100%;
-    transform: translateY(-50%);
     transition: transform 0.5s ease 0.1s;
-  }
-  &__close {
-    position: fixed;
-    top: 40px;
-    right: 40px;
-    font-weight: 700;
-    border: none;
-    background-color: transparent;
-    cursor: pointer;
-    z-index: 2;
-
-    svg {
-      width: 40px;
-      height: 40px;
-      fill: #fff;
-      transition: all 0.3s ease 0s;
-    }
-    @media (any-hover: hover) {
-      &:hover {
-        svg {
-          fill: variables.$accentColor;
-        }
-      }
-    }
-
-    @media (max-width: 767.98px) {
-      top: 15px;
-      right: 20px;
-    }
-
-    @media (max-width: 650px) {
-      position: absolute;
-    }
-  }
-
-  // .modal__title
-  &__title {
   }
 }

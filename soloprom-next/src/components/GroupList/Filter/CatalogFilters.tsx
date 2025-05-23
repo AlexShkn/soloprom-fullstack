@@ -9,9 +9,10 @@ import { CardDataProps, FilterData } from '@/types/products.types'
 import useFilterStore from '@/store/useFilterStore'
 import { FilterList } from './FilterList'
 import { Button } from '@/components/ui'
-import { declension } from '@/components/Cart/CartResult'
 
 import pagesDataRaw from '@/data/products/pagesData.json'
+import { ProductDto } from '@/supports/adaptiveDto'
+import { declension } from '@/supports/declension'
 
 const transformData = transformJson(pagesDataRaw)
 
@@ -20,6 +21,7 @@ interface Props {
   productsType: string
   categoryName: string
   currentPage: number
+  totalProductsCount: number
   categoryInitialList: FilterData
   filterOpen: boolean
   setFilterOpen: (status: boolean) => void
@@ -28,16 +30,6 @@ interface Props {
     React.SetStateAction<Record<string, string[]>>
   >
   handleResetFilters: () => void
-}
-
-interface DtoTypes {
-  [key: string]: string
-}
-
-const dto: DtoTypes = {
-  tires: 'шин',
-  battery: 'аккумуляторов',
-  oils: 'масел',
 }
 
 const CatalogFilters: React.FC<Props> = ({
@@ -51,12 +43,12 @@ const CatalogFilters: React.FC<Props> = ({
   setCheckedValues,
   checkedValues,
   handleResetFilters,
+  totalProductsCount,
 }) => {
   const {
     filters,
     setFilters,
     hasFilters,
-    totalProductsCount,
     setDataIsLoading,
     priceRange,
     setPriceRange,
@@ -68,17 +60,6 @@ const CatalogFilters: React.FC<Props> = ({
     Record<string, string[] | number>
   >(filters || {})
   const accordionRef = useRef<HTMLDivElement>(null)
-
-  // useEffect(() => {
-  //   if (initialLoad) {
-  //     setPriceRange({
-  //       min: categoryInitialList.prices?.min,
-  //       max: categoryInitialList.prices?.max,
-  //     })
-
-  //     setInitialLoad(false)
-  //   }
-  // }, [])
 
   useEffect(() => {
     if (hasFilters) {
@@ -179,6 +160,7 @@ const CatalogFilters: React.FC<Props> = ({
 
       if (hasChanged) {
         setInternalFilters(newFilters)
+
         setFilters(newFilters)
       }
     },
@@ -200,13 +182,13 @@ const CatalogFilters: React.FC<Props> = ({
       <div className="fixed left-0 top-0 z-50 flex w-full items-center justify-between gap-2.5 bg-white p-2.5 shadow-custom md:hidden">
         <div className="text-lg font-medium md:hidden">
           Подбор{' '}
-          {categoryName && dto[categoryName]
-            ? dto[categoryName]
+          {categoryName && ProductDto[categoryName]
+            ? ProductDto[categoryName]
             : 'по параметрам'}
         </div>
         <button onClick={() => setFilterOpen(false)} className="p-1">
           <svg className="icon h-7 w-7 fill-darkBlue">
-            <use xlinkHref="/img/sprite-default.svg#close"></use>
+            <use xlinkHref="/img/sprite.svg#close"></use>
           </svg>
         </button>
       </div>
@@ -221,8 +203,7 @@ const CatalogFilters: React.FC<Props> = ({
             'brands',
             'viscosity',
             'types',
-            'volumes',
-            'sizes',
+            'defaultSize',
           ]}
         >
           {currentPage > 1 && groups && (
@@ -328,35 +309,12 @@ const CatalogFilters: React.FC<Props> = ({
                 />
               </FilterItem>
             )}
-          {categoryInitialList.volumes &&
-            categoryInitialList.volumes.length > 1 && (
-              <FilterItem title="Объем" value="volumes">
-                <FilterCheckbox
-                  setCheckedValues={setCheckedValues}
-                  checkedValues={checkedValues}
-                  title=""
-                  options={categoryInitialList.volumes.map((volume) => ({
-                    label: volume,
-                    value: volume,
-                  }))}
-                  showMoreCount={
-                    categoryInitialList.volumes.length > 5
-                      ? categoryInitialList.volumes.length - 5
-                      : 0
-                  }
-                  onCheckboxChange={(value, isChecked) =>
-                    handleFilterChange('volumes', value, isChecked)
-                  }
-                  filterName="volumes"
-                  initialChecked={
-                    (internalFilters['volumes'] as string[]) || []
-                  }
-                />
-              </FilterItem>
-            )}
           {categoryInitialList.sizes &&
             categoryInitialList.sizes.length > 1 && (
-              <FilterItem title="Размеры" value="sizes">
+              <FilterItem
+                title={categoryName === 'oils' ? 'Объемы' : 'Размеры'}
+                value="defaultSize"
+              >
                 <FilterCheckbox
                   setCheckedValues={setCheckedValues}
                   checkedValues={checkedValues}
@@ -371,10 +329,12 @@ const CatalogFilters: React.FC<Props> = ({
                       : 0
                   }
                   onCheckboxChange={(value, isChecked) =>
-                    handleFilterChange('sizes', value, isChecked)
+                    handleFilterChange('defaultSize', value, isChecked)
                   }
-                  filterName="sizes"
-                  initialChecked={(internalFilters['sizes'] as string[]) || []}
+                  filterName="defaultSize"
+                  initialChecked={
+                    (internalFilters['defaultSize'] as string[]) || []
+                  }
                 />
               </FilterItem>
             )}

@@ -12,12 +12,9 @@ export const CartProductList: React.FC<CartProductListProps> = ({
   cartState,
 }) => {
   return (
-    <div className="border-t-1-grayColor border-b-1-grayColor flex flex-col gap-5">
+    <div className="cart-product-list border-t-1-grayColor border-b-1-grayColor flex flex-auto flex-col gap-5">
       {cartState.map((product) => (
-        <CartProductItem
-          key={product.productId + product.variant}
-          product={product}
-        />
+        <CartProductItem key={product.productId} product={product} />
       ))}
     </div>
   )

@@ -1,5 +1,6 @@
 'use client'
 import { getDigFormat } from '@/supports'
+import { formattedDiscountPrice } from '@/utils/formattedDiscountPrice'
 import React from 'react'
 
 interface PriceProps {
@@ -11,24 +12,22 @@ export const ProductPagePriceBlock: React.FC<PriceProps> = ({
   discount,
   price,
 }) => {
-  const formattedDiscountPrice =
-    discount && price
-      ? `${getDigFormat(Math.floor(price * (1 + discount / 100)))}`
-      : ''
+  const discountPrice = formattedDiscountPrice(price, discount ?? 0)
+
   return (
-    <div className={` ${discount ? 'mt-7' : 'mt-2'}`}>
+    <div className={`${discount ? 'mt-7' : 'mt-2'}`}>
       <div
-        className={`relative text-2xl font-bold ${discount ? 'text-accentBlue' : 'text-[#272b2c]'} `}
+        className={`relative whitespace-nowrap text-2xl font-bold ${discount ? 'text-accentBlue' : 'text-[#272b2c]'} `}
       >
-        {formattedDiscountPrice && (
+        {discountPrice && (
           <>
             <span>{`${getDigFormat(price)} ₽`} </span>
-            <b className="absolute -top-5 left-4 rotate-[7deg] whitespace-nowrap text-xl font-medium text-[#ff6666] line-through">
-              {`${getDigFormat(formattedDiscountPrice)} ₽`}
+            <b className="leading-1 whitespace-nowrap text-base font-medium text-[#a7a0a0] line-through">
+              {`${discountPrice} ₽`}
             </b>
           </>
         )}
-        {!formattedDiscountPrice && (
+        {!discountPrice && (
           <span>{price > 0 ? `${getDigFormat(price)} ₽` : 'По запросу'} </span>
         )}
       </div>

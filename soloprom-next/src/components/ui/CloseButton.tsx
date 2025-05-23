@@ -14,7 +14,7 @@ const CloseButton: React.FC<ButtonProps> = ({
   return (
     <button className={classNames} onClick={onClick}>
       <svg className={iconClass}>
-        <use xlinkHref="/img/sprite-default.svg#close"></use>
+        <use xlinkHref="/img/sprite.svg#close"></use>
       </svg>
     </button>
   )

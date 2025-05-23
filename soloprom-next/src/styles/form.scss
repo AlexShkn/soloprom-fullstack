@@ -1,10 +1,5 @@
 @use './variables.scss';
 
-:root {
-  --success-color: #23cc71;
-  --error-color: #e74c3c;
-}
-
 .form-field-control small {
   color: #e74c3c;
   position: static;

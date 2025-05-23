@@ -4,7 +4,7 @@ import CloseButton from '@/components/ui/CloseButton'
 import { useScrollCloseableWindow } from '@/hooks/useScrollCloseableWindow'
 import { useLocateStore } from '@/store/useLocateStore'
 import { Input, Loading } from '../../ui'
-import { Origami } from 'lucide-react'
+import { Origami, Search } from 'lucide-react'
 import { CityType, getCityForName } from '@/api/cities'
 import { useDebounce } from '@/hooks/useDebounce'
 
@@ -42,7 +42,6 @@ const LocateSearch: React.FC<LocateSearchTypes> = ({
     setDataIsLoading(true)
 
     const cities = await getCityForName(searchValue)
-    console.log(cities)
 
     try {
       setCitiesList(cities)
@@ -102,9 +101,7 @@ const LocateSearch: React.FC<LocateSearchTypes> = ({
       </div>
       <div className="overflow-hidden">
         <div className="relative mb-4">
-          <svg className="icon absolute left-2.5 top-[50%] h-5 w-5 translate-y-[-50%] stroke-[#c2c5da]">
-            <use xlinkHref="/img/sprite.svg#search"></use>
-          </svg>
+          <Search className="icon absolute left-2.5 top-[50%] h-5 w-5 translate-y-[-50%] stroke-[#c2c5da]" />
           <Input
             onChange={handleSearchInputChange}
             type="search"

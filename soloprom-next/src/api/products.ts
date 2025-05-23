@@ -1,6 +1,10 @@
 import { api } from '@/utils/fetch/instance.api'
-import { CardDataProps, ProductDetailsResponse } from '@/types/products.types'
-import { unstable_noStore as noStore } from 'next/cache'
+import {
+  CardDataProps,
+  ProductDetailsResponse,
+  ProductFullInfoResponse,
+} from '@/types/products.types'
+// import { unstable_noStore as noStore } from 'next/cache'
 
 interface ProductsRequest {
   categoryName?: string
@@ -31,7 +35,43 @@ export interface SearchPagesTypes {
   description: string
 }
 
-export async function getTotalProductCount(categoryName: string) {
+export interface BatteriesOptionsTypes {
+  vehicleType?: string[]
+  brand?: string[]
+  model?: string[]
+  voltage?: string[]
+  defaultSize?: string[]
+  plates?: string[]
+  container?: string[]
+}
+
+interface BatteriesResponseOptions {
+  options: BatteriesOptionsTypes
+  totalCount: number
+}
+
+export interface FilterParams {
+  vehicleType?: string
+  brand?: string
+  model?: string
+  voltage?: string
+  defaultSize?: string
+  plates?: string
+  container?: string
+  [key: string]: any
+}
+
+interface VehicleTypes {
+  vehicleType: string
+  brand: string
+  model: string
+}
+
+interface BatteryWithVehicles extends BatteriesOptionsTypes {
+  compatibleVehicles: VehicleTypes[]
+}
+
+export const getTotalProductCount = async (categoryName: string) => {
   const response = await api.get<{ totalCount: number }>(
     `products/get-products`,
     {
@@ -42,7 +82,7 @@ export async function getTotalProductCount(categoryName: string) {
   return response.totalCount
 }
 
-export async function getProductsCounts() {
+export const getProductsCounts = async () => {
   try {
     const response = await api.get<Record<string, number>>(`statistics/counts`)
     return response
@@ -52,7 +92,7 @@ export async function getProductsCounts() {
   }
 }
 
-export async function getProductsAnyCategories(type: string, name: string) {
+export const getProductsAnyCategories = async (type: string, name: string) => {
   try {
     const response = await api.get<CardDataProps[]>(`products/${type}/${name}`)
 
@@ -79,7 +119,6 @@ export const fetchProducts = async (
         },
       },
     )
-
     return response
   } catch (error) {
     console.error('Ошибка получения продуктов по фильтрам', error)
@@ -87,53 +126,125 @@ export const fetchProducts = async (
   }
 }
 
-export async function getPopularProducts() {
-  const response = await api.get<CardDataProps[]>(`products/popular/get`)
-  return response
+export const getBatteriesOptions = async (
+  filter?: FilterParams,
+): Promise<BatteriesResponseOptions> => {
+  try {
+    const response = await api.get<BatteriesResponseOptions>(
+      `batteries/options`,
+      {
+        params: filter,
+      },
+    )
+
+    return response
+  } catch (error) {
+    console.error('Ошибка при получении options:', error)
+
+    return {
+      options: {},
+      totalCount: 0,
+    }
+  }
 }
 
-export async function getAllProducts() {
+export const getFilteredBatteries = async (
+  filter?: FilterParams,
+): Promise<BatteryWithVehicles[]> => {
+  try {
+    const response = await api.get<BatteryWithVehicles[]>(`batteries`, {
+      params: filter,
+    })
+
+    return response
+  } catch (error) {
+    console.error('Ошибка при получении отфильтрованных батарей:', error)
+    return []
+  }
+}
+
+export const getPopularProducts = async () => {
+  try {
+    const response = await api.get<CardDataProps[]>(`products/popular/get`)
+    return response
+  } catch (error) {
+    console.error('Ошибка при получении популярных продуктов:', error)
+    return []
+  }
+}
+
+export const getAllProducts = async () => {
   const response = await api.get<CardDataProps[]>(`products`)
   return response
 }
 
-export async function searchAllProducts(fields: string[], value: string) {
-  const response = await api.get<CardDataProps[]>(
-    'products/search/product-all',
-    {
-      params: { fields: fields.join(','), value },
-    },
-  )
+export const searchAllProducts = async (fields: string[], value: string) => {
+  const response = await api.get<CardDataProps[]>('search/product-all', {
+    params: { fields: fields.join(','), value },
+  })
   return response
 }
 
-export async function searchProducts(
+export const searchProducts = async (
   fields: string[],
   value: string,
   page: number = 1,
   limit: number = 20,
-) {
-  const response = await api.get<SearchProductsTypes>(
-    'products/search/product',
-    {
-      params: { fields: fields.join(','), value, page, limit },
-    },
-  )
+) => {
+  const response = await api.get<SearchProductsTypes>('search/product', {
+    params: { fields: fields.join(','), value, page, limit },
+  })
   return response
 }
 
-export async function searchPages(field: string, value: string) {
-  const response = await api.get<SearchPagesTypes[]>(`products/search/pages`, {
+export const searchPages = async (field: string, value: string) => {
+  const response = await api.get<SearchPagesTypes[]>(`search/pages`, {
     params: { [field]: value },
   })
   return response
 }
 
-export async function getProductById(id: string) {
-  noStore()
+export const getProductById = async (id: string) => {
+  // noStore()
 
   try {
     const response = await api.get<ProductDetailsResponse>(`products/${id}`)
+    return response
+  } catch (error) {
+    console.error(`Ошибка получения продукта по ID: ${id}`, error)
+    throw error
+  }
+}
+
+export const getProductFullInfoById = async (id: string) => {
+  try {
+    const response = await api.get<ProductFullInfoResponse>(
+      `products/details/${id}`,
+    )
+    return response
+  } catch (error) {
+    console.error(
+      `Ошибка получения полного описания продукта по ID: ${id}`,
+      error,
+    )
+    throw error
+  }
+}
+
+export const getProductSizes = async (id: string) => {
+  try {
+    const response = await api.get<CardDataProps[]>(`search/find-sizes/${id}`)
+    return response
+  } catch (error) {
+    console.error(`Ошибка получения продуктов по размеру: ${id}`, error)
+    throw error
+  }
+}
+export const findNotFoundId = async (id: string) => {
+  try {
+    const response = await api.get<CardDataProps[]>(
+      `search/find-not-found/${id}`,
+    )
     return response
   } catch (error) {
     console.error(`Ошибка получения продукта: ${id}`, error)
@@ -155,22 +266,22 @@ export const getViewProductsByIds = async (
   }
 }
 
-export async function getRecommendProducts(id: string, limit: number) {
+export const getRecommendProducts = async (id: string, limit: number) => {
   try {
     const response = await api.get<CardDataProps[]>(
-      `products/recommended/${id}?limit=${limit}`,
+      `search/recommended/${id}?limit=${limit}`,
     )
     return response
   } catch (error) {
-    console.error(`Ошибка получения продуктов: ${id}`, error)
+    console.error(`Ошибка получения рекомендованных продуктов: ${id}`, error)
   }
 }
 
-export async function getProducts(p0: {
+export const getProducts = async (p0: {
   categoryName: string
   page: number
   limit: number
-}) {
+}) => {
   try {
     const response = await api.get<CardDataProps[]>('products', { params: p0 })
     return response
@@ -180,16 +291,16 @@ export async function getProducts(p0: {
   }
 }
 
-export async function getProductsByCategory(category: string) {
+export const getProductsByCategory = async (category: string) => {
   const response = await api.get<CardDataProps[]>(
     `products/category/${category}`,
   )
   return response
 }
 
-export async function getProductsBySubcategory(
+export const getProductsBySubcategory = async (
   subcategory: string,
-): Promise<{ data: CardDataProps[]; count: number } | null> {
+): Promise<{ data: CardDataProps[]; count: number } | null> => {
   try {
     const response = await api.get<{ data: CardDataProps[]; count: number }>(
       `products/subcategory/${subcategory}`,
@@ -202,9 +313,9 @@ export async function getProductsBySubcategory(
   }
 }
 
-export async function getProductsByGroup(
+export const getProductsByGroup = async (
   group: string,
-): Promise<{ data: CardDataProps[]; count: number } | null> {
+): Promise<{ data: CardDataProps[]; count: number } | null> => {
   try {
     const response = await api.get<{ data: CardDataProps[]; count: number }>(
       `products/group/${group}`,

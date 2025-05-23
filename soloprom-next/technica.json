@@ -1,0 +1,5456 @@
+{
+  "battery": {
+    "Baoli": {
+      "CPD10": {
+        "name": "CPD10",
+        "container": 400,
+        "size": "655x250x574",
+        "voltage": 48
+      },
+      "CPD25": {
+        "name": "CPD25",
+        "container": 630,
+        "size": "655x250x574",
+        "voltage": 48
+      },
+      "CPD15": {
+        "name": "CPD15",
+        "container": 440,
+        "size": "655x198x567",
+        "voltage": 48
+      },
+      "CPD25J": {
+        "name": "CPD25J",
+        "container": 700,
+        "size": "1030х439х500",
+        "voltage": 48
+      },
+      "CPD15J": {
+        "name": "CPD15J",
+        "container": 480,
+        "size": "655x250x574",
+        "voltage": 48
+      },
+      "CPD30": {
+        "name": "CPD30",
+        "container": 500,
+        "size": "655x198x567",
+        "voltage": 80
+      },
+      "CPD30J": {
+        "name": "CPD30J",
+        "container": 600,
+        "size": "1220x283x784",
+        "voltage": 80
+      },
+      "CPD20": {
+        "name": "CPD20",
+        "container": 700,
+        "size": "1120x283x784",
+        "voltage": 48
+      },
+      "CPDS15": {
+        "name": "CPDS15",
+        "container": 600,
+        "size": "1220x283x784",
+        "voltage": 48
+      },
+      "CPD20J": {
+        "name": "CPD20J",
+        "container": 630,
+        "size": "1110x283x784",
+        "voltage": 48
+      },
+      "CPDS18": {
+        "name": "CPDS18",
+        "container": 500,
+        "size": "1220x383x784",
+        "voltage": 48
+      }
+    },
+    "Caterpillar": {
+      "EC15": {
+        "name": "EC 15",
+        "voltage": 48,
+        "container": 525,
+        "size": "888x700x585"
+      },
+      "EC18": {
+        "name": "EC 18",
+        "voltage": 48,
+        "container": 575,
+        "size": "888x700x585"
+      },
+      "EC25": {
+        "name": "EC 25",
+        "voltage": 48,
+        "container": 630,
+        "size": "1030x775x578"
+      },
+      "EC30": {
+        "name": "EC 30",
+        "voltage": 80,
+        "container": 500,
+        "size": "976x859x575"
+      },
+      "EP15KRT PAC": {
+        "name": "EP 15 K RT PAC",
+        "voltage": 24,
+        "container": 875,
+        "size": "827x432x627"
+      },
+      "EP15T": {
+        "name": "EP 15 T",
+        "voltage": 48,
+        "container": 525,
+        "size": "992x515x625"
+      },
+      "EP16": {
+        "name": "EP 16",
+        "voltage": 48,
+        "container": 625,
+        "size": "1006x521x650"
+      },
+      "EP16K": {
+        "name": "EP 16 K",
+        "voltage": 24,
+        "container": 700,
+        "size": "827x432x627"
+      },
+      "EP18K": {
+        "name": "EP 18 K",
+        "voltage": 80,
+        "container": 360,
+        "size": "1025x564x784"
+      },
+      "EP16NT": {
+        "name": "EP 16 N T",
+        "voltage": 48,
+        "container": 625,
+        "size": "1006x521x650"
+      },
+      "EP18": {
+        "name": "EP 18",
+        "voltage": 48,
+        "container": 600,
+        "size": "1032x530x784"
+      }
+    },
+    "Artison": {
+      "FB15": {
+        "name": "FB 15",
+        "voltage": 48,
+        "container": 500,
+        "size": "620x420x380"
+      },
+      "FB30": {
+        "name": "FB 30",
+        "voltage": 80,
+        "container": 510,
+        "size": "610x410x350"
+      },
+      "FB35": {
+        "name": "FB 35",
+        "voltage": 80,
+        "container": 875,
+        "size": "600x410x360"
+      },
+      "FBT15": {
+        "name": "FBT 15",
+        "voltage": 48,
+        "container": 510,
+        "size": "760x810x260"
+      },
+      "FBT18": {
+        "name": "FBT 18",
+        "voltage": 48,
+        "container": 375,
+        "size": "777x810x250"
+      },
+      "ZFB18": {
+        "name": "ZFB 18",
+        "voltage": 48,
+        "container": 585,
+        "size": "780x830x270"
+      },
+      "ZFBT20": {
+        "name": "ZFBT 20",
+        "voltage": 48,
+        "container": 565,
+        "size": "780x620x500"
+      },
+      "ZFB20": {
+        "name": "ZFB 20",
+        "voltage": 48,
+        "container": 575,
+        "size": "780x620x500"
+      },
+      "ZFB25": {
+        "name": "ZFB 25",
+        "voltage": 48,
+        "container": 585,
+        "size": "460x810x430"
+      },
+      "ZFB30": {
+        "name": "ZFB 30",
+        "voltage": 80,
+        "container": 720,
+        "size": "530x1030x610"
+      },
+      "ZFB35": {
+        "name": "ZFB 35",
+        "voltage": 80,
+        "container": 660,
+        "size": "590x830x680"
+      },
+      "ZFBT15": {
+        "name": "ZFBT 15",
+        "voltage": 48,
+        "container": 500,
+        "size": "780x830x270"
+      },
+      "ZFBT18": {
+        "name": "ZFBT 18",
+        "voltage": 48,
+        "container": 740,
+        "size": "530x1030x610"
+      }
+    },
+    "Balkancar": {
+      "EP50": {
+        "name": "EP 50",
+        "voltage": 80,
+        "container": [400, 440, 480],
+        "size": "1026x708x627",
+        "plates": ""
+      },
+      "EP35": {
+        "name": "ЕР 35",
+        "voltage": 80,
+        "container": [400, 440, 480],
+        "size": "1026x708x627",
+        "plates": ""
+      },
+      "ЕР80": {
+        "name": "ЕР 80",
+        "voltage": 80,
+        "container": [960, 1120, 1160],
+        "size": "1037х1285х784",
+        "plates": ""
+      },
+      "ЕРР63142225T": {
+        "name": "ЕРР631.42.225T",
+        "voltage": 48,
+        "container": 420,
+        "size": "1026x708x627",
+        "plates": ""
+      },
+      "ЕР40": {
+        "name": "ЕР 40",
+        "voltage": 80,
+        "container": 400,
+        "size": "1026x708x627",
+        "plates": ""
+      },
+      "ЕРР63442225T": {
+        "name": "ЕРР634.42.225T",
+        "voltage": 48,
+        "container": 420,
+        "size": "1030х1270х770",
+        "plates": ""
+      },
+      "ЕР60": {
+        "name": "ЕР 60",
+        "voltage": 80,
+        "container": [720, 840, 870],
+        "size": "1028x999x784",
+        "plates": ""
+      },
+      "ЕР70": {
+        "name": "ЕР 70",
+        "voltage": 80,
+        "container": [720, 840, 870],
+        "size": "1028x999x784",
+        "plates": ""
+      },
+      "ЕР63030222S": {
+        "name": "ЕР 630.30.222 S",
+        "voltage": 48,
+        "container": [480, 560, 620],
+        "size": "827x519x784",
+        "plates": ""
+      },
+      "ЕР63430242S": {
+        "name": "ЕР 634.30.242 S",
+        "voltage": 48,
+        "container": [480, 560, 620],
+        "size": "827x519x784",
+        "plates": ""
+      },
+      "ЕР64030263S": {
+        "name": "ЕР 640.30.263 S",
+        "voltage": 80,
+        "container": [400, 440, 500],
+        "size": "1026х708х627",
+        "plates": ""
+      },
+      "ЕР63830263S9": {
+        "name": "ЕР 638.30.263 S9",
+        "voltage": 80,
+        "container": 400,
+        "size": "1028x999x784",
+        "plates": ""
+      },
+      "ЕВ687": {
+        "name": "ЕВ-687",
+        "sizes": [
+          {
+            "size": "816x664x462",
+            "plates": "3PzS210",
+            "voltage": 80,
+            "container": 210
+          },
+          {
+            "size": "816x664x462",
+            "plates": "3PzS240",
+            "voltage": 80,
+            "container": 240
+          }
+        ]
+      },
+      "ЕП006": {
+        "name": "ЕП-006",
+        "sizes": [
+          {
+            "size": "810x664x402",
+            "plates": "3PzS165",
+            "voltage": 80,
+            "container": 165
+          },
+          {
+            "size": "810x664x402",
+            "plates": "3PzS180",
+            "voltage": 80,
+            "container": 180
+          },
+          {
+            "size": "816x664x462",
+            "plates": "3PzS210",
+            "voltage": 80,
+            "container": 210
+          }
+        ]
+      },
+      "ЕВ698": {
+        "name": "ЕВ-698",
+        "sizes": [
+          {
+            "size": "820x520x620",
+            "plates": "4PzS400",
+            "voltage": 48,
+            "container": 400
+          },
+          {
+            "size": "820x520x751",
+            "plates": "4PzS480",
+            "voltage": 48,
+            "container": 480
+          },
+          {
+            "size": "820x620x620",
+            "plates": "5PzS500",
+            "voltage": 48,
+            "container": 500
+          },
+          {
+            "size": "820x620x751",
+            "plates": "5PzS600",
+            "voltage": 48,
+            "container": 600
+          }
+        ]
+      },
+      "ЕВ695": {
+        "name": "ЕВ-695",
+        "sizes": [
+          {
+            "size": "820x520x620",
+            "plates": "4PzS400",
+            "voltage": 48,
+            "container": 400
+          },
+          {
+            "size": "820x520x751",
+            "plates": "4PzS480",
+            "voltage": 48,
+            "container": 480
+          },
+          {
+            "size": "820x620x620",
+            "plates": "5PzS500",
+            "voltage": 48,
+            "container": 500
+          },
+          {
+            "size": "820x620x751",
+            "plates": "5PzS600",
+            "voltage": 48,
+            "container": 600
+          }
+        ]
+      },
+      "ЕВ720": {
+        "name": "ЕВ-720",
+        "sizes": [
+          {
+            "size": "1010x682x616",
+            "plates": "4PzS400",
+            "voltage": 80,
+            "container": 400
+          },
+          {
+            "size": "1010x682x761",
+            "plates": "5PzS500",
+            "voltage": 80,
+            "container": 500
+          }
+        ]
+      },
+      "ЕВ715": {
+        "name": "ЕВ-715",
+        "sizes": [
+          {
+            "size": "1010x682x616",
+            "plates": "4PzS400",
+            "voltage": 80,
+            "container": 400
+          },
+          {
+            "size": "1010x682x761",
+            "plates": "5PzS500",
+            "voltage": 80,
+            "container": 500
+          }
+        ]
+      },
+      "ЕВ735": {
+        "name": "ЕВ-735",
+        "sizes": [
+          {
+            "size": "1010x826x462",
+            "plates": "5PzS350",
+            "voltage": 80,
+            "container": 350
+          },
+          {
+            "size": "1010x826x462",
+            "plates": "5PzS400",
+            "voltage": 80,
+            "container": 400
+          },
+          {
+            "size": "1026x1130x530",
+            "plates": "7PzS560",
+            "voltage": 80,
+            "container": 560
+          },
+          {
+            "size": "1026x1130x530",
+            "plates": "7PzS630",
+            "voltage": 80,
+            "container": 630
+          }
+        ]
+      },
+      "ЕВ717": {
+        "name": "ЕВ-717",
+        "sizes": [
+          {
+            "size": "1010x682x462",
+            "plates": "4PzS280",
+            "voltage": 80,
+            "container": 280
+          },
+          {
+            "size": "1010x826x462",
+            "plates": "4PzS320",
+            "voltage": 80,
+            "container": 320
+          }
+        ]
+      }
+    },
+    "Cayman": {
+      "CPD15": {
+        "name": "CPD15",
+        "voltage": 48,
+        "container": 240,
+        "size": "620x420x380",
+        "plates": ""
+      },
+      "CPD18J": {
+        "name": "CPD18J",
+        "voltage": 48,
+        "container": 240,
+        "size": "640x440x390",
+        "plates": ""
+      },
+      "CPD20": {
+        "name": "CPD20",
+        "voltage": 48,
+        "container": 630,
+        "size": "780x620x500",
+        "plates": ""
+      },
+      "CPD25J": {
+        "name": "CPD25J",
+        "voltage": 48,
+        "container": 630,
+        "size": "750x600x480",
+        "plates": ""
+      },
+      "CPD40J": {
+        "name": "CPD40J",
+        "voltage": 80,
+        "container": 700,
+        "size": "620x420x380",
+        "plates": ""
+      },
+      "CPD45J": {
+        "name": "CPD45J",
+        "voltage": 80,
+        "container": 700,
+        "size": "460x810x430",
+        "plates": ""
+      },
+      "CPD50J": {
+        "name": "CPD50J",
+        "voltage": 80,
+        "container": 700,
+        "size": "780x620x500",
+        "plates": ""
+      },
+      "CPDS13": {
+        "name": "CPDS13",
+        "voltage": 48,
+        "container": 400,
+        "size": "750x600x480",
+        "plates": ""
+      },
+      "CPDS15JC1": {
+        "name": "CPDS15 JC1",
+        "voltage": 48,
+        "container": 400,
+        "size": "640x440x390",
+        "plates": ""
+      },
+      "CPDS16": {
+        "name": "CPDS16",
+        "voltage": 48,
+        "container": 500,
+        "size": "750x600x480",
+        "plates": ""
+      },
+      "CPDS18JC1": {
+        "name": "CPDS18 JC1",
+        "voltage": 48,
+        "container": 500,
+        "size": "590x830x680",
+        "plates": ""
+      },
+      "CPDS20JC1": {
+        "name": "CPDS20 JC1",
+        "voltage": 48,
+        "container": 500,
+        "size": "530x1030x610",
+        "plates": ""
+      }
+    },
+    "Cesab": {
+      "B210": {
+        "name": "B210",
+        "voltage": 24,
+        "container": [400, 500],
+        "size": "655x250x574",
+        "plates": ""
+      },
+      "B213": {
+        "name": "B213",
+        "voltage": 24,
+        "container": [700, 875],
+        "size": "655x250x574",
+        "plates": ""
+      },
+      "B215": {
+        "name": "B215",
+        "voltage": 24,
+        "container": [800, 1000],
+        "size": "655x198x567",
+        "plates": ""
+      },
+      "B315": {
+        "name": "B315",
+        "voltage": 48,
+        "container": [420, 500],
+        "size": "1030х439х500",
+        "plates": ""
+      },
+      "B316": {
+        "name": "B316",
+        "voltage": 48,
+        "container": [525, 750],
+        "size": "655x250x574",
+        "plates": ""
+      },
+      "B318": {
+        "name": "B318",
+        "voltage": 48,
+        "container": [525, 750],
+        "size": "655x198x567",
+        "plates": ""
+      },
+      "B320": {
+        "name": "B320",
+        "voltage": 48,
+        "container": [690, 750],
+        "size": "1220x283x784",
+        "plates": ""
+      },
+      "B415": {
+        "name": "B415",
+        "voltage": 48,
+        "container": [420, 500],
+        "size": "1220x283x784",
+        "plates": ""
+      },
+      "B420": {
+        "name": "B420",
+        "voltage": 48,
+        "container": [690, 750],
+        "size": "1220x283x784",
+        "plates": ""
+      },
+      "B620": {
+        "name": "B620",
+        "voltage": 80,
+        "container": [375, 465],
+        "size": "1220x283x784",
+        "plates": ""
+      },
+      "B625625L": {
+        "name": "B625-625L",
+        "voltage": 80,
+        "container": [500, 775],
+        "size": "1220x283x784",
+        "plates": ""
+      }
+    },
+    "Clark": {
+      "GEX16": {
+        "name": "GEX16",
+        "voltage": 48,
+        "container": [400, 460, 500],
+        "size": "827x519x627",
+        "plates": ""
+      },
+      "GEX30": {
+        "name": "GEX30",
+        "voltage": 80,
+        "container": [600, 700, 775],
+        "size": "1025x852x784",
+        "plates": ""
+      },
+      "GTX20s": {
+        "name": "GTX20s",
+        "sizes": [
+          {
+            "size": "827x627x627",
+            "plates": "",
+            "voltage": 48,
+            "container": 625
+          },
+          {
+            "size": "827x627x627",
+            "plates": "",
+            "voltage": 48,
+            "container": 575
+          }
+        ]
+      },
+      "GEX18": {
+        "name": "GEX18",
+        "voltage": 48,
+        "container": 575,
+        "size": "827x627x627",
+        "plates": ""
+      },
+      "GEX30L": {
+        "name": "GEX30L",
+        "voltage": 80,
+        "container": 775,
+        "size": "827x519x627",
+        "plates": ""
+      },
+      "GEX20": {
+        "name": "GEX20",
+        "sizes": [
+          {
+            "size": "827x627x627",
+            "plates": "",
+            "voltage": 48,
+            "container": 625
+          },
+          {
+            "size": "827x627x627",
+            "plates": "",
+            "voltage": 48,
+            "container": 575
+          }
+        ]
+      },
+      "GEX30s": {
+        "name": "GEX30s",
+        "voltage": 80,
+        "container": 620,
+        "size": "1025x852x784",
+        "plates": ""
+      },
+      "GTX16": {
+        "name": "GTX16",
+        "voltage": 48,
+        "container": [400, 460, 500],
+        "size": "827x519x627",
+        "plates": ""
+      },
+      "GEX25": {
+        "name": "GEX25",
+        "voltage": 80,
+        "container": [480, 560, 620],
+        "size": "1025x708x784",
+        "plates": ""
+      },
+      "GTX18": {
+        "name": "GTX18",
+        "sizes": [
+          {
+            "size": "827x627x627",
+            "plates": "",
+            "voltage": 48,
+            "container": 625
+          },
+          {
+            "size": "827x627x627",
+            "plates": "",
+            "voltage": 48,
+            "container": 575
+          }
+        ]
+      }
+    },
+    "Crown": {
+      "SC(3-хопорный)": {
+        "name": "SC (3-х опорный)",
+        "voltage": 48,
+        "container": 775,
+        "size": "832х631х784",
+        "plates": ""
+      },
+      "SC(4-хопорный)": {
+        "name": "SC (4-х опорный)",
+        "voltage": 48,
+        "container": 620,
+        "size": "832х523х784",
+        "plates": ""
+      },
+      "RC": {
+        "name": "RC",
+        "voltage": 48,
+        "container": [775, 1395],
+        "size": "1030х439х500",
+        "plates": ""
+      },
+      "FC(4-хопорный)": {
+        "name": "FC (4-х опорный)",
+        "voltage": 48,
+        "container": 500,
+        "size": "692х982х593",
+        "plates": ""
+      }
+    },
+    "Daewoo": {
+      "B13T-2": {
+        "name": "B13T-2",
+        "voltage": 48,
+        "container": 400,
+        "size": "655x230x574",
+        "plates": ""
+      },
+      "B15S": {
+        "name": "B15S",
+        "voltage": 48,
+        "container": 440,
+        "size": "655x240x574",
+        "plates": ""
+      },
+      "B15T-2": {
+        "name": "B15T-2",
+        "voltage": 48,
+        "container": 440,
+        "size": "655x198x567",
+        "plates": ""
+      },
+      "B15T-5": {
+        "name": "B15T-5",
+        "voltage": 48,
+        "container": 440,
+        "size": "1030х459х500",
+        "plates": ""
+      },
+      "B16X-5": {
+        "name": "B16X-5",
+        "voltage": 48,
+        "container": 500,
+        "size": "655x240x574",
+        "plates": ""
+      },
+      "B18S": {
+        "name": "B18S",
+        "voltage": 48,
+        "container": 510,
+        "size": "655x198x567",
+        "plates": ""
+      },
+      "B18T-5": {
+        "name": "B18T-5",
+        "voltage": 48,
+        "container": 510,
+        "size": "1220x283x784",
+        "plates": ""
+      },
+      "B18X-5": {
+        "name": "B18X-5",
+        "voltage": 48,
+        "container": 510,
+        "size": "1220x283x784",
+        "plates": ""
+      },
+      "B20T-5": {
+        "name": "B20T-5",
+        "voltage": 48,
+        "container": 770,
+        "size": "1120x283x784",
+        "plates": ""
+      },
+      "B20X-5": {
+        "name": "B20X-5",
+        "voltage": 48,
+        "container": 770,
+        "size": "1220x283x784",
+        "plates": ""
+      },
+      "B22X": {
+        "name": "B22X",
+        "voltage": 80,
+        "container": 480,
+        "size": "1220x283x784",
+        "plates": ""
+      },
+      "B25S-2": {
+        "name": "B25S-2",
+        "voltage": 80,
+        "container": 810,
+        "size": "1120x283x784",
+        "plates": ""
+      },
+      "B30S-2": {
+        "name": "B30S-2",
+        "voltage": 80,
+        "container": 1020,
+        "size": "1220x283x784",
+        "plates": ""
+      }
+    },
+    "DALIAN": {
+      "CPD10СA": {
+        "name": "CPD10СA",
+        "voltage": 48,
+        "container": 500,
+        "size": "986x671x453",
+        "plates": ""
+      },
+      "CPD15СA": {
+        "name": "CPD15СA",
+        "voltage": 48,
+        "container": 450,
+        "size": "986х671х453",
+        "plates": ""
+      },
+      "CPD18СA": {
+        "name": "CPD18СA",
+        "voltage": 48,
+        "container": 500,
+        "size": "986х671х453",
+        "plates": ""
+      },
+      "CPD20СA": {
+        "name": "CPD20СA",
+        "voltage": 48,
+        "container": 565,
+        "size": "1089х860х457",
+        "plates": ""
+      },
+      "CPD25СA": {
+        "name": "CPD25СA",
+        "voltage": 48,
+        "container": 565,
+        "size": "1089х860х457",
+        "plates": ""
+      },
+      "CPD30СA": {
+        "name": "CPD30СA",
+        "voltage": 48,
+        "container": 580,
+        "size": "1154х1028х482",
+        "plates": ""
+      }
+    },
+    "Desta": {
+      "3E10": {
+        "name": "3 E 10",
+        "voltage": 24,
+        "container": 720,
+        "size": "720x520x480",
+        "plates": ""
+      },
+      "3E12": {
+        "name": "3 E 12",
+        "voltage": 24,
+        "container": 840,
+        "size": "880x730x370",
+        "plates": ""
+      },
+      "3E15": {
+        "name": "3 E 15",
+        "voltage": 24,
+        "container": 960,
+        "size": "680x520x400",
+        "plates": ""
+      },
+      "E12": {
+        "name": "E 12",
+        "voltage": 48,
+        "container": 480,
+        "size": "560x710x530",
+        "plates": ""
+      },
+      "E16": {
+        "name": "E 16",
+        "voltage": 48,
+        "container": 600,
+        "size": "690x930x780",
+        "plates": ""
+      },
+      "E20": {
+        "name": "E 20",
+        "voltage": 48,
+        "container": 800,
+        "size": "630x1030x710",
+        "plates": ""
+      }
+    },
+    "Doosan": {
+      "B13R": {
+        "name": "B13R",
+        "voltage": 24,
+        "container": 600,
+        "size": "980x383x575",
+        "plates": ""
+      },
+      "B18T-5": {
+        "name": "B18T-5",
+        "voltage": 48,
+        "container": 500,
+        "size": "1025x1037x525",
+        "plates": ""
+      },
+      "B20T-5": {
+        "name": "B20T-5",
+        "voltage": 48,
+        "container": 500,
+        "size": "1025x1037x525",
+        "plates": ""
+      },
+      "B15T-5": {
+        "name": "B15T-5",
+        "voltage": 48,
+        "container": 450,
+        "size": "1025x1037x525",
+        "plates": ""
+      },
+      "B16R": {
+        "name": "B16R",
+        "voltage": 24,
+        "container": 920,
+        "size": "980x383x575",
+        "plates": ""
+      },
+      "B30Se": {
+        "name": "B30Se",
+        "voltage": 48,
+        "container": 800,
+        "size": "1025x1037x525",
+        "plates": ""
+      },
+      "B15Se": {
+        "name": "B15Se",
+        "voltage": 48,
+        "container": 450,
+        "size": "1000x720x465",
+        "plates": ""
+      },
+      "B16X-5": {
+        "name": "B16X-5",
+        "voltage": 48,
+        "container": 750,
+        "size": "980x627x650",
+        "plates": ""
+      },
+      "B18Se": {
+        "name": "B18Se",
+        "voltage": 48,
+        "container": 500,
+        "size": "1000x720x465",
+        "plates": ""
+      },
+      "B20SCe": {
+        "name": "B20SCe",
+        "voltage": 48,
+        "container": "500/715",
+        "size": "1000x720x465",
+        "plates": ""
+      },
+      "B25Se": {
+        "name": "B25Se",
+        "voltage": 48,
+        "container": 740,
+        "size": "1000x720x465",
+        "plates": ""
+      },
+      "B40X": {
+        "name": "B40X",
+        "voltage": 80,
+        "container": 720,
+        "size": "1000x720x465",
+        "plates": ""
+      },
+      "B45X": {
+        "name": "B45X",
+        "voltage": 80,
+        "container": 720,
+        "size": "1000x720x465",
+        "plates": ""
+      },
+      "B50X": {
+        "name": "B50X",
+        "voltage": 80,
+        "container": 720,
+        "size": "1000x720x465",
+        "plates": ""
+      }
+    },
+    "EP": {
+      "CPD18/20FVD8": {
+        "name": "CPD 18/20 FVD8",
+        "voltage": 48,
+        "container": 500,
+        "size": "856",
+        "plates": ""
+      },
+      "CPD25L2": {
+        "name": "CPD 25L2",
+        "voltage": 80,
+        "container": 270,
+        "size": "1160",
+        "plates": ""
+      },
+      "CPD45/50": {
+        "name": "CPD 45/50",
+        "voltage": 80,
+        "container": 700,
+        "size": "530",
+        "plates": ""
+      },
+      "CPD15/18F8": {
+        "name": "CPD 15/18 F8",
+        "voltage": 48,
+        "container": 470,
+        "size": "923",
+        "plates": ""
+      },
+      "CPD18/20": {
+        "name": "CPD 18/20",
+        "sizes": [
+          {
+            "size": "940",
+            "plates": "",
+            "voltage": "48",
+            "container": 360
+          },
+          {
+            "size": "1200",
+            "plates": "",
+            "voltage": "48",
+            "container": 360
+          }
+        ]
+      },
+      "CPD30/35F8": {
+        "name": "CPD 30/35 F8",
+        "voltage": 80,
+        "container": 500,
+        "size": "1350",
+        "plates": ""
+      },
+      "CPD35L1": {
+        "name": "CPD 35L1",
+        "voltage": 80,
+        "container": 540,
+        "size": "1350",
+        "plates": ""
+      },
+      "CPD15LE": {
+        "name": "CPD 15LE",
+        "voltage": 48,
+        "container": 160,
+        "size": "180",
+        "plates": ""
+      },
+      "CPD16/18/20": {
+        "name": "CPD 16/18/20",
+        "voltage": 48,
+        "container": 360,
+        "size": "856",
+        "plates": ""
+      },
+      "CPD30/35": {
+        "name": "CPD 30/35",
+        "sizes": [
+          {
+            "size": "1350",
+            "plates": "",
+            "voltage": "80",
+            "container": 500
+          }
+        ]
+      }
+    },
+    "Feeler": {
+      "FB13AC": {
+        "name": "FB13AC",
+        "voltage": 48,
+        "container": 560,
+        "size": "1080",
+        "plates": ""
+      },
+      "FB13ACS": {
+        "name": "FB13ACS",
+        "voltage": 48,
+        "container": 560,
+        "size": "870",
+        "plates": ""
+      },
+      "FB15A": {
+        "name": "FB15A",
+        "voltage": 48,
+        "container": 500,
+        "size": "775",
+        "plates": ""
+      },
+      "FB15ACS": {
+        "name": "FB15ACS",
+        "voltage": 48,
+        "container": 560,
+        "size": "870",
+        "plates": ""
+      },
+      "FB15AC": {
+        "name": "FB15AC",
+        "voltage": 48,
+        "container": 560,
+        "size": "1080",
+        "plates": ""
+      },
+      "FB18AC": {
+        "name": "FB18AC",
+        "voltage": 48,
+        "container": 560,
+        "size": "1080",
+        "plates": ""
+      },
+      "FB20AC": {
+        "name": "FB20AC",
+        "voltage": 48,
+        "container": 680,
+        "size": "870",
+        "plates": ""
+      },
+      "FB20ACS": {
+        "name": "FB20ACS",
+        "voltage": 48,
+        "container": 680,
+        "size": "1080",
+        "plates": ""
+      },
+      "FB25A": {
+        "name": "FB25A",
+        "voltage": 48,
+        "container": 700,
+        "size": "1056",
+        "plates": ""
+      }
+    },
+    "HANGCHA": {
+      "CPD25-AC3": {
+        "name": "CPD25-AC3 (4-х опорный)",
+        "voltage": 48,
+        "container": 480,
+        "size": "975x495x784",
+        "plates": ""
+      },
+      "CPDS16-AC3": {
+        "name": "CPDS16-AC3 (3-х опорный)",
+        "voltage": 48,
+        "container": 500,
+        "size": "830x630x627",
+        "plates": ""
+      },
+      "CPD25H": {
+        "name": "CPD25H",
+        "voltage": 48,
+        "container": 635,
+        "size": "1064x845x480(495)",
+        "plates": ""
+      },
+      "CPD50J": {
+        "name": "CPD50J",
+        "voltage": 80,
+        "container": 700,
+        "size": "1128x804x780",
+        "plates": ""
+      },
+      "CPD15-AC3": {
+        "name": "CPD15-AC3 (4-х опорный)",
+        "voltage": 48,
+        "container": 435,
+        "size": "960х430х760",
+        "plates": ""
+      },
+      "CPD18-AC3": {
+        "name": "CPD18-AC3 (4-х опорный)",
+        "voltage": 48,
+        "container": 450,
+        "size": "960х430х760",
+        "plates": ""
+      },
+      "CPDS15-AC3": {
+        "name": "CPDS15-AC3 (3-х опорный)",
+        "voltage": 48,
+        "container": 420,
+        "size": "830x522x627",
+        "plates": ""
+      },
+      "CPD15H": {
+        "name": "CPD15H",
+        "voltage": 48,
+        "container": 467.5,
+        "size": "980x680x485",
+        "plates": ""
+      },
+      "CPD20H": {
+        "name": "CPD20H",
+        "voltage": 48,
+        "container": 630,
+        "size": "1064x845x495",
+        "plates": ""
+      },
+      "CPD35J": {
+        "name": "CPD35J",
+        "voltage": 80,
+        "container": 590,
+        "size": "1028x710x780",
+        "plates": ""
+      },
+      "CPD20-AC3": {
+        "name": "CPD20-AC3 (4-х опорный)",
+        "voltage": 48,
+        "container": 620,
+        "size": "975х495х784",
+        "plates": ""
+      },
+      "CPDS13-AC3": {
+        "name": "CPDS13-AC3 (3-х опорный)",
+        "voltage": 48,
+        "container": 400,
+        "size": "830x522x627",
+        "plates": ""
+      },
+      "CPDS20-AC3": {
+        "name": "CPDS20-AC3 (3-х опорный)",
+        "voltage": 48,
+        "container": 600,
+        "size": "830x738x627",
+        "plates": ""
+      },
+      "CPDS18-AC3": {
+        "name": "CPDS18-AC3 (3-х опорный)",
+        "voltage": 48,
+        "container": 500,
+        "size": "830x630x627",
+        "plates": ""
+      },
+      "CPD10H": {
+        "name": "CPD10H",
+        "voltage": 48,
+        "container": 465,
+        "size": "980x680x485",
+        "plates": ""
+      },
+      "CPD10J": {
+        "name": "CPD10J",
+        "voltage": 48,
+        "container": 420,
+        "size": "980x465x780",
+        "plates": ""
+      }
+    },
+
+    "HELI": {
+      "CPD15-FB": {
+        "name": "CPD15-FB (4-х опорный)",
+        "voltage": 48,
+        "container": 480,
+        "size": "970x600x455",
+        "plates": ""
+      },
+      "CPD25-FB": {
+        "name": "CPD25-FB (4-х опорный)",
+        "voltage": 48,
+        "container": 553.33,
+        "size": "1030x530x802",
+        "plates": ""
+      },
+      "CPD25-G": {
+        "name": "CPD25-G (4-опорный)",
+        "voltage": 48,
+        "container": 553.33,
+        "size": "1030x530x802",
+        "plates": ""
+      },
+      "CPD50-B2": {
+        "name": "CPD50-B2 (4-х опорный)",
+        "voltage": 80,
+        "container": 650,
+        "size": "1050x825x863",
+        "plates": ""
+      },
+      "CPD60": {
+        "name": "CPD60 (4-х опорный)",
+        "voltage": 80,
+        "container": 886,
+        "size": "1594х820х645",
+        "plates": ""
+      },
+      "CPD10-G": {
+        "name": "CPD10-G (4-х опорный)",
+        "voltage": 48,
+        "container": 475,
+        "size": "970х715х465",
+        "plates": ""
+      },
+      "CPD10-FB": {
+        "name": "CPD10-FB (4-х опорный)",
+        "voltage": 48,
+        "container": 475,
+        "size": "970х715х465",
+        "plates": ""
+      },
+      "CPD40-B2": {
+        "name": "CPD40-B2 (4-х опорный)",
+        "voltage": 80,
+        "container": 600,
+        "size": "1050x825x723(743）",
+        "plates": ""
+      },
+      "CPD45-B2": {
+        "name": "CPD45-B2 (4-х опорный)",
+        "voltage": 80,
+        "container": 650,
+        "size": "1050x825x863",
+        "plates": ""
+      },
+      "CPD35-G": {
+        "name": "CPD35-G (4-х опорный)",
+        "voltage": 80,
+        "container": 500,
+        "size": "1028x711x784",
+        "plates": ""
+      },
+      "CPD10": {
+        "name": "CPD10",
+        "sizes": [
+          {
+            "size": "970x600x465",
+            "plates": "",
+            "voltage": "48",
+            "container": 400
+          },
+          {
+            "size": "970×715×465",
+            "plates": "24×10PzB550",
+            "voltage": "48",
+            "container": 550
+          }
+        ]
+      },
+      "CPD10H": {
+        "name": "CPD10H",
+        "voltage": 48,
+        "container": 555,
+        "size": "970x715x465",
+        "plates": ""
+      },
+      "CPD10L": {
+        "name": "CPD10L",
+        "voltage": 48,
+        "container": 400,
+        "size": "970x600x465",
+        "plates": ""
+      },
+      "CPD10S": {
+        "name": "CPD10S",
+        "sizes": [
+          {
+            "size": "826x410x636",
+            "plates": "",
+            "voltage": "48",
+            "container": 330
+          },
+          {
+            "size": "845×433×789",
+            "plates": "24×3PzS420",
+            "voltage": "48",
+            "container": 420
+          },
+          {
+            "size": "845×433×789",
+            "plates": "24×3PzS465",
+            "voltage": "48",
+            "container": 465
+          }
+        ]
+      },
+      "CPD15": {
+        "name": "CPD15",
+        "voltage": 48,
+        "container": 400,
+        "size": "970x600x465",
+        "plates": ""
+      },
+      "CPD15H": {
+        "name": "CPD15H",
+        "voltage": 48,
+        "container": 557.5,
+        "size": "970x715x500",
+        "plates": ""
+      },
+      "CBD20-A4": {
+        "name": "CBD20-A4 (транспортировщик паллет)",
+        "sizes": [
+          {
+            "size": "665×198×670",
+            "plates": "12×3PzB225",
+            "voltage": "24",
+            "container": 225
+          },
+          {
+            "size": "665×198×670",
+            "plates": "12×3PzB258",
+            "voltage": "24",
+            "container": 258
+          },
+          {
+            "size": "655×198×670",
+            "plates": "12×3PzB300",
+            "voltage": "24",
+            "container": 300
+          }
+        ]
+      },
+      "CDD12": {
+        "name": "CDD12",
+        "sizes": [
+          {
+            "size": "655×198×567",
+            "plates": "12×3PzB195",
+            "voltage": "24",
+            "container": 195
+          },
+          {
+            "size": "655×198×567",
+            "plates": "12×3PzB225",
+            "voltage": "24",
+            "container": 225
+          }
+        ]
+      },
+      "CDD16": {
+        "name": "CDD16",
+        "sizes": [
+          {
+            "size": "655×250×574",
+            "plates": "12×4PzB220",
+            "voltage": "24",
+            "container": 220
+          },
+          {
+            "size": "655×250×574",
+            "plates": "12×4PzB260",
+            "voltage": "24",
+            "container": 260
+          }
+        ]
+      },
+      "CPD10FJ": {
+        "name": "CPD10FJ",
+        "sizes": [
+          {
+            "size": "970×605×465",
+            "plates": "24×5PzS400",
+            "voltage": "48",
+            "container": 400
+          },
+          {
+            "size": "970×605×465",
+            "plates": "24×6PzS480",
+            "voltage": "48",
+            "container": 480
+          }
+        ]
+      },
+      "CPD10L-FG": {
+        "name": "CPD10L-FG",
+        "sizes": [
+          {
+            "size": "970×605×465",
+            "plates": "24×5PzS400",
+            "voltage": "48",
+            "container": 400
+          },
+          {
+            "size": "970×605×465",
+            "plates": "24×6PzS480",
+            "voltage": "48",
+            "container": 480
+          }
+        ]
+      },
+      "CPD10L-ZJ": {
+        "name": "CPD10L-ZJ",
+        "sizes": [
+          {
+            "size": "890×660×515",
+            "plates": "24×8PzB440",
+            "voltage": "48",
+            "container": 440
+          },
+          {
+            "size": "890×660×515",
+            "plates": "24×8PzB520",
+            "voltage": "48",
+            "container": 520
+          },
+          {
+            "size": "890×660×515",
+            "plates": "24×5PzS450",
+            "voltage": "48",
+            "container": 450
+          }
+        ]
+      },
+      "CPD10S-CQ": {
+        "name": "CPD10S-CQ",
+        "sizes": [
+          {
+            "size": "845×433×789",
+            "plates": "24×3PzS420",
+            "voltage": "48",
+            "container": 420
+          },
+          {
+            "size": "845×433×789",
+            "plates": "24×3PzS465",
+            "voltage": "48",
+            "container": 465
+          }
+        ]
+      },
+      "CPD10S-FQ": {
+        "name": "CPD10S-FQ",
+        "sizes": [
+          {
+            "size": "826×410×635",
+            "plates": "24×3PzS345",
+            "voltage": "48",
+            "container": 345
+          },
+          {
+            "size": "830×415×630",
+            "plates": "24×3PzS375",
+            "voltage": "48",
+            "container": 375
+          }
+        ]
+      },
+      "CPD10-ZJ": {
+        "name": "CPD10-ZJ",
+        "sizes": [
+          {
+            "size": "890×660×515",
+            "plates": "24×8PzB440",
+            "voltage": "48",
+            "container": 440
+          },
+          {
+            "size": "890×660×515",
+            "plates": "24×8PzB520",
+            "voltage": "48",
+            "container": 520
+          },
+          {
+            "size": "890×660×515",
+            "plates": "24×5PzS450",
+            "voltage": "48",
+            "container": 450
+          }
+        ]
+      }
+    },
+    "Hyster": {
+      "A13XNT3-хопорный": {
+        "name": "A1.3XNT (3-х опорный)",
+        "voltage": 24,
+        "container": 735,
+        "size": "980X465x780",
+        "plates": ""
+      },
+      "AXL15AC": {
+        "name": "AXL1.5AC",
+        "voltage": 48,
+        "container": 440,
+        "size": "980X465x780",
+        "plates": ""
+      },
+      "J150EX": {
+        "name": "J1.50EX",
+        "voltage": 48,
+        "container": 450,
+        "size": "980X465x780",
+        "plates": ""
+      },
+      "J20XNTMWB3-хопорный": {
+        "name": "J2.0XNT (MWB) (3-х опорный)",
+        "voltage": 48,
+        "container": 750,
+        "size": "980X465x780",
+        "plates": ""
+      },
+      "J16XNTMWB3-хопорный": {
+        "name": "J1.6XNT (MWB) (3-х опорный)",
+        "voltage": 48,
+        "container": 625,
+        "size": "980X465x780",
+        "plates": ""
+      },
+      "J175EX": {
+        "name": "J1.75EX",
+        "voltage": 48,
+        "container": 560,
+        "size": "980X465x780",
+        "plates": ""
+      },
+      "J15XNTSWB3-хопорный": {
+        "name": "J1.5XNT (SWB) (3-х опорный)",
+        "voltage": 48,
+        "container": 500,
+        "size": "980X465x780",
+        "plates": ""
+      },
+      "J18XNTLWB3-хопорный": {
+        "name": "J1.8XNT (LWB) (3-х опорный)",
+        "voltage": 48,
+        "container": 750,
+        "size": "980X465x780",
+        "plates": ""
+      },
+      "A15XNT3-хопорный": {
+        "name": "A1.5XNT (3-х опорный)",
+        "voltage": 24,
+        "container": 840,
+        "size": "980X465x780",
+        "plates": ""
+      },
+      "E50Z": {
+        "name": "E50Z",
+        "voltage": 48,
+        "container": 950,
+        "size": "1130x1130x588",
+        "plates": ""
+      },
+      "J200EX": {
+        "name": "J2.00EX",
+        "voltage": 48,
+        "container": 560,
+        "size": "980X465x780",
+        "plates": ""
+      },
+      "J250EX": {
+        "name": "J2.50EX",
+        "voltage": 48,
+        "container": 700,
+        "size": "980X465x780",
+        "plates": ""
+      },
+      "J300EX": {
+        "name": "J3.00EX",
+        "voltage": 80,
+        "container": 560,
+        "size": "980X465x780",
+        "plates": ""
+      },
+      "A10XL": {
+        "name": "A1.0XL",
+        "sizes": [
+          {
+            "size": "825×490×678",
+            "plates": "105",
+            "voltage": 24,
+            "container": 525
+          },
+          {
+            "size": "825×490×678",
+            "plates": "115",
+            "voltage": 24,
+            "container": 575
+          },
+          {
+            "size": "825×490×678",
+            "plates": "125",
+            "voltage": 24,
+            "container": 625
+          },
+          {
+            "size": "820×485×625",
+            "plates": "115",
+            "voltage": 24,
+            "container": 920
+          },
+          {
+            "size": "820×485×625",
+            "plates": "125",
+            "voltage": 24,
+            "container": 1000
+          }
+        ]
+      },
+      "E15": {
+        "name": "E1.5",
+        "sizes": [
+          {
+            "size": "870×680×615",
+            "plates": "115",
+            "voltage": 48,
+            "container": 575
+          },
+          {
+            "size": "870×680×615",
+            "plates": "125",
+            "voltage": 48,
+            "container": 625
+          }
+        ]
+      },
+      "J200XT": {
+        "name": "J2.00XT",
+        "sizes": [
+          {
+            "size": "980×625×670",
+            "plates": "115",
+            "voltage": 48,
+            "container": 575
+          },
+          {
+            "size": "980×625×670",
+            "plates": "125",
+            "voltage": 48,
+            "container": 625
+          },
+          {
+            "size": "980×625×670",
+            "plates": "105",
+            "voltage": 48,
+            "container": 630
+          },
+          {
+            "size": "980×625×670",
+            "plates": "115",
+            "voltage": 48,
+            "container": 690
+          },
+          {
+            "size": "980×625×670",
+            "plates": "125",
+            "voltage": 48,
+            "container": 750
+          }
+        ]
+      },
+      "J20XNLWB": {
+        "name": "J2.0XNLWB",
+        "sizes": [
+          {
+            "size": "825×735×625",
+            "plates": "115",
+            "voltage": 48,
+            "container": 690
+          },
+          {
+            "size": "825×735×625",
+            "plates": "125",
+            "voltage": 48,
+            "container": 750
+          }
+        ]
+      },
+      "P16транспортировщикпаллет": {
+        "name": "P1.6 (транспортировщик паллет)",
+        "voltage": 24,
+        "container": 150,
+        "size": "650×150×560",
+        "plates": "75"
+      },
+      "P20Sтранспортировщикпаллет": {
+        "name": "P2.0S (транспортировщик паллет)",
+        "sizes": [
+          {
+            "size": "655×210×630",
+            "plates": "100",
+            "voltage": 24,
+            "container": 200
+          },
+          {
+            "size": "655×210×630",
+            "plates": "105",
+            "voltage": 24,
+            "container": 210
+          },
+          {
+            "size": "665×210×630",
+            "plates": "115",
+            "voltage": 24,
+            "container": 230
+          },
+          {
+            "size": "665×210×630",
+            "plates": "125",
+            "voltage": 24,
+            "container": 250
+          }
+        ]
+      },
+      "P30транспортировщикпаллет": {
+        "name": "P30 (транспортировщик паллет)",
+        "sizes": [
+          {
+            "size": "620×210×620",
+            "plates": "105",
+            "voltage": 24,
+            "container": 210
+          },
+          {
+            "size": "620×210×620",
+            "plates": "115",
+            "voltage": 24,
+            "container": 230
+          }
+        ]
+      }
+    },
+    "Hyundai": {
+      "10BTR-9": {
+        "name": "10BTR-9",
+        "voltage": 24,
+        "container": 625,
+        "size": "375",
+        "plates": ""
+      },
+      "13BTR-9": {
+        "name": "13BTR-9",
+        "voltage": 24,
+        "container": 840,
+        "size": "490",
+        "plates": ""
+      },
+      "15BT-9": {
+        "name": "15BT-9",
+        "voltage": 48,
+        "container": 510,
+        "size": "710",
+        "plates": ""
+      },
+      "15BTR-9": {
+        "name": "15BTR-9",
+        "voltage": 24,
+        "container": 875,
+        "size": "505",
+        "plates": ""
+      },
+      "16B-9": {
+        "name": "16B-9",
+        "voltage": 48,
+        "container": 510,
+        "size": "850",
+        "plates": ""
+      },
+      "18B-7ac": {
+        "name": "18B-7ac",
+        "voltage": 48,
+        "container": 375,
+        "size": "505",
+        "plates": ""
+      },
+      "18B-9": {
+        "name": "18B-9",
+        "voltage": 48,
+        "container": 585,
+        "size": "1030",
+        "plates": ""
+      },
+      "18BT-9": {
+        "name": "18BT-9",
+        "voltage": 48,
+        "container": 565,
+        "size": "835",
+        "plates": ""
+      },
+      "20B-7ac": {
+        "name": "20B-7ac",
+        "voltage": 48,
+        "container": 575,
+        "size": "830",
+        "plates": ""
+      },
+      "20BT-9": {
+        "name": "20BT-9",
+        "voltage": 48,
+        "container": 585,
+        "size": "335",
+        "plates": ""
+      },
+      "22B-7ac": {
+        "name": "22B-7ac",
+        "voltage": 48,
+        "container": 720,
+        "size": "860",
+        "plates": ""
+      },
+      "22B-9": {
+        "name": "22B-9",
+        "voltage": 48,
+        "container": 660,
+        "size": "1090",
+        "plates": ""
+      },
+      "25BH-9": {
+        "name": "25BH-9",
+        "voltage": 80,
+        "container": 500,
+        "size": "1470",
+        "plates": ""
+      },
+      "30B-7ac": {
+        "name": "30B-7ac",
+        "voltage": 80,
+        "container": 740,
+        "size": "1200",
+        "plates": ""
+      },
+      "30B-9": {
+        "name": "30B-9",
+        "voltage": 80,
+        "container": 740,
+        "size": "1320",
+        "plates": ""
+      },
+      "32B-9": {
+        "name": "32B-9",
+        "voltage": 80,
+        "container": 740,
+        "size": "1320",
+        "plates": ""
+      }
+    },
+    "JAC": {
+      "CPD16": {
+        "name": "CPD16",
+        "voltage": 48,
+        "container": 400,
+        "size": "975x600x465",
+        "plates": ""
+      },
+      "CPD13": {
+        "name": "CPD 13",
+        "voltage": 48,
+        "container": 400,
+        "size": "975x600x465",
+        "plates": ""
+      },
+      "CPD15": {
+        "name": "CPD 15",
+        "voltage": 48,
+        "container": 400,
+        "size": "975x600x465",
+        "plates": ""
+      },
+      "CPD18": {
+        "name": "CPD18",
+        "voltage": 48,
+        "container": 400,
+        "size": "975x600x465",
+        "plates": "",
+        "sizes": [
+          {
+            "size": "975x600x465",
+            "plates": "",
+            "voltage": 48,
+            "container": 400
+          }
+        ]
+      },
+      "CPD35": {
+        "name": "CPD 35",
+        "voltage": 80,
+        "container": 600,
+        "size": "990x545x635",
+        "plates": ""
+      },
+      "CPD30": {
+        "name": "CPD 30",
+        "voltage": 80,
+        "container": 500,
+        "size": "1145x585x785",
+        "plates": ""
+      },
+      "CPD25GT": {
+        "name": "CPD 25 GT",
+        "voltage": 48,
+        "container": 720,
+        "size": "970x555x645",
+        "plates": ""
+      },
+      "CPD25": {
+        "name": "CPD 25",
+        "voltage": 48,
+        "container": 630,
+        "size": "1055x820x475",
+        "plates": ""
+      },
+      "CPD20GT": {
+        "name": "CPD 20 GT",
+        "voltage": 48,
+        "container": 620,
+        "size": "1055x820x516",
+        "plates": ""
+      },
+      "CPD20": {
+        "name": "CPD 20",
+        "voltage": 48,
+        "container": 630,
+        "size": "1055x820x475",
+        "plates": "",
+        "sizes": [
+          {
+            "size": "1055x820x475",
+            "plates": "",
+            "voltage": 48,
+            "container": 630
+          }
+        ]
+      }
+    },
+    "JUNGHEINRICH": {
+      "EFG110": {
+        "name": "EFG 110",
+        "voltage": 24,
+        "container": 460,
+        "size": "827x270x627",
+        "plates": ""
+      },
+      "EFG215": {
+        "name": "EFG 215",
+        "voltage": 48,
+        "container": 460,
+        "size": "830x522x627",
+        "plates": ""
+      },
+      "EFG425k": {
+        "name": "EFG 425k",
+        "voltage": 80,
+        "container": 560,
+        "size": "1028x711x784",
+        "plates": ""
+      },
+      "EFG545k": {
+        "name": "EFG 545k",
+        "voltage": 80,
+        "container": 600,
+        "size": "1026x852x784",
+        "plates": ""
+      },
+      "EFG-DH": {
+        "name": "EFG-DH",
+        "voltage": 24,
+        "container": 805,
+        "size": "827x432x625",
+        "plates": ""
+      },
+      "EFG-DH15": {
+        "name": "EFG-DH15",
+        "voltage": 24,
+        "container": 805,
+        "size": "827x432x625",
+        "plates": ""
+      },
+      "EFG110k": {
+        "name": "EFG 110k",
+        "container": "400, 460, 500",
+        "voltage": 24,
+        "size": "827x270x627",
+        "plates": ""
+      },
+      "EFG216": {
+        "name": "EFG 216",
+        "voltage": 48,
+        "container": 575,
+        "size": "830x630x627",
+        "plates": ""
+      },
+      "EFG316": {
+        "name": "EFG 316",
+        "container": "600, 690, 750",
+        "voltage": 48,
+        "size": "827x735x627",
+        "plates": ""
+      },
+      "EFG430": {
+        "name": "EFG 430",
+        "container": "600, 700, 775",
+        "voltage": 80,
+        "size": "1025x852x784",
+        "plates": ""
+      },
+      "EFG113": {
+        "name": "EFG 113",
+        "voltage": 24,
+        "container": 805,
+        "size": "827x432x627",
+        "plates": ""
+      },
+      "EFG216k": {
+        "name": "EFG 216k",
+        "container": "500, 575, 625",
+        "voltage": 48,
+        "size": "827x627x627",
+        "plates": ""
+      },
+      "EFG316k": {
+        "name": "EFG 316k",
+        "voltage": 48,
+        "container": 575,
+        "size": "830x630x627",
+        "plates": ""
+      },
+      "EFG320": {
+        "name": "EFG 320",
+        "container": "600, 690, 750",
+        "voltage": 48,
+        "size": "827x735x627",
+        "plates": ""
+      },
+      "EFG216kn": {
+        "name": "EFG216kn",
+        "voltage": 48,
+        "container": 690,
+        "size": "830x738x627",
+        "plates": ""
+      },
+      "EFG218k": {
+        "name": "EFG218k",
+        "voltage": 48,
+        "container": 690,
+        "size": "830x738x627",
+        "plates": ""
+      },
+      "EFG320n": {
+        "name": "EFG320n",
+        "voltage": 48,
+        "container": 690,
+        "size": "830x738x627",
+        "plates": ""
+      },
+      "EFG550": {
+        "name": "EFG550",
+        "voltage": 80,
+        "container": 840,
+        "size": "1028x999x784",
+        "plates": ""
+      },
+      "EFG115": {
+        "name": "EFG 115",
+        "voltage": 24,
+        "container": 920,
+        "size": "827x486x625",
+        "plates": ""
+      },
+      "EFG218": {
+        "name": "EFG 218",
+        "voltage": 48,
+        "container": 575,
+        "size": "830x630x627",
+        "plates": ""
+      },
+      "ESD120": {
+        "name": "ESD 120",
+        "sizes": [
+          {
+            "size": "620x280x620",
+            "plates": "100",
+            "voltage": "24",
+            "container": 300
+          },
+          {
+            "size": "620x280x620",
+            "plates": "105",
+            "voltage": "24",
+            "container": 315
+          },
+          {
+            "size": "620x280x615",
+            "plates": "115",
+            "voltage": "24",
+            "container": 345
+          },
+          {
+            "size": "620x280x615",
+            "plates": "125",
+            "voltage": "24",
+            "container": 375
+          }
+        ]
+      },
+      "ECE120(подборщикзаказов)": {
+        "name": "ECE 120 (подборщик заказов)",
+        "sizes": [
+          {
+            "size": "620x280x620",
+            "plates": "100",
+            "voltage": "24",
+            "container": 300
+          },
+          {
+            "size": "620x280x620",
+            "plates": "105",
+            "voltage": "24",
+            "container": 315
+          },
+          {
+            "size": "620x280x615",
+            "plates": "115",
+            "voltage": "24",
+            "container": 345
+          },
+          {
+            "size": "620x280x615",
+            "plates": "125",
+            "voltage": "24",
+            "container": 375
+          }
+        ]
+      },
+      "ECE220(подборщикзаказов)": {
+        "name": "ECE 220 (подборщик заказов)",
+        "sizes": [
+          {
+            "size": "798x330x784",
+            "plates": "120",
+            "voltage": "24",
+            "container": 360
+          },
+          {
+            "size": "798x330x784",
+            "plates": "120",
+            "voltage": "24",
+            "container": 480
+          },
+          {
+            "size": "798x210x784",
+            "plates": "140",
+            "voltage": "24",
+            "container": 420
+          },
+          {
+            "size": "798x330x784",
+            "plates": "140",
+            "voltage": "24",
+            "container": 560
+          }
+        ]
+      },
+      "ECE225(подборщикзаказов)": {
+        "name": "ECE 225 (подборщик заказов)",
+        "sizes": [
+          {
+            "size": "798x330x784",
+            "plates": "120",
+            "voltage": "24",
+            "container": 360
+          },
+          {
+            "size": "798x210x784",
+            "plates": "140",
+            "voltage": "24",
+            "container": 420
+          },
+          {
+            "size": "798x210x784",
+            "plates": "155",
+            "voltage": "24",
+            "container": 465
+          }
+        ]
+      },
+      "EFG110": {
+        "name": "EFG 110",
+        "sizes": [
+          {
+            "size": "820x320x625",
+            "plates": "105",
+            "voltage": "24",
+            "container": 525
+          },
+          {
+            "size": "820x320x625",
+            "plates": "115",
+            "voltage": "24",
+            "container": 575
+          },
+          {
+            "size": "820x320x625",
+            "plates": "125",
+            "voltage": "24",
+            "container": 625
+          }
+        ]
+      },
+      "EFG110K": {
+        "name": "EFG 110K",
+        "sizes": [
+          {
+            "size": "820x270x625",
+            "plates": "105",
+            "voltage": "24",
+            "container": 420
+          },
+          {
+            "size": "820x270x625",
+            "plates": "115",
+            "voltage": "24",
+            "container": 460
+          },
+          {
+            "size": "820x270x625",
+            "plates": "125",
+            "voltage": "24",
+            "container": 500
+          }
+        ]
+      },
+      "EFG113": {
+        "name": "EFG 113",
+        "sizes": [
+          {
+            "size": "820x430x625",
+            "plates": "105",
+            "voltage": "24",
+            "container": 735
+          },
+          {
+            "size": "820x430x625",
+            "plates": "115",
+            "voltage": "24",
+            "container": 805
+          },
+          {
+            "size": "820x430x625",
+            "plates": "125",
+            "voltage": "24",
+            "container": 875
+          }
+        ]
+      },
+      "EFG115": {
+        "name": "EFG 115",
+        "sizes": [
+          {
+            "size": "820x485x625",
+            "plates": "105",
+            "voltage": "24",
+            "container": 840
+          },
+          {
+            "size": "820x485x625",
+            "plates": "115",
+            "voltage": "24",
+            "container": 920
+          },
+          {
+            "size": "820x485x625",
+            "plates": "125",
+            "voltage": "24",
+            "container": 1000
+          }
+        ]
+      },
+      "EFG213": {
+        "name": "EFG 213",
+        "sizes": [
+          {
+            "size": "825x520x625",
+            "plates": "105",
+            "voltage": "48",
+            "container": 420
+          },
+          {
+            "size": "825x520x625",
+            "plates": "115",
+            "voltage": "48",
+            "container": 460
+          },
+          {
+            "size": "815x510x615",
+            "plates": "125",
+            "voltage": "48",
+            "container": 500
+          }
+        ]
+      },
+      "EFG215": {
+        "name": "EFG 215",
+        "sizes": [
+          {
+            "size": "827x519x627",
+            "plates": "100",
+            "voltage": "48",
+            "container": 400
+          },
+          {
+            "size": "825x520x625",
+            "plates": "105",
+            "voltage": "48",
+            "container": 420
+          },
+          {
+            "size": "825x520x625",
+            "plates": "115",
+            "voltage": "48",
+            "container": 460
+          },
+          {
+            "size": "825x520x625",
+            "plates": "125",
+            "voltage": "48",
+            "container": 500
+          }
+        ]
+      },
+      "EFG216": {
+        "name": "EFG 216",
+        "sizes": [
+          {
+            "size": "825x735x625",
+            "plates": "105",
+            "voltage": "48",
+            "container": 630
+          },
+          {
+            "size": "825x735x625",
+            "plates": "115",
+            "voltage": "48",
+            "container": 690
+          },
+          {
+            "size": "825x735x625",
+            "plates": "125",
+            "voltage": "48",
+            "container": 750
+          }
+        ]
+      },
+      "EFG216K": {
+        "name": "EFG 216K",
+        "sizes": [
+          {
+            "size": "825x625x625",
+            "plates": "105",
+            "voltage": "48",
+            "container": 525
+          },
+          {
+            "size": "825x625x625",
+            "plates": "115",
+            "voltage": "48",
+            "container": 575
+          },
+          {
+            "size": "825x625x625",
+            "plates": "125",
+            "voltage": "48",
+            "container": 625
+          }
+        ]
+      },
+      "EFG218": {
+        "name": "EFG 218",
+        "sizes": [
+          {
+            "size": "825x735x625",
+            "plates": "105",
+            "voltage": "48",
+            "container": 630
+          },
+          {
+            "size": "825x735x625",
+            "plates": "115",
+            "voltage": "48",
+            "container": 690
+          },
+          {
+            "size": "825x735x625",
+            "plates": "125",
+            "voltage": "48",
+            "container": 750
+          }
+        ]
+      },
+      "EFG218K": {
+        "name": "EFG 218K",
+        "sizes": [
+          {
+            "size": "825x625x625",
+            "plates": "105",
+            "voltage": "48",
+            "container": 525
+          },
+          {
+            "size": "825x625x625",
+            "plates": "115",
+            "voltage": "48",
+            "container": 575
+          },
+          {
+            "size": "825x625x625",
+            "plates": "125",
+            "voltage": "48",
+            "container": 625
+          }
+        ]
+      },
+      "EFG220": {
+        "name": "EFG 220",
+        "sizes": [
+          {
+            "size": "825x735x625",
+            "plates": "105",
+            "voltage": "48",
+            "container": 630
+          },
+          {
+            "size": "825x735x625",
+            "plates": "115",
+            "voltage": "48",
+            "container": 690
+          },
+          {
+            "size": "825x735x625",
+            "plates": "125",
+            "voltage": "48",
+            "container": 750
+          }
+        ]
+      },
+      "EFG316": {
+        "name": "EFG 316",
+        "sizes": [
+          {
+            "size": "825x735x625",
+            "plates": "105",
+            "voltage": "48",
+            "container": 630
+          },
+          {
+            "size": "825x735x625",
+            "plates": "115",
+            "voltage": "48",
+            "container": 690
+          },
+          {
+            "size": "825x735x625",
+            "plates": "125",
+            "voltage": "48",
+            "container": 750
+          }
+        ]
+      },
+      "EFG316K": {
+        "name": "EFG 316K",
+        "sizes": [
+          {
+            "size": "825x625x625",
+            "plates": "105",
+            "voltage": "48",
+            "container": 525
+          },
+          {
+            "size": "825x625x625",
+            "plates": "115",
+            "voltage": "48",
+            "container": 575
+          },
+          {
+            "size": "825x625x625",
+            "plates": "125",
+            "voltage": "48",
+            "container": 625
+          }
+        ]
+      },
+      "EFG318": {
+        "name": "EFG 318",
+        "sizes": [
+          {
+            "size": "825x735x625",
+            "plates": "105",
+            "voltage": "48",
+            "container": 630
+          },
+          {
+            "size": "825x735x625",
+            "plates": "115",
+            "voltage": "48",
+            "container": 690
+          },
+          {
+            "size": "825x735x625",
+            "plates": "125",
+            "voltage": "48",
+            "container": 750
+          }
+        ]
+      },
+      "EFG320": {
+        "name": "EFG 320",
+        "sizes": [
+          {
+            "size": "825x735x625",
+            "plates": "115",
+            "voltage": "48",
+            "container": 690
+          },
+          {
+            "size": "825x735x625",
+            "plates": "125",
+            "voltage": "48",
+            "container": 750
+          }
+        ]
+      },
+      "EFG535": {
+        "name": "EFG 535",
+        "sizes": [
+          {
+            "size": "1020x850x784",
+            "plates": "140",
+            "voltage": "80",
+            "container": 700
+          },
+          {
+            "size": "1020x850x784",
+            "plates": "155",
+            "voltage": "80",
+            "container": 775
+          }
+        ]
+      },
+      "EFX413": {
+        "name": "EFX 413",
+        "sizes": [
+          {
+            "size": "1030x525x625",
+            "plates": "105",
+            "voltage": "48",
+            "container": 525
+          },
+          {
+            "size": "1030x252x625",
+            "plates": "115",
+            "voltage": "48",
+            "container": 575
+          },
+          {
+            "size": "1030x252x625",
+            "plates": "125",
+            "voltage": "48",
+            "container": 625
+          }
+        ]
+      },
+      "EJC110": {
+        "name": "EJC 110",
+        "sizes": [
+          {
+            "size": "660x146x590",
+            "plates": "75",
+            "voltage": "24",
+            "container": 150
+          },
+          {
+            "size": "660x150x610",
+            "plates": "86",
+            "voltage": "24",
+            "container": 172
+          }
+        ]
+      },
+      "EJC112": {
+        "name": "EJC 112",
+        "sizes": [
+          {
+            "size": "660x146x590",
+            "plates": "75",
+            "voltage": "24",
+            "container": 150
+          }
+        ]
+      },
+      "EJC112G": {
+        "name": "EJC 112G",
+        "sizes": [
+          {
+            "size": "660x150x680",
+            "plates": "100",
+            "voltage": "24",
+            "container": 200
+          }
+        ]
+      },
+      "EJC214": {
+        "name": "EJC 214",
+        "sizes": [
+          {
+            "size": "620x280x615",
+            "plates": "115",
+            "voltage": "24",
+            "container": 345
+          },
+          {
+            "size": "620x280x615",
+            "plates": "125",
+            "voltage": "24",
+            "container": 375
+          }
+        ]
+      },
+      "EJD220": {
+        "name": "EJD 220",
+        "sizes": [
+          {
+            "size": "610x209x625",
+            "plates": "105",
+            "voltage": "24",
+            "container": 210
+          },
+          {
+            "size": "610x209x625",
+            "plates": "115",
+            "voltage": "24",
+            "container": 230
+          },
+          {
+            "size": "610x209x625",
+            "plates": "125",
+            "voltage": "24",
+            "container": 250
+          }
+        ]
+      },
+      "EJE116(транспортировщикпаллет)": {
+        "name": "EJE 116 (транспортировщик паллет)",
+        "sizes": [
+          {
+            "size": "621x209x627",
+            "plates": "150",
+            "voltage": "24",
+            "container": 300
+          },
+          {
+            "size": "660x146x590",
+            "plates": "75",
+            "voltage": "24",
+            "container": 150
+          },
+          {
+            "size": "620x210x620",
+            "plates": "105",
+            "voltage": "24",
+            "container": 210
+          },
+          {
+            "size": "620x210x620",
+            "plates": "115",
+            "voltage": "24",
+            "container": 230
+          },
+          {
+            "size": "620x209x625",
+            "plates": "125",
+            "voltage": "24",
+            "container": 250
+          }
+        ]
+      },
+      "EJE118(транспортировщикпаллет)": {
+        "name": "EJE 118 (транспортировщик паллет)",
+        "sizes": [
+          {
+            "size": "621x209x627",
+            "plates": "150",
+            "voltage": "24",
+            "container": 300
+          },
+          {
+            "size": "620x209x625",
+            "plates": "125",
+            "voltage": "24",
+            "container": 250
+          },
+          {
+            "size": "620x280x620",
+            "plates": "105",
+            "voltage": "24",
+            "container": 315
+          }
+        ]
+      },
+      "EJE120(транспортировщикпаллет)": {
+        "name": "EJE 120 (транспортировщик паллет)",
+        "sizes": [
+          {
+            "size": "620x210x620",
+            "plates": "105",
+            "voltage": "24",
+            "container": 210
+          },
+          {
+            "size": "620x210x620",
+            "plates": "125",
+            "voltage": "24",
+            "container": 250
+          }
+        ]
+      },
+      "EJE220(транспортировщикпаллет)": {
+        "name": "EJE 220 (транспортировщик паллет)",
+        "sizes": [
+          {
+            "size": "610x209x625",
+            "plates": "105",
+            "voltage": "24",
+            "container": 210
+          },
+          {
+            "size": "610x209x625",
+            "plates": "115",
+            "voltage": "24",
+            "container": 230
+          },
+          {
+            "size": "610x209x625",
+            "plates": "125",
+            "voltage": "24",
+            "container": 250
+          }
+        ]
+      },
+      "EJE225(транспортировщикпаллет)": {
+        "name": "EJE 225 (транспортировщик паллет)",
+        "sizes": [
+          {
+            "size": "610x265x625",
+            "plates": "105",
+            "voltage": "24",
+            "container": 315
+          },
+          {
+            "size": "610x265x625",
+            "plates": "115",
+            "voltage": "24",
+            "container": 345
+          },
+          {
+            "size": "610x265x625",
+            "plates": "125",
+            "voltage": "24",
+            "container": 375
+          }
+        ]
+      },
+      "EKS-110(подборщикзаказов)": {
+        "name": "EKS-110 (подборщик заказов)",
+        "sizes": [
+          {
+            "size": "818x264x763",
+            "plates": "140",
+            "voltage": "24",
+            "container": 560
+          },
+          {
+            "size": "818x264x763",
+            "plates": "155",
+            "voltage": "24",
+            "container": 620
+          }
+        ]
+      },
+      "EKX425K": {
+        "name": "EKX 425K",
+        "sizes": [
+          {
+            "size": "1025x711x784",
+            "plates": "140",
+            "voltage": "80",
+            "container": 560
+          },
+          {
+            "size": "1025x711x784",
+            "plates": "155",
+            "voltage": "80",
+            "container": 620
+          }
+        ]
+      },
+      "EKX513": {
+        "name": "EKX 513",
+        "sizes": [
+          {
+            "size": "1025x564x770",
+            "plates": "140",
+            "voltage": "80",
+            "container": 420
+          },
+          {
+            "size": "1025x564x770",
+            "plates": "155",
+            "voltage": "80",
+            "container": 465
+          }
+        ]
+      },
+      "EKX515": {
+        "name": "EKX 515",
+        "sizes": [
+          {
+            "size": "1025x975x770",
+            "plates": "140",
+            "voltage": "80",
+            "container": 840
+          },
+          {
+            "size": "1025x975x770",
+            "plates": "155",
+            "voltage": "80",
+            "container": 930
+          }
+        ]
+      },
+      "EKX515K": {
+        "name": "EKX 515K",
+        "sizes": [
+          {
+            "size": "1025x708x770",
+            "plates": "140",
+            "voltage": "80",
+            "container": 560
+          },
+          {
+            "size": "1025x708x770",
+            "plates": "155",
+            "voltage": "80",
+            "container": 620
+          }
+        ]
+      },
+      "ERC12": {
+        "name": "ERC 12",
+        "sizes": [
+          {
+            "size": "830x220x620",
+            "plates": "105",
+            "voltage": "24",
+            "container": 315
+          },
+          {
+            "size": "830x218x615",
+            "plates": "115",
+            "voltage": "24",
+            "container": 345
+          },
+          {
+            "size": "830x218x615",
+            "plates": "125",
+            "voltage": "24",
+            "container": 375
+          }
+        ]
+      },
+      "ERC212": {
+        "name": "ERC 212",
+        "sizes": [
+          {
+            "size": "620x280x620",
+            "plates": "105",
+            "voltage": "24",
+            "container": 315
+          },
+          {
+            "size": "620x280x615",
+            "plates": "115",
+            "voltage": "24",
+            "container": 345
+          },
+          {
+            "size": "620x280x615",
+            "plates": "125",
+            "voltage": "24",
+            "container": 375
+          }
+        ]
+      },
+      "ERC214": {
+        "name": "ERC 214",
+        "sizes": [
+          {
+            "size": "620x280x615",
+            "plates": "115",
+            "voltage": "24",
+            "container": 345
+          },
+          {
+            "size": "620x280x615",
+            "plates": "125",
+            "voltage": "24",
+            "container": 375
+          }
+        ]
+      },
+      "ERE120(транспортировщикпаллет)": {
+        "name": "ERE 120 (транспортировщик паллет)",
+        "sizes": [
+          {
+            "size": "621x281x627",
+            "plates": "100",
+            "voltage": "24",
+            "container": 300
+          },
+          {
+            "size": "621x281x627",
+            "plates": "105",
+            "voltage": "24",
+            "container": 315
+          },
+          {
+            "size": "620x280x615",
+            "plates": "115",
+            "voltage": "24",
+            "container": 345
+          },
+          {
+            "size": "620x280x615",
+            "plates": "125",
+            "voltage": "24",
+            "container": 375
+          }
+        ]
+      },
+      "ERE220(транспортировщикпаллет)": {
+        "name": "ERE 220 (транспортировщик паллет)",
+        "sizes": [
+          {
+            "size": "610x210x625",
+            "plates": "125",
+            "voltage": "24",
+            "container": 250
+          }
+        ]
+      },
+      "ERE225(транспортировщикпаллет)": {
+        "name": "ERE 225 (транспортировщик паллет)",
+        "sizes": [
+          {
+            "size": "621x281x627",
+            "plates": "100",
+            "voltage": "24",
+            "container": 300
+          },
+          {
+            "size": "620x280x620",
+            "plates": "115",
+            "voltage": "24",
+            "container": 345
+          },
+          {
+            "size": "620x280x620",
+            "plates": "125",
+            "voltage": "24",
+            "container": 375
+          }
+        ]
+      },
+      "ESE120(транспортировщикпаллет)": {
+        "name": "ESE 120 (транспортировщик паллет)",
+        "sizes": [
+          {
+            "size": "620x280x620",
+            "plates": "100",
+            "voltage": "24",
+            "container": 300
+          },
+          {
+            "size": "620x280x620",
+            "plates": "105",
+            "voltage": "24",
+            "container": 315
+          },
+          {
+            "size": "620x280x615",
+            "plates": "115",
+            "voltage": "24",
+            "container": 345
+          },
+          {
+            "size": "620x280x615",
+            "plates": "125",
+            "voltage": "24",
+            "container": 375
+          }
+        ]
+      },
+      "ESE320(транспортировщикпаллет)": {
+        "name": "ESE 320 (транспортировщик паллет)",
+        "sizes": [
+          {
+            "size": "792x212x784",
+            "plates": "140",
+            "voltage": "24",
+            "container": 420
+          },
+          {
+            "size": "792x212x784",
+            "plates": "155",
+            "voltage": "24",
+            "container": 465
+          }
+        ]
+      },
+      "ETV110(штабелер)": {
+        "name": "ETV 110 (штабелер)",
+        "sizes": [
+          {
+            "size": "1030x350x784",
+            "plates": "140",
+            "voltage": "48",
+            "container": 420
+          }
+        ]
+      },
+      "ETV114(штабелер)": {
+        "name": "ETV 114 (штабелер)",
+        "sizes": [
+          {
+            "size": "1220x350x784",
+            "plates": "140",
+            "voltage": "48",
+            "container": 560
+          },
+          {
+            "size": "1220x354x784",
+            "plates": "155",
+            "voltage": "48",
+            "container": 620
+          },
+          {
+            "size": "1220x420x784",
+            "plates": "140",
+            "voltage": "48",
+            "container": 700
+          },
+          {
+            "size": "1220x420x784",
+            "plates": "155",
+            "voltage": "48",
+            "container": 775
+          }
+        ]
+      },
+      "ETV120(штабелер)": {
+        "name": "ETV 120 (штабелер)",
+        "sizes": [
+          {
+            "size": "625x210x630",
+            "plates": "100",
+            "voltage": "24",
+            "container": 200
+          }
+        ]
+      },
+      "ETV214(штабелер)": {
+        "name": "ETV 214 (штабелер)",
+        "sizes": [
+          {
+            "size": "1220x425x784",
+            "plates": "120",
+            "voltage": "48",
+            "container": 600
+          },
+          {
+            "size": "1220x280x784",
+            "plates": "140",
+            "voltage": "48",
+            "container": 420
+          },
+          {
+            "size": "1220x280x784",
+            "plates": "155",
+            "voltage": "48",
+            "container": 465
+          },
+          {
+            "size": "1220x350x784",
+            "plates": "140",
+            "voltage": "48",
+            "container": 560
+          },
+          {
+            "size": "1220x354x784",
+            "plates": "155",
+            "voltage": "48",
+            "container": 620
+          },
+          {
+            "size": "1220x425x784",
+            "plates": "155",
+            "voltage": "48",
+            "container": 775
+          }
+        ]
+      },
+      "ETV216(штабелер)": {
+        "name": "ETV 216 (штабелер)",
+        "sizes": [
+          {
+            "size": "1220x352x784",
+            "plates": "120",
+            "voltage": "48",
+            "container": 480
+          },
+          {
+            "size": "1220x280x784",
+            "plates": "140",
+            "voltage": "48",
+            "container": 420
+          },
+          {
+            "size": "1220x280x784",
+            "plates": "155",
+            "voltage": "48",
+            "container": 465
+          },
+          {
+            "size": "1220x350x784",
+            "plates": "140",
+            "voltage": "48",
+            "container": 560
+          },
+          {
+            "size": "1220x354x784",
+            "plates": "155",
+            "voltage": "48",
+            "container": 620
+          },
+          {
+            "size": "1215x414x770",
+            "plates": "140",
+            "voltage": "48",
+            "container": 700
+          },
+          {
+            "size": "1215x414x770",
+            "plates": "155",
+            "voltage": "48",
+            "container": 775
+          }
+        ]
+      },
+      "ETV320(штабелер)": {
+        "name": "ETV 320 (штабелер)",
+        "sizes": [
+          {
+            "size": "1220x425x784",
+            "plates": "120",
+            "voltage": "48",
+            "container": 600
+          }
+        ]
+      },
+      "ETV325(штабелер)": {
+        "name": "ETV 325 (штабелер)",
+        "sizes": [
+          {
+            "size": "1220x495x769",
+            "plates": "140",
+            "voltage": "48",
+            "container": 840
+          },
+          {
+            "size": "1220x495x769",
+            "plates": "155",
+            "voltage": "48",
+            "container": 930
+          }
+        ]
+      }
+    },
+    "Komatsu": {
+      "FB09-3": {
+        "name": "FB09-3",
+        "voltage": 48,
+        "container": 468,
+        "size": "970x529x645",
+        "plates": ""
+      },
+      "FB13M-12": {
+        "name": "FB13M-12",
+        "voltage": 48,
+        "container": 280,
+        "size": "948x815x585",
+        "plates": ""
+      },
+      "FB15EXG-11": {
+        "name": "FB15EXG-11",
+        "voltage": 48,
+        "container": 700,
+        "size": "980x540x645",
+        "plates": ""
+      },
+      "FB18-12": {
+        "name": "FB18-12",
+        "sizes": [
+          {
+            "size": "975x525x575",
+            "plates": "24×7 PzB 525",
+            "voltage": 48,
+            "container": 525
+          },
+          {
+            "size": "975x525x645",
+            "plates": "24×4 PzS 420",
+            "voltage": 48,
+            "container": 420
+          },
+          {
+            "size": "975x525x647",
+            "plates": "24×4 PzS 460",
+            "voltage": 48,
+            "container": 460
+          },
+          {
+            "size": "970x529x645",
+            "plates": "",
+            "voltage": 48,
+            "container": 565
+          }
+        ]
+      },
+      "FB18M-3": {
+        "name": "FB18M-3",
+        "sizes": [
+          {
+            "size": "975x540x630",
+            "plates": "24×7 PzB 525",
+            "voltage": 48,
+            "container": 525
+          },
+          {
+            "size": "975x540x630",
+            "plates": "24×7 PzB 602",
+            "voltage": 48,
+            "container": 602
+          },
+          {
+            "size": "975x540x630",
+            "plates": "24×4 PzS 460",
+            "voltage": 48,
+            "container": 460
+          },
+          {
+            "size": "975x540x630",
+            "plates": "24×4 PzS 500",
+            "voltage": 48,
+            "container": 500
+          },
+          {
+            "size": "978х537х637",
+            "plates": "",
+            "voltage": 48,
+            "container": 546
+          }
+        ]
+      },
+      "FB25EX-11": {
+        "name": "FB25EX-11",
+        "sizes": [
+          {
+            "size": "980x845x465",
+            "plates": "24×8 PzS 640",
+            "voltage": 48,
+            "container": 640
+          },
+          {
+            "size": "980x845x465",
+            "plates": "",
+            "voltage": 48,
+            "container": 565
+          }
+        ]
+      },
+      "FB10M-3": {
+        "name": "FB10M-3",
+        "sizes": [
+          {
+            "size": "920x425x635",
+            "plates": "24×3 PzS 345",
+            "voltage": 48,
+            "container": 345
+          },
+          {
+            "size": "920x425x635",
+            "plates": "24×3 PzS 375",
+            "voltage": 48,
+            "container": 375
+          },
+          {
+            "size": "920x425x627",
+            "plates": "",
+            "voltage": 48,
+            "container": 330
+          }
+        ]
+      },
+      "FB15-12": {
+        "name": "FB15-12",
+        "sizes": [
+          {
+            "size": "975x525x575",
+            "plates": "24×4 PzV 400",
+            "voltage": 48,
+            "container": 400
+          },
+          {
+            "size": "975x525x575",
+            "plates": "24×7 PzB 525",
+            "voltage": 48,
+            "container": 525
+          },
+          {
+            "size": "975x525x645",
+            "plates": "24×4 PzS 420",
+            "voltage": 48,
+            "container": 420
+          },
+          {
+            "size": "975x525x647",
+            "plates": "24×4 PzS 460",
+            "voltage": 48,
+            "container": 460
+          },
+          {
+            "size": "970x529x645",
+            "plates": "",
+            "voltage": 48,
+            "container": 565
+          }
+        ]
+      },
+      "FB15M-3": {
+        "name": "FB15M-3",
+        "sizes": [
+          {
+            "size": "975x540x630",
+            "plates": "24×7 PzB 525",
+            "voltage": 48,
+            "container": 525
+          },
+          {
+            "size": "975x540x630",
+            "plates": "24×7 PzB 602",
+            "voltage": 48,
+            "container": 602
+          },
+          {
+            "size": "975x540x630",
+            "plates": "24×4 PzS 460",
+            "voltage": 48,
+            "container": 460
+          },
+          {
+            "size": "975x540x630",
+            "plates": "24×4 PzS 500",
+            "voltage": 48,
+            "container": 500
+          },
+          {
+            "size": "980x540x630",
+            "plates": "",
+            "voltage": 48,
+            "container": 460
+          }
+        ]
+      },
+      "FB18G-12": {
+        "name": "FB18G-12",
+        "sizes": [
+          {
+            "size": "975x525x575",
+            "plates": "24×7 PzB 525",
+            "voltage": 48,
+            "container": 525
+          },
+          {
+            "size": "975x525x647",
+            "plates": "24×4 PzS 460",
+            "voltage": 48,
+            "container": 460
+          },
+          {
+            "size": "970x530x575",
+            "plates": "",
+            "voltage": 48,
+            "container": 460
+          }
+        ]
+      },
+      "FB20M-12": {
+        "name": "FB20M-12",
+        "voltage": 48,
+        "container": 565,
+        "size": "970x529x645",
+        "plates": ""
+      },
+      "FB05-3(a)": {
+        "name": "FB05-3 (a)",
+        "voltage": 24,
+        "container": 145,
+        "size": "990x545x635",
+        "plates": ""
+      },
+      "FB05-3(b)": {
+        "name": "FB05-3 (b)",
+        "voltage": 24,
+        "container": 145,
+        "size": "815x740x479",
+        "plates": ""
+      },
+      "FB12M-2R": {
+        "name": "FB12M-2R",
+        "sizes": [
+          {
+            "size": "820x410x620",
+            "plates": "24×3 PzS 315",
+            "voltage": 48,
+            "container": 315
+          },
+          {
+            "size": "830x415x630",
+            "plates": "24×3 PzS 345",
+            "voltage": 48,
+            "container": 345
+          },
+          {
+            "size": "830x415x630",
+            "plates": "24×3 PzS 375",
+            "voltage": 48,
+            "container": 375
+          },
+          {
+            "size": "830x414x627",
+            "plates": "",
+            "voltage": 48,
+            "container": 315
+          }
+        ]
+      },
+      "FB15EX-11": {
+        "name": "FB15EX-11",
+        "sizes": [
+          {
+            "size": "975x660x460",
+            "plates": "24×5 PzS 400",
+            "voltage": 48,
+            "container": 400
+          },
+          {
+            "size": "980x660x460",
+            "plates": "24×6 PzS 480",
+            "voltage": 48,
+            "container": 480
+          },
+          {
+            "size": "980x660x465",
+            "plates": "",
+            "voltage": 48,
+            "container": 400
+          }
+        ]
+      },
+      "FB15MG-2R": {
+        "name": "FB15MG-2R",
+        "voltage": 48,
+        "container": 460,
+        "size": "830х520х625",
+        "plates": ""
+      },
+      "FB09-03": {
+        "name": "FB09-03",
+        "voltage": 24,
+        "container": 400,
+        "size": "665×465×450",
+        "plates": "80"
+      },
+      "FB10-12": {
+        "name": "FB10-12",
+        "sizes": [
+          {
+            "size": "960×370×560",
+            "plates": "75",
+            "voltage": 48,
+            "container": 300
+          },
+          {
+            "size": "975×525×645",
+            "plates": "105",
+            "voltage": 48,
+            "container": 420
+          },
+          {
+            "size": "975×525×647",
+            "plates": "115",
+            "voltage": 48,
+            "container": 460
+          }
+        ]
+      },
+      "FB10EX-8": {
+        "name": "FB10EX-8",
+        "voltage": 48,
+        "container": 360,
+        "size": "970×650×450",
+        "plates": "60"
+      },
+      "FB13M-2": {
+        "name": "FB13M-2",
+        "sizes": [
+          {
+            "size": "920×425×635",
+            "plates": "115",
+            "voltage": 48,
+            "container": 345
+          },
+          {
+            "size": "920×425×635",
+            "plates": "125",
+            "voltage": 48,
+            "container": 375
+          }
+        ]
+      },
+      "FB13M-3": {
+        "name": "FB13M-3",
+        "sizes": [
+          {
+            "size": "920×425×635",
+            "plates": "115",
+            "voltage": 48,
+            "container": 345
+          },
+          {
+            "size": "920×425×635",
+            "plates": "125",
+            "voltage": 48,
+            "container": 375
+          }
+        ]
+      },
+      "FB14RJY(штабелер)": {
+        "name": "FB14 RJY (штабелер)",
+        "sizes": [
+          {
+            "size": "1220×355×784",
+            "plates": "140",
+            "voltage": 48,
+            "container": 560
+          },
+          {
+            "size": "1220×355×784",
+            "plates": "155",
+            "voltage": 48,
+            "container": 620
+          },
+          {
+            "size": "1220×425×784",
+            "plates": "140",
+            "voltage": 48,
+            "container": 700
+          },
+          {
+            "size": "1220×425×784",
+            "plates": "155",
+            "voltage": 48,
+            "container": 775
+          }
+        ]
+      },
+      "FB15A-10": {
+        "name": "FB15A-10",
+        "voltage": 48,
+        "container": 260,
+        "size": "970×380×530",
+        "plates": "65"
+      },
+      "FB15EX": {
+        "name": "FB15EX",
+        "voltage": 48,
+        "container": 480,
+        "size": "980×660×460",
+        "plates": "80"
+      },
+      "FB15EX-7": {
+        "name": "FB15EX-7",
+        "sizes": [
+          {
+            "size": "975×660×460",
+            "plates": "80",
+            "voltage": 48,
+            "container": 400
+          },
+          {
+            "size": "980×660×460",
+            "plates": "80",
+            "voltage": 48,
+            "container": 480
+          }
+        ]
+      },
+      "FB15EX-8": {
+        "name": "FB15EX-8",
+        "sizes": [
+          {
+            "size": "975×660×460",
+            "plates": "80",
+            "voltage": 48,
+            "container": 400
+          },
+          {
+            "size": "980×660×460",
+            "plates": "80",
+            "voltage": 48,
+            "container": 480
+          }
+        ]
+      },
+      "FB15EXF": {
+        "name": "FB15EXF",
+        "voltage": 48,
+        "container": 480,
+        "size": "980×660×460",
+        "plates": "80"
+      },
+      "FB15EXL-11": {
+        "name": "FB15EXL-11",
+        "sizes": [
+          {
+            "size": "975×660×470",
+            "plates": "80",
+            "voltage": 48,
+            "container": 400
+          },
+          {
+            "size": "980×660×470",
+            "plates": "80",
+            "voltage": 48,
+            "container": 480
+          }
+        ]
+      },
+      "FB15EXL-7": {
+        "name": "FB15EXL-7",
+        "sizes": [
+          {
+            "size": "960×450×480",
+            "plates": "65",
+            "voltage": 48,
+            "container": 390
+          },
+          {
+            "size": "960×450×450",
+            "plates": "55",
+            "voltage": 48,
+            "container": 330
+          },
+          {
+            "size": "970×450×450",
+            "plates": "80",
+            "voltage": 48,
+            "container": 320
+          }
+        ]
+      },
+      "FB15G-12": {
+        "name": "FB15G-12",
+        "sizes": [
+          {
+            "size": "975×525×575",
+            "plates": "75",
+            "voltage": 48,
+            "container": 525
+          },
+          {
+            "size": "975×525×647",
+            "plates": "115",
+            "voltage": 48,
+            "container": 460
+          }
+        ]
+      },
+      "FB15M-2R": {
+        "name": "FB15M-2R",
+        "sizes": [
+          {
+            "size": "830×520×625",
+            "plates": "115",
+            "voltage": 48,
+            "container": 460
+          },
+          {
+            "size": "830×520×625",
+            "plates": "125",
+            "voltage": 48,
+            "container": 500
+          }
+        ]
+      },
+      "FB15RL-12": {
+        "name": "FB15RL-12",
+        "sizes": [
+          {
+            "size": "960×375×570",
+            "plates": "75",
+            "voltage": 48,
+            "container": 300
+          },
+          {
+            "size": "960×385×570",
+            "plates": "75",
+            "voltage": 48,
+            "container": 375
+          }
+        ]
+      },
+      "FB15RL-14": {
+        "name": "FB15RL-14",
+        "voltage": 48,
+        "container": 300,
+        "size": "960×375×570",
+        "plates": "75"
+      },
+      "FB15RS-11": {
+        "name": "FB15RS-11",
+        "voltage": 48,
+        "container": 300,
+        "size": "960×375×570",
+        "plates": "75"
+      },
+      "FB18EX-8": {
+        "name": "FB18EX-8",
+        "voltage": 48,
+        "container": 480,
+        "size": "980×660×460",
+        "plates": "80"
+      },
+      "FB18M-2R": {
+        "name": "FB18M-2R",
+        "sizes": [
+          {
+            "size": "825×625×625",
+            "plates": "105",
+            "voltage": 48,
+            "container": 525
+          },
+          {
+            "size": "825×625×625",
+            "plates": "115",
+            "voltage": 48,
+            "container": 575
+          },
+          {
+            "size": "825×625×625",
+            "plates": "125",
+            "voltage": 48,
+            "container": 625
+          }
+        ]
+      },
+      "FB18RJ-12": {
+        "name": "FB18RJ-12",
+        "sizes": [
+          {
+            "size": "960×375×570",
+            "plates": "75",
+            "voltage": 48,
+            "container": 300
+          },
+          {
+            "size": "960×385×570",
+            "plates": "75",
+            "voltage": 48,
+            "container": 375
+          }
+        ]
+      },
+      "FB18RL-12": {
+        "name": "FB18RL-12",
+        "sizes": [
+          {
+            "size": "960×375×570",
+            "plates": "75",
+            "voltage": 48,
+            "container": 300
+          },
+          {
+            "size": "960×385×570",
+            "plates": "75",
+            "voltage": 48,
+            "container": 375
+          }
+        ]
+      },
+      "FB20AG-12": {
+        "name": "FB20AG-12",
+        "sizes": [
+          {
+            "size": "975×525×575",
+            "plates": "75",
+            "voltage": 48,
+            "container": 525
+          },
+          {
+            "size": "975×525×647",
+            "plates": "115",
+            "voltage": 48,
+            "container": 460
+          }
+        ]
+      },
+      "FB20M-2": {
+        "name": "FB20M-2",
+        "sizes": [
+          {
+            "size": "825×625×625",
+            "plates": "105",
+            "voltage": 48,
+            "container": 525
+          },
+          {
+            "size": "825×625×625",
+            "plates": "115",
+            "voltage": 48,
+            "container": 575
+          },
+          {
+            "size": "825×625×625",
+            "plates": "125",
+            "voltage": 48,
+            "container": 625
+          }
+        ]
+      },
+      "FB25EX-8": {
+        "name": "FB25EX-8",
+        "voltage": 48,
+        "container": 640,
+        "size": "980×845×465",
+        "plates": "80"
+      },
+      "FB30-11": {
+        "name": "FB30-11",
+        "voltage": 72,
+        "container": 540,
+        "size": "1044×985×575",
+        "plates": "90"
+      },
+      "FBEXL-8": {
+        "name": "FBEXL-8",
+        "voltage": 48,
+        "container": 480,
+        "size": "980×670×450",
+        "plates": "80"
+      },
+      "FWS14-1R": {
+        "name": "FWS 14-1R",
+        "sizes": [
+          {
+            "size": "800×210×620",
+            "plates": "105",
+            "voltage": 24,
+            "container": 315
+          },
+          {
+            "size": "800×210×616",
+            "plates": "115",
+            "voltage": 24,
+            "container": 345
+          },
+          {
+            "size": "800×210×615",
+            "plates": "125",
+            "voltage": 24,
+            "container": 375
+          }
+        ]
+      },
+      "MWP20-1R(транспортировщикпаллет)": {
+        "name": "MWP 20-1R (транспортировщик паллет)",
+        "sizes": [
+          {
+            "size": "620×209×625",
+            "plates": "115",
+            "voltage": 24,
+            "container": 230
+          },
+          {
+            "size": "620×209×625",
+            "plates": "125",
+            "voltage": 24,
+            "container": 250
+          }
+        ]
+      },
+      "MWP20F-1R(транспортировщикпаллет)": {
+        "name": "MWP 20F-1R (транспортировщик паллет)",
+        "sizes": [
+          {
+            "size": "620×280×625",
+            "plates": "115",
+            "voltage": 24,
+            "container": 345
+          },
+          {
+            "size": "620×280×625",
+            "plates": "125",
+            "voltage": 24,
+            "container": 375
+          }
+        ]
+      },
+      "MWS10-1R": {
+        "name": "MWS 10-1R",
+        "sizes": [
+          {
+            "size": "760×170×575",
+            "plates": "75",
+            "voltage": 24,
+            "container": 225
+          },
+          {
+            "size": "760×170×630",
+            "plates": "86",
+            "voltage": 24,
+            "container": 258
+          },
+          {
+            "size": "760×170×650",
+            "plates": "100",
+            "voltage": 24,
+            "container": 300
+          }
+        ]
+      },
+      "MWS12-1R": {
+        "name": "MWS 12-1R",
+        "sizes": [
+          {
+            "size": "760×170×650",
+            "plates": "86",
+            "voltage": 24,
+            "container": 258
+          },
+          {
+            "size": "760×170×650",
+            "plates": "100",
+            "voltage": 24,
+            "container": 300
+          }
+        ]
+      },
+      "MWS14-1R": {
+        "name": "MWS 14-1R",
+        "sizes": [
+          {
+            "size": "800×210×616",
+            "plates": "115",
+            "voltage": 24,
+            "container": 345
+          },
+          {
+            "size": "800×210×615",
+            "plates": "125",
+            "voltage": 24,
+            "container": 375
+          }
+        ]
+      }
+    },
+    "Linde": {
+      "E10": {
+        "name": "E10",
+        "voltage": 24,
+        "container": 465,
+        "size": "625x285x785",
+        "plates": ""
+      },
+      "E12": {
+        "name": "E12",
+        "voltage": 24,
+        "container": 575,
+        "size": "825x324x627",
+        "plates": ""
+      },
+      "E14": {
+        "name": "E14",
+        "voltage": 48,
+        "container": "400/460/500",
+        "size": "827x519x627",
+        "plates": ""
+      },
+      "E15": {
+        "name": "E15",
+        "voltage": "24/48",
+        "container": "560/660/805",
+        "size": "825x378x627/827x432x627/832x523x782",
+        "plates": ""
+      },
+      "E15C": {
+        "name": "E15C",
+        "voltage": 48,
+        "container": "550/560",
+        "size": "832x523x782",
+        "plates": ""
+      },
+      "E15NG": {
+        "name": "E15NG",
+        "voltage": 24,
+        "container": 880,
+        "size": "825x478x627",
+        "plates": ""
+      },
+      "E16": {
+        "name": "E16",
+        "voltage": 48,
+        "container": "500/575/600",
+        "size": "825x625x620/830x630x627",
+        "plates": ""
+      },
+      "E20": {
+        "name": "E20",
+        "voltage": 80,
+        "container": "400/460/480/560",
+        "size": "1023x705x625/1026x708x627/1028x710x780",
+        "plates": ""
+      },
+      "E20L": {
+        "name": "E20 L",
+        "voltage": 48,
+        "container": "600, 690, 750",
+        "size": "827x735x627",
+        "plates": ""
+      },
+      "E25L": {
+        "name": "E25L",
+        "voltage": 80,
+        "container": "575-625",
+        "size": "990x445x585(635)",
+        "plates": ""
+      },
+      "E25P": {
+        "name": "E25P",
+        "voltage": 80,
+        "container": "700/775",
+        "size": "1025x852x784",
+        "plates": ""
+      },
+      "E40600L": {
+        "name": "E40/600L",
+        "voltage": 80,
+        "container": "600/700",
+        "size": "1026x855x627/1052x852x782",
+        "plates": ""
+      },
+      "E48": {
+        "name": "E48",
+        "sizes": [
+          {
+            "size": "1140x1034x627",
+            "plates": "",
+            "voltage": 80,
+            "container": "700/805"
+          },
+          {
+            "size": "1137x1037x625",
+            "plates": "",
+            "voltage": 80,
+            "container": "700/805"
+          }
+        ]
+      },
+      "P20": {
+        "name": "P20",
+        "voltage": 24,
+        "container": 200,
+        "size": "765x171x687",
+        "plates": ""
+      },
+      "E16С": {
+        "name": "E16 С",
+        "voltage": 48,
+        "container": "500, 550, 625",
+        "size": "830x630x627",
+        "plates": ""
+      }
+    },
+    "LiuGong": {
+      "CLG2025A-S": {
+        "name": "CLG2025A-S",
+        "voltage": 48,
+        "container": 560,
+        "size": "880x655x680",
+        "plates": ""
+      },
+      "CPD15": {
+        "name": "CPD15",
+        "voltage": 48,
+        "container": 400,
+        "size": "970x620x440",
+        "plates": ""
+      },
+      "CPD20": {
+        "name": "CPD20",
+        "voltage": 48,
+        "container": 630,
+        "size": "1064x818x482",
+        "plates": ""
+      },
+      "CPD25": {
+        "name": "CPD25",
+        "voltage": 48,
+        "container": 630,
+        "size": "1064x818x482",
+        "plates": ""
+      },
+      "CPD30": {
+        "name": "CPD30",
+        "voltage": 80,
+        "container": 600,
+        "size": "1138x680x790",
+        "plates": ""
+      },
+      "CLG2018A-S": {
+        "name": "CLG2018A-S",
+        "voltage": 48,
+        "container": 480,
+        "size": "494x912x675",
+        "plates": ""
+      },
+      "CLG2018A-T": {
+        "name": "CLG2018A-T",
+        "sizes": [
+          {
+            "size": "811х557х651",
+            "plates": "",
+            "voltage": 48,
+            "container": 500
+          },
+          {
+            "size": "811х557х651",
+            "plates": "",
+            "voltage": 48,
+            "container": 500
+          }
+        ]
+      },
+      "CLG2020A-S": {
+        "name": "CLG2020A-S",
+        "sizes": [
+          {
+            "size": "880x655x680",
+            "plates": "",
+            "voltage": 48,
+            "container": 560
+          },
+          {
+            "size": "880x655x680",
+            "plates": "",
+            "voltage": 48,
+            "container": 560
+          },
+          {
+            "size": "880x655x680",
+            "plates": "",
+            "voltage": 48,
+            "container": 560
+          }
+        ]
+      },
+      "CLG2015A-S": {
+        "name": "CLG2015A-S",
+        "sizes": [
+          {
+            "size": "494x912x675",
+            "plates": "",
+            "voltage": 48,
+            "container": 420
+          },
+          {
+            "size": "494x912x675",
+            "plates": "",
+            "voltage": 48,
+            "container": 420
+          },
+          {
+            "size": "494x912x675",
+            "plates": "",
+            "voltage": 48,
+            "container": 420
+          }
+        ]
+      },
+      "CLG2015A-T": {
+        "name": "CLG2015A-T",
+        "voltage": 24,
+        "container": 385,
+        "size": "1138x680x790",
+        "plates": ""
+      },
+      "CLG2030A-S": {
+        "name": "CLG2030A-S",
+        "voltage": 80,
+        "container": 500,
+        "size": "1138x680x790",
+        "plates": ""
+      },
+      "CLG2035A-S": {
+        "name": "CLG2035A-S",
+        "voltage": 80,
+        "container": 500,
+        "size": "1138x680x790",
+        "plates": ""
+      }
+    },
+    "Manitou": {
+      "ME315": {
+        "name": "ME 315",
+        "voltage": 48,
+        "container": 500,
+        "size": "360x253x240",
+        "plates": ""
+      },
+      "ME315c": {
+        "name": "ME 315c",
+        "voltage": 24,
+        "container": 840,
+        "size": "360x253x240",
+        "plates": ""
+      },
+      "ME316": {
+        "name": "ME 316",
+        "voltage": 48,
+        "container": 575,
+        "size": "360x253x240",
+        "plates": ""
+      },
+      "ME318": {
+        "name": "ME 318",
+        "voltage": 48,
+        "container": 575,
+        "size": "360x253x240",
+        "plates": ""
+      },
+      "ME320": {
+        "name": "ME 320",
+        "voltage": 48,
+        "container": 690,
+        "size": "370x253x250",
+        "plates": ""
+      },
+      "ME418": {
+        "name": "ME 418",
+        "voltage": 48,
+        "container": 465,
+        "size": "380x255x240",
+        "plates": ""
+      },
+      "ME420": {
+        "name": "ME 420",
+        "voltage": 48,
+        "container": 700,
+        "size": "400x260x250",
+        "plates": ""
+      },
+      "ME425": {
+        "name": "ME 425",
+        "voltage": 80,
+        "container": 700,
+        "size": "400x270x260",
+        "plates": ""
+      },
+      "ME425c": {
+        "name": "ME 425c",
+        "voltage": 48,
+        "container": 700,
+        "size": "400x270x250",
+        "plates": ""
+      },
+      "ME430": {
+        "name": "ME 430",
+        "voltage": 80,
+        "container": 700,
+        "size": "380x266x239",
+        "plates": ""
+      },
+      "ME435": {
+        "name": "ME 435",
+        "voltage": 80,
+        "container": 700,
+        "size": "330x240x220",
+        "plates": ""
+      },
+      "ME440": {
+        "name": "ME 440",
+        "voltage": 80,
+        "container": 700,
+        "size": "388x260x230",
+        "plates": ""
+      },
+      "ME445": {
+        "name": "ME 445",
+        "voltage": 80,
+        "container": 700,
+        "size": "350x243x250",
+        "plates": ""
+      },
+      "ME450": {
+        "name": "ME 450",
+        "voltage": 80,
+        "container": 700,
+        "size": "366x244x230",
+        "plates": ""
+      }
+    },
+    "Mitsubishi": {
+      "FB18ACN": {
+        "name": "FB18ACN",
+        "voltage": 48,
+        "container": 650,
+        "size": "679",
+        "plates": ""
+      },
+      "FB18ACNT": {
+        "name": "FB18ACNT",
+        "voltage": 48,
+        "container": "500/625",
+        "size": "679",
+        "plates": ""
+      },
+      "FB50": {
+        "name": "FB50",
+        "voltage": 80,
+        "container": 930,
+        "size": "2178",
+        "plates": ""
+      },
+      "FB50S": {
+        "name": "FB50S",
+        "voltage": 80,
+        "container": 930,
+        "size": "2178",
+        "plates": ""
+      },
+      "FB40": {
+        "name": "FB40",
+        "voltage": 80,
+        "container": 930,
+        "size": "2178",
+        "plates": ""
+      },
+      "FB16AN": {
+        "name": "FB16AN",
+        "voltage": 48,
+        "container": "625/750",
+        "size": "679",
+        "plates": ""
+      },
+      "FB30N": {
+        "name": "FB30N",
+        "voltage": 80,
+        "container": "700-775",
+        "size": "1863",
+        "plates": ""
+      },
+      "FB35N": {
+        "name": "FB35N",
+        "voltage": 80,
+        "container": "700-775",
+        "size": "1863",
+        "plates": ""
+      },
+      "FB40C2": {
+        "name": "FB40C 2",
+        "voltage": 80,
+        "container": 775,
+        "size": "1863",
+        "plates": ""
+      },
+      "FB16ANT": {
+        "name": "FB16ANT",
+        "sizes": [
+          {
+            "size": "812",
+            "plates": "",
+            "voltage": 48,
+            "container": "625/750"
+          },
+          {
+            "size": "679",
+            "plates": "",
+            "voltage": 48,
+            "container": "500/625"
+          }
+        ]
+      },
+      "FB40S2": {
+        "name": "FB40S 2",
+        "voltage": 80,
+        "container": 930,
+        "size": "2178",
+        "plates": ""
+      },
+      "FB452": {
+        "name": "FB45 2",
+        "voltage": 80,
+        "container": 930,
+        "size": "2178",
+        "plates": ""
+      },
+      "FB45C2": {
+        "name": "FB45C 2",
+        "voltage": 80,
+        "container": 775,
+        "size": "1863",
+        "plates": ""
+      },
+      "FB16ACN": {
+        "name": "FB16ACN",
+        "voltage": 48,
+        "container": "500/625",
+        "size": "679",
+        "plates": ""
+      },
+      "FB25CN": {
+        "name": "FB25CN",
+        "voltage": 80,
+        "container": "560-620",
+        "size": "1558",
+        "plates": ""
+      },
+      "FB25N": {
+        "name": "FB25N",
+        "voltage": 80,
+        "container": "700-775",
+        "size": "1863",
+        "plates": ""
+      },
+      "FB30CN": {
+        "name": "FB30CN",
+        "voltage": 80,
+        "container": "560-620",
+        "size": "1558",
+        "plates": ""
+      },
+      "FB10": {
+        "name": "FB10",
+        "voltage": 48,
+        "container": 400,
+        "size": "524",
+        "plates": ""
+      },
+      "FB15": {
+        "name": "FB15",
+        "voltage": 48,
+        "container": 400,
+        "size": "679",
+        "plates": ""
+      },
+      "FB20AN": {
+        "name": "FB20AN",
+        "voltage": 48,
+        "container": "625/750",
+        "size": "812",
+        "plates": ""
+      },
+      "FB20ANT": {
+        "name": "FB20ANT",
+        "voltage": 48,
+        "container": "625/750",
+        "size": "812",
+        "plates": ""
+      },
+      "FB14ANT": {
+        "name": "FB14ANT",
+        "voltage": 48,
+        "container": "500/625",
+        "size": "679",
+        "plates": ""
+      },
+      "FB18AN": {
+        "name": "FB18AN",
+        "voltage": 48,
+        "container": "625/750",
+        "size": "812",
+        "plates": ""
+      }
+    },
+    "Nissan": {
+      "FP01-U/FUL15": {
+        "name": "FP01-U/FUL15",
+        "voltage": 48,
+        "container": 400,
+        "size": "972х640х472",
+        "plates": ""
+      },
+      "QX-30": {
+        "name": "QX-30",
+        "voltage": 80,
+        "container": 600,
+        "size": "980х540х460",
+        "plates": ""
+      },
+      "QX2-20": {
+        "name": "QX2-20",
+        "voltage": 80,
+        "container": 480,
+        "size": "900х550х460",
+        "plates": ""
+      },
+      "QX2-25": {
+        "name": "QX2-25",
+        "voltage": 80,
+        "container": 600,
+        "size": "965х550х560",
+        "plates": ""
+      },
+      "TX-18": {
+        "name": "TX-18",
+        "voltage": 48,
+        "container": 480,
+        "size": "865х550х660",
+        "plates": ""
+      },
+      "BX-30": {
+        "name": "BX-30",
+        "voltage": 48,
+        "container": 850,
+        "size": "933х550х677",
+        "plates": ""
+      },
+      "GQ02L25CU": {
+        "name": "GQ02L25CU",
+        "voltage": 80,
+        "container": 600,
+        "size": "933х630х677",
+        "plates": ""
+      },
+      "Q02L20CU": {
+        "name": "Q02L20CU",
+        "voltage": 80,
+        "container": 480,
+        "size": "909х530х677",
+        "plates": ""
+      },
+      "Q02L25CU": {
+        "name": "Q02L25CU",
+        "voltage": 80,
+        "container": 480,
+        "size": "964х544х677",
+        "plates": ""
+      },
+      "TX-15": {
+        "name": "TX-15",
+        "voltage": 48,
+        "container": 315,
+        "size": "900х544х707",
+        "plates": ""
+      },
+      "FP01-U/FUL10": {
+        "name": "FP01-U/FUL10",
+        "voltage": 48,
+        "container": 330,
+        "size": "980х564х727",
+        "plates": ""
+      },
+      "Q02L30CU": {
+        "name": "Q02L30CU",
+        "voltage": 80,
+        "container": 600,
+        "size": "970х555х730",
+        "plates": ""
+      },
+      "QX-20": {
+        "name": "QX-20",
+        "sizes": [
+          {
+            "size": "910х604х730",
+            "plates": "",
+            "voltage": 80,
+            "container": 480
+          },
+          {
+            "size": "910х604х730",
+            "plates": "",
+            "voltage": 80,
+            "container": 600
+          }
+        ]
+      },
+      "QX-25": {
+        "name": "QX-25",
+        "sizes": [
+          {
+            "size": "915х655х730",
+            "plates": "",
+            "voltage": 80,
+            "container": 600
+          },
+          {
+            "size": "915х655х730",
+            "plates": "",
+            "voltage": 80,
+            "container": 750
+          }
+        ]
+      },
+      "BX-20": {
+        "name": "BX-20",
+        "voltage": 48,
+        "container": 565,
+        "size": "921х660х720",
+        "plates": ""
+      },
+      "G1N1L16Q": {
+        "name": "G1N1L16Q",
+        "voltage": 48,
+        "container": 625,
+        "size": "956х660х720",
+        "plates": ""
+      },
+      "TX4-16": {
+        "name": "TX4-16",
+        "voltage": 48,
+        "container": 350,
+        "size": "980х564х727",
+        "plates": ""
+      },
+      "TX4-18": {
+        "name": "TX4-18",
+        "voltage": 48,
+        "container": 420,
+        "size": "970х555х730",
+        "plates": ""
+      },
+      "QX2-30": {
+        "name": "QX2-30",
+        "voltage": 80,
+        "container": 600,
+        "size": "945х430х625",
+        "plates": ""
+      }
+    },
+    "STILL": {
+      "ECU16(транспортировщикпаллет)": {
+        "name": "ECU16 (транспортировщик паллет)",
+        "voltage": 24,
+        "container": 150,
+        "size": "655×150×622",
+        "plates": "75"
+      },
+      "ECU20(транспортировщикпаллет)": {
+        "name": "ECU20 (транспортировщик паллет)",
+        "voltage": 24,
+        "container": 200,
+        "size": "624×212×627",
+        "plates": "100"
+      },
+      "EGD16": {
+        "name": "EGD16",
+        "voltage": 24,
+        "container": 200,
+        "size": "660×145×688",
+        "plates": "100"
+      },
+      "EGV10": {
+        "name": "EGV10",
+        "sizes": [
+          {
+            "size": "409×292×590",
+            "plates": "105",
+            "voltage": "24",
+            "container": 210
+          },
+          {
+            "size": "409×292×600",
+            "plates": "115",
+            "voltage": "24",
+            "container": 230
+          }
+        ]
+      },
+      "EGV12": {
+        "name": "EGV12",
+        "sizes": [
+          {
+            "size": "409×292×590",
+            "plates": "105",
+            "voltage": "24",
+            "container": 210
+          },
+          {
+            "size": "409×292×600",
+            "plates": "115",
+            "voltage": "24",
+            "container": 230
+          },
+          {
+            "size": "409×292×600",
+            "plates": "125",
+            "voltage": "24",
+            "container": 250
+          }
+        ]
+      },
+      "EGV14": {
+        "name": "EGV14",
+        "voltage": 24,
+        "container": 300,
+        "size": "815×210×615",
+        "plates": "100"
+      },
+      "EGV14-lang": {
+        "name": "EGV14-lang",
+        "sizes": [
+          {
+            "size": "830×218×615",
+            "plates": "105",
+            "voltage": "24",
+            "container": 315
+          },
+          {
+            "size": "830×218×615",
+            "plates": "115",
+            "voltage": "24",
+            "container": 345
+          },
+          {
+            "size": "830×218×615",
+            "plates": "125",
+            "voltage": "24",
+            "container": 375
+          }
+        ]
+      },
+      "EGV16": {
+        "name": "EGV16",
+        "sizes": [
+          {
+            "size": "827×216×625",
+            "plates": "100",
+            "voltage": "24",
+            "container": 300
+          },
+          {
+            "size": "820×160×625",
+            "plates": "105",
+            "voltage": "24",
+            "container": 210
+          },
+          {
+            "size": "820×160×625",
+            "plates": "115",
+            "voltage": "24",
+            "container": 230
+          },
+          {
+            "size": "820×160×625",
+            "plates": "125",
+            "voltage": "24",
+            "container": 250
+          },
+          {
+            "size": "830×218×615",
+            "plates": "115",
+            "voltage": "24",
+            "container": 345
+          },
+          {
+            "size": "800×210×615",
+            "plates": "125",
+            "voltage": "24",
+            "container": 375
+          }
+        ]
+      },
+      "EXU20(транспортировщикпаллет)": {
+        "name": "EXU20 (транспортировщик паллет)",
+        "voltage": 24,
+        "container": 250,
+        "size": "620×210×625",
+        "plates": "125"
+      },
+      "EXU-H-20(транспортировщикпаллет)": {
+        "name": "EXU-H-20 (транспортировщик паллет)",
+        "sizes": [
+          {
+            "size": "640×220×690",
+            "plates": "86",
+            "voltage": "24",
+            "container": 172
+          },
+          {
+            "size": "640×220×690",
+            "plates": "100",
+            "voltage": "24",
+            "container": 200
+          }
+        ]
+      },
+      "EXU-16(транспортировщикпаллет)": {
+        "name": "EXU-16 (транспортировщик паллет)",
+        "sizes": [
+          {
+            "size": "665×150×560",
+            "plates": "75",
+            "voltage": "24",
+            "container": 150
+          },
+          {
+            "size": "660×145×688",
+            "plates": "100",
+            "voltage": "24",
+            "container": 200
+          }
+        ]
+      },
+      "FM-X14(штабелер)": {
+        "name": "FM-X 14 (штабелер)",
+        "sizes": [
+          {
+            "size": "1220×425×784",
+            "plates": "140",
+            "voltage": "48",
+            "container": 700
+          },
+          {
+            "size": "1220×425×784",
+            "plates": "155",
+            "voltage": "48",
+            "container": 775
+          }
+        ]
+      },
+      "FM-X20(штабелер)": {
+        "name": "FM-X 20 (штабелер)",
+        "sizes": [
+          {
+            "size": "1220×425×784",
+            "plates": "140",
+            "voltage": "48",
+            "container": 700
+          },
+          {
+            "size": "1220×425×784",
+            "plates": "155",
+            "voltage": "48",
+            "container": 775
+          }
+        ]
+      },
+      "FM-X10N(штабелер)": {
+        "name": "FM-X10N (штабелер)",
+        "voltage": 48,
+        "container": 620,
+        "size": "1030×440×767",
+        "plates": "155"
+      },
+      "FM-X20N(штабелер)": {
+        "name": "FM-X 20N (штабелер)",
+        "sizes": [
+          {
+            "size": "1220×495×784",
+            "plates": "140",
+            "voltage": "48",
+            "container": 840
+          },
+          {
+            "size": "1220×495×784",
+            "plates": "155",
+            "voltage": "48",
+            "container": 930
+          }
+        ]
+      },
+      "FM17i(штабелер)": {
+        "name": "FM 17i (штабелер)",
+        "sizes": [
+          {
+            "size": "1220×425×784",
+            "plates": "140",
+            "voltage": "48",
+            "container": 700
+          },
+          {
+            "size": "1220×425×784",
+            "plates": "155",
+            "voltage": "48",
+            "container": 775
+          }
+        ]
+      },
+      "GX10": {
+        "name": "GX10",
+        "voltage": 48,
+        "container": 750,
+        "size": "1002×625×615",
+        "plates": "125"
+      },
+      "R20-15": {
+        "name": "R20-15",
+        "sizes": [
+          {
+            "size": "825×625×625",
+            "plates": "105",
+            "voltage": "48",
+            "container": 525
+          },
+          {
+            "size": "825×625×625",
+            "plates": "115",
+            "voltage": "48",
+            "container": 575
+          },
+          {
+            "size": "815×615×615",
+            "plates": "125",
+            "voltage": "48",
+            "container": 625
+          }
+        ]
+      },
+      "R20-16": {
+        "name": "R20-16",
+        "sizes": [
+          {
+            "size": "830×735×625",
+            "plates": "115",
+            "voltage": "48",
+            "container": 690
+          },
+          {
+            "size": "830×735×625",
+            "plates": "125",
+            "voltage": "48",
+            "container": 750
+          }
+        ]
+      },
+      "R20-18": {
+        "name": "R20-18",
+        "sizes": [
+          {
+            "size": "830×735×625",
+            "plates": "115",
+            "voltage": "48",
+            "container": 690
+          },
+          {
+            "size": "830×735×625",
+            "plates": "125",
+            "voltage": "48",
+            "container": 750
+          }
+        ]
+      },
+      "R20-20": {
+        "name": "R20-20",
+        "sizes": [
+          {
+            "size": "830×735×625",
+            "plates": "115",
+            "voltage": "48",
+            "container": 690
+          },
+          {
+            "size": "830×735×625",
+            "plates": "125",
+            "voltage": "48",
+            "container": 750
+          }
+        ]
+      },
+      "R50-10": {
+        "name": "R50-10",
+        "sizes": [
+          {
+            "size": "820×320×625",
+            "plates": "115",
+            "voltage": "24",
+            "container": 575
+          },
+          {
+            "size": "820×320×625",
+            "plates": "125",
+            "voltage": "24",
+            "container": 625
+          }
+        ]
+      },
+      "R50-12": {
+        "name": "R50-12",
+        "sizes": [
+          {
+            "size": "820×430×625",
+            "plates": "115",
+            "voltage": "24",
+            "container": 805
+          },
+          {
+            "size": "820×430×625",
+            "plates": "125",
+            "voltage": "24",
+            "container": 875
+          }
+        ]
+      },
+      "R50-15": {
+        "name": "R50-15",
+        "sizes": [
+          {
+            "size": "820×485×625",
+            "plates": "115",
+            "voltage": "24",
+            "container": 920
+          },
+          {
+            "size": "820×485×625",
+            "plates": "125",
+            "voltage": "24",
+            "container": 1000
+          }
+        ]
+      },
+      "R60-16": {
+        "name": "R60-16",
+        "sizes": [
+          {
+            "size": "1025×560×784",
+            "plates": "140",
+            "voltage": "80",
+            "container": 420
+          },
+          {
+            "size": "1025×560×784",
+            "plates": "155",
+            "voltage": "80",
+            "container": 465
+          }
+        ]
+      },
+      "R60-20": {
+        "name": "R60-20",
+        "sizes": [
+          {
+            "size": "1010×690×620",
+            "plates": "115",
+            "voltage": "80",
+            "container": 460
+          },
+          {
+            "size": "1025×708×784",
+            "plates": "140",
+            "voltage": "80",
+            "container": 560
+          },
+          {
+            "size": "1025×708×784",
+            "plates": "155",
+            "voltage": "80",
+            "container": 620
+          }
+        ]
+      },
+      "R60-25L": {
+        "name": "R60-25L",
+        "sizes": [
+          {
+            "size": "1025×708×784",
+            "plates": "140",
+            "voltage": "80",
+            "container": 560
+          },
+          {
+            "size": "1025×708×784",
+            "plates": "155",
+            "voltage": "80",
+            "container": 620
+          }
+        ]
+      },
+      "R60-30": {
+        "name": "R60-30",
+        "voltage": 80,
+        "container": 775,
+        "size": "1020×850×780",
+        "plates": "155"
+      },
+      "RX20-15": {
+        "name": "RX20-15",
+        "sizes": [
+          {
+            "size": "1025×525×625",
+            "plates": "115",
+            "voltage": "48",
+            "container": 575
+          },
+          {
+            "size": "1025×525×625",
+            "plates": "125",
+            "voltage": "48",
+            "container": 625
+          }
+        ]
+      },
+      "RX20-16": {
+        "name": "RX20-16",
+        "voltage": 48,
+        "container": 625,
+        "size": "1040×530×630",
+        "plates": "125"
+      },
+      "RX20-16P": {
+        "name": "RX20-16P",
+        "voltage": 48,
+        "container": 625,
+        "size": "1025×530×620",
+        "plates": "125"
+      },
+      "RX20-20": {
+        "name": "RX20-20",
+        "voltage": 48,
+        "container": 625,
+        "size": "1025×530×625",
+        "plates": "125"
+      },
+      "RX50-10": {
+        "name": "RX50-10",
+        "sizes": [
+          {
+            "size": "820×320×625",
+            "plates": "115",
+            "voltage": "24",
+            "container": 575
+          },
+          {
+            "size": "820×320×625",
+            "plates": "125",
+            "voltage": "24",
+            "container": 625
+          }
+        ]
+      },
+      "RX50-13": {
+        "name": "RX50-13",
+        "sizes": [
+          {
+            "size": "820×375×625",
+            "plates": "105",
+            "voltage": "24",
+            "container": 630
+          },
+          {
+            "size": "820×375×625",
+            "plates": "115",
+            "voltage": "24",
+            "container": 690
+          },
+          {
+            "size": "820×375×625",
+            "plates": "125",
+            "voltage": "24",
+            "container": 750
+          },
+          {
+            "size": "820×430×625",
+            "plates": "115",
+            "voltage": "24",
+            "container": 805
+          },
+          {
+            "size": "820×430×625",
+            "plates": "125",
+            "voltage": "24",
+            "container": 875
+          }
+        ]
+      },
+      "RX50-15": {
+        "name": "RX50-15",
+        "sizes": [
+          {
+            "size": "820×375×625",
+            "plates": "105",
+            "voltage": "24",
+            "container": 630
+          },
+          {
+            "size": "820×375×625",
+            "plates": "115",
+            "voltage": "24",
+            "container": 690
+          },
+          {
+            "size": "820×375×625",
+            "plates": "125",
+            "voltage": "24",
+            "container": 750
+          },
+          {
+            "size": "820×430×625",
+            "plates": "115",
+            "voltage": "24",
+            "container": 805
+          },
+          {
+            "size": "820×430×625",
+            "plates": "125",
+            "voltage": "24",
+            "container": 875
+          },
+          {
+            "size": "820×485×625",
+            "plates": "125",
+            "voltage": "24",
+            "container": 1000
+          }
+        ]
+      },
+      "RX50-16": {
+        "name": "RX50-16",
+        "voltage": 24,
+        "container": 1000,
+        "size": "820×485×625",
+        "plates": "125"
+      },
+      "RX60-18": {
+        "name": "RX60-18",
+        "sizes": [
+          {
+            "size": "1025×560×784",
+            "plates": "140",
+            "voltage": "80",
+            "container": 420
+          },
+          {
+            "size": "1025×560×784",
+            "plates": "155",
+            "voltage": "80",
+            "container": 465
+          }
+        ]
+      },
+      "RX60-25": {
+        "name": "RX60-25",
+        "sizes": [
+          {
+            "size": "1025×708×784",
+            "plates": "140",
+            "voltage": "80",
+            "container": 560
+          },
+          {
+            "size": "1025×708×784",
+            "plates": "155",
+            "voltage": "80",
+            "container": 620
+          }
+        ]
+      },
+      "RX60-50": {
+        "name": "RX60-50",
+        "voltage": 80,
+        "container": 930,
+        "size": "1025×990×784",
+        "plates": "155"
+      },
+      "SU-20(транспортировщикпаллет)": {
+        "name": "SU-20 (транспортировщик паллет)",
+        "voltage": 24,
+        "container": 465,
+        "size": "820×210×788",
+        "plates": "155"
+      }
+    }
+  }
+}

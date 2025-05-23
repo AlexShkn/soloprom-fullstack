@@ -17,6 +17,63 @@
   }
 }
 
+.action-button {
+  &.added .icon-wrapper {
+    position: relative;
+
+    &::before {
+      content: '';
+      position: absolute;
+      right: -5px;
+      bottom: 1px;
+      background: url('/img/icons/cheked.svg') center / cover no-repeat;
+      width: 15px;
+      height: 14px;
+    }
+    svg {
+      fill: variables.$warnColor;
+    }
+
+    @media (any-hover: hover) {
+      &:hover {
+        svg {
+          fill: variables.$warnColor;
+        }
+      }
+    }
+  }
+
+  @media (any-hover: hover) {
+    &:hover {
+      svg {
+        fill: variables.$hoverAccentColor;
+      }
+    }
+  }
+
+  &.selected {
+    fill: variables.$warnColor;
+  }
+}
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  background-color: variables.$accentColor;
+  transition: all 0.3s ease 0s;
+  border-radius: 2.25rem;
+
+  &:not(.added) {
+    @media (any-hover: hover) {
+      &:hover {
+        background-color: variables.$hoverAccentColor;
+      }
+    }
+  }
+}
+
 .hidden-item {
   visibility: hidden;
   opacity: 0;
@@ -71,60 +128,6 @@
   font-size: clamp(1.375rem, 1.132rem + 1.215vw, 2.1875rem);
 }
 
-.scroll-bar {
-  &::-webkit-scrollbar {
-    width: 7px;
-  }
-  &::-webkit-scrollbar-track {
-    background: #e0e0e0;
-  }
-  &::-webkit-scrollbar-thumb {
-    background: variables.$accentColor;
-    // border-radius: 5px;
-  }
-
-  &--mini {
-    &::-webkit-scrollbar {
-      width: 3px;
-    }
-  }
-}
-
-.scroll-bar-row {
-  &::-webkit-scrollbar {
-    height: 7px;
-  }
-  &::-webkit-scrollbar-track {
-    background: #e0e0e0;
-  }
-  &::-webkit-scrollbar-thumb {
-    background: variables.$accentColor;
-    // border-radius: 5px;
-  }
-
-  &--mini {
-    &::-webkit-scrollbar {
-      height: 4px;
-    }
-  }
-}
-
-.button {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  color: #fff;
-  background-color: variables.$accentColor;
-  transition: all 0.3s ease 0s;
-  border-radius: 2.25rem;
-
-  @media (any-hover: hover) {
-    &:hover {
-      background-color: variables.$hoverAccentColor;
-    }
-  }
-}
-
 .ttall {
   left: 50%;
   top: 50%;
@@ -147,7 +150,7 @@
     width: 150%;
     height: 200%;
     backdrop-filter: blur(1px);
-    z-index: 9998;
+    z-index: 30;
   }
 
   &::before {
@@ -156,10 +159,10 @@
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
-    z-index: 9999;
-    background: url('/img/icons/spinner.svg') center / 50px no-repeat;
-    width: 50px;
-    height: 50px;
+    z-index: 31;
+    background: url('/img/icons/spinner.svg') center / 40px no-repeat;
+    width: 40px;
+    height: 40px;
     filter: blur(0);
   }
 
@@ -204,7 +207,33 @@
   }
 }
 
+.big-size-list {
+  max-height: calc(100dvh - 250px);
+}
+.min-size-list {
+  max-height: calc(100dvh - 120px);
+}
+
 .header-bottom.header_fixed {
+  background-color: variables.$mainColor;
+  z-index: 10;
+  @media (min-width: 767.98px) {
+    .mobile-nav__item {
+      background: transparent;
+      border: 1px solid #fff;
+
+      @media (any-hover: hover) {
+        &:hover {
+          border-color: variables.$successColor;
+
+          svg {
+            fill: variables.$successColor;
+          }
+        }
+      }
+    }
+  }
+
   @media (min-width: 767.98px) {
     position: fixed;
     top: 0;
@@ -213,14 +242,10 @@
     width: 100%;
     animation: fadeIn 0.1s ease-in;
 
-    // &.compensate {
-    //   left: calc(50% - 10px);
-    // }
-
     .header-bottom__wrapper {
-      padding: 10px;
+      padding: 7px;
       // max-width: variables.$maxWidthContainer + px;
-      background-color: #fff;
+      // background-color: #fff;
       box-shadow: variables.$shadow;
       width: 100%;
       margin: 0px auto;
@@ -230,19 +255,70 @@
       width: 100%;
       left: 50%;
       transform: translateX(-50%);
-      top: 75px;
+      top: 70px;
 
-      @media (max-width: 991.98px) {
-        position: fixed;
-        min-width: 100vw;
-        height: 100vh;
-        overflow: auto;
-        top: 0;
-        left: 0;
-        width: 100%;
-        transform: translate(0, 0);
+      &.menu-show {
+        @media (min-width: 991.98px) {
+          animation: showFixedMenu 0.3s;
+        }
       }
     }
+  }
+  @media (max-width: 767.98px) {
+    .header-mobile-fixed {
+      position: fixed;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100%;
+      animation: fadeIn 0.1s ease-in;
+      padding: 5px 15px;
+      background-color: variables.$mainColor;
+      height: auto;
+    }
+  }
+}
+
+.catalog-menu.menu-show {
+  @media (min-width: 991.98px) {
+    animation: showMenu 0.3s;
+  }
+  @media (max-width: 991.98px) {
+    animation: showMobileMenu 0.3s;
+  }
+}
+
+@keyframes showMobileMenu {
+  0% {
+    transform: scale(0.8);
+    opacity: 0;
+  }
+
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+@keyframes showMenu {
+  0% {
+    transform: translateY(-20);
+    opacity: 0;
+  }
+
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+@keyframes showFixedMenu {
+  0% {
+    transform: translateY(-20) translateX(-50%);
+    opacity: 0;
+  }
+
+  100% {
+    transform: translateY(0) translateX(-50%);
+    opacity: 1;
   }
 }
 
@@ -254,44 +330,22 @@
   }
 }
 
-.cart {
-  // .cart__item-count
+input:-webkit-autofill {
+  -webkit-box-shadow: inset 0 0 0 50px #fff !important;
+}
 
-  &__item-count {
-    &:disabled {
-      cursor: default;
-      background-color: #d3d3d3;
+.modal-show {
+  animation: show 0.3s;
 
-      svg {
-        fill: #9f9f9f;
-      }
+  @keyframes show {
+    0% {
+      transform: scale(0.8);
+      opacity: 0;
     }
 
-    svg {
-      width: 16px;
-      height: 16px;
-      fill: variables.$accentColor;
-      transition: fill variables.$transition;
-    }
-
-    @media (any-hover: hover) {
-      &:hover {
-        &:not(:disabled) {
-          color: #fff;
-          background-color: variables.$hoverAccentColor;
-          svg {
-            fill: #fff;
-          }
-        }
-      }
+    100% {
+      transform: scale(1);
+      opacity: 1;
     }
   }
-}
-
-.flex-0-auto {
-  flex: 0 0 auto;
-}
-
-input:-webkit-autofill {
-  -webkit-box-shadow: inset 0 0 0 50px #fff !important; /* Цвет фона */
 }

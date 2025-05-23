@@ -1,21 +1,70 @@
 'use client'
-import React from 'react'
+import React, { useRef, useEffect } from 'react'
 import { CardDataProps } from '@/types/products.types'
-import './ProductListSlider.scss'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { Navigation } from 'swiper/modules'
 import { ProductsCard } from '../ProductsCard/ProductsCard'
+import { SliderNavigation } from '../SliderNavigation'
+import { Footnote } from '../Footnote'
+import { Swiper as SwiperType } from 'swiper'
+
+import './ProductListSlider.scss'
 
 interface Props {
   listData: CardDataProps[]
   mod?: string
+  id?: string
 }
 
-export const ProductListSlider: React.FC<Props> = ({ listData, mod }) => {
+export const ProductListSlider: React.FC<Props> = ({ listData, mod, id }) => {
+  const swiperRef = useRef<SwiperType | null>(null)
+
+  const updateSlideOpacities = () => {
+    if (!swiperRef.current) return
+
+    const activeIndex = swiperRef.current.activeIndex
+    const visibleSlides = swiperRef.current.slides
+    const slidesPerView = swiperRef.current.params.slidesPerView
+
+    if (slidesPerView === undefined) return
+
+    const slidesPerViewNumber =
+      typeof slidesPerView === 'number' ? slidesPerView : 1
+
+    visibleSlides.forEach((slide, index) => {
+      if (index >= activeIndex && index < activeIndex + slidesPerViewNumber) {
+        slide.style.opacity = '1'
+        slide.style.transition = 'opacity 0.3s ease-in-out'
+      } else {
+        slide.style.opacity = '0'
+        slide.style.transition = 'opacity 0.3s ease-in-out'
+      }
+    })
+  }
+
+  useEffect(() => {
+    if (swiperRef.current) {
+      updateSlideOpacities()
+
+      swiperRef.current.on('slideChange', () => {
+        updateSlideOpacities()
+      })
+
+      swiperRef.current.on('update', () => {
+        updateSlideOpacities()
+      })
+
+      return () => {
+        swiperRef.current?.off('slideChange')
+        swiperRef.current?.off('update')
+      }
+    }
+  }, [swiperRef.current])
+
   return (
     <>
       <Swiper
-        className="product-list-slider relative overflow-hidden p-7"
+        className={`product-list-slider product-list-slider${id ? `-${String(id)}` : ''} relative overflow-hidden p-7`}
         modules={[Navigation]}
         spaceBetween={30}
         watchSlidesProgress={true}
@@ -45,53 +94,29 @@ export const ProductListSlider: React.FC<Props> = ({ listData, mod }) => {
             slidesPerView: 4,
           },
         }}
-        onSwiper={(swiper) => {
-          const slidesPerView = swiper.params.slidesPerView
-          const numSlidesPerView =
-            typeof slidesPerView === 'number' ? slidesPerView : 1
-
-          // if (swiper.slides.length >= numSlidesPerView) {
-          //   setActiveNav(false)
-          // }
-        }}
         navigation={{
-          nextEl: '.product-list-slider__slider-button--next',
-          prevEl: '.product-list-slider__slider-button--prev',
+          nextEl: `.product-list-slider${id ? `-${String(id)}` : ''}-next`,
+          prevEl: `.product-list-slider${id ? `-${String(id)}` : ''}-prev`,
+        }}
+        onSwiper={(swiper) => {
+          swiperRef.current = swiper
+        }}
+        onInit={(swiper) => {
+          swiperRef.current = swiper
         }}
       >
         {listData.map((item: CardDataProps) => (
-          <SwiperSlide
-            key={item.productId}
-            className="product-list-slider__item opacity-0 transition-opacity duration-300 ease-in"
-          >
+          <SwiperSlide key={item.productId} className="">
             <ProductsCard cardData={item} mod={mod} />
           </SwiperSlide>
         ))}
 
-        <div className="absolute left-[5px] right-[5px] top-[60%] translate-y-[-50%]">
-          <button
-            type="button"
-            className="product-list-slider__slider-button product-list-slider__slider-button--prev absolute left-[5px] -m-2.5 inline-flex h-10 w-10 items-center justify-center rounded-[50%] bg-accentBlue p-2.5 text-center transition-colors hover:bg-hoverBlue"
-          >
-            <svg className="icon pointer-events-none h-4 w-4 rotate-[90deg] select-none fill-white transition-colors">
-              <use xlinkHref="/img/sprite-default.svg#arrow-drop"></use>
-            </svg>
-          </button>
-          <button
-            type="button"
-            className="product-list-slider__slider-button product-list-slider__slider-button--next absolute right-[5px] -m-2.5 inline-flex h-10 w-10 items-center justify-center rounded-[50%] bg-accentBlue p-2.5 text-center transition-colors hover:bg-hoverBlue"
-          >
-            <svg className="icon pointer-events-none h-4 w-4 rotate-[-90deg] select-none fill-white transition-colors">
-              <use xlinkHref="/img/sprite-default.svg#arrow-drop"></use>
-            </svg>
-          </button>
-        </div>
+        <SliderNavigation
+          sliderClass={`product-list-slider${id ? `-${String(id)}` : ''}`}
+          className="top-[60%]"
+        />
       </Swiper>
-      <p className="product-list-slider__footnote relative pl-2.5 text-sm leading-5">
-        Цены на товары могут меняться, поэтому для получения самой свежей
-        информации рекомендуем обратиться к нашим менеджерам онлайн, в
-        мессенджерах или по телефону.
-      </p>
+      <Footnote />
     </>
   )
 }

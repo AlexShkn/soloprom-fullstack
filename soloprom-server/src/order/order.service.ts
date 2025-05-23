@@ -7,7 +7,6 @@ export class OrderService {
   constructor(private readonly prisma: PrismaService) {}
 
   async createOrder(dto: CreateOrderDto) {
-    console.log(dto);
     return this.prisma.order.create({
       data: {
         userId: dto.userId,

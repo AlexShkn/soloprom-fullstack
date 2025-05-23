@@ -1,17 +1,32 @@
 import { Injectable } from '@nestjs/common';
-import { PlaywrightService } from '@/scrape/playwright';
+import { PlaywrightService } from '../../scrape/playwright';
 import { ProductDto } from './dto/product.dto';
 import * as fs from 'fs';
+import * as fsSync from 'fs';
 import { ConfigService } from '@nestjs/config';
-import { ProductsService } from '@/products/products.service';
+import { ProductsService } from '../../products/products.service';
+import { ProductsUpdateService } from '@/products-update/products-update.service';
 
 @Injectable()
 export class CrawlerService {
   constructor(
     private readonly playwrightService: PlaywrightService,
     private readonly configService: ConfigService,
+    private readonly productsUpdateService: ProductsUpdateService,
     private readonly productsService: ProductsService,
   ) {}
+  private async processDataInBatches(
+    data: ProductDto[],
+    batchSize = 200,
+  ): Promise<void> {
+    for (let i = 0; i < data.length; i += batchSize) {
+      const batch = data.slice(i, i + batchSize);
+      await this.productsUpdateService.updatePricesFromData(batch);
+      console.log(
+        `Обновляем цены пакета элементов с ${i} по ${i + batch.length}`,
+      );
+    }
+  }
 
   async crawlData(category: string): Promise<ProductDto[]> {
     let targetUrl: string;
@@ -57,6 +72,7 @@ export class CrawlerService {
         return [];
       }
       console.log('Результат скрапинга:', result);
+      console.log('ЗАПУСК ОБНОВЛЕНИЯ ЦЕН');
       await this.processDataInBatches(result);
 
       return result;
@@ -174,7 +190,6 @@ export class CrawlerService {
           typeProduct,
           stock = 0;
         let size: string = '';
-        let sizes: {} = {};
 
         tds.forEach((td, index) => {
           const value = td.querySelector('span');
@@ -206,7 +221,6 @@ export class CrawlerService {
           }
           if (index === 23) {
             price = parseInt(textContent.replace(/\s/g, ''));
-            sizes[size] = price;
           }
         });
 
@@ -214,8 +228,8 @@ export class CrawlerService {
           `${brand}${model}${size}${ficha}`,
         );
         preResult.name = `Шина ${brand} ${model} ${size} ${fichaRu}`;
-        preResult.price = price;
-        preResult.sizes = sizes;
+        preResult.price = Math.ceil(price ? price - price * 0.05 : 0);
+        preResult.size = size;
         preResult.stock = stock;
         preResult.tireProduct = typeProduct;
 
@@ -297,31 +311,14 @@ export class CrawlerService {
           }
         });
 
-        preResult.id = processStringFunction(name);
+        preResult.id = `${processStringFunction(name)}-${size}`;
         preResult.name = name;
-        preResult.price = price;
+        preResult.price = Math.ceil(price ? price - price * 0.05 : 0);
         preResult.models = models;
 
         if (result.some((obj) => obj.id === preResult.id)) {
-          const objIndex = result.findIndex((obj) => obj.id === preResult.id);
-          if (objIndex !== -1) {
-            result[objIndex].models.push(model);
-            if (preResult.sizes) {
-              result[objIndex].sizes = {
-                ...result[objIndex].sizes,
-                ...{ [size]: price },
-              };
-            } else {
-              result[objIndex].sizes = {
-                [size]: price,
-              };
-            }
-          }
         } else {
           preResult.models = [model];
-          preResult.sizes = {
-            [size]: price,
-          };
           result.push(preResult);
         }
       });
@@ -351,7 +348,6 @@ export class CrawlerService {
 
         let name: string;
         let size: string = '';
-        let sizes: {} = {};
 
         tds.forEach((td, index) => {
           if (index === 0) {
@@ -375,40 +371,16 @@ export class CrawlerService {
           }
           if (index === 4) {
             price = parseInt(td.textContent.replace(/\s/g, ''));
-
-            sizes[size] = price;
           }
         });
 
         preResult.id = processStringFunction(name);
         preResult.code = processStringFunction(code);
         preResult.name = name;
-        preResult.price = price;
+        preResult.price = Math.ceil(price ? price - price * 0.05 : 0);
         preResult.option = option;
         preResult.stock = stock;
-        preResult.sizes = sizes;
-
-        if (result.some((obj) => obj.id === preResult.id)) {
-          const objIndex = result.findIndex((obj) => obj.id === preResult.id);
-          if (objIndex !== -1) {
-            if (preResult.sizes) {
-              result[objIndex].stock += stock;
-              result[objIndex].sizes = {
-                ...result[objIndex].sizes,
-                ...{ [size]: price },
-              };
-            } else {
-              result[objIndex].sizes = {
-                [size]: price,
-              };
-            }
-          }
-        } else {
-          preResult.sizes = {
-            [size]: price,
-          };
-          result.push(preResult);
-        }
+        preResult.size = size;
       });
       console.log('Результат evaluate', result);
       return result;
@@ -417,38 +389,65 @@ export class CrawlerService {
 
   async saveDataToFile(data: ProductDto[], category: string): Promise<void> {
     let outputFilePath: string;
+    let newOutputFilePath: string; // Путь для нового файла
+
     if (category === 'tires') {
-      outputFilePath = this.configService.get<string>('tiresOutputFilePath');
+      outputFilePath = './output-tires.json';
+      newOutputFilePath = './new-output-tires.json';
     } else if (category === 'batteries') {
-      outputFilePath = this.configService.get<string>(
-        'batteriesOutputFilePath',
-      );
+      outputFilePath = './output-batteries.json';
+      newOutputFilePath = './new-output-batteries.json';
     } else if (category === 'batteries-stock') {
-      outputFilePath = this.configService.get<string>(
-        'batteriesStockOutputFilePath',
-      );
+      outputFilePath = './output-batteries-stock.json';
+      newOutputFilePath = './new-output-batteries-stock.json';
     } else {
       console.error('Неизвестная категория:', category);
       return;
     }
+
     const jsonData = JSON.stringify(data, null, 2);
     try {
-      fs.writeFileSync(outputFilePath, jsonData, 'utf-8');
+      fsSync.writeFileSync(outputFilePath, jsonData, 'utf-8'); //Use sync version to make sure that file is written, before reading it
+      console.log(`Файл ${outputFilePath} успешно создан.`);
+
+      // 1. Считать ID из созданного файла
+      const ids: string[] = [];
+      const parsedData: ProductDto[] = JSON.parse(jsonData);
+      parsedData.forEach((item) => {
+        ids.push(item.id);
+      });
+
+      // 2. Считать данные из all.json
+      const allDataFilePath = './data/all.json';
+      try {
+        const allDataJson = fsSync.readFileSync(allDataFilePath, 'utf-8');
+        const allData = JSON.parse(allDataJson);
+
+        // 3. Поиск отсутствующих ID и добавление во временный массив
+        const missingProducts: ProductDto[] = [];
+        for (const id of ids) {
+          const found = allData.some((item: any) => item.productId === id);
+          if (!found) {
+            const product = parsedData.find((p) => p.id === id); // Retrieve the product from the original data
+            if (product) {
+              missingProducts.push(product);
+            }
+          }
+        }
+
+        // 4. Создание нового файла с приставкой "new-"
+        if (missingProducts.length > 0) {
+          const newJsonData = JSON.stringify(missingProducts, null, 2);
+          fsSync.writeFileSync(newOutputFilePath, newJsonData, 'utf-8');
+          console.log(`Файл ${newOutputFilePath} успешно создан.`);
+        } else {
+          console.log('Все ID найдены в all.json. Новый файл не создан.');
+        }
+      } catch (error) {
+        console.error('Ошибка при чтении/обработке файла all.json:', error);
+      }
     } catch (error) {
       console.error('Ошибка при записи в файл:', error);
-    }
-  }
-
-  private async processDataInBatches(
-    data: ProductDto[],
-    batchSize = 200,
-  ): Promise<void> {
-    for (let i = 0; i < data.length; i += batchSize) {
-      const batch = data.slice(i, i + batchSize);
-      await this.productsService.updatePricesFromData(batch);
-      console.log(
-        `Обрабатывается пакет элементов с ${i} по ${i + batch.length}`,
-      );
     }
   }
 }

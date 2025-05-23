@@ -43,12 +43,8 @@ export const LocateBlock: React.FC<Props> = ({ className }) => {
           }
           const data = await response.json()
 
-          console.log(data)
-
           const ip = data.ip as string
           const city = await getCityFromIP(ip)
-
-          console.log(city)
 
           setLocating(city)
         } catch (error) {

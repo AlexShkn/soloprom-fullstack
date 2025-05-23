@@ -1,0 +1,21 @@
+@use '@/styles/variables.scss';
+
+.catalog-products {
+  // .products-card-slider
+
+  .products-card-slider {
+    .swiper {
+      overflow: hidden;
+      padding: 5px;
+    }
+
+    .swiper-wrapper {
+      display: flex;
+      flex-wrap: wrap;
+
+      .swiper-slide {
+        height: auto !important;
+      }
+    }
+  }
+}

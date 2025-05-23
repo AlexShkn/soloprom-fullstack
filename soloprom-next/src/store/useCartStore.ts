@@ -8,39 +8,47 @@ export interface CartProductTypes {
   storeId: string
   name: string
   price: number
+  discount: number
+  size: string
   url: string
-  variant: string
   count: number
   productType: string
 }
 
 interface CartState {
   cartState: CartProductTypes[]
+  cartCount: number
   totalAmount: number
   addProductToCart: (
     product: Omit<CartProductTypes, 'count' | 'storeId'>,
   ) => void
-  increaseProductCount: (productId: string, variant: string) => void
-  decreaseProductCount: (productId: string, variant: string) => void
-  removeCartProduct: (productId: string, variant: string) => void
+  increaseProductCount: (productId: string) => void
+  decreaseProductCount: (productId: string) => void
+  removeCartProduct: (productId: string) => void
   clearCart: () => void
   setCart: (products: CartProductTypes[]) => void
 }
 
+const getCartStateCount = (cartState: CartProductTypes[]) => {
+  return cartState.reduce((count, item) => count + item.count, 0)
+}
+
 export const useCartStore = create<CartState>((set, get) => ({
   cartState: [],
+  cartCount: 0,
   totalAmount: 0,
 
   setCart: (products) => {
     set({
       cartState: products,
       totalAmount: calculateCartTotalAmount(products),
+      cartCount: products.reduce((count, item) => count + item.count, 0),
     })
   },
   addProductToCart: (product) => {
-    const storeId = `${product.productId}-${product.variant}`
+    const storeId = product.productId
     const productIndex = get().cartState.findIndex(
-      (item) => item.storeId === storeId,
+      (item) => item.storeId === product.productId,
     )
 
     if (productIndex === -1) {
@@ -49,6 +57,7 @@ export const useCartStore = create<CartState>((set, get) => ({
       set({
         cartState: newCartState,
         totalAmount: calculateCartTotalAmount(newCartState),
+        cartCount: getCartStateCount(newCartState),
       })
     } else {
       const updatedCart = get().cartState.map((item, index) =>
@@ -57,26 +66,26 @@ export const useCartStore = create<CartState>((set, get) => ({
       set({
         cartState: updatedCart,
         totalAmount: calculateCartTotalAmount(updatedCart),
+        cartCount: getCartStateCount(updatedCart),
       })
     }
     localStorage.setItem('cart', JSON.stringify(get().cartState))
   },
-  increaseProductCount: (productId, variant) => {
-    const storeId = `${productId}-${variant}`
+  increaseProductCount: (productId) => {
     const updatedCart = get().cartState.map((item) =>
-      item.storeId === storeId ? { ...item, count: item.count + 1 } : item,
+      item.storeId === productId ? { ...item, count: item.count + 1 } : item,
     )
     set({
       cartState: updatedCart,
       totalAmount: calculateCartTotalAmount(updatedCart),
+      cartCount: getCartStateCount(updatedCart),
     })
     localStorage.setItem('cart', JSON.stringify(updatedCart))
   },
-  decreaseProductCount: (productId, variant) => {
-    const storeId = `${productId}-${variant}`
+  decreaseProductCount: (productId) => {
     const updatedCart = get()
       .cartState.map((item) => {
-        if (item.storeId === storeId) {
+        if (item.storeId === productId) {
           if (item.count > 1) {
             return { ...item, count: item.count - 1 }
           } else {
@@ -90,17 +99,18 @@ export const useCartStore = create<CartState>((set, get) => ({
     set({
       cartState: updatedCart,
       totalAmount: calculateCartTotalAmount(updatedCart),
+      cartCount: getCartStateCount(updatedCart),
     })
     localStorage.setItem('cart', JSON.stringify(updatedCart))
   },
-  removeCartProduct: (productId, variant) => {
-    const storeId = `${productId}-${variant}`
+  removeCartProduct: (productId) => {
     const updatedCart = get().cartState.filter(
-      (item) => item.storeId !== storeId,
+      (item) => item.storeId !== productId,
     )
     set({
       cartState: updatedCart,
       totalAmount: calculateCartTotalAmount(updatedCart),
+      cartCount: getCartStateCount(updatedCart),
     })
     localStorage.setItem('cart', JSON.stringify(updatedCart))
   },

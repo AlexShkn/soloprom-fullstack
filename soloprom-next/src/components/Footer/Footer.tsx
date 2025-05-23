@@ -42,7 +42,7 @@ const Footer = () => {
                   <li key={index} className="footer__nav-item max-w-[250px]">
                     <Link
                       href={item.link}
-                      className="link-hover w-full text-sm font-medium leading-5 text-white md:text-base"
+                      className="link-hover hover:text-linkHoverColor focus:text-linkHoverColor w-full text-sm font-medium leading-5 text-white"
                     >
                       {item.title}
                     </Link>
@@ -59,7 +59,7 @@ const Footer = () => {
                   <li key={index} className="footer__nav-item max-w-[250px]">
                     <Link
                       href={item.link}
-                      className="link-hover w-full text-sm font-medium leading-5 text-white md:text-base"
+                      className="link-hover hover:text-linkHoverColor focus:text-linkHoverColor w-full text-sm font-medium leading-5 text-white"
                     >
                       {item.title}
                     </Link>
@@ -75,7 +75,7 @@ const Footer = () => {
                 <li className="footer__nav-item max-w-[250px]">
                   <Link
                     href="/agreement"
-                    className="link-hover w-full text-sm font-medium leading-5 text-white md:text-base"
+                    className="link-hover hover:text-linkHoverColor focus:text-linkHoverColor w-full text-sm font-medium leading-5 text-white" // Added hover and focus states
                   >
                     Соглашение об использовании персональных данных
                   </Link>
@@ -83,7 +83,7 @@ const Footer = () => {
                 <li className="footer__nav-item max-w-[250px]">
                   <Link
                     href="/policy"
-                    className="link-hover w-full text-sm font-medium leading-5 text-white md:text-base"
+                    className="link-hover hover:text-linkHoverColor focus:text-linkHoverColor w-full text-sm font-medium leading-5 text-white" // Added hover and focus states
                   >
                     Политика конфиденциальности
                   </Link>
@@ -94,7 +94,7 @@ const Footer = () => {
                 <Image
                   className="mt-2.5 inline-block h-10 w-[200px] object-contain"
                   src="/img/icons/payments/payments.png"
-                  alt=""
+                  alt="Методы оплаты"
                   width={200}
                   height={40}
                 />
@@ -111,7 +111,7 @@ const Footer = () => {
                   <li className="mb-2.5 text-sm font-medium leading-5 text-white md:text-base">
                     <a
                       href="tel:+79036569393"
-                      className="link-hover whitespace-nowrap"
+                      className="link-hover hover:text-linkHoverColor focus:text-linkHoverColor whitespace-nowrap"
                     >
                       +7 (903) 656-93-93
                     </a>
@@ -119,7 +119,7 @@ const Footer = () => {
                   <li className="mb-2.5 text-sm font-medium leading-5 text-white md:text-base">
                     <a
                       href="mailto:solo.vrn@mail.ru"
-                      className="link-hover whitespace-nowrap"
+                      className="link-hover hover:text-linkHoverColor focus:text-linkHoverColor whitespace-nowrap"
                     >
                       solo.vrn@mail.ru
                     </a>
@@ -145,7 +145,7 @@ const Footer = () => {
                 <button
                   onClick={() => modalCallbackStateChange(true)}
                   type="button"
-                  className="link-hover text-white underline"
+                  className="link-hover hover:text-linkHoverColor focus:text-linkHoverColor text-white underline"
                 >
                   Формой обратной связи
                 </button>
@@ -162,6 +162,7 @@ const Footer = () => {
                         href={link.href}
                         className="-m-2.5 p-2.5"
                         target="_blank"
+                        aria-label={`Свяжитесь с нами в ${link.id.replace('footer-', '')}`}
                       >
                         <svg className="icon relative h-5 w-5 fill-grayColor">
                           <use xlinkHref={`/img/sprite.svg#${link.id}`}></use>

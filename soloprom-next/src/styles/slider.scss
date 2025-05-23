@@ -1,0 +1,21 @@
+@use './variables';
+
+.slider-nav-prev,
+.slider-nav-next {
+  &.swiper-button-disabled {
+    background-color: variables.$grayColor;
+
+    @media (any-hover: hover) {
+      &:hover {
+        background-color: variables.$grayColor;
+      }
+    }
+  }
+}
+
+.products-card-slider {
+  .swiper-button-disabled {
+    visibility: hidden;
+    opacity: 0;
+  }
+}

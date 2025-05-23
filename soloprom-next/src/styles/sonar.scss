@@ -1,0 +1,8 @@
+@use './variables';
+
+.sonar-warn {
+  color: variables.$linkColor !important;
+}
+.sonar-success {
+  color: variables.$successColor !important;
+}

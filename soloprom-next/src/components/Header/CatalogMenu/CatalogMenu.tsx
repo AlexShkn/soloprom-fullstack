@@ -2,6 +2,8 @@
 
 import React, { useRef, useState, useEffect } from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
+import Head from 'next/head'
 
 import { useMediaQuery } from '@/hooks/useMediaQuery'
 
@@ -27,6 +29,10 @@ interface ProductsList {
   [key: string]: CategoryProduct[]
 }
 
+interface Props {
+  headerFixed: boolean
+}
+
 const productsList: ProductsList = productListData
 
 const categoryList: CategoryTab[] = [
@@ -35,11 +41,11 @@ const categoryList: CategoryTab[] = [
   { id: 'oils', alt: 'моторные масла', title: 'Масла и антифризы' },
 ]
 
-const CatalogMenu = () => {
+const CatalogMenu: React.FC<Props> = ({ headerFixed }) => {
   const [currentTab, setCurrentTab] = useState('')
-  const menuRef = useRef<HTMLDivElement>(null)
+  const { catalogMenuStateChange, catalogIsOpen } = useCatalogMenuStore()
 
-  const { catalogMenuStateChange } = useCatalogMenuStore()
+  const menuRef = useRef<HTMLDivElement>(null)
 
   const isTablet = useMediaQuery('(max-width: 991.98px)')
   const is650 = useMediaQuery('(max-width: 650px)')
@@ -65,11 +71,28 @@ const CatalogMenu = () => {
     catalogMenuStateChange(false, isTablet)
   }
 
+  const itemListSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'ItemList',
+    itemListElement: categoryList.map((category, index) => ({
+      '@type': 'ListItem',
+      position: index + 1,
+      name: category.title,
+      item: `/catalog#${category.id}`,
+    })),
+  }
+
   return (
     <div
       ref={menuRef}
-      className="catalog-menu scroll-bar fixed left-0 top-0 z-20 h-full min-h-[65vh] w-full max-w-[1390px] overscroll-contain rounded bg-white shadow-[0_4px_30px_0_rgba(0,0,0,0.1)] lg:absolute lg:top-[85px] lg:h-auto"
+      className={`catalog-menu scroll-bar ${catalogIsOpen ? 'menu-show visible' : 'invisible opacity-0'} fixed left-0 top-0 z-20 h-full min-h-[65vh] w-full max-w-[1390px] overscroll-contain rounded bg-white shadow-[0_4px_30px_0_rgba(0,0,0,0.1)] transition-all lg:absolute lg:top-[85px] lg:h-auto`}
     >
+      <Head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(itemListSchema) }}
+        />
+      </Head>
       <div className="tb:min-h-[100vh] h-full min-h-[65vh]">
         <CloseButton
           onClick={menuClose}
@@ -81,7 +104,7 @@ const CatalogMenu = () => {
             <Link
               onClick={() => catalogMenuStateChange(false, isTablet)}
               href="/catalog"
-              className="flex max-w-48 items-center justify-between gap-2.5 rounded-custom bg-accentBlue px-2.5 py-4 text-sm font-medium sm:mb-2.5 sm:max-w-max md:text-base"
+              className="flex max-w-48 items-center justify-between gap-2.5 rounded-custom bg-accentBlue px-2.5 py-2.5 text-sm font-medium sm:mb-2.5 sm:max-w-max md:text-base"
             >
               <span className="flex items-center gap-2.5 text-white">
                 <img
@@ -92,7 +115,7 @@ const CatalogMenu = () => {
                 Весь каталог
               </span>
               <svg className="icon h-4 w-4 rotate-[-90deg] fill-white mds:h-5 mds:w-5">
-                <use xlinkHref="/img/sprite-default.svg#arrow-drop"></use>
+                <use xlinkHref="/img/sprite.svg#arrow-drop"></use>
               </svg>
             </Link>
 
@@ -112,10 +135,12 @@ const CatalogMenu = () => {
                     'bg-white shadow-custom outline outline-1 outline-hoverBlue'
                   }`}
                 >
-                  <img
+                  <Image
                     className="inline-block h-6 w-6 object-cover mds:h-9 mds:w-9 sm:h-12 sm:w-12"
-                    src={`/img/catalog-link/${category.id}.png`}
+                    src={`/img/catalog-link/${category.id}.webp`}
                     alt={category.alt}
+                    width={48}
+                    height={48}
                   />
                   <span className="flex-auto">{category.title}</span>
                 </div>
@@ -126,7 +151,7 @@ const CatalogMenu = () => {
                   <svg
                     className={`icon h-5 w-5 fill-white ${currentTab === category.id ? 'rotate-[90deg] sm:rotate-[-90deg]' : 'rotate-[-90deg]'}`}
                   >
-                    <use xlinkHref="/img/sprite-default.svg#arrow-drop"></use>
+                    <use xlinkHref="/img/sprite.svg#arrow-drop"></use>
                   </svg>
                 </div>
               </div>
@@ -143,14 +168,13 @@ const CatalogMenu = () => {
             ))}
           </div>
 
-          <div className="px-5 py-7 sm:hidden">
+          <div className="px-5 py-7 pb-20 sm:hidden">
             <div className="mb-7 text-center text-lg font-bold">
               Напишите нам
             </div>
             <ul className="mb-5 grid grid-cols-2 gap-2.5 border-b border-t border-[#cdcfd8] py-10 mds:grid-cols-4 sm:py-5">
               <li className="catalog-menu__bottom-item">
                 <button
-                  data-btn-callback
                   type="button"
                   className="flex h-full w-full flex-col items-center justify-center rounded bg-white px-2.5 pb-5 pt-5 shadow-custom"
                 >

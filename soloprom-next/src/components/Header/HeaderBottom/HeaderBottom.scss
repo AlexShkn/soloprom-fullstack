@@ -4,15 +4,15 @@
   // .header-bottom__panel
 
   .header-bottom__panel {
-    @media (max-width: 649.98px) {
+    @media (max-width: 991.92px) {
       &.fixed-panel {
         position: fixed;
         top: 0;
         left: 0;
         width: 100%;
         padding: 5px 10px;
-        background-color: #fff;
         z-index: 999999;
+        background-color: variables.$mainColor;
       }
     }
   }

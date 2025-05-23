@@ -17,7 +17,10 @@ import clsx from 'clsx'
 interface Props {
   data: CardDataProps[]
   currentPage: number
+  initTotalCount: number
+  initTotalPages: number
   totalPages: number
+  totalProductsCount: number
   handleResetFilters: () => void
   onChangePage: (newPage: number) => void
   onSortChange: (sort: string) => void
@@ -33,7 +36,9 @@ interface Props {
 export const ResultFilteredList: React.FC<Props> = ({
   data,
   currentPage,
+  initTotalPages,
   totalPages,
+  totalProductsCount,
   onChangePage,
   onSortChange,
   hasFilters,
@@ -42,6 +47,7 @@ export const ResultFilteredList: React.FC<Props> = ({
   setCheckedValues,
   checkedValues,
   handleResetFilters,
+  initTotalCount,
 }) => {
   const {
     filters,
@@ -55,7 +61,6 @@ export const ResultFilteredList: React.FC<Props> = ({
     viewMode,
     setViewMode,
     initialLoad,
-    setHasFilters,
   } = useFilterStore()
 
   const filterKeysToIgnore = ['minPrice', 'maxPrice']
@@ -115,16 +120,25 @@ export const ResultFilteredList: React.FC<Props> = ({
           setDataIsLoading={setDataIsLoading}
         />
 
-        <button
+        <Button
           onClick={() => setFilterOpen(true)}
           type="button"
-          className="flex items-center gap-1 rounded bg-accentBlue p-2.5 px-2.5 font-medium text-white md:hidden"
+          className="flex w-auto gap-1 rounded p-1 px-2.5 md:hidden"
         >
-          <svg className="icon h-4 w-4 rotate-[90deg] fill-white md:h-5 md:w-5">
-            <use xlinkHref="/img/sprite.svg#filters" />
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 13 12"
+            id="filters"
+            className="icon h-4 w-4 rotate-[90deg] fill-white md:h-5 md:w-5"
+          >
+            <g>
+              <path d="M12.505 1.793a.555.555 0 0 0-.496-.461l-.016-.001a.906.906 0 0 0-.141-.011h-.02a31.13 31.13 0 0 1-.646.005l-.504-.001a84.007 84.007 0 0 0-.504-.002h-.158C9.731.454 8.991.035 8.36.005a1.886 1.886 0 0 0-1.195.323c-.357.245-.603.58-.735.998H1.119l-.03-.001a.553.553 0 0 0-.593.463.536.536 0 0 0 .349.59l.004.002a.9.9 0 0 0 .289.036 1173.07 1173.07 0 0 0 5.298 0A1.88 1.88 0 0 0 8.228 3.75a1.898 1.898 0 0 0 1.788-1.329l1.847-.001a.934.934 0 0 0 .289-.035l.004-.001a.54.54 0 0 0 .349-.591Zm-4.279.858H8.22a.79.79 0 0 1-.779-.783.79.79 0 0 1 .791-.781.796.796 0 0 1 .779.785.79.79 0 0 1-.785.779ZM12.505 10.041a.56.56 0 0 0-.496-.463H11.99a.77.77 0 0 0-.138-.012h-.02c-.192.004-.396.006-.646.006l-.504-.002-.504-.002h-.158c-.29-.867-1.03-1.285-1.661-1.314a1.886 1.886 0 0 0-1.195.322c-.357.244-.603.58-.735.996H1.089a.556.556 0 0 0-.594.463.539.539 0 0 0 .349.592l.004.002a.988.988 0 0 0 .289.033 1173.073 1173.073 0 0 0 5.298 0 1.883 1.883 0 0 0 1.792 1.336 1.894 1.894 0 0 0 1.788-1.328c.597-.002 1.696-.002 1.847-.002a.934.934 0 0 0 .289-.035h.004a.54.54 0 0 0 .35-.592Zm-4.28.857H8.22a.79.79 0 0 1-.78-.783.79.79 0 0 1 .792-.781.796.796 0 0 1 .779.785.789.789 0 0 1-.785.779ZM11.862 6.545h-.579l.567.002c.027 0 .056-.002.082-.004-.023.002-.046.002-.07.002Z"></path>
+              <path d="M12.505 5.917a.556.556 0 0 0-.595-.462H6.543c-.257-.788-.93-1.302-1.747-1.326a1.79 1.79 0 0 0-1.061.3 1.885 1.885 0 0 0-.778 1.03h-1.88c-.055 0-.124 0-.192.018l-.003.002a.543.543 0 0 0 .153 1.064H2.96c.246.773.936 1.313 1.722 1.326h.033c.882 0 1.515-.455 1.835-1.322v-.004h2.458c.633 0 1.432 0 2.264.002h.592c.023 0 .047 0 .07-.002h.004a.764.764 0 0 0 .215-.033l.004-.002a.54.54 0 0 0 .348-.591Zm-7.196.632a.78.78 0 0 1-.553.226h-.003a.784.784 0 0 1-.785-.781.783.783 0 0 1 .782-.776.782.782 0 0 1 .559 1.331Z"></path>
+              <path d="M9.007 6.543H6.55l-.001.004c1.035-.002 3.564-.002 4.72-.002-.832-.002-1.63-.002-2.263-.002Z"></path>
+            </g>
           </svg>
           Фильтр
-        </button>
+        </Button>
         <ViewSetting viewMode={viewMode} setViewMode={setViewMode} />
       </div>
 
@@ -191,18 +205,24 @@ export const ResultFilteredList: React.FC<Props> = ({
         </div>
       )}
 
-      {totalPages > 1 && !dataIsLoading && !hasFilters && (
+      {initTotalPages > 1 && !dataIsLoading && !hasFilters && (
         <Pagination
+          totalCount={initTotalCount}
+          pageProductCount={data.length}
           currentPage={currentPage}
           onChangePage={onChangePage}
-          totalPages={totalPages}
+          totalPages={initTotalPages}
         />
       )}
+
       {totalPages > 1 && !dataIsLoading && hasFilters && (
         <DynamicPagination
+          totalProductsCount={totalProductsCount}
+          totalPages={totalPages}
+          pageProductCount={data.length}
           currentPage={dynamicCurrentPage}
           setDynamicCurrentPage={setDynamicCurrentPage}
-          totalPages={totalPages}
+          // totalPages={totalPages}
         />
       )}
     </div>

@@ -1,12 +1,14 @@
 'use client'
 import { getDigFormat } from '@/supports'
 import { CardDataProps } from '@/types/products.types'
-import { useCartStore } from '@/store/useCartStore'
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import { Button, Loading } from '../ui'
+import { CartButton } from '../ProductsCard/CartButton'
+import { formattedDiscountPrice } from '@/utils/formattedDiscountPrice'
 
 interface Props {
   cardData: CardDataProps
+  relatedProducts: CardDataProps[]
 }
 
 const pluralize = (count: number, variants: [string, string, string]) => {
@@ -27,92 +29,30 @@ const pluralize = (count: number, variants: [string, string, string]) => {
   }
 }
 
-export const ProductsPageOffers: React.FC<Props> = ({ cardData }) => {
-  const {
-    productId,
-    url,
-    name,
-    img,
-    categoryName,
-    regalia = [],
-    sizes,
-    defaultPrice,
-    volumes,
-    discount,
-    productType,
-    stock,
-    delivery,
-  } = cardData
+export const ProductsPageOffers: React.FC<Props> = ({
+  cardData,
+  relatedProducts,
+}) => {
+  const { productId, categoryName, defaultPrice, discount } = cardData
 
-  const [cartIsLoad, setCartIsLoad] = useState(false)
-
-  const [cartIsAddedList, setCartIsAddedList] = useState<string[]>([])
-
-  const { cartState, addProductToCart, removeCartProduct } = useCartStore()
-
-  const sizesData = sizes || volumes
+  const productsList = [
+    cardData,
+    ...relatedProducts.filter((item) => item.productId !== productId),
+  ]
 
   const [visibleRows, setVisibleRows] = useState(1)
   const [loadingMore, setLoadingMore] = useState(false)
 
-  const checkProductInCart = (variant: string) => {
-    const storeId = `${productId}-${variant}`
-    return cartState.some((item) => item.storeId === storeId)
-  }
-
-  useEffect(() => {
-    if (sizesData) {
-      const initialAddedStates = Object.keys(sizesData).filter((variant) =>
-        checkProductInCart(variant),
-      )
-      setCartIsAddedList(initialAddedStates)
-    }
-  }, [sizesData, cartState])
-
-  const handleAddToCart = (variant: string) => {
-    setCartIsLoad(true)
-
-    const product = {
-      productId: productId,
-      name,
-      variant: variant,
-      price: sizesData?.[variant] ?? defaultPrice,
-      url,
-      img,
-      productType,
-      categoryName,
-    }
-
-    addProductToCart(product)
-    setCartIsAddedList((prev) => [...prev, variant])
-
-    setCartIsLoad(false)
-  }
-
-  const handleRemoveFromCart = (variant: string) => {
-    setCartIsLoad(true)
-    removeCartProduct(productId, variant)
-    setCartIsAddedList((prev) => prev.filter((item) => item !== variant))
-    setCartIsLoad(false)
-  }
-
   const showMoreRows = () => {
     setLoadingMore(true)
     setTimeout(() => {
-      setVisibleRows(Object.keys(sizesData!).length)
+      setVisibleRows(productsList.length)
       setLoadingMore(false)
     }, 1000)
   }
 
-  const sizesArray = sizesData ? Object.keys(sizesData) : []
-  const remainingOffers = sizesArray.length - visibleRows
-
-  const formattedDiscountPrice = () => {
-    const cost = (sizesData && sizesData[sizesArray[0]]) || defaultPrice
-    if (!discount || !cost) return
-
-    return getDigFormat(Math.floor(cost * (1 + discount / 100)))
-  }
+  const remainingOffers = productsList.length - visibleRows
+  const discountPrice = formattedDiscountPrice(defaultPrice, discount ?? 0)
 
   return (
     <div className="w-full overflow-hidden">
@@ -122,6 +62,14 @@ export const ProductsPageOffers: React.FC<Props> = ({ cardData }) => {
             <th className="border p-2 text-center font-bold text-gray-700">
               {categoryName === 'oils' ? 'Объем' : 'Размер'}
             </th>
+            {categoryName === 'battery' ? (
+              <th className="border p-2 text-center font-bold text-gray-700">
+                Емкость
+              </th>
+            ) : (
+              ''
+            )}
+
             <th className="border p-2 text-center font-bold text-gray-700">
               Наличие
             </th>
@@ -131,83 +79,64 @@ export const ProductsPageOffers: React.FC<Props> = ({ cardData }) => {
           </tr>
         </thead>
         <tbody>
-          {sizesArray
-            .slice(0, visibleRows) // Only render the visible rows
-            .map((variant, index) => (
-              <tr
-                key={variant}
-                className="whitespace-nowrap border-b border-grayColor text-center last:border-b-0"
-              >
+          {productsList.slice(0, visibleRows).map((product, index) => (
+            <tr
+              key={product.productId}
+              className="whitespace-nowrap border-b border-grayColor text-center last:border-b-0"
+            >
+              <td className="whitespace-nowrap p-2 text-center font-bold">
+                {product.defaultSize}
+              </td>
+              {categoryName === 'battery' ? (
                 <td className="whitespace-nowrap p-2 text-center font-bold">
-                  {variant}
+                  {product.container}Ah
                 </td>
-                <td className="whitespace-nowrap p-2 text-center font-medium text-darkGreenColor">
-                  {categoryName === 'oils'
-                    ? 'В наличии'
-                    : stock
-                      ? `${stock} шт.`
-                      : delivery}
-                </td>
-                <td className="flex flex-col items-end justify-between whitespace-nowrap p-2 mds:flex-row mds:items-center mds:gap-4">
-                  <div
-                    className={`relative flex ${discount ? 'text-accentBlue' : 'text-[#272b2c]'} items-end justify-end gap-2`}
-                  >
-                    {discount && (
-                      <>
-                        <span
-                          className={`whitespace-nowrap text-xl font-medium`}
-                        >
-                          {sizesData
-                            ? getDigFormat(sizesData[variant])
-                            : getDigFormat(defaultPrice)}
-                        </span>
-                        <b
-                          className={`leading-1 whitespace-nowrap font-medium text-[#a7a0a0] line-through`}
-                        >
-                          {`${formattedDiscountPrice()} ₽`}
-                        </b>
-                      </>
-                    )}
-                    {!discount && (
-                      <span className="text-lg font-medium">
-                        {defaultPrice > 0
-                          ? `${sizesData ? getDigFormat(sizesData[variant]) : getDigFormat(defaultPrice)} ₽`
-                          : 'По запросу'}
-                      </span>
-                    )}
-                  </div>
+              ) : (
+                ''
+              )}
 
-                  <button
-                    onClick={() =>
-                      checkProductInCart(variant)
-                        ? handleRemoveFromCart(variant)
-                        : handleAddToCart(variant)
-                    }
-                    disabled={cartIsLoad}
-                    className={`button relative w-full max-w-32 gap-2.5 px-2.5 py-1.5 font-bold ${
-                      checkProductInCart(variant) && 'added'
-                    }`}
-                  >
-                    <span className="tall transition-color invisible absolute inline-flex h-full w-full items-center justify-center gap-2.5 rounded-custom bg-hoverBlue opacity-0">
-                      <img
-                        src="/img/icons/availability.svg"
-                        className="h-7 w-7"
-                        alt=""
-                      />
-                      Добавлен
+              <td className="whitespace-nowrap p-2 text-center font-medium text-darkGreenColor">
+                {categoryName === 'oils'
+                  ? 'В наличии'
+                  : product.stock
+                    ? `${product.stock} шт.`
+                    : product.delivery}
+              </td>
+              <td className="flex flex-col items-end justify-between whitespace-nowrap p-2 mds:flex-row mds:items-center mds:gap-4">
+                <div
+                  className={`relative flex ${discount ? 'text-accentBlue' : 'text-[#272b2c]'} items-end justify-end gap-2`}
+                >
+                  {discount && (
+                    <>
+                      <span className={`whitespace-nowrap text-xl font-medium`}>
+                        getDigFormat(defaultPrice)
+                      </span>
+                      <b
+                        className={`leading-1 whitespace-nowrap font-medium text-[#a7a0a0] line-through`}
+                      >
+                        {`${discountPrice} ₽`}
+                      </b>
+                    </>
+                  )}
+                  {!product.discount && (
+                    <span className="text-lg font-medium">
+                      {product.defaultPrice > 0
+                        ? `${getDigFormat(product.defaultPrice)} ₽`
+                        : 'По запросу'}
                     </span>
-                    <svg className="icon h-6 w-6 fill-white">
-                      <use xlinkHref="/img/sprite.svg#cart"></use>
-                    </svg>
-                    {checkProductInCart(variant) ? 'Удалить' : 'В корзину'}
-                  </button>
-                </td>
-              </tr>
-            ))}
+                  )}
+                </div>
+                <CartButton
+                  cardData={product}
+                  className="gap-2.5 px-2.5 py-1.5"
+                />
+              </td>
+            </tr>
+          ))}
         </tbody>
       </table>
 
-      {visibleRows < sizesArray.length && (
+      {visibleRows < productsList.length && (
         <div className="mt-2 flex justify-end">
           <Button
             variant={'link'}

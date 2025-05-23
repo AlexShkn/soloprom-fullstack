@@ -7,7 +7,6 @@ import Skeleton from 'react-loading-skeleton'
 import 'react-loading-skeleton/dist/skeleton.css'
 
 import { Button } from '@/components/ui'
-import { declension } from '@/components/Cart/CartResult'
 import { FilterData } from '@/types/products.types'
 import {
   FilterList,
@@ -16,6 +15,7 @@ import {
 import { FilterItem } from '@/components/GroupList/Filter/FilterItem'
 import { FilterCheckbox } from '@/components/GroupList/Filter/FilterCheckbox'
 import { FilterInterval } from '@/components/GroupList/Filter/FilterInterval'
+import { declension } from '@/supports/declension'
 
 interface Props {
   categoryInitialList: FilterData
@@ -341,32 +341,6 @@ const SearchFilters: React.FC<Props> = ({
                   />
                 </FilterItem>
               )}
-            {categoryInitialList.volumes &&
-              categoryInitialList.volumes.length > 1 && (
-                <FilterItem title="Объем" value="volumes">
-                  <FilterCheckbox
-                    setCheckedValues={setCheckedValues}
-                    checkedValues={checkedValues}
-                    title=""
-                    options={categoryInitialList.volumes.map((volume) => ({
-                      label: volume,
-                      value: volume,
-                    }))}
-                    showMoreCount={
-                      categoryInitialList.volumes.length > 5
-                        ? categoryInitialList.volumes.length - 5
-                        : 0
-                    }
-                    onCheckboxChange={(value, isChecked) =>
-                      handleFilterChange('volumes', value, isChecked)
-                    }
-                    filterName="volumes"
-                    initialChecked={
-                      (internalFilters['volumes'] as string[]) || []
-                    }
-                  />
-                </FilterItem>
-              )}
             {categoryInitialList.sizes &&
               categoryInitialList.sizes.length > 1 && (
                 <FilterItem title="Размеры" value="sizes">
@@ -386,9 +360,9 @@ const SearchFilters: React.FC<Props> = ({
                     onCheckboxChange={(value, isChecked) =>
                       handleFilterChange('sizes', value, isChecked)
                     }
-                    filterName="sizes"
+                    filterName="defaultSize"
                     initialChecked={
-                      (internalFilters['sizes'] as string[]) || []
+                      (internalFilters['defaultSize'] as string[]) || []
                     }
                   />
                 </FilterItem>

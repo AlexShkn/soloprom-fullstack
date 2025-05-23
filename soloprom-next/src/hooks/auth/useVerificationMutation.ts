@@ -12,7 +12,9 @@ export function useVerificationMutation() {
     mutationFn: (token: string | null) =>
       verificationService.newVerification(token),
     onSuccess() {
-      toast.success('Почта успешно подтверждена')
+      toast.success('Почта успешно подтверждена', {
+        className: 'sonar-success',
+      })
       router.push('/profile')
     },
     onError() {

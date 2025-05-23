@@ -1,7 +1,7 @@
 import { create, StateCreator } from 'zustand'
 import { ProductCardData } from '@/types/products.types'
 
-interface CompareState {
+export interface CompareState {
   comparedItems: {
     tires: ProductCardData[]
     battery: ProductCardData[]
@@ -10,11 +10,7 @@ interface CompareState {
   totalComparedItemsCount: number
   updateTotalCount: () => void
   addToCompare: (category: string, product: ProductCardData) => void
-  removeFromCompare: (
-    category: string,
-    productId: string,
-    variant: string,
-  ) => void
+  removeFromCompare: (category: string, productId: string) => void
   setComparedItems: (items: CompareState['comparedItems']) => void
 }
 
@@ -45,9 +41,7 @@ const compareStore: StateCreator<CompareState> = (set, get) => ({
       const categoryItems =
         state.comparedItems[category as keyof typeof state.comparedItems] || []
       const isAlreadyAdded = categoryItems.some(
-        (item) =>
-          item.productId === product.productId &&
-          item.variant === product.variant,
+        (item) => item.productId === product.productId,
       )
 
       if (isAlreadyAdded) {
@@ -64,12 +58,12 @@ const compareStore: StateCreator<CompareState> = (set, get) => ({
     })
     get().updateTotalCount()
   },
-  removeFromCompare: (category, productId, variant) => {
+  removeFromCompare: (category, productId) => {
     set((state) => {
       const categoryItems =
         state.comparedItems[category as keyof typeof state.comparedItems] || []
       const updatedItems = categoryItems.filter(
-        (item) => !(item.productId === productId && item.variant === variant),
+        (item) => !(item.productId === productId),
       )
       const updateCompare = {
         ...state.comparedItems,

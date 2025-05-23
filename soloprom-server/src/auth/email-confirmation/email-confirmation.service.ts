@@ -11,9 +11,9 @@ import { Request } from 'express';
 import { v4 as uuidv4 } from 'uuid';
 import { hash } from 'argon2';
 
-import { MailService } from '@/libs/mail/mail.service';
-import { PrismaService } from '@/prisma/prisma.service';
-import { UserService } from '@/user/user.service';
+import { MailService } from '../../libs/mail/mail.service';
+import { PrismaService } from '../../prisma/prisma.service';
+import { UserService } from '../../user/user.service';
 
 import { AuthService } from '../auth.service';
 

@@ -3,9 +3,11 @@ import { type NextRequest, NextResponse } from 'next/server'
 export default async function middleware(request: NextRequest) {
   const { url, cookies } = request
   const session = cookies.get('session')?.value
+  const isLoggingOut = cookies.get('isLoggingOut')?.value === 'true'
+  const isLoggingIn = cookies.get('isLoggingIn')?.value === 'true'
 
   const isAuthPage = url.includes('/auth')
-  const isProductsPage = url === `${new URL(url).origin}/products`
+  const isProductsPage = new URL(url).pathname === '/products'
   const isDashboardPage = url.includes('/profile')
 
   if (isProductsPage) {
@@ -13,8 +15,8 @@ export default async function middleware(request: NextRequest) {
     return NextResponse.redirect(catalogUrl)
   }
 
-  if (isAuthPage) {
-    if (session) {
+  if (isAuthPage && !url.includes('/auth/login')) {
+    if (session && !isLoggingOut) {
       const isValidSession = await checkSession(request)
       if (isValidSession) {
         const dashboardUrl = new URL('/profile', request.url)
@@ -25,6 +27,10 @@ export default async function middleware(request: NextRequest) {
   }
 
   if (isDashboardPage) {
+    if (isLoggingOut || isLoggingIn) {
+      return NextResponse.next()
+    }
+
     const isValidSession = await checkSession(request)
 
     if (!isValidSession) {
@@ -42,7 +48,7 @@ export const config = {
 }
 
 const checkSession = async (request: NextRequest) => {
-  const session = request.cookies.get('session')?.value
+  const session = request.cookies.get('session')
   const apiUrl = process.env.NEXT_PUBLIC_SERVER_URL
 
   if (!session) return false
@@ -56,17 +62,24 @@ const checkSession = async (request: NextRequest) => {
     const response = await fetch(`${apiUrl}/auth/check-session`, {
       method: 'GET',
       headers: {
-        Cookie: `session=${session}`,
+        Cookie: `session=${session.value}`,
       },
     })
 
     if (!response.ok) {
+      console.log(`Ошибка проверки сессии. Статус: ${response.status}`)
       return false
     }
-    const { isValid } = await response.json()
-    return isValid
+
+    try {
+      const { isValid } = await response.json()
+      return isValid
+    } catch (jsonError) {
+      console.error('Ошибка парсинга JSON:', jsonError)
+      return false
+    }
   } catch (error) {
-    console.log('ошибка проверки session', error)
+    console.error('Ошибка проверки session', error)
     return false
   }
 }

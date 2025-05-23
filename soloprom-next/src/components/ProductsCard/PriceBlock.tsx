@@ -1,5 +1,6 @@
 'use client'
 import { getDigFormat } from '@/supports'
+import { formattedDiscountPrice } from '@/utils/formattedDiscountPrice'
 import React from 'react'
 
 interface PriceProps {
@@ -9,30 +10,30 @@ interface PriceProps {
 }
 
 export const PriceBlock: React.FC<PriceProps> = ({ discount, price, mod }) => {
-  const formattedDiscountPrice =
-    discount && price
-      ? `${getDigFormat(Math.floor(price * (1 + discount / 100)))}`
-      : ''
+  const discountPrice = formattedDiscountPrice(price, discount ?? 0)
   return (
-    <div className={`mt-2.5 flex items-center justify-between gap-2.5`}>
+    <div className={`flex items-center justify-between gap-2.5`}>
       <div
-        data-price
-        className={`relative flex font-bold ${discount ? 'text-accentBlue' : 'text-[#272b2c]'} ${mod ? 'flex-col items-end text-lg' : 'flex-row-reverse items-center gap-2 text-2xl'} `}
+        className={`relative flex font-bold leading-none ${discount ? 'text-accentBlue' : 'text-[#272b2c]'} ${mod ? 'flex-col items-end text-lg' : 'flex-row-reverse items-start gap-2 text-2xl'} `}
       >
-        {formattedDiscountPrice && (
+        {discountPrice && (
           <>
             <b
-              className={`leading-1 whitespace-nowrap font-medium text-[#a7a0a0] line-through ${mod ? 'text-sm' : 'text-lg'}`}
+              className={`whitespace-nowrap font-medium leading-none text-[#a7a0a0] line-through ${mod ? 'text-sm' : 'text-lg'}`}
             >
-              {`${getDigFormat(formattedDiscountPrice)} ₽`}
+              {`${discountPrice} ₽`}
             </b>
-            <span className={`whitespace-nowrap ${mod && 'text-lg'}`}>
+            <span
+              className={`whitespace-nowrap leading-none ${mod && 'text-lg'}`}
+            >
               {`${getDigFormat(price)} ₽`}{' '}
             </span>
           </>
         )}
-        {!formattedDiscountPrice && (
-          <span>{price > 0 ? `${getDigFormat(price)} ₽` : 'По запросу'} </span>
+        {!discountPrice && (
+          <span className="leading-none">
+            {price > 0 ? `${getDigFormat(price)} ₽` : 'По запросу'}{' '}
+          </span>
         )}
       </div>
     </div>

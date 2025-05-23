@@ -1,4 +1,5 @@
 import type { Config } from 'tailwindcss'
+import type { PluginAPI } from 'tailwindcss/types/config'
 
 export default {
   darkMode: ['class'],
@@ -33,6 +34,7 @@ export default {
         darkBlue: '#142f49',
         sectionWhite: '#f8fafc',
         grayColor: '#e5e5e5',
+        grayText: '#b7b7b7',
         greenColor: '#25d366',
         darkGreenColor: '#177c19',
         redColor: '#ef4444',
@@ -83,6 +85,7 @@ export default {
       boxShadow: {
         custom:
           'rgba(0, 0, 0, 0.1) 0px 10px 15px -3px, rgba(0, 0, 0, 0.05) 0px 4px 6px -2px',
+        full: '0 1px 8px 0 rgba(22, 33, 54, .07)',
       },
       borderRadius: {
         lg: 'var(--radius)',
@@ -114,5 +117,10 @@ export default {
       },
     },
   },
-  plugins: [require('tailwindcss-animate')],
+  plugins: [
+    require('tailwindcss-animate'),
+    function ({ addVariant }: PluginAPI) {
+      addVariant('any-hover', '@media (any-hover: hover)')
+    },
+  ],
 } satisfies Config

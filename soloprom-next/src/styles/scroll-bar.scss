@@ -1,0 +1,48 @@
+@use './variables';
+
+.scroll-bar {
+  &::-webkit-scrollbar {
+    width: 7px;
+  }
+  &::-webkit-scrollbar-track {
+    background: #e0e0e0;
+  }
+  &::-webkit-scrollbar-thumb {
+    background: variables.$accentColor;
+    // border-radius: 5px;
+  }
+
+  &--mini {
+    &::-webkit-scrollbar {
+      width: 3px;
+    }
+  }
+}
+
+.scroll-bar-none {
+  -ms-overflow-style: none; /* IE и Edge */
+  scrollbar-width: none; /* Firefox */
+
+  &::-webkit-scrollbar {
+    width: 0px;
+  }
+}
+
+.scroll-bar-row {
+  &::-webkit-scrollbar {
+    height: 7px;
+  }
+  &::-webkit-scrollbar-track {
+    background: #e0e0e0;
+  }
+  &::-webkit-scrollbar-thumb {
+    background: variables.$accentColor;
+    // border-radius: 5px;
+  }
+
+  &--mini {
+    &::-webkit-scrollbar {
+      height: 4px;
+    }
+  }
+}

@@ -95,7 +95,7 @@ export const FilterCheckbox: React.FC<Props> = ({
           <Input
             type="text"
             placeholder="Поиск..."
-            className="block w-full rounded-custom bg-[#f3f4f6] px-3 py-2 pl-8 text-sm placeholder:text-[#989797] focus:text-sm"
+            className="block w-full rounded-custom bg-grayColor px-3 py-2 pl-8 text-sm placeholder:text-[#989797] focus:text-sm"
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
           />

@@ -6,7 +6,6 @@ import {
   Post,
   Query,
   ParseIntPipe,
-  BadRequestException,
 } from '@nestjs/common';
 import { ProductsService } from './products.service';
 
@@ -18,11 +17,6 @@ interface ProductIdDto {
 export class ProductsController {
   constructor(private readonly productService: ProductsService) {}
 
-  @Post('load')
-  async loadCategoriesAndProducts(@Body() data: any) {
-    return this.productService.loadCategoriesProductsAndGroups(data);
-  }
-
   @Get('get-products')
   async getProducts(
     @Query('categoryName') categoryName: string,
@@ -31,6 +25,7 @@ export class ProductsController {
     @Query('sort') sort?: string,
     @Query('filters') filters?: string,
     @Query('search') search?: string,
+    @Query('getCountMod') getCountMod?: boolean,
   ) {
     const filtersParsed = filters ? JSON.parse(filters) : {};
     const pageNumber = parseInt(page, 10);
@@ -42,6 +37,19 @@ export class ProductsController {
       sort,
       filters: filtersParsed,
       search,
+      getCountMod,
+    });
+  }
+
+  @Get('get-options')
+  async getFilterOptions(
+    @Query('categoryName') categoryName: string,
+    @Query('filters') filters: string,
+  ) {
+    const filtersParsed = filters ? JSON.parse(filters) : {};
+    return this.productService.getFilterOptions({
+      categoryName,
+      filters: filtersParsed,
     });
   }
 
@@ -54,12 +62,15 @@ export class ProductsController {
   async getProductById(@Param('productId') productId: string) {
     return this.productService.getProductById(productId);
   }
+  @Get('details/:productId')
+  async getProductDetails(@Param('productId') productId: string) {
+    return this.productService.getProductDetails(productId);
+  }
 
   @Post('view')
   async getViewProductsById(@Body() body: ProductIdDto) {
     const productIds = body.ids;
 
-    console.log(productIds);
     return this.productService.getViewProductsById(productIds);
   }
 
@@ -95,54 +106,5 @@ export class ProductsController {
     return this.productService.getPopularProducts();
   }
 
-  // Обновление товара (пример для `isPopular`)
-  @Post(':id')
-  async updateProduct(
-    @Param('id') productId: string,
-    @Body() updateData: { isPopular?: boolean },
-  ) {
-    return this.productService.updateProduct(productId, updateData);
-  }
   //====================================================================
-
-  @Get('search/product-all')
-  async searchAllProducts(
-    @Query('fields') fieldsString: string,
-    @Query('value') value: string,
-  ) {
-    const fields = fieldsString.split(',');
-    return this.productService.searchAllProducts(fields, value);
-  }
-
-  @Get('search/product')
-  async search(
-    @Query('fields') fieldsString: string,
-    @Query('value') value: string,
-    @Query('page', ParseIntPipe) page: number = 1,
-    @Query('limit', ParseIntPipe) limit: number = 20,
-  ) {
-    const fields = fieldsString.split(',');
-    const { items, total } = await this.productService.searchProducts(
-      fields,
-      value,
-      page,
-      limit,
-    );
-
-    return { items, total };
-  }
-
-  @Get('search/pages')
-  async searchPages(@Query('value') value: string) {
-    return this.productService.searchPages(value);
-  }
-
-  @Get('recommended/:productId')
-  async getRecommendedProducts(
-    @Param('productId') productId: string,
-    @Query('limit', ParseIntPipe) limit: number = 5,
-  ) {
-    console.log(productId);
-    return this.productService.getRandomRecommendedProducts(productId, limit);
-  }
 }

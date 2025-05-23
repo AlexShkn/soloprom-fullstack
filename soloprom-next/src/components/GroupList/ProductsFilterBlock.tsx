@@ -1,5 +1,5 @@
 'use client'
-import React, { useCallback, useEffect, useMemo, useState, useRef } from 'react'
+import React, { useCallback, useEffect, useState, useRef } from 'react'
 import { useRouter } from 'next/navigation'
 import { CardDataProps, FilterData } from '@/types/products.types'
 import { ResultFilteredList } from '@/components/GroupList/ResultFilteredList'
@@ -17,7 +17,8 @@ interface Props {
   initialProducts: CardDataProps[] | null
   categoryData: FilterData
   pageName: string
-  totalCount: number
+  initTotalCount: number
+  initTotalPages: number
 }
 
 export const ProductsFilterBlock: React.FC<Props> = ({
@@ -27,13 +28,16 @@ export const ProductsFilterBlock: React.FC<Props> = ({
   initialProducts,
   categoryData,
   pageName,
-  totalCount,
+  initTotalCount,
+  initTotalPages,
 }) => {
   const router = useRouter()
   const groupListRef = useRef<HTMLElement | null>(null)
   const fetchControllerRef = useRef<AbortController | null>(null)
   const [products, setProducts] = useState(initialProducts || [])
   const [filterOpen, setFilterOpen] = useState(false)
+  const [totalProductsCount, setTotalProductsCount] = useState(0)
+  const [totalPages, setTotalPages] = useState(0)
   const [checkedValues, setCheckedValues] = useState<Record<string, string[]>>(
     {},
   )
@@ -43,8 +47,6 @@ export const ProductsFilterBlock: React.FC<Props> = ({
     filters,
     sort,
     setSort,
-    setTotalProductsCount,
-    totalProductsCount,
     hasFilters,
     setHasFilters,
     dynamicCurrentPage,
@@ -52,16 +54,12 @@ export const ProductsFilterBlock: React.FC<Props> = ({
     setPriceRange,
     resetFilters,
     initialLoad,
-    totalPages,
-    setTotalPages,
   } = useFilterStore()
 
   const debouncedFilters = useDebounce(filters, 500)
   const debouncedSort = useDebounce(sort, 500)
 
   const fetchData = useCallback(async () => {
-    console.log('fetch')
-
     if (fetchControllerRef.current) {
       fetchControllerRef.current.abort()
     }
@@ -84,15 +82,15 @@ export const ProductsFilterBlock: React.FC<Props> = ({
       const response = await api.get<{
         products: CardDataProps[]
         totalCount: number
+        currentPage: number
+        totalPages: number
       }>('products/get-products', {
         params: params as any,
         signal: controller.signal,
       })
-
       setProducts(response.products)
-
       setTotalProductsCount(response.totalCount)
-      setTotalPages(response.totalCount)
+      setTotalPages(response.totalPages)
     } catch (err) {
       if (err instanceof Error && err.name !== 'AbortError') {
         console.error('Ошибка получения продуктов:', err)
@@ -153,18 +151,11 @@ export const ProductsFilterBlock: React.FC<Props> = ({
   }, [dynamicCurrentPage, initialLoad])
 
   useEffect(() => {
-    if (filteredPage && categoryName !== filteredPage) {
-      resetFilters()
-    }
-  }, [categoryName, filteredPage])
-
-  useEffect(() => {
-    if (!initialLoad && hasFilters) {
+    if (!initialLoad) {
       updateUrl()
-      setProducts([])
       fetchData()
     }
-  }, [debouncedFilters, debouncedSort, dynamicCurrentPage, updateUrl])
+  }, [debouncedFilters, debouncedSort, dynamicCurrentPage])
 
   const handleResetFilters = () => {
     setHasFilters(false)
@@ -192,6 +183,12 @@ export const ProductsFilterBlock: React.FC<Props> = ({
     }
   }
 
+  useEffect(() => {
+    if (filteredPage && categoryName !== filteredPage) {
+      handleResetFilters()
+    }
+  }, [categoryName, filteredPage])
+
   return (
     <section className="group-list section-offset" ref={groupListRef}>
       <div className="page-container">
@@ -207,11 +204,14 @@ export const ProductsFilterBlock: React.FC<Props> = ({
             setCheckedValues={setCheckedValues}
             checkedValues={checkedValues}
             handleResetFilters={handleResetFilters}
+            totalProductsCount={totalProductsCount}
           />
           <ResultFilteredList
             data={products}
             currentPage={currentPage}
+            totalProductsCount={totalProductsCount}
             totalPages={totalPages}
+            initTotalPages={initTotalPages}
             onChangePage={handlePageChange}
             onSortChange={setSort}
             hasFilters={hasFilters}
@@ -220,6 +220,7 @@ export const ProductsFilterBlock: React.FC<Props> = ({
             setCheckedValues={setCheckedValues}
             checkedValues={checkedValues}
             handleResetFilters={handleResetFilters}
+            initTotalCount={initTotalCount}
           />
         </div>
       </div>

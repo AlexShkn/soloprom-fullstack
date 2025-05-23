@@ -4,7 +4,7 @@ export interface CityType {
   name: string
 }
 
-export async function getCityForName(name: string) {
+export const getCityForName = async (name: string) => {
   try {
     const response = await api.get<CityType[]>(`cities/${name}`)
     return response

@@ -1,4 +1,3 @@
-// components/OrderForm/InputField.tsx
 'use client'
 import React from 'react'
 import { useFormContext } from 'react-hook-form'
@@ -24,7 +23,7 @@ export const InputField: React.FC<InputFieldProps> = ({
   name,
   placeholder,
   autoComplete,
-  type = 'text', //default value
+  type = 'text',
 }) => {
   const { control } = useFormContext<TypeOrderSchema>()
 

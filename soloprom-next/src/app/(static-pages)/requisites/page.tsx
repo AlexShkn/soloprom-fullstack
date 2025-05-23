@@ -1,6 +1,6 @@
-import { Callback } from '@/components/Callback/Callback'
+import { Callback } from '@/components/Callback'
 import { ContactsMap } from '@/components/ContactsMap/ContactsMap'
-import BreadCrumbs from '@/components/BreadCrumbs/BreadCrumbs'
+import BreadCrumbs from '@/components/BreadCrumbs'
 import { Requisites } from '@/components/Requisites/Requisites'
 import PageWrapper from '../../PageWrapper'
 

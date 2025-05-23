@@ -1,7 +1,6 @@
-import { Callback } from '@/components/Callback/Callback'
+import { Callback } from '@/components/Callback'
 import { Cart } from '@/components/Cart/Cart'
 import PageWrapper from '../PageWrapper'
-import TransitionWrapper from '@/providers/TransitionWrapper'
 
 export const metadata = {
   title: 'Корзина товаров',
@@ -25,11 +24,9 @@ export const metadata = {
 
 export default function CartPage() {
   return (
-    <TransitionWrapper>
-      <PageWrapper>
-        <Cart />
-        <Callback />
-      </PageWrapper>
-    </TransitionWrapper>
+    <PageWrapper>
+      <Cart />
+      <Callback />
+    </PageWrapper>
   )
 }

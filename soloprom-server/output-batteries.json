@@ -1,582 +1,1058 @@
 [
   {
-    "id": "Union48V5PzS625Ah",
+    "id": "Union48V5PzS625Ah-1005x520x620",
     "name": "АКБ Union 48V 5 PzS 625Ah",
-    "price": 410665,
+    "price": 377684,
     "models": [
-      "CATERPILLAR-EP20KT",
-      "MITSUBISHI-FB 16 NT",
-      "MITSUBISHI-FB 20 KT",
-      "NICHIYU-FBT 15 P",
-      "NICHIYU-FBT 18 P",
-      "NICHIYU-FBT15D-75C",
-      "HELI-CPD18S-CQ",
-      "HELI-CPD20S-CQ",
-      "TFN-CPD25J",
-      "STILL-RX20",
-      "STILL-RX20-15",
-      "STILL-RX20-16",
-      "STILL-RX20-16P",
-      "STILL-RX20-20",
-      "MAXIMAL-FB20-MQJS",
-      "HANGCHA  (HC)-CPD20J-D1",
-      "JUNGHEINRICH-EFX 413",
-      "MAXIMAL-FB25",
-      "HELI-CPD20CJ",
-      "HELI-CPD20FJ",
-      "HELI-CPD25CJ",
-      "HELI-CPD25FJ",
-      "CROWN-SC3240",
-      "DIMEX-E14",
-      "DIMEX-E16",
-      "HANGCHA  (HC)-CPDS18J-D1",
-      "JUNGHEINRICH-EFG 216K",
-      "JUNGHEINRICH-EFG 218K",
-      "JUNGHEINRICH-EFG 316K",
-      "KOMATSU-FB18M-2R",
-      "KOMATSU-FB20M-2",
-      "LINDE-E16C",
-      "LINDE-E16P",
-      "LINDE-E20P",
-      "STILL-R20-15",
-      "TCM-FTB 16-7",
-      "TOYOTA-8FBEKT16",
-      "TOYOTA-8FBEKT18",
-      "YALE-ERP16VF",
-      "HYSTER-E1.5",
-      "YALE-ERP16AAF",
-      "YALE-ERP18AAF",
-      "YALE-ERP20AAF",
-      "DOOSAN - DAEWOO-B15T-5",
-      "DOOSAN - DAEWOO-B16X-3",
-      "DOOSAN - DAEWOO-B16X-5",
-      "DOOSAN - DAEWOO-B18T-2",
-      "DOOSAN - DAEWOO-B18X-5",
-      "DOOSAN - DAEWOO-B20T-3",
-      "DOOSAN - DAEWOO-B20X-5",
-      "HYSTER-J2.00XT",
-      "YALE-ERP18ATF",
-      "YALE-ERP20ATF",
-      "HYUNDAI-18BT-7",
-      "CATERPILLAR-EP16NT",
-      "HYUNDAI-20BT-7",
-      "HYUNDAI-25B",
-      "HYUNDAI-18B-7",
-      "HYUNDAI-20B-7"
-    ],
-    "sizes": {
-      "995x625x637": 410665
-    }
+      "CATERPILLAR-EP20KT"
+    ]
   },
   {
-    "id": "Union48V4PzS500Ah",
+    "id": "Union48V5PzS625Ah-1005x525x625",
+    "name": "АКБ Union 48V 5 PzS 625Ah",
+    "price": 377684,
+    "models": [
+      "MITSUBISHI-FB 16 NT"
+    ]
+  },
+  {
+    "id": "Union48V4PzS500Ah-1025x435x625",
     "name": "АКБ Union 48V 4 PzS 500Ah",
-    "price": 361741,
+    "price": 332690,
     "models": [
-      "DOOSAN - DAEWOO-BR14JW",
-      "NICHIYU-FBT 15 P",
-      "NICHIYU-FBT 18 P",
-      "HELI-CPD18S-FQ",
-      "HELI-CPD20",
-      "HELI-CPD25",
-      "MAXIMAL-FB25",
-      "HELI-CPD20FJ",
-      "HYUNDAI-16BRJ-7",
-      "NICHIYU-FBRF 14",
-      "NICHIYU-FBRF 16",
-      "NICHIYU-FBRF 20",
-      "NICHIYU-FBT 15 P-80",
-      "BT-C3E 150",
-      "BT-C4E 150",
-      "BT-CBE 1.2T",
-      "BT-CBE 1.5T",
-      "BT-CBE 150",
-      "CROWN-E10",
-      "CROWN-E12",
-      "CROWN-SC3220",
-      "CROWN-SC4220",
-      "HANGCHA  (HC)-CPDS15J",
-      "HELI-CPD15D",
-      "HELI-CPD15S-FQ",
-      "JUNGHEINRICH-EFG 213",
-      "JUNGHEINRICH-EFG 215",
-      "KOMATSU-FB15M-2R",
-      "KOMATSU-FB18-12",
-      "KOMATSU-FB20AG-12",
-      "LINDE-E14",
-      "TOYOTA-8FBET15",
-      "TOYOTA-8FBMT15",
-      "YALE-ERP 15 VT",
-      "TOYOTA-5FBE15",
-      "VP-FB15",
-      "VP-FB18",
-      "HANGCHA  (HC)-CPD15J",
-      "DOOSAN - DAEWOO-B15T-S5",
-      "KOMATSU-FB15-12",
-      "KOMATSU-FB18-12",
-      "VP-FB20",
-      "VP-FB25",
-      "KOMATSU-FB15M-3",
-      "TFN-CPD15J",
-      "HANGCHA  (HC)-CPD10J-D1",
-      "HELI-CPD18",
-      "HANGCHA  (HC)-CPD18J-D1",
-      "DOOSAN - DAEWOO-B13T-2",
-      "DOOSAN - DAEWOO-B15T-2",
-      "DOOSAN - DAEWOO-B15T5",
-      "YALE-ERP 16 ATF",
-      "DOOSAN - DAEWOO-B16X-5",
-      "TOYOTA-7FBE10",
-      "TOYOTA-7FBE13",
-      "TOYOTA-7FBE15",
-      "TOYOTA-7FBE15",
-      "TOYOTA-7FBE18",
-      "HYUNDAI-15BT-7"
-    ],
-    "sizes": {
-      "990x545x635": 361741
-    }
+      "DOOSAN - DAEWOO-BR14JW"
+    ]
   },
   {
-    "id": "Union48V5PzS700Ah",
+    "id": "Union48V5PzS625Ah-1025x525x680",
+    "name": "АКБ Union 48V 5 PzS 625Ah",
+    "price": 377684,
+    "models": [
+      "NICHIYU-FBT 15 P"
+    ]
+  },
+  {
+    "id": "Union48V5PzS625Ah-1025x530x625",
+    "name": "АКБ Union 48V 5 PzS 625Ah",
+    "price": 377684,
+    "models": [
+      "HELI-CPD18S-CQ"
+    ]
+  },
+  {
+    "id": "Union48V4PzS500Ah-1025x535x680",
+    "name": "АКБ Union 48V 4 PzS 500Ah",
+    "price": 332690,
+    "models": [
+      "NICHIYU-FBT 15 P"
+    ]
+  },
+  {
+    "id": "Union48V5PzS625Ah-1025x565x780",
+    "name": "АКБ Union 48V 5 PzS 625Ah",
+    "price": 377684,
+    "models": [
+      "TFN-CPD25J"
+    ]
+  },
+  {
+    "id": "Union48V5PzS700Ah-1025x565x780",
     "name": "АКБ Union 48V 5 PzS 700Ah",
-    "price": 451188,
+    "price": 414953,
     "models": [
-      "TFN-CPD25J",
-      "MAXIMAL-FB20-MQJS",
-      "HELI-CPD20CJ",
-      "HELI-CPD20FJ",
-      "HELI-CPD25CJ",
-      "HELI-CPD25FJ",
-      "BT----",
-      "BT-RRM16",
-      "HYSTER-R1.6H",
-      "HYSTER-R2.0H",
-      "JUNGHEINRICH-ETV 214",
-      "JUNGHEINRICH-ETV 216",
-      "JUNGHEINRICH-ETV 320",
-      "JUNGHEINRICH-ETV114/ETV116",
-      "KOMATSU-FB14 RJY",
-      "LINDE-R16",
-      "LINDE-R20",
-      "NICHIYU-FBRF 20",
-      "ROCLA-HX16S",
-      "STILL-FM 17i",
-      "STILL-FM-X 14",
-      "STILL-FM-X 16",
-      "STILL-FM-X 20",
-      "YALE-MR 18",
-      "TOYOTA-6FBRE20",
-      "LINDE-E16",
-      "LINDE-E16P",
-      "LINDE-E20P"
-    ],
-    "sizes": {
-      "832x631x782": 451188
-    }
+      "TFN-CPD25J"
+    ]
   },
   {
-    "id": "Union48V5PzS775Ah",
+    "id": "Union48V5PzS775Ah-1025x565x780",
     "name": "АКБ Union 48V 5 PzS 775Ah",
-    "price": 476721,
+    "price": 438435,
     "models": [
-      "TFN-CPD25J",
-      "MAXIMAL-FB20-MQJS",
-      "HELI-CPD20CJ",
-      "HELI-CPD20FJ",
-      "HELI-CPD25CJ",
-      "HELI-CPD25FJ",
-      "BT----",
-      "BT-RRM16",
-      "HYSTER-R1.6H",
-      "HYSTER-R2.0H",
-      "JUNGHEINRICH-ETV 214",
-      "JUNGHEINRICH-ETV 216",
-      "JUNGHEINRICH-ETV 320",
-      "JUNGHEINRICH-ETV114/ETV116",
-      "KOMATSU-FB14 RJY",
-      "LINDE-R16",
-      "LINDE-R20",
-      "NICHIYU-FBRF 20",
-      "ROCLA-HX16S",
-      "STILL-FM 17i",
-      "STILL-FM-X 14",
-      "STILL-FM-X 16",
-      "STILL-FM-X 20",
-      "YALE-MR 18",
-      "TOYOTA-6FBRE20",
-      "LINDE-E16",
-      "LINDE-E16P",
-      "LINDE-E20P"
-    ],
-    "sizes": {
-      "832x631x782": 476721
-    }
+      "TFN-CPD25J"
+    ]
   },
   {
-    "id": "Union48V4PzS620Ah",
+    "id": "Union48V5PzS625Ah-1027x526x625",
+    "name": "АКБ Union 48V 5 PzS 625Ah",
+    "price": 377684,
+    "models": [
+      "STILL-RX20"
+    ]
+  },
+  {
+    "id": "Union48V5PzS625Ah-1028x520x780",
+    "name": "АКБ Union 48V 5 PzS 625Ah",
+    "price": 377684,
+    "models": [
+      "MAXIMAL-FB20-MQJS"
+    ]
+  },
+  {
+    "id": "Union48V5PzS700Ah-1028x520x780",
+    "name": "АКБ Union 48V 5 PzS 700Ah",
+    "price": 414953,
+    "models": [
+      "MAXIMAL-FB20-MQJS"
+    ]
+  },
+  {
+    "id": "Union48V5PzS775Ah-1028x520x780",
+    "name": "АКБ Union 48V 5 PzS 775Ah",
+    "price": 438435,
+    "models": [
+      "MAXIMAL-FB20-MQJS"
+    ]
+  },
+  {
+    "id": "Union48V5PzS625Ah-1028x570x700",
+    "name": "АКБ Union 48V 5 PzS 625Ah",
+    "price": 377684,
+    "models": [
+      "HANGCHA  (HC)-CPD20J-D1"
+    ]
+  },
+  {
+    "id": "Union48V5PzS625Ah-1030x252x625",
+    "name": "АКБ Union 48V 5 PzS 625Ah",
+    "price": 377684,
+    "models": [
+      "JUNGHEINRICH-EFX 413"
+    ]
+  },
+  {
+    "id": "Union48V4PzS620Ah-1030x440x767",
     "name": "АКБ Union 48V 4 PzS 620Ah",
-    "price": 401276,
+    "price": 369049,
     "models": [
-      "STILL-FM-X10N",
-      "HELI-FB25",
-      "MAXIMAL-FB25",
-      "BT-RRM16",
-      "BT-RRE140",
-      "CROWN-ESR4500",
-      "HYSTER-R1.6H",
-      "HYUNDAI-16BRJ-7",
-      "JUNGHEINRICH-ETV 214",
-      "JUNGHEINRICH-ETV 216",
-      "JUNGHEINRICH-ETV114/ETV116",
-      "KOMATSU-FB14 RJY",
-      "LINDE-R14",
-      "LINDE-R16S",
-      "NICHIYU-FBRF 14",
-      "NICHIYU-FBRF 16",
-      "NICHIYU-FBRF 20",
-      "OM-XR14",
-      "ROCLA-HS14F7000",
-      "ROCLA-HX16S",
-      "STILL-FM-X 14",
-      "TOYOTA-6FBRE14",
-      "TOYOTA-6FBRE16",
-      "YALE-MR 16",
-      "VP-FB15",
-      "VP-FB18",
-      "VP-FB20",
-      "VP-FB25",
-      "HANGCHA  (HC)-CPD18J-D1"
-    ],
-    "sizes": {
-      "980x470x800": 401276
-    }
+      "STILL-FM-X10N"
+    ]
   },
   {
-    "id": "Union48V7PzS560Ah",
+    "id": "Union48V4PzS500Ah-1030x450x627",
+    "name": "АКБ Union 48V 4 PzS 500Ah",
+    "price": 332690,
+    "models": [
+      "HELI-CPD18S-FQ"
+    ]
+  },
+  {
+    "id": "Union48V5PzS625Ah-1030x500x802",
+    "name": "АКБ Union 48V 5 PzS 625Ah",
+    "price": 377684,
+    "models": [
+      "MAXIMAL-FB25"
+    ]
+  },
+  {
+    "id": "Union48V4PzS620Ah-1030x500x802",
+    "name": "АКБ Union 48V 4 PzS 620Ah",
+    "price": 369049,
+    "models": [
+      "HELI-FB25"
+    ]
+  },
+  {
+    "id": "Union48V4PzS500Ah-1030x500x802",
+    "name": "АКБ Union 48V 4 PzS 500Ah",
+    "price": 332690,
+    "models": [
+      "HELI-CPD20"
+    ]
+  },
+  {
+    "id": "Union48V5PzS775Ah-1030x515x802",
+    "name": "АКБ Union 48V 5 PzS 775Ah",
+    "price": 438435,
+    "models": [
+      "HELI-CPD20CJ"
+    ]
+  },
+  {
+    "id": "Union48V5PzS700Ah-1030x515x802",
+    "name": "АКБ Union 48V 5 PzS 700Ah",
+    "price": 414953,
+    "models": [
+      "HELI-CPD20CJ"
+    ]
+  },
+  {
+    "id": "Union48V4PzS500Ah-1030x515x802",
+    "name": "АКБ Union 48V 4 PzS 500Ah",
+    "price": 332690,
+    "models": [
+      "HELI-CPD20FJ"
+    ]
+  },
+  {
+    "id": "Union48V5PzS625Ah-1030x515x802",
+    "name": "АКБ Union 48V 5 PzS 625Ah",
+    "price": 377684,
+    "models": [
+      "HELI-CPD20CJ"
+    ]
+  },
+  {
+    "id": "Union48V7PzS560Ah-1030x780x495",
     "name": "АКБ Union 48V 7 PzS 560Ah",
-    "price": 373519,
+    "price": 343521,
     "models": [
-      "TCM-FB20-7",
-      "TCM-FB20-8",
-      "TCM-FB25-7",
-      "TCM-FB25-8",
-      "TOYOTA-7FB20",
-      "TOYOTA-7FB25",
-      "DALIAN-CPD20",
-      "DALIAN-FB25"
-    ],
-    "sizes": {
-      "986x860x457": 373519
-    }
+      "TCM-FB20-7"
+    ]
   },
   {
-    "id": "Union24V3PzS375Ah",
-    "name": "АКБ Union 24V 3 PzS 375Ah",
-    "price": 139854,
+    "id": "Union48V4PzS620Ah-1044x430x780",
+    "name": "АКБ Union 48V 4 PzS 620Ah",
+    "price": 369049,
     "models": [
-      "JUNGHEINRICH-EJE 225",
-      "BT-SL 2.0",
-      "HYSTER-S1.6-32",
-      "HYSTER-S16AC",
-      "JUNGHEINRICH----",
-      "JUNGHEINRICH-ECE 120",
-      "JUNGHEINRICH-ERC212/ERC214/ERC216",
-      "JUNGHEINRICH-ERE120/ERE125/ERE225",
-      "JUNGHEINRICH-ESD 120",
-      "JUNGHEINRICH-ESE 120",
-      "KOMATSU-MWP 20F-1R",
-      "OM-TSX20",
-      "YALE-MS 14",
-      "YALE-MS 16",
-      "CATERPILLAR-N010SF",
-      "YALE-MP 20 T",
-      "CROWN-WE2300",
-      "DOOSAN - DAEWOO-HLS12",
-      "KOMATSU-FWS 14-1R",
-      "KOMATSU-MWS 14-1R",
-      "LOC-I16 T54",
-      "MITSUBISHI-SBP16N",
-      "OM-CN14",
-      "PRAMAC-FX12-38",
-      "PRAMAC-LX14-45",
-      "ROCLA-SW16ac",
-      "ROCLA-TTS12TR",
-      "STILL-EGV16",
-      "JUNGHEINRICH-ERC 12",
-      "STILL-EGV14-lang"
-    ],
-    "sizes": {
-      "830x218x615": 139854
-    }
+      "BT-RRM16"
+    ]
   },
   {
-    "id": "Union24V2PzS250Ah",
-    "name": "АКБ Union 24V 2 PzS 250Ah",
-    "price": 120333,
+    "id": "Union48V5PzS700Ah-1200x420x870",
+    "name": "АКБ Union 48V 5 PzS 700Ah",
+    "price": 414953,
     "models": [
-      "HYSTER-P30",
-      "HYSTER-S1.2AC",
-      "JUNGHEINRICH-EJD 220",
-      "JUNGHEINRICH-EJE 116",
-      "JUNGHEINRICH-EJE 118",
-      "JUNGHEINRICH-EJE 120",
-      "JUNGHEINRICH-EJE 220",
-      "JUNGHEINRICH-ERE 220",
-      "KOMATSU-MWP 20-1R",
-      "LINDE-L12",
-      "LINDE-L14",
-      "LINDE-L16AP",
-      "LOC-1000",
-      "LOC-A-12",
-      "STILL-EGV12",
-      "STILL-EGV16",
-      "STILL-EXU20",
-      "YALE-MP 22",
-      "YALE-MP20XV",
-      "YALE-MS 12",
-      "OM-TLX-20",
-      "HYSTER-P2.0S",
-      "YALE-MP20X",
-      "LINDE-T20AP",
-      "DOOSAN - DAEWOO-HLS12",
-      "ROCLA-SW12ac"
-    ],
-    "sizes": {
-      "805x155x615": 120333
-    }
+      "BT----"
+    ]
   },
   {
-    "id": "Union48V5PzS400Ah",
-    "name": "АКБ Union 48V 5 PzS 400Ah",
-    "price": 318912,
+    "id": "Union48V5PzS775Ah-1200x420x870",
+    "name": "АКБ Union 48V 5 PzS 775Ah",
+    "price": 438435,
     "models": [
-      "TOYOTA-7FB10",
-      "TOYOTA-7FB14",
-      "TOYOTA-7FB15",
-      "TOYOTA-7FB18",
-      "HELI-CPD10FJ",
-      "HELI-CPD10L-FG",
-      "HELI-CPD15FJ",
-      "HELI-CPD15L-FJ",
-      "JAC-CPD15",
-      "MITSUBISHI-FB15SA",
-      "NICHIYU-FB 10 P",
-      "NICHIYU-FB 14 P",
-      "NICHIYU-FB 15 P",
-      "NICHIYU-FB 15 P-75",
-      "NICHIYU-FB 15-75",
-      "NICHIYU-FB 18 P",
-      "NICHIYU-FB 20 PN",
-      "NISSAN-K1B1L15U",
-      "TCM-FB15-7",
-      "TCM-FB15-8",
-      "KOMATSU-FB15EX",
-      "KOMATSU-FB15EX-11",
-      "KOMATSU-FB15EX-7",
-      "KOMATSU-FB15EX-8",
-      "KOMATSU-FB15EXL-11",
-      "KOMATSU-FB18EX-8",
-      "NISSAN-NK1B1L10",
-      "NISSAN-FP01L15"
-    ],
-    "sizes": {
-      "990x670x450": 318912
-    }
+      "BT----"
+    ]
   },
   {
-    "id": "Union24V5PzS625Ah",
-    "name": "АКБ Union 24V 5 PzS 625Ah",
-    "price": 197920,
+    "id": "Union48V5PzS775Ah-1215x420x770",
+    "name": "АКБ Union 48V 5 PzS 775Ah",
+    "price": 438435,
     "models": [
-      "HYSTER-A1.0XL",
-      "BOSS-JE-10-50",
-      "JUNGHEINRICH-EFG 110",
-      "LINDE-E12",
-      "LINDE-E15",
-      "LINDE-E16",
-      "STILL-R50-10",
-      "STILL-RX50-10"
-    ],
-    "sizes": {
-      "827x324x625": 410665
-    }
+      "BT-RRM16"
+    ]
   },
   {
-    "id": "Union48V6PzS480Ah",
-    "name": "АКБ Union 48V 6 PzS 480Ah",
-    "price": 343539,
+    "id": "Union48V5PzS700Ah-1215x420x770",
+    "name": "АКБ Union 48V 5 PzS 700Ah",
+    "price": 414953,
     "models": [
-      "HELI-CPD10FJ",
-      "HELI-CPD10L-FG",
-      "HELI-CPD15FJ",
-      "HELI-CPD15FJ2",
-      "HELI-CPD15L-FJ",
-      "JAC-CPD15",
-      "MITSUBISHI-FB15SA",
-      "NICHIYU-FB 10 P",
-      "NICHIYU-FB 14 P",
-      "NICHIYU-FB 15 P",
-      "NICHIYU-FB 15 P-75",
-      "NICHIYU-FB 15-75",
-      "NICHIYU-FB 18 P",
-      "NICHIYU-FB 20 PN",
-      "NISSAN-K1B1L15U",
-      "HANGCHA  (HC)-CPD15H-Z2L",
-      "NISSAN-FP01L5",
-      "NISSAN-K1B1L15U",
-      "TFN-CPD15H",
-      "TCM-FB15-7",
-      "TCM-FB15-8",
-      "KOMATSU-FB15EX",
-      "KOMATSU-FB15EX-11",
-      "KOMATSU-FB15EX-7",
-      "KOMATSU-FB15EX-8",
-      "KOMATSU-FB15EXF",
-      "KOMATSU-FB15EXL-11",
-      "KOMATSU-FB18EX-8",
-      "KOMATSU-FBEXL-8",
-      "NISSAN-NK1B1L10",
-      "TFN-CPD15Hz",
-      "DALIAN-CPD15",
-      "NISSAN-FP01L15",
-      "DOOSAN - DAEWOO-B15S"
-    ],
-    "sizes": {
-      "995x715x470": 343539
-    }
+      "BT-RRM16"
+    ]
   },
   {
-    "id": "EnPOWER48V5PzS625Ah",
-    "name": "АКБ EnPOWER 48V 5 PzS 625Ah",
-    "price": 606492,
+    "id": "Union48V4PzS620Ah-1220x352x782",
+    "name": "АКБ Union 48V 4 PzS 620Ah",
+    "price": 369049,
     "models": [
-      "CATERPILLAR-EP20KT",
-      "MITSUBISHI-FB 16 NT",
-      "MITSUBISHI-FB 20 KT",
-      "NICHIYU-FBT 15 P",
-      "NICHIYU-FBT 18 P",
-      "NICHIYU-FBT15D-75C",
-      "HELI-CPD18S-CQ",
-      "HELI-CPD20S-CQ",
-      "TFN-CPD25J",
-      "STILL-RX20",
-      "STILL-RX20-15",
-      "STILL-RX20-16",
-      "STILL-RX20-16P",
-      "STILL-RX20-20",
-      "MAXIMAL-FB20-MQJS",
-      "HANGCHA  (HC)-CPD20J-D1",
-      "JUNGHEINRICH-EFX 413",
-      "MAXIMAL-FB25",
-      "HELI-CPD20CJ",
-      "HELI-CPD20FJ",
-      "HELI-CPD25CJ",
-      "HELI-CPD25FJ"
-    ],
-    "sizes": {
-      "1030x515x802": 606492
-    }
+      "BT-RRE140"
+    ]
   },
   {
-    "id": "EnPOWER48V3PzS375Ah",
-    "name": "АКБ EnPOWER 48V 3 PzS 375Ah",
-    "price": 452339,
+    "id": "Union48V4PzS500Ah-1220x352x782",
+    "name": "АКБ Union 48V 4 PzS 500Ah",
+    "price": 332690,
     "models": [
-      "DOOSAN - DAEWOO-BR14JW",
-      "DOOSAN - DAEWOO-BR16JW",
-      "NICHIYU-FBRF 14",
-      "NICHIYU-FBRF 16",
-      "YALE-MR 14",
-      "HYUNDAI-14BRJ-7",
-      "HAKO-S5"
-    ],
-    "sizes": {
-      "630x540x630": 452339
-    }
+      "HYUNDAI-16BRJ-7"
+    ]
   },
   {
-    "id": "EnPOWER48V5PzS775Ah",
-    "name": "АКБ EnPOWER 48V 5 PzS 775Ah",
-    "price": 736529,
+    "id": "Union48V5PzS775Ah-1220x424x782",
+    "name": "АКБ Union 48V 5 PzS 775Ah",
+    "price": 438435,
     "models": [
-      "TFN-CPD25J",
-      "MAXIMAL-FB20-MQJS",
-      "HELI-CPD20CJ",
-      "HELI-CPD20FJ",
-      "HELI-CPD25CJ",
-      "HELI-CPD25FJ",
-      "BT----",
-      "BT-RRE160",
-      "HYSTER-R1.6H",
-      "HYSTER-R2.0H",
-      "JUNGHEINRICH-ETV 214",
-      "JUNGHEINRICH-ETV 216",
-      "JUNGHEINRICH-ETV 320",
-      "JUNGHEINRICH-ETV114/ETV116",
-      "KOMATSU-FB14 RJY",
-      "LINDE-R20",
-      "NICHIYU-FBRF 20",
-      "ROCLA-HX16S",
-      "STILL-FM 17i",
-      "STILL-FM-X 14",
-      "STILL-FM-X 16",
-      "STILL-FM-X 20",
-      "YALE-MR 18",
+      "HYSTER-R1.6H"
+    ]
+  },
+  {
+    "id": "Union48V5PzS700Ah-1220x424x782",
+    "name": "АКБ Union 48V 5 PzS 700Ah",
+    "price": 414953,
+    "models": [
+      "HYSTER-R1.6H"
+    ]
+  },
+  {
+    "id": "Union48V5PzS775Ah-1220x425x793",
+    "name": "АКБ Union 48V 5 PzS 775Ah",
+    "price": 438435,
+    "models": [
       "TOYOTA-6FBRE20"
-    ],
-    "sizes": {
-      "1220x425x793": 736529
-    }
+    ]
   },
   {
-    "id": "EnPOWER48V7PzS560Ah",
+    "id": "Union48V5PzS700Ah-1220x425x793",
+    "name": "АКБ Union 48V 5 PzS 700Ah",
+    "price": 414953,
+    "models": [
+      "TOYOTA-6FBRE20"
+    ]
+  },
+  {
+    "id": "Union24V3PzS375Ah-610x265x625",
+    "name": "АКБ Union 24V 3 PzS 375Ah",
+    "price": 128622,
+    "models": [
+      "JUNGHEINRICH-EJE 225"
+    ]
+  },
+  {
+    "id": "Union24V2PzS250Ah-621x209x625",
+    "name": "АКБ Union 24V 2 PzS 250Ah",
+    "price": 110670,
+    "models": [
+      "HYSTER-P30"
+    ]
+  },
+  {
+    "id": "Union24V3PzS375Ah-621x281x625",
+    "name": "АКБ Union 24V 3 PzS 375Ah",
+    "price": 128622,
+    "models": [
+      "BT-SL 2.0"
+    ]
+  },
+  {
+    "id": "Union24V2PzS250Ah-623x212x625",
+    "name": "АКБ Union 24V 2 PzS 250Ah",
+    "price": 110670,
+    "models": [
+      "OM-TLX-20"
+    ]
+  },
+  {
+    "id": "Union24V2PzS250Ah-665x210x630",
+    "name": "АКБ Union 24V 2 PzS 250Ah",
+    "price": 110670,
+    "models": [
+      "HYSTER-P2.0S"
+    ]
+  },
+  {
+    "id": "Union24V2PzS250Ah-680x225x650",
+    "name": "АКБ Union 24V 2 PzS 250Ah",
+    "price": 110670,
+    "models": [
+      "LINDE-T20AP"
+    ]
+  },
+  {
+    "id": "Union24V3PzS375Ah-790x210x740",
+    "name": "АКБ Union 24V 3 PzS 375Ah",
+    "price": 128622,
+    "models": [
+      "CATERPILLAR-N010SF"
+    ]
+  },
+  {
+    "id": "Union24V3PzS375Ah-790x215x625",
+    "name": "АКБ Union 24V 3 PzS 375Ah",
+    "price": 128622,
+    "models": [
+      "YALE-MP 20 T"
+    ]
+  },
+  {
+    "id": "Union24V2PzS250Ah-800x210x615",
+    "name": "АКБ Union 24V 2 PzS 250Ah",
+    "price": 110670,
+    "models": [
+      "DOOSAN - DAEWOO-HLS12"
+    ]
+  },
+  {
+    "id": "Union24V3PzS375Ah-800x210x615",
+    "name": "АКБ Union 24V 3 PzS 375Ah",
+    "price": 128622,
+    "models": [
+      "CROWN-WE2300"
+    ]
+  },
+  {
+    "id": "Union24V2PzS250Ah-805x155x615",
+    "name": "АКБ Union 24V 2 PzS 250Ah",
+    "price": 110670,
+    "models": [
+      "ROCLA-SW12ac"
+    ]
+  },
+  {
+    "id": "Union48V5PzS400Ah-815x740x475",
+    "name": "АКБ Union 48V 5 PzS 400Ah",
+    "price": 293301,
+    "models": [
+      "TOYOTA-7FB10"
+    ]
+  },
+  {
+    "id": "Union48V7PzS560Ah-815x905x475",
+    "name": "АКБ Union 48V 7 PzS 560Ah",
+    "price": 343521,
+    "models": [
+      "TOYOTA-7FB20"
+    ]
+  },
+  {
+    "id": "Union48V4PzS500Ah-820x520x620",
+    "name": "АКБ Union 48V 4 PzS 500Ah",
+    "price": 332690,
+    "models": [
+      "NICHIYU-FBT 15 P-80"
+    ]
+  },
+  {
+    "id": "Union24V5PzS625Ah-825x490x678",
+    "name": "АКБ Union 24V 5 PzS 625Ah",
+    "price": 182025,
+    "models": [
+      "HYSTER-A1.0XL"
+    ]
+  },
+  {
+    "id": "Union24V5PzS625Ah-827x324x625",
+    "name": "АКБ Union 24V 5 PzS 625Ah",
+    "price": 182025,
+    "models": [
+      "BOSS-JE-10-50"
+    ]
+  },
+  {
+    "id": "Union48V4PzS500Ah-827x519x625",
+    "name": "АКБ Union 48V 4 PzS 500Ah",
+    "price": 332690,
+    "models": [
+      "BT-C3E 150"
+    ]
+  },
+  {
+    "id": "Union48V5PzS625Ah-827x627x625",
+    "name": "АКБ Union 48V 5 PzS 625Ah",
+    "price": 377684,
+    "models": [
+      "CROWN-SC3240"
+    ]
+  },
+  {
+    "id": "Union24V3PzS375Ah-830x218x615",
+    "name": "АКБ Union 24V 3 PzS 375Ah",
+    "price": 128622,
+    "models": [
+      "JUNGHEINRICH-ERC 12"
+    ]
+  },
+  {
+    "id": "Union48V5PzS775Ah-832x631x782",
+    "name": "АКБ Union 48V 5 PzS 775Ah",
+    "price": 438435,
+    "models": [
+      "LINDE-E16"
+    ]
+  },
+  {
+    "id": "Union48V5PzS700Ah-832x631x782",
+    "name": "АКБ Union 48V 5 PzS 700Ah",
+    "price": 414953,
+    "models": [
+      "LINDE-E16"
+    ]
+  },
+  {
+    "id": "Union48V5PzS625Ah-870x680x615",
+    "name": "АКБ Union 48V 5 PzS 625Ah",
+    "price": 377684,
+    "models": [
+      "HYSTER-E1.5"
+    ]
+  },
+  {
+    "id": "Union48V5PzS625Ah-890x690x625",
+    "name": "АКБ Union 48V 5 PzS 625Ah",
+    "price": 377684,
+    "models": [
+      "YALE-ERP16AAF"
+    ]
+  },
+  {
+    "id": "Union48V4PzS500Ah-960x520x620",
+    "name": "АКБ Union 48V 4 PzS 500Ah",
+    "price": 332690,
+    "models": [
+      "TOYOTA-5FBE15"
+    ]
+  },
+  {
+    "id": "Union48V5PzS400Ah-965x605x465",
+    "name": "АКБ Union 48V 5 PzS 400Ah",
+    "price": 293301,
+    "models": [
+      "HELI-CPD10FJ"
+    ]
+  },
+  {
+    "id": "Union48V6PzS480Ah-965x605x465",
+    "name": "АКБ Union 48V 6 PzS 480Ah",
+    "price": 315950,
+    "models": [
+      "HELI-CPD10FJ"
+    ]
+  },
+  {
+    "id": "Union48V4PzS620Ah-970x430x760",
+    "name": "АКБ Union 48V 4 PzS 620Ah",
+    "price": 369049,
+    "models": [
+      "VP-FB15"
+    ]
+  },
+  {
+    "id": "Union48V4PzS500Ah-970x430x760",
+    "name": "АКБ Union 48V 4 PzS 500Ah",
+    "price": 332690,
+    "models": [
+      "VP-FB15"
+    ]
+  },
+  {
+    "id": "Union48V4PzS500Ah-970x470x730",
+    "name": "АКБ Union 48V 4 PzS 500Ah",
+    "price": 332690,
+    "models": [
+      "HANGCHA  (HC)-CPD15J"
+    ]
+  },
+  {
+    "id": "Union48V4PzS500Ah-970x500x640",
+    "name": "АКБ Union 48V 4 PzS 500Ah",
+    "price": 332690,
+    "models": [
+      "DOOSAN - DAEWOO-B15T-S5"
+    ]
+  },
+  {
+    "id": "Union48V4PzS500Ah-970x519x645",
+    "name": "АКБ Union 48V 4 PzS 500Ah",
+    "price": 332690,
+    "models": [
+      "KOMATSU-FB15-12"
+    ]
+  },
+  {
+    "id": "Union48V6PzS480Ah-970x605x470",
+    "name": "АКБ Union 48V 6 PzS 480Ah",
+    "price": 315950,
+    "models": [
+      "MITSUBISHI-FB15SA"
+    ]
+  },
+  {
+    "id": "Union48V5PzS400Ah-970x605x470",
+    "name": "АКБ Union 48V 5 PzS 400Ah",
+    "price": 293301,
+    "models": [
+      "MITSUBISHI-FB15SA"
+    ]
+  },
+  {
+    "id": "Union48V6PzS480Ah-970x660x465",
+    "name": "АКБ Union 48V 6 PzS 480Ah",
+    "price": 315950,
+    "models": [
+      "HANGCHA  (HC)-CPD15H-Z2L"
+    ]
+  },
+  {
+    "id": "Union48V6PzS480Ah-972x640x472",
+    "name": "АКБ Union 48V 6 PzS 480Ah",
+    "price": 315950,
+    "models": [
+      "NISSAN-FP01L5"
+    ]
+  },
+  {
+    "id": "Union48V4PzS620Ah-975x490x800",
+    "name": "АКБ Union 48V 4 PzS 620Ah",
+    "price": 369049,
+    "models": [
+      "VP-FB20"
+    ]
+  },
+  {
+    "id": "Union48V4PzS500Ah-975x490x800",
+    "name": "АКБ Union 48V 4 PzS 500Ah",
+    "price": 332690,
+    "models": [
+      "VP-FB20"
+    ]
+  },
+  {
+    "id": "Union48V4PzS500Ah-975x540x630",
+    "name": "АКБ Union 48V 4 PzS 500Ah",
+    "price": 332690,
+    "models": [
+      "KOMATSU-FB15M-3"
+    ]
+  },
+  {
+    "id": "Union48V6PzS480Ah-975x670x490",
+    "name": "АКБ Union 48V 6 PzS 480Ah",
+    "price": 315950,
+    "models": [
+      "TFN-CPD15H"
+    ]
+  },
+  {
+    "id": "Union48V4PzS500Ah-980x460x730",
+    "name": "АКБ Union 48V 4 PzS 500Ah",
+    "price": 332690,
+    "models": [
+      "TFN-CPD15J"
+    ]
+  },
+  {
+    "id": "Union48V4PzS500Ah-980x465x770",
+    "name": "АКБ Union 48V 4 PzS 500Ah",
+    "price": 332690,
+    "models": [
+      "HANGCHA  (HC)-CPD10J-D1"
+    ]
+  },
+  {
+    "id": "Union48V4PzS500Ah-980x465x782",
+    "name": "АКБ Union 48V 4 PzS 500Ah",
+    "price": 332690,
+    "models": [
+      "HELI-CPD18"
+    ]
+  },
+  {
+    "id": "Union48V4PzS620Ah-980x470x800",
+    "name": "АКБ Union 48V 4 PzS 620Ah",
+    "price": 369049,
+    "models": [
+      "HANGCHA  (HC)-CPD18J-D1"
+    ]
+  },
+  {
+    "id": "Union48V4PzS500Ah-980x470x800",
+    "name": "АКБ Union 48V 4 PzS 500Ah",
+    "price": 332690,
+    "models": [
+      "HANGCHA  (HC)-CPD18J-D1"
+    ]
+  },
+  {
+    "id": "Union48V4PzS500Ah-980x515x650",
+    "name": "АКБ Union 48V 4 PzS 500Ah",
+    "price": 332690,
+    "models": [
+      "DOOSAN - DAEWOO-B13T-2"
+    ]
+  },
+  {
+    "id": "Union48V4PzS500Ah-980x530x670",
+    "name": "АКБ Union 48V 4 PzS 500Ah",
+    "price": 332690,
+    "models": [
+      "YALE-ERP 16 ATF"
+    ]
+  },
+  {
+    "id": "Union48V5PzS400Ah-980x611x495",
+    "name": "АКБ Union 48V 5 PzS 400Ah",
+    "price": 293301,
+    "models": [
+      "TCM-FB15-7"
+    ]
+  },
+  {
+    "id": "Union48V6PzS480Ah-980x611x495",
+    "name": "АКБ Union 48V 6 PzS 480Ah",
+    "price": 315950,
+    "models": [
+      "TCM-FB15-7"
+    ]
+  },
+  {
+    "id": "Union48V4PzS500Ah-980x625x650",
+    "name": "АКБ Union 48V 4 PzS 500Ah",
+    "price": 332690,
+    "models": [
+      "DOOSAN - DAEWOO-B16X-5"
+    ]
+  },
+  {
+    "id": "Union48V5PzS625Ah-980x625x650",
+    "name": "АКБ Union 48V 5 PzS 625Ah",
+    "price": 377684,
+    "models": [
+      "DOOSAN - DAEWOO-B15T-5"
+    ]
+  },
+  {
+    "id": "Union48V5PzS625Ah-980x625x670",
+    "name": "АКБ Union 48V 5 PzS 625Ah",
+    "price": 377684,
+    "models": [
+      "HYSTER-J2.00XT"
+    ]
+  },
+  {
+    "id": "Union48V5PzS625Ah-980x627x650",
+    "name": "АКБ Union 48V 5 PzS 625Ah",
+    "price": 377684,
+    "models": [
+      "HYUNDAI-18BT-7"
+    ]
+  },
+  {
+    "id": "Union48V5PzS400Ah-980x660x465",
+    "name": "АКБ Union 48V 5 PzS 400Ah",
+    "price": 293301,
+    "models": [
+      "KOMATSU-FB15EX"
+    ]
+  },
+  {
+    "id": "Union48V6PzS480Ah-980x660x465",
+    "name": "АКБ Union 48V 6 PzS 480Ah",
+    "price": 315950,
+    "models": [
+      "KOMATSU-FB15EX"
+    ]
+  },
+  {
+    "id": "Union48V5PzS400Ah-982x605x490",
+    "name": "АКБ Union 48V 5 PzS 400Ah",
+    "price": 293301,
+    "models": [
+      "NISSAN-NK1B1L10"
+    ]
+  },
+  {
+    "id": "Union48V6PzS480Ah-982x605x490",
+    "name": "АКБ Union 48V 6 PzS 480Ah",
+    "price": 315950,
+    "models": [
+      "NISSAN-NK1B1L10"
+    ]
+  },
+  {
+    "id": "Union48V6PzS480Ah-983x680x445",
+    "name": "АКБ Union 48V 6 PzS 480Ah",
+    "price": 315950,
+    "models": [
+      "TFN-CPD15Hz"
+    ]
+  },
+  {
+    "id": "Union48V6PzS480Ah-986x661x457",
+    "name": "АКБ Union 48V 6 PzS 480Ah",
+    "price": 315950,
+    "models": [
+      "DALIAN-CPD15"
+    ]
+  },
+  {
+    "id": "Union48V7PzS560Ah-986x860x457",
+    "name": "АКБ Union 48V 7 PzS 560Ah",
+    "price": 343521,
+    "models": [
+      "DALIAN-CPD20"
+    ]
+  },
+  {
+    "id": "Union48V4PzS500Ah-990x445x635",
+    "name": "АКБ Union 48V 4 PzS 500Ah",
+    "price": 332690,
+    "models": [
+      "TOYOTA-7FBE10"
+    ]
+  },
+  {
+    "id": "Union48V5PzS625Ah-990x515x650",
+    "name": "АКБ Union 48V 5 PzS 625Ah",
+    "price": 377684,
+    "models": [
+      "CATERPILLAR-EP16NT"
+    ]
+  },
+  {
+    "id": "Union48V4PzS500Ah-990x540x635",
+    "name": "АКБ Union 48V 4 PzS 500Ah",
+    "price": 332690,
+    "models": [
+      "TOYOTA-7FBE15"
+    ]
+  },
+  {
+    "id": "Union48V4PzS500Ah-990x545x635",
+    "name": "АКБ Union 48V 4 PzS 500Ah",
+    "price": 332690,
+    "models": [
+      "HYUNDAI-15BT-7"
+    ]
+  },
+  {
+    "id": "Union48V5PzS625Ah-990x625x637",
+    "name": "АКБ Union 48V 5 PzS 625Ah",
+    "price": 377684,
+    "models": [
+      "HYUNDAI-20BT-7"
+    ]
+  },
+  {
+    "id": "Union48V5PzS400Ah-990x670x450",
+    "name": "АКБ Union 48V 5 PzS 400Ah",
+    "price": 293301,
+    "models": [
+      "NISSAN-FP01L15"
+    ]
+  },
+  {
+    "id": "Union48V6PzS480Ah-990x670x450",
+    "name": "АКБ Union 48V 6 PzS 480Ah",
+    "price": 315950,
+    "models": [
+      "NISSAN-FP01L15"
+    ]
+  },
+  {
+    "id": "Union48V5PzS625Ah-995x625x637",
+    "name": "АКБ Union 48V 5 PzS 625Ah",
+    "price": 377684,
+    "models": [
+      "HYUNDAI-18B-7"
+    ]
+  },
+  {
+    "id": "Union48V6PzS480Ah-995x715x470",
+    "name": "АКБ Union 48V 6 PzS 480Ah",
+    "price": 315950,
+    "models": [
+      "DOOSAN - DAEWOO-B15S"
+    ]
+  },
+  {
+    "id": "EnPOWER48V5PzS625Ah-1005x520x620",
+    "name": "АКБ EnPOWER 48V 5 PzS 625Ah",
+    "price": 549533,
+    "models": [
+      "CATERPILLAR-EP20KT"
+    ]
+  },
+  {
+    "id": "EnPOWER48V5PzS625Ah-1005x525x625",
+    "name": "АКБ EnPOWER 48V 5 PzS 625Ah",
+    "price": 549533,
+    "models": [
+      "MITSUBISHI-FB 16 NT"
+    ]
+  },
+  {
+    "id": "EnPOWER48V3PzS375Ah-1025x345x625",
+    "name": "АКБ EnPOWER 48V 3 PzS 375Ah",
+    "price": 409858,
+    "models": [
+      "DOOSAN - DAEWOO-BR14JW"
+    ]
+  },
+  {
+    "id": "EnPOWER48V5PzS625Ah-1025x525x680",
+    "name": "АКБ EnPOWER 48V 5 PzS 625Ah",
+    "price": 549533,
+    "models": [
+      "NICHIYU-FBT 15 P"
+    ]
+  },
+  {
+    "id": "EnPOWER48V5PzS625Ah-1025x530x625",
+    "name": "АКБ EnPOWER 48V 5 PzS 625Ah",
+    "price": 549533,
+    "models": [
+      "HELI-CPD18S-CQ"
+    ]
+  },
+  {
+    "id": "EnPOWER48V5PzS625Ah-1025x565x780",
+    "name": "АКБ EnPOWER 48V 5 PzS 625Ah",
+    "price": 549533,
+    "models": [
+      "TFN-CPD25J"
+    ]
+  },
+  {
+    "id": "EnPOWER48V5PzS775Ah-1025x565x780",
+    "name": "АКБ EnPOWER 48V 5 PzS 775Ah",
+    "price": 667357,
+    "models": [
+      "TFN-CPD25J"
+    ]
+  },
+  {
+    "id": "EnPOWER48V5PzS625Ah-1027x526x625",
+    "name": "АКБ EnPOWER 48V 5 PzS 625Ah",
+    "price": 549533,
+    "models": [
+      "STILL-RX20"
+    ]
+  },
+  {
+    "id": "EnPOWER48V5PzS775Ah-1028x520x780",
+    "name": "АКБ EnPOWER 48V 5 PzS 775Ah",
+    "price": 667357,
+    "models": [
+      "MAXIMAL-FB20-MQJS"
+    ]
+  },
+  {
+    "id": "EnPOWER48V5PzS625Ah-1028x520x780",
+    "name": "АКБ EnPOWER 48V 5 PzS 625Ah",
+    "price": 549533,
+    "models": [
+      "MAXIMAL-FB20-MQJS"
+    ]
+  },
+  {
+    "id": "EnPOWER48V5PzS625Ah-1028x570x700",
+    "name": "АКБ EnPOWER 48V 5 PzS 625Ah",
+    "price": 549533,
+    "models": [
+      "HANGCHA  (HC)-CPD20J-D1"
+    ]
+  },
+  {
+    "id": "EnPOWER48V5PzS625Ah-1030x252x625",
+    "name": "АКБ EnPOWER 48V 5 PzS 625Ah",
+    "price": 549533,
+    "models": [
+      "JUNGHEINRICH-EFX 413"
+    ]
+  },
+  {
+    "id": "EnPOWER48V5PzS625Ah-1030x500x802",
+    "name": "АКБ EnPOWER 48V 5 PzS 625Ah",
+    "price": 549533,
+    "models": [
+      "MAXIMAL-FB25"
+    ]
+  },
+  {
+    "id": "EnPOWER48V5PzS625Ah-1030x515x802",
+    "name": "АКБ EnPOWER 48V 5 PzS 625Ah",
+    "price": 549533,
+    "models": [
+      "HELI-CPD20CJ"
+    ]
+  },
+  {
+    "id": "EnPOWER48V5PzS775Ah-1030x515x802",
+    "name": "АКБ EnPOWER 48V 5 PzS 775Ah",
+    "price": 667357,
+    "models": [
+      "HELI-CPD20CJ"
+    ]
+  },
+  {
+    "id": "EnPOWER48V7PzS560Ah-1030x780x495",
     "name": "АКБ EnPOWER 48V 7 PzS 560Ah",
-    "price": 546439,
+    "price": 495120,
     "models": [
-      "TCM-FB20-7",
-      "TCM-FB20-8",
-      "TCM-FB25-7",
-      "TCM-FB25-8"
-    ],
-    "sizes": {
-      "1030x780x495": 546439
-    }
+      "TCM-FB20-7"
+    ]
   },
   {
-    "id": "EnPOWER24V3PzS375Ah",
-    "name": "АКБ EnPOWER 24V 3 PzS 375Ah",
-    "price": 233310,
+    "id": "EnPOWER48V5PzS775Ah-1200x420x870",
+    "name": "АКБ EnPOWER 48V 5 PzS 775Ah",
+    "price": 667357,
     "models": [
-      "JUNGHEINRICH-EJE 225",
-      "BT-SL 2.0",
-      "HYSTER-S1.6-32",
-      "HYSTER-S16AC",
-      "JUNGHEINRICH----",
-      "JUNGHEINRICH-ECE 120",
-      "JUNGHEINRICH-ERC212/ERC214/ERC216",
-      "JUNGHEINRICH-ERE120/ERE125/ERE225",
-      "JUNGHEINRICH-ESD 120",
-      "JUNGHEINRICH-ESE 120",
-      "KOMATSU-MWP 20F-1R",
-      "OM-TSX20",
-      "YALE-MS 14",
-      "YALE-MS 16",
-      "JUNGHEINRICH-ERC212/ERC214/ERC216",
-      "CATERPILLAR-N010SF",
-      "YALE-MP 20 T",
-      "CROWN-WE2300",
-      "DOOSAN - DAEWOO-HLS12",
-      "KOMATSU-FWS 14-1R",
-      "KOMATSU-MWS 14-1R",
-      "LOC-I16 T54",
-      "MITSUBISHI-SBP16N",
-      "OM-CN14",
-      "PRAMAC-FX12-38",
-      "PRAMAC-LX14-45"
-    ],
-    "sizes": {
-      "800x210x615": 233310
-    }
+      "BT----"
+    ]
+  },
+  {
+    "id": "EnPOWER48V5PzS775Ah-1215x420x770",
+    "name": "АКБ EnPOWER 48V 5 PzS 775Ah",
+    "price": 667357,
+    "models": [
+      "BT-RRE160"
+    ]
+  },
+  {
+    "id": "EnPOWER48V3PzS375Ah-1220x280x782",
+    "name": "АКБ EnPOWER 48V 3 PzS 375Ah",
+    "price": 409858,
+    "models": [
+      "NICHIYU-FBRF 14"
+    ]
+  },
+  {
+    "id": "EnPOWER48V3PzS375Ah-1220x280x787",
+    "name": "АКБ EnPOWER 48V 3 PzS 375Ah",
+    "price": 409858,
+    "models": [
+      "HYUNDAI-14BRJ-7"
+    ]
+  },
+  {
+    "id": "EnPOWER48V5PzS775Ah-1220x424x782",
+    "name": "АКБ EnPOWER 48V 5 PzS 775Ah",
+    "price": 667357,
+    "models": [
+      "HYSTER-R1.6H"
+    ]
+  },
+  {
+    "id": "EnPOWER48V5PzS775Ah-1220x425x793",
+    "name": "АКБ EnPOWER 48V 5 PzS 775Ah",
+    "price": 667357,
+    "models": [
+      "TOYOTA-6FBRE20"
+    ]
+  },
+  {
+    "id": "EnPOWER24V3PzS375Ah-610x265x625",
+    "name": "АКБ EnPOWER 24V 3 PzS 375Ah",
+    "price": 211398,
+    "models": [
+      "JUNGHEINRICH-EJE 225"
+    ]
+  },
+  {
+    "id": "EnPOWER24V3PzS375Ah-621x281x625",
+    "name": "АКБ EnPOWER 24V 3 PzS 375Ah",
+    "price": 211398,
+    "models": [
+      "BT-SL 2.0"
+    ]
+  },
+  {
+    "id": "EnPOWER48V3PzS375Ah-630x540x630",
+    "name": "АКБ EnPOWER 48V 3 PzS 375Ah",
+    "price": 409858,
+    "models": [
+      "HAKO-S5"
+    ]
+  },
+  {
+    "id": "EnPOWER24V3PzS375Ah-790x210x740",
+    "name": "АКБ EnPOWER 24V 3 PzS 375Ah",
+    "price": 211398,
+    "models": [
+      "CATERPILLAR-N010SF"
+    ]
+  },
+  {
+    "id": "EnPOWER24V3PzS375Ah-790x215x625",
+    "name": "АКБ EnPOWER 24V 3 PzS 375Ah",
+    "price": 211398,
+    "models": [
+      "YALE-MP 20 T"
+    ]
+  },
+  {
+    "id": "EnPOWER24V3PzS375Ah-800x210x615",
+    "name": "АКБ EnPOWER 24V 3 PzS 375Ah",
+    "price": 211398,
+    "models": [
+      "CROWN-WE2300"
+    ]
   }
 ]

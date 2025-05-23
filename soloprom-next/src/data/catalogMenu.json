@@ -36,6 +36,7 @@
   ],
   "tires": [
     { "href": "/catalog/tires", "title": "Шины для спецтехники" },
+    { "href": "/catalog/cameri", "title": "Камеры" },
     {
       "href": "/catalog/shini-celnolitie",
       "title": "Шины цельнолитые (суперэластик)"

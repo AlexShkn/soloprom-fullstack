@@ -2,7 +2,7 @@
 import React from 'react'
 import Footer from '@/components/Footer/Footer'
 import Modals from '@/components/Modals/Modals'
-import { CallbackPanel } from '@/components/CallbackPanel/CallbackPanel'
+import { CallbackPanel } from '@/components/CallbackPanel'
 import { HeaderTop } from '@/components/Header/HeaderTop'
 import HeaderBody from '@/components/Header/HeaderBody'
 

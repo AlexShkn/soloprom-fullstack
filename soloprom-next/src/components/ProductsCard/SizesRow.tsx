@@ -1,9 +1,9 @@
 'use client'
 import React, { useRef, useState } from 'react'
-import { ProductsCardWordAdaptive } from './DescriptionTemplate'
 import { getAdaptiveValue } from '@/utils/getAdaptiveValue'
 import { useClickOutside } from '@/hooks/useClickOutside'
 import { useCartStore } from '@/store/useCartStore'
+import { wordAdaptive } from '@/supports/adaptiveDto'
 
 interface Props {
   setVariantValue: (value: string) => void
@@ -12,6 +12,62 @@ interface Props {
   productId: string
   sizes?: { [key: string]: number } | null
 }
+
+// .product-card-dropdown
+
+// .product-card-dropdown {
+//   &.show {
+//     .product-card-dropdown__list {
+//       visibility: visible;
+//       opacity: 1;
+//     }
+
+//     img {
+//       transform: rotate(90deg);
+//     }
+//   }
+
+//   // .product-card-dropdown__item
+
+//   &__item {
+//     label {
+//       position: relative;
+//       display: block;
+//       padding: 10px 40px;
+//       cursor: pointer;
+
+//       &.selected {
+//         background-color: variables.$hoverAccentColor;
+//         color: #fff;
+//         &::before {
+//           content: '';
+//           position: absolute;
+//           right: 5px;
+//           top: 50%;
+//           transform: translateY(-50%);
+//           background: url('/img/icons/availability.svg') center / cover
+//             no-repeat;
+//           width: 15px;
+//           height: 14px;
+//         }
+//       }
+//     }
+
+//     input {
+//       position: absolute;
+//       opacity: 0;
+//       cursor: pointer;
+//       height: 0;
+//       width: 0;
+
+//       &:checked ~ label {
+//         background-position: 0 0;
+//         color: #fff;
+//         background-color: variables.$accentColor;
+//       }
+//     }
+//   }
+// }
 
 export const SizesRow: React.FC<Props> = ({
   sizes,
@@ -40,7 +96,7 @@ export const SizesRow: React.FC<Props> = ({
   return (
     <div className="flex items-center justify-between border-b border-grayColor pb-1 text-sm [&:not(:last-child)]:mb-1.5">
       <div className="">
-        {getAdaptiveValue(ProductsCardWordAdaptive, 'sizes', categoryName)}
+        {getAdaptiveValue(wordAdaptive, 'sizes', categoryName)}
       </div>
       <div className="font-bold">
         {Object.keys(sizes).length === 1 ? (

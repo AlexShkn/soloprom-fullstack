@@ -1,5 +1,5 @@
 import { create } from 'zustand'
-import { scrollStatusChange } from '@/utils/scrollStatusChange'
+import { scrollHiddenStatusChange } from '@/utils/scrollStatusChange'
 
 interface CatalogMenuState {
   catalogIsOpen: boolean
@@ -11,7 +11,7 @@ export const useCatalogMenuStore = create<CatalogMenuState>((set) => ({
   catalogMenuStateChange: (status, screen) => {
     set({ catalogIsOpen: status })
     if (screen) {
-      scrollStatusChange(status)
+      scrollHiddenStatusChange(status)
     }
   },
 }))

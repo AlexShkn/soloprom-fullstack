@@ -4,9 +4,9 @@ export interface ProductsCardPropTypes {
   productId: string
   storeId: string
   name: string
+  size: string
   price: number
   url: string
-  variant: string
   img: string
   productType: string
   categoryName: string
@@ -18,8 +18,9 @@ interface FavoriteState {
   addProductToFavorite: (
     product: Omit<ProductsCardPropTypes, 'storeId'>,
   ) => void
-  removeFavoriteProduct: (productId: string, variant: string) => void
+  removeFavoriteProduct: (productId: string) => void
   clearFavorite: () => void
+  favoriteCount: () => number
 }
 
 export const useFavoriteStore = create<FavoriteState>((set, get) => ({
@@ -28,7 +29,7 @@ export const useFavoriteStore = create<FavoriteState>((set, get) => ({
     set({ favoriteState: products })
   },
   addProductToFavorite: (product) => {
-    const storeId = `${product.productId}-${product.variant}`
+    const storeId = product.productId
     const productIndex = get().favoriteState.findIndex(
       (item) => item.storeId === storeId,
     )
@@ -39,10 +40,9 @@ export const useFavoriteStore = create<FavoriteState>((set, get) => ({
     }
     localStorage.setItem('favorite', JSON.stringify(get().favoriteState))
   },
-  removeFavoriteProduct: (productId, variant) => {
-    const storeId = `${productId}-${variant}`
+  removeFavoriteProduct: (productId) => {
     const updatedFavorite = get().favoriteState.filter(
-      (obj) => obj.storeId !== storeId,
+      (obj) => obj.storeId !== productId,
     )
     set({ favoriteState: updatedFavorite })
     localStorage.setItem('favorite', JSON.stringify(updatedFavorite))
@@ -51,4 +51,8 @@ export const useFavoriteStore = create<FavoriteState>((set, get) => ({
     set({ favoriteState: [] })
     localStorage.removeItem('favorite')
   },
+  favoriteCount: () => get().favoriteState.length,
 }))
+
+export const useFavoriteCount = () =>
+  useFavoriteStore((state) => state.favoriteCount())

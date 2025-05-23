@@ -1,0 +1,43 @@
+# Использовать Debian-based image
+FROM node:20.17.0-slim AS base
+
+RUN apt-get update && apt-get install -y libc6 openssl
+
+WORKDIR /app
+
+COPY package.json package-lock.json ./
+
+# Устанавливаем только production-зависимости
+RUN npm install --omit=dev
+
+FROM base AS build
+
+WORKDIR /app
+
+# Копируем все исходники
+COPY . .
+
+# Устанавливаем ЗАВИСИМОСТИ ДЛЯ Prisma Client и всего проекта.
+RUN npm install
+
+# Явно генерируем Prisma Client. Теперь он доступен в node_modules/@prisma/client
+RUN npm run prisma:generate
+
+# Собираем NestJS приложение
+RUN npm run build
+
+FROM build AS production
+
+ENV NODE_ENV=production
+
+WORKDIR /app
+
+COPY --from=build /app/package.json /app/package-lock.json ./
+
+# Используем npm ci для более чистой и быстрой установки (гарантирует точность зависимостей)
+RUN npm ci --production
+
+# Копируем скомпилированное приложение
+COPY --from=build /app/dist ./dist
+
+CMD ["node", "dist/src/main"]

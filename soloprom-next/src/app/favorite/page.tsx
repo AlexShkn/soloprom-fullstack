@@ -1,4 +1,4 @@
-import { Callback } from '@/components/Callback/Callback'
+import { Callback } from '@/components/Callback'
 import { Favorite } from '@/components/Favorite/Favorite'
 import PageWrapper from '../PageWrapper'
 

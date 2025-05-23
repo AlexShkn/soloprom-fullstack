@@ -4,10 +4,14 @@ const useCurrentScroll = () => {
   const [scrollPosition, setScrollPosition] = useState(0)
 
   useEffect(() => {
+    if (typeof window === 'undefined') {
+      return
+    }
+
     let ticking = false
 
     const handleScroll = () => {
-      if (!ticking && typeof window !== 'undefined') {
+      if (!ticking) {
         window.requestAnimationFrame(() => {
           setScrollPosition(window.pageYOffset)
           ticking = false
@@ -16,12 +20,8 @@ const useCurrentScroll = () => {
       }
     }
 
-    if (typeof window !== 'undefined') {
-      window.addEventListener('scroll', handleScroll)
-      return () => window.removeEventListener('scroll', handleScroll)
-    }
-
-    return () => {}
+    window.addEventListener('scroll', handleScroll)
+    return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
   return scrollPosition

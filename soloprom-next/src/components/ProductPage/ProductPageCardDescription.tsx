@@ -1,38 +1,18 @@
 'use client'
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import Image from 'next/image'
-import { getAdaptiveValue, AdaptiveValues } from '@/utils/getAdaptiveValue'
 import { ProductsCardPropTypes } from '@/types/products.types'
 import { useModalsStore } from '@/store/useModalsStore'
 import Link from 'next/link'
 import { CircleHelp } from 'lucide-react'
+import { wordAdaptive } from '@/supports/adaptiveDto'
+import { ProductMainDescrBlock } from './ProductMainDescrBlock'
+import { RatingDisplay } from '../ProductsCard/RatingDisplay'
 
 interface DescriptionTypes extends ProductsCardPropTypes {
   // variantValue: string
   // setVariantValue: (value: string) => void
-}
-
-type CatalogKeys = 'tires' | 'battery' | 'oils'
-
-const wordAdaptive: AdaptiveValues<{
-  sizes: { tires: string; battery: string }
-  types: { tires: string; battery: string; oils: string }
-  catalogs: { tires: string; battery: string; oils: string }
-}> = {
-  sizes: {
-    tires: 'Размерность',
-    battery: 'ДхШхВ',
-  },
-  types: {
-    tires: 'Тип шины',
-    battery: 'Тип аккумулятора',
-    oils: 'Тип жидкости',
-  },
-  catalogs: {
-    tires: 'shini',
-    battery: 'accumulyatori',
-    oils: 'maslo',
-  },
+  rating: number
 }
 
 const renderDescriptionItem = (
@@ -54,43 +34,11 @@ const renderDescriptionItem = (
 
 export const ProductPageCardDescription: React.FC<DescriptionTypes> = ({
   cardData,
+  rating,
 }) => {
-  const {
-    productId,
-    categoryName,
-    name,
-    url,
-    img,
-    productType,
-    brandName,
-    country,
-    load_index,
-    images,
-    viscosity,
-    container,
-    voltage,
-    plates,
-    defaultPrice,
-    sizes,
-    volumes,
-  } = cardData
-  const [variantValue, setVariantValue] = useState('')
+  const { categoryName, brandName } = cardData
 
-  const {
-    modalMessageStateChange,
-    modalCallbackStateChange,
-    setFastOrderProduct,
-  } = useModalsStore()
-
-  const sizesData = sizes || volumes
-
-  useEffect(() => {
-    let defaultSize: string | undefined = undefined
-    if (sizesData) {
-      defaultSize = Object.keys(sizesData)?.[0]
-      setVariantValue(defaultSize || '')
-    }
-  }, [])
+  const { modalMessageStateChange, modalCallbackStateChange } = useModalsStore()
 
   const showMessageWindow = () => {
     modalMessageStateChange(true)
@@ -112,7 +60,7 @@ export const ProductPageCardDescription: React.FC<DescriptionTypes> = ({
             width={96}
             height={40}
             className="h-10 w-24 object-contain text-left"
-            alt=""
+            alt={brandName}
           />
           <Link
             href={`/catalog/${catalogValue}-${brandName.toLowerCase()}`}
@@ -128,33 +76,17 @@ export const ProductPageCardDescription: React.FC<DescriptionTypes> = ({
         <button
           onClick={() => showMessageWindow()}
           type="button"
-          className="group inline-flex items-center gap-2 transition-colors hover:text-hoverBlue"
+          className="group inline-flex items-center gap-2 text-darkBlue transition-colors hover:text-hoverBlue"
         >
-          <CircleHelp className="h-5 w-5 stroke-darkBlue group-hover:stroke-accentBlue" />
-          Задать вопрос
+          <CircleHelp className="h-5 w-5" />
         </button>
       </div>
-
-      <div className="min-w-64">
-        <div className="mb-2.5 flex items-center border-b border-b-gray-400 pb-2.5 text-xl shadow-sm">
-          <span>Основная информация</span>
-        </div>
-
-        {renderDescriptionItem(
-          getAdaptiveValue(wordAdaptive, 'types', categoryName) || 'Тип',
-          productType,
-        )}
-        {sizesData &&
-          Object.keys(sizesData).length < 2 &&
-          renderDescriptionItem('Размер', variantValue)}
-        {load_index && renderDescriptionItem('Индекс нагрузки', load_index)}
-        {container && renderDescriptionItem('Емкость', container, 'Ah')}
-        {voltage && renderDescriptionItem('Напряжение', voltage, 'V')}
-        {plates && renderDescriptionItem('Тип пластин', plates)}
-        {viscosity && renderDescriptionItem('Вязкость', viscosity)}
-        {brandName && renderDescriptionItem('Бренд', brandName)}
-        {country && renderDescriptionItem('Производитель', country)}
+      <div className="mb-3 flex items-center gap-2">
+        <RatingDisplay rating={rating} />
+        {rating ? <span className="font-medium"> {rating}</span> : ''}
       </div>
+
+      <ProductMainDescrBlock cardData={cardData} />
     </div>
   )
 }

@@ -2,11 +2,11 @@ import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 
 import { ProductsModule } from './products/products.module';
-import { ScheduleModule } from '@nestjs/schedule';
+// import { ScheduleModule } from '@nestjs/schedule';
 import configuration from './config/configuration';
 import { CrawlerModule } from './scrape/crawler/crawler.module';
 import { ScraperJob } from './scrape/scraper.job';
-import { TasksModule } from './tasks/tasks.module';
+// import { TasksModule } from './tasks/tasks.module';
 import { ProductDescrModule } from './product-descr/product-descr.module';
 import { IS_DEV_ENV } from './libs/common/utils/is-dev.util';
 import { AuthModule } from './auth/auth.module';
@@ -22,34 +22,46 @@ import { OrderModule } from './order/order.module';
 import { StatisticsModule } from './statistics/statistics.module';
 import { ReviewsModule } from './reviews/reviews.module';
 import { CitiesModule } from './cities/cities.module';
+import { ProductsUpdateModule } from './products-update/products-update.module';
+import { SearchModule } from './search/search.module';
+import { BatteryModule } from './filter/battery/battery.module';
+
+const imports = [
+  ProductsModule,
+  SearchModule,
+  ConfigModule.forRoot({
+    ignoreEnvFile: !IS_DEV_ENV,
+    isGlobal: true,
+    load: [configuration],
+  }),
+  // ScheduleModule.forRoot(),
+  // TasksModule,
+  PrismaModule,
+  ReviewsModule,
+  AuthModule,
+  UserModule,
+  ProviderModule,
+  MailModule,
+  EmailConfirmationModule,
+  PasswordRecoveryModule,
+  TwoFactorAuthModule,
+  OrderModule,
+  StatisticsModule,
+  CitiesModule,
+  TelegramModule,
+  BatteryModule,
+];
+const providers = [];
+
+// dev
+if (IS_DEV_ENV) {
+  imports.push(CrawlerModule, ProductDescrModule, ProductsUpdateModule);
+  providers.push(ScraperJob);
+}
 
 @Module({
-  imports: [
-    ProductsModule,
-    ConfigModule.forRoot({
-      ignoreEnvFile: !IS_DEV_ENV,
-      isGlobal: true,
-      load: [configuration],
-    }),
-    ScheduleModule.forRoot(),
-    PrismaModule,
-    ReviewsModule,
-    CrawlerModule,
-    TasksModule,
-    ProductDescrModule,
-    AuthModule,
-    UserModule,
-    ProviderModule,
-    MailModule,
-    EmailConfirmationModule,
-    PasswordRecoveryModule,
-    TwoFactorAuthModule,
-    TelegramModule,
-    OrderModule,
-    StatisticsModule,
-    CitiesModule,
-  ],
+  imports: imports,
   controllers: [],
-  providers: [ScraperJob],
+  providers: providers,
 })
 export class AppModule {}

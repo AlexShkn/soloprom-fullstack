@@ -71,11 +71,15 @@ export const OrderForm: React.FC = () => {
         })
 
         if (!telegramResponse.ok) {
-          toast.error('Ошибка при отправке формы.')
+          toast.error('Ошибка при отправке формы.', {
+            className: 'sonar-warn',
+          })
           return
         }
 
-        toast.success('Форма успешно отправлена')
+        toast.success('Заказ успешно создан', {
+          className: 'sonar-success',
+        })
 
         if (isAuth) {
           const orderData = {
@@ -100,18 +104,25 @@ export const OrderForm: React.FC = () => {
             })
             toast.error(
               'Ошибка при создании заказа в базе данных. Обратитесь к администратору.',
+              {
+                className: 'sonar-warn',
+              },
             )
             return
           }
 
-          toast.success('Заказ успешно создан!')
+          toast.success('Заказ успешно создан!', {
+            className: 'sonar-success',
+          })
         }
 
         form.reset()
         clearCart()
       } catch (error) {
         console.error('Form submission error:', error)
-        toast.error('Ошибка при отправке формы.')
+        toast.error('Ошибка при отправке формы.', {
+          className: 'sonar-warn',
+        })
       } finally {
         setIsSubmitting(false)
       }
@@ -180,7 +191,7 @@ export const OrderForm: React.FC = () => {
           disabled={isSubmitting}
         >
           {isSubmitting ? 'Отправка...' : 'Отправить'}
-          <img className="h-7 w-7" src="/img/icons/buy.svg" alt="" />
+          <img className="h-7 w-7" src="/img/icons/buy.svg" alt="Купить" />
         </Button>
       </form>
     </FormProvider>

@@ -1,7 +1,7 @@
-import { Callback } from '@/components/Callback/Callback'
-import { PaymentDelivery } from '@/components/PaymentDelivery/PaymentDelivery'
+import { Callback } from '@/components/Callback'
+import { PaymentDelivery } from '@/components/PaymentDelivery'
 import { ContactsMap } from '@/components/ContactsMap/ContactsMap'
-import BreadCrumbs from '@/components/BreadCrumbs/BreadCrumbs'
+import BreadCrumbs from '@/components/BreadCrumbs'
 import PageWrapper from '../../PageWrapper'
 
 export const metadata = {

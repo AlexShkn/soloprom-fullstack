@@ -4,46 +4,4 @@
   .swiper-wrapper {
     display: inline-flex;
   }
-
-  // overflow: hidden;
-
-  @media (max-width: 1399.98px) {
-    padding: 15px;
-  }
-
-  // .product-list-slider__slider-button
-
-  .product-list-slider__slider-button {
-    &.swiper-button-disabled {
-      background-color: variables.$grayColor;
-
-      @media (any-hover: hover) {
-        &:hover {
-          background-color: variables.$grayColor;
-        }
-      }
-    }
-  }
-
-  // .product-list-slider__item
-
-  &__item {
-    &.swiper-slide-visible {
-      opacity: 1;
-    }
-  }
-
-  // .product-list-slider__footnote
-
-  &__footnote {
-    &::before {
-      content: '';
-      position: absolute;
-      top: -5px;
-      left: -5px;
-      width: 10px;
-      height: 10px;
-      background: url('/img/icons/st.svg') center / cover no-repeat;
-    }
-  }
 }

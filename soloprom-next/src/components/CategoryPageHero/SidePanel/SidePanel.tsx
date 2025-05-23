@@ -182,7 +182,7 @@ export const SidePanel: React.FC<SidePanelProps> = ({ pageData }) => {
   })
 
   return (
-    <div className="scroll-bar z-30 order-2 hidden max-h-[326px] flex-shrink-0 flex-grow-0 overflow-y-auto overflow-x-hidden overscroll-contain rounded bg-white p-4 shadow-custom mds:flex mds:max-h-[526px] md:order-none md:px-2.5 lg:w-auto">
+    <div className="scroll-bar z-30 order-2 hidden max-h-60 flex-shrink-0 flex-grow-0 overflow-y-auto overflow-x-hidden overscroll-contain rounded bg-white p-4 shadow-custom mds:flex md:order-none md:px-2.5 lg:w-auto">
       <ul ref={dropRef} className="w-full">
         {headGroup && (
           <li
@@ -195,7 +195,7 @@ export const SidePanel: React.FC<SidePanelProps> = ({ pageData }) => {
               <span className="side-panel__item-bridge absolute left-[50%] top-0 hidden h-full w-full"></span>
               {headGroup}
               <svg className="icon h-4 w-4 min-w-4 fill-accentBlue transition-colors md:rotate-[-90deg]">
-                <use xlinkHref="/img/sprite-default.svg#arrow-drop"></use>
+                <use xlinkHref="/img/sprite.svg#arrow-drop"></use>
               </svg>
             </div>
 
@@ -227,7 +227,7 @@ export const SidePanel: React.FC<SidePanelProps> = ({ pageData }) => {
               <span className="side-panel__item-bridge absolute left-[50%] top-0 hidden h-full w-full"></span>
               {headBrand}
               <svg className="icon h-4 w-4 min-w-4 fill-accentBlue transition-colors md:rotate-[-90deg]">
-                <use xlinkHref="/img/sprite-default.svg#arrow-drop"></use>
+                <use xlinkHref="/img/sprite.svg#arrow-drop"></use>
               </svg>
             </div>
 
@@ -249,27 +249,35 @@ export const SidePanel: React.FC<SidePanelProps> = ({ pageData }) => {
           </li>
         )}
         {subcategories &&
-          subcategories.map((link: Subcategory) => (
-            <li key={link.url} className="side-panel__item">
-              <Link
-                href={`/catalog/${link.url}`}
-                className="side-panel__item-link link-hover relative z-[1] flex cursor-pointer items-center justify-between rounded p-2.5 text-sm lg:py-2.5 lg:pl-4"
-              >
-                {link.crumb}
-              </Link>
-            </li>
-          ))}
+          subcategories.map((link: Subcategory) => {
+            if (link.url !== pageData.url) {
+              return (
+                <li key={link.url} className="side-panel__item">
+                  <Link
+                    href={`/catalog/${link.url}`}
+                    className="side-panel__item-link link-hover relative z-[1] flex cursor-pointer items-center justify-between rounded p-2.5 text-sm lg:py-2.5 lg:pl-4"
+                  >
+                    {link.crumb}
+                  </Link>
+                </li>
+              )
+            }
+          })}
         {groups &&
-          groups.map((link: Subcategory) => (
-            <li key={link.url} className="side-panel__item">
-              <Link
-                href={`/catalog/${link.url}`}
-                className="side-panel__item-link link-hover relative z-[1] flex cursor-pointer items-center justify-between rounded p-2.5 text-sm lg:py-2.5 lg:pl-4"
-              >
-                {link.crumb}
-              </Link>
-            </li>
-          ))}
+          groups.map((link: Subcategory) => {
+            if (link.url !== pageData.url) {
+              return (
+                <li key={link.url} className="side-panel__item">
+                  <Link
+                    href={`/catalog/${link.url}`}
+                    className="side-panel__item-link link-hover relative z-[1] flex cursor-pointer items-center justify-between rounded p-2.5 text-sm lg:py-2.5 lg:pl-4"
+                  >
+                    {link.crumb}
+                  </Link>
+                </li>
+              )
+            }
+          })}
       </ul>
     </div>
   )

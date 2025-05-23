@@ -7,9 +7,9 @@ import SearchFilters from './SearchFilters'
 import { useDebounce } from '@/hooks/useDebounce'
 import { api } from '@/utils/fetch/instance.api'
 import useSearchStore from '@/store/useSearchStore'
-import { generateFilterData } from '@/app/catalog/[pageUrl]/server'
 
 import { scrollStatusChange } from '@/utils/scrollStatusChange'
+import { generateFilterData } from '@/app/catalog/[categoryUrl]/server'
 
 interface Props {
   initialProducts: CardDataProps[] | null

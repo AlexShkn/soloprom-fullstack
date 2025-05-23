@@ -21,7 +21,7 @@ async function bootstrap() {
       console.log(`Запускаем скрапинг для категории: ${category}`);
       await scraperJob.handle(category);
     }
-    console.log('Скрапинг завершен успешно!');
+    console.log('Скрапинг завершен!');
     await app.close();
     process.exit(0);
   } catch (error) {

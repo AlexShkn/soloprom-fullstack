@@ -16,9 +16,9 @@ import {
 } from 'lucide-react'
 import { Loading } from '@/components/ui'
 import { ProfileContent } from './ProfileContent'
-import { useCompareStore } from '@/store/useCompareStore'
+import { CompareState, useCompareStore } from '@/store/useCompareStore'
 import { useFavoriteStore } from '@/store/useFavoriteStore'
-import { useCartStore } from '@/store/useCartStore'
+import { CartProductTypes, useCartStore } from '@/store/useCartStore'
 import { getStateFromLocalStorage } from '@/utils/localStorage/getStateFromLocalStorage'
 import { getCompareLocalStorage } from '@/utils/localStorage/getCompareLocalStorage'
 
@@ -44,7 +44,15 @@ export const ProfileDashboard = () => {
   const { setCart } = useCartStore()
   const { setFavorite } = useFavoriteStore()
   const { setComparedItems } = useCompareStore()
-
+  const [initialCart, setInitialCart] = useState<CartProductTypes[]>([])
+  const [initialFavorite, setInitialFavorite] = useState<CartProductTypes[]>([])
+  const [initialCompare, setInitialCompare] = useState<
+    CompareState['comparedItems']
+  >({
+    tires: [],
+    battery: [],
+    oils: [],
+  })
   const router = useRouter()
 
   useEffect(() => {
@@ -56,16 +64,24 @@ export const ProfileDashboard = () => {
 
   useEffect(() => {
     if (typeof window !== 'undefined' && window.localStorage) {
-      const initialCart = getStateFromLocalStorage('cart')
-      const initialFavorite = getStateFromLocalStorage('favorite')
-      const initialCompare = getCompareLocalStorage('comparedItems')
-      console.log('set')
-
-      setComparedItems(initialCompare)
-      setCart(initialCart)
-      setFavorite(initialFavorite)
+      setInitialCart(getStateFromLocalStorage('cart'))
+      setInitialFavorite(getStateFromLocalStorage('favorite'))
+      setInitialCompare(getCompareLocalStorage('comparedItems'))
     }
   }, [])
+
+  useEffect(() => {
+    setCart(initialCart)
+    setFavorite(initialFavorite)
+    setComparedItems(initialCompare)
+  }, [
+    initialCart,
+    initialFavorite,
+    initialCompare,
+    setCart,
+    setFavorite,
+    setComparedItems,
+  ])
 
   if (isLoading)
     return (
@@ -77,9 +93,8 @@ export const ProfileDashboard = () => {
   if (!user) return null
 
   return (
-    <div className="container mx-auto min-h-96 py-10">
+    <div className="page-container mx-auto min-h-96 py-10">
       <div className="flex flex-col gap-4 md:flex-row">
-        {/* Sidebar (Tab Buttons) */}
         <div className="flex min-w-64 max-w-80 flex-col justify-between rounded-md bg-gray-100 px-1 py-2.5 shadow-custom md:w-64">
           <ul className="divide-y divide-gray-200">
             {tabs.map((tab) => (
@@ -106,7 +121,6 @@ export const ProfileDashboard = () => {
           </button>
         </div>
 
-        {/* Main Content Area */}
         <div className="flex-1 rounded-md bg-white p-6 shadow-custom">
           <ProfileContent tabId={activeTab} user={user} isLoading={isLoading} />
         </div>

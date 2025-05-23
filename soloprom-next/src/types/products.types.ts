@@ -1,3 +1,5 @@
+import { ReviewsTypes } from '@/api/reviews'
+
 interface Group {
   name: string
 }
@@ -24,9 +26,8 @@ export interface CardDataProps {
   img: string
   groups: string[]
   delivery: string
-  sizes?: { [size: string]: number | undefined }
   defaultPrice: number
-  volumes?: { [size: string]: number | undefined }
+  defaultSize: string
   models?: string[]
   productType: string
   brandName: string
@@ -56,24 +57,60 @@ export interface ProductDetailsResponse extends CardDataProps {
   groupsList: GroupsList
 }
 
+export interface ApiResponse {
+  products: CardDataProps[]
+  totalCount: number
+  currentPage?: number
+  totalPages?: number
+}
+
+export interface ProductFullInfoResponse extends CardDataProps {
+  productData: ProductDetailsResponse
+  productReviews: ReviewsTypes[]
+  relatedProducts: CardDataProps[]
+  recommendProducts: CardDataProps[]
+}
+
 export interface ProductsCardPropTypes {
   cardData: CardDataProps
   mod?: string
 }
 export interface FilterData {
-  types: string[]
-  brands: string[]
-  prices: { min: number; max: number } | null
-  volumes: string[]
-  sizes: string[]
-  plates: string[]
+  types?: string[]
+  brands?: string[]
+  prices?: { min: number; max: number } | null
+  sizes?: string[]
+  plates?: string[]
   viscosity?: string[]
-  voltage: number[]
-  container: number[]
-  models: string[]
-  countries: string[]
-  radiuses: string[]
-  categoryes: string[]
+  voltage?: string[]
+  container?: string[]
+  models?: string[]
+  countries?: string[]
+  radiuses?: string[]
+  categoryes?: string[]
+  vehicleTypes?: string[]
+}
+
+export type FilterMethodOptionTypes = {
+  label: string
+  value: string
+}
+
+export type FilterMethodsTypes = {
+  [key: string]: FilterMethodOptionTypes[]
+}
+
+export interface PageDataBenefits {
+  h1: string
+  firstText: string
+  secondText: string
+  bottomText: string
+}
+
+export interface FilterTabsCategory {
+  label: string
+  value: string
+  icon: string
 }
 
 export interface PageDataTypes {
@@ -88,6 +125,7 @@ export interface PageDataTypes {
   subUrl?: string
   crumb: string
   headGroupTitle?: string
+  benefits: PageDataBenefits
 }
 
 export interface FavoriteList {
@@ -95,13 +133,23 @@ export interface FavoriteList {
   battery: CardDataProps[]
   oils: CardDataProps[]
 }
+export interface FilteredBlockDataList {
+  tires?: FilterData
+  battery?: FilterData
+  oils?: FilterData
+}
+export type FiltersState = {
+  [key: string]: string[] | string | undefined
+  categoryName?: 'tires' | 'battery'
+}
+
 export interface FavoriteProduct {
   productId: string
   storeId: string
   name: string
   price: number
+  size: string
   url: string
-  variant: string
   img: string
   categoryName: string
   productType: string
@@ -110,8 +158,8 @@ export interface FavoriteProduct {
 export interface ProductCardData {
   productId: string
   name: string
-  variant: string
   price: number
+  size: string
   url: string
   img: string
   productType: string

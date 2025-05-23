@@ -1,22 +1,22 @@
 'use client'
-import React, { useEffect, useState } from 'react'
+import React, { useRef } from 'react'
 import PageWrapper from '@/app/PageWrapper'
-import { RecommendSlider } from '@/components/RecommendSlider/RecommendSlider'
-import { ViewedSlider } from '@/components/ViewedSlider/ViewedSlider'
+import { RecommendSlider } from '@/components/RecommendSlider'
+import { ViewedSlider } from '@/components/ViewedSlider'
 import { ProductPageCard } from '@/components/ProductPage/ProductPageCard'
 import { ProductPageTabs } from '@/components/ProductPage/ProductPageTabs'
-import { ProductPageBenefits } from '@/components/ProductPage/ProductPageBenefits'
 import { CardDataProps, ProductDetailsResponse } from '@/types/products.types'
-import { Callback } from '@/components/Callback/Callback'
-import BreadCrumbs from '@/components/BreadCrumbs/BreadCrumbs'
-import { SubHero } from '@/components/SubHero/SubHero'
+import { Callback } from '@/components/Callback'
+import BreadCrumbs from '@/components/BreadCrumbs'
+import { SubHero } from '@/components/SubHero'
 
 import { ReviewsTypes } from '../../../api/reviews'
-import { getViewProductsByIds } from '@/api/products'
+import { ProductPageNav } from '@/components/ProductPage/ProductPageNav'
 
 interface Props {
   productData: ProductDetailsResponse
   recommendList: CardDataProps[]
+  relatedProducts: CardDataProps[]
   reviewData: ReviewsTypes[]
   productId: string
 }
@@ -26,46 +26,37 @@ export const ProductPageClient: React.FC<Props> = ({
   reviewData,
   productId,
   recommendList,
+  relatedProducts,
 }) => {
-  const [productsData, setProductsData] = useState<CardDataProps[]>([])
+  const descriptionRef = useRef<HTMLDivElement>(null)
+  const characteristicsRef = useRef<HTMLDivElement>(null)
+  const compatibilityRef = useRef<HTMLDivElement>(null)
+  const reviewsRef = useRef<HTMLDivElement>(null)
+  const deliveryRef = useRef<HTMLDivElement>(null)
 
-  const getProductsList = async (ids: string[]) => {
-    const response = await getViewProductsByIds(ids)
-    const filteredList = response.filter((card) => card.productId !== productId)
-    setProductsData(filteredList)
+  const refs = [
+    descriptionRef,
+    characteristicsRef,
+    compatibilityRef,
+    deliveryRef,
+    reviewsRef,
+  ]
+
+  const scrollToRef = (ref: React.RefObject<HTMLDivElement>) => {
+    if (ref.current) {
+      const offset = 100
+      const elementPosition = ref.current.getBoundingClientRect().top
+      const offsetPosition = elementPosition + window.pageYOffset - offset
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth',
+      })
+    }
   }
 
-  useEffect(() => {
-    const products = localStorage.getItem('view-products')
-    const productsArray = products !== null ? JSON.parse(products) : []
-
-    let updatedProductsArray
-
-    if (productsArray.length) {
-      const alreadyExists = productsArray.some(
-        (item: string) => item === productId,
-      )
-
-      if (alreadyExists) {
-        updatedProductsArray = productsArray
-      } else {
-        updatedProductsArray = [...productsArray, productId]
-
-        if (updatedProductsArray.length > 10) {
-          updatedProductsArray = updatedProductsArray.slice(1)
-        }
-      }
-
-      getProductsList(updatedProductsArray)
-    } else {
-      updatedProductsArray = [productId]
-    }
-
-    localStorage.setItem('view-products', JSON.stringify(updatedProductsArray))
-  }, [productId])
-
   return (
-    <PageWrapper>
+    <PageWrapper className="#f8fafc">
       <BreadCrumbs
         category={productData.categoryName}
         subcategory={productData.subcategoryName}
@@ -73,17 +64,34 @@ export const ProductPageClient: React.FC<Props> = ({
 
       <section className="product-page">
         <div className="page-container">
-          <ProductPageCard cardData={productData} />
+          <div className="mb-7 flex flex-col gap-3 xl:flex-row">
+            <ProductPageNav
+              reviewData={reviewData}
+              productDescr={productData.productDescr}
+              scrollToRef={scrollToRef}
+              refs={refs}
+            />
+            <ProductPageCard
+              cardData={productData}
+              relatedProducts={relatedProducts}
+              reviewData={reviewData}
+            />
+          </div>
           <ProductPageTabs
             productDescr={productData.productDescr}
             reviewData={reviewData}
             productId={productId}
+            descriptionRef={descriptionRef}
+            characteristicsRef={characteristicsRef}
+            compatibilityRef={compatibilityRef}
+            reviewsRef={reviewsRef}
+            deliveryRef={deliveryRef}
           />
 
           <RecommendSlider data={recommendList} />
           <SubHero />
 
-          <ViewedSlider data={productsData} />
+          <ViewedSlider productId={productId} />
         </div>
       </section>
       <Callback />

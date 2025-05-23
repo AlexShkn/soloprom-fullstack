@@ -1,0 +1,40 @@
+# Файлы и папки, которые нужно исключить из сборки Docker
+
+# Зависимости
+node_modules
+dist
+coverage
+
+# Системные файлы
+.DS_Store
+Thumbs.db
+
+# Локальные файлы окружения
+.env
+.env.development
+.env.local
+.env.test
+
+# Файлы отладки и профилирования
+*.log
+*.prof
+
+# Редактор VS Code
+.vscode/
+
+# Редактор IntelliJ IDEA
+.idea/
+
+# Другие файлы и папки (добавьте по необходимости)
+docker-compose.yml
+docker-compose.override.yml
+Dockerfile  # Если вы не хотите включать Dockerfile в контекст сборки (обычно не нужно)
+
+# Prisma (если используете)
+prisma/migrations  # Исключаем миграции, чтобы не копировать их в образ.
+prisma/dev.db # Исключаем локальную базу данных разработки
+
+# Другие временные файлы и папки
+tmp/
+temp/
+

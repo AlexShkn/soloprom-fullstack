@@ -1,82 +1,35 @@
 'use client'
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 
 import { getDigFormat } from '@/supports'
-
-import { useCartStore } from '@/store/useCartStore'
 import { useFavoriteStore } from '@/store/useFavoriteStore'
 
 import { FavoriteProduct } from '@/types/products.types'
 import { Trash2 } from 'lucide-react'
+import { sizeNameAdaptive, typeNameAdaptive } from '@/supports/adaptiveDto'
+import { CartButton } from '../ProductsCard/CartButton'
 
 interface FavoriteCardProps {
   product: FavoriteProduct
 }
 
-const sizeNameAdaptive: { [key: string]: string } = {
-  tires: 'Размер',
-  battery: 'ДхШхВ, мм',
-  oils: 'Объём',
-}
-const typeNameAdaptive: { [key: string]: string } = {
-  tires: 'Тип шины',
-  battery: 'Тип аккумулятора',
-  oils: 'Тип жидкости',
-}
-
 export const FavoriteCard: React.FC<FavoriteCardProps> = ({ product }) => {
-  const {
+  const { productId, name, size, price, url, img, productType, categoryName } =
+    product
+  const cardData = {
     productId,
-    name,
-    variant,
-    price,
     url,
+    name,
     img,
-    productType,
     categoryName,
-  } = product
-  const [cartIsLoad, setCartIsLoad] = useState(false)
-  const [cartIsAdded, setCartIsAdded] = useState(false)
-
-  const { cartState, addProductToCart, removeCartProduct } = useCartStore()
+    defaultPrice: price,
+    defaultSize: size,
+    productType,
+  }
 
   const { removeFavoriteProduct } = useFavoriteStore()
-
-  const storeId = `${productId}-${variant}`
-
-  useEffect(() => {
-    setCartIsAdded(cartState.some((item) => item.storeId === storeId))
-  }, [])
-
-  const handleAddToCart = () => {
-    if (!cartIsAdded) {
-      setCartIsLoad(true)
-      const product = {
-        productId,
-        name,
-        variant,
-        price,
-        url,
-        img,
-        productType,
-        categoryName,
-      }
-      addProductToCart(product)
-      setTimeout(() => {
-        setCartIsAdded(true)
-        setCartIsLoad(false)
-      }, 1000)
-    } else {
-      setCartIsLoad(true)
-      removeCartProduct(productId, variant)
-      setTimeout(() => {
-        setCartIsAdded(false)
-        setCartIsLoad(false)
-      }, 1000)
-    }
-  }
 
   return (
     <div className="flex flex-col gap-5 py-2.5 mds:p-2.5 mdl:flex-row mdl:items-center [&:not(:last-child)]:border-b [&:not(:last-child)]:border-grayColor">
@@ -92,7 +45,7 @@ export const FavoriteCard: React.FC<FavoriteCardProps> = ({ product }) => {
               className="h-full w-full object-contain"
               width={150}
               height={150}
-              alt=""
+              alt={product.name}
             />
           </Link>
         </div>
@@ -106,7 +59,7 @@ export const FavoriteCard: React.FC<FavoriteCardProps> = ({ product }) => {
           </Link>
 
           <div>
-            {sizeNameAdaptive[product.categoryName]}: <b>{product.variant}</b>
+            {sizeNameAdaptive[product.categoryName]}: <b>{product.size}</b>
           </div>
           <div>
             {typeNameAdaptive[product.categoryName]}:{' '}
@@ -116,38 +69,22 @@ export const FavoriteCard: React.FC<FavoriteCardProps> = ({ product }) => {
       </div>
 
       <div className="flex items-center gap-2.5 xs:gap-10 mds:flex-row mdl:flex-col mdl:gap-5">
-        <div className="flex w-full items-center justify-between gap-2.5 border-b border-dashed border-gray-400">
+        <div className="flex w-full items-center justify-between gap-2.5 border-b border-dashed border-gray-400 pb-1">
           <div className="text-lg font-medium">
-            <span>{getDigFormat(price)}₽</span>
+            {price ? <span>{getDigFormat(price)}₽</span> : ''}
           </div>
 
           <div className="order-2 flex items-center gap-5 mdl:order-none mdl:flex-row md:flex-col">
             <button
-              onClick={() => removeFavoriteProduct(productId, variant)}
-              className="group"
+              onClick={() => removeFavoriteProduct(productId)}
+              className="text-darkBlue hover:text-accentBlue"
             >
-              <Trash2 className="icon h-5 w-5 stroke-darkBlue transition-colors group-hover:fill-hoverBlue" />
+              <Trash2 className="icon h-5 w-5 transition-colors" />
             </button>
           </div>
         </div>
 
-        <button
-          onClick={handleAddToCart}
-          type="button"
-          className={`button relative gap-2.5 px-5 py-2.5 font-bold ${cartIsLoad && 'load'} ${cartIsAdded && 'added bg-greenColor'}`}
-        >
-          <span className="ttall invisible absolute inline-flex h-full w-full items-center justify-center rounded-custom bg-greenColor opacity-0 transition-all">
-            <img
-              className="h-7 w-7"
-              src="/img/icons/availability-w.svg"
-              alt=""
-            />
-          </span>
-          <svg className="icon h-7 w-7 fill-white">
-            <use xlinkHref="img/sprite.svg#cart"></use>
-          </svg>
-          В корзину
-        </button>
+        <CartButton cardData={cardData} />
       </div>
     </div>
   )

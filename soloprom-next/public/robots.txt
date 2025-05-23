@@ -1,9 +1,17 @@
 # *
 User-agent: *
+Clean-param: utm
 Allow: /
+Disallow: /admin
+Disallow: /auth/
+Disallow: /cart
+Disallow: /favorite
+Disallow: /profile
+Disallow: /search
+Disallow: /products/preload
 
 # Host
-Host: http://localhost:3000
+Host: https://soloprom.ru
 
 # Sitemaps
-Sitemap: http://localhost:3000/sitemap.xml
+Sitemap: https://soloprom.ru/sitemap.xml

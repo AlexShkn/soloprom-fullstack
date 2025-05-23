@@ -1,5 +1,5 @@
 'use client'
-import React, { useEffect, useCallback } from 'react'
+import React, { useEffect, useCallback, useState } from 'react'
 
 import { getStateFromLocalStorage } from '@/utils/localStorage/getStateFromLocalStorage'
 import { getCompareLocalStorage } from '@/utils/localStorage/getCompareLocalStorage'
@@ -7,32 +7,42 @@ import { getCompareLocalStorage } from '@/utils/localStorage/getCompareLocalStor
 import { HeaderTop } from './HeaderTop'
 import HeaderBody from './HeaderBody'
 
-import { useCartStore } from '@/store/useCartStore'
+import { CartProductTypes, useCartStore } from '@/store/useCartStore'
 import { useFavoriteStore } from '@/store/useFavoriteStore'
-import { useCompareStore } from '@/store/useCompareStore'
+import { CompareState, useCompareStore } from '@/store/useCompareStore'
 import { HeaderLinks } from './HeaderLinks'
+import { ProductsArrays } from '@/supports/adaptiveDto'
 
 export const Header: React.FC = () => {
   const { setCart } = useCartStore()
   const { setFavorite } = useFavoriteStore()
   const { setComparedItems } = useCompareStore()
 
-  // Using useCallback to memoize the effect's dependency array
-  const initializeState = useCallback(() => {
-    if (typeof window !== 'undefined' && window.localStorage) {
-      const initialCart = getStateFromLocalStorage('cart')
-      const initialFavorite = getStateFromLocalStorage('favorite')
-      const initialCompare = getCompareLocalStorage('comparedItems')
-
-      setComparedItems(initialCompare)
-      setCart(initialCart)
-      setFavorite(initialFavorite)
-    }
-  }, [setCart, setFavorite, setComparedItems])
+  const [initialCart, setInitialCart] = useState<CartProductTypes[]>([])
+  const [initialFavorite, setInitialFavorite] = useState<CartProductTypes[]>([])
+  const [initialCompare, setInitialCompare] =
+    useState<CompareState['comparedItems']>(ProductsArrays)
 
   useEffect(() => {
-    initializeState()
-  }, [initializeState]) // initializeState is now the stable dependency
+    if (typeof window !== 'undefined' && window.localStorage) {
+      setInitialCart(getStateFromLocalStorage('cart'))
+      setInitialFavorite(getStateFromLocalStorage('favorite'))
+      setInitialCompare(getCompareLocalStorage('comparedItems'))
+    }
+  }, [])
+
+  useEffect(() => {
+    setCart(initialCart)
+    setFavorite(initialFavorite)
+    setComparedItems(initialCompare)
+  }, [
+    initialCart,
+    initialFavorite,
+    initialCompare,
+    setCart,
+    setFavorite,
+    setComparedItems,
+  ])
 
   return (
     <header className="header relative w-full bg-darkBlue transition-all">

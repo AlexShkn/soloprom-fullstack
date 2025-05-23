@@ -1,5 +1,4 @@
 'use client'
-
 const items = [
   { name: 'Удобная доставка', icon: 'delivery-best' },
   {

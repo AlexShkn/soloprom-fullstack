@@ -4,11 +4,12 @@ import axios from 'axios';
 interface productType {
   name: string;
   productId: string;
-  variant: string;
+  size: string;
   productType: string;
   url: string;
   price: number;
   count: number;
+  discount: number;
 }
 
 @Injectable()
@@ -19,8 +20,6 @@ export class TelegramService {
   private readonly URL_API = `https://api.telegram.org/bot${this.TOKEN}/sendMessage`;
 
   async sendMessage(formData: any): Promise<any> {
-    console.log(formData);
-    console.log(formData.totalAmount);
     let message = `<b>===**Soloprom**===</b>\n`;
 
     // Данные из формы обратной связи
@@ -86,11 +85,21 @@ export class TelegramService {
           message += `<b>------------------</b>\n`;
           message += `<b>${product.name}</b>\n`;
           message += `<b>Id Товара:</b> ${product.productId}\n`;
-          message += `<b>Размер:</b> ${product.variant}\n`;
+          message += `<b>Размер:</b> ${product.size}\n`;
           message += `<b>Тип:</b> ${product.productType}\n`;
 
           message += `<b>Ссылка на товар:</b> ${this.ALLOWED_ORIGIN}/products/${product.productId}\n`;
           message += `<b>Цена за 1 шт:</b> ${product.price}\n`;
+
+          if (product.discount) {
+            const discountPercentage = product.discount;
+            const originalPrice = product.price;
+            const discountedPrice =
+              originalPrice + originalPrice * (discountPercentage / 100);
+
+            message += `<b>Скидка(якобы):</b> ${discountPercentage}%\n`;
+            message += `<b>Цена со скидкой за 1 шт:</b> ${discountedPrice}\n`;
+          }
 
           if (product.count > 1) {
             message += `<b>В заказе:</b> ${product.count}\n`;

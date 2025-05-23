@@ -1,6 +1,5 @@
 'use client'
-import React, { useEffect, useRef } from 'react'
-
+import React, { useRef } from 'react'
 import { useScrollHeader } from '@/hooks/useScrollHeader'
 import { useMediaQuery } from '@/hooks/useMediaQuery'
 import { useClickOutside } from '@/hooks/useClickOutside'
@@ -24,7 +23,7 @@ const HeaderBottom = () => {
   const isBigSmall = useMediaQuery('(min-width: 479.98px)')
   const isTablet = useMediaQuery('(max-width: 991.98px)')
 
-  useScrollHeader(isBigSmall)
+  useScrollHeader(true)
 
   useClickOutside(headerRef, () => {
     if (catalogIsOpen) {
@@ -44,11 +43,12 @@ const HeaderBottom = () => {
         <div
           className={`header-bottom__panel grid w-full grid-cols-1 items-center justify-between gap-5 md:w-auto md:grid-cols-[1fr,auto] ${headerFixed && 'page-container'} ${catalogIsOpen && 'fixed-panel'}`}
         >
-          <div className="flex h-11 w-full items-center gap-1 bg-white md:w-auto md:gap-4 lg:h-auto lg:gap-7">
+          <div className="header-mobile-fixed flex h-11 w-full items-center gap-1 md:w-auto md:gap-4 lg:h-auto lg:gap-7">
             <div className="relative">
               <button
                 onClick={menuStatusChange}
                 type="button"
+                aria-label="Открыть меню каталога"
                 className={`button header-bottom__catalog-button min-w-11 rounded py-[12px] font-bold mds:rounded-custom lg:px-8 lg:py-3 lg:text-lg ${
                   catalogIsOpen && 'open'
                 }`}
@@ -72,7 +72,7 @@ const HeaderBottom = () => {
           <MobileNav />
         </div>
 
-        {catalogIsOpen && <CatalogMenu />}
+        <CatalogMenu headerFixed={headerFixed} />
       </div>
     </div>
   )

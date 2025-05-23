@@ -1,20 +1,69 @@
 'use client'
-import React from 'react'
 
-import YaMap from './YaMap'
+import React, { useState, useEffect, useRef } from 'react'
+import { Loading } from '../ui'
+
+const YaMap = React.lazy(() => import('./YaMap'))
 
 interface Props {
   className?: string
 }
 
 export const ContactsMap: React.FC<Props> = ({ className }) => {
+  const [isIntersecting, setIsIntersecting] = useState(false)
+  const mapRef = useRef<HTMLElement>(null)
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setIsIntersecting(true)
+            observer.unobserve(entry.target)
+          }
+        })
+      },
+      {
+        root: null,
+        rootMargin: '0px',
+        threshold: 0.1,
+      },
+    )
+
+    if (mapRef.current) {
+      observer.observe(mapRef.current)
+    }
+
+    return () => {
+      if (mapRef.current) {
+        observer.unobserve(mapRef.current)
+      }
+    }
+  }, [])
+
   return (
     <section
       id="contacts"
       className="contacts-map relative flex flex-col bg-accentBlue lg:block lg:bg-none"
+      ref={mapRef}
     >
-      <YaMap />
-      <div className="page-container">
+      {isIntersecting ? (
+        <React.Suspense
+          fallback={
+            <Loading
+              classNames="absolute ttall text-white"
+              spinClasses="w-10 h-10"
+            />
+          }
+        >
+          <YaMap />
+        </React.Suspense>
+      ) : (
+        <div className="h-[350px] w-full animate-pulse bg-gray-200">
+          <Loading />
+        </div>
+      )}
+      <div className="page-container relative">
         <div className="relative my-14 inline-flex flex-col rounded-custom p-14 px-4 py-7 shadow-custom xs:p-7 md:w-full md:max-w-max lg:max-w-[460px] lg:bg-accentBlue">
           <h2 className="mb-7 text-3xl font-medium leading-9 text-white">
             Офис продаж

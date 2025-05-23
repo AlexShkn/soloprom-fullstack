@@ -1,0 +1,31 @@
+[
+  {
+    "name": "7777777",
+    "descr": "7777777",
+    "url": "/products/7777777",
+    "img": null,
+    "defaultPrice": 7777777,
+    "delivery": "2-3 дня",
+    "isPopular": false,
+    "size": null,
+    "discount": null,
+    "models": [],
+    "regalia": [],
+    "productId": "7777777",
+    "categoryName": "tires",
+    "subcategoryName": "diski",
+    "container": null,
+    "country": "7777777",
+    "load_index": null,
+    "plates": null,
+    "productType": "Диск",
+    "voltage": null,
+    "stock": 0,
+    "brandName": "7777777",
+    "rating": 0,
+    "groupsList": [],
+    "viscosity": null,
+    "images": [],
+    "defaultSize": "7777777"
+  }
+]

@@ -1,5 +1,7 @@
 export * from './Avatar'
 export * from './Button'
+export * from './badge'
+export * from './separator'
 export * from './Card'
 export * from './DropdownMenu'
 export * from './Form'

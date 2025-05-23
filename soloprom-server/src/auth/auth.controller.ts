@@ -21,6 +21,7 @@ import { LoginDto } from './dto/login.dto';
 import { RegisterDto } from './dto/register.dto';
 import { AuthProviderGuard } from './guards/provider.guard';
 import { ProviderService } from './provider/provider.service';
+import { Session } from 'express-session';
 
 @Controller('auth')
 export class AuthController {
@@ -84,7 +85,7 @@ export class AuthController {
 
   @Get('check-session')
   async checkSession(@Req() req: Request) {
-    const userId = req.session.userId;
+    const userId = (req.session as Session & { userId: string })?.userId;
     if (userId) {
       return { isValid: true };
     }
@@ -97,6 +98,7 @@ export class AuthController {
     @Req() req: Request,
     @Res({ passthrough: true }) res: Response,
   ) {
-    return this.authService.logout(req, res);
+    await this.authService.logout(req, res);
+    return { message: 'Вы успешно вышли' };
   }
 }

@@ -25,9 +25,6 @@ export class MailService {
   public async sendConfirmationEmail(email: string, token: string) {
     const domain = this.configService.getOrThrow<string>('ALLOWED_ORIGIN');
 
-    console.log('Email:', email);
-    console.log('token', token);
-    console.log('domain', domain);
     const html = await render(ConfirmationTemplate({ domain, token }));
 
     return this.sendMail(email, 'Подтверждение почты', html);

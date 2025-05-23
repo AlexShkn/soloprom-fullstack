@@ -9,9 +9,8 @@ import './HeroMainSlider.scss'
 
 const mainSliderData = [
   {
-    title: 'Запчасти для спецтехники',
-    subtitle:
-      'Широкий ассортимент аккумуляторов, шин и масел для специальной техники',
+    title: 'Шины и аккумуляторы для специальной техники',
+    subtitle: 'Широкий ассортимент в наличии и на заказ',
     img: '/img/hero/main/trucks-new.webp',
     link: '/catalog',
     btnText: 'Перейти в каталог',
@@ -19,17 +18,17 @@ const mainSliderData = [
   },
   {
     title: 'Сезонные акции на шины',
-    subtitle: '',
+    subtitle: 'Быстрый подбор под технику',
     img: '/img/hero/main/tires-main-800.webp',
-    link: '/catalog/tires',
-    btnText: 'Каталог шин',
+    link: '/podbor-tires',
+    btnText: 'Подобрать шину',
     alt: '',
   },
   {
     title: 'Подбор тяговых акб',
     subtitle: 'по характеристикам, типу и бренду техники',
     img: '/img/hero/main/contracts.webp',
-    link: '/catalog/battery',
+    link: '/podbor-battery',
     btnText: 'Подобрать',
     alt: '',
   },
@@ -74,12 +73,12 @@ const HeroMainSlider = () => {
               height={300}
             />
             <div className="relative z-[2]">
-              <div className="mb-5 text-[clamp(1.625rem,1.1635rem+1.5385vw,2.5rem)] font-bold leading-tight text-white">
+              <div className="mb-5 text-[clamp(1.625rem,1.1635rem+1.5385vw,2.5rem)] font-bold leading-[110%] text-white">
                 {slide.title}
               </div>
 
               {slide.subtitle && (
-                <div className="mb-8 max-w-[500px] text-lg leading-tight text-white">
+                <div className="mb-5 max-w-[500px] text-lg leading-tight text-white">
                   {slide.subtitle}
                 </div>
               )}

@@ -17,10 +17,7 @@ export const ProfileCart: React.FC<Props> = ({ className }) => {
         <div className="flex flex-col items-start">
           <div className="mb-5 flex w-full flex-col gap-5 border-b border-grayColor">
             {cartState.map((product) => (
-              <CartProductItem
-                key={product.productId + product.variant}
-                product={product}
-              />
+              <CartProductItem key={product.productId} product={product} />
             ))}
           </div>
           <Link href={'/cart'} className="button ml-auto px-3 py-2 font-medium">

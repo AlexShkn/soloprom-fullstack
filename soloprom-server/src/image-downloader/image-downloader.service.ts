@@ -3,7 +3,7 @@ import * as fs from 'fs';
 import * as path from 'path';
 import * as https from 'https';
 import { promisify } from 'util';
-import descr from '../data/descr.json';
+import descr from '../../output/descr.json';
 
 const pipeline = promisify(require('stream').pipeline);
 
